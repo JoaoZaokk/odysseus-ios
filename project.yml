@@ -1,0 +1,131 @@
+name: Odysseus
+options:
+  bundleIdPrefix: com.zao
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+packages:
+  MarkdownUI:
+    url: https://github.com/gonzalezreal/swift-markdown-ui
+    from: "2.4.1"
+  SwiftWhisper:
+    url: https://github.com/exPHAT/SwiftWhisper
+    branch: master
+  ZIPFoundation:
+    url: https://github.com/weichsel/ZIPFoundation
+    from: "0.9.0"
+  FluidAudio:
+    url: https://github.com/FluidInference/FluidAudio
+    from: "0.12.4"
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: "FZ5A72S5DT"
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+targets:
+  Odysseus:
+    type: application
+    platform: iOS
+    sources:
+      - path: Odysseus
+        excludes:
+          - "Resources/Info-macOS.plist"
+          - "Resources/Odysseus-macOS.entitlements"
+    dependencies:
+      - package: MarkdownUI
+      - package: SwiftWhisper
+      - package: ZIPFoundation
+      - package: FluidAudio
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.zao.odysseus
+        PRODUCT_NAME: Odysseus
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "2"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+    info:
+      path: Odysseus/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: Odysseus
+        # Drive version from the build settings (xcodegen hardcodes CFBundleVersion=1).
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        # So App Store Connect can pull the marketing icon.
+        CFBundleIconName: AppIcon
+        # Orientations must live in the Info.plist (INFOPLIST_KEY_* are ignored
+        # with a custom plist) — iPad needs all four (fixes upload error 90474).
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UILaunchScreen:
+          UIColorName: "LaunchBackground"
+        ITSAppUsesNonExemptEncryption: false
+        NSLocalNetworkUsageDescription: "Odysseus precisa acessar o servidor de IA na sua rede local."
+        NSMicrophoneUsageDescription: "Para ditar mensagens por voz."
+        NSSpeechRecognitionUsageDescription: "Para transcrever sua voz em texto no dispositivo."
+        NSAppTransportSecurity:
+          # Dev-friendly: the server runs over plain HTTP on the LAN today.
+          # When you expose it via HTTPS, you can tighten this to a per-domain
+          # exception instead of allowing arbitrary loads.
+          NSAllowsArbitraryLoads: true
+          NSAllowsLocalNetworking: true
+
+  # Native macOS app — same SwiftUI source as iOS, with platform shims in
+  # Config/PlatformCompat.swift. Builds for Apple Silicon Macs (macOS 14+).
+  Odysseus-macOS:
+    type: application
+    platform: macOS
+    sources:
+      - path: Odysseus
+        excludes:
+          - "Resources/Info.plist"
+          - "Resources/Odysseus-macOS.entitlements"
+    dependencies:
+      - package: MarkdownUI
+      - package: SwiftWhisper
+      - package: ZIPFoundation
+      - package: FluidAudio
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.zao.odysseus
+        PRODUCT_NAME: Odysseus
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus-macOS.entitlements
+        ENABLE_HARDENED_RUNTIME: YES
+        COMBINE_HIDPI_IMAGES: YES
+    info:
+      path: Odysseus/Resources/Info-macOS.plist
+      properties:
+        CFBundleDisplayName: Odysseus
+        LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
+        LSApplicationCategoryType: public.app-category.productivity
+        ITSAppUsesNonExemptEncryption: false
+        NSHumanReadableCopyright: "© 2026 JoaoZaokk — PolyForm Noncommercial License 1.0.0"
+        NSMicrophoneUsageDescription: "Para ditar mensagens por voz."
+        NSSpeechRecognitionUsageDescription: "Para transcrever sua voz em texto no dispositivo."
+        NSLocalNetworkUsageDescription: "Odysseus precisa acessar o servidor de IA na sua rede local."
+        NSAppTransportSecurity:
+          # Same as iOS: allow the plain-HTTP LAN server today; tighten when HTTPS.
+          NSAllowsArbitraryLoads: true
+          NSAllowsLocalNetworking: true
