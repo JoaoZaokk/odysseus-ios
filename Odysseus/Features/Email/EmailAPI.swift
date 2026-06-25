@@ -2,24 +2,24 @@ import Foundation
 
 extension APIClient {
     func emailList(folder: String = "INBOX", limit: Int = 50) async throws -> EmailListResponse {
-        let path = "/api/email/list?folder=\(folder)&limit=\(limit)"
+        let path = "/api/email/list?folder=\(encQuery(folder))&limit=\(limit)"
         return try decode(EmailListResponse.self, try await send(request(path)))
     }
 
     func emailRead(_ uid: String, folder: String = "INBOX") async throws -> EmailDetail {
-        try decode(EmailDetail.self, try await send(request("/api/email/read/\(uid)?folder=\(folder)")))
+        try decode(EmailDetail.self, try await send(request("/api/email/read/\(encPath(uid))?folder=\(encQuery(folder))")))
     }
 
     func emailMarkRead(_ uid: String) async {
-        _ = try? await send(request("/api/email/mark-read/\(uid)", method: "POST"))
+        _ = try? await send(request("/api/email/mark-read/\(encPath(uid))", method: "POST"))
     }
 
     func emailArchive(_ uid: String) async throws {
-        _ = try await send(request("/api/email/archive/\(uid)", method: "POST"))
+        _ = try await send(request("/api/email/archive/\(encPath(uid))", method: "POST"))
     }
 
     func emailDelete(_ uid: String) async throws {
-        _ = try await send(request("/api/email/delete/\(uid)", method: "POST"))
+        _ = try await send(request("/api/email/delete/\(encPath(uid))", method: "POST"))
     }
 
     // MARK: - Accounts
@@ -34,10 +34,10 @@ extension APIClient {
     }
 
     func deleteEmailAccount(_ id: String) async throws {
-        _ = try await send(request("/api/email/accounts/\(id)", method: "DELETE"))
+        _ = try await send(request("/api/email/accounts/\(encPath(id))", method: "DELETE"))
     }
 
     func setDefaultEmailAccount(_ id: String) async throws {
-        _ = try await send(request("/api/email/accounts/\(id)/set-default", method: "POST"))
+        _ = try await send(request("/api/email/accounts/\(encPath(id))/set-default", method: "POST"))
     }
 }

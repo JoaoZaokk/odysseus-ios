@@ -90,7 +90,7 @@ extension APIClient {
 
     /// Raw HTML of the visual report, parsed natively by `ReportParser`.
     func researchReportHTML(_ id: String) async throws -> String {
-        var req = request("/api/research/report/\(id)")
+        var req = request("/api/research/report/\(encPath(id))")
         req.setValue("text/html", forHTTPHeaderField: "Accept")
         let data = try await send(req)
         return String(data: data, encoding: .utf8) ?? ""
@@ -101,7 +101,7 @@ extension APIClient {
         AsyncThrowingStream { continuation in
             let task = Task {
                 do {
-                    var req = request("/api/research/stream/\(id)")
+                    var req = request("/api/research/stream/\(encPath(id))")
                     req.setValue("text/event-stream", forHTTPHeaderField: "Accept")
                     req.timeoutInterval = 600
                     let (bytes, resp) = try await session.bytes(for: req)

@@ -13,7 +13,7 @@ extension APIClient {
     }
 
     func toggleGalleryFavorite(_ id: String) async throws {
-        _ = try await send(request("/api/gallery/\(id)/favorite", method: "POST"))
+        _ = try await send(request("/api/gallery/\(encPath(id))/favorite", method: "POST"))
     }
 
     /// Resolves an image/video URL (often relative) to an absolute URL.

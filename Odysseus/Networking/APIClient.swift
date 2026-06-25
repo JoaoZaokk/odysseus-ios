@@ -47,6 +47,21 @@ final class APIClient: @unchecked Sendable {
         return req
     }
 
+    /// Percent-encodes a value for safe use as a single URL **path segment** (also
+    /// escapes `/ ? #`). Server-supplied ids (email uid, session/research/gallery id)
+    /// must go through this so a malicious id can't smuggle path/query separators.
+    func encPath(_ s: String) -> String {
+        var allowed = CharacterSet.urlPathAllowed
+        allowed.remove(charactersIn: "/?#")
+        return s.addingPercentEncoding(withAllowedCharacters: allowed) ?? ""
+    }
+    /// Percent-encodes a value for safe use as a URL **query value** (escapes `& = ? #`).
+    func encQuery(_ s: String) -> String {
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "&=?#")
+        return s.addingPercentEncoding(withAllowedCharacters: allowed) ?? ""
+    }
+
     /// POST/PUT with a JSON body.
     func jsonRequest(_ path: String, method: String, body: Encodable) throws -> URLRequest {
         var req = request(path, method: method)
@@ -173,7 +188,7 @@ final class APIClient: @unchecked Sendable {
     }
 
     func history(_ sessionID: String) async throws -> SessionDetail {
-        try decode(SessionDetail.self, try await send(request("/api/history/\(sessionID)")))
+        try decode(SessionDetail.self, try await send(request("/api/history/\(encPath(sessionID))")))
     }
 
     func defaultChat() async throws -> DefaultChat {
@@ -223,11 +238,11 @@ final class APIClient: @unchecked Sendable {
     }
 
     func deleteSession(_ id: String) async throws {
-        _ = try await send(request("/api/session/\(id)", method: "DELETE"))
+        _ = try await send(request("/api/session/\(encPath(id))", method: "DELETE"))
     }
 
     func renameSession(_ id: String, to name: String) async throws {
-        var req = request("/api/session/\(id)", method: "PATCH")
+        var req = request("/api/session/\(encPath(id))", method: "PATCH")
         let body = MultipartForm(fields: ["name": name])
         req.setValue(body.contentType, forHTTPHeaderField: "Content-Type")
         req.httpBody = body.finalizedData
@@ -235,7 +250,7 @@ final class APIClient: @unchecked Sendable {
     }
 
     func stop(_ sessionID: String) async {
-        _ = try? await session.data(for: request("/api/chat/stop/\(sessionID)", method: "POST"))
+        _ = try? await session.data(for: request("/api/chat/stop/\(encPath(sessionID))", method: "POST"))
     }
 }
 
