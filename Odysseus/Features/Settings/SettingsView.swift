@@ -84,7 +84,7 @@ struct SettingsView: View {
             header
             Divider().overlay(theme.border)
             HStack(spacing: 0) {
-                sidebar.frame(width: 230)
+                sidebar.frame(width: 230).clipped()   // keep group separators inside the column
                 Divider().overlay(theme.border)
                 content(selection)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -135,7 +135,10 @@ struct SettingsView: View {
                             .foregroundStyle(theme.secondaryText)
                             .padding(.horizontal, 12).padding(.top, 10)
                     } else if idx > 0 {
-                        Divider().overlay(theme.border).padding(.vertical, 6)
+                        // Contained separator (a full-width Divider was bleeding past the
+                        // sidebar column into the content pane).
+                        Rectangle().fill(theme.border).frame(height: 1)
+                            .padding(.horizontal, 12).padding(.vertical, 6)
                     }
                     ForEach(group.1) { s in
                         Button { selection = s } label: { row(s, active: selection == s) }
