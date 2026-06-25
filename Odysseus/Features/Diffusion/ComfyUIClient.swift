@@ -62,7 +62,11 @@ struct ComfyUIClient {
         if s.isEmpty { throw ComfyError.badURL }
         if !s.hasPrefix("http://") && !s.hasPrefix("https://") { s = "http://" + s }
         while s.hasSuffix("/") { s.removeLast() }
-        guard let u = URL(string: s + path) else { throw ComfyError.badURL }
+        // Reject anything that isn't a plain http(s) host (no file://, smuggled schemes).
+        guard let u = URL(string: s + path), let host = u.host, !host.isEmpty,
+              let scheme = u.scheme?.lowercased(), scheme == "http" || scheme == "https" else {
+            throw ComfyError.badURL
+        }
         return u
     }
 
