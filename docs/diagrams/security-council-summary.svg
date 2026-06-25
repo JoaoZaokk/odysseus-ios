@@ -1,0 +1,63 @@
+<svg viewBox="0 0 820 440" xmlns="http://www.w3.org/2000/svg" role="img" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <title>Odysseus — LLM security council summary</title>
+  <desc>Three Opus agents audited the app. 16 findings: all 3 HIGH and all MED fixed; LOW/design items accepted with rationale. Ported to two sibling apps.</desc>
+  <rect width="820" height="440" rx="14" fill="#12100e"/>
+  <text x="410" y="42" text-anchor="middle" fill="#e8e3dc" font-size="21" font-weight="700">Conselho de segurança (LLM council)</text>
+  <text x="410" y="66" text-anchor="middle" fill="#8c857c" font-size="12">3 agentes Opus · blue team corrigiu · cada correção = 1 commit</text>
+
+  <!-- council members -->
+  <g font-size="11.5">
+    <rect x="40" y="92" width="240" height="70" rx="10" fill="#161b22" stroke="#3d7a9e"/>
+    <text x="56" y="116" fill="#6fb0d6" font-weight="700">Red rodada 1</text>
+    <text x="56" y="135" fill="#cfc8bf">achou 10 (V1–V10)</text>
+    <text x="56" y="152" fill="#8c857c">89k tokens · 26 tools</text>
+
+    <rect x="290" y="92" width="240" height="70" rx="10" fill="#161b22" stroke="#3d7a9e"/>
+    <text x="306" y="116" fill="#6fb0d6" font-weight="700">Council A — auth/cripto</text>
+    <text x="306" y="135" fill="#cfc8bf">votou corrigir V7/V9 · A1–A5</text>
+    <text x="306" y="152" fill="#8c857c">72k tokens · 21 tools</text>
+
+    <rect x="540" y="92" width="240" height="70" rx="10" fill="#161b22" stroke="#3d7a9e"/>
+    <text x="556" y="116" fill="#6fb0d6" font-weight="700">Council B — injeção/parse</text>
+    <text x="556" y="135" fill="#cfc8bf">achou: encPath em só 4/11</text>
+    <text x="556" y="152" fill="#8c857c">87k tokens · 30 tools</text>
+  </g>
+
+  <!-- severity bars -->
+  <g font-size="12">
+    <text x="40" y="196" fill="#e8e3dc" font-weight="700">Resultado por severidade</text>
+
+    <text x="40" y="224" fill="#e05a4a" font-weight="700">HIGH</text>
+    <rect x="120" y="213" width="300" height="16" rx="8" fill="#2a1c18"/>
+    <rect x="120" y="213" width="300" height="16" rx="8" fill="#e05a4a"/>
+    <text x="430" y="225" fill="#7bc45e" font-weight="700">4/4 corrigidas ✓</text>
+
+    <text x="40" y="252" fill="#e0a33a" font-weight="700">MED</text>
+    <rect x="120" y="241" width="300" height="16" rx="8" fill="#2a2418"/>
+    <rect x="120" y="241" width="300" height="16" rx="8" fill="#e0a33a"/>
+    <text x="430" y="253" fill="#7bc45e" font-weight="700">6/6 corrigidas ✓</text>
+
+    <text x="40" y="280" fill="#8c857c" font-weight="700">LOW</text>
+    <rect x="120" y="269" width="300" height="16" rx="8" fill="#1c1c20"/>
+    <rect x="120" y="269" width="180" height="16" rx="8" fill="#5a544c"/>
+    <text x="430" y="281" fill="#cfc8bf">5 aceitas c/ justificativa</text>
+  </g>
+
+  <!-- agree / disagree -->
+  <g font-size="11">
+    <rect x="40" y="300" width="360" height="118" rx="10" fill="#13190f" stroke="#5fa44a"/>
+    <text x="56" y="322" fill="#7bc45e" font-size="12.5" font-weight="700">Concordaram</text>
+    <text x="56" y="342" fill="#cfc8bf">• fixes da rodada 1 estão corretos</text>
+    <text x="56" y="360" fill="#cfc8bf">• boa higiene (sem secret em log, sem try!)</text>
+    <text x="56" y="378" fill="#cfc8bf">• V7/V9: corrigir (não adiar)</text>
+    <text x="56" y="396" fill="#cfc8bf">• V8: adiável (+ cap de 500 chars)</text>
+
+    <rect x="420" y="300" width="360" height="118" rx="10" fill="#1e1512" stroke="#e0a33a"/>
+    <text x="436" y="322" fill="#e0a33a" font-size="12.5" font-weight="700">Discordaram</text>
+    <text x="436" y="342" fill="#cfc8bf">• A disse "encPath em todo lugar";</text>
+    <text x="436" y="358" fill="#cfc8bf">  B provou que faltava em 7 arquivos →</text>
+    <text x="436" y="374" fill="#7bc45e">  B certo, 17 sites corrigidos</text>
+    <text x="436" y="396" fill="#cfc8bf">• escopo do V7: refactor total vs mínimo</text>
+    <text x="436" y="412" fill="#8c857c">  → mínimo correto (escolha do chair)</text>
+  </g>
+</svg>
