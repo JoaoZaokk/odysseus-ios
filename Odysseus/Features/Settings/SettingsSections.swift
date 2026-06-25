@@ -47,6 +47,9 @@ struct AccountSection: View {
     @State private var cur = ""; @State private var nw = ""; @State private var confirm = ""
     @State private var pwMsg: String?
     @State private var pwOK = false
+    // Opt-in biometric security (default OFF — see BiometricLock).
+    @AppStorage(BiometricLock.appLockKey) private var appLock = false
+    @AppStorage(BiometricLock.autoLoginKey) private var bioAutoLogin = false
 
     var body: some View {
         SettingsScroll("Conta", subtitle: "Sua sessão e segurança.") {
@@ -78,6 +81,32 @@ struct AccountSection: View {
                         Text(m).font(.ody(size: 11, design: .monospaced)).foregroundStyle(pwOK ? theme.green : theme.accent)
                     }
                     Spacer()
+                }
+            }
+
+            SettingsCard {
+                Text("Segurança (\(BiometricLock.label))").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                if BiometricLock.available {
+                    Toggle(isOn: $appLock) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Bloquear o app").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                            Text("Pede \(BiometricLock.label) ao abrir e ao voltar pro app.")
+                                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        }
+                    }.tint(theme.accent)
+                    Divider().overlay(theme.border)
+                    Toggle(isOn: $bioAutoLogin) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Exigir no login automático").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                            Text("Pede \(BiometricLock.label) antes de usar a senha salva.")
+                                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        }
+                    }.tint(theme.accent)
+                    Text("Opcional — desligado por padrão.")
+                        .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                } else {
+                    Text("Biometria/senha do dispositivo indisponível neste aparelho.")
+                        .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
                 }
             }
 

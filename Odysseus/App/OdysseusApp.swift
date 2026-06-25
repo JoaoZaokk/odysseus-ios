@@ -37,6 +37,7 @@ struct RootView: View {
     @EnvironmentObject private var app: AppState
     @EnvironmentObject private var themes: ThemeStore
     @Environment(\.theme) private var theme
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         ZStack {
@@ -63,7 +64,57 @@ struct RootView: View {
                 AnimatedBackground(pattern: themes.background, tint: theme.accent)
             }
         }
+        // Opt-in biometric app-lock (A2): covers everything until unlocked.
+        .overlay { if app.locked { LockView() } }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .background { app.relockIfNeeded() }
+        }
         .task { await app.bootstrap() }
+    }
+}
+
+/// Full-screen lock shown when the opt-in biometric app-lock is on. Auto-prompts
+/// on appear; the user can retry if they cancel.
+struct LockView: View {
+    @EnvironmentObject private var app: AppState
+    @Environment(\.theme) private var theme
+    @State private var authenticating = false
+
+    var body: some View {
+        ZStack {
+            theme.bg.ignoresSafeArea()
+            #if os(macOS)
+            VisualEffectBackground().ignoresSafeArea().opacity(0.6)
+            #else
+            Rectangle().fill(.ultraThinMaterial).ignoresSafeArea()
+            #endif
+            VStack(spacing: 22) {
+                BrandMark(size: 64)
+                Text("Odysseus bloqueado")
+                    .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                Button {
+                    unlock()
+                } label: {
+                    Label("Desbloquear com \(BiometricLock.label)", systemImage: "faceid")
+                        .font(.ody(.subheadline, design: .monospaced))
+                        .padding(.horizontal, 18).padding(.vertical, 11)
+                        .background(theme.accent, in: Capsule())
+                        .foregroundStyle(.white)
+                }
+                .buttonStyle(.plain).disabled(authenticating)
+            }
+        }
+        .task { unlock() }
+    }
+
+    private func unlock() {
+        guard !authenticating else { return }
+        authenticating = true
+        Task {
+            let ok = await BiometricLock.authenticate(reason: "Desbloquear o Odysseus")
+            authenticating = false
+            if ok { app.unlock() }
+        }
     }
 }
 

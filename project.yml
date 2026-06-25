@@ -86,6 +86,7 @@ targets:
         NSLocalNetworkUsageDescription: "Odysseus precisa acessar o servidor de IA na sua rede local."
         NSMicrophoneUsageDescription: "Para ditar mensagens por voz."
         NSSpeechRecognitionUsageDescription: "Para transcrever sua voz em texto no dispositivo."
+        NSFaceIDUsageDescription: "Para bloquear o app e o login automático com Face ID (opcional)."
         NSAppTransportSecurity:
           # Scoped to the LAN: plain HTTP is allowed only to local/private hosts
           # (the self-hosted server / ComfyUI). Public hosts must use HTTPS — and

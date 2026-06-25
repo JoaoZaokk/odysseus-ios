@@ -14,6 +14,10 @@ final class AppState: ObservableObject {
     @Published var loggingIn = false
     @Published var totpRequired = false
 
+    /// Opt-in biometric app-lock (A2). True → RootView shows the lock screen until
+    /// the user authenticates. Set on launch / when returning to foreground.
+    @Published var locked: Bool = BiometricLock.appLockEnabled && BiometricLock.available
+
     private(set) var api: APIClient
     private(set) var stream: ChatStreamClient
 
@@ -23,6 +27,14 @@ final class AppState: ObservableObject {
         let client = APIClient(config: cfg)
         self.api = client
         self.stream = ChatStreamClient(api: client)
+    }
+
+    /// Called by the lock screen after a successful biometric/passcode check.
+    func unlock() { locked = false }
+
+    /// Re-engage the lock when the app goes to the background (if enabled).
+    func relockIfNeeded() {
+        if BiometricLock.appLockEnabled && BiometricLock.available { locked = true }
     }
 
     /// Called on launch: check whether the persisted session cookie is still
@@ -47,6 +59,12 @@ final class AppState: ObservableObject {
         guard let u = Keychain.get(Keychain.usernameKey),
               let p = Keychain.get(Keychain.passwordKey) else {
             phase = .login; return
+        }
+        // A1 (opt-in): require Face ID / Touch ID before the saved password is used.
+        if BiometricLock.autoLoginGateEnabled && BiometricLock.available {
+            guard await BiometricLock.authenticate(reason: "Autenticar para entrar no Odysseus") else {
+                phase = .login; return
+            }
         }
         do {
             let resp = try await api.login(username: u, password: p, remember: true)

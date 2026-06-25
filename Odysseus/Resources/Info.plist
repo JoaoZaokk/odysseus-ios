@@ -29,6 +29,8 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Para bloquear o app e o login automático com Face ID (opcional).</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Odysseus precisa acessar o servidor de IA na sua rede local.</string>
 	<key>NSMicrophoneUsageDescription</key>
