@@ -6,7 +6,7 @@ import SwiftUI
 
 enum SettingsSection: String, CaseIterable, Identifiable {
     case addModels, addedModels, aiDefaults, search
-    case integrations, email, reminders
+    case integrations, email, reminders, imageGen
     case appearance, account, server
     case agentTools, users, system
 
@@ -21,6 +21,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .integrations: return "Integrações"
         case .email: return "Email"
         case .reminders: return "Lembretes"
+        case .imageGen: return "Geração de imagem"
         case .appearance: return "Aparência"
         case .account: return "Conta"
         case .server: return "Servidor"
@@ -39,6 +40,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .integrations: return "link"
         case .email: return "envelope"
         case .reminders: return "bell"
+        case .imageGen: return "photo.on.rectangle.angled"
         case .appearance: return "paintpalette"
         case .account: return "person.crop.circle"
         case .server: return "server.rack"
@@ -51,7 +53,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
     /// Implemented natively this round. Others show a placeholder pointing to web.
     var implemented: Bool {
         switch self {
-        case .addedModels, .aiDefaults, .search, .email, .appearance, .account, .server:
+        case .addedModels, .aiDefaults, .search, .email, .imageGen, .appearance, .account, .server:
             return true
         default:
             return false
@@ -60,7 +62,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
 
     static let groups: [(String?, [SettingsSection])] = [
         (nil, [.addModels, .addedModels, .aiDefaults, .search]),
-        (nil, [.integrations, .email, .reminders]),
+        (nil, [.integrations, .email, .reminders, .imageGen]),
         (nil, [.appearance, .account, .server]),
         ("ADMIN", [.agentTools, .users, .system]),
     ]
@@ -168,6 +170,7 @@ struct SettingsView: View {
         case .server: ServerSection()
         case .email: EmailSection(app: app)
         case .reminders: RemindersSection(app: app)
+        case .imageGen: DiffusionServersView()
         case .integrations: IntegracoesSection(app: app)
         case .agentTools: AgentToolsSection(app: app)
         case .users: UsuariosSection(app: app)
