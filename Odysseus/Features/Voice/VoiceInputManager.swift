@@ -245,7 +245,9 @@ final class VoiceInputManager: ObservableObject {
     /// One-pass resample of the whole recording → 16 kHz mono (continuous, so no
     /// fragmentation artifacts).
     private func resampleTo16k(_ samples: [Float], from rate: Double) -> [Float] {
-        guard rate != Self.targetRate else { return samples }
+        // Empty input → a 0-capacity PCM buffer has nil floatChannelData and the
+        // [Float] has a nil baseAddress, so the memcpy unwraps below would crash.
+        guard !samples.isEmpty, rate != Self.targetRate else { return samples }
         guard let inFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: rate, channels: 1, interleaved: false),
               let conv = AVAudioConverter(from: inFormat, to: Self.targetFormat),
               let inBuf = AVAudioPCMBuffer(pcmFormat: inFormat, frameCapacity: AVAudioFrameCount(samples.count)) else {
