@@ -20,7 +20,7 @@
   action). Build/archive/handoff can. → handled as handoff, not a blocker.
 - R2 — Security S1/S2 (team id + default host in tracked files) gate a *public* release.
 - R3 — Diffusion/ComfyUI is **architecture + config + docs only** this phase (no heavy models,
-  no deep workflows). ComfyUI at `192.168.3.133:8190` is reachable from this Mac (HTTP 200).
+  no deep workflows). ComfyUI at `<comfyui-host>:8190` is reachable from this Mac (HTTP 200).
 - R4 — Other 3 sibling projects' SPM is blocked on a DNS flush needing `sudo` (user action).
 - R5 — macOS sandbox blocks in-app log/file shape dumps (use on-screen render or `/openapi.json`).
 

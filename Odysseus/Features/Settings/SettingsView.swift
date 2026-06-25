@@ -231,7 +231,7 @@ struct ServerSheet: View {
         NavigationStack {
             Form {
                 Section("Endereço do servidor Odysseus") {
-                    TextField("http://192.168.3.47:7000", text: $text)
+                    TextField("http://meu-servidor:porta", text: $text)
                         .font(.ody(.body, design: .monospaced))
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()

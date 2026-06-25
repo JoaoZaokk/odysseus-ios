@@ -14,7 +14,7 @@
 - Structure audit: 17 modules, 62 Swift files, ~10.1k LOC.
 - Security static scan → `SECURITY_REVIEW.md` (S1 team id, S2 default host, S3 placeholder IP; S4/S5 ok — no hardcoded secrets).
 - Wrote `CLAUDE.md`, `MB_START.md`, `TODO.md`, `MB_DONE.md`, `MB_ERRORS_SOLUTIONS.md`.
-- ComfyUI `192.168.3.133:8190` reachability confirmed (HTTP 200, 37 ms) for the diffusion phase.
+- ComfyUI `<comfyui-host>:8190` reachability confirmed (HTTP 200, 37 ms) for the diffusion phase.
 
 ### Build verification (commit `c992ed2`)
 - macOS + iOS both **BUILD SUCCEEDED** on the work branch (Xcode 26.4 / Swift 6.3). → `BUILD_MACOS.md`.

@@ -10,7 +10,7 @@
 ## Method
 - Static pattern audit (`git grep`) for force-unwraps, `try!`, `as!`, `fatalError`, missing
   timeouts, unguarded indexing, stray logging.
-- Live behavioral test of the new diffusion/ComfyUI path against `192.168.3.133:8190`.
+- Live behavioral test of the new diffusion/ComfyUI path against `<comfyui-host>:8190`.
 - Manual review of `APIClient`, `ServerConfig`, `ComfyUIClient`, Voice, Research, Settings.
 
 ## Red Team findings

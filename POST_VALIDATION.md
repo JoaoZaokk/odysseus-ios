@@ -19,7 +19,7 @@ Two things are out of the agent's hands, and a few are doc-only by design:
 - REGRA ZERO: snapshot commit + tag `pre-v1-finalization-snapshot` + branch + folder backup + git bundle + ROLLBACK.md.
 - Initial audit (17 modules / 62 files / ~10.1k LOC) + security static scan.
 - Build verified: macOS **and** iOS both BUILD SUCCEEDED (Xcode 26.4 / Swift 6.3).
-- ComfyUI (`192.168.3.133:8190`) tested **live**, read-only: system_stats/object_info/queue/history/embeddings.
+- ComfyUI (`<comfyui-host>:8190`) tested **live**, read-only: system_stats/object_info/queue/history/embeddings.
 - New **Geração de imagem** settings: provider config + fallback + live ComfyUI status + per-GPU
   capacity estimate. Verified live ("online"; `ltx-22b`→não cabe, `sdxl`→cabe).
 - Bug found live (Local-Network -1009) **fixed and re-verified** (retry → online).
@@ -55,7 +55,7 @@ Two things are out of the agent's hands, and a few are doc-only by design:
 - comando para validar build:
   `xcodegen generate && xcodebuild -scheme Odysseus-macOS -configuration Debug -destination 'platform=macOS' build`
 - comando para health-check do ComfyUI:
-  `./scripts/comfy-health.sh http://192.168.3.133:8190`
+  `./scripts/comfy-health.sh http://<comfyui-host>:8190`
 
 ## PRÓXIMO COMANDO RECOMENDADO
 Revisar `FINAL_HANDOFF.md`, decidir S1/S2/S6 antes de qualquer push público, e (quando quiser)

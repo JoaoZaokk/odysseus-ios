@@ -19,7 +19,7 @@ struct ServerConfig: Equatable {
         UserDefaults.standard.set(baseURL.absoluteString, forKey: Self.key)
     }
 
-    /// Normalizes user input ("192.168.3.47:7000", "chat.me") into a URL. With no
+    /// Normalizes user input ("meu-servidor:7000", "chat.me") into a URL. With no
     /// scheme we pick one by host: local addresses (localhost, LAN IPs, *.local)
     /// are plain **http**; everything else defaults to **https**.
     static func normalize(_ input: String) -> URL? {

@@ -56,7 +56,7 @@ request-body schema authoritatively. Use it instead of guessing bodies.
 
 ---
 
-## ComfyUI — `http://192.168.3.133:8190` (VERIFIED LIVE 2026-06-24)
+## ComfyUI — `http://<comfyui-host>:8190` (VERIFIED LIVE 2026-06-24)
 
 > Read-only GETs only. `POST /prompt` (real generation) intentionally NOT exercised.
 

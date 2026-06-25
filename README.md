@@ -5,9 +5,9 @@ with memory, documents, and tools*. Não é um WebView embrulhado: fala direto c
 a API REST/SSE do Odysseus e renderiza tudo nativo (markdown, code blocks,
 streaming token a token, blocos de raciocínio, modo agente, busca na web).
 
-Hoje aponta para `http://192.168.3.47:7000`. O endereço é configurável em
-**Ajustes › Servidor** (e na tela de login), então quando você expor o Odysseus
-na web é só trocar por `https://seu-dominio`.
+O endereço do servidor é configurável em **Ajustes › Servidor** (e na tela de
+login) — aponte para o seu servidor local (`http://meu-servidor:porta`) ou, quando
+expuser o Odysseus na web, para `https://seu-dominio`.
 
 ---
 
