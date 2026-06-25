@@ -116,7 +116,8 @@ final class APIClient: @unchecked Sendable {
 
     private static func detail(from data: Data) -> String? {
         guard let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-            return String(data: data, encoding: .utf8).flatMap { $0.isEmpty ? nil : $0 }
+            // Cap a non-JSON body (a hostile server could return MBs → soft DoS in Text).
+            return String(data: data, encoding: .utf8).flatMap { $0.isEmpty ? nil : String($0.prefix(500)) }
         }
         // FastAPI validation errors put an array under `detail`:
         // [{ loc: ["body","field"], msg: "field required", ... }]

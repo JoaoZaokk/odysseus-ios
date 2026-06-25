@@ -82,7 +82,10 @@ enum ReportParser {
                 guard after == ">" || after == " " || after == "/" || after == "\n" || after == "\t" else { continue }
                 // End of the opening tag.
                 let gt = ns.range(of: ">", options: [], range: NSRange(location: lt.location, length: n - lt.location))
-                guard gt.location != NSNotFound else { i = lt.location + 1; advanced = true; break }
+                // No '>' in the rest of the buffer → no further tag can ever be parsed.
+                // Jump to the end instead of advancing 1 char (that made this O(n²) on
+                // hostile input like "<p " repeated with no '>').
+                guard gt.location != NSNotFound else { i = n; advanced = true; break }
                 let openTag = ns.substring(with: NSRange(location: lt.location, length: gt.location + 1 - lt.location))
                 let bodyStart = gt.location + 1
                 let close = "</\(tag)>"
@@ -217,10 +220,12 @@ enum ReportParser {
     }
 
     /// Literal (non-regex) slice between two markers — fast on large input.
+    /// Returns nil when EITHER marker is absent (a missing close marker used to
+    /// return the entire tail, which amplified parser work on malformed input).
     private static func slice(_ s: String, after: String, before: String) -> String? {
         guard let sr = s.range(of: after) else { return nil }
         let rest = s[sr.upperBound...]
-        guard let er = rest.range(of: before) else { return String(rest) }
+        guard let er = rest.range(of: before) else { return nil }
         return String(rest[..<er.lowerBound])
     }
 }

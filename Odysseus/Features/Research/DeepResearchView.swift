@@ -344,7 +344,10 @@ struct VisualReportView: View {
             Text(text).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg.opacity(0.92))
                 .fixedSize(horizontal: false, vertical: true).lineSpacing(3)
         case .image(let url):
-            AsyncImage(url: URL(string: url)) { img in
+            // Resolve through config.resolve so only http(s) survive (blocks server-driven
+            // SSRF/scheme smuggling, e.g. http://169.254.169.254/...) and relative paths
+            // resolve against the server — matching the gallery/sources image paths.
+            AsyncImage(url: app.api.config.resolve(url)) { img in
                 img.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
                 RoundedRectangle(cornerRadius: 10).fill(theme.panel).frame(height: 120)
