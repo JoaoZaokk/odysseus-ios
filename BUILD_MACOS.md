@@ -7,7 +7,7 @@
 | Swift | 6.3 (swiftlang-6.3.0.123.5) |
 | XcodeGen | 2.45.4 |
 | Targets | `Odysseus` (iOS 17+), `Odysseus-macOS` (macOS 14+) |
-| Signing team | `FZ5A72S5DT` (Apple Development) — see SECURITY_REVIEW S1 |
+| Signing team | from gitignored `Local.xcconfig` (not committed) — see SECURITY_REVIEW S1 |
 
 ## Generate project (required after add/remove files — `.xcodeproj` is gitignored)
 ```bash

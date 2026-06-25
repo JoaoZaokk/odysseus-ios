@@ -7,7 +7,7 @@ Severity: 🔴 high · 🟠 medium · 🟡 low · 🟢 ok.
 
 | # | Severity | Finding | Location | Status / recommendation |
 |---|----------|---------|----------|--------------------------|
-| S1 | 🟠 | Real Apple `DEVELOPMENT_TEAM` (`FZ5A72S5DT`) committed in a tracked file. `origin` is a **public** GitHub mirror → leaks on push. | `project.yml:26` | NOT changed yet (needed for local signing). Recommend: move to a local-only `Local.xcconfig` (gitignored) or `$(DEVELOPMENT_TEAM)` env; keep an empty placeholder in `project.yml`. Tracked in TODO. |
+| S1 | 🟠→✅ | Real Apple `DEVELOPMENT_TEAM` was committed in `project.yml`. `origin` is a **public** GitHub mirror → would leak on push. | `project.yml` | **FIXED**: team id moved to gitignored `Local.xcconfig` (via committed `Signing.xcconfig` + `#include?`). `project.yml` no longer contains it; build + signing verified. Fresh clones copy `Local.xcconfig.example`. |
 | S2 | 🟡 | Hardcoded default server host `odysseus.macrozao.online` reveals user infra in a public repo. | `ServerConfig.swift:9`, `SettingsSections.swift:15` | Intentional default (the app's home server). For a public/App-Store build, recommend defaulting to empty + onboarding to enter the server. Tracked in TODO. |
 | S3 | 🟡 | Example LAN IP `192.168.3.47:7000` appears as a placeholder. | `ServerConfig.swift:22` (comment), `SettingsView.swift:231` (placeholder) | Cosmetic; genericize placeholder to `https://your-server:port`. Not a secret (RFC1918 example). |
 | S4 | 🟢 | No hardcoded passwords / API keys / bearer tokens / cookies in source. The `password` matches are SwiftUI `@State` input fields (correct). | — | OK. Secrets live in `HTTPCookieStorage` (session) and Keychain. |

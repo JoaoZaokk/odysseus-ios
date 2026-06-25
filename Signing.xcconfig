@@ -1,0 +1,9 @@
+// Signing configuration (committed, safe for a public repo).
+// The real Apple Development Team ID is NOT stored here — it lives in Local.xcconfig
+// (gitignored). Copy Local.xcconfig.example → Local.xcconfig and fill in your team id.
+// If Local.xcconfig is absent, DEVELOPMENT_TEAM stays empty and Xcode uses automatic /
+// personal-team signing (or prompts), so generation/build never break on a fresh clone.
+
+DEVELOPMENT_TEAM =
+
+#include? "Local.xcconfig"

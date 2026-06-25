@@ -12,5 +12,8 @@ xcuserdata/
 .swiftpm/
 .build/
 
+# Signing — real team id stays local (S1)
+Local.xcconfig
+
 # macOS
 .DS_Store

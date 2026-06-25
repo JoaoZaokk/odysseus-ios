@@ -21,9 +21,14 @@ packages:
     url: https://github.com/FluidInference/FluidAudio
     from: "0.12.4"
 
+configFiles:
+  Debug: Signing.xcconfig
+  Release: Signing.xcconfig
+
 settings:
   base:
-    DEVELOPMENT_TEAM: "FZ5A72S5DT"
+    # DEVELOPMENT_TEAM comes from Signing.xcconfig → Local.xcconfig (gitignored), so the
+    # real team id is never committed. See Local.xcconfig.example.
     CODE_SIGN_STYLE: Automatic
     SWIFT_VERSION: "5.0"
     ENABLE_USER_SCRIPT_SANDBOXING: YES
