@@ -41,4 +41,4 @@ faz é com o servidor que você configurar.
 
 ## Contato
 
-Dúvidas sobre privacidade: **jogosxd9@gmail.com**
+Dúvidas sobre privacidade: **privacidade@macrozao.online**

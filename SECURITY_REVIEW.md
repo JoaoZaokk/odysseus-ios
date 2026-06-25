@@ -14,7 +14,7 @@ Severity: 🔴 high · 🟠 medium · 🟡 low · 🟢 ok.
 | S5 | 🟢 | Auth is cookie-session over the user's HTTPS server; `api_key` for model endpoints is write-only server-side (stored as fingerprint). | `APIClient`, `SettingsAPI` | OK. |
 | S6 | 🟠→✅ | `NSAllowsArbitraryLoads: true` (blanket ATS exception). | `project.yml` (generates both plists) | **FIXED** (`8f35316`): removed; kept `NSAllowsLocalNetworking`. Public hosts now require HTTPS (also enforced by `ServerConfig.normalize`). Verified live: LAN ComfyUI still connects. |
 | S7 | 🟡→✅ | Local docs (`*.md`) contained the user's ComfyUI LAN IP. | doc set | **FIXED**: scrubbed to `<comfyui-host>` across all docs. The real IP lives only in the agent's out-of-repo memory. |
-| S8 | 🟡 | `PRIVACY.md` contains a personal contact email (`jogosxd9@gmail.com`). | `PRIVACY.md:44` | **Deliberate** — a privacy policy needs a support contact (App Store requires one). **Left as-is for your decision**: keep, or swap for a dedicated support alias before a public release. Not auto-changed. |
+| S8 | 🟡→✅ | `PRIVACY.md` had a personal Gmail contact. | `PRIVACY.md` | **FIXED before public push**: replaced with `privacidade@macrozao.online` (own domain, not a personal Gmail) per the no-personal-email policy. User can change the address. |
 
 ## Platform / sandbox
 - macOS entitlements (`Odysseus-macOS.entitlements`): `app-sandbox`, `network.client`,
