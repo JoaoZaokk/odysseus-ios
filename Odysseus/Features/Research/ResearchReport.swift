@@ -40,7 +40,10 @@ struct ReportSource: Identifiable {
 /// Tailored to the report template (`main.content` → h2/h3/p/figure/table, a
 /// `.sources-panel`, a `.stats-bar`) rather than being a general HTML parser.
 enum ReportParser {
-    static func parse(_ html: String) -> ResearchReport {
+    static func parse(_ rawHTML: String) -> ResearchReport {
+        // Bound the work: a real report is ~80 KB. Cap hostile/oversized server HTML so the
+        // single-pass scanners can't be driven into a multi-second hang on the render path.
+        let html = rawHTML.count > 600_000 ? String(rawHTML.prefix(600_000)) : rawHTML
         // Slice the big regions with plain (literal) search — fast, no regex
         // backtracking over the full ~80 KB document.
         let head = slice(html, after: "<main class=\"content\">", before: "</main>") ?? html

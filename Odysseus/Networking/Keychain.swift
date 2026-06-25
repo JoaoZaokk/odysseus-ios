@@ -18,7 +18,9 @@ enum Keychain {
         ]
         let attrs: [String: Any] = [
             kSecValueData as String: data,
-            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
+            // ...ThisDeviceOnly: never syncs to iCloud Keychain and isn't included in
+            // encrypted backups that could restore the secret onto another device.
+            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
         ]
         let status = SecItemUpdate(query as CFDictionary, attrs as CFDictionary)
         if status == errSecItemNotFound {
