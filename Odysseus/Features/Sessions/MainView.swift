@@ -31,10 +31,39 @@ struct MainView: View {
         .onChange(of: workspace.panes) { _, _ in
             compactColumn = .detail
         }
+        #if os(macOS)
+        // macOS: open Ajustes as a right-anchored panel (like the workspace panes),
+        // not a floating centered sheet that bleeds off a large display.
+        .overlay {
+            if showSettings {
+                ZStack(alignment: .trailing) {
+                    // Backdrop covers the whole window (incl. behind the title bar);
+                    // the panel itself stays inside the content area so its header
+                    // (Ajustes / Concluído) clears the macOS title bar.
+                    Color.black.opacity(0.18).ignoresSafeArea()
+                        .contentShape(Rectangle())
+                        .onTapGesture { close() }
+                        .transition(.opacity)
+                    SettingsView(onClose: close)
+                        .environmentObject(app).environmentObject(themes)
+                        .frame(width: 780)
+                        .frame(maxHeight: .infinity)
+                        .background(theme.bg)
+                        .overlay(alignment: .leading) { Divider().overlay(theme.border) }
+                        .shadow(color: .black.opacity(0.28), radius: 18, x: -6, y: 0)
+                        .transition(.move(edge: .trailing))
+                }
+            }
+        }
+        .animation(.easeOut(duration: 0.22), value: showSettings)
+        #else
         .sheet(isPresented: $showSettings) {
             SettingsView().environmentObject(app).environmentObject(themes)
         }
+        #endif
     }
+
+    private func close() { showSettings = false }
 }
 
 /// Placeholder for sections not yet wired up — keeps the hub honest and complete.

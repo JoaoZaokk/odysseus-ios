@@ -74,6 +74,9 @@ struct SettingsView: View {
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
     @State private var selection: SettingsSection = .aiDefaults
+    /// When presented as the macOS right-side drawer, the host passes a close
+    /// action (there's no sheet to `dismiss`). nil → falls back to `dismiss()`.
+    var onClose: (() -> Void)? = nil
 
     var body: some View {
         #if os(macOS)
@@ -88,7 +91,7 @@ struct SettingsView: View {
             }
         }
         .background(theme.bg)
-        .frame(minWidth: 900, minHeight: 600)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)   // fills the right-side drawer
         #else
         NavigationStack {
             List {
@@ -115,7 +118,7 @@ struct SettingsView: View {
             Image(systemName: "gearshape.fill").foregroundStyle(theme.accent)
             Text("Ajustes").font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
             Spacer()
-            Button("Concluído") { dismiss() }
+            Button("Concluído") { if let onClose { onClose() } else { dismiss() } }
                 .font(.ody(.body, design: .monospaced)).foregroundStyle(theme.accent)
                 .buttonStyle(.plain)
         }
