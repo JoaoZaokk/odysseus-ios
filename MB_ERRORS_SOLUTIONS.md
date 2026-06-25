@@ -26,3 +26,17 @@
   status: ✅ (pattern already in CLAUDE.md).
 - **3.9 GB build dirs untracked, `git add .` would bloat the snapshot** · fix: `.gitignore`
   `build-*/` before staging · commit `738d1a2` · status: ✅.
+
+### Red-team round 2 (independent Opus sub-agent) — real vulns fixed
+- **Cleartext cookie leak** · `ServerConfig` "is-local" used string prefixes → `10.evil.com`
+  downgraded to http, leaking the session cookie · fix: parse real IPv4/IPv6 private ranges +
+  scheme allowlist (http/https only) · `93dbcb3` · ✅.
+- **SSRF / file:// smuggling** · normalize/resolve accepted any scheme · fix: allowlist · `93dbcb3` · ✅.
+- **Path/param smuggling via server ids** · raw interpolation of uid/session/research/gallery ids ·
+  fix: `encPath`/`encQuery` · `b6b2877` · ✅.
+- **Password migratable via iCloud Keychain** · fix: `…ThisDeviceOnly` · `bacfa8a` · ✅.
+- **Report-parser DoS on hostile HTML** · fix: 600 KB input cap · `bacfa8a` · ✅.
+- **ATS blanket cleartext** · fix: drop `NSAllowsArbitraryLoads`, keep `NSAllowsLocalNetworking`;
+  **verified live** LAN ComfyUI still connects · `8f35316` · ✅.
+- Deferred (documented, stability over churn): per-server cookie store (V7), error redaction (V8),
+  APIClient config-race lock (V9). See TEAM_REVIEW.md.

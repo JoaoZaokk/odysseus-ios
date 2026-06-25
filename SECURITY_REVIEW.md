@@ -12,7 +12,7 @@ Severity: 🔴 high · 🟠 medium · 🟡 low · 🟢 ok.
 | S3 | 🟡→✅ | Example LAN IP used as a placeholder in source. | `ServerConfig.swift`, `SettingsView.swift`, `README.md` | **FIXED**: genericized to `meu-servidor:porta`. No LAN IP left in source. |
 | S4 | 🟢 | No hardcoded passwords / API keys / bearer tokens / cookies in source. The `password` matches are SwiftUI `@State` input fields (correct). | — | OK. Secrets live in `HTTPCookieStorage` (session) and Keychain. |
 | S5 | 🟢 | Auth is cookie-session over the user's HTTPS server; `api_key` for model endpoints is write-only server-side (stored as fingerprint). | `APIClient`, `SettingsAPI` | OK. |
-| S6 | 🟠 | `NSAllowsArbitraryLoads: true` (blanket ATS exception) in **both** Info.plists. Justifiable (generic client for user self-hosted HTTP servers), but Apple review scrutinizes it. | `Info.plist:29`, `Info-macOS.plist:31` | For App Store: prefer `NSAllowsLocalNetworking` + per-domain exceptions, or provide a clear review-notes justification. Keep for private builds. Tracked in TODO. |
+| S6 | 🟠→✅ | `NSAllowsArbitraryLoads: true` (blanket ATS exception). | `project.yml` (generates both plists) | **FIXED** (`8f35316`): removed; kept `NSAllowsLocalNetworking`. Public hosts now require HTTPS (also enforced by `ServerConfig.normalize`). Verified live: LAN ComfyUI still connects. |
 | S7 | 🟡→✅ | Local docs (`*.md`) contained the user's ComfyUI LAN IP. | doc set | **FIXED**: scrubbed to `<comfyui-host>` across all docs. The real IP lives only in the agent's out-of-repo memory. |
 | S8 | 🟡 | `PRIVACY.md` contains a personal contact email (`jogosxd9@gmail.com`). | `PRIVACY.md:44` | **Deliberate** — a privacy policy needs a support contact (App Store requires one). **Left as-is for your decision**: keep, or swap for a dedicated support alias before a public release. Not auto-changed. |
 
@@ -31,6 +31,13 @@ Severity: 🔴 high · 🟠 medium · 🟡 low · 🟢 ok.
 - [ ] No sensitive data written to logs (`print`/`NSLog`) in release builds.
 - [ ] Deep-link / URL handling (if any) rejects untrusted hosts.
 - [ ] ComfyUI/diffusion endpoints: user-supplied URLs are validated; no SSRF-style blind follow.
+
+## Red-team round 2 (independent Opus sub-agent) — see TEAM_REVIEW.md for the full debate
+Found real issues the first pass missed. Fixed + build-verified: scheme allowlist & private-IP
+detection (SSRF / cleartext-downgrade, `93dbcb3`), percent-encoded server ids (`b6b2877`),
+Keychain `ThisDeviceOnly` + ResearchReport input cap (`bacfa8a`), ATS hardening (`8f35316`).
+Deferred-with-rationale (stability over churn): per-server cookie store (V7), error-string
+redaction (V8), `APIClient` config-race lock (V9).
 
 ## Decisions
 - S1/S2 are **release-gating for a public App Store build** but **not** blocking for a private

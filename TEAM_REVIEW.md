@@ -42,6 +42,28 @@
 | Maintainability | noisier diffs | focused, documented rationale |
 | **Recommendation** | | **B (chosen)** — lowest risk to the V1 build; audio/IO guards tracked as a follow-up. |
 
+## Round 2 — independent Opus red-team audit (REAL sub-agent)
+
+The sub-agent infra worked on retry (Opus, 89k tokens, 26 tool calls) — a genuine independent
+second pass. It found **real vulnerabilities the round-1 inline review missed**. Full debate:
+
+| ID | Sev | Red Team finding | Blue Team action |
+|----|-----|------------------|------------------|
+| V1 | 🔴→✅ | `ServerConfig.normalize/resolve` accept **any scheme** (`file://`, `data:`) — SSRF / scheme smuggling. | **FIXED** `93dbcb3`: scheme allowlist (http/https only) in normalize + resolve + ComfyUIClient.url. |
+| V2 | 🔴→✅ | "is-local" used `hasPrefix("10.")/"192.168."` → mis-fires on `10.evil.com`, **downgrading a public host to cleartext http and leaking the session cookie**; also missed `172.16/12`. | **FIXED** `93dbcb3`: `isLocalHost` parses real IPv4/IPv6 literals (127/8, 10/8, 172.16/12, 169.254/16, 192.168/16, ::1, fc00::/7). |
+| V3 | 🔴→✅ | `NSAllowsArbitraryLoads:true` removes the ATS backstop (cleartext to any public host). | **FIXED** `8f35316`: dropped it, kept `NSAllowsLocalNetworking`. **Verified live** the LAN ComfyUI still connects. |
+| V4 | 🟠→✅ | Server-supplied ids (email uid/folder, session/research/gallery id) interpolated **raw** into authenticated URLs → confused-deputy path/param smuggling. | **FIXED** `b6b2877`: `encPath`/`encQuery` at every string-id call site. |
+| V5 | 🟠→✅ | Saved password in Keychain as `AfterFirstUnlock` (not `ThisDeviceOnly`) → can migrate via iCloud Keychain / backups. | **FIXED** `bacfa8a`: `…AfterFirstUnlockThisDeviceOnly`. |
+| V6 | 🟠→✅ | `ResearchReport` HTML parser O(n²)/unbounded on hostile server HTML (DoS / UI hang). | **MITIGATED** `bacfa8a`: 600 KB input cap (real reports ~80 KB). Deeper single-pass `slice` rewrite tracked. |
+| V7 | 🟠 | `HTTPCookieStorage.shared` not isolated per server; old server's cookie can be replayed; `logout()` best-effort. | **DEFERRED (documented)**: correct fix is a per-client cookie store, but it changes session persistence — needs careful migration so users aren't logged out. Tracked in TODO; **mitigated** by V2 (no cleartext to wrong host). |
+| V8 | 🟠 | Raw server `detail`/error bodies rendered in user-facing errors (`ChatStreamClient.extractError` ~500 B). | **DEFERRED (documented)**: map to fixed strings; low exploitability (no creds in bodies). Tracked. |
+| V9 | 🟠 | `APIClient` `@unchecked Sendable`; `config` mutated (`updateConfig`) without a lock while a background stream reads it → data race on server switch. | **DEFERRED (documented)**: low-likelihood; correct fix = new `APIClient` per server (or a lock). Tracked. |
+| V10 | 🟢 | **No** `print`/`NSLog` of secrets; force-unwraps all provably safe from untrusted data; JSON decoders robust. | No action — good hygiene confirmed by a second reviewer. |
+
+**Score:** 6 of 9 actionable findings **fixed + build-verified** (incl. all 3 HIGH); 3 MED
+**deferred with rationale** (each would risk session/threading regressions for marginal gain and
+is partly mitigated). The deferred three are the honest "we chose stability over churn" calls.
+
 ## Consensus (CEO/CTO/Comparator)
 - The codebase is **defensively written and stable**; the only real, user-visible defect found
   (RT-1) is **fixed and verified live**. Security items S1/S2/S6/S7 are **release-gating for a
