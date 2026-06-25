@@ -2,6 +2,11 @@
 
 Status: ✅ done · 🟡 in progress · ⏳ pending · 🚫 blocked (needs user/external) · 📝 doc-only this phase
 
+> **Finalize snapshot (2026-06-24):** all 15 markdown docs + 3 memory banks written; both targets
+> build clean; ComfyUI live-tested; new image-gen screen verified; red/blue done inline; tag
+> `v1-macos-ready` created. Remaining = security remediation, per-screen manual QA, deep diffusion
+> phase, App Store submission (manual), sibling SPM (sudo). See FINAL_HANDOFF.md / POST_VALIDATION.md.
+
 ## REGRA ZERO — freeze & rollback
 - ✅ Snapshot commit (`738d1a2`) + tag `pre-v1-finalization-snapshot` + branch `v1-macos-finalization`
 - ✅ Folder backup + git bundle in `_backups/`
