@@ -39,6 +39,15 @@ Keychain `ThisDeviceOnly` + ResearchReport input cap (`bacfa8a`), ATS hardening 
 Deferred-with-rationale (stability over churn): per-server cookie store (V7), error-string
 redaction (V8), `APIClient` config-race lock (V9).
 
+## Red-team round 3 — LLM council (2 more Opus agents) — see COUNCIL_REPORT.md
+Full multi-agent audit. **Every HIGH and MED fixed + build-verified:** encPath propagated to all
+17 server-id sites (`780a0e0`), report-parser O(n²) + slice tail (`652a4a9`), report-image SSRF
+(`652a4a9`), error-body cap (`652a4a9`), per-client cookie store + server-switch reset + config
+lock (`aac2e46`), MultipartForm CRLF (`aac2e46`). **Accepted LOW/design (tracked, with rationale):**
+A1 password-at-rest (mitigated ThisDeviceOnly; full fix = revocable token/biometric, product change),
+A2 biometric app-lock, A3 2FA-off-server-flag, A4 TLS pinning, B4 entity-decode O(n) (capped+off-main).
+Ported the shared URL/injection/ATS fixes to **OpenWebUI-iOS** and **Companion-iOS**.
+
 ## Decisions
 - S1/S2 are **release-gating for a public App Store build** but **not** blocking for a private
   signed build for the user's own devices. Documented as TODO, not auto-changed (would break the

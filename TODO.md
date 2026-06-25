@@ -57,6 +57,13 @@ Status: ✅ done · 🟡 in progress · ⏳ pending · 🚫 blocked (needs user/
 - ⏳ Windows fork plan (native, lean, configurable endpoints, few discreet ads — CFO risk notes)
 - ⏳ Diffusion future roadmap (ComfyUI/OpenWebUI/A1111/Invoke/Fooocus, workflow editor, presets, GPU tiers)
 
+## Accepted LOW / hardening backlog (from the LLM council — COUNCIL_REPORT.md)
+- ⏳ A1 — persist a revocable session token instead of the password, or gate the saved password behind biometrics (`SecAccessControl`/`.userPresence`). Currently mitigated by `ThisDeviceOnly`.
+- ⏳ A2 — optional `LocalAuthentication` app-lock before showing chat history.
+- ⏳ A3 — drive login phase off a server-confirmed `authenticated` flag, not local `totpRequired`/totp emptiness.
+- ⏳ A4 — TLS certificate pinning via `URLSessionDelegate`.
+- ⏳ B4 — single-pass numeric-entity decode in `ResearchReport.decode` (currently bounded by the 600 KB cap + off-main).
+
 ## Blocked (need user / external)
 - 🚫 Sibling SPM (OpenWebUI-iOS / Companion-iOS / github-odysseus): DNS flush needs `sudo`
 - 🚫 App Store / TestFlight submission (Apple credentials)
