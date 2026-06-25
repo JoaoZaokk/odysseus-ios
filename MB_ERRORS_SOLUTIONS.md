@@ -12,4 +12,17 @@
   temp on-screen `Text` + screenshot, or GET `/openapi.json` · status: ✅ technique documented.
 
 ## V1 finalization (this effort)
-_(entries appended as the Red/Blue Team and build work surfaces issues)_
+
+- **ComfyUI status showed "offline" though `curl` reached it (37 ms)** · error `-1009`
+  NSURLErrorNotConnectedToInternet on the **first** LAN connection · cause: macOS **Local
+  Network privacy** — the OS returns -1009 on the first attempt to a private-range host while it
+  evaluates/awaits the permission grant (the main internet server worked, only the LAN IP failed)
+  · **fix:** `ComfyUIClient.getJSON` retries once (0.8 s delay) on
+  `.notConnectedToInternet`/`.networkConnectionLost` · commit `81e5de7` · **validating test:**
+  re-ran "Testar conexão" in-app → status flipped to "online" with full GPU/VRAM/model detail ·
+  status: ✅ fixed + verified live.
+- **`.ody(size:…, design:…, weight:…)` compile error** (twice) · order must be
+  `size, weight, design` · fix applied in `DiffusionServersView` + `SettingsAdminSections` ·
+  status: ✅ (pattern already in CLAUDE.md).
+- **3.9 GB build dirs untracked, `git add .` would bloat the snapshot** · fix: `.gitignore`
+  `build-*/` before staging · commit `738d1a2` · status: ✅.
