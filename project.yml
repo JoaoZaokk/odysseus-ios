@@ -87,10 +87,10 @@ targets:
         NSMicrophoneUsageDescription: "Para ditar mensagens por voz."
         NSSpeechRecognitionUsageDescription: "Para transcrever sua voz em texto no dispositivo."
         NSAppTransportSecurity:
-          # Dev-friendly: the server runs over plain HTTP on the LAN today.
-          # When you expose it via HTTPS, you can tighten this to a per-domain
-          # exception instead of allowing arbitrary loads.
-          NSAllowsArbitraryLoads: true
+          # Scoped to the LAN: plain HTTP is allowed only to local/private hosts
+          # (the self-hosted server / ComfyUI). Public hosts must use HTTPS — and
+          # ServerConfig.normalize already forces https for any non-local host, so
+          # the blanket NSAllowsArbitraryLoads is intentionally NOT set (S6).
           NSAllowsLocalNetworking: true
 
   # Native macOS app — same SwiftUI source as iOS, with platform shims in
@@ -131,6 +131,6 @@ targets:
         NSSpeechRecognitionUsageDescription: "Para transcrever sua voz em texto no dispositivo."
         NSLocalNetworkUsageDescription: "Odysseus precisa acessar o servidor de IA na sua rede local."
         NSAppTransportSecurity:
-          # Same as iOS: allow the plain-HTTP LAN server today; tighten when HTTPS.
-          NSAllowsArbitraryLoads: true
+          # Same as iOS: LAN-scoped only — plain HTTP to local/private hosts; public
+          # hosts use HTTPS (enforced by ServerConfig.normalize). No arbitrary loads (S6).
           NSAllowsLocalNetworking: true
