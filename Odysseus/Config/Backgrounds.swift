@@ -56,15 +56,17 @@ struct AnimatedBackground: View {
         switch pattern {
         case .none: return
         case .stars:
-            // Visible twinkle: a brighter core dot + a soft halo that pulses, so
-            // the field reads as ambient motion instead of near-invisible specks.
-            let twinkle = 0.35 + 0.65 * (0.5 + 0.5 * sin(t * (0.9 + p.speed) + p.phase))
-            let r = 1.6 + p.size * 2.8
+            // Pronounced twinkle: `s²` makes each star spend more time dim and
+            // snap bright, with a low floor so it clearly fades out (not always-on).
+            // Per-star speed varies the blink rate across the field.
+            let s = 0.5 + 0.5 * sin(t * (0.7 + p.speed * 1.8) + p.phase)
+            let twinkle = 0.05 + 0.95 * (s * s)
+            let r = 1.6 + p.size * 2.6
             let c = CGPoint(x: p.x * w, y: p.y * h)
             let halo = CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2)
-            ctx.fill(Path(ellipseIn: halo), with: .color(tint.opacity(twinkle * 0.22)))
+            ctx.fill(Path(ellipseIn: halo), with: .color(tint.opacity(twinkle * 0.28)))
             let core = CGRect(x: c.x - r / 2, y: c.y - r / 2, width: r, height: r)
-            ctx.fill(Path(ellipseIn: core), with: .color(tint.opacity(min(1, twinkle * 0.95))))
+            ctx.fill(Path(ellipseIn: core), with: .color(tint.opacity(twinkle)))
         case .rain:
             let yy = (p.y + t * (0.08 + p.speed * 0.18)).truncatingRemainder(dividingBy: 1)
             let x = p.x * w

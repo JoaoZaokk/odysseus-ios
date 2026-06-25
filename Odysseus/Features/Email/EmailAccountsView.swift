@@ -155,50 +155,89 @@ struct AddEmailAccountView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section("Conta") {
-                    TextField("Nome (opcional)", text: $name)
-                    TextField("Email", text: $email)
-                        .keyboardType(.emailAddress).textInputAutocapitalization(.never).autocorrectionDisabled()
-                        .onChange(of: email) { _, new in
-                            if imapUser.isEmpty || imapUser == name { imapUser = new }
-                        }
-                }
-                Section("IMAP (entrada)") {
-                    TextField("Servidor (imap.gmail.com)", text: $imapHost)
-                        .textInputAutocapitalization(.never).autocorrectionDisabled()
-                    TextField("Porta", text: $imapPort).keyboardType(.numberPad)
-                    TextField("Usuário", text: $imapUser)
-                        .textInputAutocapitalization(.never).autocorrectionDisabled()
-                    SecureField("Senha", text: $password)
-                }
-                Section {
-                    Toggle("SMTP igual ao IMAP", isOn: $sameAsImap).tint(theme.accent)
-                    if !sameAsImap {
-                        TextField("Servidor SMTP (smtp.gmail.com)", text: $smtpHost)
-                            .textInputAutocapitalization(.never).autocorrectionDisabled()
-                        TextField("Porta SMTP", text: $smtpPort).keyboardType(.numberPad)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    group("Conta") {
+                        field("Nome (opcional)", $name, placeholder: "Trabalho")
+                        field("Email", $email, placeholder: "voce@exemplo.com")
+                            .onChange(of: email) { _, new in
+                                if imapUser.isEmpty || imapUser == name { imapUser = new }
+                            }
                     }
-                } header: { Text("SMTP (envio)") } footer: {
-                    Text("Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA.")
+                    group("IMAP (entrada)") {
+                        field("Servidor", $imapHost, placeholder: "imap.gmail.com")
+                        HStack(alignment: .bottom, spacing: 10) {
+                            field("Porta", $imapPort, placeholder: "993", numeric: true).frame(width: 110)
+                            field("Usuário", $imapUser, placeholder: "voce@exemplo.com")
+                        }
+                        field("Senha", $password, placeholder: "•••••••", secure: true)
+                    }
+                    group("SMTP (envio)") {
+                        Toggle(isOn: $sameAsImap) {
+                            Text("SMTP igual ao IMAP").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                        }.tint(theme.accent)
+                        if !sameAsImap {
+                            field("Servidor SMTP", $smtpHost, placeholder: "smtp.gmail.com")
+                            field("Porta SMTP", $smtpPort, placeholder: "465", numeric: true).frame(width: 110)
+                        }
+                        Text("Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA.")
+                            .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    if let error {
+                        Text(error).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                    }
                 }
-                if let error {
-                    Text(error).font(.footnote).foregroundStyle(theme.accent)
-                }
+                .padding(16)
             }
+            .background(theme.bg)
             .navigationTitle("Nova conta")
+            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    if saving { ProgressView() }
+                    if saving { ProgressView().controlSize(.small) }
                     else { Button("Salvar") { save() }.disabled(!canSave) }
                 }
             }
-            .scrollContentBackground(.hidden)
-            .background(theme.bg)
         }
         .tint(theme.accent)
+        #if os(macOS)
+        .frame(minWidth: 460, minHeight: 520)
+        #endif
+    }
+
+    // MARK: - Themed building blocks (labels above fields — fixes the macOS
+    // Form left-label overflow that made this sheet look broken).
+
+    @ViewBuilder
+    private func group<C: View>(_ title: String, @ViewBuilder _ content: () -> C) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(title.uppercased())
+                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            content()
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(theme.panel, in: RoundedRectangle(cornerRadius: 12))
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(theme.border, lineWidth: 1))
+    }
+
+    @ViewBuilder
+    private func field(_ label: String, _ bind: Binding<String>, placeholder: String,
+                       numeric: Bool = false, secure: Bool = false) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(label).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Group {
+                if secure { SecureField(placeholder, text: bind) } else { TextField(placeholder, text: bind) }
+            }
+            .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+            .autocorrectionDisabled()
+            .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
+        }
     }
 
     private func save() {

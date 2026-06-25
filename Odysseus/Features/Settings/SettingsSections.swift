@@ -120,6 +120,11 @@ struct AccountSection: View {
     @Published var key = ""
     @Published var cx = ""
     @Published var status = ""
+    // Deep Research runtime settings
+    @Published var maxTokens = "16384"
+    @Published var extractTimeout = "90"
+    @Published var extractParallel = "3"
+    @Published var runTimeout = "1800"
     private let api: APIClient
     init(api: APIClient) { self.api = api }
 
@@ -136,6 +141,10 @@ struct AccountSection: View {
         url = s.string("search_url")
         cx = s.string("google_pse_cx")
         if let kf = Self.keyField[provider] { key = s.string(kf) }
+        maxTokens = String(s.int("research_max_tokens", default: 16384))
+        extractTimeout = String(s.int("research_extraction_timeout_seconds", default: 90))
+        extractParallel = String(s.int("research_extraction_concurrency", default: 3))
+        runTimeout = String(s.int("research_run_timeout_seconds", default: 1800))
     }
 
     func save() async {
@@ -143,6 +152,10 @@ struct AccountSection: View {
         if provider == "searxng" { body["search_url"] = url }
         if provider == "google_pse" { body["google_pse_cx"] = cx }
         if let kf = Self.keyField[provider], !key.isEmpty { body[kf] = key }
+        for (k, v) in [("research_max_tokens", maxTokens), ("research_extraction_timeout_seconds", extractTimeout),
+                       ("research_extraction_concurrency", extractParallel), ("research_run_timeout_seconds", runTimeout)] {
+            if let n = Int(v) { body[k] = n }
+        }
         do { try await api.saveSettings(body); status = "Salvo" }
         catch { status = "Falha ao salvar" }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) { self.status = "" }
@@ -181,6 +194,19 @@ struct SearchSection: View {
                 }
                 if !vm.status.isEmpty {
                     Text(vm.status).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                }
+            }
+            SettingsCard {
+                Text("Deep Research").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                Text("Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA.")
+                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                HStack(spacing: 10) {
+                    VStack(alignment: .leading, spacing: 3) { label("Max tokens"); field($vm.maxTokens) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Extract paralelo"); field($vm.extractParallel) { Task { await vm.save() } } }
+                }
+                HStack(spacing: 10) {
+                    VStack(alignment: .leading, spacing: 3) { label("Extract timeout (s)"); field($vm.extractTimeout) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Run timeout (s)"); field($vm.runTimeout) { Task { await vm.save() } } }
                 }
             }
         }
@@ -226,14 +252,18 @@ struct EmailSection: View {
             if vm.accounts.isEmpty && vm.loading {
                 ProgressView().tint(theme.accent)
             } else if vm.accounts.isEmpty {
-                SettingsCard {
-                    HStack(spacing: 10) {
-                        Image(systemName: "person.crop.circle.badge.plus").font(.ody(size: 22)).foregroundStyle(theme.accent)
-                        Text("Nenhuma conta — adicione uma conta IMAP.")
-                            .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.secondaryText)
-                        Spacer()
+                Button { showAdd = true } label: {
+                    SettingsCard {
+                        HStack(spacing: 10) {
+                            Image(systemName: "person.crop.circle.badge.plus").font(.ody(size: 22)).foregroundStyle(theme.accent)
+                            Text("Nenhuma conta — adicione uma conta IMAP.")
+                                .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            Spacer()
+                            Image(systemName: "chevron.right").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                        }
                     }
                 }
+                .buttonStyle(.plain)
             }
             ForEach(vm.accounts) { acc in
                 SettingsCard {

@@ -167,6 +167,11 @@ struct SettingsView: View {
         case .account: AccountSection()
         case .server: ServerSection()
         case .email: EmailSection(app: app)
+        case .reminders: RemindersSection(app: app)
+        case .integrations: IntegracoesSection(app: app)
+        case .agentTools: AgentToolsSection(app: app)
+        case .users: UsuariosSection(app: app)
+        case .system: SistemaSection(app: app)
         default: PlaceholderSection(section: s)
         }
     }

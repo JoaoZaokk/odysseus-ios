@@ -36,6 +36,8 @@ struct SidebarView: View {
                     } icon: {
                         Image(systemName: "paintpalette").foregroundStyle(theme.accent)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 .listRowBackground(theme.bg)
@@ -119,6 +121,8 @@ struct SidebarView: View {
             } icon: {
                 Image(systemName: icon).foregroundStyle(tint)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .listRowBackground(active ? theme.accent.opacity(0.14) : theme.bg)
@@ -148,6 +152,8 @@ struct SidebarView: View {
             Image(systemName: section.icon).foregroundStyle(theme.accent)
         }
         .padding(.vertical, 2)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 
     private func chatRow(_ session: ChatSession) -> some View {
@@ -167,5 +173,7 @@ struct SidebarView: View {
             Spacer()
         }
         .padding(.vertical, 2)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 }

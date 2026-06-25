@@ -3,6 +3,7 @@ Odysseus.xcodeproj/
 
 # Build output
 build/
+build-*/
 DerivedData/
 *.xcuserstate
 xcuserdata/
