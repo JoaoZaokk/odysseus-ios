@@ -20,13 +20,24 @@ enum APIError: LocalizedError {
 /// a session cookie that `URLSession` persists (HTTPCookieStorage) and replays
 /// on every subsequent request — including the streaming endpoint.
 final class APIClient: @unchecked Sendable {
-    private(set) var config: ServerConfig
+    // `config` is read off the main actor (background streams) while `updateConfig`
+    // writes it on the main actor → guard it so a server switch can't be observed as
+    // a torn `baseURL` (V9). Accessed only through the locked `config` accessor.
+    private let configLock = NSLock()
+    private var _config: ServerConfig
+    var config: ServerConfig {
+        configLock.lock(); defer { configLock.unlock() }
+        return _config
+    }
     let session: URLSession
+    // Per-client cookie jar (NOT HTTPCookieStorage.shared) so server A's session is
+    // isolated from server B and from any sibling app in the process (V7).
+    private let cookieStore = HTTPCookieStorage()
 
     init(config: ServerConfig) {
-        self.config = config
+        self._config = config
         let cfg = URLSessionConfiguration.default
-        cfg.httpCookieStorage = .shared
+        cfg.httpCookieStorage = cookieStore
         cfg.httpCookieAcceptPolicy = .always
         cfg.httpShouldSetCookies = true
         cfg.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -36,7 +47,15 @@ final class APIClient: @unchecked Sendable {
         self.session = URLSession(configuration: cfg)
     }
 
-    func updateConfig(_ config: ServerConfig) { self.config = config }
+    func updateConfig(_ config: ServerConfig) {
+        configLock.lock(); _config = config; configLock.unlock()
+    }
+
+    /// Wipes this client's session cookies — used on logout and on server switch so
+    /// one server's session is never carried to another.
+    func clearCookies() {
+        (cookieStore.cookies ?? []).forEach { cookieStore.deleteCookie($0) }
+    }
 
     // MARK: - Request helpers (internal so feature extensions can reuse them)
 
@@ -171,10 +190,9 @@ final class APIClient: @unchecked Sendable {
         // The web app clears the session via the same cookie store; a GET to
         // /logout (or DELETE) invalidates it server-side. Best-effort.
         _ = try? await session.data(for: request("/logout"))
-        if let url = config.baseURL.host.flatMap({ _ in config.baseURL }),
-           let cookies = HTTPCookieStorage.shared.cookies(for: url) {
-            cookies.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
-        }
+        // Wipe the whole per-client jar (not just cookies(for: baseURL), which can miss
+        // parent-domain/path cookies or a rotated host).
+        clearCookies()
     }
 
     // MARK: - Sessions
@@ -272,16 +290,22 @@ struct MultipartForm {
         for (k, v) in fields { append(field: k, value: v) }
     }
 
+    /// Strips CR/LF/quotes so a server- or user-derived name/filename can't inject
+    /// extra Content-Disposition headers or multipart parts (header smuggling).
+    private func hdr(_ s: String) -> String {
+        String(s.unicodeScalars.filter { $0 != "\r" && $0 != "\n" && $0 != "\"" })
+    }
+
     mutating func append(field name: String, value: String) {
         data.append("--\(boundary)\r\n")
-        data.append("Content-Disposition: form-data; name=\"\(name)\"\r\n\r\n")
+        data.append("Content-Disposition: form-data; name=\"\(hdr(name))\"\r\n\r\n")
         data.append("\(value)\r\n")
     }
 
     mutating func append(file name: String, filename: String, mime: String, fileData: Data) {
         data.append("--\(boundary)\r\n")
-        data.append("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(filename)\"\r\n")
-        data.append("Content-Type: \(mime)\r\n\r\n")
+        data.append("Content-Disposition: form-data; name=\"\(hdr(name))\"; filename=\"\(hdr(filename))\"\r\n")
+        data.append("Content-Type: \(hdr(mime))\r\n\r\n")
         data.append(fileData)
         data.append("\r\n")
     }

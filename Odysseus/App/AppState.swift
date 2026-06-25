@@ -95,11 +95,22 @@ final class AppState: ObservableObject {
     }
 
     func updateServer(_ url: URL) {
+        let changed = url != serverConfig.baseURL
         var cfg = serverConfig
         cfg.baseURL = url
         cfg.save()
         serverConfig = cfg
         api.updateConfig(cfg)
+        // Switching servers must not carry server A's session (cookie) or A's saved
+        // credentials to server B — clear both and force a fresh login against B.
+        if changed {
+            api.clearCookies()
+            Keychain.delete(Keychain.usernameKey)
+            Keychain.delete(Keychain.passwordKey)
+            username = nil
+            totpRequired = false
+            phase = .login
+        }
     }
 
     func makeSessionStore() -> SessionStore { SessionStore(api: api) }
