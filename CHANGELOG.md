@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [v1-macos-finalization] — 2026-06-24 (round 2: push-safety + hardening)
+
+### Security — repo made push-safe
+- **S1**: `DEVELOPMENT_TEAM` moved out of `project.yml` into gitignored `Local.xcconfig`
+  (committed `Signing.xcconfig` + `#include?` + `Local.xcconfig.example`). Team id no longer in
+  any tracked file; build + signing verified.
+- **S3/S7**: all LAN IPs scrubbed from source (`meu-servidor:porta`) and docs (`<comfyui-host>`).
+  No LAN IP remains in any tracked file.
+- **S2** accepted (public hostname, allowed by policy). **S8** flagged (PRIVACY.md contact email — your call).
+
+### Fixed
+- **RT-3**: `VoiceInputManager.resampleTo16k` could crash on empty samples (0-capacity buffer →
+  nil channel data / baseAddress). Added `guard !samples.isEmpty`. Both targets build clean.
+
+### QA
+- Navigation smoke pass: Brain/Calendário/Galeria/Email/Tasks/Library/Comparar/Cookbook/Settings
+  all open without crash on the latest build.
+
 ## [v1-macos-finalization] — 2026-06-24
 
 ### Added

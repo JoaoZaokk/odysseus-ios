@@ -39,9 +39,11 @@ open ~/Library/Developer/Xcode/DerivedData/Odysseus-*/Build/Products/Debug/Odyss
 > These need your Apple credentials and outward submission — perform them yourself.
 
 ## Pending / next (see TODO.md)
-- Security remediation S1/S2/S6/S7 (gate any public push).
-- Defensive guards for audio/IO force-unwraps (RT-3, low risk).
-- Per-screen manual QA pass (chat/voice/email/gallery/calendar) before public ship.
+- **Done in round 2**: S1 (team id → xcconfig), S3/S7 (LAN IPs scrubbed) → **repo is push-safe**;
+  RT-3 audio guard; navigation smoke pass. The remote `origin` is public — pushing is now safe
+  w.r.t. secrets, but confirm S6/S8 first.
+- S6 (`NSAllowsArbitraryLoads`) decision for App Store; S8 (PRIVACY.md email) — your call.
+- Deep end-to-end functional pass (send email / voice / chat completion / image gen); iOS on device.
 - Deep diffusion generation phase (DIFFUSION_COMFYUI_PLAN.md).
 - Sibling SPM (OpenWebUI/Companion/github mirror): `sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder`, then re-resolve.
 - Part 2 multiplatform fork (ROADMAP_MULTIPLATFORM.md): D1–D4 decisions.

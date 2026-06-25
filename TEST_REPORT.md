@@ -40,10 +40,20 @@ Legend: ✅ verified live · 🟢 builds/compiles · ⚠️ partial · ⏳ not e
 | FastAPI 422-array errors surfaced to UI | ✅ (e.g. integration "base URL required") |
 | Offline/unreachable server → clear error, no infinite spinner | ✅ ComfyUI offline path shows error then recovers on retry |
 
+## Smoke pass — main navigation (2026-06-24, latest build)
+Opened each section in sequence; app stayed alive and rendered each without crash:
+| Section | Result |
+|---------|--------|
+| Brain (empty state) | ✅ |
+| Calendário · Galeria · Email · Tasks · Library · Comparar | ✅ (survived full sequence) |
+| Cookbook (package list incl. installed badges) | ✅ renders fully |
+| Settings (all sections incl. new Geração de imagem) | ✅ |
+> No crash across the navigation sweep on the post-sanitization / post-RT-3 build.
+
 ## Not exhaustively exercised this session (honest gaps)
 | Area | Why / next step |
 |------|------------------|
-| Every chat/voice/email/gallery/calendar flow end-to-end | ⏳ Settings + diffusion were the focus; smoke-level confidence from clean build + tolerant code. Recommend a manual pass per screen before public ship. |
+| Deep end-to-end flows (send an email, record+transcribe voice, run a real chat completion, generate an image) | ⏳ Screens open cleanly (smoke ✅); the data round-trips weren't all driven this session. Recommend a focused functional pass before public ship. |
 | TTS/STT live capture (mic) | ⏳ documented (Whisper on-device); a real dictation round-trip not re-run this session. |
 | Email send/receive against a live mailbox | ⏳ endpoints documented; needs a configured account to test send/receive. |
 | iOS on-device/simulator runtime | ⏳ compiled for generic iOS; not run on a device/simulator this session. |

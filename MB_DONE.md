@@ -29,3 +29,10 @@
 - `ComfyUIClient` (read-only) + `ComfyCapacity`. **Tested live**: status "online", correct fit
   flags (ltx-22b → não cabe; sdxl → cabe). Blue-Team retry fix for macOS `-1009`. → `DIFFUSION_COMFYUI_PLAN.md`.
 - Files: `Odysseus/Features/Diffusion/{ComfyUIClient,DiffusionServersView}.swift`, `SettingsView.swift` wiring.
+
+### Round 2 — push-safety + hardening (commits `510833e`, `f4e244c`, `1637acd`)
+- **S1** team id → gitignored `Local.xcconfig` (via `Signing.xcconfig` + `#include?`); `project.yml` clean; build+signing verified.
+- **S3/S7** LAN IPs scrubbed from source + all docs; **zero** LAN IPs in tracked files. S2 accepted, S8 (PRIVACY email) flagged for user.
+- **RT-3** empty-samples guard in `VoiceInputManager.resampleTo16k`; other audio unwraps re-reviewed (provably safe).
+- **QA smoke**: Brain/Calendário/Galeria/Email/Tasks/Library/Comparar/Cookbook/Settings open without crash (latest build).
+- Scheduled resume task (22:40) was disabled — work continued live instead.

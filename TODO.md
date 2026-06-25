@@ -26,7 +26,9 @@ Status: ✅ done · 🟡 in progress · ⏳ pending · 🚫 blocked (needs user/
 - ⏳ Email: validate flows + document endpoints + pendências → `ENDPOINTS.md`
 - ⏳ TTS/STT: document providers, endpoints, formats, fallback, mic perms → `ENDPOINTS.md`
 - ⏳ Timeout / offline-server / slow-response handling audit (no infinite spinners)
-- ⏳ Security S1/S2/S3 remediation plan (xcconfig for team id; default-host policy)
+- ✅ Security S1/S3/S7 remediation (team id → gitignored xcconfig; LAN IPs scrubbed) — **repo push-safe**; S2 accepted; S8 flagged; S6 = App Store decision
+- ✅ RT-3 audio empty-samples guard
+- ✅ Navigation smoke pass (all main sections open, no crash)
 
 ## Part 1.5 — Diffusion / OpenWebUI Gen / ComfyUI (architecture + config + docs only)
 - 🟡 Test ComfyUI live: `GET /system_stats`, `/object_info`, `/queue`, `/history`, `/embeddings`

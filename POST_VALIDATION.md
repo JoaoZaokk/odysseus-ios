@@ -28,15 +28,23 @@ Two things are out of the agent's hands, and a few are doc-only by design:
 - `scripts/comfy-health.sh` (passes against the live server).
 - Full doc set written (15 markdown files) + 3 memory banks, each work item its own git commit.
 
+## RESOLVIDO NA RODADA 2 (push-safety + hardening)
+- **S1** team id → gitignored `Local.xcconfig` (repo agora seguro p/ push quanto ao team id).
+- **S3/S7** todos os IPs de LAN removidos de código e docs (zero IP de LAN em arquivo rastreado).
+- **RT-3** crash com samples vazios no áudio corrigido (`guard !samples.isEmpty`).
+- **QA smoke** de navegação: todas as seções principais abrem sem crash.
+
 ## FICOU PENDENTE
 - App Store/notarization submission (manual — steps in FINAL_HANDOFF.md).
-- Security S1/S2/S6/S7 remediation (gate any public push).
-- Per-screen manual QA (chat/voice/email/gallery/calendar) end-to-end; iOS on-device run.
-- Defensive audio/IO guards (RT-3, low risk).
+- **S6** (`NSAllowsArbitraryLoads`) — decisão para App Store (não é segredo); **S8** (email no PRIVACY.md) — sua escolha.
+- Fluxos profundos end-to-end (enviar email, gravar+transcrever voz, completar um chat, gerar imagem); run iOS em device.
 - Deep diffusion generation phase.
 - Sibling SPM (needs `sudo` DNS flush).
 
 ## SOLUÇÕES APLICADAS
+- **S1**: `Signing.xcconfig` + `#include? Local.xcconfig` (gitignored) + `.example`; `configFiles` no project.yml.
+- **S3/S7**: genericização (`meu-servidor:porta`, `<comfyui-host>`) em código e docs.
+- **RT-3**: guard de entrada vazia antes do buffer PCM de 0 de capacidade.
 - `.gitignore build-*/` to keep 3.9 GB artifacts out of the snapshot.
 - Local-Network `-1009` retry-once in `ComfyUIClient`.
 - `base_url` (not `url`) for CalDAV/CardDAV (pre-branch); form-urlencoded model-endpoints (pre-branch).
