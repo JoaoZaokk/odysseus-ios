@@ -86,10 +86,10 @@ extension APIClient {
         return (obj["logs"] as? [String]) ?? []
     }
     func mcpServers() async throws -> [MCPServer] { decodeList(MCPServer.self, try await send(request("/api/mcp/servers"))) }
-    func reconnectMCP(_ id: String) async throws { _ = try await send(request("/api/mcp/servers/\(id)/reconnect", method: "POST")) }
+    func reconnectMCP(_ id: String) async throws { _ = try await send(request("/api/mcp/servers/\(encPath(id))/reconnect", method: "POST")) }
     func integrations() async throws -> [Integration] { decodeList(Integration.self, try await send(request("/api/auth/integrations"))) }
-    func deleteIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(id)", method: "DELETE")) }
-    func testIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(id)/test", method: "POST")) }
+    func deleteIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(encPath(id))", method: "DELETE")) }
+    func testIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(encPath(id))/test", method: "POST")) }
     func fireReminder() async throws { _ = try await send(request("/api/notes/fire-reminder", method: "POST")) }
 
     // Users
@@ -119,7 +119,7 @@ extension APIClient {
 
     // System
     func exportData() async throws -> Data { try await send(request("/api/export")) }
-    func wipeCategory(_ category: String) async throws { _ = try await send(request("/api/admin/wipe/\(category)", method: "DELETE")) }
+    func wipeCategory(_ category: String) async throws { _ = try await send(request("/api/admin/wipe/\(encPath(category))", method: "DELETE")) }
 
     // Integration / MCP creation (JSON bodies)
     private func postJSON(_ path: String, _ body: [String: Any]) async throws {

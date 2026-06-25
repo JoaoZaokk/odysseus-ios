@@ -20,7 +20,7 @@ extension APIClient {
     }
 
     func deleteEvent(_ uid: String) async throws {
-        _ = try await send(request("/api/calendar/events/\(uid)", method: "DELETE"))
+        _ = try await send(request("/api/calendar/events/\(encPath(uid))", method: "DELETE"))
     }
 
     /// Natural-language event creation: "almoço amanhã 13h". The endpoint asks

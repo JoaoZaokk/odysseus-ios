@@ -37,5 +37,5 @@ extension APIClient {
     }
 
     /// URL that serves an uploaded attachment by id.
-    func attachmentURL(_ id: String) -> URL? { config.resolve("/api/upload/\(id)") }
+    func attachmentURL(_ id: String) -> URL? { config.resolve("/api/upload/\(encPath(id))") }
 }

@@ -11,7 +11,7 @@ extension APIClient {
     }
 
     func updateNote(_ id: String, _ payload: NotePayload) async throws {
-        let req = try jsonRequest("/api/notes/\(id)", method: "PUT", body: payload)
+        let req = try jsonRequest("/api/notes/\(encPath(id))", method: "PUT", body: payload)
         _ = try await send(req)
     }
 
@@ -21,11 +21,11 @@ extension APIClient {
             let archived: Bool?; let pinned: Bool?
         }
         let body = Flags(archived: fields["archived"], pinned: fields["pinned"])
-        let req = try jsonRequest("/api/notes/\(id)", method: "PUT", body: body)
+        let req = try jsonRequest("/api/notes/\(encPath(id))", method: "PUT", body: body)
         _ = try await send(req)
     }
 
     func deleteNote(_ id: String) async throws {
-        _ = try await send(request("/api/notes/\(id)", method: "DELETE"))
+        _ = try await send(request("/api/notes/\(encPath(id))", method: "DELETE"))
     }
 }

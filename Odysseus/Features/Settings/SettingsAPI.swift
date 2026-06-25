@@ -46,14 +46,14 @@ extension APIClient {
 
     /// Enable/disable an endpoint (best-effort: PATCH the endpoint's is_enabled).
     func setEndpointEnabled(_ id: String, _ enabled: Bool) async throws {
-        var req = request("/api/model-endpoints/\(id)", method: "PATCH")
+        var req = request("/api/model-endpoints/\(encPath(id))", method: "PATCH")
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = try JSONSerialization.data(withJSONObject: ["is_enabled": enabled])
         _ = try await send(req)
     }
 
     func deleteEndpoint(_ id: String) async throws {
-        _ = try await send(request("/api/model-endpoints/\(id)", method: "DELETE"))
+        _ = try await send(request("/api/model-endpoints/\(encPath(id))", method: "DELETE"))
     }
 
     func changePassword(current: String, new: String) async throws {

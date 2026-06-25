@@ -70,9 +70,9 @@ extension APIClient {
     func tasks() async throws -> [ScheduledTask] {
         decodeList(ScheduledTask.self, try await send(request("/api/tasks")))
     }
-    func runTask(_ id: String) async throws { _ = try await send(request("/api/tasks/\(id)/run?force=true", method: "POST")) }
-    func pauseTask(_ id: String) async throws { _ = try await send(request("/api/tasks/\(id)/pause", method: "POST")) }
-    func resumeTask(_ id: String) async throws { _ = try await send(request("/api/tasks/\(id)/resume", method: "POST")) }
+    func runTask(_ id: String) async throws { _ = try await send(request("/api/tasks/\(encPath(id))/run?force=true", method: "POST")) }
+    func pauseTask(_ id: String) async throws { _ = try await send(request("/api/tasks/\(encPath(id))/pause", method: "POST")) }
+    func resumeTask(_ id: String) async throws { _ = try await send(request("/api/tasks/\(encPath(id))/resume", method: "POST")) }
 }
 
 // MARK: - View

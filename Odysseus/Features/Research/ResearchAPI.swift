@@ -86,7 +86,7 @@ extension APIClient {
     }
 
     /// URL of a research's rendered visual report. `GET /api/research/report/{id}`.
-    func researchReportURL(_ id: String) -> URL { config.url("/api/research/report/\(id)") }
+    func researchReportURL(_ id: String) -> URL { config.url("/api/research/report/\(encPath(id))") }
 
     /// Raw HTML of the visual report, parsed natively by `ReportParser`.
     func researchReportHTML(_ id: String) async throws -> String {

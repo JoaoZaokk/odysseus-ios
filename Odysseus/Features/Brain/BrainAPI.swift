@@ -13,11 +13,11 @@ extension APIClient {
     }
 
     func deleteMemory(_ id: String) async throws {
-        _ = try await send(request("/api/memory/\(id)", method: "DELETE"))
+        _ = try await send(request("/api/memory/\(encPath(id))", method: "DELETE"))
     }
 
     func pinMemory(_ id: String) async throws {
-        _ = try await send(request("/api/memory/\(id)/pin", method: "POST"))
+        _ = try await send(request("/api/memory/\(encPath(id))/pin", method: "POST"))
     }
 
     /// AI "tidy" pass that de-dupes and cleans the memory list. Returns the
