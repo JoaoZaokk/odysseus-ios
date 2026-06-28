@@ -72,7 +72,10 @@ struct RootView: View {
         // Opt-in biometric app-lock (A2): covers everything until unlocked.
         .overlay { if app.locked { LockView() } }
         .onChange(of: scenePhase) { _, newPhase in
-            if newPhase == .background { app.relockIfNeeded() }
+            if newPhase == .background {
+                app.relockIfNeeded()
+                app.persistSessionIfNeeded()   // keep the latest session for next launch
+            }
         }
         .task { await app.bootstrap() }
     }

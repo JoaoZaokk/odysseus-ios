@@ -18,6 +18,10 @@ final class AppState: ObservableObject {
     /// the user authenticates. Set on launch / when returning to foreground.
     @Published var locked: Bool = BiometricLock.appLockEnabled && BiometricLock.available
 
+    /// True once a "keep me signed in" session is active, so we re-persist the
+    /// (possibly rotated) cookie when the app backgrounds.
+    private(set) var keepSignedIn = false
+
     private(set) var api: APIClient
     private(set) var stream: ChatStreamClient
 
@@ -44,14 +48,18 @@ final class AppState: ObservableObject {
             let status = try await api.status()
             if status.authenticated {
                 username = status.username
+                keepSignedIn = true        // a restored cookie got us in → keep it fresh
                 await loadFeatures()
                 phase = .main
             } else {
                 await tryAutoLogin()
             }
         } catch {
-            // Server unreachable or not configured — fall back to login screen.
-            phase = .login
+            // `status()` can THROW (e.g. a 401 with an expired/empty cookie, or a
+            // transient network error) — don't jump straight to login, still try a
+            // silent re-login from saved credentials. tryAutoLogin lands on the
+            // login screen itself if that also fails.
+            await tryAutoLogin()
         }
     }
 
@@ -70,6 +78,8 @@ final class AppState: ObservableObject {
             let resp = try await api.login(username: u, password: p, remember: true)
             if resp.totpRequired == true { phase = .login; totpRequired = true; return }
             username = u
+            api.persistCookies()           // refresh the persisted session cookie
+            keepSignedIn = true
             await loadFeatures()
             phase = .main
         } catch {
@@ -89,6 +99,12 @@ final class AppState: ObservableObject {
             if remember {
                 Keychain.set(u, for: Keychain.usernameKey)
                 Keychain.set(p, for: Keychain.passwordKey)
+                api.persistCookies()       // keep the session across cold launches
+                keepSignedIn = true
+            } else {
+                // "Don't keep me signed in" → wipe any prior persisted session.
+                api.clearPersistedCookies()
+                keepSignedIn = false
             }
             username = u
             totpRequired = false
@@ -101,11 +117,19 @@ final class AppState: ObservableObject {
 
     func logout() async {
         await api.logout()
+        api.clearPersistedCookies()
         Keychain.delete(Keychain.usernameKey)
         Keychain.delete(Keychain.passwordKey)
+        keepSignedIn = false
         username = nil
         totpRequired = false
         phase = .login
+    }
+
+    /// Re-archive the (possibly rotated) session cookie when the app backgrounds,
+    /// so the very latest session survives the next cold launch.
+    func persistSessionIfNeeded() {
+        if keepSignedIn { api.persistCookies() }
     }
 
     func loadFeatures() async {
@@ -123,8 +147,10 @@ final class AppState: ObservableObject {
         // credentials to server B — clear both and force a fresh login against B.
         if changed {
             api.clearCookies()
+            api.clearPersistedCookies()
             Keychain.delete(Keychain.usernameKey)
             Keychain.delete(Keychain.passwordKey)
+            keepSignedIn = false
             username = nil
             totpRequired = false
             phase = .login

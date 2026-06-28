@@ -45,6 +45,9 @@ final class APIClient: @unchecked Sendable {
         cfg.timeoutIntervalForResource = 30   // cap the whole request — never hang forever
         cfg.waitsForConnectivity = false      // fail fast with an error instead of waiting endlessly
         self.session = URLSession(configuration: cfg)
+        // Bring back a previously persisted session BEFORE the first request, so a
+        // cold launch stays logged in instead of bouncing to the login screen.
+        restoreCookies()
     }
 
     func updateConfig(_ config: ServerConfig) {
@@ -55,6 +58,43 @@ final class APIClient: @unchecked Sendable {
     /// one server's session is never carried to another.
     func clearCookies() {
         (cookieStore.cookies ?? []).forEach { cookieStore.deleteCookie($0) }
+    }
+
+    // MARK: - Session cookie persistence (stay signed in across cold launches)
+
+    /// Archives the current session cookies into the Keychain. The per-client
+    /// `HTTPCookieStorage()` jar is **in-memory only**, and a session cookie has
+    /// no expiry (so even `HTTPCookieStorage.shared` wouldn't keep it) — so we
+    /// persist them ourselves. Without this the app asked to log in on every cold
+    /// start. Stored in the Keychain because the cookie is a bearer credential.
+    func persistCookies() {
+        let props: [[String: Any]] = (cookieStore.cookies ?? []).compactMap { $0.properties }.map { dict in
+            var out: [String: Any] = [:]
+            for (k, v) in dict { out[k.rawValue] = v }
+            return out
+        }
+        guard !props.isEmpty,
+              let data = try? PropertyListSerialization.data(fromPropertyList: props, format: .binary, options: 0)
+        else { return }
+        Keychain.set(data.base64EncodedString(), for: Keychain.cookiesKey)
+    }
+
+    /// Loads cookies saved by `persistCookies()` back into this client's jar.
+    func restoreCookies() {
+        guard let b64 = Keychain.get(Keychain.cookiesKey),
+              let data = Data(base64Encoded: b64),
+              let arr = (try? PropertyListSerialization.propertyList(from: data, options: [], format: nil)) as? [[String: Any]]
+        else { return }
+        for dict in arr {
+            var props: [HTTPCookiePropertyKey: Any] = [:]
+            for (k, v) in dict { props[HTTPCookiePropertyKey(k)] = v }
+            if let cookie = HTTPCookie(properties: props) { cookieStore.setCookie(cookie) }
+        }
+    }
+
+    /// Forgets the persisted session (logout / server switch).
+    func clearPersistedCookies() {
+        Keychain.delete(Keychain.cookiesKey)
     }
 
     // MARK: - Request helpers (internal so feature extensions can reuse them)

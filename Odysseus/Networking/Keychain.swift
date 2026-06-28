@@ -58,4 +58,5 @@ enum Keychain {
     // Convenience keys
     static let usernameKey = "saved.username"
     static let passwordKey = "saved.password"
+    static let cookiesKey  = "saved.cookies"   // archived session cookies (stay-signed-in)
 }
