@@ -30,9 +30,13 @@ final class APIClient: @unchecked Sendable {
         return _config
     }
     let session: URLSession
-    // Per-client cookie jar (NOT HTTPCookieStorage.shared) so server A's session is
-    // isolated from server B and from any sibling app in the process (V7).
-    private let cookieStore = HTTPCookieStorage()
+    // The cookie jar. MUST be `HTTPCookieStorage.shared` (or a group-container
+    // storage): a plain `HTTPCookieStorage()` instance does NOT reliably store the
+    // Set-Cookie from responses, so the session cookie was silently dropped and
+    // every authenticated request 401'd ("Sessão expirada"). `.shared` is per
+    // app-sandbox (no bleed to other apps); server A/B isolation is handled by
+    // `clearCookies()` on logout/switch.
+    private let cookieStore = HTTPCookieStorage.shared
 
     init(config: ServerConfig) {
         self._config = config
