@@ -11,6 +11,22 @@ import SwiftUI
 // screen draws its own themed header bar in-content, which also themes correctly.
 
 extension View {
+    /// Makes a navigation bar adopt the theme (iOS): a solid themed background +
+    /// a matching bar color scheme, so the title/buttons stay legible no matter
+    /// the device's system appearance. Fixes "light theme, dark menu, blue
+    /// selectors" where a sheet's `List`/nav bar fell back to system styling.
+    @ViewBuilder
+    func themedNavBar(_ theme: Theme) -> some View {
+        #if os(iOS)
+        self
+            .toolbarBackground(theme.bg, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(theme.isDark ? .dark : .light, for: .navigationBar)
+        #else
+        self
+        #endif
+    }
+
     @ViewBuilder
     func screenChrome<L: View, T: View>(
         title: String,

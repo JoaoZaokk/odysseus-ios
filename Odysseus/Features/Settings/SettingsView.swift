@@ -98,9 +98,17 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 ForEach(Array(SettingsSection.groups.enumerated()), id: \.offset) { _, group in
-                    Section(header: group.0.map { Text(LocalizedStringKey($0)) }) {
+                    Section {
                         ForEach(group.1) { s in
                             NavigationLink { content(s).navigationTitle(LocalizedStringKey(s.title)) } label: { row(s) }
+                                .listRowBackground(theme.panel)
+                                .listRowSeparatorTint(theme.border)
+                        }
+                    } header: {
+                        if let label = group.0 {
+                            Text(LocalizedStringKey(label))
+                                .font(.ody(.caption, design: .monospaced))
+                                .foregroundStyle(theme.secondaryText)
                         }
                     }
                 }
@@ -110,8 +118,10 @@ struct SettingsView: View {
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { dismiss() } } }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
+            .themedNavBar(theme)
         }
         .tint(theme.accent)
+        .preferredColorScheme(theme.isDark ? .dark : .light)
         #endif
     }
 
@@ -239,12 +249,17 @@ struct ServerSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Endereço do servidor Odysseus") {
+                Section {
                     TextField("http://meu-servidor:porta", text: $text)
                         .font(.ody(.body, design: .monospaced))
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                         .keyboardType(.URL)
+                        .listRowBackground(theme.panel)
+                } header: {
+                    Text("Endereço do servidor Odysseus")
+                        .font(.ody(.caption, design: .monospaced))
+                        .foregroundStyle(theme.secondaryText)
                 }
             }
             .navigationTitle("Servidor")
@@ -261,8 +276,10 @@ struct ServerSheet: View {
             }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
+            .themedNavBar(theme)
         }
         .tint(theme.accent)
+        .preferredColorScheme(theme.isDark ? .dark : .light)
         .onAppear { text = app.serverConfig.baseURL.absoluteString }
     }
 }
