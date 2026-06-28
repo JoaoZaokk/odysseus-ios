@@ -229,7 +229,7 @@ struct AddEmailAccountView: View {
     private func field(_ label: String, _ bind: Binding<String>, placeholder: String,
                        numeric: Bool = false, secure: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(label).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
             Group {
                 if secure { SecureField(placeholder, text: bind) } else { TextField(placeholder, text: bind) }
             }

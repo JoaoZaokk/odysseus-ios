@@ -168,7 +168,7 @@ struct TasksView: View {
 
     private func actionButton(_ label: String, system: String, _ tap: @escaping () -> Void) -> some View {
         Button(action: tap) {
-            Label(label, systemImage: system)
+            Label(LocalizedStringKey(label), systemImage: system)
                 .font(.ody(size: 11, design: .monospaced))
                 .padding(.horizontal, 10).padding(.vertical, 5)
                 .background(theme.panel, in: Capsule())
@@ -180,7 +180,7 @@ struct TasksView: View {
 
     private func relative(_ iso: String) -> String {
         guard let t = ISODate.parse(iso) else { return iso }
-        let f = RelativeDateTimeFormatter(); f.locale = Locale(identifier: "pt_BR")
+        let f = RelativeDateTimeFormatter(); f.locale = LocalizationManager.shared.locale
         return f.localizedString(for: Date(timeIntervalSince1970: t), relativeTo: Date())
     }
 }

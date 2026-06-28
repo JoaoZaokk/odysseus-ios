@@ -94,7 +94,7 @@ struct ChatScreen: View {
                     if let tool = vm.toolStatus {
                         HStack(spacing: 8) {
                             ProgressView().controlSize(.small).tint(theme.accent)
-                            Text(tool)
+                            Text(LocalizedStringKey(tool))
                                 .font(.ody(size: 12, design: .monospaced))
                                 .foregroundStyle(theme.secondaryText)
                             Spacer()
@@ -165,7 +165,7 @@ struct ChatScreen: View {
 
                 micButton
 
-                TextField(voice.isRecording ? "Ouvindo…" : "Mensagem…",
+                TextField(LocalizedStringKey(voice.isRecording ? "Ouvindo…" : "Mensagem…"),
                           text: voice.isRecording ? .constant(voice.partialText) : $vm.input, axis: .vertical)
                     .font(.ody(.body, design: .monospaced))
                     .foregroundStyle(theme.fg)
@@ -306,7 +306,7 @@ struct ChatScreen: View {
         Button { on.wrappedValue.toggle() } label: {
             HStack(spacing: 5) {
                 Image(systemName: system).font(.ody(size: 11))
-                Text(label).font(.ody(size: 12, design: .monospaced))
+                Text(LocalizedStringKey(label)).font(.ody(size: 12, design: .monospaced))
             }
             .padding(.horizontal, 10).padding(.vertical, 6)
             .foregroundStyle(on.wrappedValue ? .white : theme.secondaryText)

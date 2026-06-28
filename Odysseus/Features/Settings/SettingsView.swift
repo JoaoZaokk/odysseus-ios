@@ -7,7 +7,7 @@ import SwiftUI
 enum SettingsSection: String, CaseIterable, Identifiable {
     case addModels, addedModels, aiDefaults, search
     case integrations, email, reminders, imageGen
-    case appearance, account, server
+    case appearance, language, account, server
     case agentTools, users, system
 
     var id: String { rawValue }
@@ -23,6 +23,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .reminders: return "Lembretes"
         case .imageGen: return "Geração de imagem"
         case .appearance: return "Aparência"
+        case .language: return "Idioma"
         case .account: return "Conta"
         case .server: return "Servidor"
         case .agentTools: return "Agent Tools"
@@ -42,6 +43,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .reminders: return "bell"
         case .imageGen: return "photo.on.rectangle.angled"
         case .appearance: return "paintpalette"
+        case .language: return "globe"
         case .account: return "person.crop.circle"
         case .server: return "server.rack"
         case .agentTools: return "wrench.and.screwdriver"
@@ -53,7 +55,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
     /// Implemented natively this round. Others show a placeholder pointing to web.
     var implemented: Bool {
         switch self {
-        case .addedModels, .aiDefaults, .search, .email, .imageGen, .appearance, .account, .server:
+        case .addedModels, .aiDefaults, .search, .email, .imageGen, .appearance, .language, .account, .server:
             return true
         default:
             return false
@@ -63,7 +65,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
     static let groups: [(String?, [SettingsSection])] = [
         (nil, [.addModels, .addedModels, .aiDefaults, .search]),
         (nil, [.integrations, .email, .reminders, .imageGen]),
-        (nil, [.appearance, .account, .server]),
+        (nil, [.appearance, .language, .account, .server]),
         ("ADMIN", [.agentTools, .users, .system]),
     ]
 }
@@ -96,9 +98,9 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 ForEach(Array(SettingsSection.groups.enumerated()), id: \.offset) { _, group in
-                    Section(header: group.0.map { Text($0) }) {
+                    Section(header: group.0.map { Text(LocalizedStringKey($0)) }) {
                         ForEach(group.1) { s in
-                            NavigationLink { content(s).navigationTitle(s.title) } label: { row(s) }
+                            NavigationLink { content(s).navigationTitle(LocalizedStringKey(s.title)) } label: { row(s) }
                         }
                     }
                 }
@@ -131,7 +133,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 ForEach(Array(SettingsSection.groups.enumerated()), id: \.offset) { idx, group in
                     if let label = group.0 {
-                        Text(label).font(.ody(size: 10, design: .monospaced))
+                        Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced))
                             .foregroundStyle(theme.secondaryText)
                             .padding(.horizontal, 12).padding(.top, 10)
                     } else if idx > 0 {
@@ -154,7 +156,7 @@ struct SettingsView: View {
     private func row(_ s: SettingsSection, active: Bool = false) -> some View {
         HStack(spacing: 10) {
             Image(systemName: s.icon).frame(width: 18).foregroundStyle(active ? theme.accent : theme.secondaryText)
-            Text(s.title).font(.ody(.subheadline, design: .monospaced))
+            Text(LocalizedStringKey(s.title)).font(.ody(.subheadline, design: .monospaced))
                 .foregroundStyle(active ? theme.fg : theme.fg.opacity(0.85))
             Spacer()
         }
@@ -172,6 +174,7 @@ struct SettingsView: View {
         case .addedModels: AddedModelsSection(app: app)
         case .search: SearchSection(app: app)
         case .appearance: ThemePickerView(inSheet: false).environmentObject(themes)
+        case .language: LanguageSection()
         case .account: AccountSection()
         case .server: ServerSection()
         case .email: EmailSection(app: app)
@@ -202,8 +205,8 @@ struct SettingsScroll<Content: View>: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(title).font(.ody(.title3, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
-                    if let subtitle { Text(subtitle).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText) }
+                    Text(LocalizedStringKey(title)).font(.ody(.title3, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                    if let subtitle { Text(LocalizedStringKey(subtitle)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText) }
                 }
                 content()
             }

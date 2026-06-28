@@ -109,7 +109,7 @@ struct MessageBubble: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 4)
         } label: {
-            Label(isStreaming ? "Pensando…" : "Raciocínio", systemImage: "brain")
+            Label(LocalizedStringKey(isStreaming ? "Pensando…" : "Raciocínio"), systemImage: "brain")
                 .font(.ody(size: 12, design: .monospaced))
                 .foregroundStyle(theme.secondaryText)
         }

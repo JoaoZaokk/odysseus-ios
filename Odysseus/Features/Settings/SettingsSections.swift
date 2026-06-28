@@ -127,7 +127,7 @@ struct AccountSection: View {
 
     private func row(_ label: String, value: String) -> some View {
         HStack {
-            Text(label).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(label)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
             Spacer()
             Text(value).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.secondaryText)
         }

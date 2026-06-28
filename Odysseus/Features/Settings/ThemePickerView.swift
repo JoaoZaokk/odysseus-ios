@@ -118,7 +118,7 @@ struct ThemePickerView: View {
 
     private func chip(_ label: String, selected: Bool, labelFont: Font? = nil, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(label)
+            Text(LocalizedStringKey(label))
                 .font(labelFont ?? .ody(size: 12, design: .monospaced))
                 .padding(.horizontal, 12).padding(.vertical, 7)
                 .foregroundStyle(selected ? .white : theme.secondaryText)

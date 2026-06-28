@@ -71,7 +71,7 @@ struct LoginView: View {
                 Button(action: submit) {
                     HStack {
                         if app.loggingIn { ProgressView().tint(.white) }
-                        Text(app.totpRequired ? "Verificar" : "Entrar")
+                        Text(LocalizedStringKey(app.totpRequired ? "Verificar" : "Entrar"))
                             .font(.ody(.headline, design: .monospaced))
                     }
                     .frame(maxWidth: .infinity)
@@ -116,7 +116,7 @@ struct LoginView: View {
     @ViewBuilder
     private func field(title: String, text: Binding<String>, field: Field) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(title).font(.ody(.caption, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(title)).font(.ody(.caption, design: .monospaced)).foregroundStyle(theme.secondaryText)
             TextField("", text: text)
                 .focused($focus, equals: field)
                 .styledInput(theme)
@@ -126,7 +126,7 @@ struct LoginView: View {
     @ViewBuilder
     private func secureField(title: String, text: Binding<String>, field: Field) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(title).font(.ody(.caption, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(title)).font(.ody(.caption, design: .monospaced)).foregroundStyle(theme.secondaryText)
             SecureField("", text: text)
                 .textContentType(.password)
                 .focused($focus, equals: field)

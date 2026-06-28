@@ -108,7 +108,7 @@ struct SidebarView: View {
     }
 
     private func header(_ text: String) -> some View {
-        Text(text)
+        Text(LocalizedStringKey(text))
             .font(.ody(.caption, design: .monospaced))
             .foregroundStyle(theme.secondaryText)
     }
@@ -117,7 +117,7 @@ struct SidebarView: View {
                         _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label {
-                Text(title).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text(LocalizedStringKey(title)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
             } icon: {
                 Image(systemName: icon).foregroundStyle(tint)
             }
@@ -132,7 +132,7 @@ struct SidebarView: View {
         Label {
             VStack(alignment: .leading, spacing: 1) {
                 HStack(spacing: 6) {
-                    Text(section.title)
+                    Text(LocalizedStringKey(section.title))
                         .font(.ody(.subheadline, design: .monospaced))
                         .foregroundStyle(theme.fg)
                     if !section.implemented {
@@ -143,7 +143,7 @@ struct SidebarView: View {
                             .background(theme.panel, in: Capsule())
                     }
                 }
-                Text(section.subtitle)
+                Text(LocalizedStringKey(section.subtitle))
                     .font(.ody(size: 10, design: .monospaced))
                     .foregroundStyle(theme.secondaryText)
                     .lineLimit(1)

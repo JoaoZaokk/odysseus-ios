@@ -145,8 +145,8 @@ struct EmailView: View {
     private func stateView(icon: String, title: String, subtitle: String) -> some View {
         VStack(spacing: 12) {
             Image(systemName: icon).font(.ody(size: 44)).foregroundStyle(theme.accent)
-            Text(title).font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
-            Text(subtitle)
+            Text(LocalizedStringKey(title)).font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(subtitle))
                 .font(.ody(.footnote, design: .monospaced))
                 .foregroundStyle(theme.secondaryText)
                 .multilineTextAlignment(.center)

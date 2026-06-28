@@ -156,7 +156,7 @@ struct CalendarView: View {
                             eventRow(ev).listRowBackground(theme.bg)
                         }
                     } header: {
-                        Text(dayLabel(group.day))
+                        Text(LocalizedStringKey(dayLabel(group.day)))
                             .font(.ody(.caption, design: .monospaced))
                             .foregroundStyle(theme.accent)
                     }
@@ -177,7 +177,7 @@ struct CalendarView: View {
                     .font(.ody(.subheadline, design: .monospaced))
                     .foregroundStyle(theme.fg)
                 HStack(spacing: 8) {
-                    Text(timeLabel(ev))
+                    Text(LocalizedStringKey(timeLabel(ev)))
                         .font(.ody(size: 11, design: .monospaced))
                         .foregroundStyle(theme.secondaryText)
                     if !ev.location.isEmpty {
@@ -211,8 +211,9 @@ struct CalendarView: View {
         let cal = Calendar.current
         if cal.isDateInToday(d) { return "Hoje" }
         if cal.isDateInTomorrow(d) { return "Amanhã" }
-        let f = DateFormatter(); f.locale = Locale(identifier: "pt_BR")
-        f.dateFormat = "EEE, d 'de' MMM"
+        let f = DateFormatter(); f.locale = LocalizationManager.shared.locale
+        // Locale-appropriate "weekday, day month" instead of a pt-only literal format.
+        f.setLocalizedDateFormatFromTemplate("EEEdMMM")
         return f.string(from: d).capitalized
     }
 

@@ -78,7 +78,7 @@ struct ComingSoonView: View {
                 Image(systemName: section.icon)
                     .font(.ody(size: 44))
                     .foregroundStyle(theme.accent)
-                Text(section.title)
+                Text(LocalizedStringKey(section.title))
                     .font(.ody(.title2, design: .monospaced).weight(.semibold))
                     .foregroundStyle(theme.fg)
                 Text("Em construção — chega na próxima onda. 🛠️")
@@ -86,7 +86,7 @@ struct ComingSoonView: View {
                     .foregroundStyle(theme.secondaryText)
             }
         }
-        .navigationTitle(section.title)
+        .navigationTitle(LocalizedStringKey(section.title))
         .navigationBarTitleDisplayMode(.inline)
     }
 }

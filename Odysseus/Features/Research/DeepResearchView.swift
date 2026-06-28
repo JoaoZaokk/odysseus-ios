@@ -218,7 +218,7 @@ struct DeepResearchView: View {
 
     private func chip(_ label: String, selected: Bool, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(label).font(.ody(size: 12, design: .monospaced))
+            Text(LocalizedStringKey(label)).font(.ody(size: 12, design: .monospaced))
                 .padding(.horizontal, 12).padding(.vertical, 6)
                 .foregroundStyle(selected ? .white : theme.secondaryText)
                 .background(selected ? theme.accent : theme.bg, in: Capsule())

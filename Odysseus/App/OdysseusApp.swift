@@ -4,6 +4,7 @@ import SwiftUI
 struct OdysseusApp: App {
     @StateObject private var app = AppState()
     @StateObject private var themes = ThemeStore()
+    @StateObject private var loc = LocalizationManager.shared
 
     init() { FontLoader.registerBundledFonts() }
 
@@ -12,12 +13,16 @@ struct OdysseusApp: App {
             RootView()
                 .environmentObject(app)
                 .environmentObject(themes)
+                .environmentObject(loc)
                 .environment(\.theme, themes.effectiveTheme)
+                .environment(\.locale, loc.locale)
                 .preferredColorScheme(themes.theme.isDark ? .dark : .light)
                 .tint(themes.theme.accent)
                 // Font family is read by the non-View `Font.ody` helper via a
                 // global; bump identity so the whole tree re-renders on change.
-                .id(themes.fontFamily)
+                // Language is folded in too: switching it must re-resolve every
+                // `Text("…")` against the new `.lproj`.
+                .id("\(themes.fontFamily)#\(loc.identity)")
                 #if os(macOS)
                 // The app draws all its own controls; suppress AppKit's default
                 // button/field chrome so they don't get a bordered "square".

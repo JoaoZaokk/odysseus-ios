@@ -669,7 +669,7 @@ struct TerminalLogsCard: View {
 
     @ViewBuilder private func menuChip(_ label: String) -> some View {
         HStack(spacing: 4) {
-            Text(label).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(label)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.fg)
             Image(systemName: "chevron.up.chevron.down").font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
         }
         .padding(.horizontal, 8).padding(.vertical, 6)
@@ -891,7 +891,7 @@ enum SettingsUI {
     static func field(_ label: String, _ bind: Binding<String>, placeholder: String, theme: Theme,
                       numeric: Bool = false, secure: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(label).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
             Group {
                 if secure { SecureField(placeholder, text: bind) } else { TextField(placeholder, text: bind) }
             }
@@ -905,7 +905,7 @@ enum SettingsUI {
     @ViewBuilder
     static func menuRow(_ label: String, value: String, options: [String], theme: Theme, _ pick: @escaping (String) -> Void) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(label).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
             Menu {
                 ForEach(options, id: \.self) { o in Button(o) { pick(o) } }
             } label: {
@@ -922,7 +922,7 @@ enum SettingsUI {
 
     static func saveButton(theme: Theme, label: String = "Salvar", _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(label).font(.ody(.subheadline, design: .monospaced, weight: .semibold))
+            Text(LocalizedStringKey(label)).font(.ody(.subheadline, design: .monospaced, weight: .semibold))
                 .padding(.horizontal, 16).padding(.vertical, 8).foregroundStyle(.white)
                 .background(theme.accent, in: RoundedRectangle(cornerRadius: 10))
         }

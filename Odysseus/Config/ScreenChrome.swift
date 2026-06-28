@@ -23,7 +23,7 @@ extension View {
                               leading: leading(), trailing: trailing(), content: self)
         #else
         self
-            .navigationTitle(title)
+            .navigationTitle(LocalizedStringKey(title))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) { leading() }
@@ -44,7 +44,7 @@ extension View {
             self
         }
         #else
-        self.searchable(text: text, prompt: prompt)
+        self.searchable(text: text, prompt: LocalizedStringKey(prompt))
         #endif
     }
 }
@@ -117,12 +117,12 @@ private struct ScreenChromeContainer<L: View, T: View, C: View>: View {
                     .padding(.trailing, 2)
                 }
                 VStack(alignment: .leading, spacing: 1) {
-                    Text(title)
+                    Text(LocalizedStringKey(title))
                         .font(.ody(.headline, design: .monospaced))
                         .foregroundStyle(theme.fg)
                         .lineLimit(1)
                     if let subtitle, !subtitle.isEmpty {
-                        Text(subtitle)
+                        Text(LocalizedStringKey(subtitle))
                             .font(.ody(size: 10, design: .monospaced))
                             .foregroundStyle(theme.secondaryText)
                             .lineLimit(1)

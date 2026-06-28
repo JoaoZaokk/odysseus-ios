@@ -128,7 +128,7 @@ struct NotesView: View {
     private var emptyState: some View {
         VStack(spacing: 12) {
             Image(systemName: "note.text").font(.ody(size: 44)).foregroundStyle(theme.accent)
-            Text(vm.showArchived ? "Nada arquivado" : "Sem notas ainda")
+            Text(LocalizedStringKey(vm.showArchived ? "Nada arquivado" : "Sem notas ainda"))
                 .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
             if !vm.showArchived {
                 Text("Toque em + para criar sua primeira nota.")
@@ -166,7 +166,7 @@ struct NoteEditor: View {
                         .padding(.horizontal, 12)
                 }
             }
-            .navigationTitle(note.id.isEmpty ? "Nova nota" : "Editar nota")
+            .navigationTitle(LocalizedStringKey(note.id.isEmpty ? "Nova nota" : "Editar nota"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

@@ -122,7 +122,7 @@ struct GalleryView: View {
     private var emptyState: some View {
         VStack(spacing: 12) {
             Image(systemName: "photo.on.rectangle.angled").font(.ody(size: 44)).foregroundStyle(theme.accent)
-            Text(vm.favoritesOnly ? "Sem favoritos" : "Galeria vazia")
+            Text(LocalizedStringKey(vm.favoritesOnly ? "Sem favoritos" : "Galeria vazia"))
                 .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
             Text("Imagens geradas e enviadas aparecem aqui.")
                 .font(.ody(.footnote, design: .monospaced))

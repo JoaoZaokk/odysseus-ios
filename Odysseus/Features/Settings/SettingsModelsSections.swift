@@ -256,7 +256,7 @@ struct AIDefaultsSection: View {
     }
     private func menuLabel(_ s: String) -> some View {
         HStack {
-            Text(s).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
+            Text(LocalizedStringKey(s)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
             Spacer()
             Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
         }
@@ -351,7 +351,7 @@ struct AddModelsSection: View {
 
     private func typeChip(_ title: String, _ value: String) -> some View {
         Button { vm.kind = value; vm.message = nil } label: {
-            Text(title).font(.ody(size: 12, design: .monospaced))
+            Text(LocalizedStringKey(title)).font(.ody(size: 12, design: .monospaced))
                 .padding(.horizontal, 14).padding(.vertical, 6)
                 .foregroundStyle(vm.kind == value ? .white : theme.secondaryText)
                 .background(vm.kind == value ? theme.accent : theme.bg, in: Capsule())

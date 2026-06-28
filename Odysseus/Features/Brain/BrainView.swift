@@ -143,7 +143,7 @@ struct BrainView: View {
 
     private func chip(_ label: String, active: Bool, _ tap: @escaping () -> Void) -> some View {
         Button(action: tap) {
-            Text(label)
+            Text(LocalizedStringKey(label))
                 .font(.ody(size: 12, design: .monospaced))
                 .foregroundStyle(active ? .white : theme.secondaryText)
                 .padding(.horizontal, 12).padding(.vertical, 6)
@@ -174,7 +174,7 @@ struct BrainView: View {
                 Label("Apagar", systemImage: "trash")
             }
             Button { Task { await vm.togglePin(m) } } label: {
-                Label(m.pinned ? "Desafixar" : "Fixar", systemImage: "pin")
+                Label(LocalizedStringKey(m.pinned ? "Desafixar" : "Fixar"), systemImage: "pin")
             }.tint(theme.accent)
         }
     }
