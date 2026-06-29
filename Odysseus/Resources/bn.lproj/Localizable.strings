@@ -352,3 +352,4 @@
 "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "Microsoft বেশিরভাগ Outlook / Microsoft 365 অ্যাকাউন্টে IMAP/SMTP-এর জন্য পাসওয়ার্ড লগইন বন্ধ রাখে। Odysseus এখনও Microsoft OAuth সমর্থন করে না, তাই এই প্রিসেটটি কেবল একটি প্লেসহোল্ডার।";
 "Gerar senha de app" = "অ্যাপ পাসওয়ার্ড তৈরি করুন";
 "Ler nota da Microsoft" = "Microsoft-এর নোট পড়ুন";
+"Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/পোর্ট মিলছে না। IMAP-এর জন্য পোর্ট 993-এ STARTTLS বন্ধ রাখুন (SSL); SMTP-এর জন্য 465-এ SSL, অথবা 587-এ STARTTLS। পোর্ট ও নিরাপত্তা মিশিয়ে ফেলবেন না।";

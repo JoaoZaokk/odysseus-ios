@@ -352,3 +352,4 @@
 "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "Microsoft はほとんどの Outlook / Microsoft 365 アカウントで IMAP/SMTP のパスワードログインを無効にしています。Odysseus はまだ Microsoft OAuth に対応していないため、このプリセットは将来用のプレースホルダーです。";
 "Gerar senha de app" = "アプリパスワードを生成";
 "Ler nota da Microsoft" = "Microsoft の説明を読む";
+"Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS とポートの不一致です。IMAP はポート 993 で STARTTLS をオフ（SSL）に、SMTP は 465 で SSL、または 587 で STARTTLS にしてください。ポートとセキュリティを混在させないでください。";

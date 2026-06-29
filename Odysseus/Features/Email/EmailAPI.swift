@@ -6,6 +6,36 @@ struct EmailTestError: LocalizedError {
     var errorDescription: String? { message }
 }
 
+/// Mirrors the server's `_friendly_email_auth_error` (which only covers Outlook):
+/// turn the common IMAP/SMTP TLS-mode/port mismatch into actionable guidance.
+/// Returns a localization KEY when matched (the views render it through
+/// `Text(LocalizedStringKey:)`), else the raw error.
+func emailFriendlyMessage(_ raw: String) -> String {
+    let l = raw.lowercased()
+    let tlsMismatch = l.contains("wrong version number")
+        || l.contains("wrong_version_number")
+        || l.contains("_ssl.c")
+        || l.contains("[ssl:")
+        || l.contains("socket error: eof")
+    if tlsMismatch {
+        return "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança."
+    }
+    return raw
+}
+
+func emailFriendlyMessage(_ error: Error) -> String {
+    emailFriendlyMessage((error as? LocalizedError)?.errorDescription ?? error.localizedDescription)
+}
+
+/// The server returns `{ emails: [], error: "…" }` both when no account is set up
+/// AND when a configured account fails to connect. Tell them apart so a real TLS
+/// failure shows the error (not the "not configured" empty state).
+func emailLooksNotConfigured(_ raw: String) -> Bool {
+    let l = raw.lowercased()
+    return l.contains("not configured") || l.contains("não configurado")
+        || l.contains("no email account") || l.contains("no imap")
+}
+
 extension APIClient {
     func emailList(folder: String = "INBOX", limit: Int = 50) async throws -> EmailListResponse {
         let path = "/api/email/list?folder=\(encQuery(folder))&limit=\(limit)"

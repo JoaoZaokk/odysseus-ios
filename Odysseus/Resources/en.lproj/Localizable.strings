@@ -352,3 +352,4 @@
 "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "Microsoft disables password login for IMAP/SMTP on most Outlook / Microsoft 365 accounts. Odysseus doesn't support Microsoft OAuth yet, so this preset is just a placeholder.";
 "Gerar senha de app" = "Generate App Password";
 "Ler nota da Microsoft" = "Read the Microsoft note";
+"Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/port mismatch. For IMAP use port 993 with STARTTLS off (SSL); for SMTP use 465 with SSL, or 587 with STARTTLS. Don't mix a port with the wrong security.";

@@ -39,9 +39,7 @@ final class EmailAccountsViewModel: ObservableObject {
         catch { self.error = msg(error) }
     }
 
-    private func msg(_ e: Error) -> String {
-        (e as? LocalizedError)?.errorDescription ?? e.localizedDescription
-    }
+    private func msg(_ e: Error) -> String { emailFriendlyMessage(e) }
 }
 
 struct EmailAccountsView: View {
@@ -388,7 +386,7 @@ struct AddEmailAccountView: View {
             Label("Conexão OK", systemImage: "checkmark.circle.fill")
                 .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "50fa7b"))
         case .fail(let m):
-            Label(m, systemImage: "xmark.octagon.fill")
+            Label { Text(LocalizedStringKey(m)) } icon: { Image(systemName: "xmark.octagon.fill") }
                 .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
                 .fixedSize(horizontal: false, vertical: true)
         case nil:

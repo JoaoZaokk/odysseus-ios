@@ -15,9 +15,19 @@ final class EmailViewModel: ObservableObject {
         do {
             let resp = try await api.emailList()
             emails = resp.emails
-            // Server reports a backend error when no mail account is connected.
-            notConfigured = resp.emails.isEmpty && (resp.error?.isEmpty == false)
-            error = nil
+            let serverErr = resp.error ?? ""
+            if resp.emails.isEmpty && !serverErr.isEmpty {
+                // The server uses the same `error` field for "no account" and for
+                // a configured account that failed to connect (e.g. the Gmail TLS
+                // mismatch). Only the former is "not configured".
+                if emailLooksNotConfigured(serverErr) {
+                    notConfigured = true; error = nil
+                } else {
+                    notConfigured = false; error = emailFriendlyMessage(serverErr)
+                }
+            } else {
+                notConfigured = false; error = nil
+            }
         } catch is CancellationError {
             // view transition tore down the load — ignore
         } catch {
@@ -44,9 +54,7 @@ final class EmailViewModel: ObservableObject {
         catch { self.error = msg(error) }
     }
 
-    private func msg(_ e: Error) -> String {
-        (e as? LocalizedError)?.errorDescription ?? e.localizedDescription
-    }
+    private func msg(_ e: Error) -> String { emailFriendlyMessage(e) }
 }
 
 struct EmailView: View {
