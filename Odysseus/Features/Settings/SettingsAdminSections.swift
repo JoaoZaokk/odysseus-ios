@@ -571,7 +571,7 @@ struct SistemaSection: View {
                 Text("Irreversível. Cada item apaga uma categoria.")
                     .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
                 ForEach(dangers, id: \.cat) { d in
-                    Divider().overlay(theme.border)
+                    Rectangle().fill(theme.border).frame(height: 1)
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text(d.label).font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg)

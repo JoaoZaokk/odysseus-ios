@@ -12,9 +12,12 @@ struct LanguageSection: View {
         SettingsScroll("Idioma", subtitle: "Selecione o idioma do aplicativo.") {
             SettingsCard {
                 autoRow
-                Divider().overlay(theme.border)
+                // Contained 1px separators: a macOS `Divider()` here stretches to the
+                // whole window width (the card is maxWidth:.infinity, unclipped) and
+                // bleeds left into the settings sidebar. A Rectangle stays inside the card.
+                rowSeparator
                 ForEach(AppLanguage.allCases) { lang in
-                    if lang != AppLanguage.allCases.first { Divider().overlay(theme.border) }
+                    if lang != AppLanguage.allCases.first { rowSeparator }
                     row(lang)
                 }
             }
@@ -24,6 +27,10 @@ struct LanguageSection: View {
                 .foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
         }
+    }
+
+    private var rowSeparator: some View {
+        Rectangle().fill(theme.border).frame(height: 1)
     }
 
     // Automatic (follow device) row.

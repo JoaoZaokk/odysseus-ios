@@ -55,7 +55,7 @@ struct AccountSection: View {
         SettingsScroll("Conta", subtitle: "Sua sessão e segurança.") {
             SettingsCard {
                 row("Usuário", value: app.username ?? "—")
-                Divider().overlay(theme.border)
+                Rectangle().fill(theme.border).frame(height: 1)
                 HStack {
                     Text("2FA").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
                     Spacer()
@@ -94,7 +94,7 @@ struct AccountSection: View {
                                 .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
                         }
                     }.tint(theme.accent)
-                    Divider().overlay(theme.border)
+                    Rectangle().fill(theme.border).frame(height: 1)
                     Toggle(isOn: $bioAutoLogin) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Exigir no login automático").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)

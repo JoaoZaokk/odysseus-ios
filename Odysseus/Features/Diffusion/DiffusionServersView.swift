@@ -150,7 +150,7 @@ struct DiffusionServersView: View {
     }
 
     @ViewBuilder private func statusDetail(_ s: ComfyStats) -> some View {
-        Divider().overlay(theme.border)
+        Rectangle().fill(theme.border).frame(height: 1)
         infoRow("Versão", "ComfyUI \(s.comfyVersion) · \(s.os)")
         infoRow("Python / Torch", "\(s.pythonVersion) · \(s.pytorchVersion)")
         infoRow("RAM", String(format: "%.0f GB livre / %.0f GB", s.ramFreeGB, s.ramTotalGB))
@@ -168,7 +168,7 @@ struct DiffusionServersView: View {
     @ViewBuilder private func fitSection() -> some View {
         let rows = vm.fitRows()
         if !rows.isEmpty {
-            Divider().overlay(theme.border)
+            Rectangle().fill(theme.border).frame(height: 1)
             Text("Cabe na máquina (estimativa, melhor GPU)")
                 .font(.ody(size: 11, weight: .medium, design: .monospaced)).foregroundStyle(theme.fg)
             ForEach(rows.prefix(14), id: \.name) { row in
