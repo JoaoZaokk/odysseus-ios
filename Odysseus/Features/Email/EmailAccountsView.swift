@@ -66,13 +66,26 @@ struct EmailAccountsView: View {
                 }
             }
             .task { await vm.load() }
-            .sheet(isPresented: $showAdd) {
+            #if os(macOS)
+            // Push (not a nested sheet — that fails to present on macOS).
+            .navigationDestination(isPresented: $showAdd) {
                 AddEmailAccountView { payload in
                     let ok = await vm.add(payload)
                     if ok { onChange() }
                     return ok
                 }
             }
+            #else
+            .sheet(isPresented: $showAdd) {
+                NavigationStack {
+                    AddEmailAccountView { payload in
+                        let ok = await vm.add(payload)
+                        if ok { onChange() }
+                        return ok
+                    }
+                }
+            }
+            #endif
         }
         .tint(theme.accent)
     }
@@ -153,8 +166,10 @@ struct AddEmailAccountView: View {
         !email.isEmpty && !imapHost.isEmpty && !password.isEmpty
     }
 
+    // Plain content (no own NavigationStack): the caller provides navigation —
+    // a sheet-wrapped NavigationStack on iOS, a navigationDestination push on macOS
+    // (a nested sheet doesn't present on macOS).
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 14) {
                     group("Conta") {
@@ -202,11 +217,7 @@ struct AddEmailAccountView: View {
                     else { Button("Salvar") { save() }.disabled(!canSave) }
                 }
             }
-        }
-        .tint(theme.accent)
-        #if os(macOS)
-        .frame(minWidth: 460, minHeight: 520)
-        #endif
+            .tint(theme.accent)
     }
 
     // MARK: - Themed building blocks (labels above fields — fixes the macOS
