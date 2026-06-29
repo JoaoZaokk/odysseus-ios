@@ -88,6 +88,9 @@ struct EmailAccountsView: View {
             #endif
         }
         .tint(theme.accent)
+        #if os(macOS)
+        .frame(minWidth: 460, minHeight: 520)   // not a tiny floating box
+        #endif
     }
 
     @ViewBuilder

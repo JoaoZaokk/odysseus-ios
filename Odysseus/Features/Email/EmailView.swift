@@ -83,7 +83,34 @@ struct EmailView: View {
     @ViewBuilder
     private var content: some View {
         if vm.emails.isEmpty && vm.loading {
-            ProgressView().tint(theme.accent)
+            VStack(spacing: 10) {
+                ProgressView().tint(theme.accent)
+                Text("Carregando a caixa…").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            }
+        } else if vm.emails.isEmpty, let err = vm.error {
+            VStack(spacing: 14) {
+                stateView(icon: "exclamationmark.triangle",
+                          title: "Não consegui carregar o email",
+                          subtitle: err)
+                Text("Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID).")
+                    .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .multilineTextAlignment(.center).padding(.horizontal, 30)
+                HStack(spacing: 10) {
+                    Button { Task { await vm.load() } } label: {
+                        Label("Tentar de novo", systemImage: "arrow.clockwise")
+                            .font(.ody(.subheadline, design: .monospaced))
+                            .padding(.horizontal, 16).padding(.vertical, 9)
+                            .background(theme.accent, in: Capsule()).foregroundStyle(.white)
+                    }.buttonStyle(.plain)
+                    Button { showAccounts = true } label: {
+                        Label("Contas", systemImage: "person.crop.circle")
+                            .font(.ody(.subheadline, design: .monospaced))
+                            .padding(.horizontal, 16).padding(.vertical, 9)
+                            .overlay(Capsule().stroke(theme.border, lineWidth: 1))
+                            .foregroundStyle(theme.fg)
+                    }.buttonStyle(.plain)
+                }
+            }
         } else if vm.notConfigured {
             VStack(spacing: 16) {
                 stateView(icon: "envelope.badge.shield.half.filled",
