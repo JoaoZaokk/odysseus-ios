@@ -56,8 +56,19 @@ struct EmailAccountsView: View {
         NavigationStack {
             ZStack {
                 theme.bg.ignoresSafeArea()
-                content
+                VStack(spacing: 0) {
+                    #if os(macOS)
+                    // macOS sheets push toolbar buttons to a BOTTOM bar (that's why
+                    // "+" ended up next to "Fechar"). Use a real top header instead:
+                    // title left, "+" at the top-right.
+                    macHeader
+                    Rectangle().fill(theme.border).frame(height: 1)
+                    #endif
+                    ZStack { content }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
+            #if !os(macOS)
             .navigationTitle("Contas de email")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -66,6 +77,7 @@ struct EmailAccountsView: View {
                     Button { showAdd = true } label: { Image(systemName: "plus") }
                 }
             }
+            #endif
             .task { await vm.load() }
             .alert("Remover conta?", isPresented: Binding(get: { toDelete != nil }, set: { if !$0 { toDelete = nil } })) {
                 Button("Remover", role: .destructive) {
@@ -102,19 +114,59 @@ struct EmailAccountsView: View {
         #endif
     }
 
+    #if os(macOS)
+    private var macHeader: some View {
+        HStack(spacing: 12) {
+            Button { dismiss() } label: {
+                Text("Fechar")
+                    .font(.ody(.subheadline, design: .monospaced))
+                    .foregroundStyle(theme.accent)
+            }.buttonStyle(.plain)
+            Spacer(minLength: 8)
+            Text("Contas de email")
+                .font(.ody(.headline, design: .monospaced))
+                .foregroundStyle(theme.fg)
+            Spacer(minLength: 8)
+            Button { showAdd = true } label: {
+                Image(systemName: "plus")
+                    .font(.ody(size: 15, weight: .semibold, design: .monospaced))
+                    .foregroundStyle(.white)
+                    .frame(width: 30, height: 30)
+                    .background(theme.accent, in: Circle())
+            }.buttonStyle(.plain).help("Adicionar conta")
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+    }
+    #endif
+
     @ViewBuilder
     private var content: some View {
         if vm.accounts.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
         } else if vm.accounts.isEmpty {
-            VStack(spacing: 12) {
-                Image(systemName: "person.crop.circle.badge.plus")
-                    .font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Nenhuma conta")
-                    .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
-                Text("Toque em + para conectar uma conta IMAP.")
-                    .font(.ody(.footnote, design: .monospaced))
-                    .foregroundStyle(theme.secondaryText).multilineTextAlignment(.center)
+            VStack(spacing: 16) {
+                // The whole icon+text block is a button — the "+person" glyph adds
+                // an account, just like the toolbar "+".
+                Button { showAdd = true } label: {
+                    VStack(spacing: 12) {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                            .font(.ody(size: 52)).foregroundStyle(theme.accent)
+                        Text("Nenhuma conta")
+                            .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                        Text("Toque em + para conectar uma conta IMAP.")
+                            .font(.ody(.footnote, design: .monospaced))
+                            .foregroundStyle(theme.secondaryText).multilineTextAlignment(.center)
+                    }
+                    .contentShape(Rectangle())
+                }.buttonStyle(.plain)
+                Button { showAdd = true } label: {
+                    Label("Conectar conta", systemImage: "plus")
+                        .font(.ody(.subheadline, design: .monospaced))
+                        .padding(.horizontal, 18).padding(.vertical, 10)
+                        .background(theme.accent, in: Capsule())
+                        .foregroundStyle(.white)
+                }.buttonStyle(.plain)
             }
             .padding(40)
         } else {
