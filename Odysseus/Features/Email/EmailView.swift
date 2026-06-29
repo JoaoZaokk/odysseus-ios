@@ -55,6 +55,7 @@ struct EmailView: View {
     @Environment(\.theme) private var theme
     @State private var opened: EmailMessage?
     @State private var showAccounts = false
+    @State private var showHelp = false
 
     init(app: AppState) {
         self.app = app
@@ -68,6 +69,7 @@ struct EmailView: View {
         }
         .screenChrome(title: "Email") {
         } trailing: {
+            Button { showHelp = true } label: { Image(systemName: "questionmark.circle") }
             Button { showAccounts = true } label: { Image(systemName: "person.crop.circle") }
         }
         .task { await vm.load() }
@@ -78,6 +80,7 @@ struct EmailView: View {
         .sheet(isPresented: $showAccounts) {
             EmailAccountsView(app: app) { Task { await vm.load() } }
         }
+        .sheet(isPresented: $showHelp) { EmailLoginHelpView() }
     }
 
     @ViewBuilder
@@ -95,12 +98,18 @@ struct EmailView: View {
                 Text("Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID).")
                     .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
                     .multilineTextAlignment(.center).padding(.horizontal, 30)
+                Button { showHelp = true } label: {
+                    Label("Como conectar (passo a passo)", systemImage: "questionmark.circle")
+                        .font(.ody(.subheadline, design: .monospaced))
+                        .padding(.horizontal, 18).padding(.vertical, 10)
+                        .background(theme.accent, in: Capsule()).foregroundStyle(.white)
+                }.buttonStyle(.plain)
                 HStack(spacing: 10) {
                     Button { Task { await vm.load() } } label: {
                         Label("Tentar de novo", systemImage: "arrow.clockwise")
                             .font(.ody(.subheadline, design: .monospaced))
                             .padding(.horizontal, 16).padding(.vertical, 9)
-                            .background(theme.accent, in: Capsule()).foregroundStyle(.white)
+                            .overlay(Capsule().stroke(theme.border, lineWidth: 1)).foregroundStyle(theme.fg)
                     }.buttonStyle(.plain)
                     Button { showAccounts = true } label: {
                         Label("Contas", systemImage: "person.crop.circle")

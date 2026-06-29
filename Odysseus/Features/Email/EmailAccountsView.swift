@@ -43,6 +43,7 @@ struct EmailAccountsView: View {
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
     @State private var showAdd = false
+    @State private var toDelete: EmailAccount?
     /// Called when accounts change so the inbox can reload.
     var onChange: () -> Void = {}
 
@@ -66,6 +67,14 @@ struct EmailAccountsView: View {
                 }
             }
             .task { await vm.load() }
+            .alert("Remover conta?", isPresented: Binding(get: { toDelete != nil }, set: { if !$0 { toDelete = nil } })) {
+                Button("Remover", role: .destructive) {
+                    if let a = toDelete { Task { await vm.delete(a); onChange() } }; toDelete = nil
+                }
+                Button("Cancelar", role: .cancel) { toDelete = nil }
+            } message: {
+                Text(toDelete.map { $0.name.isEmpty ? $0.fromAddress : $0.name } ?? "")
+            }
             #if os(macOS)
             // Push (not a nested sheet — that fails to present on macOS).
             .navigationDestination(isPresented: $showAdd) {
@@ -111,28 +120,38 @@ struct EmailAccountsView: View {
         } else {
             List {
                 ForEach(vm.accounts) { acc in
-                    VStack(alignment: .leading, spacing: 3) {
-                        HStack(spacing: 6) {
-                            Text(acc.name.isEmpty ? acc.fromAddress : acc.name)
-                                .font(.ody(.subheadline, design: .monospaced))
-                                .foregroundStyle(theme.fg)
-                            if acc.isDefault {
-                                Text("padrão")
-                                    .font(.ody(size: 9, design: .monospaced))
-                                    .foregroundStyle(.white)
-                                    .padding(.horizontal, 5).padding(.vertical, 1)
-                                    .background(theme.accent, in: Capsule())
+                    HStack(spacing: 10) {
+                        VStack(alignment: .leading, spacing: 3) {
+                            HStack(spacing: 6) {
+                                Text(acc.name.isEmpty ? acc.fromAddress : acc.name)
+                                    .font(.ody(.subheadline, design: .monospaced))
+                                    .foregroundStyle(theme.fg)
+                                if acc.isDefault {
+                                    Text("padrão")
+                                        .font(.ody(size: 9, design: .monospaced))
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 5).padding(.vertical, 1)
+                                        .background(theme.accent, in: Capsule())
+                                }
                             }
+                            Text(acc.subtitle)
+                                .font(.ody(size: 11, design: .monospaced))
+                                .foregroundStyle(theme.secondaryText).lineLimit(1)
                         }
-                        Text(acc.subtitle)
-                            .font(.ody(size: 11, design: .monospaced))
-                            .foregroundStyle(theme.secondaryText).lineLimit(1)
+                        Spacer()
+                        // Visible actions — swipe isn't discoverable/usable on macOS.
+                        if !acc.isDefault {
+                            Button { Task { await vm.makeDefault(acc) } } label: {
+                                Image(systemName: "star").foregroundStyle(theme.accent)
+                            }.buttonStyle(.plain).help("Definir como padrão")
+                        }
+                        Button { toDelete = acc } label: {
+                            Image(systemName: "trash").foregroundStyle(Color(hex: "e05a4a"))
+                        }.buttonStyle(.plain).help("Remover conta")
                     }
                     .listRowBackground(theme.bg)
                     .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) {
-                            Task { await vm.delete(acc); onChange() }
-                        } label: { Label("Apagar", systemImage: "trash") }
+                        Button(role: .destructive) { toDelete = acc } label: { Label("Apagar", systemImage: "trash") }
                         if !acc.isDefault {
                             Button { Task { await vm.makeDefault(acc) } } label: {
                                 Label("Padrão", systemImage: "star")
