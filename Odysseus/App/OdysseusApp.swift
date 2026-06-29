@@ -28,7 +28,7 @@ struct OdysseusApp: App {
                 // button/field chrome so they don't get a bordered "square".
                 .buttonStyle(.plain)
                 .textFieldStyle(.plain)
-                .frame(minWidth: 820, minHeight: 560)
+                .frame(minWidth: 900, minHeight: 560)
                 #endif
         }
         #if os(macOS)

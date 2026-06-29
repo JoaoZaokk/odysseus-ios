@@ -15,7 +15,9 @@ struct WorkspaceView: View {
                 ForEach(workspace.panes) { pane in
                     paneContent(pane)
                         .environment(\.paneControls, controls(for: pane))
-                        .frame(minWidth: 320)
+                        // min + ideal so columns distribute evenly and a divider drag
+                        // can't shrink a pane to nothing; maxWidth flexible.
+                        .frame(minWidth: 300, idealWidth: 460, maxWidth: .infinity)
                 }
             }
             #else

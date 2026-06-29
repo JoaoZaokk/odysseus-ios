@@ -17,7 +17,10 @@ struct MainView: View {
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility, preferredCompactColumn: $compactColumn) {
             SidebarView(store: store, workspace: workspace, showSettings: $showSettings)
-                .navigationSplitViewColumnWidth(min: 270, ideal: 310)
+                // Fixed width: the sidebar is NOT user-resizable (the draggable divider
+                // could be pulled into a broken/empty state). The two work panes stay
+                // resizable via the HSplitView in WorkspaceView.
+                .navigationSplitViewColumnWidth(280)
         } detail: {
             WorkspaceView(workspace: workspace, app: app, onNewSession: { Task { await store.load() } })
         }
