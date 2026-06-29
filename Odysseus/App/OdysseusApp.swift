@@ -16,6 +16,7 @@ struct OdysseusApp: App {
                 .environmentObject(loc)
                 .environment(\.theme, themes.effectiveTheme)
                 .environment(\.locale, loc.locale)
+                .environment(\.layoutDirection, loc.layoutDirection)   // RTL for ar/fa/ur/ps
                 .preferredColorScheme(themes.theme.isDark ? .dark : .light)
                 .tint(themes.theme.accent)
                 // Font family is read by the non-View `Font.ody` helper via a

@@ -330,7 +330,6 @@
 "Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "Providers like iCloud require an app password (not your Apple ID password).";
 
 /* Email — add-account form */
-"Provedor" = "Provider";
 "Nome para exibição" = "Display Name";
 "Segurança" = "Security";
 "Conta padrão" = "Default account";
@@ -339,8 +338,6 @@
 "opcional — deixe em branco para somente leitura" = "optional — leave blank for read-only";
 "Usuário SMTP" = "SMTP username";
 "Senha SMTP" = "SMTP password";
-"Testar conexão" = "Test connection";
-"Criar" = "Create";
 "Conexão OK" = "Connection OK";
 "O Gmail precisa de uma senha de app" = "Gmail needs an App Password";
 "Sua senha normal do Google não funciona no IMAP. Gere uma senha de app de 16 caracteres (precisa da verificação em 2 etapas ativada) e cole no campo Senha." = "Your normal Google password won't work for IMAP. Generate a 16-character App Password (2-Step Verification must be on) and paste it as the Password.";
