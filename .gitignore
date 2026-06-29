@@ -17,3 +17,21 @@ Local.xcconfig
 
 # macOS
 .DS_Store
+
+# Internal dev notes — kept locally, not published to the public repo.
+BUILD_MACOS.md
+CLAUDE.md
+COUNCIL_REPORT.md
+DIFFUSION_COMFYUI_PLAN.md
+ENDPOINTS.md
+FINAL_HANDOFF.md
+MB_DONE.md
+MB_ERRORS_SOLUTIONS.md
+MB_START.md
+POST_VALIDATION.md
+ROADMAP_MULTIPLATFORM.md
+ROLLBACK.md
+SECURITY_REVIEW.md
+TEAM_REVIEW.md
+TEST_REPORT.md
+TODO.md
