@@ -328,3 +328,27 @@
 "Definir como padrão" = "デフォルトに設定";
 "Remover conta" = "アカウントを削除";
 "Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "iCloud などのプロバイダはアプリ用パスワードが必要です（Apple ID のパスワードではありません）。";
+
+/* Email — add-account form */
+"Provedor" = "プロバイダ";
+"Nome para exibição" = "表示名";
+"Segurança" = "セキュリティ";
+"Conta padrão" = "デフォルトアカウント";
+"Usar como conta padrão" = "デフォルトのアカウントにする";
+"Usada quando nenhuma outra está selecionada." = "他に選択されていないときに使われます。";
+"opcional — deixe em branco para somente leitura" = "任意 — 空欄にすると受信専用になります";
+"Usuário SMTP" = "SMTP ユーザー名";
+"Senha SMTP" = "SMTP パスワード";
+"Testar conexão" = "接続をテスト";
+"Criar" = "作成";
+"Conexão OK" = "接続成功";
+"O Gmail precisa de uma senha de app" = "Gmail はアプリパスワードが必要です";
+"Sua senha normal do Google não funciona no IMAP. Gere uma senha de app de 16 caracteres (precisa da verificação em 2 etapas ativada) e cole no campo Senha." = "通常の Google パスワードは IMAP で使えません。16文字のアプリパスワードを生成し（2段階認証が必要）、パスワード欄に貼り付けてください。";
+"O iCloud precisa de uma senha de app" = "iCloud はアプリ用パスワードが必要です";
+"Entre no seu Apple ID, vá em Iniciar Sessão e Segurança → Senhas de App e gere uma (precisa de 2FA no Apple ID)." = "Apple ID にサインインし、「サインインとセキュリティ」→「Appパスワード」で生成してください（Apple ID で2ファクタ認証が必要）。";
+"O Yahoo precisa de uma senha de app" = "Yahoo はアプリパスワードが必要です";
+"Gere uma senha de app na Segurança da Conta Yahoo (precisa da verificação em 2 etapas ativada) e cole no campo Senha." = "Yahoo アカウントセキュリティでアプリパスワードを生成し（2段階認証が必要）、パスワード欄に貼り付けてください。";
+"Outlook / Office 365 precisa de OAuth" = "Outlook / Office 365 は OAuth が必要です";
+"A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "Microsoft はほとんどの Outlook / Microsoft 365 アカウントで IMAP/SMTP のパスワードログインを無効にしています。Odysseus はまだ Microsoft OAuth に対応していないため、このプリセットは将来用のプレースホルダーです。";
+"Gerar senha de app" = "アプリパスワードを生成";
+"Ler nota da Microsoft" = "Microsoft の説明を読む";

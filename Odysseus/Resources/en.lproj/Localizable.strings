@@ -328,3 +328,27 @@
 "Definir como padrão" = "Set as default";
 "Remover conta" = "Remove account";
 "Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "Providers like iCloud require an app password (not your Apple ID password).";
+
+/* Email — add-account form */
+"Provedor" = "Provider";
+"Nome para exibição" = "Display Name";
+"Segurança" = "Security";
+"Conta padrão" = "Default account";
+"Usar como conta padrão" = "Use as the default account";
+"Usada quando nenhuma outra está selecionada." = "Used when no other account is selected.";
+"opcional — deixe em branco para somente leitura" = "optional — leave blank for read-only";
+"Usuário SMTP" = "SMTP username";
+"Senha SMTP" = "SMTP password";
+"Testar conexão" = "Test connection";
+"Criar" = "Create";
+"Conexão OK" = "Connection OK";
+"O Gmail precisa de uma senha de app" = "Gmail needs an App Password";
+"Sua senha normal do Google não funciona no IMAP. Gere uma senha de app de 16 caracteres (precisa da verificação em 2 etapas ativada) e cole no campo Senha." = "Your normal Google password won't work for IMAP. Generate a 16-character App Password (2-Step Verification must be on) and paste it as the Password.";
+"O iCloud precisa de uma senha de app" = "iCloud needs an App-Specific Password";
+"Entre no seu Apple ID, vá em Iniciar Sessão e Segurança → Senhas de App e gere uma (precisa de 2FA no Apple ID)." = "Sign in to your Apple ID, go to Sign-In & Security → App-Specific Passwords, and generate one (requires 2FA on your Apple ID).";
+"O Yahoo precisa de uma senha de app" = "Yahoo needs an App Password";
+"Gere uma senha de app na Segurança da Conta Yahoo (precisa da verificação em 2 etapas ativada) e cole no campo Senha." = "Generate an App Password in Yahoo Account Security (2-Step Verification must be on) and paste it as the Password.";
+"Outlook / Office 365 precisa de OAuth" = "Outlook / Office 365 needs OAuth";
+"A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "Microsoft disables password login for IMAP/SMTP on most Outlook / Microsoft 365 accounts. Odysseus doesn't support Microsoft OAuth yet, so this preset is just a placeholder.";
+"Gerar senha de app" = "Generate App Password";
+"Ler nota da Microsoft" = "Read the Microsoft note";

@@ -328,3 +328,27 @@
 "Definir como padrão" = "ডিফল্ট হিসেবে সেট করুন";
 "Remover conta" = "অ্যাকাউন্ট সরান";
 "Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "iCloud-এর মতো প্রোভাইডারের জন্য অ্যাপ পাসওয়ার্ড প্রয়োজন (আপনার Apple ID পাসওয়ার্ড নয়)।";
+
+/* Email — add-account form */
+"Provedor" = "প্রোভাইডার";
+"Nome para exibição" = "প্রদর্শন নাম";
+"Segurança" = "নিরাপত্তা";
+"Conta padrão" = "ডিফল্ট অ্যাকাউন্ট";
+"Usar como conta padrão" = "ডিফল্ট অ্যাকাউন্ট হিসেবে ব্যবহার করুন";
+"Usada quando nenhuma outra está selecionada." = "অন্য কিছু নির্বাচিত না থাকলে এটি ব্যবহৃত হয়।";
+"opcional — deixe em branco para somente leitura" = "ঐচ্ছিক — শুধু পড়ার জন্য ফাঁকা রাখুন";
+"Usuário SMTP" = "SMTP ইউজারনেম";
+"Senha SMTP" = "SMTP পাসওয়ার্ড";
+"Testar conexão" = "সংযোগ পরীক্ষা করুন";
+"Criar" = "তৈরি করুন";
+"Conexão OK" = "সংযোগ ঠিক আছে";
+"O Gmail precisa de uma senha de app" = "Gmail-এর জন্য অ্যাপ পাসওয়ার্ড দরকার";
+"Sua senha normal do Google não funciona no IMAP. Gere uma senha de app de 16 caracteres (precisa da verificação em 2 etapas ativada) e cole no campo Senha." = "আপনার সাধারণ Google পাসওয়ার্ড IMAP-এ কাজ করে না। ১৬-অক্ষরের অ্যাপ পাসওয়ার্ড তৈরি করুন (২-ধাপ যাচাই চালু থাকতে হবে) এবং পাসওয়ার্ড ঘরে পেস্ট করুন।";
+"O iCloud precisa de uma senha de app" = "iCloud-এর জন্য অ্যাপ-নির্দিষ্ট পাসওয়ার্ড দরকার";
+"Entre no seu Apple ID, vá em Iniciar Sessão e Segurança → Senhas de App e gere uma (precisa de 2FA no Apple ID)." = "আপনার Apple ID-তে সাইন ইন করুন, Sign-In & Security → App-Specific Passwords-এ যান এবং একটি তৈরি করুন (Apple ID-তে 2FA প্রয়োজন)।";
+"O Yahoo precisa de uma senha de app" = "Yahoo-এর জন্য অ্যাপ পাসওয়ার্ড দরকার";
+"Gere uma senha de app na Segurança da Conta Yahoo (precisa da verificação em 2 etapas ativada) e cole no campo Senha." = "Yahoo অ্যাকাউন্ট সিকিউরিটিতে অ্যাপ পাসওয়ার্ড তৈরি করুন (২-ধাপ যাচাই চালু থাকতে হবে) এবং পাসওয়ার্ড ঘরে পেস্ট করুন।";
+"Outlook / Office 365 precisa de OAuth" = "Outlook / Office 365-এর জন্য OAuth দরকার";
+"A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "Microsoft বেশিরভাগ Outlook / Microsoft 365 অ্যাকাউন্টে IMAP/SMTP-এর জন্য পাসওয়ার্ড লগইন বন্ধ রাখে। Odysseus এখনও Microsoft OAuth সমর্থন করে না, তাই এই প্রিসেটটি কেবল একটি প্লেসহোল্ডার।";
+"Gerar senha de app" = "অ্যাপ পাসওয়ার্ড তৈরি করুন";
+"Ler nota da Microsoft" = "Microsoft-এর নোট পড়ুন";

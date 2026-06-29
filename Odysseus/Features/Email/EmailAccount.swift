@@ -45,18 +45,23 @@ struct EmailAccount: Decodable, Identifiable, Hashable, Sendable {
     }
 }
 
-/// Body for POST /api/email/accounts. SMTP defaults to the IMAP credentials,
-/// which is correct for almost every provider.
+/// Body for POST /api/email/accounts and POST /api/email/accounts/test — the
+/// exact field set the server's web form sends (see static/js/settings.js).
 struct EmailAccountPayload: Encodable {
     var name: String
     var from_address: String
+    var display_name: String
     var imap_host: String
     var imap_port: Int
     var imap_user: String
-    var imap_password: String
+    var imap_starttls: Bool
     var smtp_host: String
     var smtp_port: Int
+    var smtp_security: String   // "ssl" | "starttls" | "none"
     var smtp_user: String
-    var smtp_password: String
-    var smtp_security: String
+    var is_default: Bool
+    // Optional → Swift's synthesized Encodable omits these when nil, matching the
+    // web form (a blank password keeps whatever the server already stored).
+    var imap_password: String?
+    var smtp_password: String?
 }

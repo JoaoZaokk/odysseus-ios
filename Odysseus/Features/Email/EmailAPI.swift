@@ -1,5 +1,11 @@
 import Foundation
 
+/// A failed email connection test ({ ok: false, error }) surfaced as an error.
+struct EmailTestError: LocalizedError {
+    let message: String
+    var errorDescription: String? { message }
+}
+
 extension APIClient {
     func emailList(folder: String = "INBOX", limit: Int = 50) async throws -> EmailListResponse {
         let path = "/api/email/list?folder=\(encQuery(folder))&limit=\(limit)"
@@ -31,6 +37,17 @@ extension APIClient {
     func addEmailAccount(_ payload: EmailAccountPayload) async throws {
         let req = try jsonRequest("/api/email/accounts", method: "POST", body: payload)
         _ = try await send(req)
+    }
+
+    /// Tests IMAP (and SMTP, if configured) without saving.
+    /// POST /api/email/accounts/test → { ok: true } | { ok: false, error: "…" }.
+    func testEmailAccount(_ payload: EmailAccountPayload) async throws {
+        let data = try await send(jsonRequest("/api/email/accounts/test", method: "POST", body: payload))
+        if let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+           (obj["ok"] as? Bool) == false {
+            let msg = (obj["error"] as? String) ?? (obj["detail"] as? String) ?? "Falha no teste de conexão."
+            throw EmailTestError(message: msg)
+        }
     }
 
     func deleteEmailAccount(_ id: String) async throws {

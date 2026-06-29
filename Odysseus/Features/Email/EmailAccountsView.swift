@@ -23,6 +23,12 @@ final class EmailAccountsViewModel: ObservableObject {
         catch { self.error = msg(error); return false }
     }
 
+    /// Returns nil on success, or the failure message (which half failed).
+    func test(_ payload: EmailAccountPayload) async -> String? {
+        do { try await api.testEmailAccount(payload); return nil }
+        catch { return msg(error) }
+    }
+
     func delete(_ acc: EmailAccount) async {
         do { try await api.deleteEmailAccount(acc.id); accounts.removeAll { $0.id == acc.id } }
         catch { self.error = msg(error) }
@@ -90,20 +96,20 @@ struct EmailAccountsView: View {
             #if os(macOS)
             // Push (not a nested sheet — that fails to present on macOS).
             .navigationDestination(isPresented: $showAdd) {
-                AddEmailAccountView { payload in
+                AddEmailAccountView(onSave: { payload in
                     let ok = await vm.add(payload)
                     if ok { onChange() }
                     return ok
-                }
+                }, onTest: { payload in await vm.test(payload) })
             }
             #else
             .sheet(isPresented: $showAdd) {
                 NavigationStack {
-                    AddEmailAccountView { payload in
+                    AddEmailAccountView(onSave: { payload in
                         let ok = await vm.add(payload)
                         if ok { onChange() }
                         return ok
-                    }
+                    }, onTest: { payload in await vm.test(payload) })
                 }
             }
             #endif
@@ -221,28 +227,39 @@ struct EmailAccountsView: View {
 struct AddEmailAccountView: View {
     /// Returns true on success so the sheet can close.
     let onSave: (EmailAccountPayload) async -> Bool
+    /// Returns nil on success, else the failure message. Tests without saving.
+    var onTest: (EmailAccountPayload) async -> String? = { _ in nil }
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
 
+    @State private var providerID = ""          // "" = Custom
     @State private var name = ""
-    @State private var email = ""
+    @State private var email = ""                // from_address
+    @State private var displayName = ""
     @State private var imapHost = ""
     @State private var imapPort = "993"
     @State private var imapUser = ""
     @State private var password = ""
+    @State private var imapStarttls = false
     @State private var smtpHost = ""
-    @State private var smtpPort = "587"
+    @State private var smtpPort = "465"
+    @State private var smtpSecurity = "ssl"      // ssl | starttls | none
     @State private var sameAsImap = true
+    @State private var smtpUser = ""
+    @State private var smtpPassword = ""
+    @State private var isDefault = false
     @State private var saving = false
+    @State private var testing = false
+    @State private var testResult: TestResult?
     @State private var error: String?
-    // Last host values we auto-filled, so changing the email updates them but a
-    // host the user typed by hand is never clobbered.
-    @State private var autoImapHost = ""
-    @State private var autoSmtpHost = ""
+
+    enum TestResult: Equatable { case ok, fail(String) }
 
     private var canSave: Bool {
         !email.isEmpty && !imapHost.isEmpty && !password.isEmpty
     }
+    private var current: EmailProvider { EmailProvider.with(id: providerID) }
 
     // Plain content (no own NavigationStack): the caller provides navigation —
     // a sheet-wrapped NavigationStack on iOS, a navigationDestination push on macOS
@@ -250,34 +267,13 @@ struct AddEmailAccountView: View {
     var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 14) {
-                    group("Conta") {
-                        field("Nome (opcional)", $name, placeholder: "Trabalho")
-                        field("Email", $email, placeholder: "voce@exemplo.com")
-                            .onChange(of: email) { old, new in autofill(fromEmail: old, to: new) }
-                    }
-                    group("IMAP (entrada)") {
-                        field("Servidor", $imapHost, placeholder: "imap.gmail.com")
-                        HStack(alignment: .bottom, spacing: 10) {
-                            field("Porta", $imapPort, placeholder: "993", numeric: true).frame(width: 110)
-                            field("Usuário", $imapUser, placeholder: "voce@exemplo.com")
-                        }
-                        field("Senha", $password, placeholder: "•••••••", secure: true)
-                    }
-                    group("SMTP (envio)") {
-                        Toggle(isOn: $sameAsImap) {
-                            Text("SMTP igual ao IMAP").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
-                        }.tint(theme.accent)
-                        if !sameAsImap {
-                            field("Servidor SMTP", $smtpHost, placeholder: "smtp.gmail.com")
-                            field("Porta SMTP", $smtpPort, placeholder: "587", numeric: true).frame(width: 110)
-                        }
-                        Text("Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA.")
-                            .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    if let error {
-                        Text(error).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
-                    }
+                    providerGroup
+                    accountGroup
+                    imapGroup
+                    smtpGroup
+                    defaultGroup
+                    statusRow
+                    actionRow
                 }
                 .padding(16)
             }
@@ -288,12 +284,169 @@ struct AddEmailAccountView: View {
             #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    if saving { ProgressView().controlSize(.small) }
-                    else { Button("Salvar") { save() }.disabled(!canSave) }
-                }
             }
             .tint(theme.accent)
+    }
+
+    // MARK: - Sections
+
+    private var providerGroup: some View {
+        group("Provedor") {
+            Menu {
+                Button("Custom…") { applyProvider("") }
+                ForEach(EmailProvider.all) { p in Button(p.label) { applyProvider(p.id) } }
+            } label: {
+                HStack {
+                    Text(providerID.isEmpty ? "Custom…" : current.label)
+                        .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    Spacer()
+                    Image(systemName: "chevron.up.chevron.down").font(.caption2).foregroundStyle(theme.secondaryText)
+                }
+                .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
+                .contentShape(Rectangle())
+            }
+            if let note = current.note { providerBanner(note) }
+        }
+    }
+
+    private func providerBanner(_ note: EmailProvider.Note) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(LocalizedStringKey(note.title))
+                .font(.ody(size: 12, weight: .semibold, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(note.body))
+                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .fixedSize(horizontal: false, vertical: true)
+            Button {
+                if let url = URL(string: note.url) { openURL(url) }
+            } label: {
+                Label(LocalizedStringKey(note.linkLabel), systemImage: "arrow.up.forward.square")
+                    .font(.ody(size: 11, weight: .semibold, design: .monospaced))
+                    .padding(.horizontal, 12).padding(.vertical, 7)
+                    .background(theme.accent, in: Capsule()).foregroundStyle(.white)
+            }.buttonStyle(.plain).padding(.top, 2)
+        }
+        .padding(11).frame(maxWidth: .infinity, alignment: .leading)
+        .background(theme.accent.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
+        .overlay(alignment: .leading) { Rectangle().fill(theme.accent).frame(width: 3) }
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+    }
+
+    private var accountGroup: some View {
+        group("Conta") {
+            field("Nome (opcional)", $name, placeholder: "Trabalho")
+            field("Email", $email, placeholder: "voce@exemplo.com")
+                .onChange(of: email) { old, new in autofill(fromEmail: old, to: new) }
+            field("Nome para exibição", $displayName, placeholder: "Seu Nome")
+        }
+    }
+
+    private var imapGroup: some View {
+        group("IMAP (entrada)") {
+            field("Servidor", $imapHost, placeholder: "imap.gmail.com")
+            HStack(alignment: .bottom, spacing: 10) {
+                field("Porta", $imapPort, placeholder: "993", numeric: true).frame(width: 110)
+                field("Usuário", $imapUser, placeholder: "voce@exemplo.com")
+            }
+            field("Senha", $password, placeholder: "•••••••", secure: true)
+            toggleRow("STARTTLS", $imapStarttls)
+        }
+    }
+
+    private var smtpGroup: some View {
+        group("SMTP (envio)") {
+            Text("opcional — deixe em branco para somente leitura")
+                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            field("Servidor SMTP", $smtpHost, placeholder: "smtp.gmail.com")
+            HStack(alignment: .bottom, spacing: 10) {
+                field("Porta SMTP", $smtpPort, placeholder: "465", numeric: true).frame(width: 110)
+                securityField
+            }
+            toggleRow("SMTP igual ao IMAP", $sameAsImap)
+            if !sameAsImap {
+                field("Usuário SMTP", $smtpUser, placeholder: "voce@exemplo.com")
+                field("Senha SMTP", $smtpPassword, placeholder: "•••••••", secure: true)
+            }
+        }
+    }
+
+    private var defaultGroup: some View {
+        group("Conta padrão") {
+            toggleRow("Usar como conta padrão", $isDefault)
+            Text("Usada quando nenhuma outra está selecionada.")
+                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+        }
+    }
+
+    @ViewBuilder
+    private var statusRow: some View {
+        if let error {
+            Text(error).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+        }
+        switch testResult {
+        case .ok:
+            Label("Conexão OK", systemImage: "checkmark.circle.fill")
+                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "50fa7b"))
+        case .fail(let m):
+            Label(m, systemImage: "xmark.octagon.fill")
+                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+                .fixedSize(horizontal: false, vertical: true)
+        case nil:
+            EmptyView()
+        }
+    }
+
+    private var actionRow: some View {
+        HStack(spacing: 10) {
+            Button { runTest() } label: {
+                HStack(spacing: 6) {
+                    if testing { ProgressView().controlSize(.small) }
+                    else { Image(systemName: "bolt.horizontal.circle") }
+                    Text("Testar conexão")
+                }
+                .font(.ody(.subheadline, design: .monospaced))
+                .padding(.horizontal, 16).padding(.vertical, 10)
+                .overlay(Capsule().stroke(theme.border, lineWidth: 1)).foregroundStyle(theme.fg)
+            }.buttonStyle(.plain).disabled(!canSave || testing)
+            Spacer()
+            Button { save() } label: {
+                HStack(spacing: 6) {
+                    if saving { ProgressView().controlSize(.small) }
+                    else { Image(systemName: "checkmark") }
+                    Text("Criar")
+                }
+                .font(.ody(.subheadline, design: .monospaced))
+                .padding(.horizontal, 18).padding(.vertical, 10)
+                .background(canSave ? theme.accent : theme.border, in: Capsule())
+                .foregroundStyle(.white)
+            }.buttonStyle(.plain).disabled(!canSave || saving)
+        }
+    }
+
+    private func toggleRow(_ label: String, _ bind: Binding<Bool>) -> some View {
+        Toggle(isOn: bind) {
+            Text(LocalizedStringKey(label)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+        }.tint(theme.accent)
+    }
+
+    private var securityField: some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text("Segurança").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Menu {
+                Button("SSL") { smtpSecurity = "ssl" }
+                Button("STARTTLS") { smtpSecurity = "starttls" }
+                Button("None") { smtpSecurity = "none" }
+            } label: {
+                HStack {
+                    Text(smtpSecurity.uppercased()).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    Spacer()
+                    Image(systemName: "chevron.up.chevron.down").font(.caption2).foregroundStyle(theme.secondaryText)
+                }
+                .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
+                .contentShape(Rectangle())
+            }
+        }
     }
 
     // MARK: - Themed building blocks (labels above fields — fixes the macOS
@@ -331,108 +484,70 @@ struct AddEmailAccountView: View {
         }
     }
 
-    /// Mirror the email into the username and pre-fill known provider servers,
-    /// without clobbering anything the user typed by hand.
+    // MARK: - Logic
+
+    /// Apply a provider preset (host/port/STARTTLS/security). "" = Custom: leave
+    /// the fields as the user has them.
+    private func applyProvider(_ id: String) {
+        providerID = id
+        testResult = nil
+        guard !id.isEmpty else { return }
+        let p = EmailProvider.with(id: id)
+        if !p.imapHost.isEmpty { imapHost = p.imapHost }
+        imapPort = String(p.imapPort)
+        imapStarttls = p.imapStarttls
+        smtpHost = p.smtpHost
+        smtpPort = String(p.smtpPort)
+        smtpSecurity = p.smtpSecurity
+    }
+
+    /// Mirror the email into the username, and auto-select a provider from the
+    /// domain while still on Custom — without clobbering manual edits.
     private func autofill(fromEmail old: String, to new: String) {
-        // Username follows the email until the user edits it manually.
         if imapUser.isEmpty || imapUser == old { imapUser = new }
-        guard let p = EmailProviderDefaults.provider(forEmail: new) else { return }
-        if imapHost.isEmpty || imapHost == autoImapHost { imapHost = p.imapHost; autoImapHost = p.imapHost }
-        if smtpHost.isEmpty || smtpHost == autoSmtpHost { smtpHost = p.smtpHost; autoSmtpHost = p.smtpHost }
-        if imapPort.isEmpty || imapPort == "993" { imapPort = String(p.imapPort) }
-        if !sameAsImap { smtpPort = String(p.smtpPort) }
+        if providerID.isEmpty, let p = EmailProvider.match(email: new) { applyProvider(p.id) }
+    }
+
+    /// The exact field set the server's web form posts (static/js/settings.js).
+    private func buildPayload() -> EmailAccountPayload {
+        let user = imapUser.isEmpty ? email : imapUser
+        let smtpU = sameAsImap ? user : (smtpUser.isEmpty ? user : smtpUser)
+        let smtpP = sameAsImap ? password : smtpPassword
+        return EmailAccountPayload(
+            name: name.isEmpty ? email : name,
+            from_address: email,
+            display_name: displayName,
+            imap_host: imapHost,
+            imap_port: Int(imapPort) ?? 993,
+            imap_user: user,
+            imap_starttls: imapStarttls,
+            smtp_host: smtpHost,
+            smtp_port: Int(smtpPort) ?? 465,
+            smtp_security: smtpSecurity,
+            smtp_user: smtpU,
+            is_default: isDefault,
+            imap_password: password.isEmpty ? nil : password,
+            smtp_password: smtpP.isEmpty ? nil : smtpP
+        )
+    }
+
+    private func runTest() {
+        testing = true; testResult = nil; error = nil
+        let payload = buildPayload()
+        Task {
+            let msg = await onTest(payload)
+            testing = false
+            testResult = (msg == nil) ? .ok : .fail(msg ?? "")
+        }
     }
 
     private func save() {
-        // Pick the right SMTP host/port/security. "Same as IMAP" no longer means
-        // a hardcoded 465 — Apple needs 587/STARTTLS, so derive from the host.
-        let smtp: (host: String, port: Int, security: String)
-        if sameAsImap {
-            smtp = EmailProviderDefaults.smtp(forImapHost: imapHost)
-        } else {
-            let port = Int(smtpPort) ?? 587
-            smtp = (smtpHost, port, port == 465 ? "ssl" : "starttls")
-        }
-        let payload = EmailAccountPayload(
-            name: name.isEmpty ? email : name,
-            from_address: email,
-            imap_host: imapHost,
-            imap_port: Int(imapPort) ?? 993,
-            imap_user: imapUser.isEmpty ? email : imapUser,
-            imap_password: password,
-            smtp_host: smtp.host,
-            smtp_port: smtp.port,
-            smtp_user: imapUser.isEmpty ? email : imapUser,
-            smtp_password: password,
-            smtp_security: smtp.security
-        )
         saving = true; error = nil
+        let payload = buildPayload()
         Task {
             let ok = await onSave(payload)
             saving = false
             if ok { dismiss() } else { error = "Não consegui salvar. Verifique servidor, usuário e senha." }
         }
-    }
-}
-
-/// Known IMAP/SMTP defaults so the user doesn't have to memorize hostnames — and,
-/// critically, so the right SMTP port is used (Apple is 587/STARTTLS, not 465/SSL;
-/// only Gmail/Yahoo/AOL use 465/SSL). The generic fallback is 587/STARTTLS, which
-/// is far more universal than 465.
-enum EmailProviderDefaults {
-    struct Provider {
-        let imapHost: String
-        let imapPort: Int
-        let smtpHost: String
-        let smtpPort: Int
-        let smtpSecurity: String   // "ssl" (implicit TLS) | "starttls"
-    }
-
-    /// Match by the email domain.
-    static func provider(forEmail email: String) -> Provider? {
-        let domain = email.split(separator: "@").last.map { $0.lowercased() } ?? ""
-        switch domain {
-        case "icloud.com", "me.com", "mac.com":
-            return Provider(imapHost: "imap.mail.me.com", imapPort: 993,
-                            smtpHost: "smtp.mail.me.com", smtpPort: 587, smtpSecurity: "starttls")
-        case "gmail.com", "googlemail.com":
-            return Provider(imapHost: "imap.gmail.com", imapPort: 993,
-                            smtpHost: "smtp.gmail.com", smtpPort: 465, smtpSecurity: "ssl")
-        case "outlook.com", "hotmail.com", "live.com", "msn.com", "office365.com":
-            return Provider(imapHost: "outlook.office365.com", imapPort: 993,
-                            smtpHost: "smtp.office365.com", smtpPort: 587, smtpSecurity: "starttls")
-        case "yahoo.com", "ymail.com", "rocketmail.com":
-            return Provider(imapHost: "imap.mail.yahoo.com", imapPort: 993,
-                            smtpHost: "smtp.mail.yahoo.com", smtpPort: 465, smtpSecurity: "ssl")
-        case "aol.com":
-            return Provider(imapHost: "imap.aol.com", imapPort: 993,
-                            smtpHost: "smtp.aol.com", smtpPort: 465, smtpSecurity: "ssl")
-        case "zoho.com":
-            return Provider(imapHost: "imap.zoho.com", imapPort: 993,
-                            smtpHost: "smtp.zoho.com", smtpPort: 587, smtpSecurity: "starttls")
-        case "gmx.com", "gmx.net":
-            return Provider(imapHost: "imap.gmx.com", imapPort: 993,
-                            smtpHost: "mail.gmx.com", smtpPort: 587, smtpSecurity: "starttls")
-        default:
-            return nil
-        }
-    }
-
-    /// SMTP settings to use when "SMTP same as IMAP" is on. Derives from the IMAP
-    /// host so a known provider gets the right port even if the user typed the host
-    /// by hand; otherwise host with imap→smtp and 587/STARTTLS.
-    static func smtp(forImapHost host: String) -> (host: String, port: Int, security: String) {
-        let h = host.lowercased()
-        if h.contains("me.com") || h.contains("icloud") { return ("smtp.mail.me.com", 587, "starttls") }
-        if h.contains("gmail") || h.contains("googlemail") { return ("smtp.gmail.com", 465, "ssl") }
-        if h.contains("office365") || h.contains("outlook") || h.contains("hotmail") || h.contains("live.com") {
-            return ("smtp.office365.com", 587, "starttls")
-        }
-        if h.contains("yahoo") { return ("smtp.mail.yahoo.com", 465, "ssl") }
-        if h.contains("aol") { return ("smtp.aol.com", 465, "ssl") }
-        if h.contains("zoho") { return ("smtp.zoho.com", 587, "starttls") }
-        if h.contains("gmx") { return ("mail.gmx.com", 587, "starttls") }
-        let smtpHost = host.replacingOccurrences(of: "imap", with: "smtp")
-        return (smtpHost, 587, "starttls")
     }
 }
