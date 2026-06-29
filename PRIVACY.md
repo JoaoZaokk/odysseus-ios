@@ -1,44 +1,40 @@
-# Política de Privacidade — Odysseus
+# Privacy Policy — Odysseus
 
-_Última atualização: 24 de junho de 2026_
+_Last updated: June 28, 2026_
 
-O **Odysseus** é um aplicativo **cliente** que se conecta a um servidor de IA
-**auto-hospedado (self-hosted)** que **você** configura e controla. O app não é
-operado por nenhum serviço de nuvem nosso.
+**Odysseus** is a **client** app that connects to a **self-hosted** AI server that
+**you** set up and control. The app is not operated by any cloud service of ours.
 
-## O que o app coleta
+## What the app collects
 
-**Nada.** O Odysseus não possui servidores próprios, não usa SDKs de analytics,
-não exibe anúncios e não rastreia você. Não há cadastro nem conta criada conosco.
+**Nothing.** Odysseus has no servers of its own, uses no analytics SDKs, shows no
+ads, and does not track you. There is no sign-up and no account created with us.
 
-## Para onde seus dados vão
+## Where your data goes
 
-Todo o conteúdo que você digita, envia ou recebe — mensagens, documentos,
-anexos, texto ditado por voz — trafega **exclusivamente entre o seu dispositivo
-e o endereço de servidor que você informa** nos Ajustes do app. Esses dados são
-processados e armazenados pelo **seu próprio servidor**, conforme a configuração
-dele. Os desenvolvedores do app **não têm acesso** a esse tráfego nem a esses
-dados.
+Everything you type, send, or receive — messages, documents, attachments, voice-dictated
+text — travels **only between your device and the server address you enter** in the app's
+Settings. That data is processed and stored by **your own server**, according to how you
+configure it. The app's developers **have no access** to that traffic or that data.
 
-## Dados armazenados no dispositivo
+## Data stored on the device
 
-- O endereço do servidor e suas preferências (tema, ajustes) ficam no
-  armazenamento local do app, no seu dispositivo.
-- A autenticação usa um **cookie de sessão** fornecido pelo seu servidor,
-  guardado no armazenamento do sistema. Ele nunca é enviado a terceiros.
+- The server address and your preferences (theme, settings) live in the app's local
+  storage on your device.
+- Authentication uses a **session cookie** issued by your server, kept in the system's
+  storage. It is never sent to any third party.
 
-## Microfone e voz
+## Microphone and voice
 
-Quando você usa o ditado por voz, o áudio é transcrito **no próprio dispositivo**
-(modelo Whisper embarcado no app). O áudio **não** é enviado a nenhum serviço de
-terceiros para transcrição. Apenas o texto resultante segue para o seu servidor,
-como qualquer outra mensagem.
+When you use voice dictation, the audio is transcribed **on the device itself** (the
+Whisper model embedded in the app). The audio is **not** sent to any third-party service
+for transcription. Only the resulting text goes to your server, like any other message.
 
-## Terceiros
+## Third parties
 
-O app **não compartilha dados com terceiros**. A única conexão de rede que ele
-faz é com o servidor que você configurar.
+The app **does not share data with third parties**. The only network connection it makes
+is to the server you configure.
 
-## Contato
+## Contact
 
-Dúvidas sobre privacidade: **privacidade@macrozao.online**
+Privacy questions: **privacidade@macrozao.online**

@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## [1.1] — 2026-06-28
+
+### Added
+- **Deep Research, rebuilt**: live step-by-step graph, configurable search modes, a visual
+  report that opens side by side, and history of past research (save and resume).
+- **Cookbook**: browse and install packages and engines, with live status.
+- **Compare**: ask the same question to two models side by side, streaming at once.
+- **Tasks**: scheduled agents (cron/event) — view status, run now, pause, and resume.
+- **Add models from the phone**: connect endpoints and enable, disable, or remove models
+  without a computer.
+- **Localization**: Portuguese, English, Japanese, Hindi, and Bengali, with automatic
+  device-language detection (Settings › Language).
+
+### Fixed
+- **Session not persisting** (`HTTPCookieStorage.shared`): the session cookie was silently
+  dropped, so the app asked to log in on every launch and authenticated screens failed with
+  "session expired". Sessions now persist and authenticated data loads correctly.
+- **Theming in menus/sheets**: every theme is now applied consistently (no more dark menus
+  on light themes or mismatched system selectors).
+- Various stability and polish fixes.
+
+### Release
+- iOS app bumped to **1.1 (build 3)** for App Store submission.
+
 ## [v1-macos-finalization] — 2026-06-24 (round 2: push-safety + hardening)
 
 ### Security — repo made push-safe
