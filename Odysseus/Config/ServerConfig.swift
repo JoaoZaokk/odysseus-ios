@@ -7,7 +7,9 @@ import Network
 struct ServerConfig: Equatable {
     var baseURL: URL
 
-    static let defaultURLString = "https://odysseus.macrozao.online"
+    /// Placeholder host — point the app at your own Odysseus server on first run
+    /// (tap the server label on the login screen). Never hardcode a real host here.
+    static let defaultURLString = "https://odysseus.example.com"
 
     private static let key = "odysseus.baseURL"
 

@@ -12,7 +12,7 @@ struct ServerSection: View {
         SettingsScroll("Servidor", subtitle: "Endereço do servidor Odysseus.") {
             SettingsCard {
                 Text("URL").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
-                TextField("https://odysseus.macrozao.online", text: $text)
+                TextField("https://odysseus.example.com", text: $text)
                     .textFieldStyle(.plain)
                     .font(.ody(.body, design: .monospaced)).foregroundStyle(theme.fg)
                     .textInputAutocapitalization(.never).autocorrectionDisabled().keyboardType(.URL)

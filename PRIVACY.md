@@ -37,4 +37,4 @@ is to the server you configure.
 
 ## Contact
 
-Privacy questions: **privacidade@macrozao.online**
+Privacy questions: open an issue at <https://github.com/JoaoZaokk/odysseus-ios/issues>
