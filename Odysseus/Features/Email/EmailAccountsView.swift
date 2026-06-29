@@ -231,10 +231,14 @@ struct AddEmailAccountView: View {
     @State private var imapUser = ""
     @State private var password = ""
     @State private var smtpHost = ""
-    @State private var smtpPort = "465"
+    @State private var smtpPort = "587"
     @State private var sameAsImap = true
     @State private var saving = false
     @State private var error: String?
+    // Last host values we auto-filled, so changing the email updates them but a
+    // host the user typed by hand is never clobbered.
+    @State private var autoImapHost = ""
+    @State private var autoSmtpHost = ""
 
     private var canSave: Bool {
         !email.isEmpty && !imapHost.isEmpty && !password.isEmpty
@@ -249,9 +253,7 @@ struct AddEmailAccountView: View {
                     group("Conta") {
                         field("Nome (opcional)", $name, placeholder: "Trabalho")
                         field("Email", $email, placeholder: "voce@exemplo.com")
-                            .onChange(of: email) { _, new in
-                                if imapUser.isEmpty || imapUser == name { imapUser = new }
-                            }
+                            .onChange(of: email) { old, new in autofill(fromEmail: old, to: new) }
                     }
                     group("IMAP (entrada)") {
                         field("Servidor", $imapHost, placeholder: "imap.gmail.com")
@@ -267,7 +269,7 @@ struct AddEmailAccountView: View {
                         }.tint(theme.accent)
                         if !sameAsImap {
                             field("Servidor SMTP", $smtpHost, placeholder: "smtp.gmail.com")
-                            field("Porta SMTP", $smtpPort, placeholder: "465", numeric: true).frame(width: 110)
+                            field("Porta SMTP", $smtpPort, placeholder: "587", numeric: true).frame(width: 110)
                         }
                         Text("Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA.")
                             .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
@@ -300,8 +302,12 @@ struct AddEmailAccountView: View {
     @ViewBuilder
     private func group<C: View>(_ title: String, @ViewBuilder _ content: () -> C) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(title.uppercased())
+            // Localize the KEY first, then uppercase the displayed text. Passing
+            // `title.uppercased()` (a String, not a literal) skips localization —
+            // that's why CONTA / IMAP (ENTRADA) / SMTP (ENVIO) stayed in Portuguese.
+            Text(LocalizedStringKey(title))
                 .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .textCase(.uppercase)
             content()
         }
         .padding(14)
@@ -325,7 +331,28 @@ struct AddEmailAccountView: View {
         }
     }
 
+    /// Mirror the email into the username and pre-fill known provider servers,
+    /// without clobbering anything the user typed by hand.
+    private func autofill(fromEmail old: String, to new: String) {
+        // Username follows the email until the user edits it manually.
+        if imapUser.isEmpty || imapUser == old { imapUser = new }
+        guard let p = EmailProviderDefaults.provider(forEmail: new) else { return }
+        if imapHost.isEmpty || imapHost == autoImapHost { imapHost = p.imapHost; autoImapHost = p.imapHost }
+        if smtpHost.isEmpty || smtpHost == autoSmtpHost { smtpHost = p.smtpHost; autoSmtpHost = p.smtpHost }
+        if imapPort.isEmpty || imapPort == "993" { imapPort = String(p.imapPort) }
+        if !sameAsImap { smtpPort = String(p.smtpPort) }
+    }
+
     private func save() {
+        // Pick the right SMTP host/port/security. "Same as IMAP" no longer means
+        // a hardcoded 465 — Apple needs 587/STARTTLS, so derive from the host.
+        let smtp: (host: String, port: Int, security: String)
+        if sameAsImap {
+            smtp = EmailProviderDefaults.smtp(forImapHost: imapHost)
+        } else {
+            let port = Int(smtpPort) ?? 587
+            smtp = (smtpHost, port, port == 465 ? "ssl" : "starttls")
+        }
         let payload = EmailAccountPayload(
             name: name.isEmpty ? email : name,
             from_address: email,
@@ -333,11 +360,11 @@ struct AddEmailAccountView: View {
             imap_port: Int(imapPort) ?? 993,
             imap_user: imapUser.isEmpty ? email : imapUser,
             imap_password: password,
-            smtp_host: sameAsImap ? imapHost.replacingOccurrences(of: "imap", with: "smtp") : smtpHost,
-            smtp_port: sameAsImap ? 465 : (Int(smtpPort) ?? 465),
+            smtp_host: smtp.host,
+            smtp_port: smtp.port,
             smtp_user: imapUser.isEmpty ? email : imapUser,
             smtp_password: password,
-            smtp_security: (sameAsImap ? 465 : (Int(smtpPort) ?? 465)) == 587 ? "starttls" : "ssl"
+            smtp_security: smtp.security
         )
         saving = true; error = nil
         Task {
@@ -345,5 +372,67 @@ struct AddEmailAccountView: View {
             saving = false
             if ok { dismiss() } else { error = "Não consegui salvar. Verifique servidor, usuário e senha." }
         }
+    }
+}
+
+/// Known IMAP/SMTP defaults so the user doesn't have to memorize hostnames — and,
+/// critically, so the right SMTP port is used (Apple is 587/STARTTLS, not 465/SSL;
+/// only Gmail/Yahoo/AOL use 465/SSL). The generic fallback is 587/STARTTLS, which
+/// is far more universal than 465.
+enum EmailProviderDefaults {
+    struct Provider {
+        let imapHost: String
+        let imapPort: Int
+        let smtpHost: String
+        let smtpPort: Int
+        let smtpSecurity: String   // "ssl" (implicit TLS) | "starttls"
+    }
+
+    /// Match by the email domain.
+    static func provider(forEmail email: String) -> Provider? {
+        let domain = email.split(separator: "@").last.map { $0.lowercased() } ?? ""
+        switch domain {
+        case "icloud.com", "me.com", "mac.com":
+            return Provider(imapHost: "imap.mail.me.com", imapPort: 993,
+                            smtpHost: "smtp.mail.me.com", smtpPort: 587, smtpSecurity: "starttls")
+        case "gmail.com", "googlemail.com":
+            return Provider(imapHost: "imap.gmail.com", imapPort: 993,
+                            smtpHost: "smtp.gmail.com", smtpPort: 465, smtpSecurity: "ssl")
+        case "outlook.com", "hotmail.com", "live.com", "msn.com", "office365.com":
+            return Provider(imapHost: "outlook.office365.com", imapPort: 993,
+                            smtpHost: "smtp.office365.com", smtpPort: 587, smtpSecurity: "starttls")
+        case "yahoo.com", "ymail.com", "rocketmail.com":
+            return Provider(imapHost: "imap.mail.yahoo.com", imapPort: 993,
+                            smtpHost: "smtp.mail.yahoo.com", smtpPort: 465, smtpSecurity: "ssl")
+        case "aol.com":
+            return Provider(imapHost: "imap.aol.com", imapPort: 993,
+                            smtpHost: "smtp.aol.com", smtpPort: 465, smtpSecurity: "ssl")
+        case "zoho.com":
+            return Provider(imapHost: "imap.zoho.com", imapPort: 993,
+                            smtpHost: "smtp.zoho.com", smtpPort: 587, smtpSecurity: "starttls")
+        case "gmx.com", "gmx.net":
+            return Provider(imapHost: "imap.gmx.com", imapPort: 993,
+                            smtpHost: "mail.gmx.com", smtpPort: 587, smtpSecurity: "starttls")
+        default:
+            return nil
+        }
+    }
+
+    /// SMTP settings to use when "SMTP same as IMAP" is on. Derives from the IMAP
+    /// host so a known provider gets the right port even if the user typed the host
+    /// by hand; otherwise host with imap→smtp and 587/STARTTLS.
+    static func smtp(forImapHost host: String) -> (host: String, port: Int, security: String) {
+        let h = host.lowercased()
+        if h.contains("me.com") || h.contains("icloud") { return ("smtp.mail.me.com", 587, "starttls") }
+        if h.contains("gmail") || h.contains("googlemail") { return ("smtp.gmail.com", 465, "ssl") }
+        if h.contains("office365") || h.contains("outlook") || h.contains("hotmail") || h.contains("live.com") {
+            return ("smtp.office365.com", 587, "starttls")
+        }
+        if h.contains("yahoo") { return ("smtp.mail.yahoo.com", 465, "ssl") }
+        if h.contains("aol") { return ("smtp.aol.com", 465, "ssl") }
+        if h.contains("zoho") { return ("smtp.zoho.com", 587, "starttls") }
+        if h.contains("gmx") { return ("mail.gmx.com", 587, "starttls") }
+        let smtpHost = host.replacingOccurrences(of: "imap", with: "smtp")
+        return (smtpHost, 587, "starttls")
     }
 }

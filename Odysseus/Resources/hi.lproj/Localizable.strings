@@ -315,3 +315,16 @@
 "Usuário" = "यूज़रनेम";
 "Web" = "Web";
 "Álbum" = "एल्बम";
+
+/* Email flow */
+"Senha" = "पासवर्ड";
+"Carregando a caixa…" = "इनबॉक्स लोड हो रहा है…";
+"Não consegui carregar o email" = "ईमेल लोड नहीं हो सका";
+"Como conectar (passo a passo)" = "कैसे कनेक्ट करें (चरण-दर-चरण)";
+"Tentar de novo" = "फिर से कोशिश करें";
+"Contas" = "खाते";
+"Remover conta?" = "खाता हटाएँ?";
+"padrão" = "डिफ़ॉल्ट";
+"Definir como padrão" = "डिफ़ॉल्ट के रूप में सेट करें";
+"Remover conta" = "खाता हटाएँ";
+"Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "iCloud जैसे प्रोवाइडर ऐप पासवर्ड माँगते हैं (आपका Apple ID पासवर्ड नहीं)।";

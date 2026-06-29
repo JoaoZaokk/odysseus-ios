@@ -315,3 +315,16 @@
 "Usuário" = "ইউজারনেম";
 "Web" = "Web";
 "Álbum" = "অ্যালবাম";
+
+/* Email flow */
+"Senha" = "পাসওয়ার্ড";
+"Carregando a caixa…" = "ইনবক্স লোড হচ্ছে…";
+"Não consegui carregar o email" = "ইমেল লোড করা যায়নি";
+"Como conectar (passo a passo)" = "কীভাবে সংযোগ করবেন (ধাপে ধাপে)";
+"Tentar de novo" = "আবার চেষ্টা করুন";
+"Contas" = "অ্যাকাউন্ট";
+"Remover conta?" = "অ্যাকাউন্ট সরাবেন?";
+"padrão" = "ডিফল্ট";
+"Definir como padrão" = "ডিফল্ট হিসেবে সেট করুন";
+"Remover conta" = "অ্যাকাউন্ট সরান";
+"Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "iCloud-এর মতো প্রোভাইডারের জন্য অ্যাপ পাসওয়ার্ড প্রয়োজন (আপনার Apple ID পাসওয়ার্ড নয়)।";

@@ -315,3 +315,16 @@
 "Usuário" = "Username";
 "Web" = "Web";
 "Álbum" = "Album";
+
+/* Email flow */
+"Senha" = "Password";
+"Carregando a caixa…" = "Loading your inbox…";
+"Não consegui carregar o email" = "Couldn't load your email";
+"Como conectar (passo a passo)" = "How to connect (step by step)";
+"Tentar de novo" = "Try again";
+"Contas" = "Accounts";
+"Remover conta?" = "Remove account?";
+"padrão" = "default";
+"Definir como padrão" = "Set as default";
+"Remover conta" = "Remove account";
+"Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "Providers like iCloud require an app password (not your Apple ID password).";

@@ -315,3 +315,16 @@
 "Usuário" = "ユーザー名";
 "Web" = "Web";
 "Álbum" = "アルバム";
+
+/* Email flow */
+"Senha" = "パスワード";
+"Carregando a caixa…" = "受信箱を読み込み中…";
+"Não consegui carregar o email" = "メールを読み込めませんでした";
+"Como conectar (passo a passo)" = "接続方法（ステップごと）";
+"Tentar de novo" = "もう一度試す";
+"Contas" = "アカウント";
+"Remover conta?" = "アカウントを削除しますか？";
+"padrão" = "デフォルト";
+"Definir como padrão" = "デフォルトに設定";
+"Remover conta" = "アカウントを削除";
+"Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID)." = "iCloud などのプロバイダはアプリ用パスワードが必要です（Apple ID のパスワードではありません）。";
