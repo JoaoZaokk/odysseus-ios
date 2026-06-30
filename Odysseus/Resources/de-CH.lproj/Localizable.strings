@@ -353,3 +353,26 @@
 "Gerar senha de app" = "App-Passwort generieren";
 "Ler nota da Microsoft" = "Microsoft-Hinweis lesen";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/Port-Fehlanpassung. Verwende für IMAP Port 993 mit deaktiviertem STARTTLS (SSL); für SMTP Port 465 mit SSL oder 587 mit STARTTLS. Kombiniere keinen Port mit der falschen Sicherheitsstufe.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Keiner";
+"Estrelas" = "Sterne";
+"Chuva" = "Regen";
+"Brasas" = "Glut";
+"Pétalas" = "Blütenblätter";
+"Máx. de rounds" = "Max. Runden";
+"Orçamento de tokens (entrada)" = "Token-Budget (Eingabe)";
+"Teto duro de tokens" = "Hartes Token-Limit";
+"Timeout do stream (s)" = "Stream-Timeout (s)";
+"Limites de execução do agente e servidores MCP." = "Agent-Ausführungslimits und MCP-Server.";
+"Código & Arquivos" = "Code & Dateien";
+"Busca & Web" = "Suche & Web";
+"Documentos" = "Dokumente";
+"Mídia" = "Medien";
+"Conhecimento" = "Wissen";
+"Multi-agente" = "Multi-Agent";
+"Sessões" = "Sitzungen";
+"E-mail" = "E-Mail";
+"Calendário & Contatos" = "Kalender & Kontakte";
+"Modelos & Cookbook" = "Modelle & Cookbook";
+"Outros" = "Andere";

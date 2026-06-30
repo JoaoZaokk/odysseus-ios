@@ -350,3 +350,26 @@
 "Gerar senha de app" = "ایجاد App Password";
 "Ler nota da Microsoft" = "خواندن یادداشت Microsoft";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "عدم تطابق TLS/پورت. برای IMAP از پورت 993 با STARTTLS خاموش (SSL) استفاده کنید؛ برای SMTP از 465 با SSL، یا 587 با STARTTLS. پورت را با امنیت اشتباه ترکیب نکنید.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "هیچ‌کدام";
+"Estrelas" = "ستاره‌ها";
+"Chuva" = "باران";
+"Brasas" = "اخگر";
+"Pétalas" = "گلبرگ‌ها";
+"Máx. de rounds" = "حداکثر دورها";
+"Orçamento de tokens (entrada)" = "بودجه توکن (ورودی)";
+"Teto duro de tokens" = "سقف سخت توکن";
+"Timeout do stream (s)" = "مهلت استریم (ثانیه)";
+"Limites de execução do agente e servidores MCP." = "محدودیت‌های اجرای عامل و سرورهای MCP.";
+"Código & Arquivos" = "کد و فایل‌ها";
+"Busca & Web" = "جست‌وجو و وب";
+"Documentos" = "اسناد";
+"Mídia" = "رسانه";
+"Conhecimento" = "دانش";
+"Multi-agente" = "چندعاملی";
+"Sessões" = "جلسات";
+"E-mail" = "ایمیل";
+"Calendário & Contatos" = "تقویم و مخاطبین";
+"Modelos & Cookbook" = "مدل‌ها و Cookbook";
+"Outros" = "سایر";

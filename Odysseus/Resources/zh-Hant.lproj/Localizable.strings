@@ -353,3 +353,26 @@
 "Gerar senha de app" = "生成 App Password";
 "Ler nota da Microsoft" = "閱讀 Microsoft 說明";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/連接埠不相符。IMAP 請使用連接埠 993 並關閉 STARTTLS（SSL）；SMTP 請使用 465（SSL）或 587（STARTTLS）。請勿混用連接埠與安全通訊協定。";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "無";
+"Estrelas" = "星空";
+"Chuva" = "雨";
+"Brasas" = "餘燼";
+"Pétalas" = "花瓣";
+"Máx. de rounds" = "最大回合數";
+"Orçamento de tokens (entrada)" = "權杖預算（輸入）";
+"Teto duro de tokens" = "權杖硬上限";
+"Timeout do stream (s)" = "串流逾時（秒）";
+"Limites de execução do agente e servidores MCP." = "代理執行限制與 MCP 伺服器。";
+"Código & Arquivos" = "程式碼與檔案";
+"Busca & Web" = "搜尋與網頁";
+"Documentos" = "文件";
+"Mídia" = "媒體";
+"Conhecimento" = "知識";
+"Multi-agente" = "多代理";
+"Sessões" = "工作階段";
+"E-mail" = "電子郵件";
+"Calendário & Contatos" = "行事曆與聯絡人";
+"Modelos & Cookbook" = "模型與 Cookbook";
+"Outros" = "其他";

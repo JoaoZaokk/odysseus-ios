@@ -353,3 +353,26 @@
 "Gerar senha de app" = "生成 App Password";
 "Ler nota da Microsoft" = "阅读 Microsoft 说明";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/端口不匹配。IMAP 请使用端口 993 并关闭 STARTTLS（SSL）；SMTP 请使用 465（SSL）或 587（STARTTLS）。请勿混用端口与安全协议。";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "无";
+"Estrelas" = "星空";
+"Chuva" = "雨";
+"Brasas" = "余烬";
+"Pétalas" = "花瓣";
+"Máx. de rounds" = "最大轮数";
+"Orçamento de tokens (entrada)" = "令牌预算（输入）";
+"Teto duro de tokens" = "令牌硬上限";
+"Timeout do stream (s)" = "流超时（秒）";
+"Limites de execução do agente e servidores MCP." = "智能体执行限制和 MCP 服务器。";
+"Código & Arquivos" = "代码与文件";
+"Busca & Web" = "搜索与网页";
+"Documentos" = "文档";
+"Mídia" = "媒体";
+"Conhecimento" = "知识";
+"Multi-agente" = "多智能体";
+"Sessões" = "会话";
+"E-mail" = "邮件";
+"Calendário & Contatos" = "日历与联系人";
+"Modelos & Cookbook" = "模型与 Cookbook";
+"Outros" = "其他";

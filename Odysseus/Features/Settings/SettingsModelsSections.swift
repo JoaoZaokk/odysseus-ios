@@ -234,7 +234,7 @@ struct AIDefaultsSection: View {
     }
 
     private func label(_ s: String) -> some View {
-        Text(s).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+        Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
     }
 
     private func endpointMenu(selected: String, includeSame: Bool, _ pick: @escaping (String) -> Void) -> some View {
@@ -361,7 +361,7 @@ struct AddModelsSection: View {
     }
 
     private func label(_ s: String) -> some View {
-        Text(s).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+        Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
     }
 
     @ViewBuilder private func field(_ bind: Binding<String>, placeholder: String, secure: Bool = false) -> some View {

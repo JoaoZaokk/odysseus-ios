@@ -353,3 +353,26 @@
 "Gerar senha de app" = "App-wachtwoord genereren";
 "Ler nota da Microsoft" = "Microsoft-notitie lezen";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/poort-mismatch. Gebruik voor IMAP poort 993 met STARTTLS uitgeschakeld (SSL); voor SMTP gebruik 465 met SSL, of 587 met STARTTLS. Combineer geen poort met de verkeerde beveiliging.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Geen";
+"Estrelas" = "Sterren";
+"Chuva" = "Regen";
+"Brasas" = "Sintels";
+"Pétalas" = "Bloemblaadjes";
+"Máx. de rounds" = "Max. rondes";
+"Orçamento de tokens (entrada)" = "Tokenbudget (invoer)";
+"Teto duro de tokens" = "Harde tokenlimiet";
+"Timeout do stream (s)" = "Stream-time-out (s)";
+"Limites de execução do agente e servidores MCP." = "Uitvoeringslimieten van de agent en MCP-servers.";
+"Código & Arquivos" = "Code & bestanden";
+"Busca & Web" = "Zoeken & web";
+"Documentos" = "Documenten";
+"Mídia" = "Media";
+"Conhecimento" = "Kennis";
+"Multi-agente" = "Multi-agent";
+"Sessões" = "Sessies";
+"E-mail" = "E-mail";
+"Calendário & Contatos" = "Agenda & contacten";
+"Modelos & Cookbook" = "Modellen & Cookbook";
+"Outros" = "Overige";

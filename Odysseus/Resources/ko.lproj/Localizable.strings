@@ -353,3 +353,26 @@
 "Gerar senha de app" = "App Password 생성";
 "Ler nota da Microsoft" = "Microsoft 안내 읽기";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/포트 불일치. IMAP은 STARTTLS를 끈(SSL) 993 포트를 사용하고, SMTP는 SSL로 465 또는 STARTTLS로 587을 사용하세요. 포트와 보안을 혼용하지 마세요.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "없음";
+"Estrelas" = "별";
+"Chuva" = "비";
+"Brasas" = "잉걸불";
+"Pétalas" = "꽃잎";
+"Máx. de rounds" = "최대 라운드";
+"Orçamento de tokens (entrada)" = "토큰 예산(입력)";
+"Teto duro de tokens" = "토큰 하드 한도";
+"Timeout do stream (s)" = "스트림 시간 초과(초)";
+"Limites de execução do agente e servidores MCP." = "에이전트 실행 제한 및 MCP 서버.";
+"Código & Arquivos" = "코드 및 파일";
+"Busca & Web" = "검색 및 웹";
+"Documentos" = "문서";
+"Mídia" = "미디어";
+"Conhecimento" = "지식";
+"Multi-agente" = "멀티 에이전트";
+"Sessões" = "세션";
+"E-mail" = "이메일";
+"Calendário & Contatos" = "캘린더 및 연락처";
+"Modelos & Cookbook" = "모델 및 Cookbook";
+"Outros" = "기타";

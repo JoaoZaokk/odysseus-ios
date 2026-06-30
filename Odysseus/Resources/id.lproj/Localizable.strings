@@ -353,3 +353,26 @@
 "Gerar senha de app" = "Buat App Password";
 "Ler nota da Microsoft" = "Baca catatan Microsoft";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "Ketidakcocokan TLS/port. Untuk IMAP gunakan port 993 dengan STARTTLS mati (SSL); untuk SMTP gunakan 465 dengan SSL, atau 587 dengan STARTTLS. Jangan mencampurkan port dengan keamanan yang salah.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Tidak ada";
+"Estrelas" = "Bintang";
+"Chuva" = "Hujan";
+"Brasas" = "Bara";
+"Pétalas" = "Kelopak";
+"Máx. de rounds" = "Maks. ronde";
+"Orçamento de tokens (entrada)" = "Anggaran token (input)";
+"Teto duro de tokens" = "Batas keras token";
+"Timeout do stream (s)" = "Batas waktu stream (dtk)";
+"Limites de execução do agente e servidores MCP." = "Batas eksekusi agen dan server MCP.";
+"Código & Arquivos" = "Kode & Berkas";
+"Busca & Web" = "Pencarian & Web";
+"Documentos" = "Dokumen";
+"Mídia" = "Media";
+"Conhecimento" = "Pengetahuan";
+"Multi-agente" = "Multi-agen";
+"Sessões" = "Sesi";
+"E-mail" = "Email";
+"Calendário & Contatos" = "Kalender & Kontak";
+"Modelos & Cookbook" = "Model & Cookbook";
+"Outros" = "Lainnya";

@@ -66,7 +66,10 @@ struct ThemePickerView: View {
     }
 
     private func sectionLabel(_ s: String) -> some View {
-        Text(s.uppercased())
+        // Localize THEN uppercase: `s.uppercased()` would hand Text a plain String
+        // (verbatim, no lookup), leaking the PT base literal in other languages.
+        Text(LocalizedStringKey(s))
+            .textCase(.uppercase)
             .font(.ody(.caption, design: .monospaced))
             .foregroundStyle(theme.secondaryText)
     }

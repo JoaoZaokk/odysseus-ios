@@ -76,7 +76,7 @@ struct MacSearchField: View {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(theme.secondaryText)
                 .font(.ody(size: 12))
-            TextField(prompt, text: $text)
+            TextField(LocalizedStringKey(prompt), text: $text)
                 .textFieldStyle(.plain)
                 .font(.ody(.subheadline, design: .monospaced))
                 .foregroundStyle(theme.fg)

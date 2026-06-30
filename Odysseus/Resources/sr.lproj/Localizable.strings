@@ -350,3 +350,26 @@
 "Gerar senha de app" = "Направи App Password";
 "Ler nota da Microsoft" = "Прочитај напомену Microsoft-а";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "Несклад TLS/порта. За IMAP користите порт 993 са искљученим STARTTLS (SSL); за SMTP користите 465 са SSL или 587 са STARTTLS. Не мешајте порт и безбедносни протокол.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Нема";
+"Estrelas" = "Звезде";
+"Chuva" = "Киша";
+"Brasas" = "Жар";
+"Pétalas" = "Латице";
+"Máx. de rounds" = "Макс. рунди";
+"Orçamento de tokens (entrada)" = "Буџет токена (улаз)";
+"Teto duro de tokens" = "Тврдо ограничење токена";
+"Timeout do stream (s)" = "Истек времена стрима (с)";
+"Limites de execução do agente e servidores MCP." = "Ограничења извршавања агента и MCP сервери.";
+"Código & Arquivos" = "Кôд и датотеке";
+"Busca & Web" = "Претрага и веб";
+"Documentos" = "Документи";
+"Mídia" = "Медији";
+"Conhecimento" = "Знање";
+"Multi-agente" = "Више агената";
+"Sessões" = "Сесије";
+"E-mail" = "Е-пошта";
+"Calendário & Contatos" = "Календар и контакти";
+"Modelos & Cookbook" = "Модели и Cookbook";
+"Outros" = "Остало";

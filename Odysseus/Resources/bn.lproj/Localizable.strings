@@ -353,3 +353,26 @@
 "Gerar senha de app" = "অ্যাপ পাসওয়ার্ড তৈরি করুন";
 "Ler nota da Microsoft" = "Microsoft-এর নোট পড়ুন";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/পোর্ট মিলছে না। IMAP-এর জন্য পোর্ট 993-এ STARTTLS বন্ধ রাখুন (SSL); SMTP-এর জন্য 465-এ SSL, অথবা 587-এ STARTTLS। পোর্ট ও নিরাপত্তা মিশিয়ে ফেলবেন না।";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "কোনোটিই নয়";
+"Estrelas" = "তারা";
+"Chuva" = "বৃষ্টি";
+"Brasas" = "অঙ্গার";
+"Pétalas" = "পাপড়ি";
+"Máx. de rounds" = "সর্বোচ্চ রাউন্ড";
+"Orçamento de tokens (entrada)" = "টোকেন বাজেট (ইনপুট)";
+"Teto duro de tokens" = "টোকেনের কঠোর সীমা";
+"Timeout do stream (s)" = "স্ট্রিম টাইমআউট (সে.)";
+"Limites de execução do agente e servidores MCP." = "এজেন্ট সম্পাদনের সীমা ও MCP সার্ভার।";
+"Código & Arquivos" = "কোড ও ফাইল";
+"Busca & Web" = "অনুসন্ধান ও ওয়েব";
+"Documentos" = "নথি";
+"Mídia" = "মিডিয়া";
+"Conhecimento" = "জ্ঞান";
+"Multi-agente" = "মাল্টি-এজেন্ট";
+"Sessões" = "সেশন";
+"E-mail" = "ইমেল";
+"Calendário & Contatos" = "ক্যালেন্ডার ও পরিচিতি";
+"Modelos & Cookbook" = "মডেল ও Cookbook";
+"Outros" = "অন্যান্য";

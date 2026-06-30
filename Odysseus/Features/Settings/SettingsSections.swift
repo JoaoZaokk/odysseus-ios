@@ -243,7 +243,7 @@ struct SearchSection: View {
     }
 
     private func label(_ s: String) -> some View {
-        Text(s).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+        Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
     }
     private func menuLabel(_ s: String) -> some View {
         HStack { Text(s).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg); Spacer(); Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }

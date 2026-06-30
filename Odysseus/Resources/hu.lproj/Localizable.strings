@@ -353,3 +353,26 @@
 "Gerar senha de app" = "App Password generálása";
 "Ler nota da Microsoft" = "Microsoft megjegyzés olvasása";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/port eltérés. Az IMAP-nál használjon 993-as portot STARTTLS nélkül (SSL); az SMTP-nél 465-öt SSL-lel, vagy 587-et STARTTLS-sel. Ne keverje össze a portot a biztonsági beállítással.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Nincs";
+"Estrelas" = "Csillagok";
+"Chuva" = "Eső";
+"Brasas" = "Parázs";
+"Pétalas" = "Szirmok";
+"Máx. de rounds" = "Max. körök";
+"Orçamento de tokens (entrada)" = "Tokenkeret (bemenet)";
+"Teto duro de tokens" = "Kemény tokenkorlát";
+"Timeout do stream (s)" = "Stream időtúllépés (mp)";
+"Limites de execução do agente e servidores MCP." = "Ügynök-végrehajtási korlátok és MCP-kiszolgálók.";
+"Código & Arquivos" = "Kód és fájlok";
+"Busca & Web" = "Keresés és web";
+"Documentos" = "Dokumentumok";
+"Mídia" = "Média";
+"Conhecimento" = "Tudás";
+"Multi-agente" = "Több ügynök";
+"Sessões" = "Munkamenetek";
+"E-mail" = "E-mail";
+"Calendário & Contatos" = "Naptár és névjegyek";
+"Modelos & Cookbook" = "Modellek és Cookbook";
+"Outros" = "Egyéb";

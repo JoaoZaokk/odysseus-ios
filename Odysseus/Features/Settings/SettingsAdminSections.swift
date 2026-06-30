@@ -425,7 +425,7 @@ struct BuiltinToolsCard: View {
             } label: {
                 HStack(spacing: 8) {
                     Image(systemName: cat.icon).font(.ody(size: 12)).foregroundStyle(theme.accent).frame(width: 18)
-                    Text(cat.label).font(.ody(size: 12, weight: .medium, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text(LocalizedStringKey(cat.label)).font(.ody(size: 12, weight: .medium, design: .monospaced)).foregroundStyle(theme.fg)
                     Spacer()
                     Text("\(on)/\(items.count)").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
                     Image(systemName: isOpen ? "chevron.down" : "chevron.right")

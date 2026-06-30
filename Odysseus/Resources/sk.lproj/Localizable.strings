@@ -353,3 +353,26 @@
 "Gerar senha de app" = "Vygenerovať heslo aplikácie";
 "Ler nota da Microsoft" = "Prečítať poznámku Microsoft";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "Nezhoda TLS/portu. Pre IMAP použite port 993 s vypnutým STARTTLS (SSL); pre SMTP použite 465 s SSL alebo 587 so STARTTLS. Nemiešajte port s nesprávnym zabezpečením.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Žiadne";
+"Estrelas" = "Hviezdy";
+"Chuva" = "Dážď";
+"Brasas" = "Uhlíky";
+"Pétalas" = "Lupienky";
+"Máx. de rounds" = "Max. kôl";
+"Orçamento de tokens (entrada)" = "Rozpočet tokenov (vstup)";
+"Teto duro de tokens" = "Tvrdý limit tokenov";
+"Timeout do stream (s)" = "Časový limit streamu (s)";
+"Limites de execução do agente e servidores MCP." = "Limity behu agenta a servery MCP.";
+"Código & Arquivos" = "Kód a súbory";
+"Busca & Web" = "Hľadanie a web";
+"Documentos" = "Dokumenty";
+"Mídia" = "Médiá";
+"Conhecimento" = "Znalosti";
+"Multi-agente" = "Multiagent";
+"Sessões" = "Relácie";
+"E-mail" = "E-mail";
+"Calendário & Contatos" = "Kalendár a kontakty";
+"Modelos & Cookbook" = "Modely a Cookbook";
+"Outros" = "Ostatné";

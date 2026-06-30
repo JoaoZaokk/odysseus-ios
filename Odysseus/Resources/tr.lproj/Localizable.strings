@@ -353,3 +353,26 @@
 "Gerar senha de app" = "App Password oluştur";
 "Ler nota da Microsoft" = "Microsoft notunu oku";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/port uyuşmazlığı. IMAP için STARTTLS kapalı (SSL) ile 993 portunu kullanın; SMTP için SSL ile 465 veya STARTTLS ile 587 kullanın. Port ile güvenliği karıştırmayın.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Yok";
+"Estrelas" = "Yıldızlar";
+"Chuva" = "Yağmur";
+"Brasas" = "Korlar";
+"Pétalas" = "Taç yaprakları";
+"Máx. de rounds" = "Maks. tur";
+"Orçamento de tokens (entrada)" = "Token bütçesi (giriş)";
+"Teto duro de tokens" = "Katı token sınırı";
+"Timeout do stream (s)" = "Akış zaman aşımı (sn)";
+"Limites de execução do agente e servidores MCP." = "Aracı yürütme sınırları ve MCP sunucuları.";
+"Código & Arquivos" = "Kod ve Dosyalar";
+"Busca & Web" = "Arama ve Web";
+"Documentos" = "Belgeler";
+"Mídia" = "Medya";
+"Conhecimento" = "Bilgi";
+"Multi-agente" = "Çoklu aracı";
+"Sessões" = "Oturumlar";
+"E-mail" = "E-posta";
+"Calendário & Contatos" = "Takvim ve Kişiler";
+"Modelos & Cookbook" = "Modeller ve Cookbook";
+"Outros" = "Diğer";

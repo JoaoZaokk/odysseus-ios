@@ -353,3 +353,26 @@
 "Gerar senha de app" = "Tạo App Password";
 "Ler nota da Microsoft" = "Đọc ghi chú của Microsoft";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "Không khớp TLS/cổng. Với IMAP dùng cổng 993 tắt STARTTLS (SSL); với SMTP dùng 465 với SSL, hoặc 587 với STARTTLS. Đừng nhầm lẫn cổng với bảo mật.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Không";
+"Estrelas" = "Sao";
+"Chuva" = "Mưa";
+"Brasas" = "Than hồng";
+"Pétalas" = "Cánh hoa";
+"Máx. de rounds" = "Số vòng tối đa";
+"Orçamento de tokens (entrada)" = "Ngân sách token (đầu vào)";
+"Teto duro de tokens" = "Giới hạn token cứng";
+"Timeout do stream (s)" = "Thời gian chờ luồng (giây)";
+"Limites de execução do agente e servidores MCP." = "Giới hạn thực thi tác nhân và máy chủ MCP.";
+"Código & Arquivos" = "Mã & Tệp";
+"Busca & Web" = "Tìm kiếm & Web";
+"Documentos" = "Tài liệu";
+"Mídia" = "Phương tiện";
+"Conhecimento" = "Kiến thức";
+"Multi-agente" = "Đa tác nhân";
+"Sessões" = "Phiên";
+"E-mail" = "Email";
+"Calendário & Contatos" = "Lịch & Danh bạ";
+"Modelos & Cookbook" = "Mô hình & Cookbook";
+"Outros" = "Khác";

@@ -353,3 +353,26 @@
 "Gerar senha de app" = "アプリパスワードを生成";
 "Ler nota da Microsoft" = "Microsoft の説明を読む";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS とポートの不一致です。IMAP はポート 993 で STARTTLS をオフ（SSL）に、SMTP は 465 で SSL、または 587 で STARTTLS にしてください。ポートとセキュリティを混在させないでください。";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "なし";
+"Estrelas" = "星";
+"Chuva" = "雨";
+"Brasas" = "残り火";
+"Pétalas" = "花びら";
+"Máx. de rounds" = "最大ラウンド数";
+"Orçamento de tokens (entrada)" = "トークン予算（入力）";
+"Teto duro de tokens" = "トークンのハード上限";
+"Timeout do stream (s)" = "ストリームのタイムアウト（秒）";
+"Limites de execução do agente e servidores MCP." = "エージェントの実行制限とMCPサーバー。";
+"Código & Arquivos" = "コードとファイル";
+"Busca & Web" = "検索とWeb";
+"Documentos" = "ドキュメント";
+"Mídia" = "メディア";
+"Conhecimento" = "ナレッジ";
+"Multi-agente" = "マルチエージェント";
+"Sessões" = "セッション";
+"E-mail" = "メール";
+"Calendário & Contatos" = "カレンダーと連絡先";
+"Modelos & Cookbook" = "モデルとCookbook";
+"Outros" = "その他";

@@ -353,3 +353,26 @@
 "Gerar senha de app" = "Generar contraseña de aplicación";
 "Ler nota da Microsoft" = "Leer nota de Microsoft";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "Error de TLS/puerto. En IMAP usa el puerto 993 con STARTTLS desactivado (SSL); en SMTP usa 465 con SSL, o 587 con STARTTLS. No mezcles puerto con seguridad incorrecta.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "Ninguno";
+"Estrelas" = "Estrellas";
+"Chuva" = "Lluvia";
+"Brasas" = "Brasas";
+"Pétalas" = "Pétalos";
+"Máx. de rounds" = "Máx. de rondas";
+"Orçamento de tokens (entrada)" = "Presupuesto de tokens (entrada)";
+"Teto duro de tokens" = "Límite máximo de tokens";
+"Timeout do stream (s)" = "Tiempo de espera del stream (s)";
+"Limites de execução do agente e servidores MCP." = "Límites de ejecución del agente y servidores MCP.";
+"Código & Arquivos" = "Código y archivos";
+"Busca & Web" = "Búsqueda y web";
+"Documentos" = "Documentos";
+"Mídia" = "Multimedia";
+"Conhecimento" = "Conocimiento";
+"Multi-agente" = "Multiagente";
+"Sessões" = "Sesiones";
+"E-mail" = "Correo";
+"Calendário & Contatos" = "Calendario y contactos";
+"Modelos & Cookbook" = "Modelos y Cookbook";
+"Outros" = "Otros";

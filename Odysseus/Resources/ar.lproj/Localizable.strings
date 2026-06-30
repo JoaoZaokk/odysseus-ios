@@ -350,3 +350,26 @@
 "Gerar senha de app" = "إنشاء App Password";
 "Ler nota da Microsoft" = "قراءة ملاحظة Microsoft";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "عدم تطابق TLS/المنفذ. في IMAP استخدم المنفذ 993 مع إيقاف STARTTLS (SSL)؛ في SMTP استخدم 465 مع SSL، أو 587 مع STARTTLS. لا تخلط منفذاً مع بروتوكول أمان خاطئ.";
+
+/* PT-leak fix (Themes + Agent Tools) */
+"Nenhum" = "لا شيء";
+"Estrelas" = "نجوم";
+"Chuva" = "مطر";
+"Brasas" = "جمر";
+"Pétalas" = "بتلات";
+"Máx. de rounds" = "أقصى عدد للجولات";
+"Orçamento de tokens (entrada)" = "ميزانية الرموز (الإدخال)";
+"Teto duro de tokens" = "الحد الأقصى الصارم للرموز";
+"Timeout do stream (s)" = "مهلة البث (ث)";
+"Limites de execução do agente e servidores MCP." = "حدود تنفيذ الوكيل وخوادم MCP.";
+"Código & Arquivos" = "الكود والملفات";
+"Busca & Web" = "البحث والويب";
+"Documentos" = "المستندات";
+"Mídia" = "الوسائط";
+"Conhecimento" = "المعرفة";
+"Multi-agente" = "متعدد الوكلاء";
+"Sessões" = "الجلسات";
+"E-mail" = "البريد الإلكتروني";
+"Calendário & Contatos" = "التقويم وجهات الاتصال";
+"Modelos & Cookbook" = "النماذج وCookbook";
+"Outros" = "أخرى";
