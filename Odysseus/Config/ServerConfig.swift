@@ -13,6 +13,12 @@ struct ServerConfig: Equatable {
 
     private static let key = "odysseus.baseURL"
 
+    /// True once the user has explicitly saved a server address (distinct from the
+    /// placeholder default). Drives the mandatory first-run server-setup gate — the
+    /// app is a client for a self-hosted server, so it can't do anything until the
+    /// user points it at their own Odysseus instance.
+    static var isConfigured: Bool { UserDefaults.standard.string(forKey: key) != nil }
+
     static func load() -> ServerConfig {
         let stored = UserDefaults.standard.string(forKey: key) ?? defaultURLString
         return ServerConfig(baseURL: URL(string: stored) ?? URL(string: defaultURLString)!)

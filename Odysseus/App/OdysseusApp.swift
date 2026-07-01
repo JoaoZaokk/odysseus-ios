@@ -72,6 +72,10 @@ struct RootView: View {
         }
         // Opt-in biometric app-lock (A2): covers everything until unlocked.
         .overlay { if app.locked { LockView() } }
+        // Mandatory first-run gate: the app is a client for a self-hosted server,
+        // so nothing works until the user points it at their own Odysseus server.
+        // Non-dismissible — it's an overlay, gone only once a server is saved.
+        .overlay { if !app.serverConfigured { ServerSetupView() } }
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .background {
                 app.relockIfNeeded()

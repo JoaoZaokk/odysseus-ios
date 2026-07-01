@@ -9,6 +9,10 @@ final class AppState: ObservableObject {
     @Published var features = Features()
     @Published var username: String?
 
+    /// False on first launch until the user saves a server address. While false,
+    /// RootView shows a mandatory, non-dismissible server-setup gate.
+    @Published var serverConfigured = ServerConfig.isConfigured
+
     // Login flow
     @Published var loginError: String?
     @Published var loggingIn = false
@@ -44,6 +48,8 @@ final class AppState: ObservableObject {
     /// Called on launch: check whether the persisted session cookie is still
     /// valid; if so, go straight to the main UI, otherwise show login.
     func bootstrap() async {
+        // No server yet → don't hit the placeholder host; the setup gate is showing.
+        guard ServerConfig.isConfigured else { phase = .login; return }
         do {
             let status = try await api.status()
             if status.authenticated {
@@ -142,6 +148,7 @@ final class AppState: ObservableObject {
         cfg.baseURL = url
         cfg.save()
         serverConfig = cfg
+        serverConfigured = true          // dismisses the first-run setup gate
         api.updateConfig(cfg)
         // Switching servers must not carry server A's session (cookie) or A's saved
         // credentials to server B — clear both and force a fresh login against B.

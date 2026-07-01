@@ -373,3 +373,7 @@
 "Calendário & Contatos" = "Calendar & Contacts";
 "Modelos & Cookbook" = "Models & Cookbook";
 "Outros" = "Other";
+
+/* First-run mandatory server setup */
+"Configure seu servidor" = "Set up your server";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus is a client for your own server. Enter your Odysseus server address to continue.";
