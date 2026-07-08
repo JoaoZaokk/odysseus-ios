@@ -13,6 +13,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     case ptBR = "pt-BR"
     case en   = "en"
     case es   = "es"
+    case fr   = "fr"
     case it   = "it"
     case de   = "de"
     case deAT = "de-AT"
@@ -53,6 +54,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         case .ptBR:   return ("Português (Brasil)", "Portuguese (Brazil)", "🇧🇷")
         case .en:     return ("English", "English", "🇺🇸")
         case .es:     return ("Español", "Spanish", "🇪🇸")
+        case .fr:     return ("Français", "French", "🇫🇷")
         case .it:     return ("Italiano", "Italian", "🇮🇹")
         case .de:     return ("Deutsch", "German", "🇩🇪")
         case .deAT:   return ("Deutsch (Österreich)", "German (Austria)", "🇦🇹")
@@ -115,7 +117,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
             return .de
         }
         let map: [String: AppLanguage] = [
-            "en": .en, "es": .es, "it": .it, "nl": .nl, "pl": .pl, "cs": .cs,
+            "en": .en, "es": .es, "fr": .fr, "it": .it, "nl": .nl, "pl": .pl, "cs": .cs,
             "sk": .sk, "sl": .sl, "hr": .hr, "bg": .bg, "mk": .mk, "sr": .sr,
             "uk": .uk, "be": .be, "ru": .ru, "tr": .tr, "hu": .hu, "vi": .vi,
             "id": .ind, "in": .ind, "ms": .ms, "ja": .ja, "ko": .ko,

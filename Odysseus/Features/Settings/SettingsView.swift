@@ -194,7 +194,6 @@ struct SettingsView: View {
         case .agentTools: AgentToolsSection(app: app)
         case .users: UsuariosSection(app: app)
         case .system: SistemaSection(app: app)
-        default: PlaceholderSection(section: s)
         }
     }
 }
@@ -209,7 +208,7 @@ struct SettingsScroll<Content: View>: View {
 
     init(_ title: String, subtitle: String? = nil, @ViewBuilder content: @escaping () -> Content) {
         self.title = title; self.subtitle = subtitle; self.content = content
-    }
+   }
 
     var body: some View {
         ScrollView {
