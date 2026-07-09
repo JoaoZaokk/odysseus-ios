@@ -1,5 +1,18 @@
 # Odysseus iOS
 
+<p align="center">
+  <a href="https://apps.apple.com/us/app/odysseus-mobile/id6783977350"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" height="48"></a>
+</p>
+
+<p align="center">
+  <a href="https://apps.apple.com/us/app/odysseus-mobile/id6783977350"><img alt="App Store" src="https://img.shields.io/itunes/v/6783977350?label=App%20Store&logo=apple&color=0D96F6"></a>
+  <img alt="Platforms" src="https://img.shields.io/badge/platform-iOS%2017%2B%20%C2%B7%20iPadOS%20%C2%B7%20macOS%2014%2B-lightgrey?logo=apple">
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-PolyForm%20Noncommercial-blue"></a>
+</p>
+
+> **Available on the App Store:** [Odysseus - Mobile](https://apps.apple.com/us/app/odysseus-mobile/id6783977350)
+> — free, non-commercial. You still need your own Odysseus server (see below).
+
 A **native** (SwiftUI) client for your self-hosted **Odysseus** AI server — *self-hosted
 AI chat with memory, documents, and tools*. Not a wrapped WebView: it talks straight to
 the Odysseus REST/SSE API and renders everything natively — markdown, syntax-highlighted
@@ -44,8 +57,8 @@ Universal: **iPhone, iPad, and Mac** from one native codebase (iOS 17+ / macOS 1
 - **Add and manage models right from the phone.**
 
 **Languages**
-- Portuguese, English, Japanese, Hindi, and Bengali, with **automatic device-language
-  detection** (Settings › Language).
+- **34 languages** — including right-to-left (Arabic, Persian, Urdu, Pashto) — with
+  **automatic device-language detection** (Settings › Language).
 
 ---
 
