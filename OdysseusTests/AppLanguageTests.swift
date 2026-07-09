@@ -12,8 +12,9 @@ final class AppLanguageTests: XCTestCase {
     func testChineseScriptDetection() {
         XCTAssertEqual(AppLanguage.match(systemCode: "zh-Hans-CN"), .zhHans)
         XCTAssertEqual(AppLanguage.match(systemCode: "zh-Hant-TW"), .zhHant)
-        XCTAssertEqual(AppLanguage.match(systemCode: "zh-HK"), .zhHant)
-        XCTAssertEqual(AppLanguage.match(systemCode: "zh-MO"), .zhHant)
+        XCTAssertEqual(AppLanguage.match(systemCode: "zh-HK"), .zhHK)
+        XCTAssertEqual(AppLanguage.match(systemCode: "zh-MO"), .zhHK)
+        XCTAssertEqual(AppLanguage.match(systemCode: "yue-HK"), .zhHK)
         XCTAssertEqual(AppLanguage.match(systemCode: "zh"), .zhHans)
     }
 

@@ -39,6 +39,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     case ko   = "ko"
     case zhHans = "zh-Hans"
     case zhHant = "zh-Hant"
+    case zhHK   = "zh-HK"   // Traditional Chinese — Hong Kong (Cantonese conventions)
     case hi   = "hi"
     case bn   = "bn"
     case ar   = "ar"
@@ -80,6 +81,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         case .ko:     return ("한국어", "Korean", "🇰🇷")
         case .zhHans: return ("简体中文", "Chinese (Simplified)", "🇨🇳")
         case .zhHant: return ("繁體中文", "Chinese (Traditional)", "🇹🇼")
+        case .zhHK:   return ("繁體中文（香港）", "Chinese (Hong Kong)", "🇭🇰")
         case .hi:     return ("हिन्दी", "Hindi", "🇮🇳")
         case .bn:     return ("বাংলা", "Bengali", "🇧🇩")
         case .ar:     return ("العربية", "Arabic", "🇸🇦")
@@ -107,8 +109,9 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     static func match(systemCode code: String) -> AppLanguage? {
         let c = code.lowercased()
         if c.hasPrefix("pt") { return .ptBR }
-        if c.hasPrefix("zh") {
-            if c.contains("hant") || c.contains("-tw") || c.contains("-hk") || c.contains("-mo") { return .zhHant }
+        if c.hasPrefix("zh") || c.hasPrefix("yue") {
+            if c.hasPrefix("yue") || c.contains("-hk") || c.contains("-mo") { return .zhHK }
+            if c.contains("hant") || c.contains("-tw") { return .zhHant }
             return .zhHans
         }
         if c.hasPrefix("de") {
