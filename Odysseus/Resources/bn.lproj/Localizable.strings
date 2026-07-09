@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus প্রসেসের লাইভ ডায়াগনস্টিক্স।";
 "Documentos pessoais (RAG)" = "ব্যক্তিগত ডকুমেন্ট (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "অন্যগুলো থেকে আলাদা করতে এই এজেন্টকে একটি নাম দিন (যেমন \"Claude Agent — laptop\")।";
-"em breve" = "শীঘ্রই";
-"Em construção nesta tela" = "এই স্ক্রিনে নির্মাণাধীন";
-"Em construção — chega na próxima onda. 🛠️" = "নির্মাণাধীন — পরের ধাপে আসছে। 🛠️";
 "Email" = "ইমেল";
 "Email (IMAP/SMTP)" = "ইমেল (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Odysseus সার্ভার ঠিকানা";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "RAG-এর মাধ্যমে অ্যাসিস্ট্যান্টের ব্যবহারের জন্য ডকুমেন্ট (PDF, txt, md…) পাঠান।";
 "Erro no download" = "ডাউনলোড ত্রুটি";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "উপরে স্বাভাবিক ভাষায় লিখুন\nঅথবা তৈরি করতে + চাপুন।";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "অ্যাডমিনের এই অংশ এখনও নেটিভে পোর্ট করা হয়নি। আপাতত ওয়েব সংস্করণ ব্যবহার করুন।";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "নাম অনুযায়ী আনুমানিক (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB ফাঁকা। আসল টেস্টের বিকল্প নয়।";
 "Eventos e agenda" = "ইভেন্ট ও সূচি";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "যেমন: ব্রোঞ্জ যুগের পতনের তত্ত্ব ও প্রমাণ";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "ক্যালেন্ডার ও পরিচিতি";
 "Modelos & Cookbook" = "মডেল ও Cookbook";
 "Outros" = "অন্যান্য";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "আপনার সার্ভার সেট আপ করুন";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus আপনার নিজস্ব সার্ভারের একটি ক্লায়েন্ট। চালিয়ে যেতে আপনার Odysseus সার্ভারের ঠিকানা লিখুন।";

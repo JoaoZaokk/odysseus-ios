@@ -30,6 +30,8 @@ final class APIClient: @unchecked Sendable {
         return _config
     }
     let session: URLSession
+    /// Session for long transfers (SSE streams, uploads) — no 30s resource cap.
+    let streamSession: URLSession
     // The cookie jar. MUST be `HTTPCookieStorage.shared` (or a group-container
     // storage): a plain `HTTPCookieStorage()` instance does NOT reliably store the
     // Set-Cookie from responses, so the session cookie was silently dropped and
@@ -49,6 +51,19 @@ final class APIClient: @unchecked Sendable {
         cfg.timeoutIntervalForResource = 30   // cap the whole request — never hang forever
         cfg.waitsForConnectivity = false      // fail fast with an error instead of waiting endlessly
         self.session = URLSession(configuration: cfg)
+        // Long-lived transfers (SSE chat/research streams, attachment uploads).
+        // `timeoutIntervalForResource` caps the WHOLE transfer regardless of the
+        // per-request `timeoutInterval`, so these cannot ride the 30s session —
+        // a chat reply streaming for >30s would be killed mid-stream.
+        let streamCfg = URLSessionConfiguration.default
+        streamCfg.httpCookieStorage = cookieStore
+        streamCfg.httpCookieAcceptPolicy = .always
+        streamCfg.httpShouldSetCookies = true
+        streamCfg.requestCachePolicy = .reloadIgnoringLocalCacheData
+        streamCfg.timeoutIntervalForRequest = 300    // idle gap between bytes
+        streamCfg.timeoutIntervalForResource = 7200  // total wall-clock (deep research runs long)
+        streamCfg.waitsForConnectivity = false
+        self.streamSession = URLSession(configuration: streamCfg)
         // Bring back a previously persisted session BEFORE the first request, so a
         // cold launch stays logged in instead of bouncing to the login screen.
         restoreCookies()
@@ -134,9 +149,9 @@ final class APIClient: @unchecked Sendable {
     }
 
     @discardableResult
-    func send(_ req: URLRequest) async throws -> Data {
+    func send(_ req: URLRequest, via transport: URLSession? = nil) async throws -> Data {
         do {
-            let (data, resp) = try await session.data(for: req)
+            let (data, resp) = try await (transport ?? session).data(for: req)
             guard let http = resp as? HTTPURLResponse else { return data }
             if http.statusCode == 401 || http.statusCode == 403 { throw APIError.notAuthenticated }
             guard (200..<300).contains(http.statusCode) else {

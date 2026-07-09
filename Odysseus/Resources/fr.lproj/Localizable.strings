@@ -159,7 +159,6 @@
 "Nenhum" = "Aucun";
 "Orçamento de tokens (entrada)" = "Budget de tokens (entrée)";
 "instalando…" = "installation…";
-"Em construção — chega na próxima onda. 🛠️" = "En construction — arrive dans la prochaine vague. 🛠️";
 "Email" = "E-mail";
 "Revogar admin" = "Révoquer admin";
 "Carregando…" = "Chargement…";
@@ -169,7 +168,6 @@
 "Pensando" = "Réflexion";
 "Sem logs." = "Aucun journal.";
 "Servidores MCP" = "Serveurs MCP";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "Cette section d'administration n'a pas encore été portée en natif. Pour l'instant, utilisez la version web.";
 "Desafixar" = "Détacher";
 "Fechar" = "Fermer";
 "Voz neural pronta" = "Voix neuronale prête";
@@ -213,7 +211,6 @@
 "Igual ao chat" = "Identique au chat";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Aucune intégration pour le moment — utilisez « Ajouter une intégration » ci-dessus.";
 "Endpoints que você conectou. Ative, desative ou remova." = "Les points de terminaison que vous avez connectés. Activez, désactivez ou supprimez.";
-"Em construção nesta tela" = "En construction sur cet écran";
 "Erro ao gerar resposta" = "Erreur lors de la génération de la réponse";
 "vazio = usa o host da URL" = "vide = utilise l'hôte de l'URL";
 "Servidor SMTP" = "Serveur SMTP";
@@ -367,5 +364,4 @@
 "Lembrando" = "Remémoration";
 "Adicionado. O servidor vai sondar a URL e listar os modelos." = "Ajouté. Le serveur va sonder l'URL et lister les modèles.";
 "Nova conversa" = "Nouvelle conversation";
-"em breve" = "bientôt";
 "Calendário & Contatos" = "Calendrier et Contacts";

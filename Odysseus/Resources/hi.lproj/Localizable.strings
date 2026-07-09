@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus प्रोसेस का लाइव डायग्नोस्टिक्स।";
 "Documentos pessoais (RAG)" = "व्यक्तिगत दस्तावेज़ (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "इस एजेंट को बाकियों से अलग पहचानने के लिए इसे एक नाम दें (जैसे \"Claude Agent — laptop\")।";
-"em breve" = "जल्द आ रहा है";
-"Em construção nesta tela" = "इस स्क्रीन पर निर्माणाधीन";
-"Em construção — chega na próxima onda. 🛠️" = "निर्माणाधीन — अगली लहर में आ रहा है। 🛠️";
 "Email" = "ईमेल";
 "Email (IMAP/SMTP)" = "ईमेल (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Odysseus सर्वर पता";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "असिस्टेंट को RAG के ज़रिए देखने के लिए दस्तावेज़ (PDF, txt, md…) भेजें।";
 "Erro no download" = "डाउनलोड में त्रुटि";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "ऊपर सामान्य भाषा में लिखें\nया बनाने के लिए + पर टैप करें।";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "एडमिन का यह सेक्शन अभी नेटिव में पोर्ट नहीं हुआ है। फ़िलहाल वेब वर्ज़न का उपयोग करें।";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "नाम से अनुमान (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB की गुंजाइश। असली टेस्ट का विकल्प नहीं।";
 "Eventos e agenda" = "इवेंट और शेड्यूल";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "जैसे: कांस्य युग के पतन के सिद्धांत और प्रमाण";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "कैलेंडर और संपर्क";
 "Modelos & Cookbook" = "मॉडल और Cookbook";
 "Outros" = "अन्य";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "अपना सर्वर सेट करें";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus आपके अपने सर्वर का क्लाइंट है। जारी रखने के लिए अपने Odysseus सर्वर का पता दर्ज करें।";

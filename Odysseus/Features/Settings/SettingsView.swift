@@ -52,16 +52,6 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         }
     }
 
-    /// Implemented natively this round. Others show a placeholder pointing to web.
-    var implemented: Bool {
-        switch self {
-        case .addedModels, .aiDefaults, .search, .email, .imageGen, .appearance, .language, .account, .server:
-            return true
-        default:
-            return false
-        }
-    }
-
     static let groups: [(String?, [SettingsSection])] = [
         (nil, [.addModels, .addedModels, .aiDefaults, .search]),
         (nil, [.integrations, .email, .reminders, .imageGen]),

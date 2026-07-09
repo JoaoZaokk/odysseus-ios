@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus 프로세스의 실시간 진단.";
 "Documentos pessoais (RAG)" = "개인 문서(RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "이 에이전트를 다른 에이전트와 구별하기 위해 이름을 지정하세요(예: \"Claude Agent — laptop\").";
-"em breve" = "출시 예정";
-"Em construção nesta tela" = "이 화면은 준비 중입니다";
-"Em construção — chega na próxima onda. 🛠️" = "준비 중 — 다음 업데이트에서 출시됩니다. 🛠️";
 "Email" = "이메일";
 "Email (IMAP/SMTP)" = "이메일(IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Odysseus 서버 주소";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "문서(PDF, txt, md…)를 전송하면 어시스턴트가 RAG를 통해 참조합니다.";
 "Erro no download" = "다운로드 오류";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "위에 자연어로 입력하거나\n+를 눌러 만드세요.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "이 관리 섹션은 아직 네이티브로 이식되지 않았습니다. 현재는 웹 버전을 사용하세요.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "이름 기반 추정(fp8≈1B/param, fp16/bf16≈2B/param) + 약 3 GB 여유. 실제 테스트를 대체하지 않습니다.";
 "Eventos e agenda" = "이벤트 및 일정";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "예: 청동기 시대 붕괴 이론과 증거";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "캘린더 및 연락처";
 "Modelos & Cookbook" = "모델 및 Cookbook";
 "Outros" = "기타";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "서버 설정";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus는 자신의 서버를 위한 클라이언트입니다. 계속하려면 Odysseus 서버 주소를 입력하세요.";

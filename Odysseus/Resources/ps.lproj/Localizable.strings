@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "د Odysseus پروسې ژوندۍ تشخیص.";
 "Documentos pessoais (RAG)" = "شخصي اسناد (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "دا اجنټ د نورو نه بیلولو لپاره ورته نوم ورکړئ (مثال: «Claude Agent — laptop»).";
-"em breve" = "ژر";
-"Em construção nesta tela" = "پدې سکرین جوړیږي";
-"Em construção — chega na próxima onda. 🛠️" = "جوړیږي — راتلونکي موج کې راځي. 🛠️";
 "Email" = "بریښنالیک";
 "Email (IMAP/SMTP)" = "بریښنالیک (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "د Odysseus سرور پته";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "د RAG له لارې د مرستندویه د مشورې لپاره اسناد (PDF, txt, md…) واستوئ.";
 "Erro no download" = "د ډاونلوډ کې تیروتنه";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "پورته طبیعي ژبه ولیکئ\nیا د جوړولو لپاره + لمس وکړئ.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "د ادارې دا برخه لا اصلي ته لیږدول شوې نه ده. اوس لپاره د ویب نسخه وکاروئ.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "د نوم له مخې اټکل (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB اضافي. د حقیقي ازموینې ځای نه نیسي.";
 "Eventos e agenda" = "پیښې او مهالویش";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "مثال: د اوسپنه وخت سقوط نظریې او شواهد";
@@ -373,3 +369,7 @@
 "Calendário & Contatos" = "کلیز او اړیکې";
 "Modelos & Cookbook" = "ماډلونه او Cookbook";
 "Outros" = "نور";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "خپل سرور تنظیم کړئ";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus ستاسو د خپل سرور لپاره کلاینټ دی. د دوام لپاره د خپل Odysseus سرور پته ولیکئ.";

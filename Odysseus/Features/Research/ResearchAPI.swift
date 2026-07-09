@@ -104,7 +104,7 @@ extension APIClient {
                     var req = request("/api/research/stream/\(encPath(id))")
                     req.setValue("text/event-stream", forHTTPHeaderField: "Accept")
                     req.timeoutInterval = 600
-                    let (bytes, resp) = try await session.bytes(for: req)
+                    let (bytes, resp) = try await streamSession.bytes(for: req)
                     if let http = resp as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
                         throw APIError.http(http.statusCode, nil)
                     }

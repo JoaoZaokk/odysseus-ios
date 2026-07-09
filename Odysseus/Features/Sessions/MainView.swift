@@ -68,28 +68,3 @@ struct MainView: View {
 
     private func close() { showSettings = false }
 }
-
-/// Placeholder for sections not yet wired up — keeps the hub honest and complete.
-struct ComingSoonView: View {
-    let section: AppSection
-    @Environment(\.theme) private var theme
-
-    var body: some View {
-        ZStack {
-            theme.bg.ignoresSafeArea()
-            VStack(spacing: 14) {
-                Image(systemName: section.icon)
-                    .font(.ody(size: 44))
-                    .foregroundStyle(theme.accent)
-                Text(LocalizedStringKey(section.title))
-                    .font(.ody(.title2, design: .monospaced).weight(.semibold))
-                    .foregroundStyle(theme.fg)
-                Text("Em construção — chega na próxima onda. 🛠️")
-                    .font(.ody(.footnote, design: .monospaced))
-                    .foregroundStyle(theme.secondaryText)
-            }
-        }
-        .navigationTitle(LocalizedStringKey(section.title))
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}

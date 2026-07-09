@@ -33,7 +33,29 @@ settings:
     SWIFT_VERSION: "5.0"
     ENABLE_USER_SCRIPT_SANDBOXING: YES
 
+schemes:
+  Odysseus:
+    build:
+      targets:
+        Odysseus: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - OdysseusTests
+    archive:
+      config: Release
+
 targets:
+  OdysseusTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: OdysseusTests
+    dependencies:
+      - target: Odysseus
+
   Odysseus:
     type: application
     platform: iOS

@@ -31,7 +31,8 @@ extension APIClient {
         var req = request("/api/upload", method: "POST")
         req.setValue(form.contentType, forHTTPHeaderField: "Content-Type")
         req.httpBody = form.finalizedData
-        let data = try await send(req)
+        // streamSession: a large photo on a slow link can exceed the 30s resource cap.
+        let data = try await send(req, via: streamSession)
         struct Wrap: Decodable { var files: [UploadedFile] }
         return (try? JSONDecoder().decode(Wrap.self, from: data))?.files ?? []
     }

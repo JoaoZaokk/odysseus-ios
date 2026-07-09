@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Dijagnostika uživo procesa Odysseus.";
 "Documentos pessoais (RAG)" = "Osobni dokumenti (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Daj ovom agentu ime da ga razlikuješ od ostalih (npr. \"Claude Agent — laptop\").";
-"em breve" = "uskoro";
-"Em construção nesta tela" = "U izradi na ovom zaslonu";
-"Em construção — chega na próxima onda. 🛠️" = "U izradi — dolazi u sljedećem valu. 🛠️";
 "Email" = "E-pošta";
 "Email (IMAP/SMTP)" = "E-pošta (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Adresa poslužitelja Odysseus";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Pošalji dokumente (PDF, txt, md…) za savjetovanje asistenta putem RAG-a.";
 "Erro no download" = "Pogreška preuzimanja";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Piši prirodnim jezikom gore\nili dotakni + za stvaranje.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "Ovaj odjeljak administracije još nije prenesen u izvornu verziju. Za sada koristi web verziju.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Procjena prema imenu (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB pričuve. Ne zamjenjuje pravi test.";
 "Eventos e agenda" = "Događaji i raspored";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "npr. Teorije kolapsa brončanog doba i dokazi";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "Kalendar i kontakti";
 "Modelos & Cookbook" = "Modeli i Cookbook";
 "Outros" = "Ostalo";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "Postavite svoj poslužitelj";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus je klijent za vaš vlastiti poslužitelj. Unesite adresu svog Odysseus poslužitelja za nastavak.";

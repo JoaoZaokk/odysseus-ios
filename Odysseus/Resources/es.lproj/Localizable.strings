@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Diagnóstico en vivo del proceso Odysseus.";
 "Documentos pessoais (RAG)" = "Documentos personales (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Dale un nombre a este agente para distinguirlo de los demás (p. ej., \"Claude Agent — laptop\").";
-"em breve" = "próximamente";
-"Em construção nesta tela" = "En construcción en esta pantalla";
-"Em construção — chega na próxima onda. 🛠️" = "En construcción — llega en la próxima versión. 🛠️";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Dirección del servidor Odysseus";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Envía documentos (PDF, txt, md…) para que el asistente los consulte vía RAG.";
 "Erro no download" = "Error de descarga";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Escribe en lenguaje natural arriba\no toca + para crear.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "Esta sección de administración aún no se ha portado a nativo. Por ahora, usa la versión web.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Estimación por nombre (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de margen. No sustituye una prueba real.";
 "Eventos e agenda" = "Eventos y agenda";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "p. ej. Las teorías del colapso de la Edad del Bronce y las evidencias";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "Calendario y contactos";
 "Modelos & Cookbook" = "Modelos y Cookbook";
 "Outros" = "Otros";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "Configura tu servidor";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus es un cliente para tu propio servidor. Introduce la dirección de tu servidor Odysseus para continuar.";

@@ -131,18 +131,9 @@ struct SidebarView: View {
     private func sectionRow(_ section: AppSection) -> some View {
         Label {
             VStack(alignment: .leading, spacing: 1) {
-                HStack(spacing: 6) {
-                    Text(LocalizedStringKey(section.title))
-                        .font(.ody(.subheadline, design: .monospaced))
-                        .foregroundStyle(theme.fg)
-                    if !section.implemented {
-                        Text("em breve")
-                            .font(.ody(size: 9, design: .monospaced))
-                            .foregroundStyle(theme.secondaryText)
-                            .padding(.horizontal, 5).padding(.vertical, 1)
-                            .background(theme.panel, in: Capsule())
-                    }
-                }
+                Text(LocalizedStringKey(section.title))
+                    .font(.ody(.subheadline, design: .monospaced))
+                    .foregroundStyle(theme.fg)
                 Text(LocalizedStringKey(section.subtitle))
                     .font(.ody(size: 10, design: .monospaced))
                     .foregroundStyle(theme.secondaryText)

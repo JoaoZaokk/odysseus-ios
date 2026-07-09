@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Diagnostik langsung proses Odysseus.";
 "Documentos pessoais (RAG)" = "Dokumen peribadi (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Berikan nama kepada ejen ini untuk membezakannya daripada yang lain (cth. \"Claude Agent — laptop\").";
-"em breve" = "tidak lama lagi";
-"Em construção nesta tela" = "Skrin ini sedang dalam pembinaan";
-"Em construção — chega na próxima onda. 🛠️" = "Sedang dibina — akan hadir pada gelombang seterusnya. 🛠️";
 "Email" = "E-mel";
 "Email (IMAP/SMTP)" = "E-mel (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Alamat pelayan Odysseus";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Hantar dokumen (PDF, txt, md…) untuk pembantu rujuk melalui RAG.";
 "Erro no download" = "Ralat muat turun";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Tulis dalam bahasa semula jadi di atas\natau ketik + untuk mencipta.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "Bahagian admin ini belum diporting ke versi asli. Buat masa ini, gunakan versi web.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Anggaran mengikut nama (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB ruang lapang. Tidak menggantikan ujian sebenar.";
 "Eventos e agenda" = "Acara dan jadual";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "cth. Teori-teori keruntuhan Zaman Gangsa dan buktinya";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "Kalendar & Kenalan";
 "Modelos & Cookbook" = "Model & Cookbook";
 "Outros" = "Lain-lain";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "Sediakan pelayan anda";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus ialah klien untuk pelayan anda sendiri. Masukkan alamat pelayan Odysseus anda untuk meneruskan.";

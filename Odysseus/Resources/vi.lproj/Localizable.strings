@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Chẩn đoán trực tiếp tiến trình Odysseus.";
 "Documentos pessoais (RAG)" = "Tài liệu cá nhân (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Đặt tên cho tác nhân này để phân biệt với các tác nhân khác (ví dụ: \"Claude Agent — laptop\").";
-"em breve" = "sắp có";
-"Em construção nesta tela" = "Màn hình này đang được xây dựng";
-"Em construção — chega na próxima onda. 🛠️" = "Đang xây dựng — sẽ có trong đợt cập nhật tiếp theo. 🛠️";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Địa chỉ máy chủ Odysseus";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Gửi tài liệu (PDF, txt, md…) để trợ lý tham khảo qua RAG.";
 "Erro no download" = "Lỗi tải xuống";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Viết bằng ngôn ngữ tự nhiên phía trên\nhoặc nhấn + để tạo.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "Phần quản trị này chưa được chuyển sang phiên bản gốc. Tạm thời hãy dùng phiên bản web.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Ước tính theo tên (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB dự phòng. Không thay thế kiểm tra thực tế.";
 "Eventos e agenda" = "Sự kiện và lịch trình";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "ví dụ: Các lý thuyết về sự sụp đổ của Thời đại Đồ đồng và bằng chứng";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "Lịch & Danh bạ";
 "Modelos & Cookbook" = "Mô hình & Cookbook";
 "Outros" = "Khác";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "Thiết lập máy chủ của bạn";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus là ứng dụng khách cho máy chủ của riêng bạn. Nhập địa chỉ máy chủ Odysseus của bạn để tiếp tục.";

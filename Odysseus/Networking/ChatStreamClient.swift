@@ -19,7 +19,7 @@ final class ChatStreamClient: @unchecked Sendable {
             let task = Task {
                 do {
                     let req = buildRequest(message: message, sessionID: sessionID, options: options)
-                    let (bytes, resp) = try await api.session.bytes(for: req)
+                    let (bytes, resp) = try await api.streamSession.bytes(for: req)
 
                     if let http = resp as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
                         if http.statusCode == 401 || http.statusCode == 403 {

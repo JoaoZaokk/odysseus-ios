@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus عمل کی براہ راست تشخیص۔";
 "Documentos pessoais (RAG)" = "ذاتی دستاویزات (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "اس ایجنٹ کو دوسروں سے الگ کرنے کے لیے نام دیں (مثال: «Claude Agent — laptop»)۔";
-"em breve" = "جلد";
-"Em construção nesta tela" = "اس اسکرین پر زیر تعمیر";
-"Em construção — chega na próxima onda. 🛠️" = "زیر تعمیر — اگلی لہر میں آئے گا۔ 🛠️";
 "Email" = "ای میل";
 "Email (IMAP/SMTP)" = "ای میل (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Odysseus سرور کا پتہ";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "RAG کے ذریعے مشاورت کے لیے دستاویزات (PDF, txt, md…) بھیجیں۔";
 "Erro no download" = "ڈاؤن لوڈ میں خرابی";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "اوپر قدرتی زبان میں لکھیں\nیا بنانے کے لیے + ٹیپ کریں۔";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "انتظامیہ کا یہ حصہ ابھی مقامی میں منتقل نہیں ہوا۔ ابھی کے لیے ویب ورژن استعمال کریں۔";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "نام کے مطابق تخمینہ (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB اضافی۔ حقیقی ٹیسٹ کا متبادل نہیں۔";
 "Eventos e agenda" = "واقعات اور شیڈول";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "مثال: کانسی دور کے خاتمے کے نظریات اور شواہد";
@@ -373,3 +369,7 @@
 "Calendário & Contatos" = "کیلنڈر اور رابطے";
 "Modelos & Cookbook" = "ماڈلز اور Cookbook";
 "Outros" = "دیگر";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "اپنا سرور ترتیب دیں";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus آپ کے اپنے سرور کا کلائنٹ ہے۔ جاری رکھنے کے لیے اپنے Odysseus سرور کا پتہ درج کریں۔";

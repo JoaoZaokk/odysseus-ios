@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "تشخیص زنده فرآیند Odysseus.";
 "Documentos pessoais (RAG)" = "اسناد شخصی (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "برای متمایز کردن این عامل از بقیه، نامی به آن بدهید (مثال: «Claude Agent — laptop»).";
-"em breve" = "به‌زودی";
-"Em construção nesta tela" = "در حال ساخت در این صفحه";
-"Em construção — chega na próxima onda. 🛠️" = "در حال ساخت — در موج بعدی می‌رسد. 🛠️";
 "Email" = "ایمیل";
 "Email (IMAP/SMTP)" = "ایمیل (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "آدرس سرور Odysseus";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "اسناد (PDF, txt, md…) را برای مشورت دستیار از طریق RAG ارسال کنید.";
 "Erro no download" = "خطا در دانلود";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "در بالا به زبان طبیعی بنویسید\nیا + را لمس کنید تا ایجاد شود.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "این بخش مدیریت هنوز به نسخه بومی منتقل نشده. فعلاً از نسخه وب استفاده کنید.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "تخمین بر اساس نام (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB فضای اضافه. جایگزین آزمون واقعی نمی‌شود.";
 "Eventos e agenda" = "رویدادها و برنامه";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "مثال: نظریه‌های فروپاشی عصر برنز و شواهد";
@@ -373,3 +369,7 @@
 "Calendário & Contatos" = "تقویم و مخاطبین";
 "Modelos & Cookbook" = "مدل‌ها و Cookbook";
 "Outros" = "سایر";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "سرور خود را راه‌اندازی کنید";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus یک کلاینت برای سرور شخصی شماست. برای ادامه، نشانی سرور Odysseus خود را وارد کنید.";

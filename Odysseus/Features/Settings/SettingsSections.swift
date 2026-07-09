@@ -327,24 +327,3 @@ struct EmailSection: View {
     }
 }
 
-// MARK: - Placeholder (sections not yet native)
-
-struct PlaceholderSection: View {
-    let section: SettingsSection
-    @Environment(\.theme) private var theme
-    var body: some View {
-        SettingsScroll(section.title) {
-            SettingsCard {
-                HStack(spacing: 10) {
-                    Image(systemName: section.icon).font(.ody(size: 22)).foregroundStyle(theme.accent)
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Em construção nesta tela").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
-                        Text("Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web.")
-                            .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
-                    }
-                    Spacer()
-                }
-            }
-        }
-    }
-}

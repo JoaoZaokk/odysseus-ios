@@ -1,16 +1,6 @@
 import SwiftUI
 
-/// Everything reachable from the sidebar — chats plus the feature sections.
-enum AppDestination: Hashable {
-    case newChat
-    case deepSearch
-    case chat(ChatSession)
-    case section(AppSection)
-}
-
-/// The non-chat sections of Odysseus. `implemented` gates whether we route to a
-/// real screen or a "coming soon" placeholder, so the hub always shows the full
-/// app structure honestly.
+/// The non-chat sections of Odysseus, as shown in the sidebar hub.
 enum AppSection: String, CaseIterable, Hashable, Identifiable {
     case brain, notes, calendar, gallery, email, tasks, library, compare, cookbook
 
@@ -57,6 +47,4 @@ enum AppSection: String, CaseIterable, Hashable, Identifiable {
         case .cookbook: "Modelos e engines"
         }
     }
-
-    var implemented: Bool { true }
 }

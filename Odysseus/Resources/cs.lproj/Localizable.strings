@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Živá diagnostika procesu Odysseus.";
 "Documentos pessoais (RAG)" = "Osobní dokumenty (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Pojmenujte tohoto agenta, abyste ho odlišili od ostatních (např. \"Claude Agent — laptop\").";
-"em breve" = "brzy";
-"Em construção nesta tela" = "Ve výstavbě na této obrazovce";
-"Em construção — chega na próxima onda. 🛠️" = "Ve výstavbě — přijde v další vlně. 🛠️";
 "Email" = "E-mail";
 "Email (IMAP/SMTP)" = "E-mail (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Adresa serveru Odysseus";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Odešlete dokumenty (PDF, txt, md…) pro konzultaci asistentem přes RAG.";
 "Erro no download" = "Chyba stahování";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Pište přirozeným jazykem výše\nnebo klepněte na + pro vytvoření.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "Tato sekce administrace ještě nebyla přenesena do nativní verze. Pro tuto chvíli použijte webovou verzi.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Odhad podle názvu (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB rezervy. Nenahrazuje skutečný test.";
 "Eventos e agenda" = "Události a program";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "např. Teorie kolapsu doby bronzové a důkazy";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "Kalendář a kontakty";
 "Modelos & Cookbook" = "Modely a Cookbook";
 "Outros" = "Ostatní";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "Nastavte svůj server";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus je klient pro váš vlastní server. Pokračujte zadáním adresy vašeho serveru Odysseus.";

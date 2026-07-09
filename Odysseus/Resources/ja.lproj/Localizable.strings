@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus プロセスのライブ診断。";
 "Documentos pessoais (RAG)" = "個人ドキュメント（RAG）";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "このエージェントを他と区別できるよう名前を付けてください（例：「Claude Agent — laptop」）。";
-"em breve" = "近日公開";
-"Em construção nesta tela" = "この画面は準備中です";
-"Em construção — chega na próxima onda. 🛠️" = "準備中 — 次の波で登場します。🛠️";
 "Email" = "メール";
 "Email (IMAP/SMTP)" = "メール（IMAP/SMTP）";
 "Endereço do servidor Odysseus" = "Odysseus サーバーのアドレス";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "ドキュメント（PDF、txt、md…）を送信すると、アシスタントが RAG で参照します。";
 "Erro no download" = "ダウンロードエラー";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "上に自然な言葉で入力するか\n＋をタップして作成してください。";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "この管理セクションはまだネイティブに移植されていません。当面は Web 版をご利用ください。";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "名前から推定（fp8≈1B/param、fp16/bf16≈2B/param）＋~3 GB の余裕。実際のテストの代わりにはなりません。";
 "Eventos e agenda" = "イベントと予定";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "例：青銅器時代崩壊の諸説とその証拠";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "カレンダーと連絡先";
 "Modelos & Cookbook" = "モデルとCookbook";
 "Outros" = "その他";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "サーバーを設定";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseusはあなた自身のサーバーのクライアントです。続行するにはOdysseusサーバーのアドレスを入力してください。";

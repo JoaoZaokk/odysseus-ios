@@ -63,9 +63,6 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Діагностика процесу Odysseus у реальному часі.";
 "Documentos pessoais (RAG)" = "Особисті документи (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Дайте цьому агенту ім'я, щоб відрізнити його від інших (напр. «Claude Agent — ноутбук»).";
-"em breve" = "незабаром";
-"Em construção nesta tela" = "У розробці на цьому екрані";
-"Em construção — chega na próxima onda. 🛠️" = "У розробці — з'явиться в наступному оновленні. 🛠️";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
 "Endereço do servidor Odysseus" = "Адреса сервера Odysseus";
@@ -73,7 +70,6 @@
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Надішліть документи (PDF, txt, md…) для консультації асистентом через RAG.";
 "Erro no download" = "Помилка завантаження";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Напишіть природною мовою вище\nабо торкніться +, щоб створити.";
-"Esta seção do admin ainda será portada para nativo. Por enquanto, use a versão web." = "Цей розділ адміністратора ще не перенесено до нативного вигляду. Наразі використовуйте веб-версію.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Оцінка за назвою (fp8≈1B/пар., fp16/bf16≈2B/пар.) + ~3 ГБ запасу. Не замінює реального тесту.";
 "Eventos e agenda" = "Події та розклад";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "напр.: Теорії колапсу Бронзового віку та докази";
@@ -376,3 +372,7 @@
 "Calendário & Contatos" = "Календар і контакти";
 "Modelos & Cookbook" = "Моделі та Cookbook";
 "Outros" = "Інше";
+
+// Onboarding (server setup)
+"Configure seu servidor" = "Налаштуйте свій сервер";
+"O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus — це клієнт для вашого власного сервера. Введіть адресу вашого сервера Odysseus, щоб продовжити.";
