@@ -40,8 +40,24 @@ final class AppLanguageTests: XCTestCase {
         XCTAssertTrue(AppLanguage.fa.isRTL)
         XCTAssertTrue(AppLanguage.ur.isRTL)
         XCTAssertTrue(AppLanguage.ps.isRTL)
+        XCTAssertTrue(AppLanguage.he.isRTL)
+        XCTAssertTrue(AppLanguage.ug.isRTL)
         XCTAssertFalse(AppLanguage.en.isRTL)
         XCTAssertFalse(AppLanguage.ptBR.isRTL)
+        XCTAssertFalse(AppLanguage.th.isRTL)   // Thai is LTR
+        XCTAssertFalse(AppLanguage.bo.isRTL)   // Tibetan is LTR
+    }
+
+    func testNewLanguagesMatch() {
+        XCTAssertEqual(AppLanguage.match(systemCode: "fi-FI"), .fi)
+        XCTAssertEqual(AppLanguage.match(systemCode: "sv-SE"), .sv)
+        XCTAssertEqual(AppLanguage.match(systemCode: "lv-LV"), .lv)
+        XCTAssertEqual(AppLanguage.match(systemCode: "lb-LU"), .lb)
+        XCTAssertEqual(AppLanguage.match(systemCode: "th-TH"), .th)
+        XCTAssertEqual(AppLanguage.match(systemCode: "he-IL"), .he)
+        XCTAssertEqual(AppLanguage.match(systemCode: "iw"), .he)   // legacy Hebrew code
+        XCTAssertEqual(AppLanguage.match(systemCode: "ug-CN"), .ug)
+        XCTAssertEqual(AppLanguage.match(systemCode: "bo-CN"), .bo)
     }
 
     func testPtBRHasNoLproj() {

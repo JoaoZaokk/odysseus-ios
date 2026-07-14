@@ -46,6 +46,14 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     case fa   = "fa"
     case ur   = "ur"
     case ps   = "ps"
+    case fi   = "fi"
+    case sv   = "sv"
+    case lv   = "lv"
+    case lb   = "lb"
+    case th   = "th"
+    case he   = "he"
+    case ug   = "ug"   // Uyghur — RTL, Arabic script
+    case bo   = "bo"   // Tibetan
 
     var id: String { rawValue }
 
@@ -88,6 +96,14 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         case .fa:     return ("فارسی", "Persian", "🇮🇷")
         case .ur:     return ("اردو", "Urdu", "🇵🇰")
         case .ps:     return ("پښتو", "Pashto", "🇦🇫")
+        case .fi:     return ("Suomi", "Finnish", "🇫🇮")
+        case .sv:     return ("Svenska", "Swedish", "🇸🇪")
+        case .lv:     return ("Latviešu", "Latvian", "🇱🇻")
+        case .lb:     return ("Lëtzebuergesch", "Luxembourgish", "🇱🇺")
+        case .th:     return ("ไทย", "Thai", "🇹🇭")
+        case .he:     return ("עברית", "Hebrew", "🇮🇱")
+        case .ug:     return ("ئۇيغۇرچە", "Uyghur", "🇨🇳")
+        case .bo:     return ("བོད་སྐད་", "Tibetan", "🇨🇳")
         }
     }
 
@@ -98,7 +114,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     var flag: String { meta.flag }
 
     /// Right-to-left scripts (drive `\.layoutDirection`).
-    var isRTL: Bool { self == .ar || self == .fa || self == .ur || self == .ps }
+    var isRTL: Bool { self == .ar || self == .fa || self == .ur || self == .ps || self == .he || self == .ug }
 
     /// `.lproj` folder name in the bundle. pt-BR returns nil (it's the literals).
     var lprojName: String? { self == .ptBR ? nil : rawValue }
@@ -125,6 +141,8 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
             "uk": .uk, "be": .be, "ru": .ru, "tr": .tr, "hu": .hu, "vi": .vi,
             "id": .ind, "in": .ind, "ms": .ms, "ja": .ja, "ko": .ko,
             "hi": .hi, "bn": .bn, "ar": .ar, "fa": .fa, "ur": .ur, "ps": .ps,
+            "fi": .fi, "sv": .sv, "lv": .lv, "lb": .lb, "th": .th,
+            "he": .he, "iw": .he, "ug": .ug, "bo": .bo,
         ]
         return map[String(c.prefix(2))]
     }
