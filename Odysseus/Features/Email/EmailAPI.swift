@@ -55,7 +55,9 @@ extension APIClient {
     }
 
     func emailDelete(_ uid: String) async throws {
-        _ = try await send(request("/api/email/delete/\(encPath(uid))", method: "POST"))
+        // The server declares this route as DELETE (unlike mark-read/archive, which are
+        // POST) — sending POST here returned 405 and swipe-to-delete always failed.
+        _ = try await send(request("/api/email/delete/\(encPath(uid))", method: "DELETE"))
     }
 
     // MARK: - Accounts
