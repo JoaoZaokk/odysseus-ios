@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "サーバーを設定";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseusはあなた自身のサーバーのクライアントです。続行するにはOdysseusサーバーのアドレスを入力してください。";
+
+// v1.6 — agent limits & model endpoints
+"%lld mensagens antigas saíram do contexto para caber no limite." = "コンテキストの上限に収めるため、古いメッセージが %lld 件削除されました。";
+"%lld modelo(s) encontrado(s)." = "%lld 件のモデルが見つかりました。";
+"Atualizar" = "更新";
+"Mensagens antigas saíram do contexto para caber no limite." = "コンテキストの上限に収めるため、古いメッセージが削除されました。";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "モデルが見つかりません。エンドポイントは応答しましたか？";
+"O agente não conseguiu executar a ação pedida e parou." = "エージェントは依頼された操作を実行できず、停止しました。";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "エージェントは %lld 回のツール呼び出しの上限に達したため停止しました。";
+"O agente parou ao atingir o limite de %lld rodadas." = "エージェントは %lld ラウンドの上限に達したため停止しました。";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "エージェントはツール呼び出しの上限に達したため停止しました。";
+"O agente parou ao atingir o limite de rodadas." = "エージェントはラウンドの上限に達したため停止しました。";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "エージェントは進展のないまま同じツールを繰り返していたため、それまでの内容で回答するよう中断されました。";
+"O histórico foi resumido para caber no limite de contexto." = "コンテキストの上限に収めるため、履歴が要約されました。";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "キャッシュされたモデルがありません。「更新」でエンドポイントを確認してください。";
+"Só um administrador pode atualizar a lista de modelos." = "モデル一覧の更新は管理者のみ行えます。";

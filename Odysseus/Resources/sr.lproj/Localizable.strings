@@ -373,3 +373,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Подесите свој сервер";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus је клијент за ваш сопствени сервер. Унесите адресу свог Odysseus сервера да наставите.";
+
+// Context limit & agent-loop notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Из контекста је уклоњено старих порука да би стале у лимит: %lld.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Старе поруке су уклоњене из контекста да би стале у лимит.";
+"O histórico foi resumido para caber no limite de contexto." = "Историја је компресована да би стала у лимит контекста.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Агент је стао по достизању лимита рунди: %lld.";
+"O agente parou ao atingir o limite de rodadas." = "Агент је стао по достизању лимита рунди.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Агент је стао по достизању лимита позива алата: %lld.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Агент је стао по достизању лимита позива алата.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Агент је понављао исте алате без напретка, па је заустављен да одговори оним што је већ имао.";
+"O agente não conseguiu executar a ação pedida e parou." = "Агент није успео да изврши тражену радњу и зауставио се.";
+
+// Model-endpoint settings
+"Atualizar" = "Освежи";
+"Só um administrador pode atualizar a lista de modelos." = "Само администратор може да освежи листу модела.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Нису пронађени модели. Да ли је крајња тачка одговорила?";
+"%lld modelo(s) encontrado(s)." = "Пронађено модела: %lld.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Нема кешираних модела. Користите «Освежи» да испитате крајњу тачку.";

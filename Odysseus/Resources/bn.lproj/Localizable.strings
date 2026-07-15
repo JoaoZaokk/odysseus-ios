@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "আপনার সার্ভার সেট আপ করুন";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus আপনার নিজস্ব সার্ভারের একটি ক্লায়েন্ট। চালিয়ে যেতে আপনার Odysseus সার্ভারের ঠিকানা লিখুন।";
+
+// Context & agent limit notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "সীমার মধ্যে এঁটে যেতে %lld পুরনো মেসেজ কনটেক্সট থেকে বাদ পড়েছে।";
+"Mensagens antigas saíram do contexto para caber no limite." = "পুরনো মেসেজ সীমার মধ্যে এঁটে যেতে কনটেক্সট থেকে বাদ পড়েছে।";
+"O histórico foi resumido para caber no limite de contexto." = "কনটেক্সট সীমার মধ্যে এঁটে যেতে ইতিহাসের সারসংক্ষেপ করা হয়েছে।";
+"O agente parou ao atingir o limite de %lld rodadas." = "%lld রাউন্ডের সীমায় পৌঁছে এজেন্ট থেমে গেছে।";
+"O agente parou ao atingir o limite de rodadas." = "রাউন্ডের সীমায় পৌঁছে এজেন্ট থেমে গেছে।";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "%lld টুল কলের সীমায় পৌঁছে এজেন্ট থেমে গেছে।";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "টুল কলের সীমায় পৌঁছে এজেন্ট থেমে গেছে।";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "এজেন্ট কোনো অগ্রগতি ছাড়াই একই টুল বারবার ব্যবহার করছিল, তাই যা ইতিমধ্যে ছিল তা দিয়েই উত্তর দেওয়ার জন্য তাকে থামিয়ে দেওয়া হয়েছিল।";
+"O agente não conseguiu executar a ação pedida e parou." = "এজেন্ট অনুরোধ করা কাজটি সম্পন্ন করতে পারেনি এবং থেমে গেছে।";
+
+// Model endpoint settings
+"Atualizar" = "রিফ্রেশ করুন";
+"Só um administrador pode atualizar a lista de modelos." = "শুধুমাত্র একজন অ্যাডমিনই মডেলের তালিকা রিফ্রেশ করতে পারেন।";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "কোনো মডেল পাওয়া যায়নি। এন্ডপয়েন্ট কি উত্তর দিয়েছে?";
+"%lld modelo(s) encontrado(s)." = "%lld মডেল পাওয়া গেছে।";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "ক্যাশে কোনো মডেল নেই। এন্ডপয়েন্ট প্রোব করতে রিফ্রেশ ব্যবহার করুন।";

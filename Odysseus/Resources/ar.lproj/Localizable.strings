@@ -373,3 +373,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "قم بإعداد خادمك";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus هو تطبيق عميل لخادمك الخاص. أدخل عنوان خادم Odysseus للمتابعة.";
+
+/* v1.6 — context/round/tool-call limit notices + model-endpoint refresh */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "خرجت %lld رسالة قديمة من السياق لتناسب الحد الأقصى.";
+"Mensagens antigas saíram do contexto para caber no limite." = "خرجت رسائل قديمة من السياق لتناسب الحد الأقصى.";
+"O histórico foi resumido para caber no limite de contexto." = "تم تلخيص سجل المحادثة ليناسب حد السياق.";
+"O agente parou ao atingir o limite de %lld rodadas." = "توقف الوكيل عند الوصول إلى حد %lld جولة.";
+"O agente parou ao atingir o limite de rodadas." = "توقف الوكيل عند الوصول إلى حد الجولات.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "توقف الوكيل عند الوصول إلى حد %lld استدعاء أداة.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "توقف الوكيل عند الوصول إلى حد استدعاءات الأدوات.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "كان الوكيل يكرر الأدوات نفسها دون تقدم، فتم إيقافه ليجيب بما كان لديه بالفعل.";
+"O agente não conseguiu executar a ação pedida e parou." = "تعذَّر على الوكيل تنفيذ الإجراء المطلوب فتوقف.";
+"Atualizar" = "تحديث";
+"Só um administrador pode atualizar a lista de modelos." = "يمكن فقط للمشرف تحديث قائمة النماذج.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "لم يُعثر على أي نموذج. هل استجابت نقطة الاتصال؟";
+"%lld modelo(s) encontrado(s)." = "تم العثور على %lld نموذج.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "لا توجد نماذج مخزّنة مؤقتًا. استخدم تحديث لاستطلاع نقطة الاتصال.";

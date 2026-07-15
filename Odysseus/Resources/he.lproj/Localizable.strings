@@ -365,3 +365,19 @@
 "Outros" = "אחר";
 "Configure seu servidor" = "הגדר את השרת שלך";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus הוא קליינט לשרת האישי שלך. הזן את כתובת שרת ה-Odysseus שלך כדי להמשיך.";
+
+/* v1.6 — context/round/tool-call limit notices + model-endpoint refresh */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld הודעות ישנות הוסרו מההקשר כדי להתאים למגבלה.";
+"Mensagens antigas saíram do contexto para caber no limite." = "הודעות ישנות הוסרו מההקשר כדי להתאים למגבלה.";
+"O histórico foi resumido para caber no limite de contexto." = "ההיסטוריה סוכמה כדי להתאים למגבלת ההקשר.";
+"O agente parou ao atingir o limite de %lld rodadas." = "הסוכן עצר לאחר שהגיע למגבלה של %lld סבבים.";
+"O agente parou ao atingir o limite de rodadas." = "הסוכן עצר לאחר שהגיע למגבלת הסבבים.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "הסוכן עצר לאחר שהגיע למגבלה של %lld קריאות לכלים.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "הסוכן עצר לאחר שהגיע למגבלת קריאות הכלים.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "הסוכן חזר על אותם כלים ללא התקדמות, ולכן הוא נעצר כדי לענות עם מה שכבר היה לו.";
+"O agente não conseguiu executar a ação pedida e parou." = "הסוכן לא הצליח לבצע את הפעולה המבוקשת ועצר.";
+"Atualizar" = "רענון";
+"Só um administrador pode atualizar a lista de modelos." = "רק מנהל יכול לרענן את רשימת המודלים.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "לא נמצא אף מודל. האם נקודת הקצה הגיבה?";
+"%lld modelo(s) encontrado(s)." = "נמצאו %lld מודלים.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "אין מודלים במטמון. השתמש ברענון כדי לבדוק את נקודת הקצה.";

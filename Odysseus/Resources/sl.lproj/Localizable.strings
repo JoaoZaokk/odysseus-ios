@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Nastavite svoj strežnik";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus je odjemalec za vaš lastni strežnik. Za nadaljevanje vnesite naslov svojega strežnika Odysseus.";
+
+/* Agent limits & context notices; model-endpoint refresh (1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Iz konteksta je bilo odstranjenih %lld starih sporočil, da bi ustrezala omejitvi.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Stara sporočila so bila odstranjena iz konteksta, da bi ustrezala omejitvi.";
+"O histórico foi resumido para caber no limite de contexto." = "Zgodovina je bila povzeta, da bi ustrezala omejitvi konteksta.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Agent se je ustavil po doseženi omejitvi: %lld krogov.";
+"O agente parou ao atingir o limite de rodadas." = "Agent se je ustavil po doseženi omejitvi krogov.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Agent se je ustavil po doseženi omejitvi: %lld klicev orodij.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Agent se je ustavil po doseženi omejitvi klicev orodij.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Agent je ponavljal ista orodja brez napredka, zato je bil ustavljen, da bi odgovoril s tem, kar je že imel.";
+"O agente não conseguiu executar a ação pedida e parou." = "Agent ni uspel izvesti zahtevanega dejanja in se je ustavil.";
+"Atualizar" = "Osveži";
+"Só um administrador pode atualizar a lista de modelos." = "Samo admin lahko osveži seznam modelov.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Ni bilo najdenih modelov. Se je endpoint odzval?";
+"%lld modelo(s) encontrado(s)." = "Najdenih: %lld modelov.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "V predpomnilniku ni modelov. Uporabi „Osveži”, da sondiraš endpoint.";

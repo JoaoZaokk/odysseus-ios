@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Nastavte svůj server";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus je klient pro váš vlastní server. Pokračujte zadáním adresy vašeho serveru Odysseus.";
+
+/* Agent limits & context notices; model-endpoint refresh (1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Z kontextu bylo odstraněno %lld starých zpráv, aby se vešly do limitu.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Staré zprávy byly odstraněny z kontextu, aby se vešly do limitu.";
+"O histórico foi resumido para caber no limite de contexto." = "Historie byla shrnuta, aby se vešla do limitu kontextu.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Agent se zastavil po dosažení limitu: %lld kol.";
+"O agente parou ao atingir o limite de rodadas." = "Agent se zastavil po dosažení limitu kol.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Agent se zastavil po dosažení limitu: %lld volání nástrojů.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Agent se zastavil po dosažení limitu volání nástrojů.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Agent opakoval stejné nástroje bez pokroku, proto byl zastaven, aby odpověděl tím, co už měl.";
+"O agente não conseguiu executar a ação pedida e parou." = "Agent nedokázal provést požadovanou akci a zastavil se.";
+"Atualizar" = "Obnovit";
+"Só um administrador pode atualizar a lista de modelos." = "Jen admin může obnovit seznam modelů.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Nebyly nalezeny žádné modely. Odpověděl endpoint?";
+"%lld modelo(s) encontrado(s)." = "Nalezeno: %lld modelů.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Žádné modely v mezipaměti. Použijte „Obnovit” k sondování endpointu.";

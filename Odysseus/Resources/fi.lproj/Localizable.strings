@@ -365,3 +365,19 @@
 "Outros" = "Muut";
 "Configure seu servidor" = "Määritä palvelimesi";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus on asiakassovellus omalle palvelimellesi. Anna Odysseus-palvelimesi osoite jatkaaksesi.";
+
+/* Context/agent limits + model endpoint refresh (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Kontekstista poistettiin vanhoja viestejä %lld kappaleen verran, jotta rajaan mahduttiin.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Vanhoja viestejä poistui kontekstista, jotta rajaan mahduttiin.";
+"O histórico foi resumido para caber no limite de contexto." = "Historia tiivistettiin, jotta se mahtuisi kontekstirajaan.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Agentti pysähtyi, kun se saavutti %lld kierroksen rajan.";
+"O agente parou ao atingir o limite de rodadas." = "Agentti pysähtyi, kun se saavutti kierrosrajan.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Agentti pysähtyi, kun se saavutti %lld työkalukutsun rajan.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Agentti pysähtyi, kun se saavutti työkalukutsurajan.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Agentti toisti samoja työkaluja edistymättä, joten se pysäytettiin vastaamaan sillä, mitä sillä jo oli.";
+"O agente não conseguiu executar a ação pedida e parou." = "Agentti ei pystynyt suorittamaan pyydettyä toimintoa ja pysähtyi.";
+"Atualizar" = "Päivitä";
+"Só um administrador pode atualizar a lista de modelos." = "Vain ylläpitäjä voi päivittää mallien listan.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Malleja ei löytynyt. Vastasiko päätepiste?";
+"%lld modelo(s) encontrado(s)." = "Malleja löytyi %lld.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Ei välimuistissa olevia malleja. Käytä Päivitä-painiketta päätepisteen tutkimiseen.";

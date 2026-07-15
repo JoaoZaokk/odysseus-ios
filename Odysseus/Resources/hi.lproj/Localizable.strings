@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "अपना सर्वर सेट करें";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus आपके अपने सर्वर का क्लाइंट है। जारी रखने के लिए अपने Odysseus सर्वर का पता दर्ज करें।";
+
+// Context & agent limit notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "सीमा में फ़िट होने के लिए %lld पुराने संदेश कॉन्टेक्स्ट से हटा दिए गए।";
+"Mensagens antigas saíram do contexto para caber no limite." = "पुराने संदेश सीमा में फ़िट होने के लिए कॉन्टेक्स्ट से हटा दिए गए।";
+"O histórico foi resumido para caber no limite de contexto." = "कॉन्टेक्स्ट की सीमा में फ़िट होने के लिए इतिहास का सारांश बनाया गया।";
+"O agente parou ao atingir o limite de %lld rodadas." = "एजेंट %lld राउंड की सीमा तक पहुँचने पर रुक गया।";
+"O agente parou ao atingir o limite de rodadas." = "एजेंट राउंड की सीमा तक पहुँचने पर रुक गया।";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "एजेंट %lld टूल कॉल्स की सीमा तक पहुँचने पर रुक गया।";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "एजेंट टूल कॉल्स की सीमा तक पहुँचने पर रुक गया।";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "एजेंट बिना किसी प्रगति के एक ही टूल बार-बार दोहरा रहा था, इसलिए उसे रोककर जो पहले से था उसी से जवाब देने के लिए कहा गया।";
+"O agente não conseguiu executar a ação pedida e parou." = "एजेंट माँगी गई कार्रवाई को निष्पादित नहीं कर सका और रुक गया।";
+
+// Model endpoint settings
+"Atualizar" = "रीफ़्रेश करें";
+"Só um administrador pode atualizar a lista de modelos." = "केवल एडमिन ही मॉडल की सूची रीफ़्रेश कर सकता है।";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "कोई मॉडल नहीं मिला। क्या एंडपॉइंट ने जवाब दिया?";
+"%lld modelo(s) encontrado(s)." = "%lld मॉडल मिले।";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "कैश में कोई मॉडल नहीं। एंडपॉइंट को जांचने के लिए रीफ़्रेश का उपयोग करें।";

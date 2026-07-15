@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Thiết lập máy chủ của bạn";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus là ứng dụng khách cho máy chủ của riêng bạn. Nhập địa chỉ máy chủ Odysseus của bạn để tiếp tục.";
+
+// Context/agent limits + model-endpoint refresh (v1.6)
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld tin nhắn cũ đã bị loại khỏi ngữ cảnh để vừa với giới hạn.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Các tin nhắn cũ đã bị loại khỏi ngữ cảnh để vừa với giới hạn.";
+"O histórico foi resumido para caber no limite de contexto." = "Lịch sử đã được tóm tắt để vừa với giới hạn ngữ cảnh.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Tác nhân đã dừng khi đạt giới hạn %lld vòng.";
+"O agente parou ao atingir o limite de rodadas." = "Tác nhân đã dừng khi đạt giới hạn số vòng.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Tác nhân đã dừng khi đạt giới hạn %lld lệnh gọi công cụ.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Tác nhân đã dừng khi đạt giới hạn lệnh gọi công cụ.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Tác nhân liên tục lặp lại các công cụ giống nhau mà không có tiến triển, nên đã bị dừng lại để trả lời bằng những gì đã có.";
+"O agente não conseguiu executar a ação pedida e parou." = "Tác nhân không thể thực hiện hành động được yêu cầu nên đã dừng lại.";
+"Atualizar" = "Làm mới";
+"Só um administrador pode atualizar a lista de modelos." = "Chỉ quản trị viên mới có thể làm mới danh sách mô hình.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Không tìm thấy mô hình nào. Điểm cuối có phản hồi không?";
+"%lld modelo(s) encontrado(s)." = "Đã tìm thấy %lld mô hình.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Chưa có mô hình nào trong bộ nhớ đệm. Dùng Làm mới để thăm dò điểm cuối.";

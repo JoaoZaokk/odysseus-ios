@@ -373,3 +373,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "خپل سرور تنظیم کړئ";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus ستاسو د خپل سرور لپاره کلاینټ دی. د دوام لپاره د خپل Odysseus سرور پته ولیکئ.";
+
+/* v1.6 — context/round/tool-call limit notices + model-endpoint refresh */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "د حد سره برابرېدو لپاره %lld زاړه پیغامونه له شالید نه ووتل.";
+"Mensagens antigas saíram do contexto para caber no limite." = "د حد سره برابرېدو لپاره زاړه پیغامونه له شالید نه ووتل.";
+"O histórico foi resumido para caber no limite de contexto." = "د شالید له حد سره برابرېدو لپاره تاریخچه لنډه کړل شوه.";
+"O agente parou ao atingir o limite de %lld rodadas." = "اجنټ د %lld پړاوونو حد ته له رسېدو وروسته ودرېد.";
+"O agente parou ao atingir o limite de rodadas." = "اجنټ د پړاوونو حد ته له رسېدو وروسته ودرېد.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "اجنټ د وسیلو %lld غوښتنو حد ته له رسېدو وروسته ودرېد.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "اجنټ د وسیلو د غوښتنو حد ته له رسېدو وروسته ودرېد.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "اجنټ پرمختګ پرته ورته وسیلې بیا بیا کارولې، نو ودرول شو چې د هغه څه سره ځواب ورکړي چې دمخه یې درلودل.";
+"O agente não conseguiu executar a ação pedida e parou." = "اجنټ نشو کولی غوښتل شوی عمل ترسره کړي او ودرېد.";
+"Atualizar" = "تازه کول";
+"Só um administrador pode atualizar a lista de modelos." = "یوازې مدیر کولی شي د ماډلونو لیست تازه کړي.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "هیڅ ماډل ونه موندل شو. ایا اینډ پوینټ ځواب ورکړ؟";
+"%lld modelo(s) encontrado(s)." = "%lld ماډلونه وموندل شول.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "په کیش کې هیڅ ماډل نشته. د اینډ پوینټ لټولو لپاره تازه کول وکاروئ.";

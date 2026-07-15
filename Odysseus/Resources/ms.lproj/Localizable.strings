@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Sediakan pelayan anda";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus ialah klien untuk pelayan anda sendiri. Masukkan alamat pelayan Odysseus anda untuk meneruskan.";
+
+// Context/agent limits + model-endpoint refresh (v1.6)
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld mesej lama telah dikeluarkan daripada konteks untuk sesuai dengan had.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Mesej lama telah dikeluarkan daripada konteks untuk sesuai dengan had.";
+"O histórico foi resumido para caber no limite de contexto." = "Riwayat telah diringkaskan untuk sesuai dengan had konteks.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Ejen berhenti selepas mencapai had %lld pusingan.";
+"O agente parou ao atingir o limite de rodadas." = "Ejen berhenti selepas mencapai had pusingan.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Ejen berhenti selepas mencapai had %lld panggilan alat.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Ejen berhenti selepas mencapai had panggilan alat.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Ejen terus mengulangi alat yang sama tanpa kemajuan, jadi ia dihentikan untuk menjawab dengan apa yang telah ada.";
+"O agente não conseguiu executar a ação pedida e parou." = "Ejen tidak dapat melaksanakan tindakan yang diminta dan berhenti.";
+"Atualizar" = "Segarkan";
+"Só um administrador pode atualizar a lista de modelos." = "Hanya admin boleh menyegarkan senarai model.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Tiada model ditemui. Adakah titik hujung memberi respons?";
+"%lld modelo(s) encontrado(s)." = "%lld model ditemui.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Tiada model dalam cache. Gunakan Segarkan untuk meninjau titik hujung.";

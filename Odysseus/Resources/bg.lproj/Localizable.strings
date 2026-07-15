@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Настройте своя сървър";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus е клиент за вашия собствен сървър. Въведете адреса на вашия сървър Odysseus, за да продължите.";
+
+// Context limit & agent-loop notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "От контекста бяха премахнати стари съобщения, за да се съберат в лимита: %lld.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Старите съобщения бяха премахнати от контекста, за да се съберат в лимита.";
+"O histórico foi resumido para caber no limite de contexto." = "Историята беше компресирана, за да се събере в лимита на контекста.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Агентът спря, след като достигна лимита от рундове: %lld.";
+"O agente parou ao atingir o limite de rodadas." = "Агентът спря, след като достигна лимита от рундове.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Агентът спря, след като достигна лимита от извиквания на инструменти: %lld.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Агентът спря, след като достигна лимита от извиквания на инструменти.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Агентът повтаряше едни и същи инструменти без напредък, затова беше спрян, за да отговори с това, което вече имаше.";
+"O agente não conseguiu executar a ação pedida e parou." = "Агентът не успя да изпълни заявеното действие и спря.";
+
+// Model-endpoint settings
+"Atualizar" = "Обнови";
+"Só um administrador pode atualizar a lista de modelos." = "Само администратор може да обнови списъка с модели.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Не са намерени модели. Крайната точка отговори ли?";
+"%lld modelo(s) encontrado(s)." = "Намерени модели: %lld.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Няма кеширани модели. Използвайте «Обнови», за да проверите крайната точка.";

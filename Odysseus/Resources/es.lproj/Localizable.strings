@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Configura tu servidor";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus es un cliente para tu propio servidor. Introduce la dirección de tu servidor Odysseus para continuar.";
+
+/* Context & agent-limit notices (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld mensajes antiguos salieron del contexto para caber en el límite.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Mensajes antiguos salieron del contexto para caber en el límite.";
+"O histórico foi resumido para caber no limite de contexto." = "El historial se resumió para caber en el límite de contexto.";
+"O agente parou ao atingir o limite de %lld rodadas." = "El agente se detuvo al alcanzar el límite de %lld rondas.";
+"O agente parou ao atingir o limite de rodadas." = "El agente se detuvo al alcanzar el límite de rondas.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "El agente se detuvo al alcanzar el límite de %lld llamadas a herramientas.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "El agente se detuvo al alcanzar el límite de llamadas a herramientas.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "El agente repetía las mismas herramientas sin avanzar, así que se le detuvo y se le obligó a responder con lo que ya tenía.";
+"O agente não conseguiu executar a ação pedida e parou." = "El agente no pudo llevar a cabo la acción solicitada y se detuvo.";
+
+/* Model-endpoint settings — refresh (v1.6) */
+"Atualizar" = "Actualizar";
+"Só um administrador pode atualizar a lista de modelos." = "Solo un administrador puede actualizar la lista de modelos.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "No se encontraron modelos. ¿Respondió el endpoint?";
+"%lld modelo(s) encontrado(s)." = "%lld modelos encontrados.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Sin modelos en caché. Usa Actualizar para sondear el endpoint.";

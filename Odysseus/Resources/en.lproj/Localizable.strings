@@ -373,3 +373,21 @@
 /* First-run mandatory server setup */
 "Configure seu servidor" = "Set up your server";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus is a client for your own server. Enter your Odysseus server address to continue.";
+
+/* Context & agent-limit notices (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld old messages were dropped from the context to fit the limit.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Old messages were dropped from the context to fit the limit.";
+"O histórico foi resumido para caber no limite de contexto." = "The history was summarized to fit the context limit.";
+"O agente parou ao atingir o limite de %lld rodadas." = "The agent stopped after hitting the limit of %lld rounds.";
+"O agente parou ao atingir o limite de rodadas." = "The agent stopped after hitting the round limit.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "The agent stopped after hitting the limit of %lld tool calls.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "The agent stopped after hitting the tool-call limit.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "The agent kept repeating the same tools without progress, so it was stopped and made to answer with what it had.";
+"O agente não conseguiu executar a ação pedida e parou." = "The agent couldn't carry out the requested action and stopped.";
+
+/* Model-endpoint settings — refresh (v1.6) */
+"Atualizar" = "Refresh";
+"Só um administrador pode atualizar a lista de modelos." = "Only an administrator can refresh the model list.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "No models found. Did the endpoint respond?";
+"%lld modelo(s) encontrado(s)." = "%lld models found.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "No cached models. Use Refresh to probe the endpoint.";

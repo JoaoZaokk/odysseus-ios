@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Налаштуйте свій сервер";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus — це клієнт для вашого власного сервера. Введіть адресу вашого сервера Odysseus, щоб продовжити.";
+
+// Context limit & agent-loop notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Із контексту вилучено старих повідомлень, щоб вміститися в ліміт: %lld.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Старі повідомлення вилучено з контексту, щоб вміститися в ліміт.";
+"O histórico foi resumido para caber no limite de contexto." = "Історію стиснуто, щоб вміститися в ліміт контексту.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Агент зупинився, досягнувши ліміту раундів: %lld.";
+"O agente parou ao atingir o limite de rodadas." = "Агент зупинився, досягнувши ліміту раундів.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Агент зупинився, досягнувши ліміту викликів інструментів: %lld.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Агент зупинився, досягнувши ліміту викликів інструментів.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Агент повторював ті самі інструменти без прогресу, тому його зупинили, щоб він відповів тим, що вже мав.";
+"O agente não conseguiu executar a ação pedida e parou." = "Агент не зміг виконати запитану дію і зупинився.";
+
+// Model-endpoint settings
+"Atualizar" = "Оновити";
+"Só um administrador pode atualizar a lista de modelos." = "Тільки адміністратор може оновити список моделей.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Моделі не знайдено. Кінцева точка відповіла?";
+"%lld modelo(s) encontrado(s)." = "Знайдено моделей: %lld.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Немає моделей у кеші. Натисніть «Оновити», щоб опитати кінцеву точку.";

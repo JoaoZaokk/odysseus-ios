@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Настройте свой сервер";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus — это клиент для вашего собственного сервера. Введите адрес вашего сервера Odysseus, чтобы продолжить.";
+
+// Context limit & agent-loop notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Из контекста удалено старых сообщений, чтобы уместиться в лимит: %lld.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Старые сообщения были удалены из контекста, чтобы уместиться в лимит.";
+"O histórico foi resumido para caber no limite de contexto." = "История была сжата, чтобы уместиться в лимит контекста.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Агент остановился, достигнув лимита раундов: %lld.";
+"O agente parou ao atingir o limite de rodadas." = "Агент остановился, достигнув лимита раундов.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Агент остановился, достигнув лимита вызовов инструментов: %lld.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Агент остановился, достигнув лимита вызовов инструментов.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Агент повторял одни и те же инструменты без прогресса, поэтому был остановлен и должен был ответить тем, что уже было.";
+"O agente não conseguiu executar a ação pedida e parou." = "Агент не смог выполнить запрошенное действие и остановился.";
+
+// Model-endpoint settings
+"Atualizar" = "Обновить";
+"Só um administrador pode atualizar a lista de modelos." = "Только администратор может обновить список моделей.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Модели не найдены. Конечная точка ответила?";
+"%lld modelo(s) encontrado(s)." = "Найдено моделей: %lld.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Нет моделей в кэше. Нажмите «Обновить», чтобы опросить конечную точку.";
