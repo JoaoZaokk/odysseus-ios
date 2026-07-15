@@ -23,11 +23,17 @@ struct UploadedFile: Decodable, Identifiable, Hashable, Sendable {
 
 extension APIClient {
     /// Uploads files and returns their server-side metadata (id, mime, …).
-    func upload(_ files: [(data: Data, filename: String, mime: String)]) async throws -> [UploadedFile] {
+    ///
+    /// Pass `sessionID` when the files belong to a chat: the server files the
+    /// image into the Gallery under that conversation instead of leaving it
+    /// unattributed. It ignores ids the caller doesn't own.
+    func upload(_ files: [(data: Data, filename: String, mime: String)],
+                sessionID: String? = nil) async throws -> [UploadedFile] {
         var form = MultipartForm()
         for f in files {
             form.append(file: "files", filename: f.filename, mime: f.mime, fileData: f.data)
         }
+        if let sessionID, !sessionID.isEmpty { form.append(field: "session_id", value: sessionID) }
         var req = request("/api/upload", method: "POST")
         req.setValue(form.contentType, forHTTPHeaderField: "Content-Type")
         req.httpBody = form.finalizedData

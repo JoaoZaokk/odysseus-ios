@@ -91,6 +91,7 @@ struct ChatScreen: View {
                         )
                         .id(msg.id)
                     }
+                    ForEach(vm.notices) { ChatNoticeBanner(notice: $0) }
                     if let tool = vm.toolStatus {
                         HStack(spacing: 8) {
                             ProgressView().controlSize(.small).tint(theme.accent)
@@ -111,6 +112,7 @@ struct ChatScreen: View {
             .onChange(of: vm.messages.last?.content) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.messages.count) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.toolStatus) { _, _ in scrollToBottom(proxy) }
+            .onChange(of: vm.notices.count) { _, _ in scrollToBottom(proxy) }
         }
     }
 

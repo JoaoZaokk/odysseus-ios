@@ -55,6 +55,11 @@ targets:
       - path: OdysseusTests
     dependencies:
       - target: Odysseus
+    settings:
+      base:
+        # xcodegen writes no Info.plist for the test bundle, and codesign refuses
+        # to sign it without one.
+        GENERATE_INFOPLIST_FILE: YES
 
   Odysseus:
     type: application
@@ -73,8 +78,8 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zao.odysseus
         PRODUCT_NAME: Odysseus
-        MARKETING_VERSION: "1.5"
-        CURRENT_PROJECT_VERSION: "9"
+        MARKETING_VERSION: "1.6"
+        CURRENT_PROJECT_VERSION: "10"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

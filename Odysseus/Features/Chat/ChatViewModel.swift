@@ -9,6 +9,10 @@ final class ChatViewModel: ObservableObject {
     @Published var toolStatus: String?
     @Published var resolvedModel: String?
     @Published var error: String?
+    /// Context trims / agent guards raised during the last reply. Unlike
+    /// `toolStatus` these survive the end of the stream — they explain the reply
+    /// the user is left looking at.
+    @Published var notices: [ChatNotice] = []
 
     // Composer toggles
     @Published var agentMode = false
@@ -84,6 +88,7 @@ final class ChatViewModel: ObservableObject {
         input = ""
         error = nil
         toolStatus = nil
+        notices = []
 
         messages.append(Message(role: .user, content: text,
                                 timestamp: Date().timeIntervalSince1970,
@@ -100,7 +105,9 @@ final class ChatViewModel: ObservableObject {
     func addImages(_ files: [(data: Data, filename: String, mime: String)]) async {
         guard !files.isEmpty else { return }
         uploading = true; defer { uploading = false }
-        do { pendingAttachments.append(contentsOf: try await api.upload(files)) }
+        // `sessionID` is nil on a brand-new chat (the session only materializes on
+        // send) — the server treats that as unattributed, same as before.
+        do { pendingAttachments.append(contentsOf: try await api.upload(files, sessionID: sessionID)) }
         catch { self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription }
     }
 
@@ -128,6 +135,8 @@ final class ChatViewModel: ObservableObject {
                     toolStatus = friendlyTool(name)
                 case .modelResolved(let m):
                     resolvedModel = m.split(separator: "/").last.map(String.init)
+                case .notice(let n):
+                    if !notices.contains(n) { notices.append(n) }
                 case .error(let msg):
                     setAssistant(assistantID, content: msg)
                 case .done:

@@ -244,14 +244,18 @@ struct Message: Decodable, Identifiable, Hashable, Sendable {
         case attachments
     }
 
-    /// Per-message metadata in GET /api/history: the model, timestamp and db id
-    /// live here, not at the top level.
+    /// Per-message metadata in GET /api/history: the model, timestamp, db id and
+    /// the saved reasoning live here, not at the top level.
     struct Metadata: Decodable {
         var model: String?
         var timestamp: String?
         var dbID: String?
+        /// The server saves the reasoning trace under `metadata.thinking`
+        /// (it goes in with the rest of the metrics when the stream finishes),
+        /// so a reopened chat only finds it here — never at the top level.
+        var thinking: String?
         enum CodingKeys: String, CodingKey {
-            case model, timestamp
+            case model, timestamp, thinking
             case dbID = "_db_id"
         }
     }
@@ -290,6 +294,7 @@ struct Message: Decodable, Identifiable, Hashable, Sendable {
         model = (try? c.decodeIfPresent(String.self, forKey: .model)) ?? meta?.model
         thinking = (try? c.decodeIfPresent(String.self, forKey: .thinking))
             ?? (try? c.decodeIfPresent(String.self, forKey: .reasoning))
+            ?? meta?.thinking
         timestamp = (try? c.decode(Double.self, forKey: .timestamp))
             ?? (try? c.decode(Double.self, forKey: .ts))
             ?? (try? c.decode(Double.self, forKey: .created_at))

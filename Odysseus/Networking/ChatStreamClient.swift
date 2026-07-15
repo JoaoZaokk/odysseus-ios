@@ -72,7 +72,10 @@ final class ChatStreamClient: @unchecked Sendable {
                         case "research_progress":
                             continuation.yield(.toolStart(evt.text ?? "deep_research"))
                         default:
-                            break   // doc/rag/metrics/sources events ignored in MVP
+                            // Context trims and agent guards explain why the reply
+                            // looks amnesiac or cut short — surface them.
+                            if let n = evt.notice { continuation.yield(.notice(n)) }
+                            // doc/rag/metrics/sources events still ignored.
                         }
                     }
                     continuation.finish()

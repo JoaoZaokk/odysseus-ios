@@ -21,6 +21,21 @@ extension APIClient {
         decodeList(ModelEndpoint.self, try await send(request("/api/model-endpoints")))
     }
 
+    /// Re-probes an endpoint and rewrites its cached model list.
+    ///
+    /// `GET /api/model-endpoints` is cache-only server-side: it never probes, so
+    /// an endpoint added while its backend was unreachable reports zero models
+    /// forever and the model picker stays empty. This is the only way to heal it.
+    /// Admin-only — the server answers 403 to everyone else.
+    ///
+    /// Rides `streamSession`: the server probes the backend inline and can take
+    /// far longer than the default session's 30s whole-transfer cap.
+    @discardableResult
+    func refreshEndpointModels(_ id: String) async throws -> [EndpointModel] {
+        let req = request("/api/model-endpoints/\(encPath(id))/models?refresh=true")
+        return decodeList(EndpointModel.self, try await send(req, via: streamSession))
+    }
+
     /// Creates a model endpoint. `kind` is "local" or "api". The server probes
     /// the `base_url` and auto-discovers the model list (`model_refresh_mode`).
     func createEndpoint(name: String, baseURL: String, apiKey: String?, kind: String) async throws {
