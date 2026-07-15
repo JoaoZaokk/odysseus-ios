@@ -28,20 +28,24 @@ struct ChatNoticeBanner: View {
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
     }
 
+    /// The counted variants only run for 2+. The source has a single `%lld` form,
+    /// so "1 mensagens" would be ungrammatical in pt-BR and in most of the 43
+    /// translations — a count of one falls back to the count-free sentence rather
+    /// than dragging a .stringsdict plural table into every language.
     @ViewBuilder
     private var label: some View {
         switch notice.kind {
-        case .contextTrimmed(let removed) where removed > 0:
+        case .contextTrimmed(let removed) where removed > 1:
             Text("\(removed) mensagens antigas saíram do contexto para caber no limite.")
         case .contextTrimmed:
             Text("Mensagens antigas saíram do contexto para caber no limite.")
         case .compacted:
             Text("O histórico foi resumido para caber no limite de contexto.")
-        case .roundsExhausted(let rounds) where rounds > 0:
+        case .roundsExhausted(let rounds) where rounds > 1:
             Text("O agente parou ao atingir o limite de \(rounds) rodadas.")
         case .roundsExhausted:
             Text("O agente parou ao atingir o limite de rodadas.")
-        case .budgetExceeded(let limit, _) where limit > 0:
+        case .budgetExceeded(let limit, _) where limit > 1:
             Text("O agente parou ao atingir o limite de \(limit) chamadas de ferramenta.")
         case .budgetExceeded:
             Text("O agente parou ao atingir o limite de chamadas de ferramenta.")
