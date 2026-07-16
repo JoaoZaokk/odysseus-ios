@@ -79,7 +79,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.zao.odysseus
         PRODUCT_NAME: Odysseus
         MARKETING_VERSION: "1.6"
-        CURRENT_PROJECT_VERSION: "10"
+        CURRENT_PROJECT_VERSION: "11"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -140,8 +140,10 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zao.odysseus
         PRODUCT_NAME: Odysseus
-        MARKETING_VERSION: "1.0"
-        CURRENT_PROJECT_VERSION: "6"
+        # Tracks the shared source: the mac binary carries the same 1.6 fixes
+        # (pt-BR display bug, SSE notices, 43 languages), so it ships as 1.6 too.
+        MARKETING_VERSION: "1.6"
+        CURRENT_PROJECT_VERSION: "11"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus-macOS.entitlements
