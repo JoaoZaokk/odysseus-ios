@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Stel je server in";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus is een client voor je eigen server. Voer het adres van je Odysseus-server in om door te gaan.";
+
+/* Context & agent-limit notices (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld oude berichten zijn uit de context verwijderd om binnen de limiet te blijven.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Oude berichten zijn uit de context verwijderd om binnen de limiet te blijven.";
+"O histórico foi resumido para caber no limite de contexto." = "De geschiedenis is samengevat om binnen de contextlimiet te blijven.";
+"O agente parou ao atingir o limite de %lld rodadas." = "De agent is gestopt na het bereiken van de limiet van %lld rondes.";
+"O agente parou ao atingir o limite de rodadas." = "De agent is gestopt na het bereiken van de limiet van rondes.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "De agent is gestopt na het bereiken van de limiet van %lld tool calls.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "De agent is gestopt na het bereiken van de limiet van tool calls.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "De agent bleef dezelfde tools herhalen zonder vooruitgang, dus werd hij onderbroken en gedwongen te antwoorden met wat hij al had.";
+"O agente não conseguiu executar a ação pedida e parou." = "De agent kon de gevraagde actie niet uitvoeren en is gestopt.";
+
+/* Model-endpoint settings — refresh (v1.6) */
+"Atualizar" = "Vernieuwen";
+"Só um administrador pode atualizar a lista de modelos." = "Alleen een beheerder kan de modellenlijst vernieuwen.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Geen modellen gevonden. Heeft de endpoint gereageerd?";
+"%lld modelo(s) encontrado(s)." = "%lld modellen gevonden.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Geen modellen in cache. Gebruik Vernieuwen om de endpoint te sonderen.";

@@ -373,3 +373,19 @@
 /* First-run mandatory server setup */
 "Configure seu servidor" = "ตั้งค่าเซิร์ฟเวอร์ของคุณ";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus เป็นไคลเอนต์สำหรับเซิร์ฟเวอร์ของคุณเอง กรอกที่อยู่เซิร์ฟเวอร์ Odysseus เพื่อดำเนินการต่อ";
+
+// Context/agent limits + model-endpoint refresh (v1.6)
+"%lld mensagens antigas saíram do contexto para caber no limite." = "ข้อความเก่า %lld รายการ ถูกตัดออกจากบริบทเพื่อให้พอดีกับขีดจำกัด";
+"Mensagens antigas saíram do contexto para caber no limite." = "ข้อความเก่าถูกตัดออกจากบริบทเพื่อให้พอดีกับขีดจำกัด";
+"O histórico foi resumido para caber no limite de contexto." = "ประวัติถูกสรุปเพื่อให้พอดีกับขีดจำกัดบริบท";
+"O agente parou ao atingir o limite de %lld rodadas." = "เอเจนต์หยุดทำงานเมื่อถึงขีดจำกัด %lld รอบ";
+"O agente parou ao atingir o limite de rodadas." = "เอเจนต์หยุดทำงานเมื่อถึงขีดจำกัดจำนวนรอบ";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "เอเจนต์หยุดทำงานเมื่อถึงขีดจำกัดการเรียกใช้เครื่องมือ %lld ครั้ง";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "เอเจนต์หยุดทำงานเมื่อถึงขีดจำกัดการเรียกใช้เครื่องมือ";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "เอเจนต์เรียกใช้เครื่องมือเดิมซ้ำ ๆ โดยไม่มีความคืบหน้า จึงถูกหยุดเพื่อตอบด้วยสิ่งที่มีอยู่แล้ว";
+"O agente não conseguiu executar a ação pedida e parou." = "เอเจนต์ไม่สามารถดำเนินการตามที่ร้องขอได้ และหยุดทำงาน";
+"Atualizar" = "รีเฟรช";
+"Só um administrador pode atualizar a lista de modelos." = "เฉพาะแอดมินเท่านั้นที่สามารถรีเฟรชรายการโมเดลได้";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "ไม่พบโมเดล เอนด์พอยต์ตอบสนองหรือไม่";
+"%lld modelo(s) encontrado(s)." = "พบโมเดล %lld รายการ";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "ไม่มีโมเดลในแคช ใช้รีเฟรชเพื่อตรวจสอบเอนด์พอยต์";

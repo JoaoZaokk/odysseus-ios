@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Sunucunuzu kurun";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus, kendi sunucunuz için bir istemcidir. Devam etmek için Odysseus sunucunuzun adresini girin.";
+
+/* Context/agent limits + model endpoint refresh (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Sınıra sığmak için bağlamdan %lld eski mesaj çıkarıldı.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Sınıra sığmak için bağlamdan eski mesajlar çıkarıldı.";
+"O histórico foi resumido para caber no limite de contexto." = "Geçmiş, bağlam sınırına sığmak için özetlendi.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Ajan, %lld tur sınırına ulaşınca durdu.";
+"O agente parou ao atingir o limite de rodadas." = "Ajan, tur sınırına ulaşınca durdu.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Ajan, %lld araç çağrısı sınırına ulaşınca durdu.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Ajan, araç çağrısı sınırına ulaşınca durdu.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Ajan ilerleme kaydetmeden aynı araçları tekrarlıyordu, bu yüzden elindekiyle yanıt vermesi için durduruldu.";
+"O agente não conseguiu executar a ação pedida e parou." = "Ajan istenen eylemi gerçekleştiremedi ve durdu.";
+"Atualizar" = "Yenile";
+"Só um administrador pode atualizar a lista de modelos." = "Model listesini yalnızca bir yönetici yenileyebilir.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Model bulunamadı. Uç nokta yanıt verdi mi?";
+"%lld modelo(s) encontrado(s)." = "%lld model bulundu.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Önbellekte model yok. Uç noktayı sondalamak için Yenile'yi kullanın.";

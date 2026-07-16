@@ -21,6 +21,21 @@ extension APIClient {
         decodeList(ModelEndpoint.self, try await send(request("/api/model-endpoints")))
     }
 
+    /// Re-probes an endpoint and rewrites its cached model list.
+    ///
+    /// `GET /api/model-endpoints` is cache-only server-side: it never probes, so
+    /// an endpoint added while its backend was unreachable reports zero models
+    /// forever and the model picker stays empty. This is the only way to heal it.
+    /// Admin-only — the server answers 403 to everyone else.
+    ///
+    /// Rides `streamSession`: the server probes the backend inline and can take
+    /// far longer than the default session's 30s whole-transfer cap.
+    @discardableResult
+    func refreshEndpointModels(_ id: String) async throws -> [EndpointModel] {
+        let req = request("/api/model-endpoints/\(encPath(id))/models?refresh=true")
+        return decodeList(EndpointModel.self, try await send(req, via: streamSession))
+    }
+
     /// Creates a model endpoint. `kind` is "local" or "api". The server probes
     /// the `base_url` and auto-discovers the model list (`model_refresh_mode`).
     func createEndpoint(name: String, baseURL: String, apiKey: String?, kind: String) async throws {
@@ -33,15 +48,7 @@ extension APIClient {
             "category": kind,
         ]
         if let apiKey, !apiKey.isEmpty { fields["api_key"] = apiKey }
-        var allowed = CharacterSet.alphanumerics
-        allowed.insert(charactersIn: "-._~")
-        let encoded = fields.map { k, v in
-            "\(k)=\(v.addingPercentEncoding(withAllowedCharacters: allowed) ?? v)"
-        }.joined(separator: "&")
-        var req = request("/api/model-endpoints", method: "POST")
-        req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        req.httpBody = encoded.data(using: .utf8)
-        _ = try await send(req)
+        _ = try await send(formRequest("/api/model-endpoints", fields: fields))
     }
 
     /// Enable/disable an endpoint (best-effort: PATCH the endpoint's is_enabled).

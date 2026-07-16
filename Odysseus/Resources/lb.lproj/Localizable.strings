@@ -373,3 +373,19 @@
 /* First-run mandatory server setup */
 "Configure seu servidor" = "Riicht däi Server an";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus ass e Client fir däin eegene Server. Gëff deng Odysseus-Serveradress an, fir weiderzefueren.";
+
+/* v1.6 — agent limit notices + model endpoint refresh (14 new keys) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld al Noriichten goufen aus dem Kontext ewechgeholl, fir bannent dem Limit ze bleiwen.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Al Noriichten goufen aus dem Kontext ewechgeholl, fir bannent dem Limit ze bleiwen.";
+"O histórico foi resumido para caber no limite de contexto." = "De Verlaf gouf zesummegefaasst, fir bannent dem Kontextlimit ze bleiwen.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Den Agent huet ugehalen, nodeem en d'Limit vu %lld Ronnen erreecht hat.";
+"O agente parou ao atingir o limite de rodadas." = "Den Agent huet ugehalen, nodeem en d'Limit vun de Ronnen erreecht hat.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Den Agent huet ugehalen, nodeem en d'Limit vu %lld Tool-Calls erreecht hat.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Den Agent huet ugehalen, nodeem en d'Limit vun den Tool-Calls erreecht hat.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Den Agent huet ëmmer erëm déiselwecht Tools benotzt, ouni virunzekommen, an gouf dofir gestoppt, fir mat deem z'äntweren, wat en scho hat.";
+"O agente não conseguiu executar a ação pedida e parou." = "Den Agent konnt déi ugefrote Aktioun net ausféieren an huet ugehalen.";
+"Atualizar" = "Aktualiséieren";
+"Só um administrador pode atualizar a lista de modelos." = "Nëmmen en Admin kann d'Lëscht vun de Modeller aktualiséieren.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Kee Modell fonnt. Huet den Endpoint geäntwert?";
+"%lld modelo(s) encontrado(s)." = "%lld Modeller fonnt.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Keng Modeller am Cache. Benotz Aktualiséieren, fir den Endpoint ze préiwen.";

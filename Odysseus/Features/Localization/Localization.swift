@@ -117,7 +117,11 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     var isRTL: Bool { self == .ar || self == .fa || self == .ur || self == .ps || self == .he || self == .ug }
 
     /// `.lproj` folder name in the bundle. pt-BR returns nil (it's the literals).
-    var lprojName: String? { self == .ptBR ? nil : rawValue }
+    /// pt-BR is the base language, but it still ships a `.lproj` (mapping every key
+    /// to itself). Without one, SwiftUI resolves `Text()` against the environment
+    /// locale, finds no pt-BR table, falls back to `CFBundleDevelopmentRegion` (en)
+    /// and shows Brazilians the English translation of their own app.
+    var lprojName: String? { rawValue }
 
     var locale: Locale { Locale(identifier: rawValue) }
 

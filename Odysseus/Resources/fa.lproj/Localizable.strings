@@ -373,3 +373,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "سرور خود را راه‌اندازی کنید";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus یک کلاینت برای سرور شخصی شماست. برای ادامه، نشانی سرور Odysseus خود را وارد کنید.";
+
+/* v1.6 — context/round/tool-call limit notices + model-endpoint refresh */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld پیام قدیمی از زمینه کنار گذاشته شد تا در محدودیت جا شود.";
+"Mensagens antigas saíram do contexto para caber no limite." = "پیام‌های قدیمی از زمینه کنار گذاشته شدند تا در محدودیت جا شوند.";
+"O histórico foi resumido para caber no limite de contexto." = "تاریخچه برای جا شدن در محدودیت زمینه خلاصه شد.";
+"O agente parou ao atingir o limite de %lld rodadas." = "عامل پس از رسیدن به محدودیت %lld دور متوقف شد.";
+"O agente parou ao atingir o limite de rodadas." = "عامل پس از رسیدن به محدودیت دورها متوقف شد.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "عامل پس از رسیدن به محدودیت %lld فراخوانی ابزار متوقف شد.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "عامل پس از رسیدن به محدودیت فراخوانی‌های ابزار متوقف شد.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "عامل بدون پیشرفت همان ابزارها را تکرار می‌کرد، بنابراین متوقف شد تا با آنچه تاکنون داشت پاسخ دهد.";
+"O agente não conseguiu executar a ação pedida e parou." = "عامل نتوانست عملیات درخواستی را انجام دهد و متوقف شد.";
+"Atualizar" = "تازه‌سازی";
+"Só um administrador pode atualizar a lista de modelos." = "فقط یک مدیر می‌تواند فهرست مدل‌ها را تازه‌سازی کند.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "هیچ مدلی پیدا نشد. آیا نقطه اتصال پاسخ داد؟";
+"%lld modelo(s) encontrado(s)." = "%lld مدل پیدا شد.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "مدلی در کش نیست. برای بررسی نقطه اتصال از تازه‌سازی استفاده کنید.";

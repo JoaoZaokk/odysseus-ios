@@ -60,16 +60,23 @@ final class AppLanguageTests: XCTestCase {
         XCTAssertEqual(AppLanguage.match(systemCode: "bo-CN"), .bo)
     }
 
-    func testPtBRHasNoLproj() {
-        XCTAssertNil(AppLanguage.ptBR.lprojName)
+    /// Regression: pt-BR used to return nil here, on the theory that the base
+    /// language needs no table. It does. SwiftUI resolves `Text()` against the
+    /// environment locale, and with no pt-BR.lproj it fell back to
+    /// CFBundleDevelopmentRegion (en) — Brazilians got the English build.
+    func testPtBRShipsAnLprojLikeEveryOtherLanguage() {
+        XCTAssertEqual(AppLanguage.ptBR.lprojName, "pt-BR")
         XCTAssertEqual(AppLanguage.ja.lprojName, "ja")
     }
 
-    /// Every language except pt-BR must ship its .lproj in the app bundle.
+    /// Every language, pt-BR included, must ship its .lproj in the app bundle.
     func testAllShippedLanguagesHaveLproj() {
         let appBundle = Bundle(for: LocalizationManager.self)
         for lang in AppLanguage.allCases {
-            guard let lproj = lang.lprojName else { continue }
+            guard let lproj = lang.lprojName else {
+                XCTFail("\(lang.rawValue) has no lprojName — it will fall back to English")
+                continue
+            }
             XCTAssertNotNil(appBundle.path(forResource: lproj, ofType: "lproj"),
                             "faltando \(lproj).lproj no bundle")
         }

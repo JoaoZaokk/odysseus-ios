@@ -53,6 +53,28 @@ struct ModelEndpoint: Decodable, Identifiable, Hashable {
     private struct ModelRef: Decodable { var id: String?; var name: String? }
 }
 
+/// One model discovered on an endpoint, from `GET /api/model-endpoints/{id}/models`.
+struct EndpointModel: Decodable, Identifiable, Hashable {
+    let id: String
+    var display: String
+    var isHidden: Bool
+    var isPinned: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id, display
+        case isHidden = "is_hidden"
+        case isPinned = "is_pinned"
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = (try? c.decode(String.self, forKey: .id)) ?? UUID().uuidString
+        display = (try? c.decode(String.self, forKey: .display)) ?? id
+        isHidden = (try? c.decode(Bool.self, forKey: .isHidden)) ?? false
+        isPinned = (try? c.decode(Bool.self, forKey: .isPinned)) ?? false
+    }
+}
+
 /// A read-only view over the server's key/value settings (`/api/auth/settings`).
 struct SettingsBag {
     var dict: [String: Any]

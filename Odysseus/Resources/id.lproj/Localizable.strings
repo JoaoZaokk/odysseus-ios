@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Siapkan server Anda";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus adalah klien untuk server Anda sendiri. Masukkan alamat server Odysseus Anda untuk melanjutkan.";
+
+// Context/agent limits + model-endpoint refresh (v1.6)
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld pesan lama dikeluarkan dari konteks agar sesuai dengan batas.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Pesan lama dikeluarkan dari konteks agar sesuai dengan batas.";
+"O histórico foi resumido para caber no limite de contexto." = "Riwayat diringkas agar sesuai dengan batas konteks.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Agen berhenti setelah mencapai batas %lld ronde.";
+"O agente parou ao atingir o limite de rodadas." = "Agen berhenti setelah mencapai batas ronde.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Agen berhenti setelah mencapai batas %lld panggilan alat.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Agen berhenti setelah mencapai batas panggilan alat.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Agen terus mengulang alat yang sama tanpa kemajuan, sehingga dihentikan untuk menjawab dengan apa yang sudah dimiliki.";
+"O agente não conseguiu executar a ação pedida e parou." = "Agen tidak dapat menjalankan tindakan yang diminta dan berhenti.";
+"Atualizar" = "Segarkan";
+"Só um administrador pode atualizar a lista de modelos." = "Hanya admin yang dapat menyegarkan daftar model.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Tidak ada model ditemukan. Apakah endpoint merespons?";
+"%lld modelo(s) encontrado(s)." = "Ditemukan %lld model.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Belum ada model dalam cache. Gunakan Segarkan untuk memeriksa endpoint.";

@@ -365,3 +365,21 @@
 "Adicionado. O servidor vai sondar a URL e listar os modelos." = "Ajouté. Le serveur va sonder l'URL et lister les modèles.";
 "Nova conversa" = "Nouvelle conversation";
 "Calendário & Contatos" = "Calendrier et Contacts";
+
+/* Context & agent-limit notices (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld anciens messages ont été retirés du contexte pour respecter la limite.";
+"Mensagens antigas saíram do contexto para caber no limite." = "D'anciens messages ont été retirés du contexte pour respecter la limite.";
+"O histórico foi resumido para caber no limite de contexto." = "L'historique a été résumé pour respecter la limite de contexte.";
+"O agente parou ao atingir o limite de %lld rodadas." = "L'agent s'est arrêté en atteignant la limite de %lld tours.";
+"O agente parou ao atingir o limite de rodadas." = "L'agent s'est arrêté en atteignant la limite de tours.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "L'agent s'est arrêté en atteignant la limite de %lld appels d'outils.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "L'agent s'est arrêté en atteignant la limite d'appels d'outils.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "L'agent répétait les mêmes outils sans progresser, il a donc été interrompu et contraint de répondre avec ce qu'il avait déjà.";
+"O agente não conseguiu executar a ação pedida e parou." = "L'agent n'a pas pu effectuer l'action demandée et s'est arrêté.";
+
+/* Model-endpoint settings — refresh (v1.6) */
+"Atualizar" = "Actualiser";
+"Só um administrador pode atualizar a lista de modelos." = "Seul un administrateur peut actualiser la liste des modèles.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Aucun modèle trouvé. Le point de terminaison a-t-il répondu ?";
+"%lld modelo(s) encontrado(s)." = "%lld modèles trouvés.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Aucun modèle en cache. Utilisez Actualiser pour sonder le point de terminaison.";

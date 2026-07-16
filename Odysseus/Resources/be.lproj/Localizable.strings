@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Наладзьце свой сервер";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus — гэта кліент для вашага ўласнага сервера. Увядзіце адрас вашага сервера Odysseus, каб працягнуць.";
+
+// Context limit & agent-loop notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "З кантэксту выдалена старых паведамленняў, каб змясціцца ў ліміт: %lld.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Старыя паведамленні выдалены з кантэксту, каб змясціцца ў ліміт.";
+"O histórico foi resumido para caber no limite de contexto." = "Гісторыя была сціснута, каб змясціцца ў ліміт кантэксту.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Агент спыніўся, дасягнуўшы ліміту раундаў: %lld.";
+"O agente parou ao atingir o limite de rodadas." = "Агент спыніўся, дасягнуўшы ліміту раундаў.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Агент спыніўся, дасягнуўшы ліміту выклікаў інструментаў: %lld.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Агент спыніўся, дасягнуўшы ліміту выклікаў інструментаў.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Агент паўтараў адны і тыя ж інструменты без прагрэсу, таму быў спынены, каб адказаць тым, што ўжо меў.";
+"O agente não conseguiu executar a ação pedida e parou." = "Агент не змог выканаць запытанае дзеянне і спыніўся.";
+
+// Model-endpoint settings
+"Atualizar" = "Абнавіць";
+"Só um administrador pode atualizar a lista de modelos." = "Толькі адміністратар можа абнавіць спіс мадэляў.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Мадэлі не знойдзены. Канчатковая кропка адказала?";
+"%lld modelo(s) encontrado(s)." = "Знойдзена мадэляў: %lld.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Няма мадэляў у кэшы. Націсніце «Абнавіць», каб апытаць канчатковую кропку.";

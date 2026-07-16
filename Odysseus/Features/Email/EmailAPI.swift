@@ -43,7 +43,13 @@ extension APIClient {
     }
 
     func emailRead(_ uid: String, folder: String = "INBOX") async throws -> EmailDetail {
-        try decode(EmailDetail.self, try await send(request("/api/email/read/\(encPath(uid))?folder=\(encQuery(folder))")))
+        // `full` defaults to false server-side, which fetches only the first 384KB
+        // of the body — a big HTML mail then renders cut off mid-tag, and nothing
+        // in the response says it was truncated. Opening a mail is a deliberate
+        // act and the body is the whole point of the screen, so pay for the
+        // complete fetch (the list view is what stays cheap).
+        let path = "/api/email/read/\(encPath(uid))?folder=\(encQuery(folder))&full=true"
+        return try decode(EmailDetail.self, try await send(request(path)))
     }
 
     func emailMarkRead(_ uid: String) async {

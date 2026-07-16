@@ -6,6 +6,11 @@ import SwiftUI
     @Published var endpoints: [ModelEndpoint] = []
     @Published var loading = false
     @Published var error: String?
+    /// Id of the endpoint currently being re-probed, if any.
+    @Published var refreshing: String?
+    /// Model count from the last refresh. Kept as a number, not a sentence, so
+    /// the view can build a localizable `Text` out of it.
+    @Published var refreshResult: Int?
     private let api: APIClient
     init(api: APIClient) { self.api = api }
 
@@ -18,6 +23,22 @@ import SwiftUI
     func toggle(_ ep: ModelEndpoint) async {
         do { try await api.setEndpointEnabled(ep.id, !ep.isEnabled); await load() }
         catch { self.error = "Não foi possível alterar: \(msg(error))" }
+    }
+
+    /// Re-probes the endpoint. The list endpoint never probes on its own, so an
+    /// endpoint that was offline when it was added shows zero models until this runs.
+    func refresh(_ ep: ModelEndpoint) async {
+        refreshing = ep.id; refreshResult = nil; error = nil
+        defer { refreshing = nil }
+        do {
+            let found = try await api.refreshEndpointModels(ep.id)
+            await load()
+            refreshResult = found.count
+        } catch APIError.http(403, _) {
+            error = "Só um administrador pode atualizar a lista de modelos."
+        } catch {
+            self.error = "Não foi possível atualizar: \(msg(error))"
+        }
     }
     func delete(_ ep: ModelEndpoint) async {
         do { try await api.deleteEndpoint(ep.id); await load() }
@@ -37,7 +58,17 @@ struct AddedModelsSection: View {
                 ProgressView().tint(theme.accent)
             }
             if let e = vm.error {
-                Text(e).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                // Through LocalizedStringKey so the fixed messages translate;
+                // anything the server worded falls through to itself.
+                Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+            }
+            if let n = vm.refreshResult {
+                Group {
+                    if n == 0 { Text("Nenhum modelo encontrado. O endpoint respondeu?") }
+                    else { Text("\(n) modelo(s) encontrado(s).") }
+                }
+                .font(.ody(size: 11, design: .monospaced))
+                .foregroundStyle(n == 0 ? theme.accent : theme.green)
             }
             ForEach(vm.endpoints) { ep in card(ep) }
             if vm.endpoints.isEmpty && !vm.loading {
@@ -67,12 +98,24 @@ struct AddedModelsSection: View {
                     .font(.ody(size: 11, design: .monospaced))
                     .foregroundStyle(ep.isEnabled ? theme.green : theme.secondaryText)
                 Spacer()
+                if vm.refreshing == ep.id {
+                    ProgressView().controlSize(.small).tint(theme.accent)
+                } else {
+                    Button("Atualizar") { Task { await vm.refresh(ep) } }
+                        .buttonStyle(.plain).foregroundStyle(theme.fg)
+                }
                 Button(ep.isEnabled ? "Desativar" : "Ativar") { Task { await vm.toggle(ep) } }
                     .buttonStyle(.plain).foregroundStyle(theme.fg)
                 Button("Remover", role: .destructive) { Task { await vm.delete(ep) } }
                     .buttonStyle(.plain).foregroundStyle(theme.accent)
             }
             .font(.ody(size: 12, design: .monospaced))
+            .disabled(vm.refreshing != nil)
+            if ep.models.isEmpty {
+                Text("Sem modelos em cache. Use Atualizar para sondar o endpoint.")
+                    .font(.ody(size: 10, design: .monospaced))
+                    .foregroundStyle(theme.secondaryText)
+            }
         }
     }
 }

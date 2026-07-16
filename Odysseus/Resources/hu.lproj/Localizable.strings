@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Állítsa be a szerverét";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Az Odysseus a saját szerveréhez készült kliens. A folytatáshoz adja meg az Odysseus szerver címét.";
+
+/* Context/agent limits + model endpoint refresh (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld régi üzenet kikerült a kontextusból, hogy elférjen a korlátban.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Régi üzenetek kerültek ki a kontextusból, hogy elférjenek a korlátban.";
+"O histórico foi resumido para caber no limite de contexto." = "Az előzmények összefoglalásra kerültek, hogy elférjenek a kontextuskorlátban.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Az ügynök leállt, mert elérte a %lld kör korlátját.";
+"O agente parou ao atingir o limite de rodadas." = "Az ügynök leállt, mert elérte a körök korlátját.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Az ügynök leállt, mert elérte a %lld eszközhívás korlátját.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Az ügynök leállt, mert elérte az eszközhívások korlátját.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Az ügynök ugyanazokat az eszközöket ismételte előrehaladás nélkül, ezért megállították, hogy azzal válaszoljon, amije már volt.";
+"O agente não conseguiu executar a ação pedida e parou." = "Az ügynök nem tudta végrehajtani a kért műveletet, és leállt.";
+"Atualizar" = "Frissítés";
+"Só um administrador pode atualizar a lista de modelos." = "A modellek listáját csak egy admin frissítheti.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Nem található modell. Válaszolt a végpont?";
+"%lld modelo(s) encontrado(s)." = "%lld modell található.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Nincs gyorsítótárazott modell. Használja a Frissítést a végpont megvizsgálásához.";

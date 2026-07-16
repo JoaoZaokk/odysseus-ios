@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "设置您的服务器";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus 是您自有服务器的客户端。请输入您的 Odysseus 服务器地址以继续。";
+
+// v1.6 — agent limits & model endpoints
+"%lld mensagens antigas saíram do contexto para caber no limite." = "为了符合上限，%lld 条旧消息已从上下文中移除。";
+"%lld modelo(s) encontrado(s)." = "找到 %lld 个模型。";
+"Atualizar" = "刷新";
+"Mensagens antigas saíram do contexto para caber no limite." = "为了符合上限，旧消息已从上下文中移除。";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "未找到任何模型。端点是否有响应？";
+"O agente não conseguiu executar a ação pedida e parou." = "智能体无法执行所请求的操作，已停止。";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "智能体在达到 %lld 次工具调用的上限后已停止。";
+"O agente parou ao atingir o limite de %lld rodadas." = "智能体在达到 %lld 轮的上限后已停止。";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "智能体在达到工具调用上限后已停止。";
+"O agente parou ao atingir o limite de rodadas." = "智能体在达到轮数上限后已停止。";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "智能体反复使用相同的工具却没有进展，因此被中止，并以已有的内容作答。";
+"O histórico foi resumido para caber no limite de contexto." = "为了符合上下文上限，历史记录已总结。";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "没有缓存的模型。请使用“刷新”探测端点。";
+"Só um administrador pode atualizar a lista de modelos." = "只有管理员可以刷新模型列表。";

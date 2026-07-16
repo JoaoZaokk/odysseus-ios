@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Skonfiguruj swój serwer";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus to klient Twojego własnego serwera. Wpisz adres swojego serwera Odysseus, aby kontynuować.";
+
+/* Agent limits & context notices; model-endpoint refresh (1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Z kontekstu usunięto %lld starych wiadomości, aby zmieścić się w limicie.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Stare wiadomości zostały usunięte z kontekstu, aby zmieścić się w limicie.";
+"O histórico foi resumido para caber no limite de contexto." = "Historia została skrócona, aby zmieścić się w limicie kontekstu.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Agent zatrzymał się po osiągnięciu limitu: %lld rund.";
+"O agente parou ao atingir o limite de rodadas." = "Agent zatrzymał się po osiągnięciu limitu rund.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Agent zatrzymał się po osiągnięciu limitu: %lld wywołań narzędzi.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Agent zatrzymał się po osiągnięciu limitu wywołań narzędzi.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Agent powtarzał te same narzędzia bez postępu, więc został zatrzymany, aby odpowiedzieć tym, co już miał.";
+"O agente não conseguiu executar a ação pedida e parou." = "Agent nie zdołał wykonać żądanej akcji i zatrzymał się.";
+"Atualizar" = "Odśwież";
+"Só um administrador pode atualizar a lista de modelos." = "Tylko admin może odświeżyć listę modeli.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Nie znaleziono modeli. Czy endpoint odpowiedział?";
+"%lld modelo(s) encontrado(s)." = "Znaleziono: %lld modeli.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Brak modeli w pamięci podręcznej. Użyj „Odśwież”, aby sondować endpoint.";

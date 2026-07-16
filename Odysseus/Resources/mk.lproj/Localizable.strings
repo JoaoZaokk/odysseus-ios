@@ -376,3 +376,21 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Поставете го вашиот сервер";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus е клиент за вашиот сопствен сервер. Внесете ја адресата на вашиот Odysseus сервер за да продолжите.";
+
+// Context limit & agent-loop notices
+"%lld mensagens antigas saíram do contexto para caber no limite." = "Од контекстот беа отстранети стари пораки за да се вклопат во лимитот: %lld.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Старите пораки беа отстранети од контекстот за да се вклопат во лимитот.";
+"O histórico foi resumido para caber no limite de contexto." = "Историјата беше компресирана за да се вклопи во лимитот на контекстот.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Агентот запре откако го достигна лимитот на рунди: %lld.";
+"O agente parou ao atingir o limite de rodadas." = "Агентот запре откако го достигна лимитот на рунди.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Агентот запре откако го достигна лимитот на повици на алатки: %lld.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Агентот запре откако го достигна лимитот на повици на алатки.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Агентот ги повторуваше истите алатки без напредок, па затоа беше запрен да одговори со она што веќе го имаше.";
+"O agente não conseguiu executar a ação pedida e parou." = "Агентот не успеа да ја изврши бараната акција и запре.";
+
+// Model-endpoint settings
+"Atualizar" = "Освежи";
+"Só um administrador pode atualizar a lista de modelos." = "Само администратор може да го освежи списокот со модели.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Не се пронајдени модели. Крајната точка одговори ли?";
+"%lld modelo(s) encontrado(s)." = "Пронајдени модели: %lld.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Нема кеширани модели. Користете «Освежи» за да ја испитате крајната точка.";

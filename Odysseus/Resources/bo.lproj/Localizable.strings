@@ -373,3 +373,19 @@
 /* First-run mandatory server setup */
 "Configure seu servidor" = "ཁྱེད་ཀྱི་ཞབས་ཞུའི་འཕྲུལ་ཆས་སྒྲིག་འགོད་གྱིས";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus ནི་ཁྱེད་རང་གི་ཞབས་ཞུའི་འཕྲུལ་ཆས་ཀྱི་ཉེར་སྤྱོད་ཅིག་རེད། མུ་མཐུད་ཆེད་ཁྱེད་ཀྱི་ Odysseus ཞབས་ཞུའི་འཕྲུལ་ཆས་ཀྱི་ཁ་བྱང་འཇུག";
+
+// Context/agent limits + model-endpoint refresh (v1.6)
+"%lld mensagens antigas saíram do contexto para caber no limite." = "རྙིང་པའི་འཕྲིན་ཡིག་ %lld ཚད་ནང་ཚུད་ཐུབ་ཆེད་སྐབས་དོན་ནས་ཕྱིར་བཏོན་ཟིན།";
+"Mensagens antigas saíram do contexto para caber no limite." = "རྙིང་པའི་འཕྲིན་ཡིག་རྣམས་ཚད་ནང་ཚུད་ཐུབ་ཆེད་སྐབས་དོན་ནས་ཕྱིར་བཏོན་ཟིན།";
+"O histórico foi resumido para caber no limite de contexto." = "ལོ་རྒྱུས་སྐབས་དོན་གྱི་ཚད་ནང་ཚུད་ཐུབ་ཆེད་བསྡུས་ཟིན།";
+"O agente parou ao atingir o limite de %lld rodadas." = "ལས་བྱེད་མཁན་གྱིས་བསྐྱར་ཟློས་ %lld ཀྱི་ཚད་སླེབས་སྐབས་མཚམས་བཞག།";
+"O agente parou ao atingir o limite de rodadas." = "ལས་བྱེད་མཁན་གྱིས་བསྐྱར་ཟློས་ཀྱི་ཚད་སླེབས་སྐབས་མཚམས་བཞག།";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "ལས་བྱེད་མཁན་གྱིས་ལག་ཆ་བེད་སྤྱོད་ཐེངས་ %lld ཀྱི་ཚད་སླེབས་སྐབས་མཚམས་བཞག།";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "ལས་བྱེད་མཁན་གྱིས་ལག་ཆ་བེད་སྤྱོད་ཀྱི་ཚད་སླེབས་སྐབས་མཚམས་བཞག།";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "ལས་བྱེད་མཁན་གྱིས་གོང་འཕེལ་མེད་པར་ལག་ཆ་གཅིག་པ་ཡང་བསྐྱར་བེད་སྤྱོད་བྱེད་བཞིན་ཡོད་པས་ཡོད་བཞིན་པའི་གནས་ཚུལ་ཐོག་ལན་འདེབས་ཆེད་བར་ཆད་བཏང་།";
+"O agente não conseguiu executar a ação pedida e parou." = "ལས་བྱེད་མཁན་གྱིས་ཞུས་པའི་བྱ་སྤྱོད་ལག་བསྟར་མ་ཐུབ་པར་མཚམས་བཞག།";
+"Atualizar" = "སླར་བརྟག";
+"Só um administrador pode atualizar a lista de modelos." = "དོ་དམ་པ་གཅིག་པུས་དཔེ་གཞིའི་ཐོ་གཞུང་སླར་བརྟག་བྱེད་ཐུབ།";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "དཔེ་གཞི་གང་ཡང་རྙེད་མེད། མཐའ་མཚམས་ཀྱིས་ལན་བཏབ་བམ།";
+"%lld modelo(s) encontrado(s)." = "དཔེ་གཞི་ %lld རྙེད་སོང་།";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "གནས་སྐབས་ཉར་ཚགས་ནང་དཔེ་གཞི་མེད། མཐའ་མཚམས་བརྟག་ཞིབ་བྱེད་ཆེད་སླར་བརྟག་བེད་སྤྱོད་གྱིས།";

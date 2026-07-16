@@ -376,3 +376,19 @@
 // Onboarding (server setup)
 "Configure seu servidor" = "Richte deinen Server ein";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus ist ein Client für deinen eigenen Server. Gib die Adresse deines Odysseus-Servers ein, um fortzufahren.";
+
+/* v1.6 — agent limit notices + model endpoint refresh (14 new keys) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld alte Nachrichten wurden aus dem Kontext entfernt, um das Limit einzuhalten.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Alte Nachrichten wurden aus dem Kontext entfernt, um das Limit einzuhalten.";
+"O histórico foi resumido para caber no limite de contexto." = "Der Verlauf wurde zusammengefasst, um das Kontextlimit einzuhalten.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Der Agent hat angehalten, nachdem er das Limit von %lld Runden erreicht hat.";
+"O agente parou ao atingir o limite de rodadas." = "Der Agent hat angehalten, nachdem er das Rundenlimit erreicht hat.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Der Agent hat angehalten, nachdem er das Limit von %lld Werkzeugaufrufen erreicht hat.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Der Agent hat angehalten, nachdem er das Limit für Werkzeugaufrufe erreicht hat.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Der Agent wiederholte dieselben Werkzeuge, ohne voranzukommen, und wurde deshalb gestoppt, um mit dem zu antworten, was er bereits hatte.";
+"O agente não conseguiu executar a ação pedida e parou." = "Der Agent konnte die angeforderte Aktion nicht ausführen und hat angehalten.";
+"Atualizar" = "Aktualisieren";
+"Só um administrador pode atualizar a lista de modelos." = "Nur ein Admin kann die Modellliste aktualisieren.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Keine Modelle gefunden. Hat der Endpunkt geantwortet?";
+"%lld modelo(s) encontrado(s)." = "%lld Modelle gefunden.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Keine Modelle im Cache. Verwende Aktualisieren, um den Endpunkt zu sondieren.";

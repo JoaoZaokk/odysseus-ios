@@ -365,3 +365,19 @@
 "Outros" = "Övrigt";
 "Configure seu servidor" = "Konfigurera din server";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus är en klient för din egen server. Ange din Odysseus-serveradress för att fortsätta.";
+
+/* Context/agent limits + model endpoint refresh (v1.6) */
+"%lld mensagens antigas saíram do contexto para caber no limite." = "%lld gamla meddelanden togs bort från kontexten för att få plats inom gränsen.";
+"Mensagens antigas saíram do contexto para caber no limite." = "Gamla meddelanden togs bort från kontexten för att få plats inom gränsen.";
+"O histórico foi resumido para caber no limite de contexto." = "Historiken sammanfattades för att få plats inom kontextgränsen.";
+"O agente parou ao atingir o limite de %lld rodadas." = "Agenten stannade när gränsen på %lld rundor nåddes.";
+"O agente parou ao atingir o limite de rodadas." = "Agenten stannade när rundgränsen nåddes.";
+"O agente parou ao atingir o limite de %lld chamadas de ferramenta." = "Agenten stannade när gränsen på %lld verktygsanrop nåddes.";
+"O agente parou ao atingir o limite de chamadas de ferramenta." = "Agenten stannade när gränsen för verktygsanrop nåddes.";
+"O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha." = "Agenten upprepade samma verktyg utan att komma vidare, så den avbröts för att svara med det den redan hade.";
+"O agente não conseguiu executar a ação pedida e parou." = "Agenten kunde inte utföra den begärda åtgärden och stannade.";
+"Atualizar" = "Uppdatera";
+"Só um administrador pode atualizar a lista de modelos." = "Endast en admin kan uppdatera modellistan.";
+"Nenhum modelo encontrado. O endpoint respondeu?" = "Inga modeller hittades. Svarade slutpunkten?";
+"%lld modelo(s) encontrado(s)." = "%lld modeller hittades.";
+"Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Inga modeller i cacheminnet. Använd Uppdatera för att söka av slutpunkten.";
