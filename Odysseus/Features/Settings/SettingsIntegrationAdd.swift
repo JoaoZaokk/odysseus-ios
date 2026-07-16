@@ -2,6 +2,7 @@ import SwiftUI
 
 // Add-integration form. Field sets per type come from the web's Add modals; the
 // JSON bodies are inferred and validated in-app (FastAPI 422 detail is surfaced).
+// Exception: MCP servers POST as form-urlencoded — that route reads Form(...) fields.
 enum IntegrationKind: String, CaseIterable, Identifiable {
     case caldav, carddav, api, claude, codex, mcp
     var id: String { rawValue }
@@ -66,10 +67,20 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
             case .claude, .codex:
                 try await api.createIntegration(["type": kind.rawValue, "name": name])
             case .mcp:
-                let argsJSON = (try? JSONSerialization.jsonObject(with: Data(args.utf8))) ?? []
-                let envJSON = (try? JSONSerialization.jsonObject(with: Data(env.utf8))) ?? [:]
-                try await api.createMCPServer(["name": name, "transport": "stdio",
-                                               "command": command, "args": argsJSON, "env": envJSON])
+                // The server json.loads these strings (silently defaulting to []/{});
+                // reject bad JSON here so typos don't save a broken server config.
+                let argsText = args.trimmingCharacters(in: .whitespacesAndNewlines)
+                let envText = env.trimmingCharacters(in: .whitespacesAndNewlines)
+                guard (try? JSONSerialization.jsonObject(with: Data(argsText.utf8))) is [Any] else {
+                    self.error = "Args precisa ser um array JSON válido, ex.: [\"-y\", \"pacote\"]"
+                    return false
+                }
+                guard (try? JSONSerialization.jsonObject(with: Data(envText.utf8))) is [String: Any] else {
+                    self.error = "Env precisa ser um objeto JSON válido, ex.: {\"KEY\": \"value\"}"
+                    return false
+                }
+                try await api.createMCPServer(name: name, transport: "stdio",
+                                              command: command, args: argsText, env: envText)
             }
             return true
         } catch {

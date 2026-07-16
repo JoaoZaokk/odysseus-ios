@@ -121,15 +121,22 @@ extension APIClient {
     func exportData() async throws -> Data { try await send(request("/api/export")) }
     func wipeCategory(_ category: String) async throws { _ = try await send(request("/api/admin/wipe/\(encPath(category))", method: "DELETE")) }
 
-    // Integration / MCP creation (JSON bodies)
-    private func postJSON(_ path: String, _ body: [String: Any]) async throws {
-        var req = request(path, method: "POST")
+    // Integration creation (JSON body)
+    func createIntegration(_ body: [String: Any]) async throws {
+        var req = request("/api/auth/integrations", method: "POST")
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = try JSONSerialization.data(withJSONObject: body)
         _ = try await send(req)
     }
-    func createIntegration(_ body: [String: Any]) async throws { try await postJSON("/api/auth/integrations", body) }
-    func createMCPServer(_ body: [String: Any]) async throws { try await postJSON("/api/mcp/servers", body) }
+    /// `POST /api/mcp/servers` reads FastAPI `Form(...)` fields, not JSON (like
+    /// `/api/model-endpoints`) — args/env travel as JSON-encoded strings in the form.
+    func createMCPServer(name: String, transport: String, command: String,
+                         args: String, env: String) async throws {
+        _ = try await send(formRequest("/api/mcp/servers", fields: [
+            "name": name, "transport": transport, "command": command,
+            "args": args, "env": env,
+        ]))
+    }
 }
 
 // MARK: - Reminders (Lembretes)
