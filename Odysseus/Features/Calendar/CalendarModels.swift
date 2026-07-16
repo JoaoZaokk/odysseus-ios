@@ -59,15 +59,27 @@ struct CalendarEvent: Decodable, Identifiable, Hashable, Sendable {
     }
 
     static func parse(_ s: String) -> Date? {
-        // Server stores naive *local* datetimes ("2026-06-20T09:30:00", no tz).
-        // Parse those as local time first so they don't get shifted by the
-        // UTC assumption in ISODate.
-        let local = DateFormatter()
-        local.locale = Locale(identifier: "en_US_POSIX")
-        local.timeZone = .current
-        local.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        if !s.contains("Z") && !s.contains("+"), let d = local.date(from: s) { return d }
-        // Timezone-aware ISO ("...Z" / "+hh:mm")
+        // Server stores naive *local* datetimes ("2026-06-20T09:30:00", no tz),
+        // sometimes with fractional seconds ("…T09:30:00.123456" — relative-time
+        // events keep datetime.now() microseconds). Parse those as local time
+        // first so they don't get shifted by the UTC assumption in ISODate.
+        // A "-" after the date part is a UTC offset ("…T09:30:00-03:00"),
+        // not a naive datetime (some ICU versions parse it ignoring the
+        // offset, which would shift the event).
+        if !s.contains("Z") && !s.contains("+") && !s.dropFirst(10).contains("-") {
+            var naive = s
+            if let dot = naive.firstIndex(of: "."),
+               naive.index(after: dot) < naive.endIndex,
+               naive[naive.index(after: dot)...].allSatisfy({ $0.isASCII && $0.isNumber }) {
+                naive = String(naive[..<dot])
+            }
+            let local = DateFormatter()
+            local.locale = Locale(identifier: "en_US_POSIX")
+            local.timeZone = .current
+            local.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            if let d = local.date(from: naive) { return d }
+        }
+        // Timezone-aware ISO ("...Z" / "+hh:mm" / "-hh:mm")
         if let t = ISODate.parse(s) { return Date(timeIntervalSince1970: t) }
         // All-day "2026-06-25"
         let f = DateFormatter()

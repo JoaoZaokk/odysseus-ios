@@ -11,7 +11,10 @@ enum ISODate {
     private static let plain = ISO8601DateFormatter()
 
     static func parse(_ s: String) -> Double? {
-        let str = s.contains("Z") || s.contains("+") ? s : s + "Z"
+        // Timezone-aware if it has a "Z", a "+", or a "-" after the date part
+        // (a negative UTC offset, "…T09:30:00-03:00"); otherwise assume UTC.
+        let aware = s.contains("Z") || s.contains("+") || s.dropFirst(10).contains("-")
+        let str = aware ? s : s + "Z"
         if let d = withFraction.date(from: str) { return d.timeIntervalSince1970 }
         if let d = plain.date(from: str) { return d.timeIntervalSince1970 }
         return nil
