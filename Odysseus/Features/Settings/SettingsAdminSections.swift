@@ -118,7 +118,9 @@ extension APIClient {
     func toggleSignup() async throws { _ = try await send(request("/api/auth/signup-toggle", method: "POST")) }
 
     // System
-    func exportData() async throws -> Data { try await send(request("/api/export")) }
+    // streamSession: the default session's 30s resource cap would kill a slow
+    // full-backup download mid-transfer (same class of bug as chat uploads).
+    func exportData() async throws -> Data { try await send(request("/api/export"), via: streamSession) }
     func wipeCategory(_ category: String) async throws { _ = try await send(request("/api/admin/wipe/\(encPath(category))", method: "DELETE")) }
 
     // Integration / MCP creation (JSON bodies)
@@ -514,8 +516,11 @@ struct BuiltinToolsCard: View {
         note = nil
         do {
             let data = try await api.exportData()
-            SettingsUI.saveJSON(data, suggested: "odysseus-backup.json")
-            note = "Backup exportado."
+            switch await SettingsUI.saveJSON(data, suggested: "odysseus-backup.json") {
+            case .some(true):  note = "Backup exportado."
+            case .some(false): note = "Falha ao gravar o arquivo do backup."
+            case .none:        break   // user cancelled — saying anything would lie
+            }
         } catch { note = "Falha ao exportar: \(SettingsUI.msg(error))" }
     }
     func wipe(_ cat: String) async {
@@ -863,7 +868,10 @@ struct IntegracoesSection: View {
                 .environment(\.theme, theme)
         }
         .sheet(isPresented: $showEmail) {
-            AddEmailAccountView { payload in await emailVM.add(payload) }
+            // Same trap as SettingsSections: omitting onTest silently made the
+            // connection test a no-op that always reported success.
+            AddEmailAccountView(onSave: { payload in await emailVM.add(payload) },
+                                onTest: { payload in await emailVM.test(payload) })
                 .environment(\.theme, theme)
         }
     }
@@ -874,16 +882,42 @@ struct IntegracoesSection: View {
 enum SettingsUI {
     static func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 
-    /// Saves data to a user-chosen file (macOS save panel). No-op stub on iOS.
-    static func saveJSON(_ data: Data, suggested: String) {
+    /// Delivers data to the user as a file. Returns `true` when it was actually
+    /// delivered, `false` on failure, `nil` when the user cancelled — so callers
+    /// can report honestly. The old iOS branch wrote into tmp (unreachable, and
+    /// purged by the OS) and the caller still announced "Backup exportado.";
+    /// anyone trusting that phantom backup before a Danger-Zone wipe lost data.
+    @MainActor
+    static func saveJSON(_ data: Data, suggested: String) async -> Bool? {
         #if os(macOS)
         let panel = NSSavePanel()
         panel.nameFieldStringValue = suggested
         panel.allowedContentTypes = [.json]
-        if panel.runModal() == .OK, let url = panel.url { try? data.write(to: url) }
+        guard panel.runModal() == .OK, let url = panel.url else { return nil }
+        do { try data.write(to: url); return true } catch { return false }
         #else
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(suggested)
-        try? data.write(to: url)
+        do { try data.write(to: url) } catch { return false }
+        // Find the topmost view controller and hand the file to the share sheet.
+        guard let scene = UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .first(where: { $0.activationState == .foregroundActive }),
+              var top = scene.keyWindow?.rootViewController else { return false }
+        while let presented = top.presentedViewController { top = presented }
+        return await withCheckedContinuation { cont in
+            let avc = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            avc.completionWithItemsHandler = { _, completed, _, error in
+                try? FileManager.default.removeItem(at: url)
+                if error != nil { cont.resume(returning: false) }
+                else { cont.resume(returning: completed ? true : nil) }
+            }
+            // iPad requires a popover anchor or UIKit crashes the app.
+            avc.popoverPresentationController?.sourceView = top.view
+            avc.popoverPresentationController?.sourceRect = CGRect(
+                x: top.view.bounds.midX, y: top.view.bounds.midY, width: 0, height: 0)
+            avc.popoverPresentationController?.permittedArrowDirections = []
+            top.present(avc, animated: true)
+        }
         #endif
     }
 

@@ -322,7 +322,11 @@ struct EmailSection: View {
         }
         .task { await vm.load() }
         .sheet(isPresented: $showAdd) {
-            AddEmailAccountView { payload in await vm.add(payload) }
+            // onTest must be passed explicitly: its default is `{ _ in nil }` and
+            // nil means success — without this, "Testar conexão" reported
+            // "Conexão OK" without ever touching the network.
+            AddEmailAccountView(onSave: { payload in await vm.add(payload) },
+                                onTest: { payload in await vm.test(payload) })
         }
     }
 }

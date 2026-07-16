@@ -69,8 +69,11 @@ struct CalendarEvent: Decodable, Identifiable, Hashable, Sendable {
         if !s.contains("Z") && !s.contains("+"), let d = local.date(from: s) { return d }
         // Timezone-aware ISO ("...Z" / "+hh:mm")
         if let t = ISODate.parse(s) { return Date(timeIntervalSince1970: t) }
-        // All-day "2026-06-25"
+        // All-day "2026-06-25". en_US_POSIX like the parser above — with the
+        // device calendar, "2026-06-25" parses as a BUDDHIST year on Thai
+        // devices and the event lands in Gregorian 1483.
         let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
         f.dateFormat = "yyyy-MM-dd"
         f.timeZone = .current
         return f.date(from: String(s.prefix(10)))

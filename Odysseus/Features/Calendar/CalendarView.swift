@@ -57,7 +57,12 @@ final class CalendarViewModel: ObservableObject {
 
     func create(summary: String, start: Date, end: Date, allDay: Bool) async {
         guard let href = defaultCalendarHref else { error = "Nenhum calendário disponível"; return }
-        let f = DateFormatter(); f.dateFormat = allDay ? "yyyy-MM-dd" : "yyyy-MM-dd'T'HH:mm:ss"
+        // en_US_POSIX: without it the formatter inherits the DEVICE calendar and
+        // digits — a Thai device (Buddhist calendar) writes "2569-07-16" into the
+        // user's real CalDAV, fa/ar devices write non-ASCII digits.
+        let f = DateFormatter(); f.locale = Locale(identifier: "en_US_POSIX")
+        f.timeZone = .current
+        f.dateFormat = allDay ? "yyyy-MM-dd" : "yyyy-MM-dd'T'HH:mm:ss"
         let payload = EventPayload(summary: summary, dtstart: f.string(from: start),
                                    dtend: f.string(from: end), all_day: allDay,
                                    calendar_href: href, location: nil, description: nil)

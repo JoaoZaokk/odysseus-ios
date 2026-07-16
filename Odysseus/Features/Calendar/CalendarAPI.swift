@@ -6,7 +6,10 @@ extension APIClient {
     }
 
     func events(start: Date, end: Date) async throws -> [CalendarEvent] {
-        let f = DateFormatter(); f.dateFormat = "yyyy-MM-dd"; f.timeZone = .current
+        // en_US_POSIX forces Gregorian + ASCII digits — the device calendar must
+        // never leak into the wire format (Thai devices would query year 2569).
+        let f = DateFormatter(); f.locale = Locale(identifier: "en_US_POSIX")
+        f.dateFormat = "yyyy-MM-dd"; f.timeZone = .current
         let path = "/api/calendar/events?start=\(f.string(from: start))&end=\(f.string(from: end))"
         return decodeList(CalendarEvent.self, try await send(request(path)))
     }
