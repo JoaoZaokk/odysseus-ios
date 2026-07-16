@@ -140,6 +140,20 @@ final class APIClient: @unchecked Sendable {
         return s.addingPercentEncoding(withAllowedCharacters: allowed) ?? ""
     }
 
+    /// POST with an `application/x-www-form-urlencoded` body, for the FastAPI
+    /// routes that read `Form(...)` fields instead of JSON.
+    func formRequest(_ path: String, fields: [String: String]) -> URLRequest {
+        var allowed = CharacterSet.alphanumerics
+        allowed.insert(charactersIn: "-._~")
+        let encoded = fields.map { k, v in
+            "\(k)=\(v.addingPercentEncoding(withAllowedCharacters: allowed) ?? v)"
+        }.joined(separator: "&")
+        var req = request(path, method: "POST")
+        req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        req.httpBody = encoded.data(using: .utf8)
+        return req
+    }
+
     /// POST/PUT with a JSON body.
     func jsonRequest(_ path: String, method: String, body: Encodable) throws -> URLRequest {
         var req = request(path, method: method)

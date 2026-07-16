@@ -48,15 +48,7 @@ extension APIClient {
             "category": kind,
         ]
         if let apiKey, !apiKey.isEmpty { fields["api_key"] = apiKey }
-        var allowed = CharacterSet.alphanumerics
-        allowed.insert(charactersIn: "-._~")
-        let encoded = fields.map { k, v in
-            "\(k)=\(v.addingPercentEncoding(withAllowedCharacters: allowed) ?? v)"
-        }.joined(separator: "&")
-        var req = request("/api/model-endpoints", method: "POST")
-        req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        req.httpBody = encoded.data(using: .utf8)
-        _ = try await send(req)
+        _ = try await send(formRequest("/api/model-endpoints", fields: fields))
     }
 
     /// Enable/disable an endpoint (best-effort: PATCH the endpoint's is_enabled).
