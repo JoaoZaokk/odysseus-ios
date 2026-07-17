@@ -30,13 +30,13 @@
 		<true/>
 	</dict>
 	<key>NSFaceIDUsageDescription</key>
-	<string>Para bloquear o app e o login automático com Face ID (opcional).</string>
+	<string>Odysseus uses Face ID to lock the app and sign you in automatically (optional).</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Odysseus precisa acessar o servidor de IA na sua rede local.</string>
+	<string>Odysseus needs local network access to reach your AI server on your network.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Para ditar mensagens por voz.</string>
+	<string>Odysseus uses the microphone so you can dictate your messages by voice.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Para transcrever sua voz em texto no dispositivo.</string>
+	<string>Odysseus transcribes your speech into text on your device.</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>

@@ -1,0 +1,9 @@
+/* Odysseus — InfoPlist.strings (bo) */
+/* System permission dialogs. Without these the consent alert shows the
+   Info.plist fallback (English) no matter what language the app is in —
+   that is what App Review flagged under guideline 4.0 (Design). */
+
+"NSMicrophoneUsageDescription" = "ཁྱེད་ཀྱིས་འཕྲིན་ཡིག་སྐད་གདངས་ཐོག་ནས་བྲི་ཐུབ་པའི་ཆེད། Odysseus ཡིས་སྒྲ་འཛིན་ཆས་བེད་སྤྱོད་བྱེད་ཀྱི་ཡོད།";
+"NSSpeechRecognitionUsageDescription" = "Odysseus ཡིས་ཁྱེད་ཀྱི་སྐད་གདངས་འཕྲུལ་ཆས་སྟེང་དུ་ཡི་གེར་བསྒྱུར་བ་ནི། ཁྱེད་ཀྱིས་འཕྲིན་ཡིག་སྐད་གདངས་ཐོག་ནས་བྲི་ཐུབ་པའི་ཆེད་དུ་ཡིན།";
+"NSLocalNetworkUsageDescription" = "ཁྱེད་རང་གི་དྲ་ལམ་ནང་ཡོད་པའི་མི་བཟོས་རིག་ནུས་ཞབས་ཞུའི་རྩིས་འཁོར་དང་འབྲེལ་མཐུད་བྱེད་པའི་ཆེད། Odysseus ལ་ས་གནས་དྲ་ལམ་ལ་འཇུག་སྤྱོད་བྱེད་པའི་ཆོག་མཆན་དགོས།";
+"NSFaceIDUsageDescription" = "Odysseus ཡིས་ Face ID བེད་སྤྱོད་བྱས་ནས་ཉེར་སྤྱོད་ལ་ཟྭ་རྒྱག་པ་དང་། རང་འགུལ་གྱིས་ནང་འཛུལ་བྱེད་ཀྱི་ཡོད། (གདམ་ཀ་ཡིན།)";

@@ -1,0 +1,9 @@
+/* Odysseus — InfoPlist.strings (ar) */
+/* System permission dialogs. Without these the consent alert shows the
+   Info.plist fallback (English) no matter what language the app is in —
+   that is what App Review flagged under guideline 4.0 (Design). */
+
+"NSMicrophoneUsageDescription" = "يستخدم Odysseus الميكروفون لتتمكّن من إملاء رسائلك بصوتك.";
+"NSSpeechRecognitionUsageDescription" = "يحوّل Odysseus كلامك إلى نص على جهازك.";
+"NSLocalNetworkUsageDescription" = "يحتاج Odysseus إلى الوصول إلى الشبكة المحلية للاتصال بخادم الذكاء الاصطناعي الخاص بك.";
+"NSFaceIDUsageDescription" = "يستخدم Odysseus خاصية Face ID لقفل التطبيق وتسجيل دخولك تلقائيًا (اختياري).";

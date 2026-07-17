@@ -110,10 +110,15 @@ targets:
         UILaunchScreen:
           UIColorName: "LaunchBackground"
         ITSAppUsesNonExemptEncryption: false
-        NSLocalNetworkUsageDescription: "Odysseus precisa acessar o servidor de IA na sua rede local."
-        NSMicrophoneUsageDescription: "Para ditar mensagens por voz."
-        NSSpeechRecognitionUsageDescription: "Para transcrever sua voz em texto no dispositivo."
-        NSFaceIDUsageDescription: "Para bloquear o app e o login automático com Face ID (opcional)."
+        # These raw values are only the LAST-RESORT fallback: CFBundleDevelopmentRegion
+        # resolves to `en`, so they must be ENGLISH. Every language (incl. pt-BR) is
+        # translated in Resources/<lang>.lproj/InfoPlist.strings — without those the
+        # system consent dialog shows this text verbatim regardless of the app's
+        # language, which is what got 1.6 rejected under guideline 4.0 (Design).
+        NSLocalNetworkUsageDescription: "Odysseus needs local network access to reach your AI server on your network."
+        NSMicrophoneUsageDescription: "Odysseus uses the microphone so you can dictate your messages by voice."
+        NSSpeechRecognitionUsageDescription: "Odysseus transcribes your speech into text on your device."
+        NSFaceIDUsageDescription: "Odysseus uses Face ID to lock the app and sign you in automatically (optional)."
         NSAppTransportSecurity:
           # Scoped to the LAN: plain HTTP is allowed only to local/private hosts
           # (the self-hosted server / ComfyUI). Public hosts must use HTTPS — and
@@ -143,7 +148,7 @@ targets:
         # Tracks the shared source: the mac binary carries the same 1.6 fixes
         # (pt-BR display bug, SSE notices, 43 languages), so it ships as 1.6 too.
         MARKETING_VERSION: "1.6"
-        CURRENT_PROJECT_VERSION: "12"
+        CURRENT_PROJECT_VERSION: "13"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus-macOS.entitlements
@@ -159,9 +164,11 @@ targets:
         LSApplicationCategoryType: public.app-category.productivity
         ITSAppUsesNonExemptEncryption: false
         NSHumanReadableCopyright: "© 2026 JoaoZaokk — PolyForm Noncommercial License 1.0.0"
-        NSMicrophoneUsageDescription: "Para ditar mensagens por voz."
-        NSSpeechRecognitionUsageDescription: "Para transcrever sua voz em texto no dispositivo."
-        NSLocalNetworkUsageDescription: "Odysseus precisa acessar o servidor de IA na sua rede local."
+        # English fallback only — see the iOS target above. The per-language text
+        # lives in Resources/<lang>.lproj/InfoPlist.strings.
+        NSMicrophoneUsageDescription: "Odysseus uses the microphone so you can dictate your messages by voice."
+        NSSpeechRecognitionUsageDescription: "Odysseus transcribes your speech into text on your device."
+        NSLocalNetworkUsageDescription: "Odysseus needs local network access to reach your AI server on your network."
         NSAppTransportSecurity:
           # Same as iOS: LAN-scoped only — plain HTTP to local/private hosts; public
           # hosts use HTTPS (enforced by ServerConfig.normalize). No arbitrary loads (S6).
