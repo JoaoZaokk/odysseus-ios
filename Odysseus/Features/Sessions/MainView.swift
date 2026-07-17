@@ -52,7 +52,12 @@ struct MainView: View {
                         .frame(width: 780)
                         .frame(maxHeight: .infinity)
                         .background(theme.bg)
-                        .overlay(alignment: .leading) { Divider().overlay(theme.border) }
+                        // A bare `Divider()` in an overlay has no stack axis, so it
+                        // renders HORIZONTAL — a stray line across the panel's middle
+                        // ("linha quebrada"). We want a vertical edge separator.
+                        .overlay(alignment: .leading) {
+                            Rectangle().fill(theme.border).frame(width: 1).frame(maxHeight: .infinity)
+                        }
                         .shadow(color: .black.opacity(0.28), radius: 18, x: -6, y: 0)
                         .transition(.move(edge: .trailing))
                 }

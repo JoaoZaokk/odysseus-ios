@@ -7,6 +7,7 @@ struct SidebarView: View {
     @Binding var showSettings: Bool
     @Environment(\.theme) private var theme
     @EnvironmentObject private var themes: ThemeStore
+    @EnvironmentObject private var loc: LocalizationManager
 
     @State private var search = ""
     @State private var renaming: ChatSession?
@@ -96,6 +97,11 @@ struct SidebarView: View {
         .sheet(isPresented: $showThemes) {
             ThemePickerView(inSheet: true)
                 .environmentObject(themes)
+                // macOS: `.sheet` opens a separate window that does NOT inherit the
+                // root's `\.locale`, so the picker fell back to the system language
+                // (PT) even when the app language was English. Re-inject it.
+                .environment(\.locale, loc.locale)
+                .environment(\.layoutDirection, loc.layoutDirection)
         }
         .alert("Renomear conversa", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
             TextField("Nome", text: $renameText)
