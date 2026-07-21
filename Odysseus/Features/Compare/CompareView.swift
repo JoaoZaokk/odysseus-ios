@@ -132,8 +132,18 @@ struct CompareView: View {
     private func column(title: String, model: Binding<ChatModel?>, turns: [CompareTurn]) -> some View {
         VStack(spacing: 6) {
             Menu {
-                ForEach(vm.models) { m in
+                ForEach(vm.models.filter { !$0.isExtra }) { m in
                     Button(m.name) { model.wrappedValue = m }
+                }
+                // Non-curated rest (`models_extra`) — only newer servers send
+                // it, so on an older server this submenu simply never appears.
+                let extras = vm.models.filter(\.isExtra)
+                if !extras.isEmpty {
+                    Menu("Mais modelos") {
+                        ForEach(extras) { m in
+                            Button(m.name) { model.wrappedValue = m }
+                        }
+                    }
                 }
             } label: {
                 HStack(spacing: 4) {

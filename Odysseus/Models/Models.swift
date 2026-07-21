@@ -118,14 +118,22 @@ struct ChatModel: Decodable, Identifiable, Hashable, Sendable {
     var name: String
     var endpointId: String?
     var endpointURL: String?
+    /// Only present on servers that send `endpoint_name` / the curated split
+    /// (`models` + `models_extra`) in /api/models. Older servers send neither —
+    /// then endpointName stays nil and isExtra false, and the picker behaves
+    /// exactly as before.
+    var endpointName: String?
+    var isExtra: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id, name, model, label, title
         case endpointId = "endpoint_id"
     }
 
-    init(id: String, name: String, endpointId: String? = nil, endpointURL: String? = nil) {
+    init(id: String, name: String, endpointId: String? = nil, endpointURL: String? = nil,
+         endpointName: String? = nil, isExtra: Bool = false) {
         self.id = id; self.name = name; self.endpointId = endpointId; self.endpointURL = endpointURL
+        self.endpointName = endpointName; self.isExtra = isExtra
     }
 
     init(from decoder: Decoder) throws {

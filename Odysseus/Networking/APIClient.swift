@@ -289,25 +289,56 @@ final class APIClient: @unchecked Sendable {
 
     /// /api/models is grouped by endpoint: `{items:[{url, endpoint_id, models:[id,...]}]}`.
     /// We flatten into a single list of selectable models.
+    ///
+    /// Newer servers additionally send, per group: `models_extra` (the
+    /// non-curated rest — invisible unless we merge it), `models_display` /
+    /// `models_extra_display` (human names, index-aligned), `endpoint_name`
+    /// and `model_type` ("llm" vs diffusion/embedding endpoints). Every one of
+    /// them is decoded as optional so an older server — which sends none —
+    /// yields the exact pre-existing behavior.
     func models() async throws -> [ChatModel] {
         let data = try await send(request("/api/models"))
+        if let grouped = Self.parseGroupedModels(data) { return grouped }
+        // Fall back to a bare list of {id,name} just in case.
+        return decodeList(ChatModel.self, data)
+    }
+
+    /// Static so the old-server/new-server decode paths are unit-testable.
+    static func parseGroupedModels(_ data: Data) -> [ChatModel]? {
         struct Group: Decodable {
             var url: String?
             var endpoint_id: String?
-            var models: [String]
+            var endpoint_name: String?
+            var models: [String]?
+            var models_display: [String]?
+            var models_extra: [String]?
+            var models_extra_display: [String]?
+            var model_type: String?
         }
         struct Wrap: Decodable { var items: [Group] }
-        guard let wrap = try? JSONDecoder().decode(Wrap.self, from: data) else {
-            // Fall back to a bare list of {id,name} just in case.
-            return decodeList(ChatModel.self, data)
-        }
-        return wrap.items.flatMap { group in
-            group.models.map { id in
-                ChatModel(id: id,
-                          name: id.split(separator: "/").last.map(String.init) ?? id,
-                          endpointId: group.endpoint_id,
-                          endpointURL: group.url)
+        guard let wrap = try? JSONDecoder().decode(Wrap.self, from: data) else { return nil }
+        return wrap.items.flatMap { group -> [ChatModel] in
+            // Only chat-capable endpoints belong in the picker. Old servers
+            // don't send model_type (nil) — everything they list is an LLM.
+            if let type = group.model_type, type != "llm" { return [] }
+            func rows(_ ids: [String]?, _ displays: [String]?, extra: Bool) -> [ChatModel] {
+                let ids = ids ?? []
+                return ids.enumerated().map { index, id in
+                    // Display names are trusted only when the server sent one
+                    // per model; on a mismatch (or old server) derive from id.
+                    let display = (displays?.count == ids.count) ? displays?[index] : nil
+                    let derived = id.split(separator: "/").last.map(String.init) ?? id
+                    let name = (display?.isEmpty == false) ? display! : derived
+                    return ChatModel(id: id,
+                                     name: name,
+                                     endpointId: group.endpoint_id,
+                                     endpointURL: group.url,
+                                     endpointName: group.endpoint_name,
+                                     isExtra: extra)
+                }
             }
+            return rows(group.models, group.models_display, extra: false)
+                + rows(group.models_extra, group.models_extra_display, extra: true)
         }
     }
 
