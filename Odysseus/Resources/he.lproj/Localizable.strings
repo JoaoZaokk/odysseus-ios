@@ -381,3 +381,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "לא נמצא אף מודל. האם נקודת הקצה הגיבה?";
 "%lld modelo(s) encontrado(s)." = "נמצאו %lld מודלים.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "אין מודלים במטמון. השתמש ברענון כדי לבדוק את נקודת הקצה.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "עוד מודלים";

@@ -394,3 +394,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "No se encontraron modelos. ¿Respondió el endpoint?";
 "%lld modelo(s) encontrado(s)." = "%lld modelos encontrados.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Sin modelos en caché. Usa Actualizar para sondear el endpoint.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Más modelos";

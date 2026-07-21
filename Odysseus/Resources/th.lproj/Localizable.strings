@@ -389,3 +389,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "ไม่พบโมเดล เอนด์พอยต์ตอบสนองหรือไม่";
 "%lld modelo(s) encontrado(s)." = "พบโมเดล %lld รายการ";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "ไม่มีโมเดลในแคช ใช้รีเฟรชเพื่อตรวจสอบเอนด์พอยต์";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "โมเดลเพิ่มเติม";

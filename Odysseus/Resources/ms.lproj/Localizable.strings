@@ -392,3 +392,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Tiada model ditemui. Adakah titik hujung memberi respons?";
 "%lld modelo(s) encontrado(s)." = "%lld model ditemui.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Tiada model dalam cache. Gunakan Segarkan untuk meninjau titik hujung.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Model lain";

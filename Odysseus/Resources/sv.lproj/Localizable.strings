@@ -381,3 +381,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Inga modeller hittades. Svarade slutpunkten?";
 "%lld modelo(s) encontrado(s)." = "%lld modeller hittades.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Inga modeller i cacheminnet. Använd Uppdatera för att söka av slutpunkten.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Fler modeller";

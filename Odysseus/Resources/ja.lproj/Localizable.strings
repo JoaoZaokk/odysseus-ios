@@ -392,3 +392,6 @@
 "O histórico foi resumido para caber no limite de contexto." = "コンテキストの上限に収めるため、履歴が要約されました。";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "キャッシュされたモデルがありません。「更新」でエンドポイントを確認してください。";
 "Só um administrador pode atualizar a lista de modelos." = "モデル一覧の更新は管理者のみ行えます。";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "その他のモデル";

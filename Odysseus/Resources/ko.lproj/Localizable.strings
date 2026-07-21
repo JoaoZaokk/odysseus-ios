@@ -392,3 +392,6 @@
 "O histórico foi resumido para caber no limite de contexto." = "컨텍스트 한도에 맞추기 위해 대화 기록이 요약되었습니다.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "캐시된 모델이 없습니다. \"새로고침\"으로 엔드포인트를 탐색하세요.";
 "Só um administrador pode atualizar a lista de modelos." = "모델 목록 새로고침은 관리자만 할 수 있습니다.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "더 많은 모델";

@@ -389,3 +389,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Kee Modell fonnt. Huet den Endpoint geäntwert?";
 "%lld modelo(s) encontrado(s)." = "%lld Modeller fonnt.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Keng Modeller am Cache. Benotz Aktualiséieren, fir den Endpoint ze préiwen.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Méi Modeller";

@@ -392,3 +392,6 @@
 "O histórico foi resumido para caber no limite de contexto." = "为了符合上下文上限，历史记录已总结。";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "没有缓存的模型。请使用“刷新”探测端点。";
 "Só um administrador pode atualizar a lista de modelos." = "只有管理员可以刷新模型列表。";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "更多模型";

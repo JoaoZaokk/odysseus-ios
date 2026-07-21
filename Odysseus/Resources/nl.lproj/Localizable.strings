@@ -394,3 +394,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Geen modellen gevonden. Heeft de endpoint gereageerd?";
 "%lld modelo(s) encontrado(s)." = "%lld modellen gevonden.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Geen modellen in cache. Gebruik Vernieuwen om de endpoint te sonderen.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Meer modellen";

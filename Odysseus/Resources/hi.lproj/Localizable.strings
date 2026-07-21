@@ -394,3 +394,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "कोई मॉडल नहीं मिला। क्या एंडपॉइंट ने जवाब दिया?";
 "%lld modelo(s) encontrado(s)." = "%lld मॉडल मिले।";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "कैश में कोई मॉडल नहीं। एंडपॉइंट को जांचने के लिए रीफ़्रेश का उपयोग करें।";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "और मॉडल";

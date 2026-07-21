@@ -392,3 +392,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Nije pronađen nijedan model. Je li endpoint odgovorio?";
 "%lld modelo(s) encontrado(s)." = "Pronađeno: %lld modela.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Nema modela u predmemoriji. Koristi „Osvježi” za sondiranje endpointa.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Više modela";

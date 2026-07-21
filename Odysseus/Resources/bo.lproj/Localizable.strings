@@ -389,3 +389,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "དཔེ་གཞི་གང་ཡང་རྙེད་མེད། མཐའ་མཚམས་ཀྱིས་ལན་བཏབ་བམ།";
 "%lld modelo(s) encontrado(s)." = "དཔེ་གཞི་ %lld རྙེད་སོང་།";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "གནས་སྐབས་ཉར་ཚགས་ནང་དཔེ་གཞི་མེད། མཐའ་མཚམས་བརྟག་ཞིབ་བྱེད་ཆེད་སླར་བརྟག་བེད་སྤྱོད་གྱིས།";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "དཔེ་དབྱིབས་མང་བ།";

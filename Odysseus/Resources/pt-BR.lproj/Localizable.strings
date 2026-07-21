@@ -382,3 +382,6 @@
 "vazio = usa o servidor principal" = "vazio = usa o servidor principal";
 "Álbum" = "Álbum";
 "⚠️ Zona de perigo" = "⚠️ Zona de perigo";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Mais modelos";

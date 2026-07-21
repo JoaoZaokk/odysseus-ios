@@ -392,3 +392,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Không tìm thấy mô hình nào. Điểm cuối có phản hồi không?";
 "%lld modelo(s) encontrado(s)." = "Đã tìm thấy %lld mô hình.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Chưa có mô hình nào trong bộ nhớ đệm. Dùng Làm mới để thăm dò điểm cuối.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Thêm mô hình";

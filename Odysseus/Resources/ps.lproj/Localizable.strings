@@ -389,3 +389,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "هیڅ ماډل ونه موندل شو. ایا اینډ پوینټ ځواب ورکړ؟";
 "%lld modelo(s) encontrado(s)." = "%lld ماډلونه وموندل شول.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "په کیش کې هیڅ ماډل نشته. د اینډ پوینټ لټولو لپاره تازه کول وکاروئ.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "نور ماډلونه";

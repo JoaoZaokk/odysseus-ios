@@ -392,3 +392,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Nie znaleziono modeli. Czy endpoint odpowiedział?";
 "%lld modelo(s) encontrado(s)." = "Znaleziono: %lld modeli.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Brak modeli w pamięci podręcznej. Użyj „Odśwież”, aby sondować endpoint.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Więcej modeli";

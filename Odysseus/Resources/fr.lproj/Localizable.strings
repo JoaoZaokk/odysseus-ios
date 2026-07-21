@@ -383,3 +383,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Aucun modèle trouvé. Le point de terminaison a-t-il répondu ?";
 "%lld modelo(s) encontrado(s)." = "%lld modèles trouvés.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Aucun modèle en cache. Utilisez Actualiser pour sonder le point de terminaison.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Plus de modèles";

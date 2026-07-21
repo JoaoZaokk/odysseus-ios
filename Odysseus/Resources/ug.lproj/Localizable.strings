@@ -389,3 +389,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "ھېچقانداق مودېل تېپىلمىدى. ئاخىرقى نۇقتا جاۋاب بەردىمۇ؟";
 "%lld modelo(s) encontrado(s)." = "%lld مودېل تېپىلدى.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "غەملەكتە مودېل يوق. ئاخىرقى نۇقتىنى تەكشۈرۈش ئۈچۈن يېڭىلاشنى ئىشلىتىڭ.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "تېخىمۇ كۆپ مودېل";

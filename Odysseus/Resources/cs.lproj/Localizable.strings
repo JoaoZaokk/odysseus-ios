@@ -392,3 +392,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Nebyly nalezeny žádné modely. Odpověděl endpoint?";
 "%lld modelo(s) encontrado(s)." = "Nalezeno: %lld modelů.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Žádné modely v mezipaměti. Použijte „Obnovit” k sondování endpointu.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Další modely";

@@ -394,3 +394,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "কোনো মডেল পাওয়া যায়নি। এন্ডপয়েন্ট কি উত্তর দিয়েছে?";
 "%lld modelo(s) encontrado(s)." = "%lld মডেল পাওয়া গেছে।";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "ক্যাশে কোনো মডেল নেই। এন্ডপয়েন্ট প্রোব করতে রিফ্রেশ ব্যবহার করুন।";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "আরও মডেল";

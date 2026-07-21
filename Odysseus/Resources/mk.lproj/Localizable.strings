@@ -394,3 +394,6 @@
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Не се пронајдени модели. Крајната точка одговори ли?";
 "%lld modelo(s) encontrado(s)." = "Пронајдени модели: %lld.";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Нема кеширани модели. Користете «Освежи» за да ја испитате крајната точка.";
+
+/* Compare — non-curated rest of the model list (newer servers) */
+"Mais modelos" = "Повеќе модели";
