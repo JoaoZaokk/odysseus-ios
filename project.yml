@@ -145,11 +145,11 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zao.odysseus
         PRODUCT_NAME: Odysseus
-        # 1.6.1: /api/models adoption (curated+extra merge, display names,
-        # non-LLM endpoint filter) with old-server fallback. 1.7 stays reserved
-        # for the AUDIT-1.7.md backlog.
-        MARKETING_VERSION: "1.6.1"
-        CURRENT_PROJECT_VERSION: "14"
+        # 1.7: /api/models adoption (curated+extra merge, display names,
+        # non-LLM endpoint filter) with old-server fallback; Compare submenu
+        # localized in 44 languages. Rest of AUDIT-1.7.md continues next.
+        MARKETING_VERSION: "1.7"
+        CURRENT_PROJECT_VERSION: "15"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus-macOS.entitlements
