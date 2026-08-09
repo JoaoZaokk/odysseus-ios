@@ -23,6 +23,15 @@ final class ChatViewModel: ObservableObject {
     @Published var pendingAttachments: [UploadedFile] = []
     @Published var uploading = false
 
+    // Model picker
+    /// Everything /api/models offers. Empty until `loadModels()` finishes, and
+    /// stays empty on servers that expose none — the picker then hides itself.
+    @Published private(set) var models: [ChatModel] = []
+    /// nil means "whatever the session already uses" (the server default).
+    @Published var selectedModel: ChatModel? {
+        didSet { if let m = selectedModel { resolvedModel = m.name } }
+    }
+
     /// nil until the conversation is materialized server-side (new chat).
     @Published private(set) var sessionID: String?
     @Published var title: String
@@ -39,11 +48,21 @@ final class ChatViewModel: ObservableObject {
         self.api = api
         self.stream = stream
         self.sessionID = session?.id
-        self.title = session?.title ?? "Nova conversa"
+        // Resolved here, not in the view: `title` is a plain String, and
+        // Text/navigationTitle never localize the String overload — an untouched
+        // literal would show up in Portuguese in every language.
+        self.title = session?.title ?? L("Nova conversa")
         self.resolvedModel = session?.shortModel
     }
 
     var isNewChat: Bool { sessionID == nil }
+
+    /// Fills the picker. Failures are swallowed on purpose: the picker is an
+    /// extra, and an error banner over a working chat would be noise.
+    func loadModels() async {
+        guard models.isEmpty else { return }
+        models = (try? await api.models()) ?? []
+    }
 
     private var historyTask: Task<Void, Never>?
     private var historyLoaded = false
@@ -120,7 +139,8 @@ final class ChatViewModel: ObservableObject {
             let sid = try await ensureSession(firstMessage: text.isEmpty ? "Imagem" : text)
             let opts = ChatStreamOptions(mode: agentMode ? "agent" : "chat",
                                          webSearch: webSearch, research: research,
-                                         attachmentIDs: attachmentIDs)
+                                         attachmentIDs: attachmentIDs,
+                                         model: selectedModel)
             var sawAnyText = false
 
             for try await update in stream.send(message: text, sessionID: sid, options: opts) {
@@ -144,7 +164,8 @@ final class ChatViewModel: ObservableObject {
                 }
             }
             if !sawAnyText, let i = index(of: assistantID), messages[i].content.isEmpty {
-                messages[i].content = "_(sem resposta)_"
+                // Rendered as markdown, so it can't go through Text's key lookup.
+        messages[i].content = "_\(L("(sem resposta)"))_"
             }
         } catch is CancellationError {
             // user stopped — keep whatever streamed so far
@@ -160,11 +181,20 @@ final class ChatViewModel: ObservableObject {
     /// Materializes a session if this is a brand-new chat.
     private func ensureSession(firstMessage: String) async throws -> String {
         if let id = sessionID { return id }
-        let dc = try await api.defaultChat()
-        let name = String(firstMessage.prefix(40))
-        let id = try await api.createSession(from: dc, name: name.isEmpty ? "Nova conversa" : name)
+        // A model picked before the first send is the session's model — creating
+        // it on the server default and only then reconciling would leave the
+        // first reply on the wrong route.
+        let dc: DefaultChat
+        if let m = selectedModel, let url = m.endpointURL, !url.isEmpty {
+            dc = DefaultChat(endpointURL: url, model: m.id, endpointID: m.endpointId)
+        } else {
+            dc = try await api.defaultChat()
+        }
+        let typed = String(firstMessage.prefix(40))
+        let name = typed.isEmpty ? L("Nova conversa") : typed
+        let id = try await api.createSession(from: dc, name: name)
         sessionID = id
-        title = name.isEmpty ? "Nova conversa" : name
+        title = name
         resolvedModel = dc.model.split(separator: "/").last.map(String.init)
         onSessionCreated?(id)
         return id

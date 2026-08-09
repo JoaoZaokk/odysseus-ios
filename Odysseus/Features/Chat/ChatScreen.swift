@@ -54,6 +54,7 @@ struct ChatScreen: View {
             }
         }
         #endif
+        .task { await vm.loadModels() }
         .onAppear {
             vm.loadHistoryIfNeeded()
             if let p = autoSend, !didAutoSend, !p.isEmpty {
@@ -142,12 +143,13 @@ struct ChatScreen: View {
                 toggleChip(system: "globe", label: "Web", on: $vm.webSearch)
                 toggleChip(system: "sparkle.magnifyingglass", label: "Deep", on: $vm.research)
                 toggleChip(system: "wrench.and.screwdriver", label: "Agente", on: $vm.agentMode)
-                Spacer()
+                Spacer(minLength: 4)
+                if !vm.models.isEmpty { modelChip }
             }
             .padding(.horizontal, 12)
 
             if let err = voice.error {
-                Text(err)
+                Text(LocalizedStringKey(err))
                     .font(.ody(size: 11, design: .monospaced))
                     .foregroundStyle(theme.accent)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -302,6 +304,41 @@ struct ChatScreen: View {
     private var canSend: Bool {
         !vm.input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             || !vm.pendingAttachments.isEmpty
+    }
+
+    /// Model route for the next message. Hidden entirely when the server lists
+    /// no models, so nothing changes on a server without a picker.
+    private var modelChip: some View {
+        Menu {
+            Button("Padrão do servidor") { vm.selectedModel = nil }
+            Divider()
+            ForEach(vm.models.filter { !$0.isExtra }) { m in
+                Button(m.name) { vm.selectedModel = m }
+            }
+            // The non-curated rest (`models_extra`) is buried in a submenu —
+            // it can run to hundreds of entries on a cloud endpoint.
+            let extras = vm.models.filter(\.isExtra)
+            if !extras.isEmpty {
+                Menu("Outros modelos") {
+                    ForEach(extras) { m in Button(m.name) { vm.selectedModel = m } }
+                }
+            }
+        } label: {
+            HStack(spacing: 5) {
+                Image(systemName: "cpu").font(.ody(size: 11))
+                Text(vm.selectedModel?.name ?? vm.resolvedModel ?? L("Modelo"))
+                    .font(.ody(size: 12, design: .monospaced))
+                    .lineLimit(1).truncationMode(.middle)
+            }
+            .padding(.horizontal, 10).padding(.vertical, 6)
+            .foregroundStyle(vm.selectedModel == nil ? theme.secondaryText : theme.accent)
+            .background(theme.panel, in: Capsule())
+            .overlay(Capsule().stroke(theme.border, lineWidth: 1))
+        }
+        .menuStyle(.button)
+        .buttonStyle(.plain)
+        .frame(maxWidth: 170, alignment: .trailing)
+        .disabled(vm.isStreaming)
     }
 
     private func toggleChip(system: String, label: String, on: Binding<Bool>) -> some View {

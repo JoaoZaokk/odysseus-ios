@@ -6,6 +6,11 @@ struct ChatStreamOptions {
     var webSearch: Bool = false
     var research: Bool = false         // deep research
     var attachmentIDs: [String] = []
+    /// Model route picked in the composer, reconciled server-side before the
+    /// reply is generated (and persisted onto the session). The server only
+    /// trusts a route it can resolve to a registered endpoint, so the id/URL
+    /// travel with the model — sending the model alone is a no-op.
+    var model: ChatModel?
 }
 
 /// Streams a reply from POST /api/chat_stream. The endpoint returns Server-Sent
@@ -111,6 +116,11 @@ final class ChatStreamClient: @unchecked Sendable {
         } else if options.webSearch {
             fields["allow_web_search"] = "true"
             fields["use_web"] = "true"
+        }
+        if let m = options.model {
+            fields["selected_model"] = m.id
+            if let eid = m.endpointId, !eid.isEmpty { fields["selected_endpoint_id"] = eid }
+            if let url = m.endpointURL, !url.isEmpty { fields["selected_endpoint_url"] = url }
         }
         var form = MultipartForm(fields: fields)
         if !options.attachmentIDs.isEmpty,
