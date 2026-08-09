@@ -59,11 +59,18 @@ struct EndpointModel: Decodable, Identifiable, Hashable {
     var display: String
     var isHidden: Bool
     var isPinned: Bool
+    /// The server keeps two lists and only one applies per endpoint: cloud
+    /// ("api") endpoints are allow-lists driven by `pinned_models`, local ones
+    /// are deny-lists driven by `hidden_models`. This flag says which, so a
+    /// model's visibility reads from `isPinned` on the former and `!isHidden`
+    /// on the latter. Older servers omit it — false keeps the deny-list path.
+    var pickerRequiresPinning: Bool
 
     enum CodingKeys: String, CodingKey {
         case id, display
         case isHidden = "is_hidden"
         case isPinned = "is_pinned"
+        case pickerRequiresPinning = "picker_requires_pinning"
     }
 
     init(from decoder: Decoder) throws {
@@ -72,7 +79,11 @@ struct EndpointModel: Decodable, Identifiable, Hashable {
         display = (try? c.decode(String.self, forKey: .display)) ?? id
         isHidden = (try? c.decode(Bool.self, forKey: .isHidden)) ?? false
         isPinned = (try? c.decode(Bool.self, forKey: .isPinned)) ?? false
+        pickerRequiresPinning = (try? c.decode(Bool.self, forKey: .pickerRequiresPinning)) ?? false
     }
+
+    /// Whether the model picker offers this model.
+    var isVisible: Bool { pickerRequiresPinning ? isPinned : !isHidden }
 }
 
 /// A read-only view over the server's key/value settings (`/api/auth/settings`).

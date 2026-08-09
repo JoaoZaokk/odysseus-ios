@@ -36,6 +36,29 @@ extension APIClient {
         return decodeList(EndpointModel.self, try await send(req, via: streamSession))
     }
 
+    /// Every model discovered on an endpoint, with its per-model visibility.
+    /// Unlike `refreshEndpointModels` this never probes the backend — it reads
+    /// the cached list, so it is fast. Admin-only (403 for everyone else).
+    func endpointModels(_ id: String) async throws -> [EndpointModel] {
+        decodeList(EndpointModel.self, try await send(request("/api/model-endpoints/\(encPath(id))/models")))
+    }
+
+    /// Rewrites which of an endpoint's models the picker offers.
+    ///
+    /// Two shapes, one per endpoint kind (see `EndpointModel.pickerRequiresPinning`):
+    /// an allow-list of visible ids for cloud APIs, a deny-list of hidden ids
+    /// for local servers. Sending the wrong one is not an error server-side —
+    /// it silently converts — but the allow-list is written from the cached
+    /// model list only, which would drop pinned ids the backend never listed.
+    func setEndpointModelVisibility(_ id: String, visible: [String], hidden: [String],
+                                    pinning: Bool) async throws {
+        var req = request("/api/model-endpoints/\(encPath(id))/models", method: "PATCH")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: Any] = pinning ? ["pinned_models": visible] : ["hidden": hidden]
+        req.httpBody = try JSONSerialization.data(withJSONObject: body)
+        _ = try await send(req)
+    }
+
     /// Creates a model endpoint. `kind` is "local" or "api". The server probes
     /// the `base_url` and auto-discovers the model list (`model_refresh_mode`).
     func createEndpoint(name: String, baseURL: String, apiKey: String?, kind: String) async throws {

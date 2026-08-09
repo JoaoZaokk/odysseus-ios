@@ -124,7 +124,7 @@ struct LockView: View {
         guard !authenticating else { return }
         authenticating = true
         Task {
-            let ok = await BiometricLock.authenticate(reason: "Desbloquear o Odysseus")
+            let ok = await BiometricLock.authenticate(reason: L("Desbloquear o Odysseus"))
             authenticating = false
             if ok { app.unlock() }
         }

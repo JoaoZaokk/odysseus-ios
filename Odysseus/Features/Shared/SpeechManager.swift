@@ -3,9 +3,13 @@ import SwiftUI
 import FluidAudio
 
 /// Text-to-speech with two engines, chosen in Settings:
-/// - **native**: Apple `AVSpeechSynthesizer` (pt-BR, instant, robotic).
-/// - **neural**: FluidAudio **PocketTTS** Portuguese pack (CoreML/ANE, much more
+/// - **native**: Apple `AVSpeechSynthesizer` (instant, robotic).
+/// - **neural**: a FluidAudio **PocketTTS** language pack (CoreML/ANE, much more
 ///   natural). Downloads ~550 MB on first use, then synthesizes on-device.
+///
+/// Both follow the app's active language (`LocalizationManager`), not a fixed
+/// locale — PocketTTS only ships 6 packs, so any other language falls back to
+/// the native engine, which resolves the system's own voice for that language.
 @MainActor
 final class SpeechManager: NSObject, ObservableObject {
     static let shared = SpeechManager()
@@ -16,15 +20,26 @@ final class SpeechManager: NSObject, ObservableObject {
     @Published var neuralError: String?
 
     private let synth = AVSpeechSynthesizer()
-    private let language = "pt-BR"
+    private var language: String { LocalizationManager.shared.active.speechCode }
 
-    // Neural (PocketTTS pt-BR)
+    // Neural (PocketTTS) — the loaded pack, and which language it was loaded for
+    // (so switching the app language reloads instead of speaking the old one).
     private var pocket: PocketTtsManager?
+    private var pocketLanguage: PocketTtsLanguage?
     private var player: AVAudioPlayer?
     private var neuralTask: Task<Void, Never>?
 
-    var useNeural: Bool { UserDefaults.standard.string(forKey: "voice.tts.engine") == "neural" }
-    private var neuralVoice: String { UserDefaults.standard.string(forKey: "voice.tts.pocketVoice") ?? "alba" }
+    /// Neural only applies when PocketTTS actually ships a pack for the active
+    /// language; otherwise the native engine handles it.
+    var useNeural: Bool {
+        UserDefaults.standard.string(forKey: "voice.tts.engine") == "neural" && Self.pocketPack() != nil
+    }
+    /// The stored voice belongs to the Portuguese pack — the voice IDs differ per
+    /// pack, so any other language uses that pack's own default.
+    private var neuralVoice: String? {
+        guard Self.pocketPack() == .portuguese else { return nil }
+        return UserDefaults.standard.string(forKey: "voice.tts.pocketVoice") ?? "alba"
+    }
 
     override init() { super.init(); synth.delegate = self }
 
@@ -66,7 +81,8 @@ final class SpeechManager: NSObject, ObservableObject {
     /// Proactively downloads + loads the PocketTTS pt model (so the first 🔊 isn't
     /// a multi-minute wait). Safe to call repeatedly.
     func prepareNeural() {
-        guard pocket == nil, preparingID == nil else { return }
+        guard preparingID == nil, pocket == nil || pocketLanguage != Self.pocketPack() else { return }
+        neuralReady = false
         preparingID = "__prepare__"
         neuralError = nil
         neuralTask = Task {
@@ -106,30 +122,54 @@ final class SpeechManager: NSObject, ObservableObject {
     }
 
     private func ensurePocket() async throws -> PocketTtsManager {
-        if let pocket { return pocket }
-        let m = PocketTtsManager(language: .portuguese, precision: .int8)
+        let pack = Self.pocketPack() ?? .english
+        if let pocket, pocketLanguage == pack { return pocket }
+        let m = PocketTtsManager(language: pack, precision: .int8)
         try await m.initialize()
         pocket = m
+        pocketLanguage = pack
         return m
+    }
+
+    /// The PocketTTS pack for the app's active language, or nil when there is
+    /// none (PocketTTS only ships en/fr/de/it/pt/es).
+    private static func pocketPack() -> PocketTtsLanguage? {
+        switch LocalizationManager.shared.active {
+        case .en:                       return .english
+        case .fr:                       return .french24L
+        case .de, .deAT, .deCH:         return .german
+        case .it:                       return .italian
+        case .ptBR:                     return .portuguese
+        case .es:                       return .spanish
+        default:                        return nil
+        }
     }
 
     private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 
     // MARK: - Helpers
 
+    /// Best installed voice for `lang`, preferring an exact region match
+    /// ("pt-BR") over a same-language one ("pt-PT" for "pt"), and higher quality
+    /// within each. Returns nil when the device has no voice at all for the
+    /// language — `AVSpeechUtterance` then falls back to the system default.
     private static func bestVoice(for lang: String) -> AVSpeechSynthesisVoice? {
         func rank(_ v: AVSpeechSynthesisVoice) -> Int {
             switch v.quality { case .premium: return 3; case .enhanced: return 2; default: return 1 }
         }
-        let exact = AVSpeechSynthesisVoice.speechVoices()
-            .filter { $0.language.caseInsensitiveCompare(lang) == .orderedSame }
-            .sorted { rank($0) > rank($1) }
-        return exact.first ?? AVSpeechSynthesisVoice(language: lang)
+        let base = lang.split(separator: "-").first.map(String.init) ?? lang
+        let voices = AVSpeechSynthesisVoice.speechVoices()
+        let exact = voices.filter { $0.language.caseInsensitiveCompare(lang) == .orderedSame }
+        let sameLanguage = voices.filter { $0.language.lowercased().hasPrefix(base.lowercased() + "-") }
+        let candidates = (exact.isEmpty ? sameLanguage : exact).sorted { rank($0) > rank($1) }
+        return candidates.first ?? AVSpeechSynthesisVoice(language: lang) ?? AVSpeechSynthesisVoice(language: base)
     }
 
     private static func strip(_ s: String) -> String {
         var t = s
-        t = t.replacingOccurrences(of: "```[\\s\\S]*?```", with: " (bloco de código) ", options: .regularExpression)
+        // Spoken out loud, so it follows the app language like everything else.
+        let codeBlock = L("(bloco de código)")
+        t = t.replacingOccurrences(of: "```[\\s\\S]*?```", with: " \(codeBlock) ", options: .regularExpression)
         t = t.replacingOccurrences(of: "`([^`]*)`", with: "$1", options: .regularExpression)
         t = t.replacingOccurrences(of: "\\*\\*([^*]*)\\*\\*", with: "$1", options: .regularExpression)
         t = t.replacingOccurrences(of: "[*_#>]", with: "", options: .regularExpression)

@@ -132,7 +132,7 @@ struct DiffusionServersView: View {
                 Spacer()
             }
             if let e = vm.error {
-                Text(e).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+                Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
                     .fixedSize(horizontal: false, vertical: true)
             }
             if let s = vm.stats { statusDetail(s) }
@@ -230,7 +230,7 @@ struct DiffusionServersView: View {
 
     private func infoRow(_ k: String, _ v: String) -> some View {
         HStack(alignment: .top) {
-            Text(k).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText).frame(width: 110, alignment: .leading)
+            Text(LocalizedStringKey(k)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText).frame(width: 110, alignment: .leading)
             Text(v).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.fg)
                 .frame(maxWidth: .infinity, alignment: .leading).fixedSize(horizontal: false, vertical: true)
         }

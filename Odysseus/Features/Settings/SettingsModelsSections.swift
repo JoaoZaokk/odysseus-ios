@@ -50,7 +50,13 @@ import SwiftUI
 struct AddedModelsSection: View {
     @StateObject private var vm: AddedModelsVM
     @Environment(\.theme) private var theme
-    init(app: AppState) { _vm = StateObject(wrappedValue: AddedModelsVM(api: app.api)) }
+    /// Kept so the per-model sheet can build its own view model.
+    private let app: AppState
+    @State private var picking: ModelEndpoint?
+    init(app: AppState) {
+        self.app = app
+        _vm = StateObject(wrappedValue: AddedModelsVM(api: app.api))
+    }
 
     var body: some View {
         SettingsScroll("Modelos conectados", subtitle: "Endpoints que você conectou. Ative, desative ou remova.") {
@@ -76,6 +82,9 @@ struct AddedModelsSection: View {
             }
         }
         .task { await vm.load() }
+        .sheet(item: $picking) { ep in
+            EndpointModelsView(app: app, endpoint: ep)
+        }
     }
 
     private func card(_ ep: ModelEndpoint) -> some View {
@@ -94,9 +103,15 @@ struct AddedModelsSection: View {
                 Text(url).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText).lineLimit(1)
             }
             HStack {
-                Text("\(ep.models.count) modelo(s)\(ep.isEnabled ? " · ativo" : " · desativado")")
-                    .font(.ody(size: 11, design: .monospaced))
-                    .foregroundStyle(ep.isEnabled ? theme.green : theme.secondaryText)
+                // Two whole sentences, not one with an interpolated tail: the
+                // interpolated form produces a key ("%lld modelo(s)%@") no
+                // locale has, so it always rendered in Portuguese.
+                Group {
+                    if ep.isEnabled { Text("\(ep.models.count) modelo(s) · ativo") }
+                    else { Text("\(ep.models.count) modelo(s) · desativado") }
+                }
+                .font(.ody(size: 11, design: .monospaced))
+                .foregroundStyle(ep.isEnabled ? theme.green : theme.secondaryText)
                 Spacer()
                 if vm.refreshing == ep.id {
                     ProgressView().controlSize(.small).tint(theme.accent)
@@ -111,6 +126,19 @@ struct AddedModelsSection: View {
             }
             .font(.ody(size: 12, design: .monospaced))
             .disabled(vm.refreshing != nil)
+            // Its own row: the buttons above already fill an iPhone's width.
+            Button { picking = ep } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "slider.horizontal.3").font(.ody(size: 11))
+                    Text("Escolher modelos").font(.ody(size: 12, design: .monospaced))
+                    Spacer()
+                    Image(systemName: "chevron.right").font(.ody(size: 10))
+                }
+                .foregroundStyle(theme.fg)
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
             if ep.models.isEmpty {
                 Text("Sem modelos em cache. Use Atualizar para sondar o endpoint.")
                     .font(.ody(size: 10, design: .monospaced))
@@ -409,7 +437,8 @@ struct AddModelsSection: View {
 
     @ViewBuilder private func field(_ bind: Binding<String>, placeholder: String, secure: Bool = false) -> some View {
         Group {
-            if secure { SecureField(placeholder, text: bind) } else { TextField(placeholder, text: bind) }
+            if secure { SecureField(LocalizedStringKey(placeholder), text: bind) }
+            else { TextField(LocalizedStringKey(placeholder), text: bind) }
         }
         .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
         .autocorrectionDisabled()
