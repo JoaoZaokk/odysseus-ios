@@ -190,7 +190,7 @@ struct DeepResearchView: View {
                 }
                 Text(failed ? "no results" : "\(job.source_count ?? 0) sources")
                     .foregroundStyle(failed ? Color(hex: "e05a4a") : theme.secondaryText)
-                if let r = job.rounds, r > 0 { Text("· \(r) rounds").foregroundStyle(theme.secondaryText) }
+                if let r = job.rounds, r > 0 { Text("· \(r) rodadas").foregroundStyle(theme.secondaryText) }
                 if let d = job.duration, !d.isEmpty { Text("· \(d)").foregroundStyle(theme.secondaryText) }
             }
             .font(.ody(size: 10, design: .monospaced))

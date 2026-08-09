@@ -22,7 +22,9 @@ final class VoiceInputManager: ObservableObject {
     // start/stop is unstable on macOS (the 2nd use hung the audio HAL on the main
     // thread and then crashed). A new engine means a clean input node + tap.
     private var engine = AVAudioEngine()
-    private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "pt-BR"))
+    /// Resolved per recording, not once at init — the user can switch the app
+    /// language at any time and dictation has to follow it.
+    private var recognizer: SFSpeechRecognizer? { Self.recognizer(for: LocalizationManager.shared.active) }
 
     private static let targetRate: Double = 16_000
     private static let targetFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
@@ -77,7 +79,7 @@ final class VoiceInputManager: ObservableObject {
             try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement, options: [.duckOthers])
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
-            self.error = "Áudio indisponível: \(error.localizedDescription)"
+            self.error = String(format: L("Áudio indisponível: %@"), error.localizedDescription)
             return false
         }
         #endif
@@ -95,7 +97,7 @@ final class VoiceInputManager: ObservableObject {
         if !useModel {
             guard let rec = recognizer, rec.isAvailable else {
                 deactivateSession()
-                error = "Reconhecimento de voz indisponível para pt-BR neste aparelho."
+                error = "Reconhecimento de voz indisponível neste aparelho."
                 return false
             }
             let req = SFSpeechAudioBufferRecognitionRequest()
@@ -189,8 +191,17 @@ final class VoiceInputManager: ObservableObject {
         var frames = resampleTo16k(raw, from: hwRate)
         normalize(&frames)
 
-        let lang: WhisperLanguage = (VoiceCatalog.all.first { $0.id == activeModelID }?.lang == .english)
-            ? .english : .portuguese   // fixo: evita o "auto" chutar romeno em áudio imperfeito
+        // Pinned to a concrete language whenever we know one — "auto" guesses
+        // wildly (Romanian, etc.) on imperfect audio. English-only models can
+        // only ever be English; everything else follows the app language, and
+        // falls back to auto for the few whisper has no pack for.
+        let lang: WhisperLanguage
+        if VoiceCatalog.all.first(where: { $0.id == activeModelID })?.lang == .english {
+            lang = .english
+        } else {
+            let code = LocalizationManager.shared.active.whisperCode
+            lang = code.flatMap(WhisperLanguage.init(rawValue:)) ?? .auto
+        }
 
         do {
             let whisper: Whisper
@@ -210,7 +221,7 @@ final class VoiceInputManager: ObservableObject {
             if text.isEmpty { error = "Não captei nenhuma fala." }
             return text
         } catch {
-            self.error = "Falha na transcrição: \(error.localizedDescription)"
+            self.error = String(format: L("Falha na transcrição: %@"), error.localizedDescription)
             return ""
         }
     }
@@ -275,6 +286,24 @@ final class VoiceInputManager: ObservableObject {
         guard peak > 0.0001, peak < 0.97 else { return }
         let gain = 0.97 / peak
         for i in x.indices { x[i] *= gain }
+    }
+
+    /// Best `SFSpeechRecognizer` for the app's active language: an exact locale
+    /// match first ("pt-BR"), then any region of the same language ("en-GB" for
+    /// "en"), and finally the device's own default recognizer — which is what a
+    /// user running the app in a language iOS can't dictate would expect.
+    private static func recognizer(for language: AppLanguage) -> SFSpeechRecognizer? {
+        let code = language.speechCode
+        let base = code.split(separator: "-").first.map(String.init) ?? code
+        let supported = SFSpeechRecognizer.supportedLocales().map(\.identifier)
+        let normalized = { (s: String) in s.replacingOccurrences(of: "_", with: "-").lowercased() }
+        if let exact = supported.first(where: { normalized($0) == normalized(code) }) {
+            return SFSpeechRecognizer(locale: Locale(identifier: exact))
+        }
+        if let same = supported.first(where: { normalized($0).hasPrefix(base.lowercased() + "-") }) {
+            return SFSpeechRecognizer(locale: Locale(identifier: same))
+        }
+        return SFSpeechRecognizer()
     }
 
     private func requestPermissions() async -> Bool {

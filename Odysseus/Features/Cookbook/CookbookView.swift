@@ -126,7 +126,7 @@ struct CookbookView: View {
                         .listRowBackground(theme.bg)
                 }
                 if let e = vm.error {
-                    Text(e).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                    Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
                         .listRowBackground(theme.bg)
                 }
                 ForEach(vm.grouped, id: \.category) { group in

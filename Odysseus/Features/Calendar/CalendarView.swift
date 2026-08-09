@@ -132,7 +132,7 @@ struct CalendarView: View {
             .overlay(RoundedRectangle(cornerRadius: 12).stroke(theme.border, lineWidth: 1))
 
             if let err = vm.error {
-                Text(err)
+                Text(LocalizedStringKey(err))
                     .font(.ody(size: 11, design: .monospaced))
                     .foregroundStyle(theme.accent)
                     .frame(maxWidth: .infinity, alignment: .leading)

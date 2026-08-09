@@ -61,7 +61,7 @@ struct LoginView: View {
                 .padding(.horizontal, 4)
 
                 if let err = app.loginError {
-                    Text(err)
+                    Text(LocalizedStringKey(err))
                         .font(.ody(.footnote, design: .monospaced))
                         .foregroundStyle(theme.accent)
                         .multilineTextAlignment(.center)

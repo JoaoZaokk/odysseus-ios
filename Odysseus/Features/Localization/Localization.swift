@@ -125,6 +125,34 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
 
     var locale: Locale { Locale(identifier: rawValue) }
 
+    /// BCP-47 tag for the speech APIs (`AVSpeechSynthesisVoice`,
+    /// `SFSpeechRecognizer`). Script subtags like `zh-Hans` are not speech
+    /// locales, so the Chinese variants map to their spoken regions; every
+    /// other language keeps the bare code and is resolved by prefix match.
+    var speechCode: String {
+        switch self {
+        case .zhHans: return "zh-CN"
+        case .zhHant: return "zh-TW"
+        case .zhHK:   return "zh-HK"
+        default:      return rawValue
+        }
+    }
+
+    /// ISO-639-1 code whisper.cpp expects. Hebrew is the one mismatch —
+    /// SwiftWhisper spells it `iw`. Languages whisper has no pack for
+    /// (Uyghur) return nil so the caller can fall back to auto-detect.
+    var whisperCode: String? {
+        switch self {
+        case .ptBR:                      return "pt"
+        case .zhHans, .zhHant, .zhHK:    return "zh"
+        case .deAT, .deCH:               return "de"
+        case .he:                        return "iw"
+        case .ind:                       return "id"
+        case .ug:                        return nil
+        default:                         return rawValue
+        }
+    }
+
     /// Best shipped match for a device/system BCP-47 code (e.g. "ja-JP", "zh-Hant-TW", "de-CH").
     static func match(systemCode code: String) -> AppLanguage? {
         let c = code.lowercased()
@@ -157,7 +185,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
 /// Holds the active app language and persists the user's choice. Supports an
 /// **Automatic** mode that follows the phone's native language, and a manual
 /// override picked in Ajustes › Idioma. Applying a language swaps `Bundle.main`
-/// so every `Text("…")` / `String(localized:)` resolves to it live.
+/// so every `Text("…")` — and every `L("…")` — resolves to it live.
 @MainActor
 final class LocalizationManager: ObservableObject {
     static let shared = LocalizationManager()
@@ -229,6 +257,20 @@ private var kAppLanguageBundle: UInt8 = 0
 /// lookup is routed to the chosen `.lproj`. When no override bundle is set
 /// (pt-BR, or a missing `.lproj`), it falls back to the literal key — which is
 /// the Portuguese source string.
+/// Localizes a key at call time, for the strings SwiftUI can't look up itself
+/// (plain `String` properties, system dialog text, markdown built by hand).
+///
+/// Use this and **not** `String(localized:)`: Foundation resolves that one
+/// against `Locale.current` through a path that never reaches the override
+/// below, so it returned the Portuguese key whenever the app language differed
+/// from the device's. This goes through `Bundle.main.localizedString`, which
+/// is exactly the method `LocalizedBundle` overrides — the same path
+/// `Text("…")` takes. A key with no entry falls back to itself, i.e. the
+/// Portuguese source string.
+func L(_ key: String) -> String {
+    Bundle.main.localizedString(forKey: key, value: nil, table: nil)
+}
+
 final class LocalizedBundle: Bundle, @unchecked Sendable {
     override func localizedString(forKey key: String, value: String?, table tableName: String?) -> String {
         if let bundle = objc_getAssociatedObject(self, &kAppLanguageBundle) as? Bundle {

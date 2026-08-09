@@ -318,7 +318,7 @@ struct EmailSection: View {
                     .font(.ody(size: 12, design: .monospaced))
                 }
             }
-            if let e = vm.error { Text(e).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent) }
+            if let e = vm.error { Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent) }
         }
         .task { await vm.load() }
         .sheet(isPresented: $showAdd) {

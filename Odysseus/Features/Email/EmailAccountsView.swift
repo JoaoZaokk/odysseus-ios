@@ -291,7 +291,7 @@ struct AddEmailAccountView: View {
     private var providerGroup: some View {
         group("Provedor") {
             Menu {
-                Button("Custom…") { applyProvider("") }
+                Button("Personalizado…") { applyProvider("") }
                 ForEach(EmailProvider.all) { p in Button(p.label) { applyProvider(p.id) } }
             } label: {
                 HStack {
@@ -379,7 +379,7 @@ struct AddEmailAccountView: View {
     @ViewBuilder
     private var statusRow: some View {
         if let error {
-            Text(error).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+            Text(LocalizedStringKey(error)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
         }
         switch testResult {
         case .ok:
@@ -433,7 +433,7 @@ struct AddEmailAccountView: View {
             Menu {
                 Button("SSL") { smtpSecurity = "ssl" }
                 Button("STARTTLS") { smtpSecurity = "starttls" }
-                Button("None") { smtpSecurity = "none" }
+                Button("Nenhum") { smtpSecurity = "none" }
             } label: {
                 HStack {
                     Text(smtpSecurity.uppercased()).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
@@ -473,7 +473,8 @@ struct AddEmailAccountView: View {
         VStack(alignment: .leading, spacing: 3) {
             Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
             Group {
-                if secure { SecureField(placeholder, text: bind) } else { TextField(placeholder, text: bind) }
+                if secure { SecureField(LocalizedStringKey(placeholder), text: bind) }
+                else { TextField(LocalizedStringKey(placeholder), text: bind) }
             }
             .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
             .autocorrectionDisabled()

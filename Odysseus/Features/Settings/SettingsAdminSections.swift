@@ -222,7 +222,7 @@ struct RemindersSection: View {
                     .buttonStyle(.plain).foregroundStyle(theme.fg)
                     .font(.ody(.subheadline, design: .monospaced))
                 Spacer()
-                if let n = vm.note { Text(n).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+                if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
                 SettingsUI.saveButton(theme: theme) { Task { await vm.save() } }
             }
         }
@@ -306,7 +306,7 @@ struct AgentToolsSection: View {
                 }.tint(theme.accent)
                 HStack {
                     Spacer()
-                    if let n = vm.note { Text(n).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+                    if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
                     SettingsUI.saveButton(theme: theme) { Task { await vm.save() } }
                 }
             }
@@ -557,7 +557,7 @@ struct SistemaSection: View {
 
     var body: some View {
         SettingsScroll("Sistema", subtitle: "Configurações gerais, backup e zona de perigo.") {
-            if let n = vm.note { Text(n).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
             SettingsCard {
                 SettingsUI.field("URL pública do app", $vm.publicURL, placeholder: "https://odysseus.exemplo.com", theme: theme)
                 HStack {
@@ -743,7 +743,7 @@ struct UsuariosSection: View {
 
     var body: some View {
         SettingsScroll("Usuários", subtitle: "Contas com acesso a este servidor.") {
-            if let n = vm.note { Text(n).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent) }
+            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent) }
             SettingsCard {
                 Toggle(isOn: Binding(get: { vm.signupOn }, set: { _ in Task { await vm.toggleSignup() } })) {
                     VStack(alignment: .leading, spacing: 1) {
@@ -843,7 +843,7 @@ struct IntegracoesSection: View {
             .menuStyle(.borderlessButton)
 
             if vm.loading && vm.items.isEmpty { ProgressView().tint(theme.accent) }
-            if let n = vm.note { Text(n).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
             if vm.items.isEmpty && !vm.loading {
                 Text("Nenhuma integração ainda — use “Adicionar integração” acima.")
                     .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.secondaryText)
@@ -934,7 +934,8 @@ enum SettingsUI {
         VStack(alignment: .leading, spacing: 3) {
             Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
             Group {
-                if secure { SecureField(placeholder, text: bind) } else { TextField(placeholder, text: bind) }
+                if secure { SecureField(LocalizedStringKey(placeholder), text: bind) }
+                else { TextField(LocalizedStringKey(placeholder), text: bind) }
             }
             .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
             .autocorrectionDisabled()

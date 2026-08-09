@@ -7,7 +7,7 @@ import SwiftUI
 struct EmailLoginHelpView: View {
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
-    @State private var lang: String = EmailLoginGuide.deviceLang
+    @State private var lang: String = EmailLoginGuide.defaultLang
 
     private var guide: EmailLoginGuide { EmailLoginGuide.all[lang] ?? EmailLoginGuide.all["en"]! }
 
@@ -102,10 +102,18 @@ struct EmailLoginGuide {
 
     static let order = ["pt", "en", "es", "ja", "zh"]
 
-    /// Best match of the device language to one of the 5, else English.
-    static var deviceLang: String {
-        let code = Locale.current.language.languageCode?.identifier ?? "en"
-        return order.contains(code) ? code : "en"
+    /// Best match of the **app's** language to one of the 5, else English.
+    /// Reading `Locale.current` here was the bug: the app language is chosen in
+    /// Ajustes › Idioma and can differ from the device's, so a phone set to
+    /// Portuguese showed this tutorial in Portuguese even with the app in English.
+    @MainActor static var defaultLang: String {
+        switch LocalizationManager.shared.active {
+        case .ptBR:                   return "pt"
+        case .es:                     return "es"
+        case .ja:                     return "ja"
+        case .zhHans, .zhHant, .zhHK: return "zh"
+        default:                      return "en"
+        }
     }
 
     /// Shared (technical, language-agnostic) server list.

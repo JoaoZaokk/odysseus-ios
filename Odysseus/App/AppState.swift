@@ -76,7 +76,7 @@ final class AppState: ObservableObject {
         }
         // A1 (opt-in): require Face ID / Touch ID before the saved password is used.
         if BiometricLock.autoLoginGateEnabled && BiometricLock.available {
-            guard await BiometricLock.authenticate(reason: "Autenticar para entrar no Odysseus") else {
+            guard await BiometricLock.authenticate(reason: L("Autenticar para entrar no Odysseus")) else {
                 phase = .login; return
             }
         }
