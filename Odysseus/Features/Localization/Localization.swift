@@ -267,8 +267,9 @@ private var kAppLanguageBundle: UInt8 = 0
 /// is exactly the method `LocalizedBundle` overrides — the same path
 /// `Text("…")` takes. A key with no entry falls back to itself, i.e. the
 /// Portuguese source string.
-func L(_ key: String) -> String {
-    Bundle.main.localizedString(forKey: key, value: nil, table: nil)
+func L(_ key: String, _ args: CVarArg...) -> String {
+    let format = Bundle.main.localizedString(forKey: key, value: nil, table: nil)
+    return args.isEmpty ? format : String(format: format, arguments: args)
 }
 
 final class LocalizedBundle: Bundle, @unchecked Sendable {

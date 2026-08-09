@@ -21,11 +21,24 @@ final class ModelDownloadManager: NSObject, ObservableObject {
     }()
     private var tasks: [String: URLSessionDownloadTask] = [:]
 
-    nonisolated private static func modelsDir() -> URL {
+    nonisolated static func modelsDir() -> URL {
         let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
         let d = base.appendingPathComponent("Models", isDirectory: true)
         try? FileManager.default.createDirectory(at: d, withIntermediateDirectories: true)
+        excludeFromBackup(d)
         return d
+    }
+
+    /// Keeps re-downloadable model files out of iCloud/iTunes backups, per
+    /// Apple's data-storage guidelines — otherwise every 500 MB checkpoint the
+    /// user tries rides along in their backup forever. Marking the directory
+    /// covers its whole subtree, and it's re-applied on each call so installs
+    /// created before this existed get fixed too.
+    nonisolated static func excludeFromBackup(_ url: URL) {
+        var u = url
+        var values = URLResourceValues()
+        values.isExcludedFromBackup = true
+        try? u.setResourceValues(values)
     }
     private let dir = ModelDownloadManager.modelsDir()
 
@@ -79,6 +92,101 @@ final class ModelDownloadManager: NSObject, ObservableObject {
         try? FileManager.default.removeItem(at: localURL(model))
         installed.remove(model.id)
         deleteCoreML(model)   // the encoder is useless without the model
+        // A user-added model has no catalog entry to fall back to — deleting the
+        // file must also drop the registration, or the list keeps a dead row.
+        if model.isCustom { CustomModels.remove(id: model.id) }
+    }
+
+    // MARK: - User-supplied model URLs
+
+    enum AddError: LocalizedError {
+        case notHTTPS, unreachable(String), noSpace(Int64), notAWhisperModel
+
+        var errorDescription: String? {
+            switch self {
+            case .notHTTPS:
+                return L("Use um link https.")
+            case .unreachable(let why):
+                return L("Não consegui acessar esse link: %@", why)
+            case .noSpace(let need):
+                return L("Espaço insuficiente: são necessários %@ livres.",
+                         ByteCountFormatter.string(fromByteCount: need, countStyle: .file))
+            case .notAWhisperModel:
+                return L("Não parece um modelo Whisper ggml. Confira se o link aponta para o arquivo, não para a página.")
+            }
+        }
+    }
+
+    /// Normalizes a pasted link and starts the download.
+    ///
+    /// Rejects anything but https (App Transport Security blocks cleartext, and
+    /// an unencrypted model download is trivially tamperable), and rewrites the
+    /// Hugging Face *page* URL into the file URL — pasting the `/blob/` link is
+    /// the single most common mistake and otherwise downloads an HTML page that
+    /// only fails much later, at load time.
+    func addCustomModel(from raw: String) async throws {
+        var text = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !text.contains("://") { text = "https://" + text }
+        guard var comps = URLComponents(string: text), let host = comps.host else {
+            throw AddError.notHTTPS
+        }
+        guard comps.scheme?.lowercased() == "https" else { throw AddError.notHTTPS }
+        if host.hasSuffix("huggingface.co"), let r = comps.path.range(of: "/blob/") {
+            comps.path.replaceSubrange(r, with: "/resolve/")
+        }
+        guard let url = comps.url else { throw AddError.notHTTPS }
+
+        let size = try await Self.probe(url)
+        if size > 0, let free = Self.freeBytes(), free < size + 50_000_000 {
+            throw AddError.noSpace(size)
+        }
+
+        let name = url.deletingPathExtension().lastPathComponent
+        let entry = CustomVoiceModel(id: "u-\(UUID().uuidString.prefix(8))",
+                                     name: name.isEmpty ? L("Modelo próprio") : name,
+                                     urlString: url.absoluteString,
+                                     bytes: size)
+        CustomModels.add(entry)
+        refresh()
+        if let m = entry.model { download(m) }
+    }
+
+    /// HEAD for status + size. Servers that reject HEAD still get a chance:
+    /// an unknown size only means we skip the free-space check.
+    private static func probe(_ url: URL) async throws -> Int64 {
+        var req = URLRequest(url: url)
+        req.httpMethod = "HEAD"
+        req.timeoutInterval = 20
+        do {
+            let (_, resp) = try await URLSession.shared.data(for: req)
+            guard let http = resp as? HTTPURLResponse else { return 0 }
+            if http.statusCode == 405 || http.statusCode == 501 { return 0 }   // HEAD unsupported
+            guard (200..<300).contains(http.statusCode) else {
+                throw AddError.unreachable("HTTP \(http.statusCode)")
+            }
+            return max(0, http.expectedContentLength)
+        } catch let e as AddError {
+            throw e
+        } catch {
+            throw AddError.unreachable(error.localizedDescription)
+        }
+    }
+
+    private static func freeBytes() -> Int64? {
+        let v = try? modelsDir().resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
+        return v?.volumeAvailableCapacityForImportantUsage
+    }
+
+    /// whisper.cpp refuses anything whose first four bytes aren't its magic
+    /// (`whisper.cpp:811`, `magic != 0x67676d6c`). Checking here means a wrong
+    /// link — an HTML error page, a GGUF, an ONNX file — is caught and deleted
+    /// at download time instead of surfacing as a failed transcription later.
+    nonisolated static func isWhisperGGML(at url: URL) -> Bool {
+        guard let h = try? FileHandle(forReadingFrom: url) else { return false }
+        defer { try? h.close() }
+        guard let d = try? h.read(upToCount: 4), d.count == 4 else { return false }
+        let magic = d.withUnsafeBytes { $0.loadUnaligned(as: UInt32.self) }
+        return UInt32(littleEndian: magic) == 0x6767_6d6c
     }
 
     // MARK: - CoreML encoder
@@ -130,12 +238,26 @@ extension ModelDownloadManager: URLSessionDownloadDelegate {
             Task { @MainActor in
                 self.tasks[id] = nil; self.progress[id] = nil
                 if ok { self.coreMLInstalled.insert(modelID) }
-                else { self.error = "Falha ao descompactar o modelo Core ML." }
+                else { self.error = L("Falha ao descompactar o modelo Core ML.") }
             }
             return
         }
 
         guard let model = VoiceCatalog.all.first(where: { $0.id == id }) else { return }
+
+        // Validate BEFORE installing. A CDN error page or a wrong-format file
+        // arrives as a perfectly successful 200; without this it lands in place
+        // and only fails later, when the user tries to dictate.
+        guard Self.isWhisperGGML(at: location) else {
+            try? FileManager.default.removeItem(at: location)
+            Task { @MainActor in
+                self.tasks[id] = nil; self.progress[id] = nil
+                if model.isCustom { CustomModels.remove(id: id); self.refresh() }
+                self.error = AddError.notAWhisperModel.errorDescription
+            }
+            return
+        }
+
         let dest = Self.modelsDir().appendingPathComponent("\(model.id)-\(model.filename)")
         try? FileManager.default.removeItem(at: dest)
         let moved = (try? FileManager.default.moveItem(at: location, to: dest)) != nil

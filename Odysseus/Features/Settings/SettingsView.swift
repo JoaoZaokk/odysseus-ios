@@ -7,6 +7,7 @@ import SwiftUI
 enum SettingsSection: String, CaseIterable, Identifiable {
     case addModels, addedModels, aiDefaults, search
     case integrations, email, reminders, imageGen
+    case voice
     case appearance, language, account, server
     case agentTools, users, system
 
@@ -22,6 +23,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .email: return "Email"
         case .reminders: return "Lembretes"
         case .imageGen: return "Geração de imagem"
+        case .voice: return "Voz e modelos"
         case .appearance: return "Aparência"
         case .language: return "Idioma"
         case .account: return "Conta"
@@ -42,6 +44,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .email: return "envelope"
         case .reminders: return "bell"
         case .imageGen: return "photo.on.rectangle.angled"
+        case .voice: return "waveform"
         case .appearance: return "paintpalette"
         case .language: return "globe"
         case .account: return "person.crop.circle"
@@ -55,7 +58,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
     static let groups: [(String?, [SettingsSection])] = [
         (nil, [.addModels, .addedModels, .aiDefaults, .search]),
         (nil, [.integrations, .email, .reminders, .imageGen]),
-        (nil, [.appearance, .language, .account, .server]),
+        (nil, [.voice, .appearance, .language, .account, .server]),
         ("ADMIN", [.agentTools, .users, .system]),
     ]
 }
@@ -173,6 +176,7 @@ struct SettingsView: View {
         case .aiDefaults: AIDefaultsSection(app: app)
         case .addedModels: AddedModelsSection(app: app)
         case .search: SearchSection(app: app)
+        case .voice: VoiceSettingsView()
         case .appearance: ThemePickerView(inSheet: false).environmentObject(themes)
         case .language: LanguageSection()
         case .account: AccountSection()
