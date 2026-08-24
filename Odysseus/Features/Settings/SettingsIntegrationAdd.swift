@@ -8,12 +8,12 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var label: String {
         switch self {
-        case .caldav: return "CalDAV (Calendário)"
-        case .carddav: return "CardDAV (Contatos)"
-        case .api: return "API Service"
-        case .claude: return "Claude Agent"
-        case .codex: return "Codex Agent"
-        case .mcp: return "MCP Tool Server"
+        case .caldav: return L("CalDAV (Calendário)")
+        case .carddav: return L("CardDAV (Contatos)")
+        case .api: return L("API Service")
+        case .claude: return L("Claude Agent")
+        case .codex: return L("Codex Agent")
+        case .mcp: return L("MCP Tool Server")
         }
     }
     var icon: String {

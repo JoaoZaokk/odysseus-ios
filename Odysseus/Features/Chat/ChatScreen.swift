@@ -14,6 +14,7 @@ struct ChatScreen: View {
     @State private var photoItems: [PhotosPickerItem] = []
     @State private var pasteMonitor: Any?   // macOS ⌘V image-paste event monitor
     @State private var didAutoSend = false
+    @State private var showVoice = false
     private let autoSend: String?
 
     init(app: AppState, session: ChatSession?, deepSearch: Bool = false,
@@ -34,11 +35,15 @@ struct ChatScreen: View {
             }
         }
         #if os(macOS)
-        .screenChrome(title: vm.title, subtitle: vm.resolvedModel)
+        .screenChrome(title: vm.title, subtitle: vm.resolvedModel) {
+        } trailing: {
+            voiceModeButton
+        }
         #else
         .navigationTitle(vm.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .primaryAction) { voiceModeButton }
             ToolbarItem(placement: .principal) {
                 VStack(spacing: 1) {
                     Text(vm.title)
@@ -55,6 +60,11 @@ struct ChatScreen: View {
         }
         #endif
         .task { await vm.loadModels() }
+        .sheet(isPresented: $showVoice) {
+            // Hands-free mode continues this same server session, so anything
+            // said by voice lands in the very conversation that's open here.
+            VoiceView(app: app, session: vm.sessionID, messages: vm.messages)
+        }
         .onAppear {
             vm.loadHistoryIfNeeded()
             if let p = autoSend, !didAutoSend, !p.isEmpty {
@@ -253,6 +263,18 @@ struct ChatScreen: View {
             await vm.addImages(files)
             photoItems = []
         }
+    }
+
+    /// Hands-free voice mode. Distinct from the mic in the composer, which only
+    /// dictates into the text field.
+    private var voiceModeButton: some View {
+        Button { showVoice = true } label: {
+            Image(systemName: "waveform.circle")
+                .font(.ody(size: 18))
+                .foregroundStyle(theme.accent)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text("Conversar por voz"))
     }
 
     private var micButton: some View {

@@ -54,10 +54,10 @@ final class BrainViewModel: ObservableObject {
             let r = try await api.auditMemories()
             await load()
             auditMessage = r.removed == 0
-                ? "Memórias já estão organizadas — nada a remover."
-                : "Organizado: \(r.removed) removida(s) (\(r.before) → \(r.after))."
+                ? L("Memórias já estão organizadas — nada a remover.")
+                : L("Organizado: %lld removida(s) (%lld → %lld).", r.removed, r.before, r.after)
         } catch {
-            auditMessage = "Falha ao organizar: \(msg(error))"
+            auditMessage = L("Falha ao organizar: %@", msg(error))
         }
     }
 

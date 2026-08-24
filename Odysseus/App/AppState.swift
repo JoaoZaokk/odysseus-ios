@@ -35,6 +35,10 @@ final class AppState: ObservableObject {
         let client = APIClient(config: cfg)
         self.api = client
         self.stream = ChatStreamClient(api: client)
+        // The "server" speech engines talk to /api/tts and /api/stt, so they
+        // need the authenticated client. Set here rather than per-view: the TTS
+        // manager is a singleton shared by every message bubble.
+        SpeechManager.shared.api = client
     }
 
     /// Called by the lock screen after a successful biometric/passcode check.
