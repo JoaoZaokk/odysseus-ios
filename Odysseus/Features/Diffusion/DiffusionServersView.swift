@@ -153,14 +153,14 @@ struct DiffusionServersView: View {
         Rectangle().fill(theme.border).frame(height: 1)
         infoRow("Versão", "ComfyUI \(s.comfyVersion) · \(s.os)")
         infoRow("Python / Torch", "\(s.pythonVersion) · \(s.pytorchVersion)")
-        infoRow("RAM", String(format: "%.0f GB livre / %.0f GB", s.ramFreeGB, s.ramTotalGB))
+        infoRow("RAM", L("%.0f GB livre / %.0f GB", s.ramFreeGB, s.ramTotalGB))
         ForEach(s.gpus) { g in
             infoRow("GPU \(g.index)", "\(g.name.replacingOccurrences(of: "NVIDIA GeForce ", with: "")) · " +
-                    String(format: "%.1f GB livre / %.1f GB", g.vramFreeGB, g.vramTotalGB))
+                    L("%.1f GB livre / %.1f GB", g.vramFreeGB, g.vramTotalGB))
         }
-        if let q = vm.queue { infoRow("Fila", "\(q.0) rodando · \(q.1) na fila") }
+        if let q = vm.queue { infoRow(L("Fila"), L("%lld rodando · %lld na fila", q.0, q.1)) }
         if let m = vm.models {
-            infoRow("Modelos", "\(m.checkpoints.count) ckpt · \(m.unets.count) unet · \(m.loras.count) lora · \(m.vae.count) vae · \(m.controlnet.count) cnet")
+            infoRow(L("Modelos"), "\(m.checkpoints.count) ckpt · \(m.unets.count) unet · \(m.loras.count) lora · \(m.vae.count) vae · \(m.controlnet.count) cnet")
             fitSection()
         }
     }
