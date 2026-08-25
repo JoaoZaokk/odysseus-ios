@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Час виконання глибокого пошуку. Модель вибирається в «Налаштування ШІ».";
 "testando…" = "тестування…";
 "Testar" = "Тест";
-"Testar conexão" = "Перевірити з'єднання";
 "Testar lembrete" = "Перевірити нагадування";
 "Texto → Voz" = "Текст → Мовлення";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Небезпечна зона";
 "(sem conteúdo)" = "(немає вмісту)";
 "Ativar" = "Увімкнути";
-"Criar" = "Створити";
 "Criar token" = "Створити токен";
 "Código 2FA" = "Код 2FA";
 "Desafixar" = "Відкріпити";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Пошук в мережі";
 "Porta" = "Порт";
 "Porta SMTP" = "Порт SMTP";
-"Provedor" = "Постачальник";
 "Provedor usado para busca na web e pesquisa profunda." = "Постачальник для веб-пошуку та глибокого пошуку.";
 "Resultados por busca" = "Результатів на пошук";
 "Run timeout (s)" = "Run timeout (с)";
@@ -570,3 +567,5 @@
 "Fila" = "Черга";
 "Modelos" = "Моделі";
 "%lld rodando · %lld na fila" = "%lld працює · %lld у черзі";
+"Processar só no aparelho" = "Обробляти лише на пристрої";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Обробка лише на пристрої не надсилає аудіо до Apple, але офлайн-модель помиляється в більшій кількості слів. Залиште вимкненим, якщо транскрипція погана.";

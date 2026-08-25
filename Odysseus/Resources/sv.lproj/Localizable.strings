@@ -557,3 +557,5 @@
 "Fila" = "Kö";
 "Modelos" = "Modeller";
 "%lld rodando · %lld na fila" = "%lld körs · %lld i kö";
+"Processar só no aparelho" = "Bearbeta endast på enheten";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Att bearbeta endast på enheten skickar inget ljud till Apple, men offlinemodellen missar fler ord. Låt den vara av om transkriberingen är dålig.";

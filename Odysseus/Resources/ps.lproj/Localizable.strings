@@ -565,3 +565,5 @@
 "Fila" = "کتار";
 "Modelos" = "ماډلونه";
 "%lld rodando · %lld na fila" = "%lld روان دي · %lld په کتار کې";
+"Processar só no aparelho" = "یوازې په وسیله کې پروسس کول";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "یوازې په وسیله کې پروسس کول غږ Apple ته نه لېږي، خو آفلاین ماډل ډېرې کلمې تېروځي. که لیکنه ښه نه وي، مړ یې پرېږده.";

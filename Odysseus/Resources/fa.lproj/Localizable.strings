@@ -565,3 +565,5 @@
 "Fila" = "صف";
 "Modelos" = "مدل‌ها";
 "%lld rodando · %lld na fila" = "%lld در حال اجرا · %lld در صف";
+"Processar só no aparelho" = "پردازش فقط روی دستگاه";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "پردازش فقط روی دستگاه صدا را به Apple نمی‌فرستد، اما مدل آفلاین کلمات بیشتری را اشتباه می‌گیرد. اگر رونویسی بد است، خاموش بگذارید.";

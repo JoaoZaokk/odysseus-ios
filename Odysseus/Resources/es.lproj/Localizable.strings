@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Tiempos de ejecución de la investigación profunda. El modelo se elige en Ajustes de IA.";
 "testando…" = "probando…";
 "Testar" = "Probar";
-"Testar conexão" = "Probar conexión";
 "Testar lembrete" = "Probar recordatorio";
 "Texto → Voz" = "Texto → Voz";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Zona de peligro";
 "(sem conteúdo)" = "(sin contenido)";
 "Ativar" = "Activar";
-"Criar" = "Crear";
 "Criar token" = "Crear token";
 "Código 2FA" = "Código 2FA";
 "Desafixar" = "Desanclar";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Buscando en la web";
 "Porta" = "Puerto";
 "Porta SMTP" = "Puerto SMTP";
-"Provedor" = "Proveedor";
 "Provedor usado para busca na web e pesquisa profunda." = "Proveedor usado para búsqueda web e investigación profunda.";
 "Resultados por busca" = "Resultados por búsqueda";
 "Run timeout (s)" = "Run timeout (s)";
@@ -570,3 +567,5 @@
 "Fila" = "Cola";
 "Modelos" = "Modelos";
 "%lld rodando · %lld na fila" = "%lld en ejecución · %lld en cola";
+"Processar só no aparelho" = "Procesar solo en el dispositivo";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Procesar solo en el dispositivo no envía audio a Apple, pero el modelo sin conexión falla más palabras. Déjalo desactivado si la transcripción es mala.";

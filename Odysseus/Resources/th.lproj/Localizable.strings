@@ -565,3 +565,5 @@
 "Fila" = "คิว";
 "Modelos" = "โมเดล";
 "%lld rodando · %lld na fila" = "กำลังทำงาน %lld · ในคิว %lld";
+"Processar só no aparelho" = "ประมวลผลบนเครื่องเท่านั้น";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "การประมวลผลบนเครื่องเท่านั้นจะไม่ส่งเสียงไปยัง Apple แต่โมเดลออฟไลน์ถอดคำผิดมากกว่า ปิดไว้หากถอดเสียงได้ไม่ดี";

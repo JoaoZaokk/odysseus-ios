@@ -557,3 +557,5 @@
 "Fila" = "תור";
 "Modelos" = "מודלים";
 "%lld rodando · %lld na fila" = "%lld פועלים · %lld בתור";
+"Processar só no aparelho" = "עיבוד במכשיר בלבד";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "עיבוד במכשיר בלבד לא שולח אודיו ל-Apple, אבל המודל הלא-מקוון טועה ביותר מילים. השאירו כבוי אם התמלול גרוע.";

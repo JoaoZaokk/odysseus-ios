@@ -47,6 +47,11 @@ final class VoiceInputManager: ObservableObject {
     private var useModel: Bool { UserDefaults.standard.string(forKey: "voice.stt.engine") == "model" }
     private var useServer: Bool { UserDefaults.standard.string(forKey: "voice.stt.engine") == "server" }
     private var activeModelID: String { UserDefaults.standard.string(forKey: "voice.stt.model") ?? "" }
+    /// Keeps Apple's dictation on the device instead of sending audio to its
+    /// servers. Off by default: the on-device model is the less accurate of the
+    /// two, and forcing it unconditionally is the likeliest cause of the
+    /// "it keeps mangling my words" reports (issue #9).
+    private var onDeviceOnly: Bool { UserDefaults.standard.bool(forKey: "voice.stt.onDeviceOnly") }
 
     /// Injected at startup — required for the "server" STT engine.
     var api: APIClient?
@@ -107,7 +112,7 @@ final class VoiceInputManager: ObservableObject {
             }
             let req = SFSpeechAudioBufferRecognitionRequest()
             req.shouldReportPartialResults = true
-            req.requiresOnDeviceRecognition = rec.supportsOnDeviceRecognition
+            req.requiresOnDeviceRecognition = onDeviceOnly && rec.supportsOnDeviceRecognition
             request = req
             task = rec.recognitionTask(with: req) { [weak self] result, err in
                 Task { @MainActor in
@@ -282,21 +287,37 @@ final class VoiceInputManager: ObservableObject {
     }
 
     /// Apple's recognizer for the app's UI language, degrading region →
-    /// language → whatever the device offers. Built per recording (not stored)
-    /// so switching the app language takes effect on the very next tap; a fixed
-    /// pt-BR instance is what made the mic transcribe every language as
-    /// Portuguese.
+    /// language → nil. Built per recording (not stored) so switching the app
+    /// language takes effect on the very next tap; a fixed pt-BR instance is
+    /// what made the mic transcribe every language as Portuguese.
+    ///
+    /// Returns nil rather than `SFSpeechRecognizer()` when nothing matches.
+    /// That last resort was the device-locale recognizer, so the ten shipped
+    /// languages Apple has no model for (sl, mk, sr, be, bn, ps, lv, lb, ug,
+    /// bo) silently transcribed into whatever the *phone* was set to — and it
+    /// made the caller's "unavailable for %@" guard dead code, because this
+    /// never returned nil. Being told dictation isn't available beats getting
+    /// a paragraph of the wrong language.
     private static func recognizer(for lang: AppLanguage) -> SFSpeechRecognizer? {
         let tag = lang.speechCode
+        // Bare codes resolve: Apple canonicalizes "en" to a region of its own
+        // choosing even though supportedLocales() only ever lists en-US, en-GB…
         if let r = SFSpeechRecognizer(locale: Locale(identifier: tag)), r.isAvailable { return r }
 
         let base = tag.split(separator: "-").first.map(String.init) ?? tag
         let supported = SFSpeechRecognizer.supportedLocales()
-        if let match = supported.first(where: { $0.identifier.replacingOccurrences(of: "_", with: "-")
-                                                 .lowercased().hasPrefix(base.lowercased() + "-") }),
-           let r = SFSpeechRecognizer(locale: match), r.isAvailable { return r }
-
-        return SFSpeechRecognizer()   // device default
+        // supportedLocales() is a Set, so pick the region deterministically
+        // instead of letting hash order decide between en-US and en-IN.
+        let regions = supported
+            .map { $0.identifier.replacingOccurrences(of: "_", with: "-") }
+            .filter { $0.lowercased().hasPrefix(base.lowercased() + "-") }
+            .sorted()
+        // The device's own region first when it speaks the same language.
+        let preferred = Locale.current.identifier.replacingOccurrences(of: "_", with: "-")
+        for candidate in ([preferred] + regions) where regions.contains(candidate) {
+            if let r = SFSpeechRecognizer(locale: Locale(identifier: candidate)), r.isAvailable { return r }
+        }
+        return nil
     }
 
     /// Maps the app's UI language to a Whisper language for the universal

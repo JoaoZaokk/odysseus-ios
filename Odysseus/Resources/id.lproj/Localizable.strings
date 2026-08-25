@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Waktu eksekusi riset mendalam. Model dipilih di Default AI.";
 "testando…" = "menguji…";
 "Testar" = "Uji";
-"Testar conexão" = "Uji koneksi";
 "Testar lembrete" = "Uji pengingat";
 "Texto → Voz" = "Teks → Suara";
 "Timeout" = "Waktu habis";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Zona berbahaya";
 "(sem conteúdo)" = "(tidak ada konten)";
 "Ativar" = "Aktifkan";
-"Criar" = "Buat";
 "Criar token" = "Buat token";
 "Código 2FA" = "Kode 2FA";
 "Desafixar" = "Hapus sematan";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Mencari di web";
 "Porta" = "Port";
 "Porta SMTP" = "Port SMTP";
-"Provedor" = "Penyedia";
 "Provedor usado para busca na web e pesquisa profunda." = "Penyedia yang digunakan untuk pencarian web dan riset mendalam.";
 "Resultados por busca" = "Hasil per pencarian";
 "Run timeout (s)" = "Batas waktu eksekusi (dtk)";
@@ -568,3 +565,5 @@
 "Fila" = "Antrean";
 "Modelos" = "Model";
 "%lld rodando · %lld na fila" = "%lld berjalan · %lld dalam antrean";
+"Processar só no aparelho" = "Proses hanya di perangkat";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Memproses hanya di perangkat tidak mengirim audio ke Apple, tetapi model luring lebih sering salah kata. Biarkan mati jika transkripsi buruk.";

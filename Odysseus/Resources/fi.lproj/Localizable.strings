@@ -557,3 +557,5 @@
 "Fila" = "Jono";
 "Modelos" = "Mallit";
 "%lld rodando · %lld na fila" = "%lld käynnissä · %lld jonossa";
+"Processar só no aparelho" = "Käsittele vain laitteessa";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Vain laitteessa käsittely ei lähetä ääntä Applelle, mutta offline-malli erehtyy useammista sanoista. Jätä pois päältä, jos litterointi on huonoa.";

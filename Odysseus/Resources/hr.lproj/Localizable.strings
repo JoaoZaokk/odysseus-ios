@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Vremena izvođenja dubokog istraživanja. Model se bira u Zadanim postavkama AI.";
 "testando…" = "testiranje…";
 "Testar" = "Testiraj";
-"Testar conexão" = "Testiraj vezu";
 "Testar lembrete" = "Testiraj podsjetnik";
 "Texto → Voz" = "Tekst → Govor";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Opasna zona";
 "(sem conteúdo)" = "(bez sadržaja)";
 "Ativar" = "Uključi";
-"Criar" = "Stvori";
 "Criar token" = "Stvori token";
 "Código 2FA" = "Kôd 2FA";
 "Desafixar" = "Otkvači";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Pretraživanje weba";
 "Porta" = "Vrata";
 "Porta SMTP" = "Vrata SMTP";
-"Provedor" = "Pružatelj";
 "Provedor usado para busca na web e pesquisa profunda." = "Pružatelj koji se koristi za web pretraživanje i duboko istraživanje.";
 "Resultados por busca" = "Rezultati po pretraživanju";
 "Run timeout (s)" = "Timeout izvođenja (s)";
@@ -568,3 +565,5 @@
 "Fila" = "Red čekanja";
 "Modelos" = "Modeli";
 "%lld rodando · %lld na fila" = "%lld radi · %lld u redu čekanja";
+"Processar só no aparelho" = "Obradi samo na uređaju";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Obrada samo na uređaju ne šalje zvuk Appleu, ali izvanmrežni model griješi u više riječi. Ostavite isključeno ako je transkripcija loša.";

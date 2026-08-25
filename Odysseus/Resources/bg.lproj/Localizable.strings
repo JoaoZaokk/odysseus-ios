@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Времена за изпълнение на задълбоченото търсене. Моделът се избира в \"Настройки на ИИ\".";
 "testando…" = "тестване…";
 "Testar" = "Тест";
-"Testar conexão" = "Тествай връзката";
 "Testar lembrete" = "Тествай напомнянето";
 "Texto → Voz" = "Текст → Реч";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Опасна зона";
 "(sem conteúdo)" = "(без съдържание)";
 "Ativar" = "Включи";
-"Criar" = "Създай";
 "Criar token" = "Създай токен";
 "Código 2FA" = "Код 2FA";
 "Desafixar" = "Откачи";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Търсене в мрежата";
 "Porta" = "Порт";
 "Porta SMTP" = "SMTP порт";
-"Provedor" = "Доставчик";
 "Provedor usado para busca na web e pesquisa profunda." = "Доставчик за уеб търсене и задълбочено търсене.";
 "Resultados por busca" = "Резултати на търсене";
 "Run timeout (s)" = "Run timeout (с)";
@@ -570,3 +567,5 @@
 "Fila" = "Опашка";
 "Modelos" = "Модели";
 "%lld rodando · %lld na fila" = "%lld работещи · %lld в опашката";
+"Processar só no aparelho" = "Обработка само на устройството";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Обработката само на устройството не изпраща звук до Apple, но офлайн моделът бърка повече думи. Оставете изключено, ако транскрипцията е лоша.";

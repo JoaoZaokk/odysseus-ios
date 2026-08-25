@@ -17,6 +17,7 @@ struct VoiceSettingsView: View {
     @AppStorage("voice.stt.model") private var sttModelID = ""
     @AppStorage("voice.tts.engine") private var ttsEngine = "native"
     @AppStorage("voice.tts.pocketVoice") private var pocketVoice = "alba"
+    @AppStorage("voice.stt.onDeviceOnly") private var sttOnDeviceOnly = false
     @AppStorage("voice.bargein.enabled") private var bargeEnabled = true
     @AppStorage("voice.bargein.sensitivity") private var bargeSensitivity = 0.5
     @State private var langFilter = "all"
@@ -34,10 +35,16 @@ struct VoiceSettingsView: View {
                 if sttEngine == "model" {
                     LabeledContent("Modelo ativo", value: modelName(sttModelID) ?? L("nenhum"))
                 }
+                if sttEngine == "native" {
+                    Toggle("Processar só no aparelho", isOn: $sttOnDeviceOnly)
+                }
             } header: { Text("Voz → Texto") } footer: {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline no aparelho. \"Servidor\" = o Whisper do seu Odysseus (envia o áudio e transcreve no fim).")
                     Text("A voz nativa e o reconhecimento nativo seguem o idioma do app (Ajustes › Idioma).")
+                    if sttEngine == "native" {
+                        Text("Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim.")
+                    }
                 }
             }
 

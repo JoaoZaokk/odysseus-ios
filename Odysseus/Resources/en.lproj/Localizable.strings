@@ -567,3 +567,5 @@
 "Fila" = "Queue";
 "Modelos" = "Models";
 "%lld rodando · %lld na fila" = "%lld running · %lld queued";
+"Processar só no aparelho" = "Process on device only";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Processing on device only doesn't send audio to Apple, but the offline model gets more words wrong. Leave it off if transcription is poor.";

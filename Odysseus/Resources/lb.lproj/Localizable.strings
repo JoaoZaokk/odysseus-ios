@@ -565,3 +565,5 @@
 "Fila" = "Waardeschlange";
 "Modelos" = "Modeller";
 "%lld rodando · %lld na fila" = "%lld lafen · %lld an der Waardeschlange";
+"Processar só no aparelho" = "Nëmmen um Apparat veraarbechten";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Nëmmen um Apparat ze veraarbechten schéckt keen Audio un Apple, mee d'Offline-Modell mécht méi Feeler. Loosst et aus, wann d'Transkriptioun schlecht ass.";
