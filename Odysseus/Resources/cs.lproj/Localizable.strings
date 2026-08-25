@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Doby spuštění hlubokého výzkumu. Model je vybrán v Výchozím nastavení AI.";
 "testando…" = "testování…";
 "Testar" = "Testovat";
-"Testar conexão" = "Testovat připojení";
 "Testar lembrete" = "Testovat připomínku";
 "Texto → Voz" = "Text → Řeč";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Nebezpečná zóna";
 "(sem conteúdo)" = "(žádný obsah)";
 "Ativar" = "Zapnout";
-"Criar" = "Vytvořit";
 "Criar token" = "Vytvořit token";
 "Código 2FA" = "Kód 2FA";
 "Desafixar" = "Odepnout";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Vyhledávání na webu";
 "Porta" = "Port";
 "Porta SMTP" = "Port SMTP";
-"Provedor" = "Poskytovatel";
 "Provedor usado para busca na web e pesquisa profunda." = "Poskytovatel používaný pro webové vyhledávání a hluboký výzkum.";
 "Resultados por busca" = "Výsledky na vyhledávání";
 "Run timeout (s)" = "Timeout spuštění (s)";
@@ -568,3 +565,5 @@
 "Fila" = "Fronta";
 "Modelos" = "Modely";
 "%lld rodando · %lld na fila" = "%lld běží · %lld ve frontě";
+"Processar só no aparelho" = "Zpracovat jen v zařízení";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Zpracování jen v zařízení neposílá zvuk Applu, ale offline model chybuje ve více slovech. Nechte vypnuté, pokud je přepis špatný.";

@@ -565,3 +565,5 @@
 "Fila" = "གྲལ་རིམ";
 "Modelos" = "དཔེ་དབྱིབས";
 "%lld rodando · %lld na fila" = "%lld ལག་བསྟར་བྱེད་བཞིན། · %lld གྲལ་རིམ་ནང་།";
+"Processar só no aparelho" = "ཐབས་ཆས་ནང་ཁོ་ནར་སྒྲུབ་པ།";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "ཐབས་ཆས་ནང་ཁོ་ནར་སྒྲུབ་ན་སྒྲ་དེ་ Apple ལ་མི་སྐུར། འོན་ཀྱང་དྲ་མེད་དཔེ་དབྱིབས་ཀྱིས་ཚིག་མང་བ་ནོར་བར་བྱེད། ཡི་གེར་བསྒྱུར་བ་ཡག་པོ་མེད་ན་སྒོ་རྒྱག་རོགས།";

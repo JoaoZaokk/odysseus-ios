@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "গভীর গবেষণার রানটাইম। মডেল AI ডিফল্টে বেছে নেওয়া হয়।";
 "testando…" = "টেস্ট হচ্ছে…";
 "Testar" = "টেস্ট করুন";
-"Testar conexão" = "কানেকশন টেস্ট করুন";
 "Testar lembrete" = "রিমাইন্ডার টেস্ট করুন";
 "Texto → Voz" = "টেক্সট → ভয়েস";
 "Timeout" = "টাইমআউট";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ বিপদ অঞ্চল";
 "(sem conteúdo)" = "(কোনো কন্টেন্ট নেই)";
 "Ativar" = "চালু করুন";
-"Criar" = "তৈরি করুন";
 "Criar token" = "টোকেন তৈরি করুন";
 "Código 2FA" = "2FA কোড";
 "Desafixar" = "আনপিন করুন";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "ওয়েবে সার্চ করছে";
 "Porta" = "পোর্ট";
 "Porta SMTP" = "SMTP পোর্ট";
-"Provedor" = "প্রোভাইডার";
 "Provedor usado para busca na web e pesquisa profunda." = "ওয়েব সার্চ ও গভীর গবেষণার জন্য ব্যবহৃত প্রোভাইডার।";
 "Resultados por busca" = "প্রতি সার্চে ফলাফল";
 "Run timeout (s)" = "Run টাইমআউট (s)";
@@ -570,3 +567,5 @@
 "Fila" = "সারি";
 "Modelos" = "মডেল";
 "%lld rodando · %lld na fila" = "%lld চলছে · %lld সারিতে";
+"Processar só no aparelho" = "শুধু ডিভাইসে প্রসেস করুন";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "শুধু ডিভাইসে প্রসেস করলে অডিও Apple-এ পাঠানো হয় না, তবে অফলাইন মডেল বেশি শব্দ ভুল করে। প্রতিলিপি খারাপ হলে বন্ধ রাখুন।";

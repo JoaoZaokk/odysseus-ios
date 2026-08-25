@@ -565,3 +565,5 @@
 "Fila" = "قطار";
 "Modelos" = "ماڈلز";
 "%lld rodando · %lld na fila" = "%lld چل رہے ہیں · %lld قطار میں";
+"Processar só no aparelho" = "صرف ڈیوائس پر پروسیس کریں";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "صرف ڈیوائس پر پروسیس کرنے سے آڈیو Apple کو نہیں بھیجا جاتا، مگر آف لائن ماڈل زیادہ الفاظ غلط پہچانتا ہے۔ اگر نقل خراب ہو تو بند رکھیں۔";

@@ -567,3 +567,5 @@
 "Fila" = "Ред";
 "Modelos" = "Модели";
 "%lld rodando · %lld na fila" = "%lld ради · %lld у реду";
+"Processar só no aparelho" = "Обради само на уређају";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Обрада само на уређају не шаље звук Apple-у, али офлајн модел греши више речи. Оставите искључено ако је транскрипција лоша.";

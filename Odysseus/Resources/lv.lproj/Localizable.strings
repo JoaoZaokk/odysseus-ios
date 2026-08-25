@@ -565,3 +565,5 @@
 "Fila" = "Rinda";
 "Modelos" = "Modeļi";
 "%lld rodando · %lld na fila" = "%lld darbojas · %lld rindā";
+"Processar só no aparelho" = "Apstrādāt tikai ierīcē";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Apstrāde tikai ierīcē nesūta audio uz Apple, taču bezsaistes modelis kļūdās vairāk vārdu. Atstājiet izslēgtu, ja transkripcija ir slikta.";

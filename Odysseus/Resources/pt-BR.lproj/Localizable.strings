@@ -558,3 +558,5 @@
 "Fila" = "Fila";
 "Modelos" = "Modelos";
 "%lld rodando · %lld na fila" = "%lld rodando · %lld na fila";
+"Processar só no aparelho" = "Processar só no aparelho";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim.";

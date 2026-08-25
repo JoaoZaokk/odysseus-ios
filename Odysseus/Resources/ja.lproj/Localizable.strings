@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "ディープリサーチの実行環境。モデルは「AI の既定値」で選択します。";
 "testando…" = "テスト中…";
 "Testar" = "テスト";
-"Testar conexão" = "接続をテスト";
 "Testar lembrete" = "リマインダーをテスト";
 "Texto → Voz" = "テキスト → 音声";
 "Timeout" = "タイムアウト";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ 危険ゾーン";
 "(sem conteúdo)" = "（コンテンツなし）";
 "Ativar" = "有効化";
-"Criar" = "作成";
 "Criar token" = "トークンを作成";
 "Código 2FA" = "2FA コード";
 "Desafixar" = "固定を解除";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Web を検索中";
 "Porta" = "ポート";
 "Porta SMTP" = "SMTP ポート";
-"Provedor" = "プロバイダー";
 "Provedor usado para busca na web e pesquisa profunda." = "Web 検索とディープリサーチに使用するプロバイダー。";
 "Resultados por busca" = "検索ごとの結果数";
 "Run timeout (s)" = "実行タイムアウト（秒）";
@@ -568,3 +565,5 @@
 "Fila" = "キュー";
 "Modelos" = "モデル";
 "%lld rodando · %lld na fila" = "実行中 %lld · 待機中 %lld";
+"Processar só no aparelho" = "デバイス内でのみ処理";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "デバイス内でのみ処理すると音声は Apple に送信されませんが、オフラインモデルは誤認識が増えます。文字起こしの精度が低い場合はオフにしてください。";

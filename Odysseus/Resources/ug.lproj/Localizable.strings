@@ -565,3 +565,5 @@
 "Fila" = "ئۆچرەت";
 "Modelos" = "مودېل";
 "%lld rodando · %lld na fila" = "%lld ئىجرا بولۇۋاتىدۇ · %lld ئۆچرەتتە";
+"Processar só no aparelho" = "پەقەت ئۈسكۈنىدە بىر تەرەپ قىلىش";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "پەقەت ئۈسكۈنىدە بىر تەرەپ قىلىش ئاۋازنى Apple غا ئەۋەتمەيدۇ، ئەمما تورسىز مودېل تېخىمۇ كۆپ سۆزنى خاتا تونۇيدۇ. خەتكە ئايلاندۇرۇش ناچار بولسا ئېتىۋېتىڭ.";

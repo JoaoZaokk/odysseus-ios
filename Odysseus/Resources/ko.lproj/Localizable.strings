@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "심층 리서치 런타임. 모델은 \"AI 기본값\"에서 선택합니다.";
 "testando…" = "테스트 중…";
 "Testar" = "테스트";
-"Testar conexão" = "연결 테스트";
 "Testar lembrete" = "알림 테스트";
 "Texto → Voz" = "텍스트 → 음성";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ 위험 구역";
 "(sem conteúdo)" = "(내용 없음)";
 "Ativar" = "활성화";
-"Criar" = "만들기";
 "Criar token" = "토큰 만들기";
 "Código 2FA" = "2FA 코드";
 "Desafixar" = "고정 해제";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "웹 검색 중";
 "Porta" = "포트";
 "Porta SMTP" = "SMTP 포트";
-"Provedor" = "제공자";
 "Provedor usado para busca na web e pesquisa profunda." = "웹 검색 및 심층 리서치에 사용되는 제공자.";
 "Resultados por busca" = "검색당 결과 수";
 "Run timeout (s)" = "실행 제한 시간(초)";
@@ -568,3 +565,5 @@
 "Fila" = "대기열";
 "Modelos" = "모델";
 "%lld rodando · %lld na fila" = "실행 중 %lld · 대기 중 %lld";
+"Processar só no aparelho" = "기기에서만 처리";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "기기에서만 처리하면 오디오가 Apple로 전송되지 않지만 오프라인 모델은 단어를 더 많이 틀립니다. 인식이 나쁘면 꺼 두세요.";

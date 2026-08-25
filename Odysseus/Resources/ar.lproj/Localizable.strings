@@ -565,3 +565,5 @@
 "Fila" = "قائمة الانتظار";
 "Modelos" = "النماذج";
 "%lld rodando · %lld na fila" = "%lld قيد التشغيل · %lld في الانتظار";
+"Processar só no aparelho" = "المعالجة على الجهاز فقط";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "المعالجة على الجهاز فقط لا ترسل الصوت إلى Apple، لكن النموذج دون اتصال يخطئ في كلمات أكثر. اتركه معطّلاً إذا كان النسخ سيئاً.";

@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Thời gian thực thi nghiên cứu sâu. Mô hình được chọn trong Mặc định AI.";
 "testando…" = "đang kiểm tra…";
 "Testar" = "Kiểm tra";
-"Testar conexão" = "Kiểm tra kết nối";
 "Testar lembrete" = "Kiểm tra nhắc nhở";
 "Texto → Voz" = "Văn bản → Giọng nói";
 "Timeout" = "Hết thời gian";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Vùng nguy hiểm";
 "(sem conteúdo)" = "(không có nội dung)";
 "Ativar" = "Bật";
-"Criar" = "Tạo";
 "Criar token" = "Tạo token";
 "Código 2FA" = "Mã 2FA";
 "Desafixar" = "Bỏ ghim";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Đang tìm kiếm trên web";
 "Porta" = "Cổng";
 "Porta SMTP" = "Cổng SMTP";
-"Provedor" = "Nhà cung cấp";
 "Provedor usado para busca na web e pesquisa profunda." = "Nhà cung cấp dùng cho tìm kiếm web và nghiên cứu sâu.";
 "Resultados por busca" = "Kết quả mỗi lần tìm kiếm";
 "Run timeout (s)" = "Thời gian chờ chạy (s)";
@@ -568,3 +565,5 @@
 "Fila" = "Hàng đợi";
 "Modelos" = "Mô hình";
 "%lld rodando · %lld na fila" = "%lld đang chạy · %lld trong hàng đợi";
+"Processar só no aparelho" = "Chỉ xử lý trên thiết bị";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Chỉ xử lý trên thiết bị sẽ không gửi âm thanh đến Apple, nhưng mô hình ngoại tuyến sai nhiều từ hơn. Hãy tắt nếu bản ghi kém.";

@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Mélykutatás futási idők. A modellt az MI Alapértelmezésekben kell kiválasztani.";
 "testando…" = "tesztelés…";
 "Testar" = "Teszt";
-"Testar conexão" = "Kapcsolat tesztelése";
 "Testar lembrete" = "Emlékeztető tesztelése";
 "Texto → Voz" = "Szöveg → Hang";
 "Timeout" = "Időtúllépés";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Veszélyzóna";
 "(sem conteúdo)" = "(nincs tartalom)";
 "Ativar" = "Engedélyezés";
-"Criar" = "Létrehozás";
 "Criar token" = "Token létrehozása";
 "Código 2FA" = "2FA kód";
 "Desafixar" = "Rögzítés feloldása";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Interneten keres";
 "Porta" = "Port";
 "Porta SMTP" = "SMTP port";
-"Provedor" = "Szolgáltató";
 "Provedor usado para busca na web e pesquisa profunda." = "Webkereséshez és mélykutatáshoz használt szolgáltató.";
 "Resultados por busca" = "Eredmények keresésenként";
 "Run timeout (s)" = "Futási időtúllépés (mp)";
@@ -568,3 +565,5 @@
 "Fila" = "Sor";
 "Modelos" = "Modellek";
 "%lld rodando · %lld na fila" = "%lld fut · %lld sorban";
+"Processar só no aparelho" = "Feldolgozás csak az eszközön";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "A csak eszközön történő feldolgozás nem küld hangot az Apple-nek, de az offline modell több szót ront el. Hagyd kikapcsolva, ha rossz az átirat.";

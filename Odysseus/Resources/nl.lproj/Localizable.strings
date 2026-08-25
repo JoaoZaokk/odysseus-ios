@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "Uitvoeringstijden voor diepgaand onderzoek. Het model wordt gekozen bij AI-standaardinstellingen.";
 "testando…" = "testen…";
 "Testar" = "Testen";
-"Testar conexão" = "Verbinding testen";
 "Testar lembrete" = "Herinnering testen";
 "Texto → Voz" = "Tekst → Spraak";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ Gevarenzone";
 "(sem conteúdo)" = "(geen inhoud)";
 "Ativar" = "Inschakelen";
-"Criar" = "Maken";
 "Criar token" = "Token maken";
 "Código 2FA" = "2FA-code";
 "Desafixar" = "Losmaken";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "Zoeken op het web";
 "Porta" = "Poort";
 "Porta SMTP" = "SMTP-poort";
-"Provedor" = "Provider";
 "Provedor usado para busca na web e pesquisa profunda." = "Provider die wordt gebruikt voor webzoekopdrachten en diepgaand onderzoek.";
 "Resultados por busca" = "Resultaten per zoekopdracht";
 "Run timeout (s)" = "Run timeout (s)";
@@ -570,3 +567,5 @@
 "Fila" = "Wachtrij";
 "Modelos" = "Modellen";
 "%lld rodando · %lld na fila" = "%lld draaien · %lld in wachtrij";
+"Processar só no aparelho" = "Alleen op het apparaat verwerken";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Alleen op het apparaat verwerken stuurt geen audio naar Apple, maar het offlinemodel maakt meer fouten. Laat het uit als de transcriptie slecht is.";

@@ -559,3 +559,5 @@
 "Fila" = "File";
 "Modelos" = "Modèles";
 "%lld rodando · %lld na fila" = "%lld en cours · %lld en attente";
+"Processar só no aparelho" = "Traiter uniquement sur l'appareil";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Le traitement uniquement sur l'appareil n'envoie aucun audio à Apple, mais le modèle hors ligne se trompe plus souvent. Laissez-le désactivé si la transcription est mauvaise.";

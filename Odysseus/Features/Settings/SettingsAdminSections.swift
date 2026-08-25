@@ -808,7 +808,7 @@ struct UsuariosSection: View {
     init(api: APIClient) { self.api = api }
     func load() async { loading = true; defer { loading = false }; items = (try? await api.integrations()) ?? [] }
     func test(_ i: Integration) async {
-        do { try await api.testIntegration(i.id); note = L("Teste enviado para %@", i.name) }
+        do { try await api.testIntegration(i.id); note = L("Teste enviado para %@.", i.name) }
         catch { note = L("Falha no teste: %@", SettingsUI.msg(error)) }
     }
     func remove(_ i: Integration) async {

@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "डीप रिसर्च के रनटाइम। मॉडल AI डिफ़ॉल्ट में चुना जाता है।";
 "testando…" = "परीक्षण हो रहा है…";
 "Testar" = "परीक्षण करें";
-"Testar conexão" = "कनेक्शन परखें";
 "Testar lembrete" = "रिमाइंडर परखें";
 "Texto → Voz" = "टेक्स्ट → वॉइस";
 "Timeout" = "टाइमआउट";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ खतरे का क्षेत्र";
 "(sem conteúdo)" = "(कोई कंटेंट नहीं)";
 "Ativar" = "सक्षम करें";
-"Criar" = "बनाएँ";
 "Criar token" = "टोकन बनाएँ";
 "Código 2FA" = "2FA कोड";
 "Desafixar" = "अनपिन करें";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "वेब पर खोज रहा है";
 "Porta" = "पोर्ट";
 "Porta SMTP" = "SMTP पोर्ट";
-"Provedor" = "प्रोवाइडर";
 "Provedor usado para busca na web e pesquisa profunda." = "वेब खोज और गहरी रिसर्च के लिए उपयोग होने वाला प्रोवाइडर।";
 "Resultados por busca" = "प्रति खोज परिणाम";
 "Run timeout (s)" = "Run टाइमआउट (s)";
@@ -570,3 +567,5 @@
 "Fila" = "कतार";
 "Modelos" = "मॉडल";
 "%lld rodando · %lld na fila" = "%lld चल रहे · %lld कतार में";
+"Processar só no aparelho" = "केवल डिवाइस पर प्रोसेस करें";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "केवल डिवाइस पर प्रोसेस करने से ऑडियो Apple को नहीं भेजा जाता, लेकिन ऑफ़लाइन मॉडल ज़्यादा शब्द ग़लत पहचानता है। ट्रांसक्रिप्शन ख़राब हो तो इसे बंद रखें।";

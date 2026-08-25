@@ -183,7 +183,6 @@
 "Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA." = "深度研究的執行環境。模型在「AI 預設值」中選擇。";
 "testando…" = "測試中…";
 "Testar" = "測試";
-"Testar conexão" = "測試連線";
 "Testar lembrete" = "測試提醒";
 "Texto → Voz" = "文字 → 語音";
 "Timeout" = "Timeout";
@@ -205,7 +204,6 @@
 "⚠️ Zona de perigo" = "⚠️ 危險區域";
 "(sem conteúdo)" = "（無內容）";
 "Ativar" = "啟用";
-"Criar" = "建立";
 "Criar token" = "建立權杖";
 "Código 2FA" = "2FA 驗證碼";
 "Desafixar" = "取消固定";
@@ -297,7 +295,6 @@
 "Pesquisando na web" = "網路搜尋中";
 "Porta" = "連接埠";
 "Porta SMTP" = "SMTP 連接埠";
-"Provedor" = "提供者";
 "Provedor usado para busca na web e pesquisa profunda." = "用於網路搜尋和深度研究的提供者。";
 "Resultados por busca" = "每次搜尋的結果數";
 "Run timeout (s)" = "執行逾時（秒）";
@@ -568,3 +565,5 @@
 "Fila" = "佇列";
 "Modelos" = "模型";
 "%lld rodando · %lld na fila" = "%lld 個執行中 · %lld 個排隊中";
+"Processar só no aparelho" = "僅在裝置上處理";
+"Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "僅在裝置上處理不會將音訊傳送給 Apple，但離線模型辨識錯誤較多。轉寫效果差時請關閉。";
