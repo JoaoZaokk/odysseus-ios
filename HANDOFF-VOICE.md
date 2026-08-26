@@ -443,11 +443,9 @@ VPIO (full duplex) com nada ligado no lado de saída, então o render callback n
 
 ## Próximo passo
 
-**Decisão do dono sobre commit.** Nada foi commitado porque ele não autorizou. Sugestão que
-continua de pé: branch `voice-endpoint-and-barge-in`, e o diff passa pelo `SECURITY_REVIEW.md`
-antes de qualquer push, porque `origin` é espelho público.
-
-Depois disso, em ordem de retorno:
+⚠️ **Superado.** Isto foi escrito antes do release. Commit, push e envio à loja já aconteceram —
+ver *Release 1.8 (15)* mais abaixo, que é o estado atual. O que sobra desta lista, em ordem de
+retorno:
 
 1. **Servidor.** 14–23 s até o primeiro token é 96% da espera. Nada do lado do iOS mexe nisso.
 2. `sample_rate` ignorado (sobra 3) — descobrir o dialeto do endpoint resolve em uma linha.
@@ -514,13 +512,14 @@ O binário saiu por `xcodebuild archive` → `-exportArchive` (method `app-store
 `manageAppVersionAndBuildNumber: false`) → `xcrun altool --upload-app`. Sempre `--validate-app`
 antes: validação não queima o número do build, upload queima.
 
-## PENDENTE — notas da versão nos 30 locais
+## Notas da versão — FEITO nos 30 locais (26/08 06:08)
 
-**As notas que estão lá agora são do build 13** e uma frase virou **falsa** com o build 15:
-*"O reconhecimento de fala agora segue o idioma do app"* — deixou de seguir, virou ajuste próprio.
-Submeter assim conta pro usuário o contrário do que o app faz.
+As notas antigas eram do build 13 e uma frase virou **falsa** com o build 15
+(*"O reconhecimento de fala agora segue o idioma do app"* — deixou de seguir, virou ajuste
+próprio). Substituídas nos **30** locais da ficha, texto aprovado pelo dono em 26/08.
 
-Texto **aprovado pelo dono** em 26/08, a ser traduzido para os 30 locais:
+Fonte das 30 traduções: `_backups/BACKUPS-IOS/odysseus-appstore-deliver/release-notes/1.8-whatsnew.json`
+(fora deste repo, reaproveitável na próxima versão). Original pt-BR e en-US:
 
 > **pt-BR** — Endpoint de voz próprio: use qualquer serviço compatível com a API de áudio da
 > OpenAI, ou o Fish Audio, tanto para o reconhecimento quanto para a voz da IA — com catálogo de
@@ -542,7 +541,8 @@ ar-SA cs de-DE en-US es-ES es-MX fi fr-FR he hi hr hu id it ja ko ms nl-NL pl
 pt-BR pt-PT ru sk sv th tr uk vi zh-Hans zh-Hant
 ```
 
-Gravar com um PATCH por local:
+Gravado com um PATCH por local, todos HTTP 200, e relidos depois: 30/30 batem byte a byte
+com o fonte, zero divergência.
 
 ```
 PATCH /v1/appStoreVersionLocalizations/{id}
@@ -555,6 +555,9 @@ Os `{id}` saem de
 O `{versionId}` da 1.8 iOS descobre-se por
 `GET /v1/apps/6783977350/appStoreVersions?filter[versionString]=1.8&filter[platform]=IOS`
 — não deixar hardcoded, muda a cada versão.
+
+⚠️ **As 28 traduções não-originais foram escritas pelo agente, sem revisão de nativo.** Vão para
+a loja como estão se ninguém olhar. Mesmo caveat das 6 chaves novas do app (item 3 abaixo).
 
 ## Ainda em aberto
 
