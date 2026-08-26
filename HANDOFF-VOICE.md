@@ -512,7 +512,7 @@ O binário saiu por `xcodebuild archive` → `-exportArchive` (method `app-store
 `manageAppVersionAndBuildNumber: false`) → `xcrun altool --upload-app`. Sempre `--validate-app`
 antes: validação não queima o número do build, upload queima.
 
-## Notas da versão — FEITO nos 30 locais (26/08 06:08)
+## Notas da versão — FEITO nos 30 locais (26/08, v2 após auditoria)
 
 As notas antigas eram do build 13 e uma frase virou **falsa** com o build 15
 (*"O reconhecimento de fala agora segue o idioma do app"* — deixou de seguir, virou ajuste
@@ -556,8 +556,8 @@ O `{versionId}` da 1.8 iOS descobre-se por
 `GET /v1/apps/6783977350/appStoreVersions?filter[versionString]=1.8&filter[platform]=IOS`
 — não deixar hardcoded, muda a cada versão.
 
-⚠️ **As 28 traduções não-originais foram escritas pelo agente, sem revisão de nativo.** Vão para
-a loja como estão se ninguém olhar. Mesmo caveat das 6 chaves novas do app (item 3 abaixo).
+⚠️ As 28 traduções não-originais foram escritas pelo agente. Passaram por auditoria adversarial
+(seção *Auditoria* no fim); a v2 corrige ~15 idiomas. Continuam sem revisão de nativo.
 
 ## Ainda em aberto
 
@@ -570,3 +570,92 @@ a loja como estão se ninguém olhar. Mesmo caveat das 6 chaves novas do app (it
    foram escritas pelo agente, sem revisão de nativo e sem ver renderizado. O mesmo vale para as
    notas da loja acima.
 4. Servidor: 14–23 s até o primeiro token do modelo. 96% da espera, e fora do alcance do iOS.
+
+---
+
+# Auditoria da 1.8 (15) — 26/08, dois agentes com mandatos opostos
+
+Um agente com mandato de **refutar**, outro de **provar o que se sustenta**. Cada achado abaixo
+foi reconferido no fonte antes de entrar aqui — um dos achados do promotor era **falso** (alegou
+`zaplijeće` no croata; o arquivo sempre teve `zapliće`, que é a forma certa). Não confiar em
+relatório de agente sem abrir o arquivo.
+
+## O que se sustenta
+
+As **4 afirmações das notas têm mecanismo rastreado no código**: endpoint próprio com chaves
+separadas no Keychain para STT e TTS e teste embutido dos dois lados; `SpeechLanguage.pinned()` em
+todos os pontos de decisão de idioma; corte por frase no laço de deltas **mais** streaming byte a
+byte que abre no cabeçalho WAV; barge-in com AEC como requisito duro (falhou, recusa armar).
+
+Release limpo: `** BUILD SUCCEEDED **` sem warning, `** TEST SUCCEEDED **` 99/99. Os 44 catálogos
+têm 594 chaves cada, zero faltando, zero divergência de `%@`/`%lld`. Parser WAV sem leitura fora
+de faixa (todo `slice`/`u16`/`u32` tem guarda de tamanho antes). `ar-SA` e `he` sem defeito de
+bidi — nenhuma marca direcional e nenhuma necessária, os trechos latinos resolvem por N1/N2.
+
+## Notas da loja — v2 gravada nos 30 locais
+
+A v1 tinha erro real em ~15 idiomas. Os que valem registro, porque a causa se repete:
+
+| Local | Era | Problema |
+|---|---|---|
+| `it` | `Endpoint vocale tuo` | possessivo posposto sem artigo — só existe em vocativo |
+| `tr` | `OpenAI'ın` | radical terminado em vogal pede `-n-`, e harmonia frontal pede `i` |
+| `ru` | `в собственном эхе` | `эхо` é indeclinável |
+| `sv` | `Talspråket` | registro coloquial vs escrito, não "idioma falado" |
+| `th` | `พูดสั่งงาน` | "comando de voz" — recurso que o app não tem |
+| `id` | `mendikte` | em indonésio carrega sentido pejorativo (mandar em alguém) |
+| `nl` | `om te zetten` | converter, não trocar |
+| `ar-SA` | `واجهة الصوت` | apagou "API" — o único termo acionável da nota |
+| `hi` | `तब ही` | tem que ser uma palavra: `तभी` |
+| de/nl/sv | `spricht` / `spreekt` / `talar` | calque de "speaks the API" |
+
+**A causa mais comum não foi tradução: foi o original.** "que fala a API" era um idiomatismo
+inglês que três idiomas traduziram ao pé da letra. Corrigido na fonte para "compatível com".
+
+E a correção de fato: **"com catálogo de vozes" era falso** para metade da oferta. O catálogo é
+Fish-only (`VoiceEndpointFields.swift:246`, `if isTTS && isFishHost`). A nota prendia o catálogo à
+oferta inteira, incluindo o endpoint OpenAI-compatível que ela cita primeiro. Agora diz "catálogo
+de vozes quando o endpoint é do Fish".
+
+Fonte v2: `_backups/BACKUPS-IOS/odysseus-appstore-deliver/release-notes/1.8-whatsnew.json`.
+30/30 gravados, relidos, batem byte a byte.
+
+## Pendências de código — exigem build 16, decisão do dono
+
+1. **`Info.plist` contradiz as notas.** `NSSpeechRecognitionUsageDescription` diz *"transcribes
+   your speech into text on your device"*. Essa permissão só é pedida pelo `SFSpeechRecognizer`,
+   e o nativo tem `onDeviceOnly` **desligado por padrão** — vai pro servidor da Apple. A frase é
+   falsa no exato caso que a dispara, e as notas em 30 idiomas anunciam envio a endpoint de
+   terceiro. Risco de 5.1.1(i). `NSMicrophoneUsageDescription` também está velho: não menciona que
+   o mic fica aberto enquanto a IA fala.
+2. **`waitsForConnectivity = true`** (`VoiceEndpoint.swift:404`, só na sessão de streaming; a
+   normal em `:223` não tem). Suspende o timeout: sem rede, a request nunca começa e nunca falha.
+   `SpeechManager.pump():180` já marcou `speakingChunk = true`, e só `onFinished` limpa — a
+   conversa trava em `.speaking` com o mic fechado, exatamente a falha que
+   `VoiceConversation.swift:111` diz ter consertado (foi ligada para o caminho de *erro*, não para
+   o de *travamento*).
+3. **Zero tratamento de interrupção de áudio.** Nenhum observador de
+   `AVAudioEngineConfigurationChange`, `interruptionNotification`, `routeChangeNotification` ou
+   `mediaServicesWereReset`. E o app **causa** o evento: `enableProximity()` chama
+   `overrideOutputAudioPort` no meio da frase. Ligação recebida ou fone Bluetooth conectando e
+   `outstanding` nunca zera.
+4. **Sem `PrivacyInfo.xcprivacy`.** O app lê `UserDefaults` em todo lugar
+   (`NSPrivacyAccessedAPICategoryUserDefaults`, motivo `CA92.1`). ITMS-91053 no upload. Não
+   bloqueou a 1.7 nem a build 15, mas está faltando.
+5. **`isFishHost` deveria ser `isFish || isFishHost`.** Quem hospeda Fish em domínio próprio perde
+   o catálogo, e o comentário do arquivo em `:44-46` afirma o contrário do que o código faz.
+6. **`BargeInMonitor.stop()` tem `guard running else { return }`.** `engine.start()` que falha
+   deixa o tap instalado e o VPIO ligado, e `stop()` recusa desfazer. O `start()` seguinte cria
+   `AVAudioEngine` novo e órfã o anterior. Mesmo buraco nos `return .microphone` de `:187` e `:194`.
+7. **`WAVStreamDecoder:85` sem teto no tamanho declarado** de chunk não-`data`. Um `LIST` com
+   `0xFFFFFFFF` — o valor que o comentário do próprio arquivo cita — trava o parse para sempre e o
+   usuário recebe "Endpoint não devolveu texto" com um WAV perfeitamente bom na mão.
+8. **`VoiceEndpoint` sem teste nenhum.** Os 99 testes travam funções puras; nenhum cobre caminho de
+   URL, nome de campo multipart ou troca de dialeto.
+9. **Barge-in nunca rodou em aparelho no padrão que vai enviado.** Toda validação foi em
+   sensibilidade **máxima** (piso 0.028, limiar 0.40). O padrão 0.5 dá piso **0.0415** e limiar
+   **0.625** — e a voz mais baixa já medida foi **0.038**, abaixo do piso. Corta para o lado
+   seguro (rejeita eco mais, não menos), mas quem fala baixo pode não conseguir interromper.
+10. **"Testar voz" não exercita o streaming.** `VoiceSettingsView.swift:92` chama `toggle`, que vai
+    para `synthesize` (mp3 bufferizado). O teste passa verde num endpoint que não serve
+    `response_format: "wav"`, e a conversa real fica muda.
