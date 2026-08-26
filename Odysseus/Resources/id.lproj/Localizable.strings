@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Audio tidak tersedia: %@";
 "Falha ao descompactar o modelo Core ML." = "Gagal mengekstrak model Core ML.";
 "Sessão expirada. Faça login novamente." = "Sesi kedaluwarsa. Silakan masuk lagi.";
-"Falha ao iniciar o stream" = "Tidak dapat memulai aliran";
-"Erro no stream" = "Kesalahan aliran";
+"Falha ao iniciar o stream" = "Gagal memulai stream";
+"Erro no stream" = "Kesalahan stream";
 "Autenticar para entrar no Odysseus" = "Autentikasi untuk masuk ke Odysseus";
 "Desbloquear o Odysseus" = "Buka kunci Odysseus";
 "Pacote sem alvo pip." = "Paket tidak punya target pip.";

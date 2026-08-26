@@ -35,7 +35,7 @@
 "Bloquear o app" = "Bloquear la app";
 "Brain" = "Brain";
 "Busca" = "Búsqueda";
-"Buscar nos logs…" = "Buscar en los registros…";
+"Buscar nos logs…" = "Buscar en los logs…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Cabe en la máquina (estimación, mejor GPU)";
 "Cadastro aberto" = "Registro abierto";
 "Caixa de entrada" = "Bandeja de entrada";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Esto es irreversible. ¿Confirmas?";
 "Lembretes" = "Recordatorios";
 "Library" = "Library";
-"Logs do sistema" = "Registros del sistema";
+"Logs do sistema" = "Logs del sistema";
 "Manter conectado" = "Mantener sesión iniciada";
 "Memórias do assistente" = "Memorias del asistente";
 "Mesma pergunta para os dois…" = "La misma pregunta para ambos…";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Revocar admin";
 "Selecionar…" = "Seleccionar…";
 "Sem favoritos" = "Sin favoritos";
-"Sem logs." = "Sin registros.";
+"Sem logs." = "Sin logs.";
 "Sem notas ainda" = "Sin notas todavía";
 "Tornar admin" = "Hacer admin";
 "Tudo" = "Todo";

@@ -35,7 +35,7 @@
 "Bloquear o app" = "اپ لاک کول";
 "Brain" = "Brain";
 "Busca" = "لټون";
-"Buscar nos logs…" = "لاګونو کې لټون…";
+"Buscar nos logs…" = "په log کې لټون…";
 "Cabe na máquina (estimativa, melhor GPU)" = "ماشین کې ځاینه لري (اټکل، غوره GPU)";
 "Cadastro aberto" = "خلاص ثبت نام";
 "Caixa de entrada" = "ان باکس";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "دا بیرته نه ختلو وړ دی. تایید کوئ؟";
 "Lembretes" = "یادونې";
 "Library" = "Library";
-"Logs do sistema" = "د سیسټم لاګونه";
+"Logs do sistema" = "د سیسټم log";
 "Manter conectado" = "وصل پاتې کول";
 "Memórias do assistente" = "د مرستندویه یادونې";
 "Mesma pergunta para os dois…" = "دواړو ته ورته پوښتنه…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "ماډلونه او انجنونه";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "اصلي = د خبرو پر وخت ژوندی لیکلو (لکه Claude/Gemini). «ماډل» = آف لاین Whisper (په پای کې لیکي). ډاونلوډ شویو ماډلونو کې، ⚡ د Core ML ګړندی کونکی (Neural Engine) ډاونلوډ کوي ← خورا ګړندی.";
 "Nativo iOS" = "اصلي iOS";
-"Nenhum endpoint conectado." = "هیڅ اینډ پوینټ وصل ندی.";
+"Nenhum endpoint conectado." = "هیڅ endpoint نښلول شوی نه دی.";
 "Nenhum evento" = "هیڅ پیښه نشته";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "هیڅ MCP سرور وصل ندی. د ویب (مدیر) له لارې زیاتول وکړئ.";
 "Nenhuma conta" = "هیڅ حساب نشته";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(مینځپانګه نشته)";
 "Ativar" = "فعالول";
 "Criar" = "جوړول";
-"Criar token" = "ټوکن جوړول";
+"Criar token" = "token جوړول";
 "Código 2FA" = "د 2FA کوډ";
 "Desafixar" = "پن لرې کول";
 "Desarquivar" = "له آرشیف نه راوتل";
@@ -232,7 +232,7 @@
 "Revogar admin" = "د مدیریت اجازه لرې کول";
 "Selecionar…" = "غوره کول…";
 "Sem favoritos" = "هیڅ خوښ شوي نشته";
-"Sem logs." = "هیڅ لاګ نشته.";
+"Sem logs." = "هیڅ log نشته.";
 "Sem notas ainda" = "لا هیڅ نوټ نشته";
 "Tornar admin" = "مدیر کول";
 "Tudo" = "هر څه";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "اعظمي پړاوونه";
 "Orçamento de tokens (entrada)" = "د ټوکن بودیجه (ورودي)";
 "Teto duro de tokens" = "د ټوکن سخت برید";
-"Timeout do stream (s)" = "د سټریم وخت پای (ثانیه)";
+"Timeout do stream (s)" = "د stream مهلت (ثانیې)";
 "Limites de execução do agente e servidores MCP." = "د اجنټ د اجرا حدونه او د MCP سرورونه.";
 "Código & Arquivos" = "کوډ او فایلونه";
 "Busca & Web" = "لټون او ویب";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "غږ شتون نلري: %@";
 "Falha ao descompactar o modelo Core ML." = "د Core ML موډل نه شو خلاصېدلی.";
 "Sessão expirada. Faça login novamente." = "غونډه پای ته ورسېده. بیا ننوځئ.";
-"Falha ao iniciar o stream" = "جریان پیل نه شو";
-"Erro no stream" = "د جریان تېروتنه";
+"Falha ao iniciar o stream" = "stream پیل نه شو";
+"Erro no stream" = "د stream تېروتنه";
 "Autenticar para entrar no Odysseus" = "Odysseus ته د ننوتلو لپاره تصدیق وکړئ";
 "Desbloquear o Odysseus" = "Odysseus خلاص کړئ";
 "Pacote sem alvo pip." = "کڅوړه pip هدف نلري.";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "جوړ شوی غږ د اپلیکیشن ژبې پیروي کوي. پېژندنه خو پورته ټاکل شوې ژبه کاروي؛ اتوماتیک پېژندل په لنډ یا شور لرونکي غږ کې ډېرې تېروتنې کوي، او د iOS جوړ شوې پېژندنه هېڅ ژبه نه پېژني — هلته تل د اپلیکیشن ژبه کار کوي.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "روان اوریدل";
+"Áudio em streaming" = "د streaming غږ";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "روان اوریدل لومړۍ جمله د بشپړې فایلې د انتظار پرځای هغه مهال غږوي چې لا جوړېږي. یوازې په خبرو اترو حالت (غږ پرده) کې کار کوي؛ راتلونکې جملې هرومرو د مخکینۍ د غږېدو پر مهال چمتو کېږي. که غږ ودرېږي، ویې بندوئ.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

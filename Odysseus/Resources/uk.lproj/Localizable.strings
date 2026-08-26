@@ -35,7 +35,7 @@
 "Bloquear o app" = "Заблокувати застосунок";
 "Brain" = "Brain";
 "Busca" = "Пошук";
-"Buscar nos logs…" = "Пошук у журналах…";
+"Buscar nos logs…" = "Пошук у logs…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Поміщається на пристрої (оцінка, кращий GPU)";
 "Cadastro aberto" = "Відкрита реєстрація";
 "Caixa de entrada" = "Вхідні";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Це незворотньо. Підтверджуєте?";
 "Lembretes" = "Нагадування";
 "Library" = "Library";
-"Logs do sistema" = "Системні журнали";
+"Logs do sistema" = "Системні logs";
 "Manter conectado" = "Залишатися в системі";
 "Memórias do assistente" = "Спогади асистента";
 "Mesma pergunta para os dois…" = "Однакове запитання для обох…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Моделі та рушії";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Нативний = транскрипція в реальному часі під час мовлення (як Claude/Gemini). «Модель» = Whisper офлайн (транскрибує наприкінці). У завантажених моделей ⚡ завантажує прискорювач Core ML (Neural Engine) → набагато швидше.";
 "Nativo iOS" = "Нативний iOS";
-"Nenhum endpoint conectado." = "Немає підключених кінцевих точок.";
+"Nenhum endpoint conectado." = "Немає підключених endpoint.";
 "Nenhum evento" = "Немає подій";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Немає підключених серверів MCP. Додайте через веб (Admin).";
 "Nenhuma conta" = "Немає акаунтів";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ Небезпечна зона";
 "(sem conteúdo)" = "(немає вмісту)";
 "Ativar" = "Увімкнути";
-"Criar token" = "Створити токен";
+"Criar token" = "Створити token";
 "Código 2FA" = "Код 2FA";
 "Desafixar" = "Відкріпити";
 "Desarquivar" = "Розархівувати";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Відкликати права адміністратора";
 "Selecionar…" = "Обрати…";
 "Sem favoritos" = "Немає обраного";
-"Sem logs." = "Немає журналів.";
+"Sem logs." = "Немає logs.";
 "Sem notas ainda" = "Поки немає нотаток";
 "Tornar admin" = "Зробити адміністратором";
 "Tudo" = "Все";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Макс. раундів";
 "Orçamento de tokens (entrada)" = "Бюджет токенів (вхід)";
 "Teto duro de tokens" = "Жорсткий ліміт токенів";
-"Timeout do stream (s)" = "Тайм-аут потоку (с)";
+"Timeout do stream (s)" = "Timeout stream (с)";
 "Limites de execução do agente e servidores MCP." = "Ліміти виконання агента та MCP-сервери.";
 "Código & Arquivos" = "Код і файли";
 "Busca & Web" = "Пошук і веб";
@@ -439,8 +439,8 @@
 "Áudio indisponível: %@" = "Аудіо недоступне: %@";
 "Falha ao descompactar o modelo Core ML." = "Не вдалося розпакувати модель Core ML.";
 "Sessão expirada. Faça login novamente." = "Сесія завершилася. Увійдіть знову.";
-"Falha ao iniciar o stream" = "Не вдалося запустити потік";
-"Erro no stream" = "Помилка потоку";
+"Falha ao iniciar o stream" = "Не вдалося запустити stream";
+"Erro no stream" = "Помилка stream";
 "Autenticar para entrar no Odysseus" = "Пройдіть автентифікацію для входу в Odysseus";
 "Desbloquear o Odysseus" = "Розблокувати Odysseus";
 "Pacote sem alvo pip." = "У пакета немає цілі pip.";
@@ -613,7 +613,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Вбудований голос слідує мові застосунку. Розпізнавання ж використовує мову, вибрану вище; автовизначення частіше помиляється на короткому чи шумному аудіо, а вбудоване розпізнавання iOS мову взагалі не визначає — там завжди діє мова застосунку.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Потокове аудіо";
+"Áudio em streaming" = "Аудіо в streaming";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Потокове аудіо відтворює перше речення, поки воно ще генерується, замість чекати на весь файл. Діє лише в режимі розмови (голосовий екран); наступні речення й так готуються, поки звучить попереднє. Вимкніть, якщо звук заїкається.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

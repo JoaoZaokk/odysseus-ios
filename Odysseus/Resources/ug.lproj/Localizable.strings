@@ -35,7 +35,7 @@
 "Bloquear o app" = "ئەپنى قۇلۇپلاش";
 "Brain" = "Brain";
 "Busca" = "ئىزدەش";
-"Buscar nos logs…" = "خاتىرىلەردىن ئىزدەش…";
+"Buscar nos logs…" = "log ئىزدەش…";
 "Cabe na máquina (estimativa, melhor GPU)" = "ماشىنىغا سىغىدۇ (تەخمىنى، ئەڭ ياخشى GPU)";
 "Cadastro aberto" = "ئوچۇق تىزىملىتىش";
 "Caixa de entrada" = "قوبۇللاش ساندۇقى";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "بۇ قايتۇرغىلى بولمايدۇ. جەزملەشتۈرەمسىز؟";
 "Lembretes" = "ئەسكەرتىشلەر";
 "Library" = "كۈتۈپخانا";
-"Logs do sistema" = "سىستېما خاتىرىلىرى";
+"Logs do sistema" = "سىستېما log";
 "Manter conectado" = "مېنى كىرگۈزۈلگەن ھالەتتە ساقلاڭ";
 "Memórias do assistente" = "ياردەمچىنىڭ ئەسلىمىلىرى";
 "Mesma pergunta para os dois…" = "ئىككىسىگىمۇ ئوخشاش سوئال…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "مودېللار ۋە ئېنجىنلار";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "يەرلىك = سۆزلىگىنىڭىزدە جانلىق تېكستكە ئۆزگەرتىش (Claude/Gemini غا ئوخشاش). \"مودېل\" = تورسىز Whisper (ئاخىرىدا تېكستكە ئۆزگەرتىدۇ). چۈشۈرۈلگەن مودېللاردا، ⚡ Core ML تېزلەتكۈچىنى (Neural Engine) چۈشۈرىدۇ → خېلى تېزلىشىدۇ.";
 "Nativo iOS" = "يەرلىك iOS";
-"Nenhum endpoint conectado." = "ھېچقانداق ئاخىرقى نۇقتا باغلانمىدى.";
+"Nenhum endpoint conectado." = "ئۇلانغان endpoint يوق.";
 "Nenhum evento" = "پائالىيەت يوق";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "ھېچقانداق MCP مۇلازىمېتىرى باغلانمىدى. تور ئارقىلىق (باشقۇرغۇچى) قوشۇڭ.";
 "Nenhuma conta" = "ھېسابات يوق";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(مەزمۇن يوق)";
 "Ativar" = "قوزغىتىش";
 "Criar" = "قۇرۇش";
-"Criar token" = "توكېن قۇرۇش";
+"Criar token" = "token قۇرۇش";
 "Código 2FA" = "2FA كودى";
 "Desafixar" = "چاپلاشنى بىكار قىلىش";
 "Desarquivar" = "ئارخىپتىن چىقىرىش";
@@ -232,7 +232,7 @@
 "Revogar admin" = "باشقۇرغۇچىلىقنى بىكار قىلىش";
 "Selecionar…" = "تاللاش…";
 "Sem favoritos" = "ياقتۇرغانلار يوق";
-"Sem logs." = "خاتىرە يوق.";
+"Sem logs." = "log يوق.";
 "Sem notas ainda" = "تېخى خاتىرە يوق";
 "Tornar admin" = "باشقۇرغۇچى قىلىش";
 "Tudo" = "ھەممىسى";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "ئەڭ چوڭ قېتىم سانى";
 "Orçamento de tokens (entrada)" = "توكېن مىقدارى (كىرىش)";
 "Teto duro de tokens" = "توكېننىڭ قاتتىق چېكى";
-"Timeout do stream (s)" = "ئېقىم ۋاقىت چېكى (سانىيە)";
+"Timeout do stream (s)" = "stream ۋاقىت چېكى (سانىيە)";
 "Limites de execução do agente e servidores MCP." = "ئاگېنت ئىجرا چەكلىمىلىرى ۋە MCP مۇلازىمېتىرلىرى.";
 "Código & Arquivos" = "كود ۋە ھۆججەتلەر";
 "Busca & Web" = "ئىزدەش ۋە تور";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "ئۈننى ئىشلەتكىلى بولمايدۇ: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML مودېلىنى يېشىش مەغلۇپ بولدى.";
 "Sessão expirada. Faça login novamente." = "ئەڭگىمە ۋاقتى توشتى. قايتا كىرىڭ.";
-"Falha ao iniciar o stream" = "ئېقىمنى باشلىغىلى بولمىدى";
-"Erro no stream" = "ئېقىم خاتالىقى";
+"Falha ao iniciar o stream" = "stream باشلىغىلى بولمىدى";
+"Erro no stream" = "stream خاتالىقى";
 "Autenticar para entrar no Odysseus" = "Odysseus قا كىرىش ئۈچۈن دەلىللەڭ";
 "Desbloquear o Odysseus" = "Odysseus نى قۇلۇپسىزلاش";
 "Pacote sem alvo pip." = "بوغچىنىڭ pip نىشانى يوق.";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "ئىچكى ئۈن ئەپنىڭ تىلىغا ئەگىشىدۇ. تونۇش بولسا يۇقىرىدا تاللانغان تىلنى ئىشلىتىدۇ؛ ئاپتوماتىك بايقاش قىسقا ياكى شاۋقۇنلۇق ئاۋازدا تېخىمۇ كۆپ خاتالىشىدۇ، iOS نىڭ ئىچكى تونۇشى تىلنى پۈتۈنلەي بايقىمايدۇ — ئۇ يەردە ھەمىشە ئەپنىڭ تىلى كۈچكە ئىگە.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "ئېقىم ئاۋاز";
+"Áudio em streaming" = "streaming ئۈن";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "ئېقىم ئاۋاز پۈتۈن ھۆججەتنى ساقلىماي، بىرىنچى جۈملىنى تېخى ياسىلىۋاتقان چېغىدا قويىدۇ. پەقەت سۆھبەت ھالىتىدە (ئاۋاز ئېكرانىدا) كۈچكە ئىگە؛ كېيىنكى جۈملىلەر ئاللىقاچان ئالدىنقىسى قويۇلۇۋاتقاندا تەييارلىنىدۇ. ئاۋاز ئۈزۈلسە ئېتىۋېتىڭ.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

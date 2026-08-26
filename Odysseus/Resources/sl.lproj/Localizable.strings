@@ -35,7 +35,7 @@
 "Bloquear o app" = "Zakleni aplikacijo";
 "Brain" = "Brain";
 "Busca" = "Iskanje";
-"Buscar nos logs…" = "Išči v zapisnikih…";
+"Buscar nos logs…" = "Išči po logih…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Se prilega stroju (ocena, najboljša GPU)";
 "Cadastro aberto" = "Odprta registracija";
 "Caixa de entrada" = "Prejeta pošta";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "To je nepovratno. Potrdiš?";
 "Lembretes" = "Opomniki";
 "Library" = "Library";
-"Logs do sistema" = "Sistemski zapisniki";
+"Logs do sistema" = "Sistemski logi";
 "Manter conectado" = "Ostani prijavljen";
 "Memórias do assistente" = "Spomini pomočnika";
 "Mesma pergunta para os dois…" = "Isto vprašanje za oba…";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ Nevarno območje";
 "(sem conteúdo)" = "(brez vsebine)";
 "Ativar" = "Vklopi";
-"Criar token" = "Ustvari žeton";
+"Criar token" = "Ustvari token";
 "Código 2FA" = "Koda 2FA";
 "Desafixar" = "Odpni";
 "Desarquivar" = "Obnovi iz arhiva";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Prekliči pravice admina";
 "Selecionar…" = "Izberi…";
 "Sem favoritos" = "Ni priljubljenih";
-"Sem logs." = "Ni zapisnikov.";
+"Sem logs." = "Ni logov.";
 "Sem notas ainda" = "Še ni opomb";
 "Tornar admin" = "Nastavi kot admina";
 "Tudo" = "Vse";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Najv. krogov";
 "Orçamento de tokens (entrada)" = "Proračun žetonov (vhod)";
 "Teto duro de tokens" = "Trda omejitev žetonov";
-"Timeout do stream (s)" = "Časovna omejitev toka (s)";
+"Timeout do stream (s)" = "Timeout streama (s)";
 "Limites de execução do agente e servidores MCP." = "Omejitve izvajanja agenta in strežniki MCP.";
 "Código & Arquivos" = "Koda in datoteke";
 "Busca & Web" = "Iskanje in splet";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Zvok ni na voljo: %@";
 "Falha ao descompactar o modelo Core ML." = "Modela Core ML ni bilo mogoče razpakirati.";
 "Sessão expirada. Faça login novamente." = "Seja je potekla. Znova se prijavite.";
-"Falha ao iniciar o stream" = "Pretoka ni bilo mogoče zagnati";
-"Erro no stream" = "Napaka pretoka";
+"Falha ao iniciar o stream" = "Streama ni bilo mogoče zagnati";
+"Erro no stream" = "Napaka stream";
 "Autenticar para entrar no Odysseus" = "Overite se za vstop v Odysseus";
 "Desbloquear o Odysseus" = "Odkleni Odysseus";
 "Pacote sem alvo pip." = "Paket nima cilja pip.";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Vgrajeni glas sledi jeziku aplikacije. Prepoznavanje pa uporablja zgoraj izbrani jezik; samodejno zaznavanje se pogosteje zmoti pri kratkem ali hrupnem zvoku, vgrajeno prepoznavanje v iOS pa jezika sploh ne zazna — tam vedno velja jezik aplikacije.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Pretočni zvok";
+"Áudio em streaming" = "Zvok v streamingu";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Pretočni zvok predvaja prvi stavek že med ustvarjanjem, namesto da bi čakal na celotno datoteko. Velja samo v pogovornem načinu (glasovni zaslon); naslednji stavki se tako ali tako pripravljajo, medtem ko se predvaja prejšnji. Izklopite, če zvok zatika.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

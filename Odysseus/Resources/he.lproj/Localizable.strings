@@ -35,7 +35,7 @@
 "Bloquear o app" = "נעילת האפליקציה";
 "Brain" = "Brain";
 "Busca" = "חיפוש";
-"Buscar nos logs…" = "חיפוש בלוגים…";
+"Buscar nos logs…" = "חיפוש ב-logים…";
 "Cabe na máquina (estimativa, melhor GPU)" = "מתאים למכונה (הערכה, GPU הטוב ביותר)";
 "Cadastro aberto" = "הרשמה פתוחה";
 "Caixa de entrada" = "תיבת דואר נכנס";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "פעולה זו בלתי הפיכה. לאשר?";
 "Lembretes" = "תזכורות";
 "Library" = "ספרייה";
-"Logs do sistema" = "לוגים של המערכת";
+"Logs do sistema" = "logים של המערכת";
 "Manter conectado" = "השאר אותי מחובר";
 "Memórias do assistente" = "זיכרונות העוזר";
 "Mesma pergunta para os dois…" = "אותה שאלה לשניהם…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "מודלים ומנועים";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "מקומי = תמלול חי תוך כדי דיבור (כמו Claude/Gemini). \"מודל\" = Whisper במצב לא מקוון (מתמלל בסוף). במודלים שהורדת, ⚡ מוריד את מאיץ Core ML (Neural Engine) → הרבה יותר מהיר.";
 "Nativo iOS" = "iOS מקורי";
-"Nenhum endpoint conectado." = "אין נקודת קצה מחוברת.";
+"Nenhum endpoint conectado." = "אין endpoint מחובר.";
 "Nenhum evento" = "אין אירועים";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "אין שרת MCP מחובר. הוסף אחד דרך האתר (מנהל).";
 "Nenhuma conta" = "אין חשבונות";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(אין תוכן)";
 "Ativar" = "הפעלה";
 "Criar" = "יצירה";
-"Criar token" = "יצירת טוקן";
+"Criar token" = "יצירת token";
 "Código 2FA" = "קוד 2FA";
 "Desafixar" = "ביטול הצמדה";
 "Desarquivar" = "הוצאה מהארכיון";
@@ -232,7 +232,7 @@
 "Revogar admin" = "ביטול הרשאות מנהל";
 "Selecionar…" = "בחירה…";
 "Sem favoritos" = "אין מועדפים";
-"Sem logs." = "אין לוגים.";
+"Sem logs." = "אין logים.";
 "Sem notas ainda" = "עדיין אין פתקים";
 "Tornar admin" = "הענקת הרשאות מנהל";
 "Tudo" = "הכול";
@@ -350,7 +350,7 @@
 "Máx. de rounds" = "מקסימום סבבים";
 "Orçamento de tokens (entrada)" = "תקציב טוקנים (קלט)";
 "Teto duro de tokens" = "תקרת טוקנים קשיחה";
-"Timeout do stream (s)" = "פסק זמן לזרם (שנ')";
+"Timeout do stream (s)" = "פסק זמן ל-stream (שנ׳)";
 "Limites de execução do agente e servidores MCP." = "מגבלות הרצה של הסוכן ושרתי MCP.";
 "Código & Arquivos" = "קוד וקבצים";
 "Busca & Web" = "חיפוש ורשת";
@@ -429,8 +429,8 @@
 "Áudio indisponível: %@" = "אודיו לא זמין: %@";
 "Falha ao descompactar o modelo Core ML." = "פתיחת מודל ה-Core ML נכשלה.";
 "Sessão expirada. Faça login novamente." = "פג תוקף ההפעלה. התחבר שוב.";
-"Falha ao iniciar o stream" = "לא ניתן להתחיל את הזרם";
-"Erro no stream" = "שגיאת זרם";
+"Falha ao iniciar o stream" = "לא ניתן להתחיל stream";
+"Erro no stream" = "שגיאת stream";
 "Autenticar para entrar no Odysseus" = "אמת את זהותך כדי להיכנס ל-Odysseus";
 "Desbloquear o Odysseus" = "בטל נעילה של Odysseus";
 "Pacote sem alvo pip." = "לחבילה אין יעד pip.";
@@ -570,9 +570,9 @@
 "Consultando…" = "שולח שאילתה…";
 "Endpoint de voz não configurado (falta a URL)." = "נקודת הקצה לקול לא הוגדרה (חסר URL).";
 "Endpoint não devolveu texto. Resposta: %@" = "נקודת הקצה לא החזירה טקסט. תגובה: %@";
-"Endpoint próprio" = "נקודת קצה משלך";
-"Endpoint respondeu %d." = "נקודת הקצה השיבה %d.";
-"Endpoint respondeu %d: %@" = "נקודת הקצה השיבה %d: %@";
+"Endpoint próprio" = "endpoint משלך";
+"Endpoint respondeu %d." = "ה-endpoint החזיר %d.";
+"Endpoint respondeu %d: %@" = "ה-endpoint החזיר %d: %@";
 "Escolher voz" = "בחירת קול";
 "Escolher…" = "בחירה…";
 "Formato" = "פורמט";
@@ -603,7 +603,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "הקול המובנה עוקב אחר שפת האפליקציה. הזיהוי, לעומת זאת, משתמש בשפה שנבחרה למעלה; זיהוי אוטומטי טועה יותר באודיו קצר או רועש, והזיהוי המובנה של iOS אינו מזהה שפה כלל — שם תמיד קובעת שפת האפליקציה.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "אודיו בהזרמה";
+"Áudio em streaming" = "אודיו ב-streaming";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "אודיו בהזרמה מנגן את המשפט הראשון בזמן שהוא עדיין נוצר, במקום לחכות לקובץ כולו. חל רק במצב שיחה (מסך הקול); המשפטים הבאים מוכנים ממילא בזמן שהקודם מתנגן. כבה אם הצליל נתקע.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

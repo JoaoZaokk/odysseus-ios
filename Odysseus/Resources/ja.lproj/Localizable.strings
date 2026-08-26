@@ -578,7 +578,7 @@
 "Consultando…" = "問い合わせ中…";
 "Endpoint de voz não configurado (falta a URL)." = "音声エンドポイントが未設定です（URL がありません）。";
 "Endpoint não devolveu texto. Resposta: %@" = "エンドポイントがテキストを返しませんでした。応答: %@";
-"Endpoint próprio" = "独自エンドポイント";
+"Endpoint próprio" = "独自のエンドポイント";
 "Endpoint respondeu %d." = "エンドポイントの応答: %d。";
 "Endpoint respondeu %d: %@" = "エンドポイントの応答: %d: %@";
 "Escolher voz" = "音声を選択";

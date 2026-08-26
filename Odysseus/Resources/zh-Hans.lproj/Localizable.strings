@@ -35,7 +35,7 @@
 "Bloquear o app" = "锁定应用";
 "Brain" = "Brain";
 "Busca" = "搜索";
-"Buscar nos logs…" = "搜索日志…";
+"Buscar nos logs…" = "搜索日志（log）…";
 "Cabe na máquina (estimativa, melhor GPU)" = "适合本机运行（估算，最佳 GPU）";
 "Cadastro aberto" = "开放注册";
 "Caixa de entrada" = "收件箱";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "此操作不可撤销。确认吗？";
 "Lembretes" = "提醒";
 "Library" = "资料库";
-"Logs do sistema" = "系统日志";
+"Logs do sistema" = "系统日志（log）";
 "Manter conectado" = "保持登录";
 "Memórias do assistente" = "助手记忆";
 "Mesma pergunta para os dois…" = "向两者发送相同问题…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "模型与引擎";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "原生 = 边说边实时转录（类似 Claude/Gemini）。\"模型\" = 离线 Whisper（结束时转录）。对于已下载的模型，⚡ 可下载 Core ML 加速器（Neural Engine）→ 速度大幅提升。";
 "Nativo iOS" = "原生 iOS";
-"Nenhum endpoint conectado." = "未连接任何端点。";
+"Nenhum endpoint conectado." = "没有已连接的端点（endpoint）。";
 "Nenhum evento" = "无事件";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "未连接任何 MCP 服务器。请通过 Web（管理员）添加。";
 "Nenhuma conta" = "无账户";
@@ -185,7 +185,7 @@
 "Testar" = "测试";
 "Testar lembrete" = "测试提醒";
 "Texto → Voz" = "文本 → 语音";
-"Timeout" = "Timeout";
+"Timeout" = "超时";
 "Todos" = "全部";
 "Toque em + para conectar uma conta IMAP." = "点击 + 连接 IMAP 账户。";
 "Toque em + para criar sua primeira nota." = "点击 + 创建您的第一条备忘。";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ 危险区域";
 "(sem conteúdo)" = "（无内容）";
 "Ativar" = "启用";
-"Criar token" = "创建令牌";
+"Criar token" = "创建 token";
 "Código 2FA" = "2FA 验证码";
 "Desafixar" = "取消固定";
 "Desarquivar" = "取消归档";
@@ -230,7 +230,7 @@
 "Revogar admin" = "撤销管理员";
 "Selecionar…" = "选择…";
 "Sem favoritos" = "无收藏";
-"Sem logs." = "无日志。";
+"Sem logs." = "没有日志（log）。";
 "Sem notas ainda" = "暂无备忘";
 "Tornar admin" = "设为管理员";
 "Tudo" = "全部";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "最大轮数";
 "Orçamento de tokens (entrada)" = "令牌预算（输入）";
 "Teto duro de tokens" = "令牌硬上限";
-"Timeout do stream (s)" = "流超时（秒）";
+"Timeout do stream (s)" = "流（stream）超时（秒）";
 "Limites de execução do agente e servidores MCP." = "智能体执行限制和 MCP 服务器。";
 "Código & Arquivos" = "代码与文件";
 "Busca & Web" = "搜索与网页";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "音频不可用：%@";
 "Falha ao descompactar o modelo Core ML." = "解压 Core ML 模型失败。";
 "Sessão expirada. Faça login novamente." = "会话已过期，请重新登录。";
-"Falha ao iniciar o stream" = "无法启动流式传输";
-"Erro no stream" = "流式传输出错";
+"Falha ao iniciar o stream" = "无法启动流（stream）";
+"Erro no stream" = "流（stream）错误";
 "Autenticar para entrar no Odysseus" = "请验证身份以进入 Odysseus";
 "Desbloquear o Odysseus" = "解锁 Odysseus";
 "Pacote sem alvo pip." = "该软件包没有 pip 目标。";
@@ -578,9 +578,9 @@
 "Consultando…" = "查询中…";
 "Endpoint de voz não configurado (falta a URL)." = "语音端点未配置（缺少 URL）。";
 "Endpoint não devolveu texto. Resposta: %@" = "端点未返回文本。响应：%@";
-"Endpoint próprio" = "自定义端点";
-"Endpoint respondeu %d." = "端点返回 %d。";
-"Endpoint respondeu %d: %@" = "端点返回 %d：%@";
+"Endpoint próprio" = "自定义端点（endpoint）";
+"Endpoint respondeu %d." = "端点（endpoint）返回 %d。";
+"Endpoint respondeu %d: %@" = "端点（endpoint）返回 %d：%@";
 "Escolher voz" = "选择语音";
 "Escolher…" = "选择…";
 "Formato" = "格式";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "内置语音跟随应用语言。识别则使用上面选择的语言；自动检测在短音频或嘈杂音频上出错更多，而 iOS 内置识别根本不做语言检测——那里始终使用应用语言。";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "流式播放";
+"Áudio em streaming" = "流式（streaming）音频";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "流式播放在第一句还在生成时就开始播放，而不是等待整个文件。仅在对话模式（语音界面）生效；后续句子本来就会在上一句播放时提前准备。若声音卡顿请关闭。";
 
 /* Voz — falhas do streaming (1.8 build 16) */

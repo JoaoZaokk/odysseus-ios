@@ -35,7 +35,7 @@
 "Bloquear o app" = "Uygulamayı kilitle";
 "Brain" = "Brain";
 "Busca" = "Ara";
-"Buscar nos logs…" = "Günlüklerde ara…";
+"Buscar nos logs…" = "Loglarda ara…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Makineye sığar (tahmin, en iyi GPU)";
 "Cadastro aberto" = "Açık kayıt";
 "Caixa de entrada" = "Gelen kutusu";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Bu işlem geri alınamaz. Onaylıyor musunuz?";
 "Lembretes" = "Hatırlatıcılar";
 "Library" = "Library";
-"Logs do sistema" = "Sistem günlükleri";
+"Logs do sistema" = "Sistem logları";
 "Manter conectado" = "Oturumu açık tut";
 "Memórias do assistente" = "Asistan anıları";
 "Mesma pergunta para os dois…" = "Her ikisine aynı soru…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Modeller ve motorlar";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Yerel = konuşurken canlı transkripsiyon (Claude/Gemini gibi). \"Model\" = çevrimdışı Whisper (sonda transkripsyon yapar). İndirilen modellerde ⚡, Core ML hızlandırıcısını (Neural Engine) indirir → çok daha hızlı.";
 "Nativo iOS" = "Yerel iOS";
-"Nenhum endpoint conectado." = "Bağlı uç nokta yok.";
+"Nenhum endpoint conectado." = "Bağlı endpoint yok.";
 "Nenhum evento" = "Etkinlik yok";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Bağlı MCP sunucusu yok. Web üzerinden ekleyin (Yönetici).";
 "Nenhuma conta" = "Hesap yok";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Yönetici yetkisini iptal et";
 "Selecionar…" = "Seçin…";
 "Sem favoritos" = "Favori yok";
-"Sem logs." = "Günlük yok.";
+"Sem logs." = "Log yok.";
 "Sem notas ainda" = "Henüz not yok";
 "Tornar admin" = "Yönetici yap";
 "Tudo" = "Tümü";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Maks. tur";
 "Orçamento de tokens (entrada)" = "Token bütçesi (giriş)";
 "Teto duro de tokens" = "Katı token sınırı";
-"Timeout do stream (s)" = "Akış zaman aşımı (sn)";
+"Timeout do stream (s)" = "Stream zaman aşımı (sn)";
 "Limites de execução do agente e servidores MCP." = "Aracı yürütme sınırları ve MCP sunucuları.";
 "Código & Arquivos" = "Kod ve Dosyalar";
 "Busca & Web" = "Arama ve Web";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Ses kullanılamıyor: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML modeli açılamadı.";
 "Sessão expirada. Faça login novamente." = "Oturum sona erdi. Lütfen tekrar giriş yapın.";
-"Falha ao iniciar o stream" = "Akış başlatılamadı";
-"Erro no stream" = "Akış hatası";
+"Falha ao iniciar o stream" = "Stream başlatılamadı";
+"Erro no stream" = "Stream hatası";
 "Autenticar para entrar no Odysseus" = "Odysseus'a girmek için kimlik doğrulayın";
 "Desbloquear o Odysseus" = "Odysseus'un kilidini aç";
 "Pacote sem alvo pip." = "Paketin pip hedefi yok.";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Yerleşik ses uygulamanın dilini izler. Tanıma ise yukarıda seçilen dili kullanır; otomatik algılama kısa ya da gürültülü seste daha çok yanılır ve iOS'un yerleşik tanıması dili hiç algılamaz — orada her zaman uygulamanın dili geçerlidir.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Akışlı ses";
+"Áudio em streaming" = "Streaming ses";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Akışlı ses, ilk cümleyi tüm dosyayı beklemeden, daha üretilirken çalar. Yalnızca konuşma modunda (ses ekranı) geçerlidir; sonraki cümleler zaten bir öncekisi çalarken hazırlanır. Ses kesiliyorsa kapatın.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

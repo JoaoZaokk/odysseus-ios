@@ -113,7 +113,7 @@
 "Modelos e engines" = "Модели и движки";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Нативный = транскрипция в реальном времени во время речи (как Claude/Gemini). «Модель» = Whisper офлайн (транскрибирует в конце). У скачанных моделей ⚡ загружает ускоритель Core ML (Neural Engine) → намного быстрее.";
 "Nativo iOS" = "Нативный iOS";
-"Nenhum endpoint conectado." = "Нет подключённых конечных точек.";
+"Nenhum endpoint conectado." = "Нет подключённых endpoint.";
 "Nenhum evento" = "Нет событий";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Нет подключённых серверов MCP. Добавьте через веб (Admin).";
 "Nenhuma conta" = "Нет аккаунтов";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ Опасная зона";
 "(sem conteúdo)" = "(нет содержимого)";
 "Ativar" = "Включить";
-"Criar token" = "Создать токен";
+"Criar token" = "Создать token";
 "Código 2FA" = "Код 2FA";
 "Desafixar" = "Открепить";
 "Desarquivar" = "Разархивировать";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Макс. раундов";
 "Orçamento de tokens (entrada)" = "Бюджет токенов (ввод)";
 "Teto duro de tokens" = "Жёсткий лимит токенов";
-"Timeout do stream (s)" = "Тайм-аут потока (с)";
+"Timeout do stream (s)" = "Timeout stream (с)";
 "Limites de execução do agente e servidores MCP." = "Ограничения выполнения агента и MCP-серверы.";
 "Código & Arquivos" = "Код и файлы";
 "Busca & Web" = "Поиск и веб";
@@ -439,8 +439,8 @@
 "Áudio indisponível: %@" = "Аудио недоступно: %@";
 "Falha ao descompactar o modelo Core ML." = "Не удалось распаковать модель Core ML.";
 "Sessão expirada. Faça login novamente." = "Сессия истекла. Войдите снова.";
-"Falha ao iniciar o stream" = "Не удалось запустить поток";
-"Erro no stream" = "Ошибка потока";
+"Falha ao iniciar o stream" = "Не удалось запустить stream";
+"Erro no stream" = "Ошибка stream";
 "Autenticar para entrar no Odysseus" = "Пройдите аутентификацию для входа в Odysseus";
 "Desbloquear o Odysseus" = "Разблокировать Odysseus";
 "Pacote sem alvo pip." = "У пакета нет цели pip.";
@@ -613,7 +613,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Встроенный голос следует языку приложения. Распознавание же использует язык, выбранный выше; автоопределение чаще ошибается на коротком или шумном звуке, а встроенное распознавание iOS язык вообще не определяет — там всегда действует язык приложения.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Потоковое аудио";
+"Áudio em streaming" = "Аудио в streaming";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Потоковое аудио проигрывает первое предложение, пока оно ещё генерируется, вместо ожидания всего файла. Действует только в режиме разговора (голосовой экран); следующие предложения и так готовятся, пока звучит предыдущее. Выключите, если звук заикается.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

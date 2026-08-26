@@ -35,7 +35,7 @@
 "Bloquear o app" = "Закључај апликацију";
 "Brain" = "Brain";
 "Busca" = "Претрага";
-"Buscar nos logs…" = "Претражи евиденцију…";
+"Buscar nos logs…" = "Претражи logove…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Стаје на уређај (процена, најбољи GPU)";
 "Cadastro aberto" = "Отворена регистрација";
 "Caixa de entrada" = "Пријемно сандуче";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Ово је неповратно. Потврђујете?";
 "Lembretes" = "Подсетници";
 "Library" = "Library";
-"Logs do sistema" = "Системска евиденција";
+"Logs do sistema" = "Системски logovi";
 "Manter conectado" = "Остани пријављен";
 "Memórias do assistente" = "Сећања асистента";
 "Mesma pergunta para os dois…" = "Исто питање за оба…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Модели и покретачи";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Нативно = транскрипција уживо током говора (попут Claude/Gemini). \"Модел\" = Whisper офлајн (транскрибује на крају). Код преузетих модела ⚡ преузима убрзивач Core ML (Neural Engine) → знатно брже.";
 "Nativo iOS" = "Нативни iOS";
-"Nenhum endpoint conectado." = "Нема повезаних крајњих тачака.";
+"Nenhum endpoint conectado." = "Нема повезаног endpoint-а.";
 "Nenhum evento" = "Нема догађаја";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Нема повезаних MCP сервера. Додајте преко веба (Admin).";
 "Nenhuma conta" = "Нема налога";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(без садржаја)";
 "Ativar" = "Укључи";
 "Criar" = "Направи";
-"Criar token" = "Направи токен";
+"Criar token" = "Направи token";
 "Código 2FA" = "Код 2FA";
 "Desafixar" = "Одкачи";
 "Desarquivar" = "Разархивирај";
@@ -232,7 +232,7 @@
 "Revogar admin" = "Опозови права администратора";
 "Selecionar…" = "Изабери…";
 "Sem favoritos" = "Нема омиљених";
-"Sem logs." = "Нема евиденције.";
+"Sem logs." = "Нема logova.";
 "Sem notas ainda" = "Нема белешки";
 "Tornar admin" = "Постави за администратора";
 "Tudo" = "Све";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Макс. рунди";
 "Orçamento de tokens (entrada)" = "Буџет токена (улаз)";
 "Teto duro de tokens" = "Тврдо ограничење токена";
-"Timeout do stream (s)" = "Истек времена стрима (с)";
+"Timeout do stream (s)" = "Timeout stream-а (s)";
 "Limites de execução do agente e servidores MCP." = "Ограничења извршавања агента и MCP сервери.";
 "Código & Arquivos" = "Кôд и датотеке";
 "Busca & Web" = "Претрага и веб";
@@ -439,8 +439,8 @@
 "Áudio indisponível: %@" = "Звук није доступан: %@";
 "Falha ao descompactar o modelo Core ML." = "Није успело распакивање Core ML модела.";
 "Sessão expirada. Faça login novamente." = "Сесија је истекла. Пријавите се поново.";
-"Falha ao iniciar o stream" = "Није могуће покренути стрим";
-"Erro no stream" = "Грешка стрима";
+"Falha ao iniciar o stream" = "Није могуће покренути stream";
+"Erro no stream" = "Грешка stream-а";
 "Autenticar para entrar no Odysseus" = "Аутентификујте се за улазак у Odysseus";
 "Desbloquear o Odysseus" = "Откључај Odysseus";
 "Pacote sem alvo pip." = "Пакет нема pip циљ.";
@@ -613,7 +613,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Уграђени глас прати језик апликације. Препознавање пак користи језик изабран изнад; аутоматско препознавање чешће греши на кратком или бучном звуку, а уграђено препознавање на iOS-у језик уопште не препознаје — тамо увек важи језик апликације.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Стриминг звук";
+"Áudio em streaming" = "Аудио у streaming-у";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Стриминг звук репродукује прву реченицу док се још генерише, уместо да чека цео фајл. Важи само у режиму разговора (гласовни екран); следеће реченице се ионако припремају док траје претходна. Искључите ако звук запиње.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

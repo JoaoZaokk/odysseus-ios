@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Vestavěný hlas se řídí jazykem aplikace. Rozpoznávání ale používá jazyk zvolený výše; automatické rozpoznání chybuje častěji u krátkého nebo hlučného zvuku a vestavěné rozpoznávání iOS jazyk nerozpoznává vůbec — tam vždy platí jazyk aplikace.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Streamovaný zvuk";
+"Áudio em streaming" = "Streaming zvuku";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streamovaný zvuk přehraje první větu už během jejího generování, místo čekání na celý soubor. Platí jen v režimu konverzace (hlasová obrazovka); další věty se stejně připravují, zatímco hraje předchozí. Vypněte, pokud zvuk trhá.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

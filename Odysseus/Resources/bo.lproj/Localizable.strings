@@ -35,7 +35,7 @@
 "Bloquear o app" = "ཉེར་སྤྱོད་སྒོ་རྒྱག";
 "Brain" = "Brain";
 "Busca" = "འཚོལ་ཞིབ";
-"Buscar nos logs…" = "ཟིན་ཐོའི་ནང་འཚོལ་ཞིབ…";
+"Buscar nos logs…" = "log ནང་འཚོལ…";
 "Cabe na máquina (estimativa, melhor GPU)" = "འཕྲུལ་ཆས་ནང་ཚུད་ཐུབ (ཚོད་དཔག, GPU མཆོག་ཤོས)";
 "Cadastro aberto" = "ཐོ་འགོད་ཁ་ཕྱེ་བ";
 "Caixa de entrada" = "འབྱོར་སྒམ";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "འདི་ཕྱིར་ལོག་མི་ཐུབ་པ་རེད། གཏན་འཁེལ་བྱེད་དམ།";
 "Lembretes" = "དྲན་སྐུལ";
 "Library" = "མཛོད་ཁང";
-"Logs do sistema" = "མ་ལག་ཟིན་ཐོ";
+"Logs do sistema" = "མ་ལག་གི log";
 "Manter conectado" = "ནང་འཛུལ་གནས་སྐབས་ཉར";
 "Memórias do assistente" = "གྲོགས་བྱེད་ཀྱི་དྲན་ཐོ";
 "Mesma pergunta para os dois…" = "གཉིས་ཀར་དྲི་བ་གཅིག་མཚུངས…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "དཔེ་གཞི་དང་འཕྲུལ་འཁོར";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "རང་བྱུང = ཁྱེད་ཀྱིས་སྨྲ་སྐབས་མྱུར་དུ་ཡི་གེར་བསྒྱུར་བ (Claude/Gemini ལྟ་བུ)། \"དཔེ་གཞི\" = ལམ་མེད་ཐོག་གི Whisper (མཇུག་ཏུ་ཡི་གེར་བསྒྱུར)། ཕབ་ལེན་བྱས་པའི་དཔེ་གཞིའི་ཐོག་ ⚡ གིས Core ML མྱུར་བསྐྱེད་འཕྲུལ་ཆ (Neural Engine) ཕབ་ལེན་བྱེད། → མྱུར་བ་ཆེས།";
 "Nativo iOS" = "iOS རང་བྱུང";
-"Nenhum endpoint conectado." = "མཐའ་མཚམས་གང་ཡང་མཐུད་མེད།";
+"Nenhum endpoint conectado." = "endpoint སྦྲེལ་མེད།";
 "Nenhum evento" = "བྱ་བ་གང་ཡང་མེད།";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "MCP ཞབས་ཞུའི་འཕྲུལ་ཆས་གང་ཡང་མཐུད་མེད། དྲྭ་ཐོག (Admin) ནས་ཁ་སྣོན་གྱིས།";
 "Nenhuma conta" = "རྩིས་ཐོ་གང་ཡང་མེད།";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(ནང་དོན་མེད)";
 "Ativar" = "ལག་བསྟར";
 "Criar" = "གསར་བཟོ";
-"Criar token" = "ཊོ་ཀེན་གསར་བཟོ";
+"Criar token" = "token གསར་བཟོ";
 "Código 2FA" = "2FA ཨང་རྟགས";
 "Desafixar" = "འཇུ་བ་ཕྱིར་འཐེན";
 "Desarquivar" = "ཡིག་ཚགས་ནས་ཕྱིར་སློག";
@@ -232,7 +232,7 @@
 "Revogar admin" = "དོ་དམ་པའི་དབང་ཚད་ཕྱིར་འཐེན";
 "Selecionar…" = "འདེམས…";
 "Sem favoritos" = "དགའ་གདམ་མེད།";
-"Sem logs." = "ཟིན་ཐོ་མེད།";
+"Sem logs." = "log མེད།";
 "Sem notas ainda" = "ད་དུང་ཟིན་བྲིས་མེད།";
 "Tornar admin" = "དོ་དམ་པར་བཟོ";
 "Tudo" = "ཚང་མ";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "བསྐྱར་ཟློས་མང་མཐའ";
 "Orçamento de tokens (entrada)" = "ཊོ་ཀེན་འགྲོ་སོང (འཇུག་རྟགས)";
 "Teto duro de tokens" = "ཊོ་ཀེན་མང་མཐའི་ཚད";
-"Timeout do stream (s)" = "རྒྱུན་འགྲོའི་དུས་ཚོད་ཟིན (s)";
+"Timeout do stream (s)" = "stream དུས་ཚོད་ཟིན (སྐར་ཆ།)";
 "Limites de execução do agente e servidores MCP." = "ལས་བྱེད་མཁན་གྱི་ལག་བསྟར་ཚད་བཀག་དང་ MCP ཞབས་ཞུའི་འཕྲུལ་ཆས།";
 "Código & Arquivos" = "ཨང་རྟགས་དང་ཡིག་ཆ";
 "Busca & Web" = "འཚོལ་ཞིབ་དང་དྲྭ་ཐོག";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "སྒྲ་སྤྱོད་མི་ཐུབ། %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML དཔེ་དབྱིབས་ཁ་ཕྱེ་མ་ཐུབ།";
 "Sessão expirada. Faça login novamente." = "ཐེངས་གྲངས་དུས་ཡོལ། སླར་ནང་འཛུལ་བྱོས།";
-"Falha ao iniciar o stream" = "རྒྱུན་ཆགས་འགོ་འཛུགས་མ་ཐུབ།";
-"Erro no stream" = "རྒྱུན་ཆགས་ནོར་འཁྲུལ།";
+"Falha ao iniciar o stream" = "stream འགོ་འཛུགས་མ་ཐུབ།";
+"Erro no stream" = "stream ནོར་འཁྲུལ།";
 "Autenticar para entrar no Odysseus" = "Odysseus ལ་འཛུལ་བར་བདེན་དཔང་བྱོས།";
 "Desbloquear o Odysseus" = "Odysseus སྒོ་ཕྱེ།";
 "Pacote sem alvo pip." = "ཐུམ་སྒྲིལ་ལ་ pip དམིགས་ཡུལ་མེད།";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "ནང་ཆས་ཀྱི་སྐད་གདངས་དེས་ཉེར་སྤྱོད་ཀྱི་སྐད་རིགས་རྗེས་འབྲངས་བྱེད། ངོས་འཛིན་གྱིས་ནི་གོང་དུ་བདམས་པའི་སྐད་རིགས་བེད་སྤྱོད་བྱེད། རང་འགུལ་ངོས་འཛིན་ནི་སྒྲ་ཐུང་ངམ་སྒྲ་སྐད་ཅན་ལ་ནོར་འཁྲུལ་མང་བ་ཡོང་། iOS ཀྱི་ནང་ཆས་ངོས་འཛིན་གྱིས་སྐད་རིགས་གཏན་ནས་ངོས་འཛིན་མི་ཐུབ་པས། དེའི་ནང་དུ་རྟག་ཏུ་ཉེར་སྤྱོད་ཀྱི་སྐད་རིགས་བེད་སྤྱོད་བྱེད།";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "རྒྱུན་འབབ་སྒྲ།";
+"Áudio em streaming" = "streaming སྒྲ།";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "རྒྱུན་འབབ་སྒྲ་ཡིས་ཡིག་ཆ་ཧྲིལ་པོ་སྒུག་མི་དགོས་པར། ཚིག་གྲུབ་དང་པོ་བཟོ་བཞིན་པའི་སྐབས་སུ་སྒྲོག་འགོ་ཚུགས། གླེང་མོལ་སྒོ་ཁ་(སྒྲའི་ཤེལ་ངོས་)ནང་ཁོ་ནར་ཕན་ཐོགས། རྗེས་མའི་ཚིག་གྲུབ་རྣམས་སྔོན་མ་སྒྲོག་བཞིན་པའི་སྐབས་སུ་གྲ་སྒྲིག་བྱེད་ཟིན། སྒྲ་ཆད་ན་སྒོ་རྒྱག";
 
 /* Voz — falhas do streaming (1.8 build 16) */

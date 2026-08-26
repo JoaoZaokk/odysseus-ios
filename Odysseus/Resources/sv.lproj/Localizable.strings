@@ -113,7 +113,7 @@
 "Modelos e engines" = "Modeller och motorer";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativ = livetranskribering medan du talar (som Claude/Gemini). \"Modell\" = Whisper offline (transkriberar i slutet). För nedladdade modeller laddar ⚡ ner Core ML-acceleratorn (Neural Engine) → mycket snabbare.";
 "Nativo iOS" = "Nativ iOS";
-"Nenhum endpoint conectado." = "Ingen slutpunkt ansluten.";
+"Nenhum endpoint conectado." = "Ingen endpoint ansluten.";
 "Nenhum evento" = "Inga händelser";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Ingen MCP-server ansluten. Lägg till en via webben (Admin).";
 "Nenhuma conta" = "Inga konton";
@@ -429,8 +429,8 @@
 "Áudio indisponível: %@" = "Ljud inte tillgängligt: %@";
 "Falha ao descompactar o modelo Core ML." = "Kunde inte packa upp Core ML-modellen.";
 "Sessão expirada. Faça login novamente." = "Sessionen har gått ut. Logga in igen.";
-"Falha ao iniciar o stream" = "Kunde inte starta strömmen";
-"Erro no stream" = "Strömfel";
+"Falha ao iniciar o stream" = "Kunde inte starta stream";
+"Erro no stream" = "Stream-fel";
 "Autenticar para entrar no Odysseus" = "Autentisera för att öppna Odysseus";
 "Desbloquear o Odysseus" = "Lås upp Odysseus";
 "Pacote sem alvo pip." = "Paketet har inget pip-mål.";
@@ -603,7 +603,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Den inbyggda rösten följer appens språk. Igenkänningen använder däremot språket som valts ovan; automatisk identifiering gör fler fel på kort eller brusigt ljud, och iOS inbyggda igenkänning identifierar inget språk alls — där gäller alltid appens språk.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Strömmande ljud";
+"Áudio em streaming" = "Streaming-ljud";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Strömmande ljud spelar upp den första meningen medan den fortfarande skapas, i stället för att vänta på hela filen. Gäller bara i samtalsläget (röstskärmen); följande meningar förbereds ändå medan den förra spelas. Stäng av om ljudet hackar.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

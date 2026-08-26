@@ -35,7 +35,7 @@
 "Bloquear o app" = "Az alkalmazás zárolása";
 "Brain" = "Brain";
 "Busca" = "Keresés";
-"Buscar nos logs…" = "Keresés a naplókban…";
+"Buscar nos logs…" = "Keresés a logokban…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Elfér a gépen (becslés, legjobb GPU)";
 "Cadastro aberto" = "Nyílt regisztráció";
 "Caixa de entrada" = "Beérkező levelek";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Ez visszafordíthatatlan. Megerősíti?";
 "Lembretes" = "Emlékeztetők";
 "Library" = "Library";
-"Logs do sistema" = "Rendszernaplók";
+"Logs do sistema" = "Rendszer logok";
 "Manter conectado" = "Maradjak bejelentkezve";
 "Memórias do assistente" = "Asszisztens emlékei";
 "Mesma pergunta para os dois…" = "Ugyanaz a kérdés mindkettőnek…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Modellek és motorok";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Natív = élő átírás beszéd közben (mint Claude/Gemini). \"Modell\" = offline Whisper (a végén ír át). A letöltött modelleknél a ⚡ letölti a Core ML gyorsítót (Neural Engine) → sokkal gyorsabb.";
 "Nativo iOS" = "Natív iOS";
-"Nenhum endpoint conectado." = "Nincs csatlakoztatott végpont.";
+"Nenhum endpoint conectado." = "Nincs csatlakoztatott endpoint.";
 "Nenhum evento" = "Nincs esemény";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Nincs csatlakoztatott MCP szerver. Adjon hozzá egyet a weben (Admin).";
 "Nenhuma conta" = "Nincs fiók";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Admin jogok visszavonása";
 "Selecionar…" = "Kiválasztás…";
 "Sem favoritos" = "Nincsenek kedvencek";
-"Sem logs." = "Nincs napló.";
+"Sem logs." = "Nincsenek logok.";
 "Sem notas ainda" = "Még nincsenek jegyzetek";
 "Tornar admin" = "Admin kinevezése";
 "Tudo" = "Összes";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "A beépített hang az alkalmazás nyelvét követi. A felismerés viszont a fent választott nyelvet használja; az automatikus felismerés rövid vagy zajos hangnál többet téved, az iOS beépített felismerése pedig egyáltalán nem ismeri fel a nyelvet — ott mindig az alkalmazás nyelve érvényes.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Folyamatos hang";
+"Áudio em streaming" = "Streaming hang";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "A folyamatos hang már a generálás közben lejátssza az első mondatot, ahelyett hogy a teljes fájlra várna. Csak beszélgetés módban (a hangképernyőn) érvényes; a további mondatok amúgy is elkészülnek, amíg az előző szól. Kapcsold ki, ha a hang akadozik.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

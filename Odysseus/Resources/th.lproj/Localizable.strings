@@ -35,7 +35,7 @@
 "Bloquear o app" = "ล็อกแอป";
 "Brain" = "Brain";
 "Busca" = "ค้นหา";
-"Buscar nos logs…" = "ค้นหาในบันทึก…";
+"Buscar nos logs…" = "ค้นหาใน log…";
 "Cabe na máquina (estimativa, melhor GPU)" = "รองรับได้บนเครื่อง (ประมาณการ, GPU ที่ดีที่สุด)";
 "Cadastro aberto" = "เปิดให้สมัครสมาชิก";
 "Caixa de entrada" = "กล่องขาเข้า";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "การกระทำนี้ไม่สามารถย้อนกลับได้ ยืนยันหรือไม่";
 "Lembretes" = "การเตือนความจำ";
 "Library" = "คลัง";
-"Logs do sistema" = "บันทึกของระบบ";
+"Logs do sistema" = "log ของระบบ";
 "Manter conectado" = "ให้ฉันอยู่ในระบบต่อไป";
 "Memórias do assistente" = "ความทรงจำของผู้ช่วย";
 "Mesma pergunta para os dois…" = "คำถามเดียวกันสำหรับทั้งสอง…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "โมเดลและเอนจิน";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "เนทีฟ = ถอดเสียงสดขณะที่คุณพูด (เหมือน Claude/Gemini) \"โมเดล\" = Whisper แบบออฟไลน์ (ถอดเสียงเมื่อพูดจบ) สำหรับโมเดลที่ดาวน์โหลดแล้ว ⚡ จะดาวน์โหลดตัวเร่งความเร็ว Core ML (Neural Engine) → เร็วขึ้นมาก";
 "Nativo iOS" = "เนทีฟ iOS";
-"Nenhum endpoint conectado." = "ไม่มีเอนด์พอยต์ที่เชื่อมต่อ";
+"Nenhum endpoint conectado." = "ยังไม่ได้เชื่อมต่อ endpoint";
 "Nenhum evento" = "ไม่มีกิจกรรม";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "ไม่มีเซิร์ฟเวอร์ MCP ที่เชื่อมต่อ เพิ่มได้จากหน้าเว็บ (Admin)";
 "Nenhuma conta" = "ไม่มีบัญชี";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(ไม่มีเนื้อหา)";
 "Ativar" = "เปิดใช้งาน";
 "Criar" = "สร้าง";
-"Criar token" = "สร้างโทเคน";
+"Criar token" = "สร้าง token";
 "Código 2FA" = "รหัส 2FA";
 "Desafixar" = "เลิกปักหมุด";
 "Desarquivar" = "นำออกจากคลัง";
@@ -232,7 +232,7 @@
 "Revogar admin" = "เพิกถอนสิทธิ์แอดมิน";
 "Selecionar…" = "เลือก…";
 "Sem favoritos" = "ไม่มีรายการโปรด";
-"Sem logs." = "ไม่มีบันทึก";
+"Sem logs." = "ไม่มี log";
 "Sem notas ainda" = "ยังไม่มีโน้ต";
 "Tornar admin" = "ตั้งเป็นแอดมิน";
 "Tudo" = "ทั้งหมด";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "จำนวนรอบสูงสุด";
 "Orçamento de tokens (entrada)" = "งบประมาณโทเคน (อินพุต)";
 "Teto duro de tokens" = "เพดานโทเคนสูงสุด";
-"Timeout do stream (s)" = "หมดเวลาสตรีม (วินาที)";
+"Timeout do stream (s)" = "หมดเวลา stream (วินาที)";
 "Limites de execução do agente e servidores MCP." = "ขีดจำกัดการทำงานของเอเจนต์และเซิร์ฟเวอร์ MCP";
 "Código & Arquivos" = "โค้ดและไฟล์";
 "Busca & Web" = "ค้นหาและเว็บ";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "เสียงไม่พร้อมใช้งาน: %@";
 "Falha ao descompactar o modelo Core ML." = "แตกไฟล์โมเดล Core ML ไม่สำเร็จ";
 "Sessão expirada. Faça login novamente." = "เซสชันหมดอายุ กรุณาเข้าสู่ระบบอีกครั้ง";
-"Falha ao iniciar o stream" = "เริ่มสตรีมไม่สำเร็จ";
-"Erro no stream" = "ข้อผิดพลาดของสตรีม";
+"Falha ao iniciar o stream" = "เริ่ม stream ไม่สำเร็จ";
+"Erro no stream" = "stream ผิดพลาด";
 "Autenticar para entrar no Odysseus" = "ยืนยันตัวตนเพื่อเข้า Odysseus";
 "Desbloquear o Odysseus" = "ปลดล็อก Odysseus";
 "Pacote sem alvo pip." = "แพ็กเกจไม่มีเป้าหมาย pip";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "เสียงในตัวจะใช้ภาษาของแอป ส่วนการรู้จำเสียงจะใช้ภาษาที่เลือกไว้ด้านบน การตรวจจับอัตโนมัติผิดพลาดบ่อยขึ้นกับเสียงสั้นหรือมีเสียงรบกวน และการรู้จำเสียงในตัวของ iOS ไม่ตรวจจับภาษาเลย — ที่นั่นจะใช้ภาษาของแอปเสมอ";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "เสียงแบบสตรีม";
+"Áudio em streaming" = "เสียงแบบ streaming";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "เสียงแบบสตรีมจะเล่นประโยคแรกตั้งแต่ยังสร้างไม่เสร็จ แทนที่จะรอทั้งไฟล์ ใช้ได้เฉพาะในโหมดสนทนา (หน้าจอเสียง) ส่วนประโยคถัดไปจะถูกเตรียมไว้ระหว่างที่ประโยคก่อนหน้ากำลังเล่นอยู่แล้ว ปิดหากเสียงกระตุก";
 
 /* Voz — falhas do streaming (1.8 build 16) */

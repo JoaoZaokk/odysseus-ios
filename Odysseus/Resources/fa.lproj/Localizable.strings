@@ -35,7 +35,7 @@
 "Bloquear o app" = "قفل‌کردن برنامه";
 "Brain" = "Brain";
 "Busca" = "جستجو";
-"Buscar nos logs…" = "جستجو در گزارش‌ها…";
+"Buscar nos logs…" = "جستجو در logها…";
 "Cabe na máquina (estimativa, melhor GPU)" = "در دستگاه جا می‌شود (تخمین، بهترین GPU)";
 "Cadastro aberto" = "ثبت‌نام آزاد";
 "Caixa de entrada" = "صندوق ورودی";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "این عمل غیرقابل بازگشت است. تأیید می‌کنید؟";
 "Lembretes" = "یادآوری‌ها";
 "Library" = "Library";
-"Logs do sistema" = "گزارش‌های سیستم";
+"Logs do sistema" = "logهای سیستم";
 "Manter conectado" = "متصل نگه دار";
 "Memórias do assistente" = "حافظه دستیار";
 "Mesma pergunta para os dois…" = "همان سؤال برای هر دو…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "مدل‌ها و موتورها";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "بومی = رونویسی زنده هنگام صحبت (مثل Claude/Gemini). «مدل» = Whisper آفلاین (در پایان رونویسی می‌کند). برای مدل‌های دانلودشده، ⚡ شتاب‌دهنده Core ML (Neural Engine) را دانلود می‌کند ← بسیار سریع‌تر.";
 "Nativo iOS" = "iOS بومی";
-"Nenhum endpoint conectado." = "هیچ نقطه اتصالی متصل نیست.";
+"Nenhum endpoint conectado." = "هیچ endpoint متصلی وجود ندارد.";
 "Nenhum evento" = "هیچ رویدادی نیست";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "هیچ سرور MCP متصل نیست. از طریق وب (مدیر) اضافه کنید.";
 "Nenhuma conta" = "هیچ حسابی وجود ندارد";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(بدون محتوا)";
 "Ativar" = "فعال‌سازی";
 "Criar" = "ایجاد";
-"Criar token" = "ایجاد توکن";
+"Criar token" = "ایجاد token";
 "Código 2FA" = "کد 2FA";
 "Desafixar" = "برداشتن پین";
 "Desarquivar" = "خارج از بایگانی";
@@ -232,7 +232,7 @@
 "Revogar admin" = "لغو دسترسی مدیریت";
 "Selecionar…" = "انتخاب…";
 "Sem favoritos" = "موردعلاقه‌ای نیست";
-"Sem logs." = "گزارشی نیست.";
+"Sem logs." = "هیچ logی نیست.";
 "Sem notas ainda" = "هنوز یادداشتی نیست";
 "Tornar admin" = "تبدیل به مدیر";
 "Tudo" = "همه";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "حداکثر دورها";
 "Orçamento de tokens (entrada)" = "بودجه توکن (ورودی)";
 "Teto duro de tokens" = "سقف سخت توکن";
-"Timeout do stream (s)" = "مهلت استریم (ثانیه)";
+"Timeout do stream (s)" = "مهلت stream (ثانیه)";
 "Limites de execução do agente e servidores MCP." = "محدودیت‌های اجرای عامل و سرورهای MCP.";
 "Código & Arquivos" = "کد و فایل‌ها";
 "Busca & Web" = "جست‌وجو و وب";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "صدا در دسترس نیست: %@";
 "Falha ao descompactar o modelo Core ML." = "باز کردن فایل مدل Core ML ناموفق بود.";
 "Sessão expirada. Faça login novamente." = "نشست منقضی شد. دوباره وارد شوید.";
-"Falha ao iniciar o stream" = "شروع جریان ممکن نشد";
-"Erro no stream" = "خطای جریان";
+"Falha ao iniciar o stream" = "شروع stream ناموفق بود";
+"Erro no stream" = "خطای stream";
 "Autenticar para entrar no Odysseus" = "برای ورود به Odysseus احراز هویت کنید";
 "Desbloquear o Odysseus" = "باز کردن قفل Odysseus";
 "Pacote sem alvo pip." = "این بسته هدف pip ندارد.";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "صدای داخلی از زبان برنامه پیروی می‌کند. اما تشخیص گفتار از زبان انتخاب‌شده در بالا استفاده می‌کند؛ تشخیص خودکار در صدای کوتاه یا پرنویز بیشتر اشتباه می‌کند و تشخیص داخلی iOS اصلاً زبان را تشخیص نمی‌دهد — آنجا همیشه زبان برنامه اعمال می‌شود.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "پخش جریانی صدا";
+"Áudio em streaming" = "صدای streaming";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "پخش جریانی صدا جملهٔ اول را همان‌طور که در حال ساخت است پخش می‌کند، به‌جای انتظار برای کل فایل. فقط در حالت گفت‌وگو (صفحهٔ صدا) کار می‌کند؛ جمله‌های بعدی به‌هر حال هنگام پخش جملهٔ قبلی آماده می‌شوند. اگر صدا بریده‌بریده شد خاموشش کنید.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

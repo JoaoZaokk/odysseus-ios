@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Maks. rund";
 "Orçamento de tokens (entrada)" = "Budżet tokenów (wejście)";
 "Teto duro de tokens" = "Twardy limit tokenów";
-"Timeout do stream (s)" = "Limit czasu strumienia (s)";
+"Timeout do stream (s)" = "Timeout stream (s)";
 "Limites de execução do agente e servidores MCP." = "Limity wykonywania agenta i serwery MCP.";
 "Código & Arquivos" = "Kod i pliki";
 "Busca & Web" = "Wyszukiwanie i sieć";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Dźwięk niedostępny: %@";
 "Falha ao descompactar o modelo Core ML." = "Nie udało się rozpakować modelu Core ML.";
 "Sessão expirada. Faça login novamente." = "Sesja wygasła. Zaloguj się ponownie.";
-"Falha ao iniciar o stream" = "Nie udało się uruchomić strumienia";
-"Erro no stream" = "Błąd strumienia";
+"Falha ao iniciar o stream" = "Nie udało się uruchomić stream";
+"Erro no stream" = "Błąd stream";
 "Autenticar para entrar no Odysseus" = "Uwierzytelnij się, aby wejść do Odysseusa";
 "Desbloquear o Odysseus" = "Odblokuj Odysseusa";
 "Pacote sem alvo pip." = "Pakiet nie ma celu pip.";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Wbudowany głos podąża za językiem aplikacji. Rozpoznawanie używa jednak języka wybranego powyżej; automatyczne wykrywanie myli się częściej przy krótkim lub zaszumionym dźwięku, a wbudowane rozpoznawanie iOS w ogóle nie wykrywa języka — tam zawsze obowiązuje język aplikacji.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "Dźwięk strumieniowy";
+"Áudio em streaming" = "Dźwięk w streamingu";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Dźwięk strumieniowy odtwarza pierwsze zdanie już w trakcie jego generowania, zamiast czekać na cały plik. Działa tylko w trybie rozmowy (ekran głosowy); kolejne zdania i tak są przygotowywane, gdy trwa poprzednie. Wyłącz, jeśli dźwięk się zacina.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

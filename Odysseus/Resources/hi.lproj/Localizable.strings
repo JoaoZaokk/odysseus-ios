@@ -35,7 +35,7 @@
 "Bloquear o app" = "ऐप लॉक करें";
 "Brain" = "Brain";
 "Busca" = "खोजें";
-"Buscar nos logs…" = "लॉग्स में खोजें…";
+"Buscar nos logs…" = "log में खोजें…";
 "Cabe na máquina (estimativa, melhor GPU)" = "मशीन पर फ़िट होता है (अनुमान, बेस्ट GPU)";
 "Cadastro aberto" = "साइन-अप खुला";
 "Caixa de entrada" = "इनबॉक्स";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "यह अपरिवर्तनीय है। पुष्टि करें?";
 "Lembretes" = "रिमाइंडर";
 "Library" = "लाइब्रेरी";
-"Logs do sistema" = "सिस्टम लॉग्स";
+"Logs do sistema" = "सिस्टम log";
 "Manter conectado" = "साइन इन रखें";
 "Memórias do assistente" = "असिस्टेंट की मेमोरी";
 "Mesma pergunta para os dois…" = "दोनों के लिए एक ही सवाल…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "मॉडल और इंजन";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "नेटिव = बोलते समय लाइव ट्रांसक्रिप्शन (Claude/Gemini की तरह)। \"मॉडल\" = ऑफ़लाइन Whisper (अंत में ट्रांसक्राइब करता है)। डाउनलोड किए गए मॉडल में ⚡ Core ML एक्सेलेरेटर (Neural Engine) डाउनलोड करता है → बहुत तेज़।";
 "Nativo iOS" = "नेटिव iOS";
-"Nenhum endpoint conectado." = "कोई एंडपॉइंट कनेक्टेड नहीं।";
+"Nenhum endpoint conectado." = "कोई endpoint जुड़ा नहीं है।";
 "Nenhum evento" = "कोई इवेंट नहीं";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "कोई MCP सर्वर कनेक्टेड नहीं। वेब (एडमिन) से जोड़ें।";
 "Nenhuma conta" = "कोई खाता नहीं";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ खतरे का क्षेत्र";
 "(sem conteúdo)" = "(कोई कंटेंट नहीं)";
 "Ativar" = "सक्षम करें";
-"Criar token" = "टोकन बनाएँ";
+"Criar token" = "token बनाएँ";
 "Código 2FA" = "2FA कोड";
 "Desafixar" = "अनपिन करें";
 "Desarquivar" = "अनआर्काइव करें";
@@ -230,7 +230,7 @@
 "Revogar admin" = "एडमिन हटाएँ";
 "Selecionar…" = "चुनें…";
 "Sem favoritos" = "कोई पसंदीदा नहीं";
-"Sem logs." = "कोई लॉग नहीं।";
+"Sem logs." = "कोई log नहीं।";
 "Sem notas ainda" = "अभी तक कोई नोट नहीं";
 "Tornar admin" = "एडमिन बनाएँ";
 "Tudo" = "सभी";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "अधिकतम राउंड";
 "Orçamento de tokens (entrada)" = "टोकन बजट (इनपुट)";
 "Teto duro de tokens" = "टोकन की हार्ड सीमा";
-"Timeout do stream (s)" = "स्ट्रीम टाइमआउट (से.)";
+"Timeout do stream (s)" = "stream टाइमआउट (से.)";
 "Limites de execução do agente e servidores MCP." = "एजेंट निष्पादन सीमाएँ और MCP सर्वर।";
 "Código & Arquivos" = "कोड और फ़ाइलें";
 "Busca & Web" = "खोज और वेब";
@@ -439,8 +439,8 @@
 "Áudio indisponível: %@" = "ऑडियो उपलब्ध नहीं: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML मॉडल अनज़िप करने में विफल।";
 "Sessão expirada. Faça login novamente." = "सत्र समाप्त हो गया। कृपया दोबारा साइन इन करें।";
-"Falha ao iniciar o stream" = "स्ट्रीम शुरू नहीं हो सकी";
-"Erro no stream" = "स्ट्रीम त्रुटि";
+"Falha ao iniciar o stream" = "stream शुरू नहीं हो सका";
+"Erro no stream" = "stream त्रुटि";
 "Autenticar para entrar no Odysseus" = "Odysseus में प्रवेश के लिए प्रमाणित करें";
 "Desbloquear o Odysseus" = "Odysseus अनलॉक करें";
 "Pacote sem alvo pip." = "पैकेज का कोई pip लक्ष्य नहीं है।";
@@ -613,7 +613,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "अंतर्निहित आवाज़ ऐप की भाषा का अनुसरण करती है। पहचान ऊपर चुनी गई भाषा का उपयोग करती है; छोटे या शोर वाले ऑडियो पर स्वचालित पहचान ज़्यादा गलती करती है, और iOS की अपनी पहचान भाषा बिलकुल नहीं पहचानती — वहाँ हमेशा ऐप की भाषा ही चलती है।";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "स्ट्रीमिंग ऑडियो";
+"Áudio em streaming" = "streaming ऑडियो";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "स्ट्रीमिंग ऑडियो पूरी फ़ाइल का इंतज़ार किए बिना, पहला वाक्य बनते ही बजाना शुरू कर देता है। यह केवल बातचीत मोड (आवाज़ स्क्रीन) में लागू होता है; आगे के वाक्य वैसे भी पिछले वाक्य के बजते समय तैयार हो जाते हैं। आवाज़ अटके तो इसे बंद कर दें।";
 
 /* Voz — falhas do streaming (1.8 build 16) */

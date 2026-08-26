@@ -35,7 +35,7 @@
 "Bloquear o app" = "App sperren";
 "Brain" = "Brain";
 "Busca" = "Suche";
-"Buscar nos logs…" = "In Protokollen suchen…";
+"Buscar nos logs…" = "In Logs suchen…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Passt auf die Maschine (Schätzung, beste GPU)";
 "Cadastro aberto" = "Offene Registrierung";
 "Caixa de entrada" = "Posteingang";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Dies ist unwiderruflich. Bestätigen?";
 "Lembretes" = "Erinnerungen";
 "Library" = "Library";
-"Logs do sistema" = "Systemprotokolle";
+"Logs do sistema" = "System-Logs";
 "Manter conectado" = "Angemeldet bleiben";
 "Memórias do assistente" = "Erinnerungen des Assistenten";
 "Mesma pergunta para os dois…" = "Dieselbe Frage für beide…";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Admin-Rechte entziehen";
 "Selecionar…" = "Auswählen…";
 "Sem favoritos" = "Keine Favoriten";
-"Sem logs." = "Keine Protokolle.";
+"Sem logs." = "Keine Logs.";
 "Sem notas ainda" = "Noch keine Notizen";
 "Tornar admin" = "Zum Admin machen";
 "Tudo" = "Alles";

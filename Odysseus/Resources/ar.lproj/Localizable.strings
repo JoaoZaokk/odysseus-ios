@@ -35,7 +35,7 @@
 "Bloquear o app" = "قفل التطبيق";
 "Brain" = "Brain";
 "Busca" = "بحث";
-"Buscar nos logs…" = "البحث في السجلات…";
+"Buscar nos logs…" = "البحث في السجلات (logs)…";
 "Cabe na máquina (estimativa, melhor GPU)" = "يناسب الجهاز (تقدير، أفضل GPU)";
 "Cadastro aberto" = "تسجيل مفتوح";
 "Caixa de entrada" = "صندوق الوارد";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "هذا الإجراء لا رجعة فيه. هل تؤكد؟";
 "Lembretes" = "التذكيرات";
 "Library" = "Library";
-"Logs do sistema" = "سجلات النظام";
+"Logs do sistema" = "سجلات (logs) النظام";
 "Manter conectado" = "إبقائي متصلاً";
 "Memórias do assistente" = "ذاكرة المساعد";
 "Mesma pergunta para os dois…" = "السؤال ذاته للنموذجين…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "النماذج والمحركات";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "نظام التشغيل = نسخ نصي مباشر أثناء الكلام (مثل Claude/Gemini). \"نموذج\" = Whisper بلا اتصال (يُنسخ في النهاية). في النماذج المُنزَّلة، ⚡ يُنزِّل مُسرِّع Core ML (Neural Engine) ← أسرع بكثير.";
 "Nativo iOS" = "نظام iOS الأصلي";
-"Nenhum endpoint conectado." = "لا توجد نقطة اتصال متصلة.";
+"Nenhum endpoint conectado." = "لا يوجد endpoint متصل.";
 "Nenhum evento" = "لا توجد أحداث";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "لا يوجد خادم MCP متصل. أضف واحداً من الويب (المشرف).";
 "Nenhuma conta" = "لا توجد حسابات";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(بلا محتوى)";
 "Ativar" = "تفعيل";
 "Criar" = "إنشاء";
-"Criar token" = "إنشاء رمز";
+"Criar token" = "إنشاء token";
 "Código 2FA" = "رمز 2FA";
 "Desafixar" = "إلغاء التثبيت";
 "Desarquivar" = "إلغاء الأرشفة";
@@ -232,7 +232,7 @@
 "Revogar admin" = "إلغاء صلاحيات المشرف";
 "Selecionar…" = "اختيار…";
 "Sem favoritos" = "لا توجد مفضلات";
-"Sem logs." = "لا توجد سجلات.";
+"Sem logs." = "لا توجد سجلات (logs).";
 "Sem notas ainda" = "لا توجد ملاحظات بعد";
 "Tornar admin" = "تعيين كمشرف";
 "Tudo" = "الكل";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "أقصى عدد للجولات";
 "Orçamento de tokens (entrada)" = "ميزانية الرموز (الإدخال)";
 "Teto duro de tokens" = "الحد الأقصى الصارم للرموز";
-"Timeout do stream (s)" = "مهلة البث (ث)";
+"Timeout do stream (s)" = "مهلة الـ stream (ث)";
 "Limites de execução do agente e servidores MCP." = "حدود تنفيذ الوكيل وخوادم MCP.";
 "Código & Arquivos" = "الكود والملفات";
 "Busca & Web" = "البحث والويب";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "الصوت غير متاح: %@";
 "Falha ao descompactar o modelo Core ML." = "تعذّر فك ضغط نموذج Core ML.";
 "Sessão expirada. Faça login novamente." = "انتهت الجلسة. يُرجى تسجيل الدخول مجددًا.";
-"Falha ao iniciar o stream" = "تعذّر بدء البث";
-"Erro no stream" = "خطأ في البث";
+"Falha ao iniciar o stream" = "تعذّر بدء الـ stream";
+"Erro no stream" = "خطأ في الـ stream";
 "Autenticar para entrar no Odysseus" = "تحقّق من هويتك للدخول إلى Odysseus";
 "Desbloquear o Odysseus" = "إلغاء قفل Odysseus";
 "Pacote sem alvo pip." = "لا يوجد هدف pip لهذه الحزمة.";
@@ -611,7 +611,7 @@
 "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "الصوت المدمج يتبع لغة التطبيق. أمّا التعرّف فيستخدم اللغة المختارة أعلاه؛ والكشف التلقائي يخطئ أكثر مع المقاطع القصيرة أو المشوّشة، كما أنّ تعرّف iOS المدمج لا يكشف اللغة إطلاقًا — فيه تُعتمد لغة التطبيق دائمًا.";
 
 /* Streaming TTS playback (Voice settings) */
-"Áudio em streaming" = "الصوت المتدفق";
+"Áudio em streaming" = "صوت streaming";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "الصوت المتدفق يشغّل الجملة الأولى وهي ما تزال قيد التوليد بدل انتظار الملف كاملًا. ينطبق فقط في وضع المحادثة (شاشة الصوت)؛ أما الجمل التالية فتُجهَّز أصلًا أثناء تشغيل سابقتها. أوقفه إذا تقطّع الصوت.";
 
 /* Voz — falhas do streaming (1.8 build 16) */

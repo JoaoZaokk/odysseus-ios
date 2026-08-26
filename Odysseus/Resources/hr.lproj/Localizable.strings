@@ -35,7 +35,7 @@
 "Bloquear o app" = "Zaključaj aplikaciju";
 "Brain" = "Brain";
 "Busca" = "Pretraži";
-"Buscar nos logs…" = "Pretraži zapise…";
+"Buscar nos logs…" = "Pretraži logove…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Stane na stroj (procjena, najbolji GPU)";
 "Cadastro aberto" = "Otvorena registracija";
 "Caixa de entrada" = "Pristigla pošta";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Ovo je nepovratno. Potvrđuješ?";
 "Lembretes" = "Podsjetnici";
 "Library" = "Library";
-"Logs do sistema" = "Sistemski zapisi";
+"Logs do sistema" = "Logovi sustava";
 "Manter conectado" = "Ostani prijavljen";
 "Memórias do assistente" = "Sjećanja asistenta";
 "Mesma pergunta para os dois…" = "Isto pitanje za oba…";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Oduzmi prava admina";
 "Selecionar…" = "Odaberi…";
 "Sem favoritos" = "Nema omiljenih";
-"Sem logs." = "Nema zapisa.";
+"Sem logs." = "Nema logova.";
 "Sem notas ainda" = "Još nema bilješki";
 "Tornar admin" = "Postavi za admina";
 "Tudo" = "Sve";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Maks. rundi";
 "Orçamento de tokens (entrada)" = "Proračun tokena (ulaz)";
 "Teto duro de tokens" = "Tvrdo ograničenje tokena";
-"Timeout do stream (s)" = "Istek vremena toka (s)";
+"Timeout do stream (s)" = "Timeout streama (s)";
 "Limites de execução do agente e servidores MCP." = "Ograničenja izvođenja agenta i MCP poslužitelji.";
 "Código & Arquivos" = "Kod i datoteke";
 "Busca & Web" = "Pretraga i web";
