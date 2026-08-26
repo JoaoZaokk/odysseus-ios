@@ -141,7 +141,7 @@
 "Padrão" = "Па змаўчанні";
 "Padrões de IA" = "Налады ШІ";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Для большасці пастаўшчыкоў падыходзяць уліковыя дадзеныя IMAP. Выкарыстоўвайце App Password, калі ўключаны 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Мінулыя даследаванні";
 "Pede %@ antes de usar a senha salva." = "Запытвае %@ перад выкарыстаннем захаванага пароля.";
 "Pede %@ ao abrir e ao voltar pro app." = "Запытвае %@ пры адкрыцці і вяртанні ў праграму.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Запыт выявы → пастаўшчык па змаўчанні → калі не ўдалося і запасны варыянт уключаны, спрабуе наступных → калі ўсе не ўдаліся, зразумелая памылка. Журналы не змяшчаюць канфідэнцыяльных даных. Пашыраная генерацыя (txt2img, upscale, inpaint, outpaint, multi-GPU) задакументавана ў DIFFUSION_COMFYUI_PLAN.md для наступнай фазы.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Пішу";
 "Espaços" = "Прасторы";
 "Executando" = "Выконваецца";
-"Extract paralelo" = "Паралельнае здабыванне";
-"Extract timeout (s)" = "Extract timeout (с)";
+"Extração paralela" = "Паралельнае здабыванне";
+"Timeout da extração (s)" = "Timeout здабывання (с)";
 "Falha" = "Памылка";
 "Falha ao salvar" = "Не ўдалося захаваць";
 "Fallbacks" = "Запасныя варыянты";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Порт SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Пастаўшчык для вэб-пошуку і глыбокага пошуку.";
 "Resultados por busca" = "Вынікаў на пошук";
-"Run timeout (s)" = "Run timeout (с)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout выканання (с)";
+"ID do mecanismo de busca (CX)" = "ID пошукавай сістэмы (CX)";
 "Senha atual" = "Бягучы пароль";
 "Senha atualizada" = "Пароль абноўлены";
 "Servidor SMTP" = "Сервер SMTP";
@@ -389,7 +389,7 @@
 "Atualizar" = "Абнавіць";
 "Só um administrador pode atualizar a lista de modelos." = "Толькі адміністратар можа абнавіць спіс мадэляў.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Мадэлі не знойдзены. Канчатковая кропка адказала?";
-"%lld modelo(s) encontrado(s)." = "Знойдзена мадэляў: %lld.";
+"Modelos encontrados: %lld" = "Знойдзена мадэляў: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Няма мадэляў у кэшы. Націсніце «Абнавіць», каб апытаць канчатковую кропку.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Выбраць мадэлі";
 "Padrão do servidor" = "Прадвызначана серверам";
 "Outros modelos" = "Іншыя мадэлі";
-"%lld modelo(s) · ativo" = "%lld мадэл(яў) · актыўны";
-"%lld modelo(s) · desativado" = "%lld мадэл(яў) · адключаны";
+"Modelos: %lld · ativo" = "Мадэлі: %lld · уключана";
+"Modelos: %lld · desativado" = "Мадэлі: %lld · выключана";
 "· %lld rodadas" = "· %lld раўндаў";
 "Personalizado…" = "Уласнае…";
 "online" = "у сетцы";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f ГБ вольна / %.0f ГБ";
 "%.1f GB livre / %.1f GB" = "%.1f ГБ вольна / %.1f ГБ";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Арганізавана: выдалена %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Прыбрана: %lld → %lld · выдалена: %lld";
 "Falha ao organizar: %@" = "Памылка арганізацыі: %@";
 "Backup exportado." = "Рэзервовую копію экспартавана.";
 "Salvo." = "Захавана.";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "Сервер не пералічыў ніводнай мадэлі.";
 "OK" = "OK";
 "Ocultar chave" = "Схаваць ключ";
-"Olá! Esta é a voz do endpoint." = "Прывітанне! Гэта голас endpoint-а.";
+"Olá! É assim que a voz vai soar." = "Прывітанне! Вось як будзе гучаць голас.";
 "Outro…" = "Іншае…";
 "Só minhas vozes" = "Толькі мае галасы";
 "URL base" = "Базавы URL";

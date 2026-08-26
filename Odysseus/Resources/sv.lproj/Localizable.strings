@@ -141,7 +141,7 @@
 "Padrão" = "Standard";
 "Padrões de IA" = "AI-standardinställningar";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "För de flesta leverantörer fungerar dina IMAP-uppgifter. Använd ett app-lösenord om du har 2FA.";
-"Past research" = "Tidigare undersökningar";
+"Pesquisas anteriores" = "Tidigare efterforskningar";
 "Pede %@ antes de usar a senha salva." = "Frågar efter %@ innan det sparade lösenordet används.";
 "Pede %@ ao abrir e ao voltar pro app." = "Frågar efter %@ vid öppning och återgång till appen.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Bildförfrågan → standardleverantör → om den misslyckas och reservlösningen är på provas nästa → om alla misslyckas, ett tydligt fel. Loggarna innehåller inga känsliga data. Djupgenerering (txt2img, upscale, inpaint, outpaint, multi-GPU) finns dokumenterad i DIFFUSION_COMFYUI_PLAN.md för nästa fas.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Skriver";
 "Espaços" = "Utrymmen";
 "Executando" = "Kör";
-"Extract paralelo" = "Parallell extrahering";
-"Extract timeout (s)" = "Tidsgräns för extrahering (s)";
+"Extração paralela" = "Parallell extrahering";
+"Timeout da extração (s)" = "Tidsgräns för extrahering (s)";
 "Falha" = "Misslyckades";
 "Falha ao salvar" = "Det gick inte att spara";
 "Fallbacks" = "Reservlösningar";
@@ -300,8 +300,8 @@
 "Provedor" = "Leverantör";
 "Provedor usado para busca na web e pesquisa profunda." = "Leverantör som används för webbsökning och djupforskning.";
 "Resultados por busca" = "Resultat per sökning";
-"Run timeout (s)" = "Tidsgräns för körning (s)";
-"Search Engine ID (CX)" = "Sökmotor-ID (CX)";
+"Timeout de execução (s)" = "Tidsgräns för körning (s)";
+"ID do mecanismo de busca (CX)" = "Sökmotor-ID (CX)";
 "Senha atual" = "Nuvarande lösenord";
 "Senha atualizada" = "Lösenord uppdaterat";
 "Servidor SMTP" = "SMTP-server";
@@ -379,7 +379,7 @@
 "Atualizar" = "Uppdatera";
 "Só um administrador pode atualizar a lista de modelos." = "Endast en admin kan uppdatera modellistan.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Inga modeller hittades. Svarade slutpunkten?";
-"%lld modelo(s) encontrado(s)." = "%lld modeller hittades.";
+"Modelos encontrados: %lld" = "Hittade modeller: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Inga modeller i cacheminnet. Använd Uppdatera för att söka av slutpunkten.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -465,8 +465,8 @@
 "Escolher modelos" = "Välj modeller";
 "Padrão do servidor" = "Serverns standard";
 "Outros modelos" = "Andra modeller";
-"%lld modelo(s) · ativo" = "%lld modell(er) · aktiv";
-"%lld modelo(s) · desativado" = "%lld modell(er) · inaktiverad";
+"Modelos: %lld · ativo" = "Modeller: %lld · på";
+"Modelos: %lld · desativado" = "Modeller: %lld · av";
 "· %lld rodadas" = "· %lld rundor";
 "Personalizado…" = "Anpassad…";
 "online" = "online";
@@ -535,7 +535,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB ledigt / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB ledigt / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organiserat: %lld borttagna (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Rensat: %lld → %lld · borttagna: %lld";
 "Falha ao organizar: %@" = "Kunde inte organisera: %@";
 "Backup exportado." = "Säkerhetskopiering exporterad.";
 "Salvo." = "Sparat.";
@@ -582,7 +582,7 @@
 "O servidor não listou nenhum modelo." = "Servern listade inga modeller.";
 "OK" = "OK";
 "Ocultar chave" = "Dölj nyckel";
-"Olá! Esta é a voz do endpoint." = "Hej! Det här är endpointens röst.";
+"Olá! É assim que a voz vai soar." = "Hej! Så här kommer rösten att låta.";
 "Outro…" = "Annan…";
 "Só minhas vozes" = "Bara mina röster";
 "URL base" = "Bas-URL";

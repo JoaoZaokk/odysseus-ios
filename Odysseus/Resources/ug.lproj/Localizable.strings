@@ -141,7 +141,7 @@
 "Padrão" = "كۆڭۈلدىكى";
 "Padrões de IA" = "سۈنئىي ئىدراكنىڭ كۆڭۈلدىكى تەڭشەكلىرى";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "كۆپىنچە تەمىنلىگۈچىلەردە IMAP ئۇچۇرلىرىڭىز ئىشلەيدۇ. 2FA ئىڭىز بولسا ئەپ پارولىنى ئىشلىتىڭ.";
-"Past research" = "ئۆتكەن تەتقىقاتلار";
+"Pesquisas anteriores" = "بۇرۇنقى تەتقىقاتلار";
 "Pede %@ antes de usar a senha salva." = "ساقلانغان پارولنى ئىشلىتىشتىن ئىلگىرى %@ نى تەلەپ قىلىدۇ.";
 "Pede %@ ao abrir e ao voltar pro app." = "ئېچىلغاندا ۋە ئەپكە قايتقاندا %@ نى تەلەپ قىلىدۇ.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "رەسىم تەلىپى → كۆڭۈلدىكى تەمىنلىگۈچى → مەغلۇپ بولسا ۋە زاپاس ئوچۇق بولسا، كېيىنكىلىرىنى سىنايدۇ → ھەممىسى مەغلۇپ بولسا، ئوچۇق خاتالىق كۆرسىتىلىدۇ. خاتىرىلەردە مەخپىي سانلىق مەلۇمات بولمايدۇ. چوڭقۇر ھاسىل قىلىش (txt2img, upscale, inpaint, outpaint, multi-GPU) كېيىنكى باسقۇچ ئۈچۈن DIFFUSION_COMFYUI_PLAN.md دا خاتىرىلەنگەن.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "يېزىۋاتىدۇ";
 "Espaços" = "بوشلۇقلار";
 "Executando" = "ئىجرا بولۇۋاتىدۇ";
-"Extract paralelo" = "پاراللېل ئاجرىتىش";
-"Extract timeout (s)" = "ئاجرىتىش ۋاقىت چېكى (سانىيە)";
+"Extração paralela" = "پاراللېل ئاجرىتىش";
+"Timeout da extração (s)" = "ئاجرىتىش ۋاقىت چېكى (سانىيە)";
 "Falha" = "مەغلۇپ بولدى";
 "Falha ao salvar" = "ساقلىغىلى بولمىدى";
 "Fallbacks" = "زاپاسلار";
@@ -300,8 +300,8 @@
 "Provedor" = "تەمىنلىگۈچى";
 "Provedor usado para busca na web e pesquisa profunda." = "تور ئىزدەش ۋە چوڭقۇر تەتقىقات ئۈچۈن ئىشلىتىلىدىغان تەمىنلىگۈچى.";
 "Resultados por busca" = "ھەر قېتىملىق ئىزدەشتىكى نەتىجىلەر";
-"Run timeout (s)" = "ئىجرا ۋاقىت چېكى (سانىيە)";
-"Search Engine ID (CX)" = "ئىزدەش موتورى ID سى (CX)";
+"Timeout de execução (s)" = "ئىجرا ۋاقىت چېكى (سانىيە)";
+"ID do mecanismo de busca (CX)" = "ئىزدەش ماتورى كىملىكى (CX)";
 "Senha atual" = "ھازىرقى پارول";
 "Senha atualizada" = "پارول يېڭىلاندى";
 "Servidor SMTP" = "SMTP مۇلازىمېتىرى";
@@ -387,7 +387,7 @@
 "Atualizar" = "يېڭىلاش";
 "Só um administrador pode atualizar a lista de modelos." = "پەقەت باشقۇرغۇچىلا مودېل تىزىملىكىنى يېڭىلىيالايدۇ.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "ھېچقانداق مودېل تېپىلمىدى. ئاخىرقى نۇقتا جاۋاب بەردىمۇ؟";
-"%lld modelo(s) encontrado(s)." = "%lld مودېل تېپىلدى.";
+"Modelos encontrados: %lld" = "تېپىلغان مودېللار: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "غەملەكتە مودېل يوق. ئاخىرقى نۇقتىنى تەكشۈرۈش ئۈچۈن يېڭىلاشنى ئىشلىتىڭ.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "مودېل تاللاش";
 "Padrão do servidor" = "مۇلازىمېتىر كۆڭۈلدىكى";
 "Outros modelos" = "باشقا مودېللار";
-"%lld modelo(s) · ativo" = "%lld مودېل · قوزغىتىلغان";
-"%lld modelo(s) · desativado" = "%lld مودېل · چەكلەنگەن";
+"Modelos: %lld · ativo" = "مودېللار: %lld · ئوچۇق";
+"Modelos: %lld · desativado" = "مودېللار: %lld · تاقاق";
 "· %lld rodadas" = "· %lld قېتىم";
 "Personalizado…" = "ئىختىيارىي…";
 "online" = "توردا";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB بىكار / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB بىكار / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "تەرتىپلەندى: %lld ئۆچۈرۈلدى (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "رەتلەندى: %lld ← %lld · ئۆچۈرۈلگىنى: %lld";
 "Falha ao organizar: %@" = "تەرتىپلەش مەغلۇپ بولدى: %@";
 "Backup exportado." = "زاپاس چىقىرىلدى.";
 "Salvo." = "ساقلاندى.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "مۇلازىمېتىر ھېچقانداق مودېل تىزىملىمىدى.";
 "OK" = "جەزملە";
 "Ocultar chave" = "ئاچقۇچنى يوشۇر";
-"Olá! Esta é a voz do endpoint." = "ياخشىمۇسىز! بۇ endpoint نىڭ ئاۋازى.";
+"Olá! É assim que a voz vai soar." = "ياخشىمۇسىز! ئاۋاز مۇشۇنداق ئاڭلىنىدۇ.";
 "Outro…" = "باشقا…";
 "Só minhas vozes" = "پەقەت مېنىڭ ئاۋازلىرىم";
 "URL base" = "ئاساسىي URL";

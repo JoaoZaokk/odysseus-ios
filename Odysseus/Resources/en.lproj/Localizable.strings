@@ -141,7 +141,7 @@
 "Padrão" = "Default";
 "Padrões de IA" = "AI defaults";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "For most providers, your IMAP credentials work. Use an app password if you have 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Past research";
 "Pede %@ antes de usar a senha salva." = "Asks for %@ before using the saved password.";
 "Pede %@ ao abrir e ao voltar pro app." = "Asks for %@ when opening and returning to the app.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Image request → default provider → if it fails and fallback is on, it tries the next ones → if all fail, a clear error. Logs carry no sensitive data. Deep generation (txt2img, upscale, inpaint, outpaint, multi-GPU) is documented in DIFFUSION_COMFYUI_PLAN.md for the next phase.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Writing";
 "Espaços" = "Spaces";
 "Executando" = "Running";
-"Extract paralelo" = "Parallel extract";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Parallel extraction";
+"Timeout da extração (s)" = "Extraction timeout (s)";
 "Falha" = "Failed";
 "Falha ao salvar" = "Failed to save";
 "Fallbacks" = "Fallbacks";
@@ -300,8 +300,8 @@
 "Provedor" = "Provider";
 "Provedor usado para busca na web e pesquisa profunda." = "Provider used for web search and deep research.";
 "Resultados por busca" = "Results per search";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Run timeout (s)";
+"ID do mecanismo de busca (CX)" = "Search engine ID (CX)";
 "Senha atual" = "Current password";
 "Senha atualizada" = "Password updated";
 "Servidor SMTP" = "SMTP server";
@@ -389,7 +389,7 @@
 "Atualizar" = "Refresh";
 "Só um administrador pode atualizar a lista de modelos." = "Only an administrator can refresh the model list.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "No models found. Did the endpoint respond?";
-"%lld modelo(s) encontrado(s)." = "%lld models found.";
+"Modelos encontrados: %lld" = "Models found: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "No cached models. Use Refresh to probe the endpoint.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Choose models";
 "Padrão do servidor" = "Server default";
 "Outros modelos" = "Other models";
-"%lld modelo(s) · ativo" = "%lld model(s) · active";
-"%lld modelo(s) · desativado" = "%lld model(s) · disabled";
+"Modelos: %lld · ativo" = "Models: %lld · on";
+"Modelos: %lld · desativado" = "Models: %lld · off";
 "· %lld rodadas" = "· %lld rounds";
 "Personalizado…" = "Custom…";
 "online" = "online";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB free / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB free / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organized: %lld removed (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Tidied: %lld → %lld · removed: %lld";
 "Falha ao organizar: %@" = "Failed to organize: %@";
 "Backup exportado." = "Backup exported.";
 "Salvo." = "Saved.";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "The server listed no models.";
 "OK" = "OK";
 "Ocultar chave" = "Hide key";
-"Olá! Esta é a voz do endpoint." = "Hi! This is the endpoint voice.";
+"Olá! É assim que a voz vai soar." = "Hi! This is how the voice will sound.";
 "Outro…" = "Other…";
 "Só minhas vozes" = "Only my voices";
 "URL base" = "Base URL";

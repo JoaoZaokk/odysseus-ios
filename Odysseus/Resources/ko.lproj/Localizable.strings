@@ -141,7 +141,7 @@
 "Padrão" = "기본값";
 "Padrões de IA" = "AI 기본값";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "대부분의 제공자는 IMAP 자격 증명이 그대로 사용됩니다. 2FA를 사용하는 경우 App Password를 사용하세요.";
-"Past research" = "이전 연구";
+"Pesquisas anteriores" = "지난 리서치";
 "Pede %@ antes de usar a senha salva." = "저장된 비밀번호를 사용하기 전에 %@을(를) 요청합니다.";
 "Pede %@ ao abrir e ao voltar pro app." = "앱을 열거나 돌아올 때 %@을(를) 요청합니다.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "이미지 요청 → 기본 제공자 → 실패하고 폴백이 켜져 있으면 다음을 순서대로 시도 → 모두 실패하면 명확한 오류. 로그에는 민감한 데이터가 없습니다. 심화 생성(txt2img, upscale, inpaint, outpaint, multi-GPU)은 다음 단계를 위해 DIFFUSION_COMFYUI_PLAN.md에 문서화되어 있습니다.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "작성 중";
 "Espaços" = "스페이스";
 "Executando" = "실행 중";
-"Extract paralelo" = "병렬 추출";
-"Extract timeout (s)" = "추출 제한 시간(초)";
+"Extração paralela" = "병렬 추출";
+"Timeout da extração (s)" = "추출 제한 시간(초)";
 "Falha" = "실패";
 "Falha ao salvar" = "저장 실패";
 "Fallbacks" = "폴백";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP 포트";
 "Provedor usado para busca na web e pesquisa profunda." = "웹 검색 및 심층 리서치에 사용되는 제공자.";
 "Resultados por busca" = "검색당 결과 수";
-"Run timeout (s)" = "실행 제한 시간(초)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "실행 제한 시간(초)";
+"ID do mecanismo de busca (CX)" = "검색 엔진 ID(CX)";
 "Senha atual" = "현재 비밀번호";
 "Senha atualizada" = "비밀번호가 업데이트되었습니다";
 "Servidor SMTP" = "SMTP 서버";
@@ -376,7 +376,7 @@
 
 // v1.6 — agent limits & model endpoints
 "%lld mensagens antigas saíram do contexto para caber no limite." = "한도에 맞추기 위해 오래된 메시지 %lld 개가 컨텍스트에서 제거되었습니다.";
-"%lld modelo(s) encontrado(s)." = "모델 %lld 개를 찾았습니다.";
+"Modelos encontrados: %lld" = "찾은 모델: %lld";
 "Atualizar" = "새로고침";
 "Mensagens antigas saíram do contexto para caber no limite." = "한도에 맞추기 위해 오래된 메시지가 컨텍스트에서 제거되었습니다.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "모델을 찾을 수 없습니다. 엔드포인트가 응답했나요?";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "모델 선택";
 "Padrão do servidor" = "서버 기본값";
 "Outros modelos" = "기타 모델";
-"%lld modelo(s) · ativo" = "모델 %lld개 · 활성";
-"%lld modelo(s) · desativado" = "모델 %lld개 · 비활성";
+"Modelos: %lld · ativo" = "모델: %lld · 켜짐";
+"Modelos: %lld · desativado" = "모델: %lld · 꺼짐";
 "· %lld rodadas" = "· %lld 라운드";
 "Personalizado…" = "사용자 지정…";
 "online" = "온라인";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "여유 %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "여유 %.1f GB / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "정리됨: %lld개 삭제됨(%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "정리됨: %lld → %lld · 삭제: %lld";
 "Falha ao organizar: %@" = "정리 실패: %@";
 "Backup exportado." = "백업을 내보냈습니다.";
 "Salvo." = "저장됨.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "서버가 모델을 하나도 나열하지 않았습니다.";
 "OK" = "확인";
 "Ocultar chave" = "키 숨기기";
-"Olá! Esta é a voz do endpoint." = "안녕하세요! 엔드포인트 음성입니다.";
+"Olá! É assim que a voz vai soar." = "안녕하세요! 목소리는 이렇게 들립니다.";
 "Outro…" = "기타…";
 "Só minhas vozes" = "내 음성만";
 "URL base" = "기본 URL";

@@ -141,7 +141,7 @@
 "Padrão" = "Mặc định";
 "Padrões de IA" = "Mặc định AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Với hầu hết nhà cung cấp, thông tin đăng nhập IMAP là đủ. Dùng App Password nếu bạn bật 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Nghiên cứu trước đây";
 "Pede %@ antes de usar a senha salva." = "Yêu cầu %@ trước khi dùng mật khẩu đã lưu.";
 "Pede %@ ao abrir e ao voltar pro app." = "Yêu cầu %@ khi mở và khi quay lại ứng dụng.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Yêu cầu hình ảnh → nhà cung cấp mặc định → nếu thất bại và dự phòng bật, thử các cái tiếp theo → nếu tất cả thất bại, báo lỗi rõ ràng. Nhật ký không chứa dữ liệu nhạy cảm. Tạo ảnh chuyên sâu (txt2img, upscale, inpaint, outpaint, multi-GPU) được ghi tài liệu trong DIFFUSION_COMFYUI_PLAN.md cho giai đoạn tiếp theo.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Đang viết";
 "Espaços" = "Không gian";
 "Executando" = "Đang chạy";
-"Extract paralelo" = "Trích xuất song song";
-"Extract timeout (s)" = "Thời gian chờ trích xuất (s)";
+"Extração paralela" = "Trích xuất song song";
+"Timeout da extração (s)" = "Hết thời gian trích xuất (giây)";
 "Falha" = "Thất bại";
 "Falha ao salvar" = "Lưu thất bại";
 "Fallbacks" = "Dự phòng";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Cổng SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Nhà cung cấp dùng cho tìm kiếm web và nghiên cứu sâu.";
 "Resultados por busca" = "Kết quả mỗi lần tìm kiếm";
-"Run timeout (s)" = "Thời gian chờ chạy (s)";
-"Search Engine ID (CX)" = "ID công cụ tìm kiếm (CX)";
+"Timeout de execução (s)" = "Hết thời gian chạy (giây)";
+"ID do mecanismo de busca (CX)" = "ID công cụ tìm kiếm (CX)";
 "Senha atual" = "Mật khẩu hiện tại";
 "Senha atualizada" = "Mật khẩu đã cập nhật";
 "Servidor SMTP" = "Máy chủ SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "Làm mới";
 "Só um administrador pode atualizar a lista de modelos." = "Chỉ quản trị viên mới có thể làm mới danh sách mô hình.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Không tìm thấy mô hình nào. Điểm cuối có phản hồi không?";
-"%lld modelo(s) encontrado(s)." = "Đã tìm thấy %lld mô hình.";
+"Modelos encontrados: %lld" = "Mô hình tìm thấy: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Chưa có mô hình nào trong bộ nhớ đệm. Dùng Làm mới để thăm dò điểm cuối.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Chọn mô hình";
 "Padrão do servidor" = "Mặc định của máy chủ";
 "Outros modelos" = "Mô hình khác";
-"%lld modelo(s) · ativo" = "%lld mô hình · đang bật";
-"%lld modelo(s) · desativado" = "%lld mô hình · đã tắt";
+"Modelos: %lld · ativo" = "Mô hình: %lld · bật";
+"Modelos: %lld · desativado" = "Mô hình: %lld · tắt";
 "· %lld rodadas" = "· %lld vòng";
 "Personalizado…" = "Tùy chỉnh…";
 "online" = "trực tuyến";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB trống / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB trống / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Đã tổ chức: đã xóa %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Đã dọn: %lld → %lld · đã xoá: %lld";
 "Falha ao organizar: %@" = "Tổ chức thất bại: %@";
 "Backup exportado." = "Đã xuất bản sao lưu.";
 "Salvo." = "Đã lưu.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "Máy chủ không liệt kê mô hình nào.";
 "OK" = "OK";
 "Ocultar chave" = "Ẩn khoá";
-"Olá! Esta é a voz do endpoint." = "Xin chào! Đây là giọng của endpoint.";
+"Olá! É assim que a voz vai soar." = "Xin chào! Giọng sẽ nghe như thế này.";
 "Outro…" = "Khác…";
 "Só minhas vozes" = "Chỉ giọng của tôi";
 "URL base" = "URL gốc";

@@ -141,7 +141,7 @@
 "Padrão" = "Standaard";
 "Padrões de IA" = "AI-standaardinstellingen";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Voor de meeste providers werken IMAP-inloggegevens. Gebruik een app-wachtwoord als je 2FA hebt.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Eerdere onderzoeken";
 "Pede %@ antes de usar a senha salva." = "Vraagt %@ voordat het opgeslagen wachtwoord wordt gebruikt.";
 "Pede %@ ao abrir e ao voltar pro app." = "Vraagt %@ bij het openen en terugkeren naar de app.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Afbeeldingsverzoek → standaardprovider → als dat mislukt en fallback is ingeschakeld, worden de volgende geprobeerd → als alles mislukt, duidelijke foutmelding. Logboeken bevatten geen gevoelige gegevens. Geavanceerde generatie (txt2img, upscale, inpaint, outpaint, multi-GPU) is gedocumenteerd in DIFFUSION_COMFYUI_PLAN.md voor de volgende fase.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Schrijven";
 "Espaços" = "Spaties";
 "Executando" = "Bezig";
-"Extract paralelo" = "Parallelle extract";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Parallelle extractie";
+"Timeout da extração (s)" = "Timeout van de extractie (s)";
 "Falha" = "Mislukt";
 "Falha ao salvar" = "Opslaan mislukt";
 "Fallbacks" = "Fallbacks";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP-poort";
 "Provedor usado para busca na web e pesquisa profunda." = "Provider die wordt gebruikt voor webzoekopdrachten en diepgaand onderzoek.";
 "Resultados por busca" = "Resultaten per zoekopdracht";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout van de uitvoering (s)";
+"ID do mecanismo de busca (CX)" = "Zoekmachine-ID (CX)";
 "Senha atual" = "Huidig wachtwoord";
 "Senha atualizada" = "Wachtwoord bijgewerkt";
 "Servidor SMTP" = "SMTP-server";
@@ -389,7 +389,7 @@
 "Atualizar" = "Vernieuwen";
 "Só um administrador pode atualizar a lista de modelos." = "Alleen een beheerder kan de modellenlijst vernieuwen.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Geen modellen gevonden. Heeft de endpoint gereageerd?";
-"%lld modelo(s) encontrado(s)." = "%lld modellen gevonden.";
+"Modelos encontrados: %lld" = "Gevonden modellen: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Geen modellen in cache. Gebruik Vernieuwen om de endpoint te sonderen.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Modellen kiezen";
 "Padrão do servidor" = "Serverstandaard";
 "Outros modelos" = "Andere modellen";
-"%lld modelo(s) · ativo" = "%lld model(len) · actief";
-"%lld modelo(s) · desativado" = "%lld model(len) · uitgeschakeld";
+"Modelos: %lld · ativo" = "Modellen: %lld · actief";
+"Modelos: %lld · desativado" = "Modellen: %lld · uit";
 "· %lld rodadas" = "· %lld rondes";
 "Personalizado…" = "Aangepast…";
 "online" = "online";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB vrij / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB vrij / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Georganiseerd: %lld verwijderd (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Opgeruimd: %lld → %lld · verwijderd: %lld";
 "Falha ao organizar: %@" = "Organiseren mislukt: %@";
 "Backup exportado." = "Back-up geëxporteerd.";
 "Salvo." = "Opgeslagen.";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "De server gaf geen modellen op.";
 "OK" = "OK";
 "Ocultar chave" = "Sleutel verbergen";
-"Olá! Esta é a voz do endpoint." = "Hallo! Dit is de stem van het endpoint.";
+"Olá! É assim que a voz vai soar." = "Hallo! Zo gaat de stem klinken.";
 "Outro…" = "Anders…";
 "Só minhas vozes" = "Alleen mijn stemmen";
 "URL base" = "Basis-URL";

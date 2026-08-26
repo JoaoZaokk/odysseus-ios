@@ -7,7 +7,7 @@
 "%lld de %lld linhas" = "%lld de %lld linhas";
 "%lld linhas" = "%lld linhas";
 "%lld mensagens antigas saíram do contexto para caber no limite." = "%lld mensagens antigas saíram do contexto para caber no limite.";
-"%lld modelo(s) encontrado(s)." = "%lld modelo(s) encontrado(s).";
+"Modelos encontrados: %lld" = "Modelos encontrados: %lld";
 "(sem conteúdo)" = "(sem conteúdo)";
 "(sem nome)" = "(sem nome)";
 "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado.";
@@ -139,8 +139,8 @@
 "Expandir / jogar pro canto" = "Expandir / jogar pro canto";
 "Exportar dados" = "Exportar dados";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exporte memórias, presets, settings, skills e preferências como JSON.";
-"Extract paralelo" = "Extract paralelo";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Extração paralela";
+"Timeout da extração (s)" = "Timeout da extração (s)";
 "Falha" = "Falha";
 "Falha ao carregar logs: %@" = "Falha ao carregar logs: %@";
 "Falha ao salvar" = "Falha ao salvar";
@@ -263,7 +263,7 @@
 "Padrões de IA" = "Padrões de IA";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA.";
 "Password" = "Password";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Pesquisas anteriores";
 "Pausar" = "Pausar";
 "Pede %@ antes de usar a senha salva." = "Pede %@ antes de usar a senha salva.";
 "Pede %@ ao abrir e ao voltar pro app." = "Pede %@ ao abrir e ao voltar pro app.";
@@ -301,7 +301,7 @@
 "Retomar" = "Retomar";
 "Revogar admin" = "Revogar admin";
 "Rodar agora" = "Rodar agora";
-"Run timeout (s)" = "Run timeout (s)";
+"Timeout de execução (s)" = "Timeout de execução (s)";
 "SMTP (envio)" = "SMTP (envio)";
 "SMTP igual ao IMAP" = "SMTP igual ao IMAP";
 "Sair da conta" = "Sair da conta";
@@ -309,7 +309,7 @@
 "Salvar servidor" = "Salvar servidor";
 "Salvo" = "Salvo";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Se o provedor padrão falhar, tenta os outros na ordem: %@.";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"ID do mecanismo de busca (CX)" = "ID do mecanismo de busca (CX)";
 "Segurança" = "Segurança";
 "Segurança (%@)" = "Segurança (%@)";
 "Selecionar…" = "Selecionar…";
@@ -466,8 +466,8 @@
 "Escolher modelos" = "Escolher modelos";
 "Padrão do servidor" = "Padrão do servidor";
 "Outros modelos" = "Outros modelos";
-"%lld modelo(s) · ativo" = "%lld modelo(s) · ativo";
-"%lld modelo(s) · desativado" = "%lld modelo(s) · desativado";
+"Modelos: %lld · ativo" = "Modelos: %lld · ativo";
+"Modelos: %lld · desativado" = "Modelos: %lld · desativado";
 "· %lld rodadas" = "· %lld rodadas";
 "Personalizado…" = "Personalizado…";
 "online" = "online";
@@ -536,7 +536,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB livre / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB livre / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organizado: %lld removida(s) (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Organizado: %lld → %lld · removidas: %lld";
 "Falha ao organizar: %@" = "Falha ao organizar: %@";
 "Backup exportado." = "Backup exportado.";
 "Salvo." = "Salvo.";
@@ -583,7 +583,7 @@
 "O servidor não listou nenhum modelo." = "O servidor não listou nenhum modelo.";
 "OK" = "OK";
 "Ocultar chave" = "Ocultar chave";
-"Olá! Esta é a voz do endpoint." = "Olá! Esta é a voz do endpoint.";
+"Olá! É assim que a voz vai soar." = "Olá! É assim que a voz vai soar.";
 "Outro…" = "Outro…";
 "Só minhas vozes" = "Só minhas vozes";
 "URL base" = "URL base";

@@ -201,7 +201,7 @@
 "prévia" = "aperçu";
 "Modelos e engines" = "Modèles et moteurs";
 "Sem memórias ainda" = "Aucune mémoire pour le moment";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"ID do mecanismo de busca (CX)" = "ID du moteur de recherche (CX)";
 "Remover conta" = "Supprimer le compte";
 "Remover conta?" = "Supprimer le compte ?";
 "Entre no seu Apple ID, vá em Iniciar Sessão e Segurança → Senhas de App e gere uma (precisa de 2FA no Apple ID)." = "Connectez-vous à votre identifiant Apple, allez dans Connexion et sécurité → Mots de passe pour app et générez-en un (nécessite la 2FA sur votre identifiant Apple).";
@@ -239,7 +239,7 @@
 "Senha atual" = "Mot de passe actuel";
 "Odysseus bloqueado" = "Odysseus verrouillé";
 "Exportar dados" = "Exporter les données";
-"Past research" = "Recherches précédentes";
+"Pesquisas anteriores" = "Recherches précédentes";
 "Agente" = "Agent";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus est un client pour votre propre serveur. Saisissez l'adresse de votre serveur Odysseus pour continuer.";
 "Conta padrão" = "Compte par défaut";
@@ -255,7 +255,7 @@
 "Fonte" = "Police";
 "Nenhuma conta — adicione uma conta IMAP." = "Aucun compte — ajoutez un compte IMAP.";
 "Sem favoritos" = "Aucun favori";
-"Extract paralelo" = "Extraction parallèle";
+"Extração paralela" = "Extraction parallèle";
 "Notes" = "Notes";
 "O Gmail precisa de uma senha de app" = "Gmail nécessite un mot de passe d'application";
 "Nome para exibição" = "Nom affiché";
@@ -316,7 +316,7 @@
 "Senha" = "Mot de passe";
 "Falha ao salvar" = "Échec de l'enregistrement";
 "Segurança" = "Sécurité";
-"Extract timeout (s)" = "Délai d'expiration de l'extraction (s)";
+"Timeout da extração (s)" = "Délai d’expiration de l’extraction (s)";
 "Concluído" = "Terminé";
 "Padrão" = "Par défaut";
 "Início" = "Début";
@@ -324,7 +324,7 @@
 "Álbum" = "Album";
 "Como o fallback funciona" = "Comment fonctionne le repli";
 "Backup de dados" = "Sauvegarde des données";
-"Run timeout (s)" = "Délai d'expiration de l'exécution (s)";
+"Timeout de execução (s)" = "Délai d’expiration de l’exécution (s)";
 "Cancelar" = "Annuler";
 "Mesma pergunta para os dois…" = "Même question pour les deux…";
 "Email (IMAP/SMTP)" = "E-mail (IMAP/SMTP)";
@@ -381,7 +381,7 @@
 "Atualizar" = "Actualiser";
 "Só um administrador pode atualizar a lista de modelos." = "Seul un administrateur peut actualiser la liste des modèles.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Aucun modèle trouvé. Le point de terminaison a-t-il répondu ?";
-"%lld modelo(s) encontrado(s)." = "%lld modèles trouvés.";
+"Modelos encontrados: %lld" = "Modèles trouvés : %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Aucun modèle en cache. Utilisez Actualiser pour sonder le point de terminaison.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -467,8 +467,8 @@
 "Escolher modelos" = "Choisir les modèles";
 "Padrão do servidor" = "Défaut du serveur";
 "Outros modelos" = "Autres modèles";
-"%lld modelo(s) · ativo" = "%lld modèle(s) · actif";
-"%lld modelo(s) · desativado" = "%lld modèle(s) · désactivé";
+"Modelos: %lld · ativo" = "Modèles : %lld · actif";
+"Modelos: %lld · desativado" = "Modèles : %lld · désactivé";
 "· %lld rodadas" = "· %lld tours";
 "Personalizado…" = "Personnalisé…";
 "online" = "en ligne";
@@ -537,7 +537,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f Go libres / %.0f Go";
 "%.1f GB livre / %.1f GB" = "%.1f Go libres / %.1f Go";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organisé : %lld supprimée(s) (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Rangé : %lld → %lld · supprimées : %lld";
 "Falha ao organizar: %@" = "Échec de l'organisation : %@";
 "Backup exportado." = "Sauvegarde exportée.";
 "Salvo." = "Enregistré.";
@@ -584,7 +584,7 @@
 "O servidor não listou nenhum modelo." = "Le serveur n'a listé aucun modèle.";
 "OK" = "OK";
 "Ocultar chave" = "Masquer la clé";
-"Olá! Esta é a voz do endpoint." = "Bonjour ! Voici la voix de l'endpoint.";
+"Olá! É assim que a voz vai soar." = "Bonjour ! Voici le rendu de la voix.";
 "Outro…" = "Autre…";
 "Só minhas vozes" = "Seulement mes voix";
 "URL base" = "URL de base";

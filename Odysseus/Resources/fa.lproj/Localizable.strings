@@ -141,7 +141,7 @@
 "Padrão" = "پیش‌فرض";
 "Padrões de IA" = "تنظیمات پیش‌فرض هوش مصنوعی";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "برای اکثر ارائه‌دهندگان، استفاده از اعتبارنامه‌های IMAP کار می‌کند. اگر 2FA دارید از App Password استفاده کنید.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "پژوهش‌های پیشین";
 "Pede %@ antes de usar a senha salva." = "قبل از استفاده از رمز ذخیره‌شده، %@ را می‌خواهد.";
 "Pede %@ ao abrir e ao voltar pro app." = "هنگام باز کردن و بازگشت به برنامه، %@ را می‌خواهد.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "درخواست تصویر ← ارائه‌دهنده پیش‌فرض ← اگر ناموفق بود و جایگزین فعال بود، بقیه را امتحان می‌کند ← اگر همه ناموفق بودند، خطای واضح. گزارش‌ها داده حساس ندارند. تولید عمیق (txt2img, upscale, inpaint, outpaint, multi-GPU) در DIFFUSION_COMFYUI_PLAN.md برای فاز بعدی مستند شده.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "در حال نوشتن";
 "Espaços" = "فضاها";
 "Executando" = "در حال اجرا";
-"Extract paralelo" = "استخراج موازی";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "استخراج موازی";
+"Timeout da extração (s)" = "مهلت استخراج (ثانیه)";
 "Falha" = "ناموفق";
 "Falha ao salvar" = "ذخیره ناموفق بود";
 "Fallbacks" = "جایگزین‌ها";
@@ -300,8 +300,8 @@
 "Provedor" = "ارائه‌دهنده";
 "Provedor usado para busca na web e pesquisa profunda." = "ارائه‌دهنده مورد استفاده برای جستجوی وب و جستجوی عمیق.";
 "Resultados por busca" = "نتایج هر جستجو";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "مهلت اجرا (ثانیه)";
+"ID do mecanismo de busca (CX)" = "شناسهٔ موتور جستجو (CX)";
 "Senha atual" = "رمز عبور فعلی";
 "Senha atualizada" = "رمز عبور به‌روزرسانی شد";
 "Servidor SMTP" = "سرور SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "تازه‌سازی";
 "Só um administrador pode atualizar a lista de modelos." = "فقط یک مدیر می‌تواند فهرست مدل‌ها را تازه‌سازی کند.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "هیچ مدلی پیدا نشد. آیا نقطه اتصال پاسخ داد؟";
-"%lld modelo(s) encontrado(s)." = "%lld مدل پیدا شد.";
+"Modelos encontrados: %lld" = "مدل‌های یافت‌شده: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "مدلی در کش نیست. برای بررسی نقطه اتصال از تازه‌سازی استفاده کنید.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "انتخاب مدل‌ها";
 "Padrão do servidor" = "پیش‌فرض سرور";
 "Outros modelos" = "مدل‌های دیگر";
-"%lld modelo(s) · ativo" = "%lld مدل · فعال";
-"%lld modelo(s) · desativado" = "%lld مدل · غیرفعال";
+"Modelos: %lld · ativo" = "مدل‌ها: %lld · فعال";
+"Modelos: %lld · desativado" = "مدل‌ها: %lld · غیرفعال";
 "· %lld rodadas" = "· %lld دور";
 "Personalizado…" = "سفارشی…";
 "online" = "آنلاین";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB آزاد / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB آزاد / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "سازماندهی شد: %lld مورد حذف شد (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "مرتب شد: %lld ← %lld · حذف‌شده: %lld";
 "Falha ao organizar: %@" = "سازماندهی ناموفق بود: %@";
 "Backup exportado." = "پشتیبان صادر شد.";
 "Salvo." = "ذخیره شد.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "سرور هیچ مدلی فهرست نکرد.";
 "OK" = "تأیید";
 "Ocultar chave" = "پنهان کردن کلید";
-"Olá! Esta é a voz do endpoint." = "سلام! این صدای endpoint است.";
+"Olá! É assim que a voz vai soar." = "سلام! صدا این‌طور شنیده می‌شود.";
 "Outro…" = "دیگر…";
 "Só minhas vozes" = "فقط صداهای من";
 "URL base" = "URL پایه";

@@ -141,7 +141,7 @@
 "Padrão" = "ډیفالټ";
 "Padrões de IA" = "د AI ډیفالټ ترتیبات";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "ډیرو چمتو کوونکو لپاره، د IMAP اعتبارنامې کار کوي. که 2FA لرئ App Password وکاروئ.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "پخوانۍ څېړنې";
 "Pede %@ antes de usar a senha salva." = "د ذخیره شوي پاسورډ د کارولو دمخه %@ غواړي.";
 "Pede %@ ao abrir e ao voltar pro app." = "اپ پرانیستلو او بیرته راتلو کې %@ غواړي.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "د انځور غوښتنه ← ډیفالټ چمتو کوونکی ← که ناکام او بدیل فعال وي، بل آزموي ← که ټول ناکام وي، روښانه تیروتنه. لاګونه حساس معلومات نه لري. ژور جوړول (txt2img, upscale, inpaint, outpaint, multi-GPU) د راتلونکي مرحلې لپاره DIFFUSION_COMFYUI_PLAN.md کې سند شوی.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "لیکي";
 "Espaços" = "ځایونه";
 "Executando" = "چلیږي";
-"Extract paralelo" = "موازي ایستل";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "موازي استخراج";
+"Timeout da extração (s)" = "د استخراج مهلت (ثانیې)";
 "Falha" = "ناکام";
 "Falha ao salvar" = "خوندي کول ناکام شول";
 "Fallbacks" = "بدیلونه";
@@ -300,8 +300,8 @@
 "Provedor" = "چمتو کوونکی";
 "Provedor usado para busca na web e pesquisa profunda." = "د ویب لټون او ژور لټون لپاره کارول شوی چمتو کوونکی.";
 "Resultados por busca" = "د هر لټون پایلې";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "د چلولو مهلت (ثانیې)";
+"ID do mecanismo de busca (CX)" = "د لټون انجن پېژندنه (CX)";
 "Senha atual" = "اوسنی پاسورډ";
 "Senha atualizada" = "پاسورډ تازه شو";
 "Servidor SMTP" = "SMTP سرور";
@@ -387,7 +387,7 @@
 "Atualizar" = "تازه کول";
 "Só um administrador pode atualizar a lista de modelos." = "یوازې مدیر کولی شي د ماډلونو لیست تازه کړي.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "هیڅ ماډل ونه موندل شو. ایا اینډ پوینټ ځواب ورکړ؟";
-"%lld modelo(s) encontrado(s)." = "%lld ماډلونه وموندل شول.";
+"Modelos encontrados: %lld" = "موندل شوي ماډلونه: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "په کیش کې هیڅ ماډل نشته. د اینډ پوینټ لټولو لپاره تازه کول وکاروئ.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "ماډلونه وټاکه";
 "Padrão do servidor" = "د سرور تلواله";
 "Outros modelos" = "نور ماډلونه";
-"%lld modelo(s) · ativo" = "%lld ماډل · فعال";
-"%lld modelo(s) · desativado" = "%lld ماډل · غیرفعال";
+"Modelos: %lld · ativo" = "ماډلونه: %lld · فعال";
+"Modelos: %lld · desativado" = "ماډلونه: %lld · ناکاره";
 "· %lld rodadas" = "· %lld پړاوونه";
 "Personalizado…" = "دودیز…";
 "online" = "آنلاین";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB خالي / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB خالي / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "سمال شوی: %lld لرې کړل شول (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "منظم شو: %lld ← %lld · لرې شوي: %lld";
 "Falha ao organizar: %@" = "سمول ناکام شو: %@";
 "Backup exportado." = "بیک اپ صادر شو.";
 "Salvo." = "خونډ شو.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "سرور هېڅ ماډل ونه لیست کړ.";
 "OK" = "سمه ده";
 "Ocultar chave" = "کلي پټ کړه";
-"Olá! Esta é a voz do endpoint." = "سلام! دا د endpoint غږ دی.";
+"Olá! É assim que a voz vai soar." = "سلام! غږ به داسې واورېدل شي.";
 "Outro…" = "بل…";
 "Só minhas vozes" = "یوازې زما غږونه";
 "URL base" = "بنسټیز URL";

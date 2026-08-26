@@ -141,7 +141,7 @@
 "Padrão" = "預設";
 "Padrões de IA" = "AI 預設值";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "對於大多數提供者，使用 IMAP 憑證即可。如果啟用了 2FA，請使用 App Password。";
-"Past research" = "過往研究";
+"Pesquisas anteriores" = "過往研究";
 "Pede %@ antes de usar a senha salva." = "使用已儲存密碼前要求 %@。";
 "Pede %@ ao abrir e ao voltar pro app." = "開啟應用程式和返回應用程式時要求 %@。";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "影像請求 → 預設提供者 → 如果失敗且備用已啟用，依序嘗試下一個 → 如果全部失敗，顯示明確錯誤。日誌不含敏感資料。深度生成（txt2img、upscale、inpaint、outpaint、multi-GPU）已記錄於 DIFFUSION_COMFYUI_PLAN.md，留待下一階段。";
@@ -262,8 +262,8 @@
 "Escrevendo" = "寫入中";
 "Espaços" = "空間";
 "Executando" = "執行中";
-"Extract paralelo" = "平行擷取";
-"Extract timeout (s)" = "擷取逾時（秒）";
+"Extração paralela" = "並行擷取";
+"Timeout da extração (s)" = "擷取逾時（秒）";
 "Falha" = "失敗";
 "Falha ao salvar" = "儲存失敗";
 "Fallbacks" = "備用方案";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP 連接埠";
 "Provedor usado para busca na web e pesquisa profunda." = "用於網絡搜尋和深度研究的提供者。";
 "Resultados por busca" = "每次搜尋的結果數";
-"Run timeout (s)" = "執行逾時（秒）";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "執行逾時（秒）";
+"ID do mecanismo de busca (CX)" = "搜尋引擎 ID（CX）";
 "Senha atual" = "目前密碼";
 "Senha atualizada" = "密碼已更新";
 "Servidor SMTP" = "SMTP 伺服器";
@@ -376,7 +376,7 @@
 
 // v1.6 — agent limits & model endpoints
 "%lld mensagens antigas saíram do contexto para caber no limite." = "為了符合上限，%lld 則舊訊息已從上下文中移除。";
-"%lld modelo(s) encontrado(s)." = "找到 %lld 個模型。";
+"Modelos encontrados: %lld" = "搵到嘅模型：%lld";
 "Atualizar" = "重新整理";
 "Mensagens antigas saíram do contexto para caber no limite." = "為了符合上限，舊訊息已從上下文中移除。";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "找不到任何模型。端點是否有回應？";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "選擇模型";
 "Padrão do servidor" = "伺服器預設";
 "Outros modelos" = "其他模型";
-"%lld modelo(s) · ativo" = "%lld 個模型 · 已啟用";
-"%lld modelo(s) · desativado" = "%lld 個模型 · 已停用";
+"Modelos: %lld · ativo" = "模型：%lld · 已啟用";
+"Modelos: %lld · desativado" = "模型：%lld · 已停用";
 "· %lld rodadas" = "· %lld 輪";
 "Personalizado…" = "自訂…";
 "online" = "線上";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "可用 %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "可用 %.1f GB / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "已整理：移除了 %lld 條（%lld → %lld）。";
+"Organizado: %lld → %lld · removidas: %lld" = "已整理：%lld → %lld · 已移除：%lld";
 "Falha ao organizar: %@" = "整理失敗：%@";
 "Backup exportado." = "備份已匯出。";
 "Salvo." = "已儲存。";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "伺服器未列出任何模型。";
 "OK" = "好";
 "Ocultar chave" = "隱藏金鑰";
-"Olá! Esta é a voz do endpoint." = "你好！這是端點的語音。";
+"Olá! É assim que a voz vai soar." = "你好！把聲會係咁樣。";
 "Outro…" = "其他…";
 "Só minhas vozes" = "只顯示我的語音";
 "URL base" = "基礎 URL";

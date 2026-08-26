@@ -141,7 +141,7 @@
 "Padrão" = "Predefinito";
 "Padrões de IA" = "Impostazioni IA";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Per la maggior parte dei provider, le credenziali IMAP funzionano. Usa una password per le app se hai il 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Ricerche precedenti";
 "Pede %@ antes de usar a senha salva." = "Richiede %@ prima di usare la password salvata.";
 "Pede %@ ao abrir e ao voltar pro app." = "Richiede %@ all'apertura e al ritorno nell'app.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Richiesta immagine → provider predefinito → se fallisce e il fallback è attivo, prova i successivi → se tutti falliscono, errore chiaro. I log non contengono dati sensibili. La generazione avanzata (txt2img, upscale, inpaint, outpaint, multi-GPU) è documentata in DIFFUSION_COMFYUI_PLAN.md per la prossima fase.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Sto scrivendo";
 "Espaços" = "Spazi";
 "Executando" = "In esecuzione";
-"Extract paralelo" = "Extract parallelo";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Estrazione parallela";
+"Timeout da extração (s)" = "Timeout dell’estrazione (s)";
 "Falha" = "Fallito";
 "Falha ao salvar" = "Salvataggio non riuscito";
 "Fallbacks" = "Fallbacks";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Porta SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Provider usato per la ricerca web e la ricerca approfondita.";
 "Resultados por busca" = "Risultati per ricerca";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout dell’esecuzione (s)";
+"ID do mecanismo de busca (CX)" = "ID del motore di ricerca (CX)";
 "Senha atual" = "Password attuale";
 "Senha atualizada" = "Password aggiornata";
 "Servidor SMTP" = "Server SMTP";
@@ -389,7 +389,7 @@
 "Atualizar" = "Aggiorna";
 "Só um administrador pode atualizar a lista de modelos." = "Solo un amministratore può aggiornare l'elenco dei modelli.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Nessun modello trovato. L'endpoint ha risposto?";
-"%lld modelo(s) encontrado(s)." = "%lld modelli trovati.";
+"Modelos encontrados: %lld" = "Modelli trovati: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Nessun modello in cache. Usa Aggiorna per sondare l'endpoint.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Scegli i modelli";
 "Padrão do servidor" = "Predefinito del server";
 "Outros modelos" = "Altri modelli";
-"%lld modelo(s) · ativo" = "%lld modello/i · attivo";
-"%lld modelo(s) · desativado" = "%lld modello/i · disattivato";
+"Modelos: %lld · ativo" = "Modelli: %lld · attivo";
+"Modelos: %lld · desativado" = "Modelli: %lld · disattivato";
 "· %lld rodadas" = "· %lld round";
 "Personalizado…" = "Personalizzato…";
 "online" = "online";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB liberi / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB liberi / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organizzato: %lld rimossa(e) (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Riordinato: %lld → %lld · rimosse: %lld";
 "Falha ao organizar: %@" = "Organizzazione non riuscita: %@";
 "Backup exportado." = "Backup esportato.";
 "Salvo." = "Salvato.";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "Il server non ha elencato nessun modello.";
 "OK" = "OK";
 "Ocultar chave" = "Nascondi chiave";
-"Olá! Esta é a voz do endpoint." = "Ciao! Questa è la voce dell'endpoint.";
+"Olá! É assim que a voz vai soar." = "Ciao! Ecco come suonerà la voce.";
 "Outro…" = "Altro…";
 "Só minhas vozes" = "Solo le mie voci";
 "URL base" = "URL di base";

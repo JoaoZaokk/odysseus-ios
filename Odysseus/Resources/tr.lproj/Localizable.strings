@@ -141,7 +141,7 @@
 "Padrão" = "Varsayılan";
 "Padrões de IA" = "YZ varsayılanları";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Çoğu sağlayıcı için IMAP kimlik bilgileriniz işe yarar. 2FA varsa App Password kullanın.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Önceki araştırmalar";
 "Pede %@ antes de usar a senha salva." = "Kaydedilen şifreyi kullanmadan önce %@ ister.";
 "Pede %@ ao abrir e ao voltar pro app." = "Uygulamayı açarken ve geri dönerken %@ ister.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Görüntü isteği → varsayılan sağlayıcı → başarısız olursa ve yedek açıksa sıradakileri dener → hepsi başarısız olursa açık hata. Günlüklerde hassas veri yok. Derin oluşturma (txt2img, upscale, inpaint, outpaint, multi-GPU) bir sonraki aşama için DIFFUSION_COMFYUI_PLAN.md'de belgelenmiştir.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Yazıyor";
 "Espaços" = "Alanlar";
 "Executando" = "Çalışıyor";
-"Extract paralelo" = "Paralel çıkarma";
-"Extract timeout (s)" = "Çıkarma zaman aşımı (s)";
+"Extração paralela" = "Paralel çıkarma";
+"Timeout da extração (s)" = "Çıkarma zaman aşımı (sn)";
 "Falha" = "Başarısız";
 "Falha ao salvar" = "Kaydetme başarısız";
 "Fallbacks" = "Yedekler";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP portu";
 "Provedor usado para busca na web e pesquisa profunda." = "Web araması ve derin araştırma için kullanılan sağlayıcı.";
 "Resultados por busca" = "Arama başına sonuç";
-"Run timeout (s)" = "Çalıştırma zaman aşımı (s)";
-"Search Engine ID (CX)" = "Arama Motoru Kimliği (CX)";
+"Timeout de execução (s)" = "Çalıştırma zaman aşımı (sn)";
+"ID do mecanismo de busca (CX)" = "Arama motoru kimliği (CX)";
 "Senha atual" = "Mevcut parola";
 "Senha atualizada" = "Parola güncellendi";
 "Servidor SMTP" = "SMTP sunucusu";
@@ -387,7 +387,7 @@
 "Atualizar" = "Yenile";
 "Só um administrador pode atualizar a lista de modelos." = "Model listesini yalnızca bir yönetici yenileyebilir.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Model bulunamadı. Uç nokta yanıt verdi mi?";
-"%lld modelo(s) encontrado(s)." = "%lld model bulundu.";
+"Modelos encontrados: %lld" = "Bulunan modeller: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Önbellekte model yok. Uç noktayı sondalamak için Yenile'yi kullanın.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Model seç";
 "Padrão do servidor" = "Sunucu varsayılanı";
 "Outros modelos" = "Diğer modeller";
-"%lld modelo(s) · ativo" = "%lld model · etkin";
-"%lld modelo(s) · desativado" = "%lld model · devre dışı";
+"Modelos: %lld · ativo" = "Modeller: %lld · etkin";
+"Modelos: %lld · desativado" = "Modeller: %lld · devre dışı";
 "· %lld rodadas" = "· %lld tur";
 "Personalizado…" = "Özel…";
 "online" = "çevrimiçi";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB boş / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB boş / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Düzenlendi: %lld kaldırıldı (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Düzenlendi: %lld → %lld · kaldırılan: %lld";
 "Falha ao organizar: %@" = "Düzenleme başarısız: %@";
 "Backup exportado." = "Yedek dışa aktarıldı.";
 "Salvo." = "Kaydedildi.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "Sunucu hiçbir model listelemedi.";
 "OK" = "Tamam";
 "Ocultar chave" = "Anahtarı gizle";
-"Olá! Esta é a voz do endpoint." = "Merhaba! Bu endpoint'in sesi.";
+"Olá! É assim que a voz vai soar." = "Merhaba! Ses böyle duyulacak.";
 "Outro…" = "Diğer…";
 "Só minhas vozes" = "Yalnızca kendi seslerim";
 "URL base" = "Temel URL";

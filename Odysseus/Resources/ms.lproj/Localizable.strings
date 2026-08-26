@@ -141,7 +141,7 @@
 "Padrão" = "Lalai";
 "Padrões de IA" = "Lalai AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Bagi kebanyakan pembekal, kelayakan IMAP sudah mencukupi. Gunakan App Password jika anda mengaktifkan 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Penyelidikan terdahulu";
 "Pede %@ antes de usar a senha salva." = "Meminta %@ sebelum menggunakan kata laluan yang disimpan.";
 "Pede %@ ao abrir e ao voltar pro app." = "Meminta %@ semasa membuka dan kembali ke aplikasi.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Permintaan imej → pembekal lalai → jika gagal dan sandaran aktif, cuba yang seterusnya → jika semua gagal, ralat yang jelas. Log tidak mengandungi data sensitif. Penjanaan mendalam (txt2img, upscale, inpaint, outpaint, multi-GPU) didokumentasikan dalam DIFFUSION_COMFYUI_PLAN.md untuk fasa seterusnya.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Sedang menulis";
 "Espaços" = "Ruang";
 "Executando" = "Sedang berjalan";
-"Extract paralelo" = "Ekstrak selari";
-"Extract timeout (s)" = "Tamat masa ekstrak (s)";
+"Extração paralela" = "Pengekstrakan selari";
+"Timeout da extração (s)" = "Tamat masa pengekstrakan (saat)";
 "Falha" = "Gagal";
 "Falha ao salvar" = "Gagal menyimpan";
 "Fallbacks" = "Sandaran";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Port SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Pembekal yang digunakan untuk carian web dan penyelidikan mendalam.";
 "Resultados por busca" = "Keputusan setiap carian";
-"Run timeout (s)" = "Tamat masa larian (s)";
-"Search Engine ID (CX)" = "ID Enjin Carian (CX)";
+"Timeout de execução (s)" = "Tamat masa pelaksanaan (saat)";
+"ID do mecanismo de busca (CX)" = "ID enjin carian (CX)";
 "Senha atual" = "Kata laluan semasa";
 "Senha atualizada" = "Kata laluan dikemas kini";
 "Servidor SMTP" = "Pelayan SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "Segarkan";
 "Só um administrador pode atualizar a lista de modelos." = "Hanya admin boleh menyegarkan senarai model.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Tiada model ditemui. Adakah titik hujung memberi respons?";
-"%lld modelo(s) encontrado(s)." = "%lld model ditemui.";
+"Modelos encontrados: %lld" = "Model dijumpai: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Tiada model dalam cache. Gunakan Segarkan untuk meninjau titik hujung.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Pilih model";
 "Padrão do servidor" = "Lalai pelayan";
 "Outros modelos" = "Model lain";
-"%lld modelo(s) · ativo" = "%lld model · aktif";
-"%lld modelo(s) · desativado" = "%lld model · dilumpuhkan";
+"Modelos: %lld · ativo" = "Model: %lld · aktif";
+"Modelos: %lld · desativado" = "Model: %lld · dimatikan";
 "· %lld rodadas" = "· %lld pusingan";
 "Personalizado…" = "Tersuai…";
 "online" = "dalam talian";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB kosong / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB kosong / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Teratur: %lld dibuang (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Dikemas: %lld → %lld · dibuang: %lld";
 "Falha ao organizar: %@" = "Gagal mengurus: %@";
 "Backup exportado." = "Sandaran dieksport.";
 "Salvo." = "Disimpan.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "Pelayan tidak menyenaraikan sebarang model.";
 "OK" = "OK";
 "Ocultar chave" = "Sembunyikan kunci";
-"Olá! Esta é a voz do endpoint." = "Helo! Ini suara endpoint.";
+"Olá! É assim que a voz vai soar." = "Helo! Beginilah bunyi suaranya.";
 "Outro…" = "Lain…";
 "Só minhas vozes" = "Hanya suara saya";
 "URL base" = "URL asas";

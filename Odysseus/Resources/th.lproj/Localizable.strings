@@ -141,7 +141,7 @@
 "Padrão" = "ค่าเริ่มต้น";
 "Padrões de IA" = "ค่าเริ่มต้นของ AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "สำหรับผู้ให้บริการส่วนใหญ่ ใช้ข้อมูลรับรอง IMAP ได้เลย หากเปิดใช้ 2FA ให้ใช้รหัสผ่านแอปแทน";
-"Past research" = "งานวิจัยที่ผ่านมา";
+"Pesquisas anteriores" = "งานวิจัยก่อนหน้า";
 "Pede %@ antes de usar a senha salva." = "ขอ %@ ก่อนใช้รหัสผ่านที่บันทึกไว้";
 "Pede %@ ao abrir e ao voltar pro app." = "ขอ %@ เมื่อเปิดแอปและเมื่อกลับเข้าแอปอีกครั้ง";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "คำขอสร้างภาพ → ผู้ให้บริการเริ่มต้น → หากล้มเหลวและเปิดระบบสำรองไว้ จะลองใช้ตัวถัดไป → หากล้มเหลวทั้งหมด จะแจ้งข้อผิดพลาดที่ชัดเจน บันทึกไม่มีข้อมูลที่ละเอียดอ่อน การสร้างภาพขั้นสูง (txt2img, upscale, inpaint, outpaint, multi-GPU) มีเอกสารอยู่ใน DIFFUSION_COMFYUI_PLAN.md สำหรับเฟสถัดไป";
@@ -264,8 +264,8 @@
 "Escrevendo" = "กำลังเขียน";
 "Espaços" = "พื้นที่ทำงาน";
 "Executando" = "กำลังทำงาน";
-"Extract paralelo" = "การดึงข้อมูลแบบขนาน";
-"Extract timeout (s)" = "หมดเวลาการดึงข้อมูล (วินาที)";
+"Extração paralela" = "การดึงข้อมูลแบบขนาน";
+"Timeout da extração (s)" = "หมดเวลาการดึงข้อมูล (วินาที)";
 "Falha" = "ล้มเหลว";
 "Falha ao salvar" = "บันทึกไม่สำเร็จ";
 "Fallbacks" = "ระบบสำรอง";
@@ -300,8 +300,8 @@
 "Provedor" = "ผู้ให้บริการ";
 "Provedor usado para busca na web e pesquisa profunda." = "ผู้ให้บริการที่ใช้สำหรับการค้นหาเว็บและการค้นคว้าเชิงลึก";
 "Resultados por busca" = "จำนวนผลลัพธ์ต่อการค้นหา";
-"Run timeout (s)" = "หมดเวลาการรัน (วินาที)";
-"Search Engine ID (CX)" = "รหัสเครื่องมือค้นหา (CX)";
+"Timeout de execução (s)" = "หมดเวลาการทำงาน (วินาที)";
+"ID do mecanismo de busca (CX)" = "รหัสเครื่องมือค้นหา (CX)";
 "Senha atual" = "รหัสผ่านปัจจุบัน";
 "Senha atualizada" = "อัปเดตรหัสผ่านแล้ว";
 "Servidor SMTP" = "เซิร์ฟเวอร์ SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "รีเฟรช";
 "Só um administrador pode atualizar a lista de modelos." = "เฉพาะแอดมินเท่านั้นที่สามารถรีเฟรชรายการโมเดลได้";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "ไม่พบโมเดล เอนด์พอยต์ตอบสนองหรือไม่";
-"%lld modelo(s) encontrado(s)." = "พบโมเดล %lld รายการ";
+"Modelos encontrados: %lld" = "โมเดลที่พบ: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "ไม่มีโมเดลในแคช ใช้รีเฟรชเพื่อตรวจสอบเอนด์พอยต์";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "เลือกโมเดล";
 "Padrão do servidor" = "ค่าเริ่มต้นของเซิร์ฟเวอร์";
 "Outros modelos" = "โมเดลอื่น ๆ";
-"%lld modelo(s) · ativo" = "%lld โมเดล · เปิดใช้";
-"%lld modelo(s) · desativado" = "%lld โมเดล · ปิดใช้";
+"Modelos: %lld · ativo" = "โมเดล: %lld · เปิด";
+"Modelos: %lld · desativado" = "โมเดล: %lld · ปิด";
 "· %lld rodadas" = "· %lld รอบ";
 "Personalizado…" = "กำหนดเอง…";
 "online" = "ออนไลน์";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "ว่าง %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "ว่าง %.1f GB / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "จัดระเบียบแล้ว: ลบแล้ว %lld รายการ (%lld → %lld)";
+"Organizado: %lld → %lld · removidas: %lld" = "จัดระเบียบแล้ว: %lld → %lld · ที่ลบ: %lld";
 "Falha ao organizar: %@" = "จัดระเบียบไม่สำเร็จ: %@";
 "Backup exportado." = "ส่งออกข้อมูลสำรองแล้ว";
 "Salvo." = "บันทึกแล้ว";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "เซิร์ฟเวอร์ไม่ได้แสดงโมเดลใดเลย";
 "OK" = "ตกลง";
 "Ocultar chave" = "ซ่อนคีย์";
-"Olá! Esta é a voz do endpoint." = "สวัสดี! นี่คือเสียงจาก endpoint";
+"Olá! É assim que a voz vai soar." = "สวัสดี! เสียงจะออกมาแบบนี้";
 "Outro…" = "อื่นๆ…";
 "Só minhas vozes" = "เฉพาะเสียงของฉัน";
 "URL base" = "URL หลัก";

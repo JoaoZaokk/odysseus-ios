@@ -141,7 +141,7 @@
 "Padrão" = "Domyślny";
 "Padrões de IA" = "Ustawienia domyślne AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Dla większości dostawców poświadczenia IMAP działają. Użyj hasła aplikacji, jeśli masz 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Wcześniejsze badania";
 "Pede %@ antes de usar a senha salva." = "Prosi o %@ przed użyciem zapisanego hasła.";
 "Pede %@ ao abrir e ao voltar pro app." = "Prosi o %@ podczas otwierania i powrotu do aplikacji.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Żądanie obrazu → dostawca domyślny → jeśli nie uda się i zapasowy jest włączony, próbuje kolejnych → jeśli wszyscy nie zadziałają, wyraźny błąd. Logi bez danych wrażliwych. Głębokie generowanie (txt2img, upscale, inpaint, outpaint, multi-GPU) jest udokumentowane w DIFFUSION_COMFYUI_PLAN.md na następną fazę.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Pisanie";
 "Espaços" = "Przestrzenie";
 "Executando" = "Uruchamianie";
-"Extract paralelo" = "Równoległy ekstrakt";
-"Extract timeout (s)" = "Timeout ekstraktu (s)";
+"Extração paralela" = "Ekstrakcja równoległa";
+"Timeout da extração (s)" = "Timeout ekstrakcji (s)";
 "Falha" = "Niepowodzenie";
 "Falha ao salvar" = "Nie udało się zapisać";
 "Fallbacks" = "Zapasowe";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Port SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Dostawca używany do wyszukiwania w internecie i głębokiego badania.";
 "Resultados por busca" = "Wyniki na wyszukiwanie";
-"Run timeout (s)" = "Timeout uruchomienia (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout wykonania (s)";
+"ID do mecanismo de busca (CX)" = "Identyfikator wyszukiwarki (CX)";
 "Senha atual" = "Aktualne hasło";
 "Senha atualizada" = "Hasło zaktualizowane";
 "Servidor SMTP" = "Serwer SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "Odśwież";
 "Só um administrador pode atualizar a lista de modelos." = "Tylko admin może odświeżyć listę modeli.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Nie znaleziono modeli. Czy endpoint odpowiedział?";
-"%lld modelo(s) encontrado(s)." = "Znaleziono: %lld modeli.";
+"Modelos encontrados: %lld" = "Znalezione modele: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Brak modeli w pamięci podręcznej. Użyj „Odśwież”, aby sondować endpoint.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Wybierz modele";
 "Padrão do servidor" = "Domyślny serwera";
 "Outros modelos" = "Inne modele";
-"%lld modelo(s) · ativo" = "%lld model(i) · aktywny";
-"%lld modelo(s) · desativado" = "%lld model(i) · wyłączony";
+"Modelos: %lld · ativo" = "Modele: %lld · aktywny";
+"Modelos: %lld · desativado" = "Modele: %lld · wyłączony";
 "· %lld rodadas" = "· %lld rund";
 "Personalizado…" = "Niestandardowe…";
 "online" = "online";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB wolne / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB wolne / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Uporządkowano: usunięto %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Uporządkowano: %lld → %lld · usunięte: %lld";
 "Falha ao organizar: %@" = "Porządkowanie nie powiodło się: %@";
 "Backup exportado." = "Kopia zapasowa wyeksportowana.";
 "Salvo." = "Zapisano.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "Serwer nie wymienił żadnego modelu.";
 "OK" = "OK";
 "Ocultar chave" = "Ukryj klucz";
-"Olá! Esta é a voz do endpoint." = "Cześć! To jest głos endpointu.";
+"Olá! É assim que a voz vai soar." = "Cześć! Tak będzie brzmiał głos.";
 "Outro…" = "Inny…";
 "Só minhas vozes" = "Tylko moje głosy";
 "URL base" = "Bazowy URL";

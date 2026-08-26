@@ -218,7 +218,7 @@ struct SearchSection: View {
                     field($vm.key, secure: true) { Task { await vm.save() } }
                 }
                 if vm.provider == "google_pse" {
-                    label("Search Engine ID (CX)")
+                    label("ID do mecanismo de busca (CX)")
                     field($vm.cx) { Task { await vm.save() } }
                 }
                 if !vm.status.isEmpty {
@@ -231,11 +231,11 @@ struct SearchSection: View {
                     .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
                 HStack(spacing: 10) {
                     VStack(alignment: .leading, spacing: 3) { label("Max tokens"); field($vm.maxTokens) { Task { await vm.save() } } }
-                    VStack(alignment: .leading, spacing: 3) { label("Extract paralelo"); field($vm.extractParallel) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Extração paralela"); field($vm.extractParallel) { Task { await vm.save() } } }
                 }
                 HStack(spacing: 10) {
-                    VStack(alignment: .leading, spacing: 3) { label("Extract timeout (s)"); field($vm.extractTimeout) { Task { await vm.save() } } }
-                    VStack(alignment: .leading, spacing: 3) { label("Run timeout (s)"); field($vm.runTimeout) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Timeout da extração (s)"); field($vm.extractTimeout) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Timeout de execução (s)"); field($vm.runTimeout) { Task { await vm.save() } } }
                 }
             }
         }

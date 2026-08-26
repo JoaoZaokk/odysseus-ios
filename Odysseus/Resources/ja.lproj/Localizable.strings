@@ -141,7 +141,7 @@
 "Padrão" = "デフォルト";
 "Padrões de IA" = "AI の既定値";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "ほとんどのプロバイダーでは IMAP の認証情報がそのまま使えます。2FA を使用している場合はアプリパスワードを使ってください。";
-"Past research" = "過去のリサーチ";
+"Pesquisas anteriores" = "過去のリサーチ";
 "Pede %@ antes de usar a senha salva." = "保存済みパスワードを使う前に %@ を要求します。";
 "Pede %@ ao abrir e ao voltar pro app." = "アプリを開くときと復帰するときに %@ を要求します。";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "画像リクエスト → 既定のプロバイダー → 失敗してフォールバックが有効なら、次を順に試行 → すべて失敗したら明確なエラー。ログに機微なデータは含まれません。高度な生成（txt2img、upscale、inpaint、outpaint、multi-GPU）は次フェーズに向けて DIFFUSION_COMFYUI_PLAN.md に記載されています。";
@@ -262,8 +262,8 @@
 "Escrevendo" = "書き込み中";
 "Espaços" = "スペース";
 "Executando" = "実行中";
-"Extract paralelo" = "並列抽出";
-"Extract timeout (s)" = "抽出タイムアウト（秒）";
+"Extração paralela" = "並列抽出";
+"Timeout da extração (s)" = "抽出のタイムアウト（秒）";
 "Falha" = "失敗";
 "Falha ao salvar" = "保存に失敗しました";
 "Fallbacks" = "フォールバック";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP ポート";
 "Provedor usado para busca na web e pesquisa profunda." = "Web 検索とディープリサーチに使用するプロバイダー。";
 "Resultados por busca" = "検索ごとの結果数";
-"Run timeout (s)" = "実行タイムアウト（秒）";
-"Search Engine ID (CX)" = "検索エンジン ID（CX）";
+"Timeout de execução (s)" = "実行のタイムアウト（秒）";
+"ID do mecanismo de busca (CX)" = "検索エンジン ID（CX）";
 "Senha atual" = "現在のパスワード";
 "Senha atualizada" = "パスワードを更新しました";
 "Servidor SMTP" = "SMTP サーバー";
@@ -376,7 +376,7 @@
 
 // v1.6 — agent limits & model endpoints
 "%lld mensagens antigas saíram do contexto para caber no limite." = "コンテキストの上限に収めるため、古いメッセージが %lld 件削除されました。";
-"%lld modelo(s) encontrado(s)." = "%lld 件のモデルが見つかりました。";
+"Modelos encontrados: %lld" = "見つかったモデル: %lld";
 "Atualizar" = "更新";
 "Mensagens antigas saíram do contexto para caber no limite." = "コンテキストの上限に収めるため、古いメッセージが削除されました。";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "モデルが見つかりません。エンドポイントは応答しましたか？";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "モデルを選ぶ";
 "Padrão do servidor" = "サーバーの既定";
 "Outros modelos" = "その他のモデル";
-"%lld modelo(s) · ativo" = "%lld 個のモデル · 有効";
-"%lld modelo(s) · desativado" = "%lld 個のモデル · 無効";
+"Modelos: %lld · ativo" = "モデル: %lld · 有効";
+"Modelos: %lld · desativado" = "モデル: %lld · 無効";
 "· %lld rodadas" = "· %lld ラウンド";
 "Personalizado…" = "カスタム…";
 "online" = "オンライン";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "空き %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "空き %.1f GB / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "整理完了: %lld 件削除（%lld → %lld）。";
+"Organizado: %lld → %lld · removidas: %lld" = "整理しました: %lld → %lld · 削除: %lld";
 "Falha ao organizar: %@" = "整理に失敗しました：%@";
 "Backup exportado." = "バックアップを書き出しました。";
 "Salvo." = "保存しました。";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "サーバーはモデルを 1 つも返しませんでした。";
 "OK" = "OK";
 "Ocultar chave" = "キーを非表示";
-"Olá! Esta é a voz do endpoint." = "こんにちは！これはエンドポイントの音声です。";
+"Olá! É assim que a voz vai soar." = "こんにちは。声はこのように聞こえます。";
 "Outro…" = "その他…";
 "Só minhas vozes" = "自分の音声のみ";
 "URL base" = "ベース URL";

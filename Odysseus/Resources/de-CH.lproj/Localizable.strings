@@ -141,7 +141,7 @@
 "Padrão" = "Standard";
 "Padrões de IA" = "KI-Standardeinstellungen";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Bei den meisten Anbietern funktionieren IMAP-Zugangsdaten. Verwende ein App-Passwort, wenn du 2FA aktiviert hast.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Frühere Recherchen";
 "Pede %@ antes de usar a senha salva." = "Fordert %@ an, bevor das gespeicherte Passwort verwendet wird.";
 "Pede %@ ao abrir e ao voltar pro app." = "Fordert %@ beim Öffnen und beim Zurückkehren zur App an.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Bildanfrage → Standardanbieter → schlägt er fehl und der Fallback ist aktiv, werden die nächsten versucht → schlagen alle fehl, klare Fehlermeldung. Protokolle enthalten keine sensiblen Daten. Erweiterte Generierung (txt2img, upscale, inpaint, outpaint, multi-GPU) ist in DIFFUSION_COMFYUI_PLAN.md für die nächste Phase dokumentiert.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Schreiben";
 "Espaços" = "Leerzeichen";
 "Executando" = "Wird ausgeführt";
-"Extract paralelo" = "Paralleles Extract";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Parallele Extraktion";
+"Timeout da extração (s)" = "Timeout der Extraktion (s)";
 "Falha" = "Fehlgeschlagen";
 "Falha ao salvar" = "Speichern fehlgeschlagen";
 "Fallbacks" = "Fallbacks";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP-Port";
 "Provedor usado para busca na web e pesquisa profunda." = "Anbieter für die Websuche und Tiefenrecherche.";
 "Resultados por busca" = "Ergebnisse pro Suche";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout der Ausführung (s)";
+"ID do mecanismo de busca (CX)" = "Suchmaschinen-ID (CX)";
 "Senha atual" = "Aktuelles Passwort";
 "Senha atualizada" = "Passwort aktualisiert";
 "Servidor SMTP" = "SMTP-Server";
@@ -387,7 +387,7 @@
 "Atualizar" = "Aktualisieren";
 "Só um administrador pode atualizar a lista de modelos." = "Nur ein Admin kann die Modellliste aktualisieren.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Keine Modelle gefunden. Hat der Endpunkt geantwortet?";
-"%lld modelo(s) encontrado(s)." = "%lld Modelle gefunden.";
+"Modelos encontrados: %lld" = "Gefundene Modelle: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Keine Modelle im Cache. Verwende Aktualisieren, um den Endpunkt zu sondieren.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Modelle auswählen";
 "Padrão do servidor" = "Server-Standard";
 "Outros modelos" = "Weitere Modelle";
-"%lld modelo(s) · ativo" = "%lld Modell(e) · aktiv";
-"%lld modelo(s) · desativado" = "%lld Modell(e) · deaktiviert";
+"Modelos: %lld · ativo" = "Modelle: %lld · aktiv";
+"Modelos: %lld · desativado" = "Modelle: %lld · deaktiviert";
 "· %lld rodadas" = "· %lld Runden";
 "Personalizado…" = "Benutzerdefiniert…";
 "online" = "online";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB frei / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB frei / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organisiert: %lld entfernt (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Aufgeräumt: %lld → %lld · entfernt: %lld";
 "Falha ao organizar: %@" = "Organisieren fehlgeschlagen: %@";
 "Backup exportado." = "Backup exportiert.";
 "Salvo." = "Gespeichert.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "Der Server hat keine Modelle gelistet.";
 "OK" = "OK";
 "Ocultar chave" = "Schlüssel ausblenden";
-"Olá! Esta é a voz do endpoint." = "Hallo! Das ist die Stimme des Endpoints.";
+"Olá! É assim que a voz vai soar." = "Hallo! So wird die Stimme klingen.";
 "Outro…" = "Andere…";
 "Só minhas vozes" = "Nur meine Stimmen";
 "URL base" = "Basis-URL";

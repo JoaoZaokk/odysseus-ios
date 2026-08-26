@@ -141,7 +141,7 @@
 "Padrão" = "སྔོན་སྒྲིག";
 "Padrões de IA" = "AI སྔོན་སྒྲིག";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "འགྲེམས་སྤེལ་བ་མང་ཆེ་བར་ IMAP ལག་ཁྱེར་བེད་སྤྱོད་བྱས་ན་ལས་ཀ་བྱེད་ཐུབ། 2FA ཡོད་ན་ཉེར་སྤྱོད་གསང་ཨང་བེད་སྤྱོད་གྱིས།";
-"Past research" = "སྔོན་གྱི་ཞིབ་འཇུག";
+"Pesquisas anteriores" = "སྔོན་གྱི་ཞིབ་འཇུག";
 "Pede %@ antes de usar a senha salva." = "ཉར་ཚགས་བྱས་པའི་གསང་ཨང་བེད་སྤྱོད་སྔོན་ལ་ %@ འདྲི།";
 "Pede %@ ao abrir e ao voltar pro app." = "ཉེར་སྤྱོད་ཁ་ཕྱེ་བ་དང་ཕྱིར་ལོག་སྐབས་ %@ འདྲི།";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "པར་རིས་ཞུ་བ → སྔོན་སྒྲིག་འགྲེམས་སྤེལ་བ → འཐུས་ཤོར་བྱུང་ཞིང་ཚབ་ཞོར་ལག་བསྟར་ཡོད་ན་རྗེས་མའི་རིམ་པ་ཚོད་ལྟ་བྱེད → ཐམས་ཅད་འཐུས་ཤོར་ན་ནོར་འཁྲུལ་གསལ་པོ་སྟོན། ཟིན་ཐོའི་ནང་གསང་བའི་གནས་ཚུལ་མེད། ཟབ་མོའི་བཟོ་སྐྲུན (txt2img, upscale, inpaint, outpaint, multi-GPU) DIFFUSION_COMFYUI_PLAN.md ནང་རིམ་པ་རྗེས་མའི་ཆེད་དུ་ཡིག་ཐོག་བཀོད་ཡོད།";
@@ -264,8 +264,8 @@
 "Escrevendo" = "འབྲི་བཞིན";
 "Espaços" = "སྟེགས་བུ";
 "Executando" = "ལག་བསྟར་བཞིན";
-"Extract paralelo" = "མཉམ་དུས་འདོན་ལེན";
-"Extract timeout (s)" = "འདོན་ལེན་དུས་ཚོད་ཟིན (s)";
+"Extração paralela" = "མཉམ་དུས་འདོན་ལེན";
+"Timeout da extração (s)" = "འདོན་ལེན་དུས་ཚོད་ཟིན (སྐར་ཆ།)";
 "Falha" = "འཐུས་ཤོར";
 "Falha ao salvar" = "ཉར་ཚགས་མ་ཐུབ།";
 "Fallbacks" = "ཚབ་ཞོར་རྣམས";
@@ -300,8 +300,8 @@
 "Provedor" = "འགྲེམས་སྤེལ་བ";
 "Provedor usado para busca na web e pesquisa profunda." = "དྲྭ་ཐོག་འཚོལ་ཞིབ་དང་ཟབ་མོའི་ཞིབ་འཇུག་ཆེད་བེད་སྤྱོད་བྱེད་པའི་འགྲེམས་སྤེལ་བ།";
 "Resultados por busca" = "འཚོལ་ཞིབ་རེའི་གྲུབ་འབྲས";
-"Run timeout (s)" = "ལག་བསྟར་དུས་ཚོད་ཟིན (s)";
-"Search Engine ID (CX)" = "འཚོལ་འཕྲུལ་གྱི་ ID (CX)";
+"Timeout de execução (s)" = "ལག་བསྟར་དུས་ཚོད་ཟིན (སྐར་ཆ།)";
+"ID do mecanismo de busca (CX)" = "འཚོལ་ཞིབ་འཕྲུལ་འཁོར་ངོས་རྟགས (CX)";
 "Senha atual" = "ད་ལྟའི་གསང་ཨང";
 "Senha atualizada" = "གསང་ཨང་གསར་བསྒྱུར་ཟིན";
 "Servidor SMTP" = "SMTP ཞབས་ཞུའི་འཕྲུལ་ཆས";
@@ -387,7 +387,7 @@
 "Atualizar" = "སླར་བརྟག";
 "Só um administrador pode atualizar a lista de modelos." = "དོ་དམ་པ་གཅིག་པུས་དཔེ་གཞིའི་ཐོ་གཞུང་སླར་བརྟག་བྱེད་ཐུབ།";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "དཔེ་གཞི་གང་ཡང་རྙེད་མེད། མཐའ་མཚམས་ཀྱིས་ལན་བཏབ་བམ།";
-"%lld modelo(s) encontrado(s)." = "དཔེ་གཞི་ %lld རྙེད་སོང་།";
+"Modelos encontrados: %lld" = "རྙེད་པའི་དཔེ་དབྱིབས། %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "གནས་སྐབས་ཉར་ཚགས་ནང་དཔེ་གཞི་མེད། མཐའ་མཚམས་བརྟག་ཞིབ་བྱེད་ཆེད་སླར་བརྟག་བེད་སྤྱོད་གྱིས།";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "དཔེ་དབྱིབས་འདེམས།";
 "Padrão do servidor" = "ཞབས་ཞུ་བའི་སོར་བཞག";
 "Outros modelos" = "དཔེ་དབྱིབས་གཞན།";
-"%lld modelo(s) · ativo" = "དཔེ་དབྱིབས %lld · སྤྱོད་བཞིན";
-"%lld modelo(s) · desativado" = "དཔེ་དབྱིབས %lld · བཀག";
+"Modelos: %lld · ativo" = "དཔེ་དབྱིབས། %lld · ཁ་ཕྱེ";
+"Modelos: %lld · desativado" = "དཔེ་དབྱིབས། %lld · ཁ་བརྒྱབ";
 "· %lld rodadas" = "· སྐོར %lld";
 "Personalizado…" = "རང་སྒྲིག…";
 "online" = "དྲ་ཐོག";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB སྟོང་མ / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB སྟོང་མ / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "འཆམ་སྒྲིག་ཟིན། %lld བསུབ་ཟིན། (%lld → %lld)།";
+"Organizado: %lld → %lld · removidas: %lld" = "བསྒྲིགས་ཟིན། %lld → %lld · བསུབས་པ། %lld";
 "Falha ao organizar: %@" = "འཆམ་སྒྲིག་མ་ཐུབ། %@";
 "Backup exportado." = "གསོག་འཇོག་ཕྱིར་སྤྲོད་ཟིན།";
 "Salvo." = "ཉར་ཟིན།";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "ཞབས་ཞུ་བརྒྱུད་ཁང་གིས་དཔེ་གཞི་གང་ཡང་མ་བཀོད།";
 "OK" = "འགྲིག";
 "Ocultar chave" = "གསང་ལྡེ་སྦས།";
-"Olá! Esta é a voz do endpoint." = "བཀྲ་ཤིས་བདེ་ལེགས། འདི་ནི་ endpoint གྱི་སྐད་ཤུགས་ཡིན།";
+"Olá! É assim que a voz vai soar." = "བཀྲ་ཤིས་བདེ་ལེགས། སྐད་གདངས་འདི་ལྟར་གོ་ཐུབ།";
 "Outro…" = "གཞན…";
 "Só minhas vozes" = "ངའི་སྐད་ཤུགས་ཁོ་ན།";
 "URL base" = "རྩ་བའི་ URL";

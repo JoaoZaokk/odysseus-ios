@@ -141,7 +141,7 @@
 "Padrão" = "Oletus";
 "Padrões de IA" = "Tekoälyn oletusasetukset";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Useimpien palveluntarjoajien kohdalla IMAP-tunnuksesi toimivat. Käytä sovelluksen salasanaa, jos sinulla on 2FA käytössä.";
-"Past research" = "Aiemmat tutkimukset";
+"Pesquisas anteriores" = "Aiemmat tutkimukset";
 "Pede %@ antes de usar a senha salva." = "Pyytää %@ ennen tallennetun salasanan käyttöä.";
 "Pede %@ ao abrir e ao voltar pro app." = "Pyytää %@ sovellusta avattaessa ja siihen palatessa.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Kuvapyyntö → oletuspalveluntarjoaja → jos se epäonnistuu ja varajärjestelmä on käytössä, kokeillaan seuraavia → jos kaikki epäonnistuvat, selkeä virheilmoitus. Lokit eivät sisällä arkaluonteisia tietoja. Syvällinen kuvantuotanto (txt2img, upscale, inpaint, outpaint, multi-GPU) on dokumentoitu tiedostossa DIFFUSION_COMFYUI_PLAN.md seuraavaa vaihetta varten.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Kirjoittaa";
 "Espaços" = "Tilat";
 "Executando" = "Suoritetaan";
-"Extract paralelo" = "Rinnakkainen poiminta";
-"Extract timeout (s)" = "Poiminnan aikakatkaisu (s)";
+"Extração paralela" = "Rinnakkainen poiminta";
+"Timeout da extração (s)" = "Poiminnan aikakatkaisu (s)";
 "Falha" = "Epäonnistui";
 "Falha ao salvar" = "Tallennus epäonnistui";
 "Fallbacks" = "Varajärjestelmät";
@@ -300,8 +300,8 @@
 "Provedor" = "Palveluntarjoaja";
 "Provedor usado para busca na web e pesquisa profunda." = "Palveluntarjoaja, jota käytetään verkkohaussa ja syväntutkimuksessa.";
 "Resultados por busca" = "Tuloksia hakua kohden";
-"Run timeout (s)" = "Suorituksen aikakatkaisu (s)";
-"Search Engine ID (CX)" = "Hakukoneen tunnus (CX)";
+"Timeout de execução (s)" = "Suorituksen aikakatkaisu (s)";
+"ID do mecanismo de busca (CX)" = "Hakukoneen tunnus (CX)";
 "Senha atual" = "Nykyinen salasana";
 "Senha atualizada" = "Salasana päivitetty";
 "Servidor SMTP" = "SMTP-palvelin";
@@ -379,7 +379,7 @@
 "Atualizar" = "Päivitä";
 "Só um administrador pode atualizar a lista de modelos." = "Vain ylläpitäjä voi päivittää mallien listan.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Malleja ei löytynyt. Vastasiko päätepiste?";
-"%lld modelo(s) encontrado(s)." = "Malleja löytyi %lld.";
+"Modelos encontrados: %lld" = "Löydetyt mallit: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Ei välimuistissa olevia malleja. Käytä Päivitä-painiketta päätepisteen tutkimiseen.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -465,8 +465,8 @@
 "Escolher modelos" = "Valitse mallit";
 "Padrão do servidor" = "Palvelimen oletus";
 "Outros modelos" = "Muut mallit";
-"%lld modelo(s) · ativo" = "%lld malli(a) · käytössä";
-"%lld modelo(s) · desativado" = "%lld malli(a) · pois käytöstä";
+"Modelos: %lld · ativo" = "Mallit: %lld · käytössä";
+"Modelos: %lld · desativado" = "Mallit: %lld · pois";
 "· %lld rodadas" = "· %lld kierrosta";
 "Personalizado…" = "Mukautettu…";
 "online" = "verkossa";
@@ -535,7 +535,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB vapaana / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB vapaana / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Järjestetty: %lld poistettu (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Siivottu: %lld → %lld · poistettu: %lld";
 "Falha ao organizar: %@" = "Järjestäminen epäonnistui: %@";
 "Backup exportado." = "Varmuuskopio viety.";
 "Salvo." = "Tallennettu.";
@@ -582,7 +582,7 @@
 "O servidor não listou nenhum modelo." = "Palvelin ei listannut yhtään mallia.";
 "OK" = "OK";
 "Ocultar chave" = "Piilota avain";
-"Olá! Esta é a voz do endpoint." = "Hei! Tämä on endpointin ääni.";
+"Olá! É assim que a voz vai soar." = "Hei! Tältä ääni kuulostaa.";
 "Outro…" = "Muu…";
 "Só minhas vozes" = "Vain omat ääneni";
 "URL base" = "Perus-URL";

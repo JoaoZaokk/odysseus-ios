@@ -141,7 +141,7 @@
 "Padrão" = "ডিফল্ট";
 "Padrões de IA" = "AI ডিফল্ট";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "বেশিরভাগ প্রোভাইডারে আপনার IMAP ক্রেডেনশিয়াল কাজ করে। 2FA থাকলে অ্যাপ পাসওয়ার্ড ব্যবহার করুন।";
-"Past research" = "পূর্ববর্তী গবেষণা";
+"Pesquisas anteriores" = "পূর্ববর্তী গবেষণা";
 "Pede %@ antes de usar a senha salva." = "সেভ করা পাসওয়ার্ড ব্যবহারের আগে %@ চায়।";
 "Pede %@ ao abrir e ao voltar pro app." = "অ্যাপ খোলা ও ফিরে আসার সময় %@ চায়।";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "ছবির অনুরোধ → ডিফল্ট প্রোভাইডার → ব্যর্থ হলে এবং ফলব্যাক চালু থাকলে পরেরগুলো চেষ্টা করে → সব ব্যর্থ হলে স্পষ্ট ত্রুটি। লগে কোনো সংবেদনশীল ডেটা থাকে না। গভীর জেনারেশন (txt2img, upscale, inpaint, outpaint, multi-GPU) পরের ধাপের জন্য DIFFUSION_COMFYUI_PLAN.md-এ ডকুমেন্ট করা আছে।";
@@ -262,8 +262,8 @@
 "Escrevendo" = "লিখছে";
 "Espaços" = "স্পেস";
 "Executando" = "চলছে";
-"Extract paralelo" = "প্যারালাল extract";
-"Extract timeout (s)" = "Extract টাইমআউট (s)";
+"Extração paralela" = "সমান্তরাল নিষ্কাশন";
+"Timeout da extração (s)" = "নিষ্কাশন টাইমআউট (সে.)";
 "Falha" = "ব্যর্থ";
 "Falha ao salvar" = "সেভ করতে ব্যর্থ";
 "Fallbacks" = "ফলব্যাক";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP পোর্ট";
 "Provedor usado para busca na web e pesquisa profunda." = "ওয়েব সার্চ ও গভীর গবেষণার জন্য ব্যবহৃত প্রোভাইডার।";
 "Resultados por busca" = "প্রতি সার্চে ফলাফল";
-"Run timeout (s)" = "Run টাইমআউট (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "সম্পাদন টাইমআউট (সে.)";
+"ID do mecanismo de busca (CX)" = "সার্চ ইঞ্জিন আইডি (CX)";
 "Senha atual" = "বর্তমান পাসওয়ার্ড";
 "Senha atualizada" = "পাসওয়ার্ড আপডেট হয়েছে";
 "Servidor SMTP" = "SMTP সার্ভার";
@@ -389,7 +389,7 @@
 "Atualizar" = "রিফ্রেশ করুন";
 "Só um administrador pode atualizar a lista de modelos." = "শুধুমাত্র একজন অ্যাডমিনই মডেলের তালিকা রিফ্রেশ করতে পারেন।";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "কোনো মডেল পাওয়া যায়নি। এন্ডপয়েন্ট কি উত্তর দিয়েছে?";
-"%lld modelo(s) encontrado(s)." = "%lld মডেল পাওয়া গেছে।";
+"Modelos encontrados: %lld" = "পাওয়া মডেল: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "ক্যাশে কোনো মডেল নেই। এন্ডপয়েন্ট প্রোব করতে রিফ্রেশ ব্যবহার করুন।";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "মডেল বাছুন";
 "Padrão do servidor" = "সার্ভারের ডিফল্ট";
 "Outros modelos" = "অন্যান্য মডেল";
-"%lld modelo(s) · ativo" = "%lld মডেল · সক্রিয়";
-"%lld modelo(s) · desativado" = "%lld মডেল · নিষ্ক্রিয়";
+"Modelos: %lld · ativo" = "মডেল: %lld · চালু";
+"Modelos: %lld · desativado" = "মডেল: %lld · বন্ধ";
 "· %lld rodadas" = "· %lld রাউন্ড";
 "Personalizado…" = "কাস্টম…";
 "online" = "অনলাইন";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB খালি / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB খালি / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "সাজানো হয়েছে: %lld সরানো হয়েছে (%lld → %lld)।";
+"Organizado: %lld → %lld · removidas: %lld" = "গোছানো হয়েছে: %lld → %lld · সরানো হয়েছে: %lld";
 "Falha ao organizar: %@" = "সাজাতে ব্যর্থ: %@";
 "Backup exportado." = "ব্যাকআপ রপ্তানি হয়েছে।";
 "Salvo." = "সংরক্ষিত।";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "সার্ভার কোনো মডেল তালিকাভুক্ত করেনি।";
 "OK" = "ঠিক আছে";
 "Ocultar chave" = "কী লুকান";
-"Olá! Esta é a voz do endpoint." = "হ্যালো! এটি endpoint-এর কণ্ঠ।";
+"Olá! É assim que a voz vai soar." = "নমস্কার! কণ্ঠস্বর এমন শোনাবে।";
 "Outro…" = "অন্য…";
 "Só minhas vozes" = "শুধু আমার কণ্ঠ";
 "URL base" = "বেস URL";

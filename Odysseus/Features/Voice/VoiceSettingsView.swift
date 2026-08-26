@@ -89,7 +89,7 @@ struct VoiceSettingsView: View {
                     VoiceEndpointFields(kind: .tts)
                     Toggle("Áudio em streaming", isOn: $ttsStreaming)
                     Button {
-                        speech.toggleTest(L("Olá! Esta é a voz do endpoint."), id: "__test__")
+                        speech.toggleTest(L("Olá! É assim que a voz vai soar."), id: "__test__")
                     } label: {
                         if speech.isPreparing("__test__") {
                             HStack { ProgressView(); Text("Sintetizando…") }

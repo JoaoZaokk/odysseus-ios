@@ -141,7 +141,7 @@
 "Padrão" = "افتراضي";
 "Padrões de IA" = "إعدادات الذكاء الاصطناعي";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "بالنسبة لمعظم المزودين، تعمل بيانات اعتماد IMAP. استخدم App Password إذا كان لديك 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "الأبحاث السابقة";
 "Pede %@ antes de usar a senha salva." = "يطلب %@ قبل استخدام كلمة المرور المحفوظة.";
 "Pede %@ ao abrir e ao voltar pro app." = "يطلب %@ عند فتح التطبيق والعودة إليه.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "طلب الصورة ← المزود الافتراضي ← إذا فشل والبديل مفعَّل، يجرب التاليين ← إذا فشل الكل، يُعرض خطأ واضح. السجلات لا تحتوي بيانات حساسة. التوليد المتقدم (txt2img, upscale, inpaint, outpaint, multi-GPU) موثَّق في DIFFUSION_COMFYUI_PLAN.md للمرحلة القادمة.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "جارٍ الكتابة";
 "Espaços" = "المساحات";
 "Executando" = "جارٍ التنفيذ";
-"Extract paralelo" = "استخراج متوازٍ";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "استخراج متوازٍ";
+"Timeout da extração (s)" = "مهلة الاستخراج (ث)";
 "Falha" = "فشل";
 "Falha ao salvar" = "فشل الحفظ";
 "Fallbacks" = "البدائل";
@@ -300,8 +300,8 @@
 "Provedor" = "المزود";
 "Provedor usado para busca na web e pesquisa profunda." = "المزود المستخدم للبحث في الويب والبحث المعمّق.";
 "Resultados por busca" = "نتائج لكل بحث";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "مهلة التشغيل (ث)";
+"ID do mecanismo de busca (CX)" = "معرّف محرك البحث (CX)";
 "Senha atual" = "كلمة المرور الحالية";
 "Senha atualizada" = "تم تحديث كلمة المرور";
 "Servidor SMTP" = "خادم SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "تحديث";
 "Só um administrador pode atualizar a lista de modelos." = "يمكن فقط للمشرف تحديث قائمة النماذج.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "لم يُعثر على أي نموذج. هل استجابت نقطة الاتصال؟";
-"%lld modelo(s) encontrado(s)." = "تم العثور على %lld نموذج.";
+"Modelos encontrados: %lld" = "النماذج الموجودة: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "لا توجد نماذج مخزّنة مؤقتًا. استخدم تحديث لاستطلاع نقطة الاتصال.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "اختيار النماذج";
 "Padrão do servidor" = "الافتراضي من الخادم";
 "Outros modelos" = "نماذج أخرى";
-"%lld modelo(s) · ativo" = "%lld نموذج · مفعّل";
-"%lld modelo(s) · desativado" = "%lld نموذج · معطّل";
+"Modelos: %lld · ativo" = "النماذج: %lld · مفعّل";
+"Modelos: %lld · desativado" = "النماذج: %lld · معطّل";
 "· %lld rodadas" = "· %lld جولات";
 "Personalizado…" = "مخصص…";
 "online" = "متصل";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB متاح / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB متاح / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "تم التنظيم: أُزيلت %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "تم الترتيب: %lld ← %lld · المحذوفة: %lld";
 "Falha ao organizar: %@" = "فشل التنظيم: %@";
 "Backup exportado." = "تم تصدير النسخة الاحتياطية.";
 "Salvo." = "تم الحفظ.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "لم يسرد الخادم أي نموذج.";
 "OK" = "موافق";
 "Ocultar chave" = "إخفاء المفتاح";
-"Olá! Esta é a voz do endpoint." = "مرحباً! هذا هو صوت الـ endpoint.";
+"Olá! É assim que a voz vai soar." = "مرحبًا! هكذا سيبدو الصوت.";
 "Outro…" = "أخرى…";
 "Só minhas vozes" = "أصواتي فقط";
 "URL base" = "الرابط الأساسي";

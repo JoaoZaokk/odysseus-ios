@@ -141,7 +141,7 @@
 "Padrão" = "Predvolený";
 "Padrões de IA" = "Predvolené nastavenia AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Pre väčšinu poskytovateľov fungujú prihlasovacie údaje IMAP. Použite heslo aplikácie, ak máte 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Skoršie rešerše";
 "Pede %@ antes de usar a senha salva." = "Žiada o %@ pred použitím uloženého hesla.";
 "Pede %@ ao abrir e ao voltar pro app." = "Žiada o %@ pri otváraní a návrate do aplikácie.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Požiadavka obrázku → predvolený poskytovateľ → ak zlyhá a záložný je zapnutý, skúsi ďalších → ak všetci zlyhajú, jasná chyba. Logy neobsahujú citlivé dáta. Hlboké generovanie (txt2img, upscale, inpaint, outpaint, multi-GPU) je zdokumentované v DIFFUSION_COMFYUI_PLAN.md pre ďalšiu fázu.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Písanie";
 "Espaços" = "Priestory";
 "Executando" = "Spúšťanie";
-"Extract paralelo" = "Paralelná extrakcia";
-"Extract timeout (s)" = "Timeout extrakcie (s)";
+"Extração paralela" = "Paralelná extrakcia";
+"Timeout da extração (s)" = "Timeout extrakcie (s)";
 "Falha" = "Zlyhanie";
 "Falha ao salvar" = "Nepodarilo sa uložiť";
 "Fallbacks" = "Záložné";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Port SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Poskytovateľ používaný na webové vyhľadávanie a hlboký výskum.";
 "Resultados por busca" = "Výsledky na vyhľadávanie";
-"Run timeout (s)" = "Timeout spustenia (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout behu (s)";
+"ID do mecanismo de busca (CX)" = "ID vyhľadávača (CX)";
 "Senha atual" = "Aktuálne heslo";
 "Senha atualizada" = "Heslo aktualizované";
 "Servidor SMTP" = "Server SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "Obnoviť";
 "Só um administrador pode atualizar a lista de modelos." = "Iba admin môže obnoviť zoznam modelov.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Neboli nájdené žiadne modely. Odpovedal endpoint?";
-"%lld modelo(s) encontrado(s)." = "Nájdených: %lld modelov.";
+"Modelos encontrados: %lld" = "Nájdené modely: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Žiadne modely v medzipamäti. Použite „Obnoviť” na sondovanie endpointu.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Vybrať modely";
 "Padrão do servidor" = "Predvolené zo servera";
 "Outros modelos" = "Ďalšie modely";
-"%lld modelo(s) · ativo" = "%lld model(ov) · aktívny";
-"%lld modelo(s) · desativado" = "%lld model(ov) · vypnuté";
+"Modelos: %lld · ativo" = "Modely: %lld · aktívny";
+"Modelos: %lld · desativado" = "Modely: %lld · vypnuté";
 "· %lld rodadas" = "· %lld kôl";
 "Personalizado…" = "Vlastné…";
 "online" = "online";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB voľné / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB voľné / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Usporiadané: odstránené %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Upratané: %lld → %lld · odstránené: %lld";
 "Falha ao organizar: %@" = "Usporiadanie zlyhalo: %@";
 "Backup exportado." = "Záloha bola exportovaná.";
 "Salvo." = "Uložené.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "Server neuviedol žiadny model.";
 "OK" = "OK";
 "Ocultar chave" = "Skryť kľúč";
-"Olá! Esta é a voz do endpoint." = "Ahoj! Toto je hlas endpointu.";
+"Olá! É assim que a voz vai soar." = "Ahoj! Takto bude hlas znieť.";
 "Outro…" = "Iný…";
 "Só minhas vozes" = "Len moje hlasy";
 "URL base" = "Základná URL";

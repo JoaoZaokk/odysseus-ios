@@ -141,7 +141,7 @@
 "Padrão" = "По подразбиране";
 "Padrões de IA" = "Настройки на ИИ";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "За повечето доставчици IMAP идентификационните данни работят. Използвайте App Password, ако имате 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Предишни проучвания";
 "Pede %@ antes de usar a senha salva." = "Иска %@ преди да използва запазената парола.";
 "Pede %@ ao abrir e ao voltar pro app." = "Иска %@ при отваряне и връщане в приложението.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Заявка за изображение → доставчик по подразбиране → ако неуспешно и резервната опция е включена, опитва следващите → ако всички са неуспешни, ясна грешка. Дневниците не съдържат чувствителни данни. Разширено генериране (txt2img, upscale, inpaint, outpaint, multi-GPU) е документирано в DIFFUSION_COMFYUI_PLAN.md за следващата фаза.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Пиша";
 "Espaços" = "Пространства";
 "Executando" = "Изпълнява се";
-"Extract paralelo" = "Паралелно извличане";
-"Extract timeout (s)" = "Extract timeout (с)";
+"Extração paralela" = "Паралелно извличане";
+"Timeout da extração (s)" = "Timeout на извличането (s)";
 "Falha" = "Грешка";
 "Falha ao salvar" = "Неуспешно запазване";
 "Fallbacks" = "Резервни опции";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP порт";
 "Provedor usado para busca na web e pesquisa profunda." = "Доставчик за уеб търсене и задълбочено търсене.";
 "Resultados por busca" = "Резултати на търсене";
-"Run timeout (s)" = "Run timeout (с)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout на изпълнението (s)";
+"ID do mecanismo de busca (CX)" = "ID на търсачката (CX)";
 "Senha atual" = "Текуща парола";
 "Senha atualizada" = "Паролата е актуализирана";
 "Servidor SMTP" = "SMTP сървър";
@@ -389,7 +389,7 @@
 "Atualizar" = "Обнови";
 "Só um administrador pode atualizar a lista de modelos." = "Само администратор може да обнови списъка с модели.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Не са намерени модели. Крайната точка отговори ли?";
-"%lld modelo(s) encontrado(s)." = "Намерени модели: %lld.";
+"Modelos encontrados: %lld" = "Намерени модели: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Няма кеширани модели. Използвайте «Обнови», за да проверите крайната точка.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Избор на модели";
 "Padrão do servidor" = "По подразбиране от сървъра";
 "Outros modelos" = "Други модели";
-"%lld modelo(s) · ativo" = "%lld модел(а) · активен";
-"%lld modelo(s) · desativado" = "%lld модел(а) · изключен";
+"Modelos: %lld · ativo" = "Модели: %lld · активен";
+"Modelos: %lld · desativado" = "Модели: %lld · изключен";
 "· %lld rodadas" = "· %lld рунда";
 "Personalizado…" = "По избор…";
 "online" = "на линия";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB свободна / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB свободна / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Организовано: премахнати %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Подредено: %lld → %lld · премахнати: %lld";
 "Falha ao organizar: %@" = "Организирането се провали: %@";
 "Backup exportado." = "Резервното копие е експортирано.";
 "Salvo." = "Запазено.";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "Сървърът не изброи нито един модел.";
 "OK" = "OK";
 "Ocultar chave" = "Скрий ключа";
-"Olá! Esta é a voz do endpoint." = "Здравей! Това е гласът на endpoint-а.";
+"Olá! É assim que a voz vai soar." = "Здравей! Ето как ще звучи гласът.";
 "Outro…" = "Друг…";
 "Só minhas vozes" = "Само моите гласове";
 "URL base" = "Базов URL";

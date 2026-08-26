@@ -141,7 +141,7 @@
 "Padrão" = "ברירת מחדל";
 "Padrões de IA" = "ברירות מחדל של AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "אצל רוב הספקים, פרטי הכניסה של IMAP עובדים. השתמש בסיסמת אפליקציה אם יש לך 2FA.";
-"Past research" = "מחקרים קודמים";
+"Pesquisas anteriores" = "מחקרים קודמים";
 "Pede %@ antes de usar a senha salva." = "מבקש %@ לפני שימוש בסיסמה השמורה.";
 "Pede %@ ao abrir e ao voltar pro app." = "מבקש %@ בעת פתיחת האפליקציה והחזרה אליה.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "בקשת תמונה → ספק ברירת המחדל → אם נכשל והגיבוי מופעל, מנסה את הבאים בתור → אם כולם נכשלים, שגיאה ברורה. הלוגים לא מכילים נתונים רגישים. יצירה מתקדמת (txt2img, upscale, inpaint, outpaint, multi-GPU) מתועדת בקובץ DIFFUSION_COMFYUI_PLAN.md לשלב הבא.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "כותב";
 "Espaços" = "מרחבים";
 "Executando" = "פועל";
-"Extract paralelo" = "חילוץ מקבילי";
-"Extract timeout (s)" = "פסק זמן לחילוץ (שנ')";
+"Extração paralela" = "חילוץ מקבילי";
+"Timeout da extração (s)" = "פסק זמן לחילוץ (שנ׳)";
 "Falha" = "נכשל";
 "Falha ao salvar" = "השמירה נכשלה";
 "Fallbacks" = "גיבויים";
@@ -300,8 +300,8 @@
 "Provedor" = "ספק";
 "Provedor usado para busca na web e pesquisa profunda." = "ספק המשמש לחיפוש ברשת ולמחקר מעמיק.";
 "Resultados por busca" = "תוצאות לחיפוש";
-"Run timeout (s)" = "פסק זמן להרצה (שנ')";
-"Search Engine ID (CX)" = "מזהה מנוע חיפוש (CX)";
+"Timeout de execução (s)" = "פסק זמן להרצה (שנ׳)";
+"ID do mecanismo de busca (CX)" = "מזהה מנוע החיפוש (CX)";
 "Senha atual" = "סיסמה נוכחית";
 "Senha atualizada" = "הסיסמה עודכנה";
 "Servidor SMTP" = "שרת SMTP";
@@ -379,7 +379,7 @@
 "Atualizar" = "רענון";
 "Só um administrador pode atualizar a lista de modelos." = "רק מנהל יכול לרענן את רשימת המודלים.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "לא נמצא אף מודל. האם נקודת הקצה הגיבה?";
-"%lld modelo(s) encontrado(s)." = "נמצאו %lld מודלים.";
+"Modelos encontrados: %lld" = "מודלים שנמצאו: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "אין מודלים במטמון. השתמש ברענון כדי לבדוק את נקודת הקצה.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -465,8 +465,8 @@
 "Escolher modelos" = "בחירת מודלים";
 "Padrão do servidor" = "ברירת המחדל של השרת";
 "Outros modelos" = "מודלים אחרים";
-"%lld modelo(s) · ativo" = "%lld דגמים · פעיל";
-"%lld modelo(s) · desativado" = "%lld דגמים · מושבת";
+"Modelos: %lld · ativo" = "מודלים: %lld · פעיל";
+"Modelos: %lld · desativado" = "מודלים: %lld · כבוי";
 "· %lld rodadas" = "· %lld סבבים";
 "Personalizado…" = "מותאם אישית…";
 "online" = "מקוון";
@@ -535,7 +535,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB פנוי / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB פנוי / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "אורגן: %lld הוסרו (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "אורגן: %lld ← %lld · הוסרו: %lld";
 "Falha ao organizar: %@" = "הארגון נכשל: %@";
 "Backup exportado." = "הגיבוי יוצא.";
 "Salvo." = "נשמר.";
@@ -582,7 +582,7 @@
 "O servidor não listou nenhum modelo." = "השרת לא הציג אף מודל.";
 "OK" = "אישור";
 "Ocultar chave" = "הסתר מפתח";
-"Olá! Esta é a voz do endpoint." = "שלום! זה הקול של נקודת הקצה.";
+"Olá! É assim que a voz vai soar." = "שלום! ככה הקול יישמע.";
 "Outro…" = "אחר…";
 "Só minhas vozes" = "רק הקולות שלי";
 "URL base" = "כתובת בסיס";

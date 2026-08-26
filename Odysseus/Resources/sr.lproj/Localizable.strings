@@ -141,7 +141,7 @@
 "Padrão" = "Подразумевано";
 "Padrões de IA" = "Подешавања ВИ";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "За већину провајдера, IMAP акредитиви функционишу. Користите App Password ако имате 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Ранија истраживања";
 "Pede %@ antes de usar a senha salva." = "Тражи %@ пре коришћења сачуване лозинке.";
 "Pede %@ ao abrir e ao voltar pro app." = "Тражи %@ при отварању и повратку у апликацију.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Захтев за слику → подразумевани провајдер → ако не успе и резервна опција је укључена, покушава следеће → ако сви не успеју, јасна грешка. Евиденција не садржи осетљиве податке. Напредно генерисање (txt2img, upscale, inpaint, outpaint, multi-GPU) документовано је у DIFFUSION_COMFYUI_PLAN.md за следећу фазу.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Куцам";
 "Espaços" = "Простори";
 "Executando" = "Извршава се";
-"Extract paralelo" = "Паралелно издвајање";
-"Extract timeout (s)" = "Extract timeout (с)";
+"Extração paralela" = "Паралелна екстракција";
+"Timeout da extração (s)" = "Timeout екстракције (s)";
 "Falha" = "Грешка";
 "Falha ao salvar" = "Чување није успело";
 "Fallbacks" = "Резервне опције";
@@ -300,8 +300,8 @@
 "Provedor" = "Провајдер";
 "Provedor usado para busca na web e pesquisa profunda." = "Провајдер за веб претрагу и дубинску претрагу.";
 "Resultados por busca" = "Резултата по претрази";
-"Run timeout (s)" = "Run timeout (с)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout извршавања (s)";
+"ID do mecanismo de busca (CX)" = "ID претраживача (CX)";
 "Senha atual" = "Тренутна лозинка";
 "Senha atualizada" = "Лозинка је ажурирана";
 "Servidor SMTP" = "SMTP сервер";
@@ -389,7 +389,7 @@
 "Atualizar" = "Освежи";
 "Só um administrador pode atualizar a lista de modelos." = "Само администратор може да освежи листу модела.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Нису пронађени модели. Да ли је крајња тачка одговорила?";
-"%lld modelo(s) encontrado(s)." = "Пронађено модела: %lld.";
+"Modelos encontrados: %lld" = "Пронађени модели: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Нема кешираних модела. Користите «Освежи» да испитате крајњу тачку.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Изабери моделе";
 "Padrão do servidor" = "Подразумевано са сервера";
 "Outros modelos" = "Остали модели";
-"%lld modelo(s) · ativo" = "%lld модел(а) · активан";
-"%lld modelo(s) · desativado" = "%lld модел(а) · онемогућен";
+"Modelos: %lld · ativo" = "Модели: %lld · активно";
+"Modelos: %lld · desativado" = "Модели: %lld · искључено";
 "· %lld rodadas" = "· %lld рунди";
 "Personalizado…" = "Прилагођено…";
 "online" = "на мрежи";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB слободно / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB слободно / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Организовано: уклоњено %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Сређено: %lld → %lld · уклоњено: %lld";
 "Falha ao organizar: %@" = "Организовање није успело: %@";
 "Backup exportado." = "Резервна копија је извезена.";
 "Salvo." = "Сачувано.";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "Сервер није навео ниједан модел.";
 "OK" = "У реду";
 "Ocultar chave" = "Сакриј кључ";
-"Olá! Esta é a voz do endpoint." = "Здраво! Ово је глас endpoint-а.";
+"Olá! É assim que a voz vai soar." = "Здраво! Овако ће глас звучати.";
 "Outro…" = "Друго…";
 "Só minhas vozes" = "Само моји гласови";
 "URL base" = "Основни URL";

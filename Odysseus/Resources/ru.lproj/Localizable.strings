@@ -141,7 +141,7 @@
 "Padrão" = "По умолчанию";
 "Padrões de IA" = "Настройки ИИ";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Для большинства провайдеров подходят данные IMAP. Используйте App Password, если включён 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Прошлые исследования";
 "Pede %@ antes de usar a senha salva." = "Запрашивает %@ перед использованием сохранённого пароля.";
 "Pede %@ ao abrir e ao voltar pro app." = "Запрашивает %@ при открытии и возврате в приложение.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Запрос изображения → провайдер по умолчанию → если не удалось и запасной вариант включён, пробует следующих → если все не удались, понятная ошибка. Журналы не содержат конфиденциальных данных. Расширенная генерация (txt2img, upscale, inpaint, outpaint, multi-GPU) задокументирована в DIFFUSION_COMFYUI_PLAN.md для следующей фазы.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Пишу";
 "Espaços" = "Пространства";
 "Executando" = "Выполняется";
-"Extract paralelo" = "Параллельное извлечение";
-"Extract timeout (s)" = "Extract timeout (с)";
+"Extração paralela" = "Параллельное извлечение";
+"Timeout da extração (s)" = "Timeout извлечения (с)";
 "Falha" = "Ошибка";
 "Falha ao salvar" = "Не удалось сохранить";
 "Fallbacks" = "Запасные варианты";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Порт SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Провайдер для веб-поиска и глубокого поиска.";
 "Resultados por busca" = "Результатов на поиск";
-"Run timeout (s)" = "Run timeout (с)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout выполнения (с)";
+"ID do mecanismo de busca (CX)" = "ID поисковой системы (CX)";
 "Senha atual" = "Текущий пароль";
 "Senha atualizada" = "Пароль обновлён";
 "Servidor SMTP" = "Сервер SMTP";
@@ -389,7 +389,7 @@
 "Atualizar" = "Обновить";
 "Só um administrador pode atualizar a lista de modelos." = "Только администратор может обновить список моделей.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Модели не найдены. Конечная точка ответила?";
-"%lld modelo(s) encontrado(s)." = "Найдено моделей: %lld.";
+"Modelos encontrados: %lld" = "Найдено моделей: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Нет моделей в кэше. Нажмите «Обновить», чтобы опросить конечную точку.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Выбрать модели";
 "Padrão do servidor" = "По умолчанию с сервера";
 "Outros modelos" = "Другие модели";
-"%lld modelo(s) · ativo" = "%lld модел(ей) · активен";
-"%lld modelo(s) · desativado" = "%lld модел(ей) · отключён";
+"Modelos: %lld · ativo" = "Модели: %lld · включено";
+"Modelos: %lld · desativado" = "Модели: %lld · выключено";
 "· %lld rodadas" = "· %lld раундов";
 "Personalizado…" = "Свой вариант…";
 "online" = "в сети";
@@ -545,7 +545,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f ГБ свободно / %.0f ГБ";
 "%.1f GB livre / %.1f GB" = "%.1f ГБ свободно / %.1f ГБ";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Организовано: удалено %lld (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Прибрано: %lld → %lld · удалено: %lld";
 "Falha ao organizar: %@" = "Ошибка организации: %@";
 "Backup exportado." = "Резервная копия экспортирована.";
 "Salvo." = "Сохранено.";
@@ -592,7 +592,7 @@
 "O servidor não listou nenhum modelo." = "Сервер не перечислил ни одной модели.";
 "OK" = "OK";
 "Ocultar chave" = "Скрыть ключ";
-"Olá! Esta é a voz do endpoint." = "Привет! Это голос endpoint-а.";
+"Olá! É assim que a voz vai soar." = "Привет! Вот как будет звучать голос.";
 "Outro…" = "Другое…";
 "Só minhas vozes" = "Только мои голоса";
 "URL base" = "Базовый URL";

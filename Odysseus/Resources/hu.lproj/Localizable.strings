@@ -141,7 +141,7 @@
 "Padrão" = "Alapértelmezett";
 "Padrões de IA" = "MI alapértelmezések";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "A legtöbb szolgáltatónál az IMAP hitelesítő adatok elegendők. Ha 2FA van engedélyezve, használjon App Password-öt.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Korábbi kutatások";
 "Pede %@ antes de usar a senha salva." = "%@-t kér a mentett jelszó használata előtt.";
 "Pede %@ ao abrir e ao voltar pro app." = "%@-t kér az alkalmazás megnyitásakor és visszatéréskor.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Képkérés → alapértelmezett szolgáltató → ha meghiúsul és a tartalék be van kapcsolva, a következőket próbálja → ha mind meghiúsul, egyértelmű hiba. A naplók nem tartalmaznak érzékeny adatokat. A mély generálás (txt2img, upscale, inpaint, outpaint, multi-GPU) a DIFFUSION_COMFYUI_PLAN.md-ben van dokumentálva a következő fázisra.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Írás";
 "Espaços" = "Terek";
 "Executando" = "Futtatás";
-"Extract paralelo" = "Párhuzamos kinyerés";
-"Extract timeout (s)" = "Kinyerési időtúllépés (mp)";
+"Extração paralela" = "Párhuzamos kinyerés";
+"Timeout da extração (s)" = "Kinyerés időtúllépése (mp)";
 "Falha" = "Sikertelen";
 "Falha ao salvar" = "Mentés sikertelen";
 "Fallbacks" = "Tartalékok";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP port";
 "Provedor usado para busca na web e pesquisa profunda." = "Webkereséshez és mélykutatáshoz használt szolgáltató.";
 "Resultados por busca" = "Eredmények keresésenként";
-"Run timeout (s)" = "Futási időtúllépés (mp)";
-"Search Engine ID (CX)" = "Keresőmotor azonosítója (CX)";
+"Timeout de execução (s)" = "Futás időtúllépése (mp)";
+"ID do mecanismo de busca (CX)" = "Keresőmotor-azonosító (CX)";
 "Senha atual" = "Jelenlegi jelszó";
 "Senha atualizada" = "Jelszó frissítve";
 "Servidor SMTP" = "SMTP szerver";
@@ -387,7 +387,7 @@
 "Atualizar" = "Frissítés";
 "Só um administrador pode atualizar a lista de modelos." = "A modellek listáját csak egy admin frissítheti.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Nem található modell. Válaszolt a végpont?";
-"%lld modelo(s) encontrado(s)." = "%lld modell található.";
+"Modelos encontrados: %lld" = "Talált modellek: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Nincs gyorsítótárazott modell. Használja a Frissítést a végpont megvizsgálásához.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Modellek kiválasztása";
 "Padrão do servidor" = "Kiszolgáló alapértelmezése";
 "Outros modelos" = "További modellek";
-"%lld modelo(s) · ativo" = "%lld modell · aktív";
-"%lld modelo(s) · desativado" = "%lld modell · letiltva";
+"Modelos: %lld · ativo" = "Modellek: %lld · aktív";
+"Modelos: %lld · desativado" = "Modellek: %lld · kikapcsolva";
 "· %lld rodadas" = "· %lld kör";
 "Personalizado…" = "Egyéni…";
 "online" = "online";
@@ -543,7 +543,7 @@
 "%.0f GB livre / %.0f GB" = "%.0f GB szabad / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB szabad / %.1f GB";
 "http://host:port" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Rendezve: %lld eltávolítva (%lld → %lld).";
+"Organizado: %lld → %lld · removidas: %lld" = "Rendezve: %lld → %lld · eltávolítva: %lld";
 "Falha ao organizar: %@" = "A rendezés nem sikerült: %@";
 "Backup exportado." = "Biztonsági mentés exportálva.";
 "Salvo." = "Mentve.";
@@ -590,7 +590,7 @@
 "O servidor não listou nenhum modelo." = "A szerver egyetlen modellt sem sorolt fel.";
 "OK" = "OK";
 "Ocultar chave" = "Kulcs elrejtése";
-"Olá! Esta é a voz do endpoint." = "Szia! Ez az endpoint hangja.";
+"Olá! É assim que a voz vai soar." = "Szia! Így fog szólni a hang.";
 "Outro…" = "Egyéb…";
 "Só minhas vozes" = "Csak a saját hangjaim";
 "URL base" = "Alap-URL";
