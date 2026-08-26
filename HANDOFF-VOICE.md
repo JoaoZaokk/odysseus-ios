@@ -458,3 +458,112 @@ Depois disso, em ordem de retorno:
 
 ⚠️ A pendência 3 ("SSE do TTS do Fish — DECIDIDO NÃO FAZER") está **superada**: o streaming saiu,
 por HTTP chunked, na seção *Streaming de áudio*. O que continua não feito é só o WebSocket.
+
+---
+
+# Release 1.8 (15) — estado em 2026-08-26 05:10
+
+## O que já está feito
+
+Branch `voice-endpoint-and-barge-in`, dois commits, **pushado**:
+
+```
+3ab4ef6  chore(release): iOS 1.8 (build 15)
+6e4eb92  feat(voice): own speech endpoint, streaming playback, barge-in...
+```
+
+Working tree limpo. PR ainda não aberto. `origin` é espelho público — o diff passou pelo portão
+do `SECURITY_REVIEW.md` (zero team id, IP privado, e-mail, chave, cookie).
+
+⚠️ **Vazei o UDID do iPhone no primeiro push** (`HANDOFF-VOICE.md` linha 4). Scrubado, commit
+reescrito, `--force-with-lease`. O SHA morto era `e8d4f40`; o GitHub ainda serve objeto solto por
+SHA por um tempo. Causa: meu filtro de sanitização descartava linhas com minúscula para evitar
+falso positivo de team id, e a linha era texto corrido em português. **Filtro consertado na
+cabeça, não no script — não existe script.** Quem for fazer o próximo push, procure UDID à mão.
+
+**Binário entregue e aceito:**
+
+| | |
+|---|---|
+| App Store Connect app id | `6783977350` (Odysseus - Móvel) |
+| Versão iOS | 1.8, estado **PREPARE_FOR_SUBMISSION** |
+| Build anexado | **15**, `VALID`, entregue 26/08 00:56, expira 23/11 |
+| Delivery UUID | `92fcba39-f03c-4e4e-8bd1-075a5c8b5ac4` |
+| Conformidade de exportação | resolvida no binário (`ITSAppUsesNonExemptEncryption: false`) |
+
+O dono submete a revisão **ele mesmo**. Não submeter por ele.
+
+## Como falar com o App Store Connect
+
+Chave de API em `~/.appstoreconnect/private_keys/AuthKey_*.p8`; o **key id e o issuer id vivem em
+`_backups/BACKUPS-IOS/odysseus-appstore-deliver/key.json`, fora deste repo** — não copiar para cá,
+identificam a conta do dono e este repo é público.
+
+⚠️ O `python3` do sistema tem o cert store quebrado (`CERTIFICATE_VERIFY_FAILED`). Gere o JWT no
+Python (`pyjwt` + `cryptography`, instalados) e faça a chamada com **curl**.
+
+```python
+import jwt, time
+key = open(P8).read()
+tok = jwt.encode({"iss": ISSUER, "exp": int(time.time())+900, "aud": "appstoreconnect-v1"},
+                 key, algorithm="ES256", headers={"kid": KEY_ID, "typ": "JWT"})
+```
+
+Não existe fastlane neste repo. `_backups/.../odysseus-appstore-deliver` só manda ficha da loja.
+O binário saiu por `xcodebuild archive` → `-exportArchive` (method `app-store-connect`,
+`manageAppVersionAndBuildNumber: false`) → `xcrun altool --upload-app`. Sempre `--validate-app`
+antes: validação não queima o número do build, upload queima.
+
+## PENDENTE — notas da versão nos 30 locais
+
+**As notas que estão lá agora são do build 13** e uma frase virou **falsa** com o build 15:
+*"O reconhecimento de fala agora segue o idioma do app"* — deixou de seguir, virou ajuste próprio.
+Submeter assim conta pro usuário o contrário do que o app faz.
+
+Texto **aprovado pelo dono** em 26/08, a ser traduzido para os 30 locais:
+
+> **pt-BR** — Endpoint de voz próprio: use qualquer serviço compatível com a API de áudio da
+> OpenAI, ou o Fish Audio, tanto para o reconhecimento quanto para a voz da IA — com catálogo de
+> vozes e teste embutido. O idioma da fala agora é um ajuste separado do idioma do app, então dá
+> para ditar em outra língua sem trocar o aplicativo inteiro. A primeira frase da resposta começa
+> a tocar enquanto ainda está sendo gerada. E interromper falando parou de se atrapalhar com o eco
+> da própria IA.
+
+> **en-US** — Your own speech endpoint: use any service that speaks OpenAI's audio API, or Fish
+> Audio, for both recognition and the assistant's voice — with a voice catalogue and a built-in
+> test. Speech language is now its own setting, separate from the app's, so you can dictate in
+> another language without switching the whole app. The first sentence of a reply starts playing
+> while it's still being generated. And talking over the assistant no longer trips on its own echo.
+
+Os 30 locais (a ficha tem 30, **não** os 11 do `deliver`, nem os 44 do app):
+
+```
+ar-SA cs de-DE en-US es-ES es-MX fi fr-FR he hi hr hu id it ja ko ms nl-NL pl
+pt-BR pt-PT ru sk sv th tr uk vi zh-Hans zh-Hant
+```
+
+Gravar com um PATCH por local:
+
+```
+PATCH /v1/appStoreVersionLocalizations/{id}
+{"data":{"id":"{id}","type":"appStoreVersionLocalizations",
+         "attributes":{"whatsNew":"..."}}}
+```
+
+Os `{id}` saem de
+`GET /v1/appStoreVersions/{versionId}/appStoreVersionLocalizations?limit=50`.
+O `{versionId}` da 1.8 iOS descobre-se por
+`GET /v1/apps/6783977350/appStoreVersions?filter[versionString]=1.8&filter[platform]=IOS`
+— não deixar hardcoded, muda a cada versão.
+
+## Ainda em aberto
+
+1. **TestFlight sem nenhum grupo** — nem interno, nem público. O build 15 está lá, mas não há
+   para quem distribuir. Falta o dono dizer qual criar.
+2. **Conserto da tabela markdown foi para o build 15 sem rodar em aparelho.** Primeiro suspeito
+   se der ruim na voz.
+3. **Qualidade das traduções não foi verificada.** Os 44 catálogos batem estruturalmente (594
+   chaves, conjuntos idênticos, 0 divergência de `%@`/`%lld`), mas as 6 chaves novas × 43 idiomas
+   foram escritas pelo agente, sem revisão de nativo e sem ver renderizado. O mesmo vale para as
+   notas da loja acima.
+4. Servidor: 14–23 s até o primeiro token do modelo. 96% da espera, e fora do alcance do iOS.
