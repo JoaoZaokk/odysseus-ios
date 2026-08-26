@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "Ziņu diktēšanai un — brīvroku režīmā — lai pārtrauktu MI, kamēr tas runā.";
+"NSMicrophoneUsageDescription" = "Ziņu diktēšanai un, brīvroku režīmā, lai pārtrauktu MI, kamēr tas runā.";
 "NSSpeechRecognitionUsageDescription" = "Lai pārvērstu runu tekstā — ierīcē vai pakalpojumā, ko izvēlies iestatījumos.";
 "NSLocalNetworkUsageDescription" = "Lietotnei Odysseus ir nepieciešama piekļuve lokālajam tīklam, lai izveidotu savienojumu ar jūsu MI serveri.";
 "NSFaceIDUsageDescription" = "Odysseus izmanto Face ID, lai bloķētu lietotni un ļautu jums automātiski pieteikties (pēc izvēles).";

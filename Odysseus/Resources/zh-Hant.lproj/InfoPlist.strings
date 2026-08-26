@@ -4,6 +4,6 @@
    that is what App Review flagged under guideline 4.0 (Design). */
 
 "NSMicrophoneUsageDescription" = "用於語音輸入訊息，以及在免持模式下打斷正在說話的 AI。";
-"NSSpeechRecognitionUsageDescription" = "用於將語音轉成文字——在裝置上，或在你於設定中選擇的服務上處理。";
+"NSSpeechRecognitionUsageDescription" = "用於將語音轉成文字——在裝置上，或在「設定」中選擇的服務上處理。";
 "NSLocalNetworkUsageDescription" = "Odysseus 需要區域網路存取權，才能連線到你網路上的 AI 伺服器。";
 "NSFaceIDUsageDescription" = "Odysseus 使用 Face ID 鎖定 App 並自動登入（選用）。";

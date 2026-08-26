@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "འཕྲིན་ཡིག་ངག་ཐོག་ནས་འབྲི་བ་དང་། ལག་པ་མེད་པའི་སྐབས་སུ་མཁོ་སྤྱོད་སྐད་ཆ་བཤད་བཞིན་པར་བར་ཆད་གཏོང་བའི་ཆེད་དུ།";
+"NSMicrophoneUsageDescription" = "འཕྲིན་ཡིག་ངག་ཐོག་ནས་འབྲི་བ་དང་། ལག་པ་མེད་པར་ མཁོ་སྤྱོད་སྐད་ཆ་བཤད་བཞིན་པར་བར་ཆད་གཏོང་བའི་ཆེད་དུ།";
 "NSSpeechRecognitionUsageDescription" = "ཁྱེད་ཀྱི་སྐད་ཆ་ཡི་གེར་བསྒྱུར་བའི་ཆེད་དུ།  སྒྲིག་ཆས་སྟེང་ངམ་སྒྲིག་འགོད་ནང་འདེམས་པའི་ཞབས་ཞུ་སྟེང་།";
 "NSLocalNetworkUsageDescription" = "ཁྱེད་རང་གི་དྲ་ལམ་ནང་ཡོད་པའི་མི་བཟོས་རིག་ནུས་ཞབས་ཞུའི་རྩིས་འཁོར་དང་འབྲེལ་མཐུད་བྱེད་པའི་ཆེད། Odysseus ལ་ས་གནས་དྲ་ལམ་ལ་འཇུག་སྤྱོད་བྱེད་པའི་ཆོག་མཆན་དགོས།";
 "NSFaceIDUsageDescription" = "Odysseus ཡིས་ Face ID བེད་སྤྱོད་བྱས་ནས་ཉེར་སྤྱོད་ལ་ཟྭ་རྒྱག་པ་དང་། རང་འགུལ་གྱིས་ནང་འཛུལ་བྱེད་ཀྱི་ཡོད། (གདམ་ཀ་ཡིན།)";

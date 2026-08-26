@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "لإملاء الرسائل، وفي وضع دون استخدام اليدين لمقاطعة الذكاء الاصطناعي أثناء حديثه.";
+"NSMicrophoneUsageDescription" = "لإملاء الرسائل، وفي الوضع الحر لمقاطعة الذكاء الاصطناعي أثناء حديثه.";
 "NSSpeechRecognitionUsageDescription" = "لتحويل كلامك إلى نص — على الجهاز أو على الخدمة التي تختارها في الإعدادات.";
 "NSLocalNetworkUsageDescription" = "يحتاج Odysseus إلى الوصول إلى الشبكة المحلية للاتصال بخادم الذكاء الاصطناعي الخاص بك.";
 "NSFaceIDUsageDescription" = "يستخدم Odysseus خاصية Face ID لقفل التطبيق وتسجيل دخولك تلقائيًا (اختياري).";

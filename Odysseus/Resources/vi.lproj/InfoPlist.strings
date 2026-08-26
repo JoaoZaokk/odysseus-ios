@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "Để đọc tin nhắn bằng giọng nói và — ở chế độ rảnh tay — ngắt lời AI khi nó đang nói.";
+"NSMicrophoneUsageDescription" = "Để nhập tin nhắn bằng giọng nói và — ở chế độ rảnh tay — ngắt lời AI khi nó đang nói.";
 "NSSpeechRecognitionUsageDescription" = "Để chuyển giọng nói của bạn thành văn bản — trên thiết bị hoặc trên dịch vụ bạn chọn trong Cài đặt.";
 "NSLocalNetworkUsageDescription" = "Odysseus cần quyền truy cập mạng cục bộ để kết nối với máy chủ AI của bạn.";
 "NSFaceIDUsageDescription" = "Odysseus sử dụng Face ID để khóa ứng dụng và tự động đăng nhập (tùy chọn).";

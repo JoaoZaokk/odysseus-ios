@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "Na diktovanie správ a — v režime hands-free — na prerušenie AI, keď hovorí.";
+"NSMicrophoneUsageDescription" = "Na diktovanie správ a, v režime hands-free, na prerušenie AI, keď hovorí.";
 "NSSpeechRecognitionUsageDescription" = "Na prevod reči na text — v zariadení alebo v službe zvolenej v Nastaveniach.";
 "NSLocalNetworkUsageDescription" = "Odysseus potrebuje prístup k lokálnej sieti, aby sa mohol pripojiť k vášmu serveru s AI.";
 "NSFaceIDUsageDescription" = "Odysseus používa Face ID na uzamknutie aplikácie a automatické prihlásenie (voliteľné).";

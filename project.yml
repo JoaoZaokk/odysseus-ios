@@ -84,9 +84,10 @@ targets:
         # on-device transcription, and closed the stalls found in audit; 17
         # retunes the barge-in floor so the shipping default admits a soft
         # voice, covers the endpoint's wire shape, and makes "test voice" take
-        # the path the conversation actually takes.
+        # the path the conversation actually takes; 18 carries the owner's
+        # review of the 44 permission dialogs.
         MARKETING_VERSION: "1.8"
-        CURRENT_PROJECT_VERSION: "17"
+        CURRENT_PROJECT_VERSION: "18"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

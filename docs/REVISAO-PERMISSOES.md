@@ -15,7 +15,7 @@ O original é o português (Brasil), que é a língua em que o app foi escrito.
 | | Frase 1 — reconhecimento de fala | Frase 2 — microfone |
 |---|---|---|
 | **pt-BR** | Para transcrever sua voz em texto, no próprio aparelho ou no serviço que você escolher nos Ajustes. | Para ditar mensagens por voz e, no modo mãos livres, interromper a IA enquanto ela fala. |
-| **en** | Odysseus transcribes your speech into text — on your device or on the service you choose in Settings. | Odysseus uses the microphone so you can dictate your messages, and — in hands-free mode — interrupt the assistant while it is speaking. |
+| **en** | Odysseus transcribes your speech into text — on your device or on the service you choose in Settings. | Odysseus uses the microphone so you can dictate your messages and, in hands-free mode, interrupt the AI while it’s speaking. |
 
 Detalhes que importam na tradução:
 
@@ -39,7 +39,7 @@ Correção:
 
 **2. Microfone**
 
-> لإملاء الرسائل، وفي وضع دون استخدام اليدين لمقاطعة الذكاء الاصطناعي أثناء حديثه.
+> لإملاء الرسائل، وفي الوضع الحر لمقاطعة الذكاء الاصطناعي أثناء حديثه.
 
 Correção: 
 
@@ -53,7 +53,7 @@ Correção:
 
 **2. Microfone**
 
-> Для дыктоўкі паведамленняў і — у рэжыме гучнай сувязі — каб перабіць ШІ, пакуль ён гаворыць.
+> Для дыктоўкі паведамленняў і — у рэжыме гучнай сувязі — каб перарваць ШІ, пакуль ён гаворыць.
 
 Correção: 
 
@@ -81,7 +81,7 @@ Correção:
 
 **2. Microfone**
 
-> বার্তা বলে লেখার জন্য এবং — হ্যান্ডস-ফ্রি মোডে — AI কথা বলার সময় তাকে থামানোর জন্য।
+> ভয়েস বার্তা ডিক্টেট করার জন্য এবং — হ্যান্ডস-ফ্রি মোডে — AI কথা বলার সময় তাকে থামানোর জন্য।
 
 Correção: 
 
@@ -95,7 +95,7 @@ Correção:
 
 **2. Microfone**
 
-> འཕྲིན་ཡིག་ངག་ཐོག་ནས་འབྲི་བ་དང་། ལག་པ་མེད་པའི་སྐབས་སུ་མཁོ་སྤྱོད་སྐད་ཆ་བཤད་བཞིན་པར་བར་ཆད་གཏོང་བའི་ཆེད་དུ།
+> འཕྲིན་ཡིག་ངག་ཐོག་ནས་འབྲི་བ་དང་། ལག་པ་མེད་པར་ མཁོ་སྤྱོད་སྐད་ཆ་བཤད་བཞིན་པར་བར་ཆད་གཏོང་བའི་ཆེད་དུ།
 
 Correção: 
 
@@ -109,7 +109,7 @@ Correção:
 
 **2. Microfone**
 
-> K diktování zpráv a — v režimu hands-free — k přerušení AI, když mluví.
+> K diktování zpráv a, v režimu hands-free, k přerušení AI, když mluví.
 
 Correção: 
 
@@ -117,13 +117,13 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> Um deine Sprache in Text umzuwandeln – auf dem Gerät oder über den in den Einstellungen gewählten Dienst.
+> Um Ihre Sprache in Text umzuwandeln – auf dem Gerät oder über den in den Einstellungen gewählten Dienst.
 
 Correção: 
 
 **2. Microfone**
 
-> Zum Diktieren von Nachrichten und – im Freisprechmodus – um die KI zu unterbrechen, während sie spricht.
+> Zum Diktieren Ihrer Nachrichten und – im Freisprechmodus – um die KI zu unterbrechen, während sie spricht.
 
 Correção: 
 
@@ -131,13 +131,13 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> Um deine Sprache in Text umzuwandeln – auf dem Gerät oder über den in den Einstellungen gewählten Dienst.
+> Um Ihre Sprache in Text umzuwandeln – auf dem Gerät oder über den in den Einstellungen gewählten Dienst.
 
 Correção: 
 
 **2. Microfone**
 
-> Zum Diktieren von Nachrichten und – im Freisprechmodus – um die KI zu unterbrechen, während sie spricht.
+> Zum Diktieren Ihrer Nachrichten und – im Freisprechmodus – um die KI zu unterbrechen, während sie spricht.
 
 Correção: 
 
@@ -145,13 +145,13 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> Um deine Sprache in Text umzuwandeln – auf dem Gerät oder über den in den Einstellungen gewählten Dienst.
+> Um Ihre Sprache in Text umzuwandeln – auf dem Gerät oder über den in den Einstellungen gewählten Dienst.
 
 Correção: 
 
 **2. Microfone**
 
-> Zum Diktieren von Nachrichten und – im Freisprechmodus – um die KI zu unterbrechen, während sie spricht.
+> Zum Diktieren Ihrer Nachrichten und – im Freisprechmodus – um die KI zu unterbrechen, während sie spricht.
 
 Correção: 
 
@@ -165,7 +165,7 @@ Correção:
 
 **2. Microfone**
 
-> Odysseus uses the microphone so you can dictate your messages, and — in hands-free mode — interrupt the assistant while it is speaking.
+> Odysseus uses the microphone so you can dictate your messages and, in hands-free mode, interrupt the AI while it’s speaking.
 
 Correção: 
 
@@ -193,7 +193,7 @@ Correção:
 
 **2. Microfone**
 
-> برای دیکته کردن پیام‌ها و — در حالت بدون دست — قطع کردن هوش مصنوعی هنگام صحبت.
+> برای دیکته کردن پیام‌ها و — در حالت دست‌آزاد — قطع کردن هوش مصنوعی هنگام صحبت.
 
 Correção: 
 
@@ -215,7 +215,7 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> Pour transcrire votre voix en texte, sur l’appareil ou sur le service choisi dans les Réglages.
+> Pour transcrire votre voix en texte, sur l’appareil ou via le service choisi dans les Réglages.
 
 Correção: 
 
@@ -235,7 +235,7 @@ Correção:
 
 **2. Microfone**
 
-> כדי להכתיב הודעות, ובמצב דיבורית — לקטוע את הבינה המלאכותית תוך כדי דיבור.
+> כדי להכתיב הודעות, ובמצב דיבורית — להפסיק את הבינה המלאכותית בזמן שהיא מדברת.
 
 Correção: 
 
@@ -249,7 +249,7 @@ Correção:
 
 **2. Microfone**
 
-> संदेश बोलकर लिखने के लिए और — हैंड्स-फ़्री मोड में — AI के बोलते समय उसे टोकने के लिए।
+> संदेश बोलकर लिखने के लिए और — हैंड्स-फ़्री मोड में — AI के बोलते समय उसे बीच में रोकने के लिए।
 
 Correção: 
 
@@ -263,7 +263,7 @@ Correção:
 
 **2. Microfone**
 
-> Za diktiranje poruka i — u hands-free načinu — za prekidanje AI-ja dok govori.
+> Za diktiranje poruka i — u hands-free načinu — za prekidanje umjetne inteligencije dok govori.
 
 Correção: 
 
@@ -291,7 +291,7 @@ Correção:
 
 **2. Microfone**
 
-> Untuk mendiktekan pesan dan — dalam mode bebas genggam — menyela AI saat sedang berbicara.
+> Untuk mendiktekan pesan dan — dalam mode hands-free — menyela AI saat sedang berbicara.
 
 Correção: 
 
@@ -333,7 +333,7 @@ Correção:
 
 **2. Microfone**
 
-> 메시지를 음성으로 입력하고, 핸즈프리 모드에서 AI가 말하는 도중 끼어들기 위해 사용합니다.
+> 메시지를 음성으로 입력하고, 핸즈프리 모드에서 AI가 말하는 도중 중단시키기 위해 사용합니다.
 
 Correção: 
 
@@ -361,7 +361,7 @@ Correção:
 
 **2. Microfone**
 
-> Ziņu diktēšanai un — brīvroku režīmā — lai pārtrauktu MI, kamēr tas runā.
+> Ziņu diktēšanai un, brīvroku režīmā, lai pārtrauktu MI, kamēr tas runā.
 
 Correção: 
 
@@ -397,13 +397,13 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> Om je spraak om te zetten in tekst, op je apparaat of via de dienst die je in Instellingen kiest.
+> Om uw spraak om te zetten in tekst, op uw apparaat of via de dienst die u in Instellingen kiest.
 
 Correção: 
 
 **2. Microfone**
 
-> Om berichten te dicteren en, in handsfree modus, de AI te onderbreken terwijl die praat.
+> Om uw berichten te dicteren en, in handsfree modus, de AI te onderbreken terwijl die praat.
 
 Correção: 
 
@@ -459,7 +459,7 @@ Correção:
 
 **2. Microfone**
 
-> Для диктовки сообщений и — в режиме громкой связи — чтобы перебить ИИ, пока он говорит.
+> Для диктовки сообщений и — в режиме громкой связи — чтобы прервать ИИ, пока он говорит.
 
 Correção: 
 
@@ -473,7 +473,7 @@ Correção:
 
 **2. Microfone**
 
-> Na diktovanie správ a — v režime hands-free — na prerušenie AI, keď hovorí.
+> Na diktovanie správ a, v režime hands-free, na prerušenie AI, keď hovorí.
 
 Correção: 
 
@@ -543,7 +543,7 @@ Correção:
 
 **2. Microfone**
 
-> Mesajları sesle yazdırmak ve — eller serbest modda — yapay zekâ konuşurken sözünü kesmek için.
+> Mesajları sesli dikte etmek ve — eller serbest modda — yapay zekâ konuşurken sözünü kesmek için.
 
 Correção: 
 
@@ -571,7 +571,7 @@ Correção:
 
 **2. Microfone**
 
-> Для диктування повідомлень і — у режимі гучного зв’язку — щоб перебити ШІ, поки він говорить.
+> Для диктування повідомлень і — у режимі гучного зв’язку — щоб перервати ШІ, поки він говорить.
 
 Correção: 
 
@@ -585,7 +585,7 @@ Correção:
 
 **2. Microfone**
 
-> پیغامات بولنے کے لیے اور — ہینڈز فری موڈ میں — بات کرتے ہوئے AI کو ٹوکنے کے لیے۔
+> پیغامات بول کر لکھنے کے لیے اور — ہینڈز فری موڈ میں — بات کرتے ہوئے AI کو درمیان میں روکنے کے لیے۔
 
 Correção: 
 
@@ -599,7 +599,7 @@ Correção:
 
 **2. Microfone**
 
-> Để đọc tin nhắn bằng giọng nói và — ở chế độ rảnh tay — ngắt lời AI khi nó đang nói.
+> Để nhập tin nhắn bằng giọng nói và — ở chế độ rảnh tay — ngắt lời AI khi nó đang nói.
 
 Correção: 
 
@@ -607,7 +607,7 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> 用嚟將語音轉成文字——喺裝置上，或者喺你喺設定揀嘅服務上處理。
+> 用嚟將語音轉成文字——喺裝置上，或者喺「設定」入面揀嘅服務上處理。
 
 Correção: 
 
@@ -621,7 +621,7 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> 用于将语音转成文字——在设备上，或在你于设置中选择的服务上处理。
+> 用于将语音转成文字——在设备上，或在「设置」中选择的服务上处理。
 
 Correção: 
 
@@ -635,7 +635,7 @@ Correção:
 
 **1. Reconhecimento de fala**
 
-> 用於將語音轉成文字——在裝置上，或在你於設定中選擇的服務上處理。
+> 用於將語音轉成文字——在裝置上，或在「設定」中選擇的服務上處理。
 
 Correção: 
 
