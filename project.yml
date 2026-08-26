@@ -82,8 +82,8 @@ targets:
         # ten locales Apple has no speech model for (it says so instead), the
         # English region is picked deterministically, and on-device recognition
         # is an opt-in toggle rather than forced — all issue #9.
-        MARKETING_VERSION: "1.9"
-        CURRENT_PROJECT_VERSION: "14"
+        MARKETING_VERSION: "1.8"
+        CURRENT_PROJECT_VERSION: "15"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
