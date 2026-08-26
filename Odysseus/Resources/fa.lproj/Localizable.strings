@@ -542,7 +542,7 @@
 "indisponível" = "در دسترس نیست";
 "%.0f GB livre / %.0f GB" = "%.0f GB آزاد / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB آزاد / %.1f GB";
-"http://host:porta" = "http://میزبان:پورت";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "سازماندهی شد: %lld مورد حذف شد (%lld → %lld).";
 "Falha ao organizar: %@" = "سازماندهی ناموفق بود: %@";
 "Backup exportado." = "پشتیبان صادر شد.";

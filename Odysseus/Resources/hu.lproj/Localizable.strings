@@ -542,7 +542,7 @@
 "Média" = "Közepes";
 "%.0f GB livre / %.0f GB" = "%.0f GB szabad / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB szabad / %.1f GB";
-"http://host:porta" = "http://kiszolgáló:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Rendezve: %lld eltávolítva (%lld → %lld).";
 "Falha ao organizar: %@" = "A rendezés nem sikerült: %@";
 "Backup exportado." = "Biztonsági mentés exportálva.";

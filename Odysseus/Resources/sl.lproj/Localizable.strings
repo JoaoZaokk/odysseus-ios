@@ -542,7 +542,7 @@
 "indisponível" = "ni na voljo";
 "%.0f GB livre / %.0f GB" = "%.0f GB prosto / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB prosto / %.1f GB";
-"http://host:porta" = "http://gostitelj:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Organizirano: odstranjeno %lld (%lld → %lld).";
 "Falha ao organizar: %@" = "Organiziranje ni uspelo: %@";
 "Backup exportado." = "Varnostna kopija izvožena.";

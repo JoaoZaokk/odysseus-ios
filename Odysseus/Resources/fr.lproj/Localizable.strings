@@ -536,7 +536,7 @@
 "indisponível" = "indisponible";
 "%.0f GB livre / %.0f GB" = "%.0f Go libres / %.0f Go";
 "%.1f GB livre / %.1f GB" = "%.1f Go libres / %.1f Go";
-"http://host:porta" = "http://hôte:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Organisé : %lld supprimée(s) (%lld → %lld).";
 "Falha ao organizar: %@" = "Échec de l'organisation : %@";
 "Backup exportado." = "Sauvegarde exportée.";

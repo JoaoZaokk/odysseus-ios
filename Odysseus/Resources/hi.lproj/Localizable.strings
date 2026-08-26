@@ -544,7 +544,7 @@
 "indisponível" = "अनुपलब्ध";
 "%.0f GB livre / %.0f GB" = "%.0f GB खाली / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB खाली / %.1f GB";
-"http://host:porta" = "http://होस्ट:पोर्ट";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "व्यवस्थित: %lld हटाए गए (%lld → %lld)।";
 "Falha ao organizar: %@" = "व्यवस्थित करना विफल: %@";
 "Backup exportado." = "बैकअप निर्यात हुआ।";

@@ -542,7 +542,7 @@
 "indisponível" = "ไม่พร้อมใช้งาน";
 "%.0f GB livre / %.0f GB" = "ว่าง %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "ว่าง %.1f GB / %.1f GB";
-"http://host:porta" = "http://โฮสต์:พอร์ต";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "จัดระเบียบแล้ว: ลบแล้ว %lld รายการ (%lld → %lld)";
 "Falha ao organizar: %@" = "จัดระเบียบไม่สำเร็จ: %@";
 "Backup exportado." = "ส่งออกข้อมูลสำรองแล้ว";

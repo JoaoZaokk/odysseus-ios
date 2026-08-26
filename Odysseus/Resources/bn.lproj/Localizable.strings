@@ -544,7 +544,7 @@
 "indisponível" = "অনুপলব্ধ";
 "%.0f GB livre / %.0f GB" = "%.0f GB খালি / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB খালি / %.1f GB";
-"http://host:porta" = "http://হোস্ট:পোর্ট";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "সাজানো হয়েছে: %lld সরানো হয়েছে (%lld → %lld)।";
 "Falha ao organizar: %@" = "সাজাতে ব্যর্থ: %@";
 "Backup exportado." = "ব্যাকআপ রপ্তানি হয়েছে।";

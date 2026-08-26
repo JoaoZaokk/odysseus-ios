@@ -534,7 +534,7 @@
 "indisponível" = "לא זמין";
 "%.0f GB livre / %.0f GB" = "%.0f GB פנוי / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB פנוי / %.1f GB";
-"http://host:porta" = "http://מארח:פורט";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "אורגן: %lld הוסרו (%lld → %lld).";
 "Falha ao organizar: %@" = "הארגון נכשל: %@";
 "Backup exportado." = "הגיבוי יוצא.";

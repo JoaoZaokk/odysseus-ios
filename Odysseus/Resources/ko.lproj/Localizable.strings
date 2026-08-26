@@ -542,7 +542,7 @@
 "indisponível" = "사용 불가";
 "%.0f GB livre / %.0f GB" = "여유 %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "여유 %.1f GB / %.1f GB";
-"http://host:porta" = "http://호스트:포트";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "정리됨: %lld개 삭제됨(%lld → %lld).";
 "Falha ao organizar: %@" = "정리 실패: %@";
 "Backup exportado." = "백업을 내보냈습니다.";

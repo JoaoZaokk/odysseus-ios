@@ -212,7 +212,7 @@ struct DiffusionServersView: View {
         SettingsCard {
             Text("Outros provedores").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
             SettingsUI.field("OpenWebUI Gen URL", $openwebuiURL, placeholder: "vazio = usa o servidor principal", theme: theme)
-            SettingsUI.field("Diffusion API URL", $genericURL, placeholder: "http://host:porta", theme: theme)
+            SettingsUI.field("Diffusion API URL", $genericURL, placeholder: "http://host:port", theme: theme)
             Text("OpenWebUI Gen usa a sessão do servidor principal por padrão. A Diffusion API genérica é um endpoint compatível para fallback.")
                 .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)

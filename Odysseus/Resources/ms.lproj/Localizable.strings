@@ -542,7 +542,7 @@
 "indisponível" = "tidak tersedia";
 "%.0f GB livre / %.0f GB" = "%.0f GB kosong / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB kosong / %.1f GB";
-"http://host:porta" = "http://hos:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Teratur: %lld dibuang (%lld → %lld).";
 "Falha ao organizar: %@" = "Gagal mengurus: %@";
 "Backup exportado." = "Sandaran dieksport.";

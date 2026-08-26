@@ -542,7 +542,7 @@
 "indisponível" = "nav pieejams";
 "%.0f GB livre / %.0f GB" = "%.0f GB brīvi / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB brīvi / %.1f GB";
-"http://host:porta" = "http://resursdators:ports";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Sakārtots: noņemti %lld (%lld → %lld).";
 "Falha ao organizar: %@" = "Kļūda kārtošanā: %@";
 "Backup exportado." = "Rezerves kopija eksportēta.";

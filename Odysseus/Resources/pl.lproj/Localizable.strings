@@ -542,7 +542,7 @@
 "indisponível" = "niedostępna";
 "%.0f GB livre / %.0f GB" = "%.0f GB wolne / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB wolne / %.1f GB";
-"http://host:porta" = "http://host:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Uporządkowano: usunięto %lld (%lld → %lld).";
 "Falha ao organizar: %@" = "Porządkowanie nie powiodło się: %@";
 "Backup exportado." = "Kopia zapasowa wyeksportowana.";

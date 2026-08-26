@@ -542,7 +542,7 @@
 "indisponível" = "يوق";
 "%.0f GB livre / %.0f GB" = "%.0f GB بىكار / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB بىكار / %.1f GB";
-"http://host:porta" = "http://باشقۇرغۇچ:پورت";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "تەرتىپلەندى: %lld ئۆچۈرۈلدى (%lld → %lld).";
 "Falha ao organizar: %@" = "تەرتىپلەش مەغلۇپ بولدى: %@";
 "Backup exportado." = "زاپاس چىقىرىلدى.";

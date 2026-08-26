@@ -542,7 +542,7 @@
 "indisponível" = "دستیاب نہیں";
 "%.0f GB livre / %.0f GB" = "%.0f GB دستیاب / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB دستیاب / %.1f GB";
-"http://host:porta" = "http://میزبان:پورٹ";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "منظم ہو گیا: %lld ہٹا دیا گیا (%lld → %lld)۔";
 "Falha ao organizar: %@" = "منظم کرنے میں ناکامی: %@";
 "Backup exportado." = "بیک اپ برآمد ہو گیا۔";

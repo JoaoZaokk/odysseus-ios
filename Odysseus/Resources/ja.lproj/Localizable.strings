@@ -542,7 +542,7 @@
 "indisponível" = "利用不可";
 "%.0f GB livre / %.0f GB" = "空き %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "空き %.1f GB / %.1f GB";
-"http://host:porta" = "http://ホスト:ポート";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "整理完了: %lld 件削除（%lld → %lld）。";
 "Falha ao organizar: %@" = "整理に失敗しました：%@";
 "Backup exportado." = "バックアップを書き出しました。";

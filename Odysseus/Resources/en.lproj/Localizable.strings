@@ -544,7 +544,7 @@
 "indisponível" = "unavailable";
 "%.0f GB livre / %.0f GB" = "%.0f GB free / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB free / %.1f GB";
-"http://host:porta" = "http://host:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Organized: %lld removed (%lld → %lld).";
 "Falha ao organizar: %@" = "Failed to organize: %@";
 "Backup exportado." = "Backup exported.";

@@ -534,7 +534,7 @@
 "indisponível" = "otillgänglig";
 "%.0f GB livre / %.0f GB" = "%.0f GB ledigt / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB ledigt / %.1f GB";
-"http://host:porta" = "http://värd:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Organiserat: %lld borttagna (%lld → %lld).";
 "Falha ao organizar: %@" = "Kunde inte organisera: %@";
 "Backup exportado." = "Säkerhetskopiering exporterad.";

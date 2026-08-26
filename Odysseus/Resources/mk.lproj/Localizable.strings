@@ -544,7 +544,7 @@
 "indisponível" = "недостапна";
 "%.0f GB livre / %.0f GB" = "%.0f GB слободно / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB слободно / %.1f GB";
-"http://host:porta" = "http://хост:порта";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Организирано: отстранети %lld (%lld → %lld).";
 "Falha ao organizar: %@" = "Организирањето не успеа: %@";
 "Backup exportado." = "Резервната копија е извезена.";

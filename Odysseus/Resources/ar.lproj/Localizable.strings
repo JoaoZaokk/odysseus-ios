@@ -542,7 +542,7 @@
 "indisponível" = "غير متاحة";
 "%.0f GB livre / %.0f GB" = "%.0f GB متاح / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB متاح / %.1f GB";
-"http://host:porta" = "http://المضيف:المنفذ";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "تم التنظيم: أُزيلت %lld (%lld → %lld).";
 "Falha ao organizar: %@" = "فشل التنظيم: %@";
 "Backup exportado." = "تم تصدير النسخة الاحتياطية.";

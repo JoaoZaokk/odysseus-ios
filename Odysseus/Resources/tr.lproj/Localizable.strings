@@ -542,7 +542,7 @@
 "indisponível" = "kullanılamıyor";
 "%.0f GB livre / %.0f GB" = "%.0f GB boş / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB boş / %.1f GB";
-"http://host:porta" = "http://sunucu:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Düzenlendi: %lld kaldırıldı (%lld → %lld).";
 "Falha ao organizar: %@" = "Düzenleme başarısız: %@";
 "Backup exportado." = "Yedek dışa aktarıldı.";

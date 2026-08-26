@@ -542,7 +542,7 @@
 "indisponível" = "không khả dụng";
 "%.0f GB livre / %.0f GB" = "%.0f GB trống / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB trống / %.1f GB";
-"http://host:porta" = "http://host:cổng";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Đã tổ chức: đã xóa %lld (%lld → %lld).";
 "Falha ao organizar: %@" = "Tổ chức thất bại: %@";
 "Backup exportado." = "Đã xuất bản sao lưu.";

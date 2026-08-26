@@ -542,7 +542,7 @@
 "indisponível" = "نشته";
 "%.0f GB livre / %.0f GB" = "%.0f GB خالي / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB خالي / %.1f GB";
-"http://host:porta" = "http://هوسټ:پورټ";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "سمال شوی: %lld لرې کړل شول (%lld → %lld).";
 "Falha ao organizar: %@" = "سمول ناکام شو: %@";
 "Backup exportado." = "بیک اپ صادر شو.";

@@ -542,7 +542,7 @@
 "indisponível" = "nedostupná";
 "%.0f GB livre / %.0f GB" = "%.0f GB voľné / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB voľné / %.1f GB";
-"http://host:porta" = "http://host:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "Usporiadané: odstránené %lld (%lld → %lld).";
 "Falha ao organizar: %@" = "Usporiadanie zlyhalo: %@";
 "Backup exportado." = "Záloha bola exportovaná.";

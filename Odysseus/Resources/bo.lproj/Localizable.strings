@@ -542,7 +542,7 @@
 "indisponível" = "མེད";
 "%.0f GB livre / %.0f GB" = "%.0f GB སྟོང་མ / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB སྟོང་མ / %.1f GB";
-"http://host:porta" = "http://host:port";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "འཆམ་སྒྲིག་ཟིན། %lld བསུབ་ཟིན། (%lld → %lld)།";
 "Falha ao organizar: %@" = "འཆམ་སྒྲིག་མ་ཐུབ། %@";
 "Backup exportado." = "གསོག་འཇོག་ཕྱིར་སྤྲོད་ཟིན།";

@@ -542,7 +542,7 @@
 "indisponível" = "不可用";
 "%.0f GB livre / %.0f GB" = "可用 %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "可用 %.1f GB / %.1f GB";
-"http://host:porta" = "http://主机:端口";
+"http://host:port" = "http://host:port";
 "Organizado: %lld removida(s) (%lld → %lld)." = "已整理：移除了 %lld 条（%lld → %lld）。";
 "Falha ao organizar: %@" = "整理失败：%@";
 "Backup exportado." = "备份已导出。";
