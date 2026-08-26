@@ -365,6 +365,22 @@ final class SpeechManager: NSObject, ObservableObject {
         dispatchSpeak(clean, id: id)
     }
 
+    /// Settings' "test voice" button. Deliberately not `toggle`: `toggle` takes
+    /// the buffered path, so the test used to pass green against an endpoint
+    /// that cannot serve `response_format: "wav"` or whose WAV the decoder
+    /// rejects — and then the actual conversation was silent, with nothing in
+    /// Settings having said so. A test that does not exercise the path the
+    /// feature uses is worse than no test, so this takes whichever path the
+    /// hands-free loop would take with the current settings.
+    func toggleTest(_ text: String, id: String) {
+        if speakingID == id || preparingID == id { stop(); return }
+        stop()
+        let clean = Self.strip(text)
+        guard !clean.isEmpty else { return }
+        if streamingAllowed && useEndpoint { speakStreaming(clean, id: id) }
+        else { dispatchSpeak(clean, id: id) }
+    }
+
     /// Routes already-stripped text to the configured engine.
     private func dispatchSpeak(_ clean: String, id: String) {
         if useEndpoint { speakEndpoint(clean, id: id) }

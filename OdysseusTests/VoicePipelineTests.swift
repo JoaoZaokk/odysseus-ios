@@ -401,18 +401,37 @@ final class VoicePipelineTests: XCTestCase {
 
     // MARK: - How long a run has to be
 
-    func testDefaultAndAboveDemandTheLongerRun() {
-        // The default's floor (0.0415) is under the observed leak, so two chunks
-        // were never going to reject it — this is the case that actually broke.
+    func testEverythingAboveMinimumDemandsTheLongerRun() {
+        // The floor is under the observed leak everywhere except the very
+        // bottom, so two chunks were never going to reject it — this is the
+        // case that actually broke.
+        XCTAssertEqual(BargeInMonitor.chunksForSensitivity(0.2), 3)
         XCTAssertEqual(BargeInMonitor.chunksForSensitivity(0.5), 3)
         XCTAssertEqual(BargeInMonitor.chunksForSensitivity(1), 3)
     }
 
-    func testLowSensitivityKeepsTheShorterRun() {
-        // Down here the floor alone rejects the leak, so there is nothing to buy
-        // by making the user hold a syllable longer.
+    func testMinimumSensitivityKeepsTheShorterRun() {
+        // Only at the bottom does the floor alone reject the leak, and there is
+        // nothing to buy by also making the user hold a syllable longer.
         XCTAssertEqual(BargeInMonitor.chunksForSensitivity(0), 2)
-        XCTAssertEqual(BargeInMonitor.chunksForSensitivity(0.2), 2)
+    }
+
+    func testTheDefaultAdmitsTheQuietestVoiceEverMeasured() {
+        // The reason the mapping was retuned in build 16. The old default floor
+        // was 0.0415, above the 0.038 of the quietest voice in the device
+        // traces, so a soft-spoken user could not interrupt at the setting the
+        // app actually ships with — and that setting had never been exercised
+        // on a device, because every barge-in run was done at maximum.
+        XCTAssertLessThan(BargeInMonitor.floorForSensitivity(0.5), 0.038)
+    }
+
+    func testNoSettingLetsTheResidualCeilingThroughToTheModel() {
+        // The other side of the same trade: drop the floor far enough and the
+        // 0.006–0.022 residual reaches the VAD, which scores it 1.00.
+        for i in 0...100 {
+            XCTAssertGreaterThan(BargeInMonitor.floorForSensitivity(Double(i) / 100), 0.022,
+                                 "s=\(Double(i) / 100)")
+        }
     }
 
     func testTheLongerRunStartsExactlyWhereTheFloorStopsRejectingTheLeak() {
@@ -427,6 +446,154 @@ final class VoicePipelineTests: XCTestCase {
         // The premise of the whole change: the loudest leak measured is louder
         // than the quietest voice measured, so no floor can split them.
         XCTAssertGreaterThan(BargeInMonitor.loudestLeak, Float(0.038))
+    }
+
+    // MARK: - The endpoint's wire shape
+    //
+    // None of this was covered before build 16. The two dialects disagree on
+    // the path, on what the audio part is called, on where the model goes and
+    // on what a voice is called, and every one of those drifts into a silent
+    // 400 that looks like "the endpoint is broken".
+
+    private func cfg(_ dialect: VoiceEndpoint.Dialect,
+                     base: String = "https://voz.exemplo.net/v1",
+                     model: String = "", voice: String = "", key: String? = nil)
+    -> VoiceEndpoint.Config {
+        .init(base: URL(string: base)!, model: model, voice: voice, key: key, dialect: dialect)
+    }
+
+    private func multipartNames(_ req: URLRequest) -> [String] {
+        let body = String(decoding: req.httpBody ?? Data(), as: UTF8.self)
+        return body.components(separatedBy: "name=\"").dropFirst().compactMap {
+            $0.components(separatedBy: "\"").first
+        }
+    }
+
+    private func payload(_ req: URLRequest) -> [String: Any] {
+        (try? JSONSerialization.jsonObject(with: req.httpBody ?? Data())) as? [String: Any] ?? [:]
+    }
+
+    func testOpenAITranscriptionUsesItsOwnPathAndFieldName() {
+        let r = VoiceEndpoint.transcribeRequest(Data([1, 2]), cfg(.openai, model: "whisper-1"),
+                                                language: "pt")
+        XCTAssertEqual(r.url?.path, "/v1/audio/transcriptions")
+        XCTAssertEqual(r.httpMethod, "POST")
+        let names = multipartNames(r)
+        XCTAssertTrue(names.contains("file"), "\(names)")
+        XCTAssertTrue(names.contains("model"), "\(names)")
+        XCTAssertTrue(names.contains("language"), "\(names)")
+    }
+
+    func testFishTranscriptionUsesASRAndCallsTheFileAudio() {
+        // Fish's /asr takes no model — the model rides a header, and only for
+        // TTS — and a 400 saying exactly that is how this was found.
+        let r = VoiceEndpoint.transcribeRequest(Data([1, 2]), cfg(.fish, model: "s2.1-pro"),
+                                                language: "pt")
+        XCTAssertEqual(r.url?.path, "/v1/asr")
+        let names = multipartNames(r)
+        XCTAssertTrue(names.contains("audio"), "\(names)")
+        XCTAssertFalse(names.contains("file"), "\(names)")
+        XCTAssertFalse(names.contains("model"), "\(names)")
+        XCTAssertFalse(names.contains("language"), "\(names)")
+    }
+
+    func testNoLanguageMeansNoLanguageField() {
+        // "Detect" has to omit the field rather than send an empty one, which
+        // some gateways reject outright.
+        let r = VoiceEndpoint.transcribeRequest(Data([1]), cfg(.openai), language: nil)
+        XCTAssertFalse(multipartNames(r).contains("language"))
+    }
+
+    func testAnEmptyModelIsOmittedRatherThanSentBlank() {
+        let r = VoiceEndpoint.transcribeRequest(Data([1]), cfg(.openai, model: ""), language: nil)
+        XCTAssertFalse(multipartNames(r).contains("model"))
+    }
+
+    func testTheUploadedBytesSurviveTheMultipartWrapper() {
+        let wav: [UInt8] = [0x52, 0x49, 0x46, 0x46, 0xFF, 0x00, 0xAB]
+        let r = VoiceEndpoint.transcribeRequest(Data(wav), cfg(.openai), language: nil)
+        XCTAssertTrue((r.httpBody ?? Data()).range(of: Data(wav)) != nil)
+    }
+
+    func testTheKeyBecomesABearerHeaderAndAnEmptyOneDoesNot() {
+        let with = VoiceEndpoint.transcribeRequest(Data([1]), cfg(.openai, key: "abc"), language: nil)
+        XCTAssertEqual(with.value(forHTTPHeaderField: "Authorization"), "Bearer abc")
+        let without = VoiceEndpoint.transcribeRequest(Data([1]), cfg(.openai, key: ""), language: nil)
+        XCTAssertNil(without.value(forHTTPHeaderField: "Authorization"))
+    }
+
+    func testOpenAISynthesisNamesTheTextInputAndTheVoiceVoice() throws {
+        let r = try VoiceEndpoint.speechRequest("olá", cfg(.openai, model: "tts-1", voice: "alloy"),
+                                                container: .mp3)
+        XCTAssertEqual(r.url?.path, "/v1/audio/speech")
+        let p = payload(r)
+        XCTAssertEqual(p["input"] as? String, "olá")
+        XCTAssertEqual(p["voice"] as? String, "alloy")
+        XCTAssertEqual(p["model"] as? String, "tts-1")
+        XCTAssertEqual(p["response_format"] as? String, "mp3")
+        XCTAssertNil(r.value(forHTTPHeaderField: "model"))
+    }
+
+    func testFishSynthesisNamesTheVoiceReferenceIdAndPutsTheModelInAHeader() throws {
+        let r = try VoiceEndpoint.speechRequest("olá", cfg(.fish, model: "s2.1-pro", voice: "abc123"),
+                                                container: .mp3)
+        XCTAssertEqual(r.url?.path, "/v1/tts")
+        let p = payload(r)
+        XCTAssertEqual(p["text"] as? String, "olá")
+        XCTAssertEqual(p["reference_id"] as? String, "abc123")
+        XCTAssertNil(p["model"], "Fish carries the model in a header, not the body")
+        XCTAssertEqual(r.value(forHTTPHeaderField: "model"), "s2.1-pro")
+    }
+
+    func testFishKeepsTheLatencySettingsThatBoughtTheFirstAudio() throws {
+        // Left at Fish's defaults ("normal", 300) this was the slowest pair
+        // available, and time-to-first-audio was the complaint that started the
+        // whole streaming work.
+        let p = payload(try VoiceEndpoint.speechRequest("olá", cfg(.fish), container: .wav))
+        XCTAssertEqual(p["latency"] as? String, "balanced")
+        XCTAssertEqual(p["chunk_length"] as? Int, 120)
+    }
+
+    func testStreamingAsksForWAVBecauseTheDecoderNeedsAStatedFormat() throws {
+        // The buffered path can take mp3 — AVAudioPlayer sniffs the container.
+        // The streaming path cannot: WAVStreamDecoder reads the wire format out
+        // of the header rather than guessing, which is the whole reason a wrong
+        // guess is not full-volume noise.
+        for dialect in VoiceEndpoint.Dialect.allCases {
+            let wav = payload(try VoiceEndpoint.speechRequest("a", cfg(dialect), container: .wav))
+            let key = dialect == .fish ? "format" : "response_format"
+            XCTAssertEqual(wav[key] as? String, "wav", "\(dialect)")
+            let mp3 = payload(try VoiceEndpoint.speechRequest("a", cfg(dialect), container: .mp3))
+            XCTAssertEqual(mp3[key] as? String, "mp3", "\(dialect)")
+        }
+    }
+
+    func testTheSampleRateRidesOnlyOnFishAndOnlyForWAV() throws {
+        // mp3 carries its own rate, and OpenAI's endpoint has no such field.
+        XCTAssertEqual(payload(try VoiceEndpoint.speechRequest("a", cfg(.fish), container: .wav))["sample_rate"] as? Int, 24_000)
+        XCTAssertNil(payload(try VoiceEndpoint.speechRequest("a", cfg(.fish), container: .mp3))["sample_rate"])
+        XCTAssertNil(payload(try VoiceEndpoint.speechRequest("a", cfg(.openai), container: .wav))["sample_rate"])
+    }
+
+    func testABaseURLWithAPathKeepsIt() throws {
+        // Users paste the whole prefix their gateway lives behind.
+        let r = try VoiceEndpoint.speechRequest("a", cfg(.openai, base: "https://x.net/api/v1"),
+                                                container: .mp3)
+        XCTAssertEqual(r.url?.path, "/api/v1/audio/speech")
+    }
+
+    func testTranscriptIsReadFromEveryShapeSeenInTheWild() throws {
+        XCTAssertEqual(try VoiceEndpoint.parseTranscript(Data(#"{"text":"oi"}"#.utf8)), "oi")
+        XCTAssertEqual(try VoiceEndpoint.parseTranscript(Data(#"{"result":"oi"}"#.utf8)), "oi")
+        XCTAssertEqual(try VoiceEndpoint.parseTranscript(Data(#"{"transcript":"oi"}"#.utf8)), "oi")
+        XCTAssertEqual(try VoiceEndpoint.parseTranscript(Data("  oi \n".utf8)), "oi")
+    }
+
+    func testAnEmptyOrUnrecognisedBodyIsAFailureNotAnEmptyTranscript() {
+        // Returning "" here would send a blank message on the user's behalf.
+        XCTAssertThrowsError(try VoiceEndpoint.parseTranscript(Data()))
+        XCTAssertThrowsError(try VoiceEndpoint.parseTranscript(Data("   ".utf8)))
+        XCTAssertThrowsError(try VoiceEndpoint.parseTranscript(Data(#"{"error":"nope"}"#.utf8)))
     }
 
     // MARK: - Markdown tables

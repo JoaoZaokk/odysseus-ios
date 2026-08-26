@@ -246,6 +246,29 @@ enum VoiceEndpoint {
     /// Uploads a WAV and returns the transcript.
     static func transcribe(_ wav: Data) async throws -> String {
         guard let cfg = config(.stt) else { throw Failure.notConfigured }
+        // The language is resolved here rather than inside the builder so the
+        // builder stays a pure function of its arguments — the paths, the field
+        // names and the dialect rules are the part worth pinning in tests, and
+        // they cannot be if reading it needs the MainActor.
+        let isFish = cfg.dialect == .fish
+        let language = isFish ? nil : await MainActor.run(body: { SpeechLanguage.pinned()?.iso639 })
+        let req = transcribeRequest(wav, cfg, language: language)
+
+        let (data, resp) = try await session().data(for: req)
+        let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
+        guard (200..<300).contains(status) else { throw Failure.http(status: status, body: snippet(data)) }
+        return try parseTranscript(data)
+    }
+
+    /// Builds the multipart upload. Separate from `transcribe` so the wire
+    /// shape — which path, what the file part is called, whether a model and a
+    /// language ride along — is checkable without a server.
+    ///
+    /// `language` is the caller's already-resolved ISO-639-1 code, or nil to let
+    /// the server guess. Pinning it is worth a lot: left to guess,
+    /// Whisper-family servers pick a random language on imperfect audio and hand
+    /// back nothing, the same reason the on-device engine stopped using "auto".
+    static func transcribeRequest(_ wav: Data, _ cfg: Config, language: String?) -> URLRequest {
         let isFish = cfg.dialect == .fish
         // Fish calls the file part "audio" and puts it under /asr; OpenAI calls
         // it "file" under /audio/transcriptions.
@@ -270,26 +293,20 @@ enum VoiceEndpoint {
         // for TTS). Elsewhere: send a model only when the user gave one rather
         // than inventing a default, since some gateways reject an unknown one.
         if !isFish, !cfg.model.isEmpty { field("model", cfg.model) }
-        // Pinning the language is worth a lot: left to guess, Whisper-family
-        // servers pick a random one on imperfect audio and hand back nothing —
-        // the same reason the on-device engine stopped using "auto". Which
-        // language comes from the speech setting, so a bilingual user can pin
-        // one without moving the whole UI; only an explicit "detect" omits the
-        // field and lets the server guess. Sent only in the OpenAI dialect,
-        // where `language` (ISO-639-1) is documented; Fish's /asr is left alone
-        // rather than fed a field verified only from its docs.
-        if !isFish, let chosen = await MainActor.run(body: { SpeechLanguage.pinned() }) {
-            field("language", chosen.iso639)
-        }
+        // Sent only in the OpenAI dialect, where `language` (ISO-639-1) is
+        // documented; Fish's /asr is left alone rather than fed a field
+        // verified only from its docs.
+        if !isFish, let language { field("language", language) }
         body.append(Data("--\(boundary)--\r\n".utf8))
         req.httpBody = body
+        return req
+    }
 
-        let (data, resp) = try await session().data(for: req)
-        let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
-        guard (200..<300).contains(status) else { throw Failure.http(status: status, body: snippet(data)) }
-
-        // `{"text": …}` is the OpenAI shape; a few servers wrap it in
-        // `{"result": …}` or answer with the bare string.
+    /// `{"text": …}` is the OpenAI shape; a few servers wrap it in
+    /// `{"result": …}` or answer with the bare string. An empty body is a
+    /// failure, not an empty transcript — the caller would otherwise send a
+    /// blank message on the user's behalf.
+    static func parseTranscript(_ data: Data) throws -> String {
         if let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
             for k in ["text", "transcript", "result"] {
                 if let t = obj[k] as? String { return t }
@@ -307,30 +324,7 @@ enum VoiceEndpoint {
     /// container, so the format only has to be something it knows).
     static func synthesize(_ text: String) async throws -> Data {
         guard let cfg = config(.tts) else { throw Failure.notConfigured }
-        let isFish = cfg.dialect == .fish
-        var req = authorized(cfg.base.appendingPathComponent(isFish ? "tts" : "audio/speech"), cfg)
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        var payload: [String: Any]
-        if isFish {
-            // Fish names the text "text", the voice "reference_id" (a voice
-            // model id, including one you trained), and carries the model in a
-            // header rather than the body.
-            // `latency` and `chunk_length` are documented on Fish's own TTS
-            // request and were being left at their defaults — "normal" and 300,
-            // the slowest pair. "balanced" is the mode Fish's own SDK defaults
-            // to for lowest time-to-first-audio, and a smaller chunk makes the
-            // model emit its first audio sooner. Quality is unchanged in the
-            // finished file; only the schedule moves.
-            payload = ["text": text, "format": "mp3",
-                       "latency": "balanced", "chunk_length": 120]
-            if !cfg.voice.isEmpty { payload["reference_id"] = cfg.voice }
-            if !cfg.model.isEmpty { req.setValue(cfg.model, forHTTPHeaderField: "model") }
-        } else {
-            payload = ["input": text, "response_format": "mp3"]
-            if !cfg.model.isEmpty { payload["model"] = cfg.model }
-            if !cfg.voice.isEmpty { payload["voice"] = cfg.voice }
-        }
-        req.httpBody = try JSONSerialization.data(withJSONObject: payload)
+        let req = try speechRequest(text, cfg, container: .mp3)
 
         let (data, resp) = try await session().data(for: req)
         let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
@@ -355,27 +349,55 @@ enum VoiceEndpoint {
     /// Cancelling the consuming task cancels the request.
     static func synthesizeStreaming(_ text: String) throws -> AsyncThrowingStream<Data, Error> {
         guard let cfg = config(.tts) else { throw Failure.notConfigured }
+        return ChunkedDelivery.shared.stream(try speechRequest(text, cfg, container: .wav))
+    }
+
+    /// What the response body should hold. `wav` states its own wire format in
+    /// a header the decoder can read as it arrives; `mp3` is for the buffered
+    /// path, where `AVAudioPlayer` sniffs the container anyway and the smaller
+    /// body is worth more than a parseable prefix.
+    enum Container: String {
+        case mp3, wav
+        /// Fish streams uncompressed at 44.1 kHz by default: the first device
+        /// run moved 168 KB for a 29-character sentence, 8.8x what the mp3 of
+        /// the same sentence cost. Halving the rate halves that, and 24 kHz is
+        /// what OpenAI's own speech endpoint returns, so it is not a quality
+        /// corner being cut for speech. Meaningless for mp3, which carries its
+        /// own rate.
+        var fishSampleRate: Int? { self == .wav ? 24_000 : nil }
+    }
+
+    /// Builds the synthesis request. Separate from the two callers so the wire
+    /// shape is checkable without a server: the dialects disagree on the path,
+    /// on what the text is called, on where the model goes, and on what a voice
+    /// is called, and every one of those is a silent 400 when it drifts.
+    static func speechRequest(_ text: String, _ cfg: Config, container: Container) throws -> URLRequest {
         let isFish = cfg.dialect == .fish
         var req = authorized(cfg.base.appendingPathComponent(isFish ? "tts" : "audio/speech"), cfg)
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         var payload: [String: Any]
         if isFish {
-            // 24 kHz, not the 44.1 kHz default: WAV is uncompressed, and the
-            // first device run moved 168 KB for a 29-character sentence — 8.8×
-            // what the mp3 of the same sentence cost. Halving the rate halves
-            // that, and 24 kHz is what OpenAI's own speech endpoint returns,
-            // so it is not a quality corner being cut for speech.
-            payload = ["text": text, "format": "wav", "sample_rate": 24_000,
+            // Fish names the text "text", the voice "reference_id" (a voice
+            // model id, including one you trained), and carries the model in a
+            // header rather than the body.
+            // `latency` and `chunk_length` are documented on Fish's own TTS
+            // request and were being left at their defaults — "normal" and 300,
+            // the slowest pair. "balanced" is the mode Fish's own SDK defaults
+            // to for lowest time-to-first-audio, and a smaller chunk makes the
+            // model emit its first audio sooner. Quality is unchanged in the
+            // finished file; only the schedule moves.
+            payload = ["text": text, "format": container.rawValue,
                        "latency": "balanced", "chunk_length": 120]
+            if let rate = container.fishSampleRate { payload["sample_rate"] = rate }
             if !cfg.voice.isEmpty { payload["reference_id"] = cfg.voice }
             if !cfg.model.isEmpty { req.setValue(cfg.model, forHTTPHeaderField: "model") }
         } else {
-            payload = ["input": text, "response_format": "wav"]
+            payload = ["input": text, "response_format": container.rawValue]
             if !cfg.model.isEmpty { payload["model"] = cfg.model }
             if !cfg.voice.isEmpty { payload["voice"] = cfg.voice }
         }
         req.httpBody = try JSONSerialization.data(withJSONObject: payload)
-        return ChunkedDelivery.shared.stream(req)
+        return req
     }
 }
 

@@ -415,8 +415,8 @@ final class VoiceConversation: ObservableObject {
     /// clause cut can land a falling intonation mid-sentence. That is the
     /// trade being made deliberately — in a hands-free loop the wait before the
     /// first word is what the user actually notices.
-    static let openingSoft = 60
-    static let openingHard = 140
+    nonisolated static let openingSoft = 60
+    nonisolated static let openingHard = 140
 
     nonisolated static func openingCut(in s: String) -> Int? {
         if let end = sentenceCut(in: s) { return end }

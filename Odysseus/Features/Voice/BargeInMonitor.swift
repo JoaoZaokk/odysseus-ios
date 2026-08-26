@@ -49,13 +49,26 @@ final class BargeInMonitor {
     /// The VAD answers "is this a human voice?", and echo residual *is* one —
     /// device traces show it scoring 1.00 at rms 0.014, which fired barge-in on
     /// the assistant's own words. What separates the two is loudness, and on
-    /// device the gap is clean: residual sits at 0.006–0.022, the user's voice
-    /// at 0.038–0.206. Requiring both keeps the model's judgement while ruling
-    /// out anything too quiet to have come from the room.
+    /// device the gap is *almost* clean: residual sits at 0.006–0.022, the user's
+    /// voice at 0.038–0.206 — but the loudest leak excursion reached 0.046, over
+    /// the quietest voice. So the floor's job is only to rule out anything too
+    /// quiet to have come from the room; the overlap is duration's problem.
+    /// See `floorForSensitivity` for why the default sits under 0.038.
     nonisolated(unsafe) private var speechFloor: Float = 0.04
 
+    /// s=0 → 0.046, s=0.5 → 0.036, s=1 → 0.026.
+    ///
+    /// Retuned in build 16. The old mapping put the **default** floor at 0.0415,
+    /// above the quietest voice ever measured here (0.038), which meant a
+    /// soft-spoken user could not interrupt at all at the shipping setting —
+    /// and the whole barge-in validation had been run at maximum sensitivity
+    /// (floor 0.028), so the configuration that actually shipped had never been
+    /// exercised. The top of the range is now `loudestLeak` rather than a number
+    /// above it, so from the first notch upward the floor stops pretending it
+    /// can separate leak from voice and hands that job to duration, which is
+    /// what the device traces show working.
     nonisolated static func floorForSensitivity(_ s: Double) -> Float {
-        Float(0.055 - max(0, min(1, s)) * 0.027)   // s=0 → 0.055, s=1 → 0.028
+        Float(0.046 - max(0, min(1, s)) * 0.020)
     }
 
     nonisolated static func thresholdForSensitivity(_ s: Double) -> Float {
@@ -70,17 +83,17 @@ final class BargeInMonitor {
     /// the uncomfortable part: no floor can reject this leak while still
     /// accepting someone speaking softly. Loudness cannot separate them, so
     /// duration has to.
-    static let loudestLeak: Float = 0.046
+    nonisolated static let loudestLeak: Float = 0.046
 
     /// Three chunks (768 ms) wherever the floor cannot reject that leak on its
     /// own, two (512 ms) where it can. Derived from the floor rather than
     /// written as its own sensitivity number, so the two cannot drift apart
     /// when the mapping is retuned.
     ///
-    /// This crosses at a sensitivity of about 0.33, so the **default** 0.5 gets
-    /// three — the first tuning here that changes behaviour at the default, and
-    /// deliberately: the default's floor is 0.0415, under the leak, so what was
-    /// validated at two chunks is exactly what produced the false cut.
+    /// Since build 16 the floor only reaches the leak at the very bottom of the
+    /// slider, so everything above minimum sensitivity gets three. That is the
+    /// honest reading of the device traces: the floor never separated the two
+    /// populations, duration did.
     nonisolated static func chunksForSensitivity(_ s: Double) -> Int {
         floorForSensitivity(s) < loudestLeak ? 3 : 2
     }
@@ -313,8 +326,15 @@ final class BargeInMonitor {
         }
     }
 
+    /// `NSLock.lock()` is unavailable from an async context (an error in Swift
+    /// 6), so the release goes through a synchronous helper rather than being
+    /// taken inline in `classify`'s defer.
+    nonisolated private func releaseBusy() {
+        bufLock.lock(); busy = false; bufLock.unlock()
+    }
+
     nonisolated private func classify(_ chunk: [Float], rms: Float) async {
-        defer { bufLock.lock(); busy = false; bufLock.unlock() }
+        defer { releaseBusy() }
         guard let vad = await Self.vad else { return }
         guard let results = try? await vad.process(chunk) else { return }
         let prob = results.map(\.probability).max() ?? 0
