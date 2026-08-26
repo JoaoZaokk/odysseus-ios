@@ -659,3 +659,37 @@ Fonte v2: `_backups/BACKUPS-IOS/odysseus-appstore-deliver/release-notes/1.8-what
 10. **"Testar voz" não exercita o streaming.** `VoiceSettingsView.swift:92` chama `toggle`, que vai
     para `synthesize` (mp3 bufferizado). O teste passa verde num endpoint que não serve
     `response_format: "wav"`, e a conversa real fica muda.
+
+---
+
+# Build 16 — o que a auditoria mandou consertar (26/08 06:55)
+
+Entregue e anexado. **1.8 (16) `VALID`**, delivery `28e91174-c30e-4712-a04c-82b934ae379f`,
+expira 24/11. A versão segue em `PREPARE_FOR_SUBMISSION` — **o dono submete**.
+
+Commit `38ad3b8`, 97 arquivos. 101 testes passam (2 novos). Validação sem ITMS-91053.
+
+| # da auditoria | O que mudou |
+|---|---|
+| 1 | Strings de permissão reescritas no `Info.plist` e nos **44** `InfoPlist.strings`. A de fala não afirma mais processamento local; a de microfone diz que ele fica aberto no modo mãos livres. |
+| 2 | `waitsForConnectivity` removido da sessão de streaming + watchdog de 25 s que libera o turno se o primeiro byte nunca chega. |
+| 3 | `PCMStreamPlayer` observa `AVAudioEngineConfigurationChange`, `interruptionNotification` e `routeChangeNotification`; derruba o grafo e reporta falha em vez de esperar callback que não vem. |
+| 4 | `PrivacyInfo.xcprivacy` declarando `UserDefaults` (CA92.1) e `DiskSpace` (85F4.1). |
+| 5 | Catálogo do Fish agora em `isFish \|\| isFishHost` — Fish auto-hospedado deixa de perder o catálogo. |
+| 6 | `BargeInMonitor.stop()` sem o `guard running`, e os caminhos de falha do `start()` chamam ele. |
+| 7 | `WAVStreamDecoder` rejeita chunk não-`data` com tamanho implausível (teto de 1 MiB) em vez de esperar para sempre. |
+
+Duas chaves novas de erro nos 44 catálogos (596 no total, conjuntos idênticos): reprodução
+interrompida e endpoint que aceitou e não mandou áudio.
+
+## O que a auditoria apontou e **não** foi feito
+
+- **#8 `VoiceEndpoint` continua sem teste.** Nenhum cobre caminho de URL, campo multipart ou
+  troca de dialeto. É o arquivo mais exposto do release e o menos coberto.
+- **#9 Barge-in continua sem validação em aparelho no padrão 0.5.** Piso 0.0415 contra voz mais
+  baixa já medida de 0.038. Testar falando baixo antes de mexer em constante.
+- **#10 "Testar voz" continua não exercitando o streaming** — vai por `synthesize` (mp3
+  bufferizado). Passa verde num endpoint que não serve `wav`, e a conversa real fica muda.
+- Avisos de concorrência do Swift 6 (`loudestLeak`, `openingSoft`/`openingHard` isolados no
+  MainActor lidos de contexto nonisolated; `NSLock` em contexto async). São avisos no modo Swift 5
+  e viram erro no 6. Já existiam na build 15.
