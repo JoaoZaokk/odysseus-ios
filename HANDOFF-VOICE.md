@@ -732,10 +732,117 @@ endpoint que não serve `response_format: "wav"` e a conversa real ficava muda s
 **Swift 6.** `loudestLeak` e `openingSoft`/`openingHard` viraram `nonisolated`; o `busy` é
 liberado por helper síncrono em vez de travar `NSLock` dentro de `defer` async.
 
-## Continua em aberto
+## Continua em aberto (superado — ver *O que não está verificado* no fim)
 
 - **TestFlight sem nenhum grupo.** Build 17 está lá, não há para quem distribuir.
 - **Barge-in ainda não rodou em aparelho no padrão.** O piso agora admite a voz mais baixa já
   medida, mas isso é aritmética, não medição. Testar falando baixo.
 - **Traduções sem revisão de nativo** — 28 notas de loja e as chaves novas dos catálogos.
 - Servidor: 14–23 s até o primeiro token. 96% da espera, fora do alcance do iOS.
+
+---
+
+# 1.8 SUBMETIDA — build 20, 26/08 12:52 UTC
+
+**Estado: `WAITING_FOR_REVIEW`.** Lançamento **manual**: mesmo aprovada, só vai ao ar quando o
+dono mandar. Não há mais nada a fazer até a Apple responder por e-mail.
+
+| | |
+|---|---|
+| Versão | 1.8, `WAITING_FOR_REVIEW` |
+| Build | **20**, `VALID`, delivery `f2140bb6-ec2c-486e-ae64-e263af26d8de` |
+| Submissão | `b4bdc572-a6de-44b3-9637-ed5a9de957ac` |
+| Notas | 30/30 locais, nenhuma vazia |
+| Screenshots | `APP_IPHONE_67` e `APP_IPAD_PRO_3GEN_129` |
+
+## ⚠️ O endpoint antigo de submissão foi aposentado
+
+`POST /v1/appStoreVersionSubmissions` devolve **403** — *"The resource
+'appStoreVersionSubmissions' does not allow 'CREATE'. Allowed operation is: DELETE"*. O fluxo
+atual são três chamadas:
+
+```
+POST  /v1/reviewSubmissions          {platform: IOS, app: <id>}      -> READY_FOR_REVIEW
+POST  /v1/reviewSubmissionItems      {reviewSubmission, appStoreVersion}
+PATCH /v1/reviewSubmissions/{id}     {attributes: {submitted: true}} -> WAITING_FOR_REVIEW
+```
+
+Antes de criar, conferir se já existe uma aberta:
+`GET /v1/apps/{id}/reviewSubmissions?filter[state]=READY_FOR_REVIEW,WAITING_FOR_REVIEW,IN_REVIEW`.
+Duas submissões abertas ao mesmo tempo dão conflito.
+
+## Builds 17 a 20, em uma linha cada
+
+| Build | O que entrou |
+|---|---|
+| 17 | Suíte do `VoiceEndpoint` (16 testes); piso do barge-in retunado; "Testar voz" no caminho real; avisos do Swift 6 zerados |
+| 18 | A revisão do dono das 44 telas de permissão — 27 idiomas mudaram |
+| 19 | Inglês tirado do fonte pt-BR; número solto da gramática; frase falada reescrita; placeholder de URL |
+| 20 | Decisões de termo do revisor aplicadas — 281 strings |
+
+## As decisões de termo, e a régua
+
+Vale **a folha do revisor**, não a minha análise: a dele passou por nativo, a minha não. Não é
+opinião contra opinião, é revisado contra não revisado. Se surgir conflito de novo, essa é a
+ordem de precedência.
+
+- **Mantido em inglês:** `endpoint` (exceto `de` Endpunkt, `fr` point de terminaison), `stream`,
+  `streaming`, `token` (exceto `fr` jeton), `log` (exceto `ru`, `de`, `fr`, que têm palavra
+  consolidada), `webhook`, `barge-in`
+- **Traduzido:** `fallback` e `timeout` (tabelas do revisor, verbatim), `backup`, `download`
+- **Nunca traduzido:** placeholder de URL — `http://host:port`, idêntico nos 44
+
+**A régua para "manter em inglês" fora do alfabeto latino** é a que o próprio revisor usou no
+`barge-in`: em escrita com mecanismo de empréstimo — katakana, hangul, cirílico, árabe, índico,
+tailandês — **a transliteração já é manter o termo**. O que teve de sair foi o calque nativo:
+búlgaro `крайни точки`, russo `конечных точек`, `поток` para stream.
+
+Minha primeira checagem de conformidade procurava letras latinas na string, o que marcou
+エンドポイント e токен como "não conformes". Errado. Quem for repetir isso, compare contra o
+calque, não contra o alfabeto.
+
+## Plural: por que não tem `stringsdict`
+
+`%lld modelo(s)` não foi resolvido com dicionário de plural de propósito. Russo, polonês, tcheco,
+croata e árabe pedem 3 a 4 formas por chave conforme o número termine em 1, 2–4 ou 5+ — e todas
+elas seriam escritas pela mesma mão não revisada. Trocaria gambiarra visível por invisível.
+
+A saída foi tirar a gramática de perto do número: `Modelos encontrados: %lld`. Com o número atrás
+de dois-pontos nada concorda com ele, e fica certo nos 44 sem dicionário.
+
+**A dívida:** se algum dia aparecer uma frase onde o número precisa mesmo estar no meio, isso
+volta. Os `(s)` que restam no catálogo são unidade de segundos, não plural.
+
+## Artefatos de revisão no repo
+
+- `docs/REVISAO-PERMISSOES.md` — as 88 frases de permissão, extraídas dos `.strings` (nunca
+  redigitadas). Regenerar depois de mexer nelas: o script vive no scratchpad da sessão, mas é
+  trivial — lê os 44 `InfoPlist.strings` e escreve um bloco por idioma com linha `Correção:`.
+- `docs/TERMOS-TECNICOS.md` — inventário termo a termo. **Histórico**: as decisões dele já foram
+  aplicadas na build 20. Serve de base se algum termo for reaberto.
+
+## O que não está verificado
+
+Aqui, não no chat — foi cobrado, com razão, que eu repetia isto a cada mensagem.
+
+1. Barge-in nunca rodou em aparelho no padrão que foi submetido. O piso agora é 0.036, abaixo da
+   voz mais baixa medida (0.038), mas isso é aritmética sobre traço antigo, não medição nova.
+2. As 596 chaves × 43 línguas seguem escritas por IA. Só as 88 de permissão e os termos passaram
+   por revisor.
+3. Nenhuma tela foi vista renderizada em nenhum dos 43. 164 rótulos curtos crescem mais de 1,9×
+   sobre o português — `prévia` vira `попередній перегляд` em ucraniano (3,2×). Botão corta.
+4. `bo` mistura estratégias: transliteração para `token`, construção nativa para `timeout`.
+   Escolher a régua exige quem leia tibetano.
+5. TestFlight segue sem grupo nenhum.
+6. Servidor: 14–23 s até o primeiro token. 96% da espera, fora do alcance do iOS.
+
+## Erros meus nesta rodada, para não repetir
+
+- **Repeti os itens não verificados em toda mensagem** depois de dizer que ia parar. Lugar disso é
+  aqui, uma vez.
+- **Apliquei as 88 frases de permissão e ignorei a folha de termos** que veio junto — que era o
+  grosso do trabalho do revisor. Só apliquei quando fui cobrado.
+- **Checagem de conformidade ingênua** (letras latinas), descrita acima.
+- Relatório de agente **não é fonte**: o promotor da auditoria inventou um erro em croata
+  (`zaplijeće`) que nunca esteve no arquivo, e a defesa afirmou "zero warnings" quando a build 15
+  tinha avisos de concorrência do Swift 6. Abrir o arquivo antes de agir.
