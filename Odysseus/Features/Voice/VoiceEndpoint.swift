@@ -401,7 +401,11 @@ private final class ChunkedDelivery: NSObject, URLSessionDataDelegate, @unchecke
         super.init()
         let c = URLSessionConfiguration.default
         c.timeoutIntervalForRequest = 60
-        c.waitsForConnectivity = true
+        // Deliberately NOT waitsForConnectivity: it suspends the timeout, so
+        // with no network the request never starts and never fails. The caller
+        // has already marked the turn as speaking by then, and only a
+        // completion or a failure releases it — a request that can never fail
+        // parks the conversation in .speaking with the mic shut.
         // nil delegate queue: URLSession serialises callbacks on a queue of its
         // own, so per-task ordering is guaranteed without any work here.
         session = URLSession(configuration: c, delegate: self, delegateQueue: nil)

@@ -184,6 +184,7 @@ final class BargeInMonitor {
         let format = input.inputFormat(forBus: 0)
         guard format.sampleRate > 0, format.channelCount > 0 else {
             VoiceLog.log("barge.start", "formato inválido: \(format)")
+            stop()   // voice processing is already on; leaving it is a leak
             return .microphone
         }
         // Decimation can only go down. Below 16 kHz the rounded ratio collapses
@@ -191,6 +192,7 @@ final class BargeInMonitor {
         // half-speed audio labelled as 16 kHz — worse than not arming.
         guard format.sampleRate >= 16_000 else {
             VoiceLog.log("barge.start", "taxa \(Int(format.sampleRate)) Hz < 16 kHz — não armando")
+            stop()
             return .microphone
         }
         decimation = max(1, Int((format.sampleRate / 16_000).rounded()))
@@ -201,16 +203,20 @@ final class BargeInMonitor {
         }
         engine.prepare()
         do { try engine.start(); running = true } catch {
-            running = false
             VoiceLog.log("barge.start", "engine falhou: \(error.localizedDescription)")
+            stop()   // the tap is installed and VPIO is on; both must come back off
         }
         VoiceLog.log("barge.start", "armado=\(running) rate=\(Int(format.sampleRate)) decim=\(decimation) limiar=\(speechThreshold) piso=\(speechFloor) blocos=\(chunksNeeded)")
         return running ? nil : .microphone
         #endif
     }
 
+    /// Tears down whatever `start` managed to set up. Deliberately NOT guarded
+    /// on `running`: a `start` that fails after enabling voice processing or
+    /// installing the tap leaves both live with `running == false`, and
+    /// refusing to clean that up orphans a tap on an engine the next `start`
+    /// replaces. Every step here is idempotent.
     func stop() {
-        guard running else { return }
         VoiceLog.log("barge.stop")
         running = false
         engine.inputNode.removeTap(onBus: 0)

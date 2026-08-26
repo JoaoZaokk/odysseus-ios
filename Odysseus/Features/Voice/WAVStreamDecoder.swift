@@ -82,6 +82,13 @@ struct WAVStreamDecoder {
                 guard format != nil else { throw Failure.unsupported("WAV sem cabeçalho fmt") }
                 return
             }
+            // A streamed non-data chunk can declare a size it cannot know for
+            // the same reason `data` does. Waiting for 4 GB of LIST would grow
+            // `pending` for the whole response and then report "no audio" for a
+            // perfectly good WAV, so an implausible header chunk is an error.
+            guard size <= 1 << 20 else {
+                throw Failure.unsupported("chunk \(id) declara \(size) bytes")
+            }
             guard pending.count >= body + size else { break }   // wait for the rest
             if id == "fmt " { try readFmt(at: body, size: size) }
             cursor = body + size + (size % 2)                   // RIFF pads to even

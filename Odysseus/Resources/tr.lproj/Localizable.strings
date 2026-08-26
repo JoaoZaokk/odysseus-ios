@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "Akışlı ses";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Akışlı ses, ilk cümleyi tüm dosyayı beklemeden, daha üretilirken çalar. Yalnızca konuşma modunda (ses ekranı) geçerlidir; sonraki cümleler zaten bir öncekisi çalarken hazırlanır. Ses kesiliyorsa kapatın.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Ses çalma kesildi.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Uç nokta isteği kabul etti ve ses göndermedi.";

@@ -605,3 +605,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "אודיו בהזרמה";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "אודיו בהזרמה מנגן את המשפט הראשון בזמן שהוא עדיין נוצר, במקום לחכות לקובץ כולו. חל רק במצב שיחה (מסך הקול); המשפטים הבאים מוכנים ממילא בזמן שהקודם מתנגן. כבה אם הצליל נתקע.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "השמעת האודיו הופסקה.";
+"O endpoint aceitou o pedido e não enviou áudio." = "נקודת הקצה קיבלה את הבקשה ולא שלחה אודיו.";

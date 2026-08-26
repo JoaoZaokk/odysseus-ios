@@ -605,3 +605,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "Strömmande ljud";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Strömmande ljud spelar upp den första meningen medan den fortfarande skapas, i stället för att vänta på hela filen. Gäller bara i samtalsläget (röstskärmen); följande meningar förbereds ändå medan den förra spelas. Stäng av om ljudet hackar.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Ljuduppspelningen avbröts.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Slutpunkten accepterade begäran och skickade inget ljud.";

@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "Dźwięk strumieniowy";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Dźwięk strumieniowy odtwarza pierwsze zdanie już w trakcie jego generowania, zamiast czekać na cały plik. Działa tylko w trybie rozmowy (ekran głosowy); kolejne zdania i tak są przygotowywane, gdy trwa poprzednie. Wyłącz, jeśli dźwięk się zacina.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Odtwarzanie dźwięku zostało przerwane.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Endpoint przyjął żądanie i nie wysłał dźwięku.";

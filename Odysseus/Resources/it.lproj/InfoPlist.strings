@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "Odysseus usa il microfono per permetterti di dettare i tuoi messaggi a voce.";
-"NSSpeechRecognitionUsageDescription" = "Odysseus trascrive la tua voce in testo direttamente sul dispositivo.";
+"NSMicrophoneUsageDescription" = "Per dettare i messaggi e, in modalità vivavoce, interrompere l’IA mentre parla.";
+"NSSpeechRecognitionUsageDescription" = "Per trascrivere la tua voce in testo, sul dispositivo o sul servizio scelto nelle Impostazioni.";
 "NSLocalNetworkUsageDescription" = "Odysseus richiede l'accesso alla rete locale per raggiungere il tuo server IA.";
 "NSFaceIDUsageDescription" = "Odysseus usa Face ID per bloccare l'app e farti accedere automaticamente (opzionale).";

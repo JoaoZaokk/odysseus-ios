@@ -605,3 +605,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "Suoratoistoääni";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Suoratoistoääni toistaa ensimmäisen lauseen jo sitä luotaessa sen sijaan, että odottaisi koko tiedostoa. Koskee vain keskustelutilaa (puhenäyttöä); seuraavat lauseet valmistellaan muutenkin edellisen soidessa. Kytke pois, jos ääni pätkii.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Äänen toisto keskeytyi.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Päätepiste hyväksyi pyynnön eikä lähettänyt ääntä.";

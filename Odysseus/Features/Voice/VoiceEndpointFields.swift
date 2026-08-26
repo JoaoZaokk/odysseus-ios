@@ -83,7 +83,7 @@ struct VoiceEndpointFields: View {
         // s2.1-pro and friends are *speech* engines. Offering them for
         // transcription earned a 400 from Fish saying exactly that, so the
         // fallback list is TTS-only.
-        guard isFishHost, isTTS else { return [] }
+        guard isFish || isFishHost, isTTS else { return [] }
         // Fish's own API takes the bare engine name; its OpenAI-compatible
         // layer wants the vendor namespace.
         let ns = isFish ? "" : "fish-audio/"
@@ -243,7 +243,7 @@ struct VoiceEndpointFields: View {
                 }
             }
 
-            if isTTS && isFishHost {
+            if isTTS && (isFish || isFishHost) {
                 Button {
                     pickingVoice = true
                 } label: {

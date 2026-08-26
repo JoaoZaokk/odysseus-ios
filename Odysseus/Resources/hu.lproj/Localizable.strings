@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "Folyamatos hang";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "A folyamatos hang már a generálás közben lejátssza az első mondatot, ahelyett hogy a teljes fájlra várna. Csak beszélgetés módban (a hangképernyőn) érvényes; a további mondatok amúgy is elkészülnek, amíg az előző szól. Kapcsold ki, ha a hang akadozik.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "A hanglejátszás megszakadt.";
+"O endpoint aceitou o pedido e não enviou áudio." = "A végpont elfogadta a kérést, és nem küldött hangot.";

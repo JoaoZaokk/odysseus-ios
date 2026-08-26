@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "스트리밍 재생";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "스트리밍 재생은 파일 전체를 기다리지 않고 첫 문장을 생성되는 도중에 재생합니다. 대화 모드(음성 화면)에서만 적용되며, 이후 문장은 앞 문장이 재생되는 동안 미리 준비됩니다. 소리가 끊기면 끄세요.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "오디오 재생이 중단되었습니다.";
+"O endpoint aceitou o pedido e não enviou áudio." = "엔드포인트가 요청을 수락했지만 오디오를 보내지 않았습니다.";

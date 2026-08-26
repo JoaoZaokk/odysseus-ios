@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "རྒྱུན་འབབ་སྒྲ།";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "རྒྱུན་འབབ་སྒྲ་ཡིས་ཡིག་ཆ་ཧྲིལ་པོ་སྒུག་མི་དགོས་པར། ཚིག་གྲུབ་དང་པོ་བཟོ་བཞིན་པའི་སྐབས་སུ་སྒྲོག་འགོ་ཚུགས། གླེང་མོལ་སྒོ་ཁ་(སྒྲའི་ཤེལ་ངོས་)ནང་ཁོ་ནར་ཕན་ཐོགས། རྗེས་མའི་ཚིག་གྲུབ་རྣམས་སྔོན་མ་སྒྲོག་བཞིན་པའི་སྐབས་སུ་གྲ་སྒྲིག་བྱེད་ཟིན། སྒྲ་ཆད་ན་སྒོ་རྒྱག";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "སྒྲ་འདོན་པ་བར་ཆད་བྱུང་།";
+"O endpoint aceitou o pedido e não enviou áudio." = "མཐའ་མཚམས་ཀྱིས་རེ་སྐུལ་བཞེས་ཀྱང་སྒྲ་བཏང་མེད།";

@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "Pretočni zvok";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Pretočni zvok predvaja prvi stavek že med ustvarjanjem, namesto da bi čakal na celotno datoteko. Velja samo v pogovornem načinu (glasovni zaslon); naslednji stavki se tako ali tako pripravljajo, medtem ko se predvaja prejšnji. Izklopite, če zvok zatika.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Predvajanje zvoka je bilo prekinjeno.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Končna točka je zahtevo sprejela in ni poslala zvoka.";

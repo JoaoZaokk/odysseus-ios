@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "روان اوریدل";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "روان اوریدل لومړۍ جمله د بشپړې فایلې د انتظار پرځای هغه مهال غږوي چې لا جوړېږي. یوازې په خبرو اترو حالت (غږ پرده) کې کار کوي؛ راتلونکې جملې هرومرو د مخکینۍ د غږېدو پر مهال چمتو کېږي. که غږ ودرېږي، ویې بندوئ.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "د غږ غږول ودرېدل.";
+"O endpoint aceitou o pedido e não enviou áudio." = "پای ټکي غوښتنه ومنله او هیڅ غږ یې ونه لېږه.";

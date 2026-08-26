@@ -27,6 +27,13 @@ final class PCMStreamPlayer {
     /// Fires once every scheduled buffer has actually been played back *and*
     /// the producer said no more are coming. Not called after `stop()`.
     var onFinished: (() -> Void)?
+    /// Fires when the graph is torn down by something outside this class — an
+    /// audio-session interruption (a call), or the engine's configuration
+    /// changing under it (a route change, which this app causes itself every
+    /// time proximity flips the output port). Neither delivers the completion
+    /// callbacks the scheduled buffers were waiting on, so without this the
+    /// outstanding count never reaches zero and the turn never ends.
+    var onInterrupted: (() -> Void)?
     /// Fires when the first buffer is handed to the node — not when the speaker
     /// actually moves. The engine is already running by then, so the gap is
     /// milliseconds, and the only thing riding on it is the UI's "preparing →
@@ -44,6 +51,7 @@ final class PCMStreamPlayer {
     /// cannot finish the next one.
     private var epoch = 0
     private var firstAudioSent = false
+    private var observers: [NSObjectProtocol] = []
 
     var isPlaying: Bool { started }
 
@@ -67,6 +75,7 @@ final class PCMStreamPlayer {
 
         engine = e; node = n; format = fmt
         outstanding = 0; producerDone = false; started = true
+        observe(e)
         VoiceLog.log("tts.stream", "grafo pronto — \(Int(sampleRate)) Hz mono")
     }
 
@@ -107,10 +116,36 @@ final class PCMStreamPlayer {
     /// it as one is what used to advance the queue on top of a live recording.
     func stop() {
         epoch &+= 1
+        observers.forEach(NotificationCenter.default.removeObserver)
+        observers.removeAll()
         node?.stop()
         engine?.stop()
         node = nil; engine = nil; format = nil
         outstanding = 0; producerDone = false; started = false; firstAudioSent = false
+    }
+
+    /// A killed graph is a failure, not a completion: `onFinished` would
+    /// advance the queue over a sentence that was cut off mid-word.
+    private func observe(_ e: AVAudioEngine) {
+        let center = NotificationCenter.default
+        var names: [Notification.Name] = [.AVAudioEngineConfigurationChange]
+        #if os(iOS)
+        names.append(AVAudioSession.interruptionNotification)
+        names.append(AVAudioSession.routeChangeNotification)
+        #endif
+        for name in names {
+            let object: Any? = (name == .AVAudioEngineConfigurationChange) ? e : nil
+            observers.append(center.addObserver(forName: name, object: object, queue: .main) { [weak self] _ in
+                Task { @MainActor in self?.interrupted(name) }
+            })
+        }
+    }
+
+    private func interrupted(_ name: Notification.Name) {
+        guard started else { return }
+        VoiceLog.log("tts.stream", "interrompido por \(name.rawValue)")
+        stop()
+        onInterrupted?()
     }
 
     private func drained(epoch e: Int) {
@@ -122,6 +157,8 @@ final class PCMStreamPlayer {
     private func finishIfDone() {
         guard started, producerDone, outstanding == 0 else { return }
         started = false
+        observers.forEach(NotificationCenter.default.removeObserver)
+        observers.removeAll()
         node?.stop(); engine?.stop()
         node = nil; engine = nil; format = nil
         firstAudioSent = false

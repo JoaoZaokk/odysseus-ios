@@ -132,6 +132,7 @@ final class SpeechManager: NSObject, ObservableObject {
     private func clearQueue() {
         streamPlayer.onFinished = nil
         streamPlayer.onFirstAudio = nil
+        streamPlayer.onInterrupted = nil
         streamPlayer.stop()
         chunks.removeAll()
         chunkID = nil
@@ -151,7 +152,22 @@ final class SpeechManager: NSObject, ObservableObject {
 
     /// Local failures that never came from the network, so `isCancellation`
     /// correctly reports false for them.
-    private enum Failure: Error { case noAPI }
+    private enum Failure: LocalizedError {
+        case noAPI
+        /// The audio graph was torn down by a call or a route change.
+        case interrupted
+        /// The endpoint accepted the request and then sent nothing. Distinct
+        /// from a transport error: there is nothing to retry against.
+        case silent
+
+        var errorDescription: String? {
+            switch self {
+            case .noAPI:       return nil
+            case .interrupted: return L("A reprodução do áudio foi interrompida.")
+            case .silent:      return L("O endpoint aceitou o pedido e não enviou áudio.")
+            }
+        }
+    }
 
     /// One sentence failed to synthesize. Abandons the rest of that reply's
     /// queue and publishes the reason.
@@ -324,6 +340,9 @@ final class SpeechManager: NSObject, ObservableObject {
     private var pocketLanguage: PocketTtsLanguage?
     private var player: AVAudioPlayer?
     private var neuralTask: Task<Void, Never>?
+    /// Releases the turn if the stream never delivers a first byte. See
+    /// `speakStreaming`.
+    private var streamWatchdog: Task<Void, Never>?
 
     var useNeural: Bool { UserDefaults.standard.string(forKey: "voice.tts.engine") == "neural" }
     var useServer: Bool { UserDefaults.standard.string(forKey: "voice.tts.engine") == "server" }
@@ -363,6 +382,7 @@ final class SpeechManager: NSObject, ObservableObject {
     func stop() {
         clearQueue()
         neuralTask?.cancel(); neuralTask = nil
+        streamWatchdog?.cancel(); streamWatchdog = nil
         if synth.isSpeaking { synth.stopSpeaking(at: .immediate) }
         player?.stop(); player = nil
         streamPlayer.onFinished = nil
@@ -497,7 +517,32 @@ final class SpeechManager: NSObject, ObservableObject {
         }
         streamPlayer.onFinished = { [weak self] in
             guard let self, self.chunkID == id else { return }
+            self.streamWatchdog?.cancel()
             self.finished()
+        }
+        // A call or a route change tears the graph down without delivering the
+        // completion callbacks the queue is waiting on. That is a failure of
+        // this sentence, not the end of it.
+        streamPlayer.onInterrupted = { [weak self] in
+            guard let self, self.chunkID == id else { return }
+            self.streamWatchdog?.cancel()
+            self.neuralTask?.cancel()
+            self.chunkFailed(Failure.interrupted, id: id, self.msg(Failure.interrupted))
+        }
+        // `pump` has already set `speakingChunk`, and only a completion or a
+        // failure clears it. A socket that accepts the request and then says
+        // nothing would park the conversation in .speaking with the mic shut,
+        // so silence gets a deadline. 25 s is far outside the measured cold
+        // path (1642 ms to first audio).
+        streamWatchdog?.cancel()
+        streamWatchdog = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 25 * NSEC_PER_SEC)
+            guard !Task.isCancelled, let self, self.chunkID == id,
+                  self.preparingID == id else { return }
+            VoiceLog.log("tts.stream", "sem áudio em 25 s — liberando o turno")
+            self.neuralTask?.cancel()
+            self.streamPlayer.stop()
+            self.chunkFailed(Failure.silent, id: id, self.msg(Failure.silent))
         }
         let t0 = Date()
         neuralTask = Task { [weak self] in
@@ -514,6 +559,7 @@ final class SpeechManager: NSObject, ObservableObject {
                     if !opened {
                         try self.streamPlayer.begin(sampleRate: f.sampleRate)
                         opened = true
+                        self.streamWatchdog?.cancel()
                         VoiceLog.log("tts.stream", String(format: "1º áudio em %.0f ms — %d chars",
                                                           Date().timeIntervalSince(t0) * 1000, clean.count))
                     }
@@ -528,6 +574,7 @@ final class SpeechManager: NSObject, ObservableObject {
                                                   Date().timeIntervalSince(t0) * 1000, frameBytes / 1024))
                 self.streamPlayer.endOfStream()
             } catch {
+                self.streamWatchdog?.cancel()
                 self.streamPlayer.stop()
                 self.chunkFailed(error, id: id, self.msg(error))
             }

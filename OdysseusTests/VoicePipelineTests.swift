@@ -310,6 +310,25 @@ final class VoicePipelineTests: XCTestCase {
         XCTAssertEqual(out.count, 6)
     }
 
+    func testABogusNonDataChunkSizeIsRejectedRatherThanWaitedOn() {
+        // The reason the `data` size is ignored applies to every other chunk
+        // too: a server streaming a WAV it has not finished writing declares
+        // whatever it likes. Waiting for a LIST chunk that claims 4 GB grew
+        // `pending` for the whole response and then reported "no audio" for a
+        // perfectly good WAV, so an implausible header chunk must be an error.
+        var dec = WAVStreamDecoder()
+        var d = [UInt8]("RIFF".utf8) + u32le(0xFFFF_FFF0) + [UInt8]("WAVE".utf8)
+        d += [UInt8]("LIST".utf8) + u32le(0xFFFF_FFFF) + [UInt8]("INFO".utf8)
+        XCTAssertThrowsError(try dec.append(Data(d)))
+    }
+
+    func testAnHonestNonDataChunkIsStillSkipped() throws {
+        // The cap must not break the ordinary case it is guarding.
+        var dec = WAVStreamDecoder()
+        let out = try dec.append(wav(junkChunk: true, payload: [1, 0, 2, 0]))
+        XCTAssertEqual(out.count, 4)
+    }
+
     func testBytesSplitAcrossArrivalsReassemble() throws {
         let payload = (0..<200).map { UInt8($0 % 251) }
         let whole = wav(payload: payload)

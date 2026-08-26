@@ -615,3 +615,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "स्ट्रीमिंग ऑडियो";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "स्ट्रीमिंग ऑडियो पूरी फ़ाइल का इंतज़ार किए बिना, पहला वाक्य बनते ही बजाना शुरू कर देता है। यह केवल बातचीत मोड (आवाज़ स्क्रीन) में लागू होता है; आगे के वाक्य वैसे भी पिछले वाक्य के बजते समय तैयार हो जाते हैं। आवाज़ अटके तो इसे बंद कर दें।";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "ऑडियो चलना बीच में रुक गया।";
+"O endpoint aceitou o pedido e não enviou áudio." = "एंडपॉइंट ने अनुरोध स्वीकार किया और कोई ऑडियो नहीं भेजा।";

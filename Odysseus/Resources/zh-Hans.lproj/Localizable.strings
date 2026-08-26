@@ -613,3 +613,7 @@
 /* Streaming TTS playback (Voice settings) */
 "Áudio em streaming" = "流式播放";
 "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "流式播放在第一句还在生成时就开始播放，而不是等待整个文件。仅在对话模式（语音界面）生效；后续句子本来就会在上一句播放时提前准备。若声音卡顿请关闭。";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "音频播放被中断。";
+"O endpoint aceitou o pedido e não enviou áudio." = "服务端点接受了请求，但没有返回音频。";
