@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld darbojas · %lld rindā";
 "Processar só no aparelho" = "Apstrādāt tikai ierīcē";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Apstrāde tikai ierīcē nesūta audio uz Apple, taču bezsaistes modelis kļūdās vairāk vārdu. Atstājiet izslēgtu, ja transkripcija ir slikta.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Atjaunināt sarakstu (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in nav pieejams: atbalss slāpēšanu neizdevās ieslēgt.";
+"Buscar modelos do servidor" = "Iegūt modeļus no servera";
+"Buscar voz" = "Meklēt balsi";
+"Chave da API" = "API atslēga";
+"Compatível com OpenAI" = "Saderīgs ar OpenAI";
+"Consultando…" = "Vaicā…";
+"Endpoint de voz não configurado (falta a URL)." = "Balss endpoint nav konfigurēts (trūkst URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint neatgrieza tekstu. Atbilde: %@";
+"Endpoint próprio" = "Savs endpoint";
+"Endpoint respondeu %d." = "Endpoint atbildēja %d.";
+"Endpoint respondeu %d: %@" = "Endpoint atbildēja %d: %@";
+"Escolher voz" = "Izvēlēties balsi";
+"Escolher…" = "Izvēlēties…";
+"Formato" = "Formāts";
+"Mostrar chave" = "Rādīt atslēgu";
+"Nenhuma voz encontrada." = "Neviena balss nav atrasta.";
+"Nome do modelo" = "Modeļa nosaukums";
+"O servidor não listou nenhum modelo." = "Serveris neuzskaitīja nevienu modeli.";
+"OK" = "Labi";
+"Ocultar chave" = "Slēpt atslēgu";
+"Olá! Esta é a voz do endpoint." = "Sveiki! Šī ir endpoint balss.";
+"Outro…" = "Cits…";
+"Só minhas vozes" = "Tikai manas balsis";
+"URL base" = "Bāzes URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "“Savs endpoint” = jebkurš pakalpojums, kas saderīgs ar OpenAI audio API (POST /audio/transcriptions). Ierīcē nekas netiek lejupielādēts.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in nav pieejams: neizdevās ielādēt runas detektoru.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in nav pieejams: neizdevās atvērt mikrofonu.";
+"O modelo guardado (%@) não está na lista do servidor." = "Saglabātais modelis (%@) nav servera sarakstā.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Bez HTTPS API atslēga tīklā ceļo atklātā tekstā.";
+"Gravando… toque para parar" = "Notiek ierakste… pieskarieties, lai apturētu";
+"Ouvi: %@" = "Dzirdēju: %@";
+"Testar reconhecimento" = "Pārbaudīt atpazīšanu";
+"Transcrevendo…" = "Atšifrē…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Runas valoda";
+"Seguir o app (%@)" = "Sekot lietotnei (%@)";
+"Detectar automaticamente" = "Noteikt automātiski";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Iebūvētā balss seko lietotnes valodai. Atpazīšana turpretī izmanto augšā izvēlēto valodu; automātiskā noteikšana biežāk kļūdās īsā vai trokšņainā audio, un iOS iebūvētā atpazīšana valodu nenosaka vispār — tur vienmēr ir spēkā lietotnes valoda.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Straumēts audio";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Straumēts audio atskaņo pirmo teikumu jau tā ģenerēšanas laikā, nevis gaida visu failu. Attiecas tikai uz sarunas režīmu (balss ekrānu); nākamie teikumi tāpat tiek sagatavoti, kamēr skan iepriekšējais. Izslēdziet, ja skaņa raustās.";

@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "실행 중 %lld · 대기 중 %lld";
 "Processar só no aparelho" = "기기에서만 처리";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "기기에서만 처리하면 오디오가 Apple로 전송되지 않지만 오프라인 모델은 단어를 더 많이 틀립니다. 인식이 나쁘면 꺼 두세요.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "목록 새로고침 (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in을 사용할 수 없음: 에코 제거를 켤 수 없습니다.";
+"Buscar modelos do servidor" = "서버에서 모델 가져오기";
+"Buscar voz" = "음성 검색";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI 호환";
+"Consultando…" = "조회 중…";
+"Endpoint de voz não configurado (falta a URL)." = "음성 엔드포인트가 설정되지 않았습니다(URL 없음).";
+"Endpoint não devolveu texto. Resposta: %@" = "엔드포인트가 텍스트를 반환하지 않았습니다. 응답: %@";
+"Endpoint próprio" = "직접 엔드포인트";
+"Endpoint respondeu %d." = "엔드포인트 응답 %d.";
+"Endpoint respondeu %d: %@" = "엔드포인트 응답 %d: %@";
+"Escolher voz" = "음성 선택";
+"Escolher…" = "선택…";
+"Formato" = "형식";
+"Mostrar chave" = "키 표시";
+"Nenhuma voz encontrada." = "음성을 찾을 수 없습니다.";
+"Nome do modelo" = "모델 이름";
+"O servidor não listou nenhum modelo." = "서버가 모델을 하나도 나열하지 않았습니다.";
+"OK" = "확인";
+"Ocultar chave" = "키 숨기기";
+"Olá! Esta é a voz do endpoint." = "안녕하세요! 엔드포인트 음성입니다.";
+"Outro…" = "기타…";
+"Só minhas vozes" = "내 음성만";
+"URL base" = "기본 URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"직접 엔드포인트\" = OpenAI 오디오 API와 호환되는 모든 서비스(POST /audio/transcriptions). 기기에 아무것도 다운로드하지 않습니다.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in을 사용할 수 없음: 음성 감지기를 불러오지 못했습니다.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in을 사용할 수 없음: 마이크를 열지 못했습니다.";
+"O modelo guardado (%@) não está na lista do servidor." = "저장된 모델(%@)이 서버 목록에 없습니다.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS가 아니면 API key가 네트워크를 평문으로 지나갑니다.";
+"Gravando… toque para parar" = "녹음 중… 탭하여 중지";
+"Ouvi: %@" = "들은 내용: %@";
+"Testar reconhecimento" = "인식 테스트";
+"Transcrevendo…" = "받아쓰는 중…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "말하는 언어";
+"Seguir o app (%@)" = "앱 따르기 (%@)";
+"Detectar automaticamente" = "자동으로 감지";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "내장 음성은 앱 언어를 따릅니다. 인식은 위에서 선택한 언어를 사용합니다. 자동 감지는 짧거나 잡음이 많은 오디오에서 더 자주 틀리고, iOS 내장 인식은 언어를 전혀 감지하지 못합니다 — 거기서는 항상 앱 언어가 적용됩니다.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "스트리밍 재생";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "스트리밍 재생은 파일 전체를 기다리지 않고 첫 문장을 생성되는 도중에 재생합니다. 대화 모드(음성 화면)에서만 적용되며, 이후 문장은 앞 문장이 재생되는 동안 미리 준비됩니다. 소리가 끊기면 끄세요.";

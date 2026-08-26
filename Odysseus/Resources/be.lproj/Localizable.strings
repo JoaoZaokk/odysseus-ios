@@ -569,3 +569,49 @@
 "%lld rodando · %lld na fila" = "%lld працуе · %lld у чарзе";
 "Processar só no aparelho" = "Апрацоўваць толькі на прыладзе";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Апрацоўка толькі на прыладзе не адпраўляе аўдыя ў Apple, але афлайн-мадэль памыляецца ў большай колькасці слоў. Пакіньце выключаным, калі транскрыпцыя дрэнная.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Абнавіць спіс (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in недаступны: не ўдалося ўключыць падаўленне рэха.";
+"Buscar modelos do servidor" = "Атрымаць мадэлі з сервера";
+"Buscar voz" = "Пошук голасу";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Сумяшчальна з OpenAI";
+"Consultando…" = "Запыт…";
+"Endpoint de voz não configurado (falta a URL)." = "Галасавы endpoint не наладжаны (няма URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint не вярнуў тэксту. Адказ: %@";
+"Endpoint próprio" = "Уласны endpoint";
+"Endpoint respondeu %d." = "Endpoint адказаў %d.";
+"Endpoint respondeu %d: %@" = "Endpoint адказаў %d: %@";
+"Escolher voz" = "Выбраць голас";
+"Escolher…" = "Выбраць…";
+"Formato" = "Фармат";
+"Mostrar chave" = "Паказаць ключ";
+"Nenhuma voz encontrada." = "Голас не знойдзены.";
+"Nome do modelo" = "Назва мадэлі";
+"O servidor não listou nenhum modelo." = "Сервер не пералічыў ніводнай мадэлі.";
+"OK" = "OK";
+"Ocultar chave" = "Схаваць ключ";
+"Olá! Esta é a voz do endpoint." = "Прывітанне! Гэта голас endpoint-а.";
+"Outro…" = "Іншае…";
+"Só minhas vozes" = "Толькі мае галасы";
+"URL base" = "Базавы URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "«Уласны endpoint» = любы сэрвіс, сумяшчальны з аўдыя-API OpenAI (POST /audio/transcriptions). На прыладу нічога не спампоўваецца.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in недаступны: не ўдалося загрузіць дэтэктар маўлення.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in недаступны: не ўдалося адкрыць мікрафон.";
+"O modelo guardado (%@) não está na lista do servidor." = "Захаваная мадэль (%@) адсутнічае ў спісе сервера.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Без HTTPS API key ідзе праз сетку адкрытым тэкстам.";
+"Gravando… toque para parar" = "Запіс… крані, каб спыніць";
+"Ouvi: %@" = "Пачуў: %@";
+"Testar reconhecimento" = "Праверыць распазнаванне";
+"Transcrevendo…" = "Транскрыбую…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Мова маўлення";
+"Seguir o app (%@)" = "Як у праграме (%@)";
+"Detectar automaticamente" = "Вызначаць аўтаматычна";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Убудаваны голас ідзе за мовай праграмы. Распазнаванне ж выкарыстоўвае выбраную вышэй мову; аўтаматычнае вызначэнне часцей памыляецца на кароткім ці шумным аўдыя, а ўбудаванае распазнаванне iOS наогул нічога не вызначае — там заўсёды дзейнічае мова праграмы.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Патокавае аўдыя";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Патокавае аўдыя прайграе першы сказ, пакуль ён яшчэ ствараецца, замест чакання ўсяго файла. Дзейнічае толькі ў рэжыме размовы (галасавы экран); наступныя сказы і так рыхтуюцца, пакуль гучыць папярэдні. Выключыце, калі гук заікаецца.";

@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld 个运行中 · %lld 个排队中";
 "Processar só no aparelho" = "仅在设备上处理";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "仅在设备上处理不会将音频发送给 Apple，但离线模型识别错误更多。转写效果差时请关闭。";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "刷新列表 (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "无法使用 barge-in：回声消除未能启用。";
+"Buscar modelos do servidor" = "从服务器获取模型";
+"Buscar voz" = "搜索语音";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "兼容 OpenAI";
+"Consultando…" = "查询中…";
+"Endpoint de voz não configurado (falta a URL)." = "语音端点未配置（缺少 URL）。";
+"Endpoint não devolveu texto. Resposta: %@" = "端点未返回文本。响应：%@";
+"Endpoint próprio" = "自定义端点";
+"Endpoint respondeu %d." = "端点返回 %d。";
+"Endpoint respondeu %d: %@" = "端点返回 %d：%@";
+"Escolher voz" = "选择语音";
+"Escolher…" = "选择…";
+"Formato" = "格式";
+"Mostrar chave" = "显示密钥";
+"Nenhuma voz encontrada." = "未找到语音。";
+"Nome do modelo" = "模型名称";
+"O servidor não listou nenhum modelo." = "服务器未列出任何模型。";
+"OK" = "好";
+"Ocultar chave" = "隐藏密钥";
+"Olá! Esta é a voz do endpoint." = "你好！这是端点的语音。";
+"Outro…" = "其他…";
+"Só minhas vozes" = "仅我的语音";
+"URL base" = "基础 URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "「自定义端点」= 任何兼容 OpenAI 音频 API 的服务（POST /audio/transcriptions）。不会在设备上下载任何内容。";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "无法使用 barge-in：语音检测模型加载失败。";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "无法使用 barge-in：无法打开麦克风。";
+"O modelo guardado (%@) não está na lista do servidor." = "已保存的模型（%@）不在服务器列表中。";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "不使用 HTTPS 时，API key 将以明文在网络中传输。";
+"Gravando… toque para parar" = "录音中…点按停止";
+"Ouvi: %@" = "听到：%@";
+"Testar reconhecimento" = "测试识别";
+"Transcrevendo…" = "转写中…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "语音语言";
+"Seguir o app (%@)" = "跟随应用（%@）";
+"Detectar automaticamente" = "自动检测";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "内置语音跟随应用语言。识别则使用上面选择的语言；自动检测在短音频或嘈杂音频上出错更多，而 iOS 内置识别根本不做语言检测——那里始终使用应用语言。";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "流式播放";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "流式播放在第一句还在生成时就开始播放，而不是等待整个文件。仅在对话模式（语音界面）生效；后续句子本来就会在上一句播放时提前准备。若声音卡顿请关闭。";

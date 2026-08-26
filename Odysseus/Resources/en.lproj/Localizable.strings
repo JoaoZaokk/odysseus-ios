@@ -569,3 +569,49 @@
 "%lld rodando · %lld na fila" = "%lld running · %lld queued";
 "Processar só no aparelho" = "Process on device only";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Processing on device only doesn't send audio to Apple, but the offline model gets more words wrong. Leave it off if transcription is poor.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Refresh list (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in unavailable: echo cancellation couldn't be enabled.";
+"Buscar modelos do servidor" = "Fetch models from server";
+"Buscar voz" = "Search voice";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-compatible";
+"Consultando…" = "Querying…";
+"Endpoint de voz não configurado (falta a URL)." = "Voice endpoint not configured (URL missing).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint returned no text. Response: %@";
+"Endpoint próprio" = "Custom endpoint";
+"Endpoint respondeu %d." = "Endpoint responded %d.";
+"Endpoint respondeu %d: %@" = "Endpoint responded %d: %@";
+"Escolher voz" = "Choose voice";
+"Escolher…" = "Choose…";
+"Formato" = "Format";
+"Mostrar chave" = "Show key";
+"Nenhuma voz encontrada." = "No voices found.";
+"Nome do modelo" = "Model name";
+"O servidor não listou nenhum modelo." = "The server listed no models.";
+"OK" = "OK";
+"Ocultar chave" = "Hide key";
+"Olá! Esta é a voz do endpoint." = "Hi! This is the endpoint voice.";
+"Outro…" = "Other…";
+"Só minhas vozes" = "Only my voices";
+"URL base" = "Base URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Custom endpoint\" = any service compatible with OpenAI's audio API (POST /audio/transcriptions). Nothing is downloaded to the device.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in unavailable: the voice detector could not be loaded.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in unavailable: the microphone could not be opened.";
+"O modelo guardado (%@) não está na lista do servidor." = "The stored model (%@) is not in the server's list.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Without HTTPS the API key travels over the network in plain text.";
+"Gravando… toque para parar" = "Recording… tap to stop";
+"Ouvi: %@" = "Heard: %@";
+"Testar reconhecimento" = "Test recognition";
+"Transcrevendo…" = "Transcribing…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Speech language";
+"Seguir o app (%@)" = "Follow the app (%@)";
+"Detectar automaticamente" = "Detect automatically";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "The built-in voice follows the app language. Recognition uses the language chosen above; automatic detection makes more mistakes on short or noisy audio, and iOS's built-in recognition detects nothing at all — there the app language always wins.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming audio";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streaming audio plays the first sentence while it is still being generated, instead of waiting for the whole file. It applies only in conversation mode (the voice screen); later sentences are already prepared while the previous one plays. Turn it off if the audio stutters.";

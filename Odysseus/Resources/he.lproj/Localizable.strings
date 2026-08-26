@@ -559,3 +559,49 @@
 "%lld rodando · %lld na fila" = "%lld פועלים · %lld בתור";
 "Processar só no aparelho" = "עיבוד במכשיר בלבד";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "עיבוד במכשיר בלבד לא שולח אודיו ל-Apple, אבל המודל הלא-מקוון טועה ביותר מילים. השאירו כבוי אם התמלול גרוע.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "רענן רשימה (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in לא זמין: לא ניתן היה להפעיל ביטול הד.";
+"Buscar modelos do servidor" = "משיכת מודלים מהשרת";
+"Buscar voz" = "חיפוש קול";
+"Chave da API" = "מפתח API";
+"Compatível com OpenAI" = "תואם OpenAI";
+"Consultando…" = "שולח שאילתה…";
+"Endpoint de voz não configurado (falta a URL)." = "נקודת הקצה לקול לא הוגדרה (חסר URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "נקודת הקצה לא החזירה טקסט. תגובה: %@";
+"Endpoint próprio" = "נקודת קצה משלך";
+"Endpoint respondeu %d." = "נקודת הקצה השיבה %d.";
+"Endpoint respondeu %d: %@" = "נקודת הקצה השיבה %d: %@";
+"Escolher voz" = "בחירת קול";
+"Escolher…" = "בחירה…";
+"Formato" = "פורמט";
+"Mostrar chave" = "הצג מפתח";
+"Nenhuma voz encontrada." = "לא נמצא קול.";
+"Nome do modelo" = "שם המודל";
+"O servidor não listou nenhum modelo." = "השרת לא הציג אף מודל.";
+"OK" = "אישור";
+"Ocultar chave" = "הסתר מפתח";
+"Olá! Esta é a voz do endpoint." = "שלום! זה הקול של נקודת הקצה.";
+"Outro…" = "אחר…";
+"Só minhas vozes" = "רק הקולות שלי";
+"URL base" = "כתובת בסיס";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"נקודת קצה משלך\" = כל שירות התואם ל-API האודיו של OpenAI (POST /audio/transcriptions). שום דבר לא יורד למכשיר.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in לא זמין: לא ניתן היה לטעון את מזהה הדיבור.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in לא זמין: לא ניתן היה לפתוח את המיקרופון.";
+"O modelo guardado (%@) não está na lista do servidor." = "המודל השמור (%@) אינו ברשימת השרת.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "בלי HTTPS מפתח ה-API עובר ברשת כטקסט גלוי.";
+"Gravando… toque para parar" = "מקליט… הקש כדי לעצור";
+"Ouvi: %@" = "שמעתי: %@";
+"Testar reconhecimento" = "בדיקת זיהוי";
+"Transcrevendo…" = "מתמלל…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "שפת הדיבור";
+"Seguir o app (%@)" = "לפי האפליקציה (%@)";
+"Detectar automaticamente" = "זיהוי אוטומטי";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "הקול המובנה עוקב אחר שפת האפליקציה. הזיהוי, לעומת זאת, משתמש בשפה שנבחרה למעלה; זיהוי אוטומטי טועה יותר באודיו קצר או רועש, והזיהוי המובנה של iOS אינו מזהה שפה כלל — שם תמיד קובעת שפת האפליקציה.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "אודיו בהזרמה";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "אודיו בהזרמה מנגן את המשפט הראשון בזמן שהוא עדיין נוצר, במקום לחכות לקובץ כולו. חל רק במצב שיחה (מסך הקול); המשפטים הבאים מוכנים ממילא בזמן שהקודם מתנגן. כבה אם הצליל נתקע.";

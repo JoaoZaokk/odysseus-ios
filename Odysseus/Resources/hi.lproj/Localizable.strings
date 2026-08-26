@@ -569,3 +569,49 @@
 "%lld rodando · %lld na fila" = "%lld चल रहे · %lld कतार में";
 "Processar só no aparelho" = "केवल डिवाइस पर प्रोसेस करें";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "केवल डिवाइस पर प्रोसेस करने से ऑडियो Apple को नहीं भेजा जाता, लेकिन ऑफ़लाइन मॉडल ज़्यादा शब्द ग़लत पहचानता है। ट्रांसक्रिप्शन ख़राब हो तो इसे बंद रखें।";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "सूची ताज़ा करें (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in उपलब्ध नहीं: इको कैंसलेशन चालू नहीं हो सका।";
+"Buscar modelos do servidor" = "सर्वर से मॉडल लाएँ";
+"Buscar voz" = "आवाज़ खोजें";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-संगत";
+"Consultando…" = "पूछ रहे हैं…";
+"Endpoint de voz não configurado (falta a URL)." = "वॉइस endpoint सेट नहीं है (URL नहीं है)।";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint ने कोई टेक्स्ट नहीं लौटाया। प्रतिक्रिया: %@";
+"Endpoint próprio" = "अपना endpoint";
+"Endpoint respondeu %d." = "endpoint ने %d लौटाया।";
+"Endpoint respondeu %d: %@" = "endpoint ने %d लौटाया: %@";
+"Escolher voz" = "आवाज़ चुनें";
+"Escolher…" = "चुनें…";
+"Formato" = "फ़ॉर्मैट";
+"Mostrar chave" = "कुंजी दिखाएँ";
+"Nenhuma voz encontrada." = "कोई आवाज़ नहीं मिली।";
+"Nome do modelo" = "मॉडल का नाम";
+"O servidor não listou nenhum modelo." = "सर्वर ने कोई मॉडल सूचीबद्ध नहीं किया।";
+"OK" = "ठीक है";
+"Ocultar chave" = "कुंजी छिपाएँ";
+"Olá! Esta é a voz do endpoint." = "नमस्ते! यह endpoint की आवाज़ है।";
+"Outro…" = "अन्य…";
+"Só minhas vozes" = "केवल मेरी आवाज़ें";
+"URL base" = "बेस URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"अपना endpoint\" = कोई भी सेवा जो OpenAI के ऑडियो API के अनुकूल हो (POST /audio/transcriptions)। डिवाइस पर कुछ भी डाउनलोड नहीं होता।";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in उपलब्ध नहीं: आवाज़ पहचानने वाला मॉडल लोड नहीं हो सका।";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in उपलब्ध नहीं: माइक्रोफ़ोन नहीं खुल सका।";
+"O modelo guardado (%@) não está na lista do servidor." = "सहेजा गया मॉडल (%@) सर्वर की सूची में नहीं है।";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS के बिना API key नेटवर्क पर सादे टेक्स्ट में जाती है।";
+"Gravando… toque para parar" = "रिकॉर्ड हो रहा है… रोकने के लिए टैप करें";
+"Ouvi: %@" = "सुना: %@";
+"Testar reconhecimento" = "पहचान जाँचें";
+"Transcrevendo…" = "लिखा जा रहा है…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "बोली की भाषा";
+"Seguir o app (%@)" = "ऐप के अनुसार (%@)";
+"Detectar automaticamente" = "अपने आप पहचानें";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "अंतर्निहित आवाज़ ऐप की भाषा का अनुसरण करती है। पहचान ऊपर चुनी गई भाषा का उपयोग करती है; छोटे या शोर वाले ऑडियो पर स्वचालित पहचान ज़्यादा गलती करती है, और iOS की अपनी पहचान भाषा बिलकुल नहीं पहचानती — वहाँ हमेशा ऐप की भाषा ही चलती है।";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "स्ट्रीमिंग ऑडियो";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "स्ट्रीमिंग ऑडियो पूरी फ़ाइल का इंतज़ार किए बिना, पहला वाक्य बनते ही बजाना शुरू कर देता है। यह केवल बातचीत मोड (आवाज़ स्क्रीन) में लागू होता है; आगे के वाक्य वैसे भी पिछले वाक्य के बजते समय तैयार हो जाते हैं। आवाज़ अटके तो इसे बंद कर दें।";

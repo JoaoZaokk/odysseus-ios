@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld v teku · %lld v čakalni vrsti";
 "Processar só no aparelho" = "Obdelaj samo v napravi";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Obdelava samo v napravi ne pošilja zvoka Applu, vendar model brez povezave zgreši več besed. Pustite izklopljeno, če je prepis slab.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Osveži seznam (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in ni na voljo: odprave odmeva ni bilo mogoče vklopiti.";
+"Buscar modelos do servidor" = "Pridobi modele s strežnika";
+"Buscar voz" = "Iskanje glasu";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Združljivo z OpenAI";
+"Consultando…" = "Poizvedovanje…";
+"Endpoint de voz não configurado (falta a URL)." = "Glasovni endpoint ni nastavljen (manjka URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint ni vrnil besedila. Odgovor: %@";
+"Endpoint próprio" = "Lasten endpoint";
+"Endpoint respondeu %d." = "Endpoint je odgovoril %d.";
+"Endpoint respondeu %d: %@" = "Endpoint je odgovoril %d: %@";
+"Escolher voz" = "Izberi glas";
+"Escolher…" = "Izberi…";
+"Formato" = "Oblika";
+"Mostrar chave" = "Pokaži ključ";
+"Nenhuma voz encontrada." = "Ni najdenega glasu.";
+"Nome do modelo" = "Ime modela";
+"O servidor não listou nenhum modelo." = "Strežnik ni navedel nobenega modela.";
+"OK" = "V redu";
+"Ocultar chave" = "Skrij ključ";
+"Olá! Esta é a voz do endpoint." = "Živjo! To je glas endpointa.";
+"Outro…" = "Drugo…";
+"Só minhas vozes" = "Samo moji glasovi";
+"URL base" = "Osnovni URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "»Lasten endpoint« = katera koli storitev, združljiva z zvočnim API-jem OpenAI (POST /audio/transcriptions). V napravo se ne prenese nič.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in ni na voljo: zaznavalnika govora ni bilo mogoče naložiti.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in ni na voljo: mikrofona ni bilo mogoče odpreti.";
+"O modelo guardado (%@) não está na lista do servidor." = "Shranjeni model (%@) ni na seznamu strežnika.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Brez HTTPS potuje API key po omrežju v čistopisu.";
+"Gravando… toque para parar" = "Snemanje… tapnite za ustavitev";
+"Ouvi: %@" = "Slišal sem: %@";
+"Testar reconhecimento" = "Preizkusi prepoznavanje";
+"Transcrevendo…" = "Prepisujem…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Jezik govora";
+"Seguir o app (%@)" = "Sledi aplikaciji (%@)";
+"Detectar automaticamente" = "Samodejno zaznaj";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Vgrajeni glas sledi jeziku aplikacije. Prepoznavanje pa uporablja zgoraj izbrani jezik; samodejno zaznavanje se pogosteje zmoti pri kratkem ali hrupnem zvoku, vgrajeno prepoznavanje v iOS pa jezika sploh ne zazna — tam vedno velja jezik aplikacije.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Pretočni zvok";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Pretočni zvok predvaja prvi stavek že med ustvarjanjem, namesto da bi čakal na celotno datoteko. Velja samo v pogovornem načinu (glasovni zaslon); naslednji stavki se tako ali tako pripravljajo, medtem ko se predvaja prejšnji. Izklopite, če zvok zatika.";

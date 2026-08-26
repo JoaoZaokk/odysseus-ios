@@ -559,3 +559,49 @@
 "%lld rodando · %lld na fila" = "%lld käynnissä · %lld jonossa";
 "Processar só no aparelho" = "Käsittele vain laitteessa";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Vain laitteessa käsittely ei lähetä ääntä Applelle, mutta offline-malli erehtyy useammista sanoista. Jätä pois päältä, jos litterointi on huonoa.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Päivitä lista (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in ei käytettävissä: kaiun poistoa ei voitu ottaa käyttöön.";
+"Buscar modelos do servidor" = "Hae mallit palvelimelta";
+"Buscar voz" = "Hae ääntä";
+"Chave da API" = "API-avain";
+"Compatível com OpenAI" = "OpenAI-yhteensopiva";
+"Consultando…" = "Haetaan…";
+"Endpoint de voz não configurado (falta a URL)." = "Ääni-endpointia ei ole määritetty (URL puuttuu).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint ei palauttanut tekstiä. Vastaus: %@";
+"Endpoint próprio" = "Oma endpoint";
+"Endpoint respondeu %d." = "Endpoint vastasi %d.";
+"Endpoint respondeu %d: %@" = "Endpoint vastasi %d: %@";
+"Escolher voz" = "Valitse ääni";
+"Escolher…" = "Valitse…";
+"Formato" = "Muoto";
+"Mostrar chave" = "Näytä avain";
+"Nenhuma voz encontrada." = "Ääniä ei löytynyt.";
+"Nome do modelo" = "Mallin nimi";
+"O servidor não listou nenhum modelo." = "Palvelin ei listannut yhtään mallia.";
+"OK" = "OK";
+"Ocultar chave" = "Piilota avain";
+"Olá! Esta é a voz do endpoint." = "Hei! Tämä on endpointin ääni.";
+"Outro…" = "Muu…";
+"Só minhas vozes" = "Vain omat ääneni";
+"URL base" = "Perus-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Oma endpoint\" = mikä tahansa palvelu, joka on yhteensopiva OpenAI:n ääni-API:n kanssa (POST /audio/transcriptions). Laitteelle ei ladata mitään.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in ei käytettävissä: puheentunnistinta ei voitu ladata.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in ei käytettävissä: mikrofonia ei voitu avata.";
+"O modelo guardado (%@) não está na lista do servidor." = "Tallennettu malli (%@) ei ole palvelimen listalla.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Ilman HTTPS:ää API-avain kulkee verkossa selkokielisenä.";
+"Gravando… toque para parar" = "Tallennetaan… napauta lopettaaksesi";
+"Ouvi: %@" = "Kuulin: %@";
+"Testar reconhecimento" = "Testaa tunnistus";
+"Transcrevendo…" = "Puretaan tekstiksi…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Puheen kieli";
+"Seguir o app (%@)" = "Seuraa sovellusta (%@)";
+"Detectar automaticamente" = "Tunnista automaattisesti";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Sisäänrakennettu ääni seuraa sovelluksen kieltä. Tunnistus käyttää kuitenkin yllä valittua kieltä; automaattinen tunnistus erehtyy useammin lyhyessä tai meluisassa äänessä, eikä iOS:n oma tunnistus tunnista kieltä lainkaan — siinä pätee aina sovelluksen kieli.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Suoratoistoääni";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Suoratoistoääni toistaa ensimmäisen lauseen jo sitä luotaessa sen sijaan, että odottaisi koko tiedostoa. Koskee vain keskustelutilaa (puhenäyttöä); seuraavat lauseet valmistellaan muutenkin edellisen soidessa. Kytke pois, jos ääni pätkii.";

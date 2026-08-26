@@ -561,3 +561,49 @@
 "%lld rodando · %lld na fila" = "%lld en cours · %lld en attente";
 "Processar só no aparelho" = "Traiter uniquement sur l'appareil";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Le traitement uniquement sur l'appareil n'envoie aucun audio à Apple, mais le modèle hors ligne se trompe plus souvent. Laissez-le désactivé si la transcription est mauvaise.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Actualiser la liste (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in indisponible : impossible d'activer l'annulation d'écho.";
+"Buscar modelos do servidor" = "Récupérer les modèles du serveur";
+"Buscar voz" = "Rechercher une voix";
+"Chave da API" = "Clé API";
+"Compatível com OpenAI" = "Compatible OpenAI";
+"Consultando…" = "Interrogation…";
+"Endpoint de voz não configurado (falta a URL)." = "Endpoint vocal non configuré (URL manquante).";
+"Endpoint não devolveu texto. Resposta: %@" = "L'endpoint n'a renvoyé aucun texte. Réponse : %@";
+"Endpoint próprio" = "Endpoint personnalisé";
+"Endpoint respondeu %d." = "L'endpoint a répondu %d.";
+"Endpoint respondeu %d: %@" = "L'endpoint a répondu %d : %@";
+"Escolher voz" = "Choisir une voix";
+"Escolher…" = "Choisir…";
+"Formato" = "Format";
+"Mostrar chave" = "Afficher la clé";
+"Nenhuma voz encontrada." = "Aucune voix trouvée.";
+"Nome do modelo" = "Nom du modèle";
+"O servidor não listou nenhum modelo." = "Le serveur n'a listé aucun modèle.";
+"OK" = "OK";
+"Ocultar chave" = "Masquer la clé";
+"Olá! Esta é a voz do endpoint." = "Bonjour ! Voici la voix de l'endpoint.";
+"Outro…" = "Autre…";
+"Só minhas vozes" = "Seulement mes voix";
+"URL base" = "URL de base";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "« Endpoint personnalisé » = tout service compatible avec l'API audio d'OpenAI (POST /audio/transcriptions). Rien n'est téléchargé sur l'appareil.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in indisponible : le détecteur de voix n'a pas pu être chargé.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in indisponible : le microphone n'a pas pu être ouvert.";
+"O modelo guardado (%@) não está na lista do servidor." = "Le modèle enregistré (%@) ne figure pas dans la liste du serveur.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Sans HTTPS, la clé API circule en clair sur le réseau.";
+"Gravando… toque para parar" = "Enregistrement… touchez pour arrêter";
+"Ouvi: %@" = "Entendu : %@";
+"Testar reconhecimento" = "Tester la reconnaissance";
+"Transcrevendo…" = "Transcription…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Langue de la parole";
+"Seguir o app (%@)" = "Suivre l'app (%@)";
+"Detectar automaticamente" = "Détecter automatiquement";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "La voix native suit la langue de l'app. La reconnaissance, elle, utilise la langue choisie ci-dessus ; la détection automatique se trompe davantage sur un audio court ou bruité, et la reconnaissance native d'iOS ne détecte rien — la langue de l'app y prime toujours.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Audio en streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "L'audio en streaming lit la première phrase pendant qu'elle est encore générée, au lieu d'attendre le fichier entier. Cela ne s'applique qu'au mode conversation (l'écran vocal) ; les phrases suivantes sont déjà préparées pendant que la précédente est lue. Désactivez-le si le son saccade.";

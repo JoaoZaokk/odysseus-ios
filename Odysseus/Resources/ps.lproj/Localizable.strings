@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld روان دي · %lld په کتار کې";
 "Processar só no aparelho" = "یوازې په وسیله کې پروسس کول";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "یوازې په وسیله کې پروسس کول غږ Apple ته نه لېږي، خو آفلاین ماډل ډېرې کلمې تېروځي. که لیکنه ښه نه وي، مړ یې پرېږده.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "لیست تازه کړئ (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in شتون نلري: د اکو لغوه کول فعال نه شول.";
+"Buscar modelos do servidor" = "له سرور څخه ماډلونه راوړه";
+"Buscar voz" = "غږ ولټوئ";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "له OpenAI سره برابر";
+"Consultando…" = "پوښتنه روانه ده…";
+"Endpoint de voz não configurado (falta a URL)." = "د غږ endpoint نه دی تنظیم شوی (URL نشته).";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint هېڅ متن ونه ګرځاوه. ځواب: %@";
+"Endpoint próprio" = "خپل endpoint";
+"Endpoint respondeu %d." = "endpoint %d ځواب ورکړ.";
+"Endpoint respondeu %d: %@" = "endpoint %d ځواب ورکړ: %@";
+"Escolher voz" = "غږ وټاکئ";
+"Escolher…" = "وټاکئ…";
+"Formato" = "بڼه";
+"Mostrar chave" = "کلي وښیه";
+"Nenhuma voz encontrada." = "هېڅ غږ ونه موندل شو.";
+"Nome do modelo" = "د ماډل نوم";
+"O servidor não listou nenhum modelo." = "سرور هېڅ ماډل ونه لیست کړ.";
+"OK" = "سمه ده";
+"Ocultar chave" = "کلي پټ کړه";
+"Olá! Esta é a voz do endpoint." = "سلام! دا د endpoint غږ دی.";
+"Outro…" = "بل…";
+"Só minhas vozes" = "یوازې زما غږونه";
+"URL base" = "بنسټیز URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"خپل endpoint\" = هره هغه خدمت چې د OpenAI د غږ API سره برابر وي (POST /audio/transcriptions). په وسیله کې هېڅ نه ډاونلوډېږي.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in شتون نلري: د غږ کشف کوونکی نه شو پورته کېدای.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in شتون نلري: مایکروفون نه شو پرانیستل کېدای.";
+"O modelo guardado (%@) não está na lista do servidor." = "خوندي شوی ماډل (%@) د سرور په لیست کې نشته.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "پرته له HTTPS، API key په ساده متن کې د شبکې له لارې ځي.";
+"Gravando… toque para parar" = "ثبتول… د ودرولو لپاره کېکاږئ";
+"Ouvi: %@" = "واورېدل: %@";
+"Testar reconhecimento" = "پېژندنه وازموئ";
+"Transcrevendo…" = "لیکل کیږي…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "د خبرو ژبه";
+"Seguir o app (%@)" = "د اپلیکیشن په شان (%@)";
+"Detectar automaticamente" = "پخپله پېژندل";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "جوړ شوی غږ د اپلیکیشن ژبې پیروي کوي. پېژندنه خو پورته ټاکل شوې ژبه کاروي؛ اتوماتیک پېژندل په لنډ یا شور لرونکي غږ کې ډېرې تېروتنې کوي، او د iOS جوړ شوې پېژندنه هېڅ ژبه نه پېژني — هلته تل د اپلیکیشن ژبه کار کوي.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "روان اوریدل";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "روان اوریدل لومړۍ جمله د بشپړې فایلې د انتظار پرځای هغه مهال غږوي چې لا جوړېږي. یوازې په خبرو اترو حالت (غږ پرده) کې کار کوي؛ راتلونکې جملې هرومرو د مخکینۍ د غږېدو پر مهال چمتو کېږي. که غږ ودرېږي، ویې بندوئ.";

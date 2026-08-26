@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld در حال اجرا · %lld در صف";
 "Processar só no aparelho" = "پردازش فقط روی دستگاه";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "پردازش فقط روی دستگاه صدا را به Apple نمی‌فرستد، اما مدل آفلاین کلمات بیشتری را اشتباه می‌گیرد. اگر رونویسی بد است، خاموش بگذارید.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "به‌روزرسانی فهرست (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in در دسترس نیست: حذف اکو فعال نشد.";
+"Buscar modelos do servidor" = "دریافت مدل‌ها از سرور";
+"Buscar voz" = "جست‌وجوی صدا";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "سازگار با OpenAI";
+"Consultando…" = "در حال پرس‌وجو…";
+"Endpoint de voz não configurado (falta a URL)." = "endpoint صدا پیکربندی نشده است (URL موجود نیست).";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint هیچ متنی برنگرداند. پاسخ: %@";
+"Endpoint próprio" = "endpoint اختصاصی";
+"Endpoint respondeu %d." = "endpoint با کد %d پاسخ داد.";
+"Endpoint respondeu %d: %@" = "endpoint با کد %d پاسخ داد: %@";
+"Escolher voz" = "انتخاب صدا";
+"Escolher…" = "انتخاب…";
+"Formato" = "قالب";
+"Mostrar chave" = "نمایش کلید";
+"Nenhuma voz encontrada." = "هیچ صدایی پیدا نشد.";
+"Nome do modelo" = "نام مدل";
+"O servidor não listou nenhum modelo." = "سرور هیچ مدلی فهرست نکرد.";
+"OK" = "تأیید";
+"Ocultar chave" = "پنهان کردن کلید";
+"Olá! Esta é a voz do endpoint." = "سلام! این صدای endpoint است.";
+"Outro…" = "دیگر…";
+"Só minhas vozes" = "فقط صداهای من";
+"URL base" = "URL پایه";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "«endpoint اختصاصی» = هر سرویسی که با API صوتی OpenAI سازگار باشد (POST /audio/transcriptions). چیزی روی دستگاه دانلود نمی‌شود.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in در دسترس نیست: آشکارساز صدا بارگذاری نشد.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in در دسترس نیست: میکروفون باز نشد.";
+"O modelo guardado (%@) não está na lista do servidor." = "مدل ذخیره‌شده (%@) در فهرست سرور نیست.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "بدون HTTPS، API key به‌صورت متن ساده در شبکه منتقل می‌شود.";
+"Gravando… toque para parar" = "در حال ضبط… برای توقف ضربه بزنید";
+"Ouvi: %@" = "شنیدم: %@";
+"Testar reconhecimento" = "آزمایش تشخیص";
+"Transcrevendo…" = "در حال رونویسی…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "زبان گفتار";
+"Seguir o app (%@)" = "پیروی از برنامه (%@)";
+"Detectar automaticamente" = "تشخیص خودکار";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "صدای داخلی از زبان برنامه پیروی می‌کند. اما تشخیص گفتار از زبان انتخاب‌شده در بالا استفاده می‌کند؛ تشخیص خودکار در صدای کوتاه یا پرنویز بیشتر اشتباه می‌کند و تشخیص داخلی iOS اصلاً زبان را تشخیص نمی‌دهد — آنجا همیشه زبان برنامه اعمال می‌شود.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "پخش جریانی صدا";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "پخش جریانی صدا جملهٔ اول را همان‌طور که در حال ساخت است پخش می‌کند، به‌جای انتظار برای کل فایل. فقط در حالت گفت‌وگو (صفحهٔ صدا) کار می‌کند؛ جمله‌های بعدی به‌هر حال هنگام پخش جملهٔ قبلی آماده می‌شوند. اگر صدا بریده‌بریده شد خاموشش کنید.";

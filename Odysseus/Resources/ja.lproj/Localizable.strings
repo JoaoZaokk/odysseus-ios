@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "実行中 %lld · 待機中 %lld";
 "Processar só no aparelho" = "デバイス内でのみ処理";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "デバイス内でのみ処理すると音声は Apple に送信されませんが、オフラインモデルは誤認識が増えます。文字起こしの精度が低い場合はオフにしてください。";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "リストを更新 (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "バージインを利用できません：エコーキャンセルを有効にできませんでした。";
+"Buscar modelos do servidor" = "サーバーからモデルを取得";
+"Buscar voz" = "音声を検索";
+"Chave da API" = "API キー";
+"Compatível com OpenAI" = "OpenAI 互換";
+"Consultando…" = "問い合わせ中…";
+"Endpoint de voz não configurado (falta a URL)." = "音声エンドポイントが未設定です（URL がありません）。";
+"Endpoint não devolveu texto. Resposta: %@" = "エンドポイントがテキストを返しませんでした。応答: %@";
+"Endpoint próprio" = "独自エンドポイント";
+"Endpoint respondeu %d." = "エンドポイントの応答: %d。";
+"Endpoint respondeu %d: %@" = "エンドポイントの応答: %d: %@";
+"Escolher voz" = "音声を選択";
+"Escolher…" = "選択…";
+"Formato" = "形式";
+"Mostrar chave" = "キーを表示";
+"Nenhuma voz encontrada." = "音声が見つかりません。";
+"Nome do modelo" = "モデル名";
+"O servidor não listou nenhum modelo." = "サーバーはモデルを 1 つも返しませんでした。";
+"OK" = "OK";
+"Ocultar chave" = "キーを非表示";
+"Olá! Esta é a voz do endpoint." = "こんにちは！これはエンドポイントの音声です。";
+"Outro…" = "その他…";
+"Só minhas vozes" = "自分の音声のみ";
+"URL base" = "ベース URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "「独自エンドポイント」= OpenAI の音声 API に対応したあらゆるサービス（POST /audio/transcriptions）。端末には何もダウンロードされません。";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "バージインを利用できません：音声検出モデルを読み込めませんでした。";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "バージインを利用できません：マイクを開けませんでした。";
+"O modelo guardado (%@) não está na lista do servidor." = "保存されているモデル（%@）はサーバーの一覧にありません。";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS でない場合、API キーは平文でネットワークを流れます。";
+"Gravando… toque para parar" = "録音中… タップで停止";
+"Ouvi: %@" = "聞き取り: %@";
+"Testar reconhecimento" = "認識をテスト";
+"Transcrevendo…" = "文字起こし中…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "話す言語";
+"Seguir o app (%@)" = "アプリに合わせる（%@）";
+"Detectar automaticamente" = "自動で判別";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "内蔵の音声はアプリの言語に従います。認識は上で選んだ言語を使います。自動判別は短い音声や雑音の多い音声で誤りが増え、iOS の内蔵認識は言語をまったく判別しません — そちらでは常にアプリの言語が使われます。";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "ストリーミング再生";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "ストリーミング再生は、ファイル全体を待たずに、最初の文を生成中から再生します。会話モード（音声画面）のみで有効です。以降の文は前の文の再生中に用意されます。音が途切れる場合はオフにしてください。";

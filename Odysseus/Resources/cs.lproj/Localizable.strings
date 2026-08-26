@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld běží · %lld ve frontě";
 "Processar só no aparelho" = "Zpracovat jen v zařízení";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Zpracování jen v zařízení neposílá zvuk Applu, ale offline model chybuje ve více slovech. Nechte vypnuté, pokud je přepis špatný.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Obnovit seznam (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in není k dispozici: potlačení ozvěny se nepodařilo zapnout.";
+"Buscar modelos do servidor" = "Načíst modely ze serveru";
+"Buscar voz" = "Hledat hlas";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Kompatibilní s OpenAI";
+"Consultando…" = "Dotazuji se…";
+"Endpoint de voz não configurado (falta a URL)." = "Hlasový endpoint není nastaven (chybí URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint nevrátil žádný text. Odpověď: %@";
+"Endpoint próprio" = "Vlastní endpoint";
+"Endpoint respondeu %d." = "Endpoint odpověděl %d.";
+"Endpoint respondeu %d: %@" = "Endpoint odpověděl %d: %@";
+"Escolher voz" = "Vybrat hlas";
+"Escolher…" = "Vybrat…";
+"Formato" = "Formát";
+"Mostrar chave" = "Zobrazit klíč";
+"Nenhuma voz encontrada." = "Nenalezen žádný hlas.";
+"Nome do modelo" = "Název modelu";
+"O servidor não listou nenhum modelo." = "Server neuvedl žádný model.";
+"OK" = "OK";
+"Ocultar chave" = "Skrýt klíč";
+"Olá! Esta é a voz do endpoint." = "Ahoj! Toto je hlas endpointu.";
+"Outro…" = "Jiný…";
+"Só minhas vozes" = "Jen moje hlasy";
+"URL base" = "Základní URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "„Vlastní endpoint“ = jakákoli služba kompatibilní se zvukovým API OpenAI (POST /audio/transcriptions). Do zařízení se nic nestahuje.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in není k dispozici: detektor řeči se nepodařilo načíst.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in není k dispozici: mikrofon se nepodařilo otevřít.";
+"O modelo guardado (%@) não está na lista do servidor." = "Uložený model (%@) není v seznamu serveru.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Bez HTTPS putuje API key po síti v otevřeném textu.";
+"Gravando… toque para parar" = "Nahrávání… klepnutím zastavíte";
+"Ouvi: %@" = "Slyšel jsem: %@";
+"Testar reconhecimento" = "Otestovat rozpoznávání";
+"Transcrevendo…" = "Přepisuji…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Jazyk řeči";
+"Seguir o app (%@)" = "Podle aplikace (%@)";
+"Detectar automaticamente" = "Rozpoznat automaticky";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Vestavěný hlas se řídí jazykem aplikace. Rozpoznávání ale používá jazyk zvolený výše; automatické rozpoznání chybuje častěji u krátkého nebo hlučného zvuku a vestavěné rozpoznávání iOS jazyk nerozpoznává vůbec — tam vždy platí jazyk aplikace.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streamovaný zvuk";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streamovaný zvuk přehraje první větu už během jejího generování, místo čekání na celý soubor. Platí jen v režimu konverzace (hlasová obrazovka); další věty se stejně připravují, zatímco hraje předchozí. Vypněte, pokud zvuk trhá.";

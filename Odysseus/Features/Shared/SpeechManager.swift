@@ -40,6 +40,252 @@ final class SpeechManager: NSObject, ObservableObject {
     /// barge-in monitor can listen while the assistant speaks.
     var duplexSession = false
 
+    // MARK: - Streaming queue
+    //
+    // A reply is spoken sentence by sentence as the model writes it, instead of
+    // waiting for the whole thing: the old path called toggle() once the stream
+    // had finished, so time-to-first-word was the model's entire generation plus
+    // a full synthesis of the result.
+
+    private var chunks: [String] = []
+    private var chunkID: String?
+    /// True once the caller promises no further chunks, so the finish callback
+    /// waits for the last one instead of firing between sentences.
+    private var chunkClosed = false
+    private var speakingChunk = false
+    /// Reply whose queue was abandoned after a synthesis failure. Later
+    /// sentences for it are dropped rather than retried: with a dead endpoint
+    /// every one of them would fail the same way, publishing one error per
+    /// sentence for the rest of the reply.
+    private var failedChunkID: String?
+    /// Synthesis started for the sentence at the head of `chunks`, before its
+    /// turn to play arrives.
+    ///
+    /// This holds the *task*, not the finished bytes, and that distinction is
+    /// the whole design. Holding bytes meant a sentence whose turn came while
+    /// its request was still in flight found nothing ready and fired a second,
+    /// duplicate request — most likely on exactly the short sentences ("Sim.",
+    /// "Claro.") that finish playing before a round trip completes. Holding the
+    /// task lets that case await the one request already running.
+    ///
+    /// Carries the turn, the exact text and the engine, so a queue that moved
+    /// on — or an engine switched mid-reply — cannot consume the wrong audio.
+    private var pendingSynthesis: (id: String, text: String, engine: String, task: Task<Data, Error>)?
+
+    /// Plays audio that is still arriving. Used for the sentence that has
+    /// nothing prefetched behind it — in practice the first of a reply, which is
+    /// the only one whose round trip the user actually waits through.
+    private let streamPlayer = PCMStreamPlayer()
+
+    /// Streaming playback is opt-out, and only where it can pay: the hands-free
+    /// conversation (`duplexSession`) against the user's own endpoint. Reading a
+    /// single chat message aloud has no queue behind it and no barge-in, so the
+    /// simpler buffered path stays there.
+    private var streamingAllowed: Bool {
+        UserDefaults.standard.object(forKey: "voice.tts.streaming") as? Bool ?? true
+    }
+    private var canStream: Bool { duplexSession && streamingAllowed && useEndpoint }
+
+    /// True while a queued reply is being spoken — the voice loop uses it to arm
+    /// barge-in the moment real audio starts, not before.
+    var isSpeakingQueue: Bool { speakingChunk }
+
+    /// Whether `text` still says anything once markdown is stripped. Callers
+    /// that change state before queueing (the voice loop enters `.speaking` and
+    /// reconfigures the audio session) must ask first: a sentence made only of
+    /// markup — a fence, a bare `**`, a horizontal rule — is dropped by
+    /// `enqueue`, which left the loop speaking with an empty queue and no
+    /// `chunkID`, so `closeQueue` could never end the turn.
+    nonisolated static func isSpeakable(_ text: String) -> Bool { !strip(text).isEmpty }
+
+    /// What the engines will actually be asked to say. Exposed for tests; the
+    /// speaking paths all go through `strip` themselves.
+    nonisolated static func spokenText(_ text: String) -> String { strip(text) }
+
+    /// Appends one sentence to the current reply's queue. The first call for an
+    /// id starts it; later calls extend it.
+    func enqueue(_ text: String, id: String) {
+        guard failedChunkID != id else { return }   // this reply's TTS already died
+        let clean = Self.strip(text)
+        guard !clean.isEmpty else { return }
+        if chunkID != id {
+            clearQueue()
+            chunkID = id
+            chunkClosed = false
+        }
+        chunks.append(clean)
+        pump()
+        // pump() bails out while a sentence is playing, so without this the
+        // sentence that just arrived would not begin synthesizing until the
+        // current one finished — exactly the gap prefetching removes.
+        if let cur = chunkID { prefetchNext(id: cur) }
+    }
+
+    /// No more sentences are coming for `id`. Fires the finish callback now if
+    /// everything queued has already been spoken.
+    func closeQueue(id: String) {
+        guard chunkID == id else { return }
+        chunkClosed = true
+        if !speakingChunk && chunks.isEmpty { finished() }
+    }
+
+    private func clearQueue() {
+        streamPlayer.onFinished = nil
+        streamPlayer.onFirstAudio = nil
+        streamPlayer.stop()
+        chunks.removeAll()
+        chunkID = nil
+        chunkClosed = false
+        speakingChunk = false
+        failedChunkID = nil
+        discardPrefetch()
+    }
+
+    /// Drops the speculative request. Anything that invalidates the queue has
+    /// to call this, or a later sentence could consume audio belonging to a
+    /// turn that is already over.
+    private func discardPrefetch() {
+        pendingSynthesis?.task.cancel()
+        pendingSynthesis = nil
+    }
+
+    /// Local failures that never came from the network, so `isCancellation`
+    /// correctly reports false for them.
+    private enum Failure: Error { case noAPI }
+
+    /// One sentence failed to synthesize. Abandons the rest of that reply's
+    /// queue and publishes the reason.
+    ///
+    /// The failure paths used to only set `neuralError`, leaving `speakingChunk`
+    /// true forever: `pump()` was gated on it, so no later sentence was ever
+    /// dispatched, and `closeQueue()` — which only fires the finish callback
+    /// when `!speakingChunk` — became a permanent no-op. The turn could then
+    /// never end on its own.
+    private func chunkFailed(_ error: Error, id: String, _ message: @autoclosure () -> String) {
+        preparingID = nil
+        guard !isCancellation(error) else { return }
+        if chunkID == id {
+            chunks.removeAll()
+            chunkID = nil
+            chunkClosed = false
+            speakingChunk = false
+            failedChunkID = id
+            discardPrefetch()
+        }
+        neuralError = message()
+    }
+
+    private func pump() {
+        guard !speakingChunk, !chunks.isEmpty, let id = chunkID else { return }
+        speakingChunk = true
+        let next = chunks.removeFirst()
+        if let p = pendingSynthesis, p.id == id, p.text == next, p.engine == engineName {
+            // Already synthesized, or still in flight — either way, wait on the
+            // request that is already running rather than issuing a second one.
+            pendingSynthesis = nil
+            VoiceLog.log("tts.toca", "motor=\(engineName) PREFETCH restam=\(chunks.count) \"\(next.prefix(40))\"")
+            preparingID = id
+            neuralTask = Task { [weak self] in
+                guard let self else { return }
+                do {
+                    let data = try await p.task.value
+                    // The turn can end while this is awaited (barge-in, stop).
+                    guard self.chunkID == id else { self.preparingID = nil; return }
+                    self.play(data, id: id)
+                } catch {
+                    self.chunkFailed(error, id: id, self.msg(error))
+                }
+            }
+        } else {
+            // Whatever was being prefetched is not what plays next.
+            discardPrefetch()
+            // Nothing ready means this sentence would otherwise be a full round
+            // trip of silence, so it is the one worth streaming. A sentence that
+            // *did* have a prefetch waiting starts instantly from memory, which
+            // no stream can beat.
+            let streaming = canStream
+            VoiceLog.log("tts.toca", "motor=\(engineName)\(streaming ? " STREAM" : "") restam=\(chunks.count) \"\(next.prefix(40))\"")
+            if streaming { speakStreaming(next, id: id) } else { dispatchSpeak(next, id: id) }
+        }
+        prefetchNext(id: id)
+    }
+
+    /// Starts synthesizing the sentence that will play next, while the current
+    /// one is still playing.
+    ///
+    /// The sentence queue removed the wait for the *whole* reply, but left one
+    /// full network round trip of dead air at every sentence boundary — the
+    /// next request only began once the previous sentence had finished playing.
+    ///
+    /// Network engines only: the native voice makes no request, and the neural
+    /// one runs on the Neural Engine, where a second concurrent synthesis would
+    /// compete with the one being played rather than hide behind it.
+    private func prefetchNext(id: String) {
+        guard useEndpoint || useServer else { return }
+        guard pendingSynthesis == nil, let text = chunks.first else { return }
+        let engine = engineName
+        let task = Task<Data, Error> { [weak self] in
+            guard let self else { throw CancellationError() }
+            return try await self.synthesizeOverNetwork(text)
+        }
+        pendingSynthesis = (id: id, text: text, engine: engine, task: task)
+        VoiceLog.log("tts.prefetch", "iniciada \"\(text.prefix(40))\"")
+    }
+
+    private func synthesizeOverNetwork(_ clean: String) async throws -> Data {
+        // Timed because "the voice is slow" is otherwise unfalsifiable: this
+        // number against the `p.duration` logged at playback says whether the
+        // engine is slower than speech itself — the only case where a deeper
+        // prefetch would buy anything.
+        let t0 = Date()
+        let data: Data
+        if useEndpoint {
+            data = try await VoiceEndpoint.synthesize(clean)
+        } else {
+            guard let api else { throw Failure.noAPI }
+            data = try await api.synthesizeSpeech(clean)
+        }
+        VoiceLog.log("tts.sintetizou", String(format: "%.0f ms — %d chars — %d KB",
+                                              Date().timeIntervalSince(t0) * 1000,
+                                              clean.count, data.count / 1024))
+        return data
+    }
+
+    /// Common tail of every engine that produces a finished audio buffer.
+    private func play(_ data: Data, id: String) {
+        do {
+            activateTTSSession()
+            let p = try AVAudioPlayer(data: data)
+            p.delegate = self
+            player = p
+            preparingID = nil
+            speakingID = id
+            VoiceLog.log("tts.áudio", String(format: "%.1f s", p.duration))
+            p.play()
+        } catch {
+            chunkFailed(error, id: id, msg(error))
+        }
+    }
+
+    private var engineName: String {
+        if useEndpoint { return "endpoint" }
+        if useServer { return "servidor" }
+        if useNeural { return "neural" }
+        return "nativo"
+    }
+
+    /// Puts the audio session into the play-and-record configuration the
+    /// barge-in monitor needs, before any audio exists. Called by the voice loop
+    /// so echo cancellation is set up ahead of the first spoken sentence rather
+    /// than after the first network round trip.
+    func prepareDuplexSession() {
+        activateTTSSession()
+        #if os(iOS)
+        let s = AVAudioSession.sharedInstance()
+        VoiceLog.log("sessão", "categoria=\(s.category.rawValue) modo=\(s.mode.rawValue) duplex=\(duplexSession)")
+        #endif
+    }
+
     private func activateTTSSession() {
         #if os(iOS)
         let s = AVAudioSession.sharedInstance()
@@ -81,6 +327,8 @@ final class SpeechManager: NSObject, ObservableObject {
 
     var useNeural: Bool { UserDefaults.standard.string(forKey: "voice.tts.engine") == "neural" }
     var useServer: Bool { UserDefaults.standard.string(forKey: "voice.tts.engine") == "server" }
+    /// A synthesis endpoint the user configured themselves (URL + key + model).
+    var useEndpoint: Bool { UserDefaults.standard.string(forKey: "voice.tts.engine") == "endpoint" }
     private var neuralVoice: String { UserDefaults.standard.string(forKey: "voice.tts.pocketVoice") ?? "alba" }
     // No server voice/model settings: the Odysseus synth endpoint takes neither.
 
@@ -95,7 +343,13 @@ final class SpeechManager: NSObject, ObservableObject {
         stop()
         let clean = Self.strip(text)
         guard !clean.isEmpty else { return }
-        if useServer { speakServer(clean, id: id) }
+        dispatchSpeak(clean, id: id)
+    }
+
+    /// Routes already-stripped text to the configured engine.
+    private func dispatchSpeak(_ clean: String, id: String) {
+        if useEndpoint { speakEndpoint(clean, id: id) }
+        else if useServer { speakServer(clean, id: id) }
         else if useNeural { speakNeural(clean, id: id) }
         else { speakNative(clean, id: id) }
     }
@@ -107,9 +361,13 @@ final class SpeechManager: NSObject, ObservableObject {
     }
 
     func stop() {
+        clearQueue()
         neuralTask?.cancel(); neuralTask = nil
         if synth.isSpeaking { synth.stopSpeaking(at: .immediate) }
         player?.stop(); player = nil
+        streamPlayer.onFinished = nil
+        streamPlayer.onFirstAudio = nil
+        streamPlayer.stop()
         speakingID = nil; preparingID = nil
     }
 
@@ -191,11 +449,8 @@ final class SpeechManager: NSObject, ObservableObject {
                 preparingID = nil
                 speakingID = id
                 p.play()
-            } catch is CancellationError {
-                preparingID = nil
             } catch {
-                neuralError = msg(error)
-                preparingID = nil
+                chunkFailed(error, id: id, msg(error))
             }
         }
     }
@@ -203,25 +458,95 @@ final class SpeechManager: NSObject, ObservableObject {
     // MARK: - Server (/api/tts/synthesize)
 
     private func speakServer(_ clean: String, id: String) {
-        guard let api else { neuralError = L("Servidor de voz indisponível."); return }
+        guard let api else {
+            // Synchronous bail-out: still has to release the queue, or the turn
+            // hangs exactly like an async failure would.
+            chunkFailed(Failure.noAPI, id: id, L("Servidor de voz indisponível."))
+            return
+        }
         preparingID = id
         neuralError = nil
         neuralTask = Task {
             do {
                 let data = try await api.synthesizeSpeech(clean)
                 if Task.isCancelled { preparingID = nil; return }
-                activateTTSSession()
-                let p = try AVAudioPlayer(data: data)
-                p.delegate = self
-                player = p
-                preparingID = nil
-                speakingID = id
-                p.play()
-            } catch is CancellationError {
-                preparingID = nil
+                play(data, id: id)
             } catch {
-                neuralError = L("TTS do servidor falhou: %@", msg(error))
-                preparingID = nil
+                chunkFailed(error, id: id, L("TTS do servidor falhou: %@", msg(error)))
+            }
+        }
+    }
+
+    /// Plays one sentence as it is synthesized, instead of after.
+    ///
+    /// The turn is guarded at every await: `chunkID` changing means barge-in or
+    /// a new reply arrived while bytes were in flight, and continuing would
+    /// schedule audio from a turn that is already over.
+    ///
+    /// A stream that ends without ever producing audio is a failure, not a
+    /// silent success — some gateways answer 200 with an empty body, and
+    /// treating that as "spoke it" would advance the queue past a sentence
+    /// nobody heard.
+    private func speakStreaming(_ clean: String, id: String) {
+        preparingID = id
+        neuralError = nil
+        streamPlayer.onFirstAudio = { [weak self] in
+            guard let self, self.chunkID == id else { return }
+            self.preparingID = nil
+            self.speakingID = id
+        }
+        streamPlayer.onFinished = { [weak self] in
+            guard let self, self.chunkID == id else { return }
+            self.finished()
+        }
+        let t0 = Date()
+        neuralTask = Task { [weak self] in
+            guard let self else { return }
+            var decoder = WAVStreamDecoder()
+            var opened = false
+            var frameBytes = 0
+            do {
+                for try await chunk in try VoiceEndpoint.synthesizeStreaming(clean) {
+                    if Task.isCancelled { return }
+                    guard self.chunkID == id else { return }
+                    let frames = try decoder.append(chunk)
+                    guard let f = decoder.format else { continue }
+                    if !opened {
+                        try self.streamPlayer.begin(sampleRate: f.sampleRate)
+                        opened = true
+                        VoiceLog.log("tts.stream", String(format: "1º áudio em %.0f ms — %d chars",
+                                                          Date().timeIntervalSince(t0) * 1000, clean.count))
+                    }
+                    guard !frames.isEmpty else { continue }
+                    frameBytes += frames.count
+                    self.streamPlayer.schedule(WAVStreamDecoder.monoFloat(frames, f))
+                }
+                if Task.isCancelled { return }
+                guard self.chunkID == id else { return }
+                guard opened, frameBytes > 0 else { throw VoiceEndpoint.Failure.noText(body: "") }
+                VoiceLog.log("tts.stream", String(format: "fim — %.0f ms — %d KB",
+                                                  Date().timeIntervalSince(t0) * 1000, frameBytes / 1024))
+                self.streamPlayer.endOfStream()
+            } catch {
+                self.streamPlayer.stop()
+                self.chunkFailed(error, id: id, self.msg(error))
+            }
+        }
+    }
+
+    /// Same shape as `speakServer`, against the user's own endpoint. Failures
+    /// carry the server's response body so a 401 and a 404 are distinguishable
+    /// without a laptop.
+    private func speakEndpoint(_ clean: String, id: String) {
+        preparingID = id
+        neuralError = nil
+        neuralTask = Task {
+            do {
+                let data = try await VoiceEndpoint.synthesize(clean)
+                if Task.isCancelled { preparingID = nil; return }
+                play(data, id: id)
+            } catch {
+                chunkFailed(error, id: id, msg(error))
             }
         }
     }
@@ -254,6 +579,15 @@ final class SpeechManager: NSObject, ObservableObject {
 
     private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 
+    /// URLSession reports a cancelled request as `URLError.cancelled`, not
+    /// `CancellationError`, so `catch is CancellationError` never matched and
+    /// stopping playback published a spurious error — which the voice loop then
+    /// treated as "TTS died", advancing the turn a second time.
+    private func isCancellation(_ e: Error) -> Bool {
+        if e is CancellationError { return true }
+        return (e as? URLError)?.code == .cancelled
+    }
+
     // MARK: - Helpers
 
     /// Best installed voice for `lang`, degrading region → language → nil.
@@ -281,7 +615,7 @@ final class SpeechManager: NSObject, ObservableObject {
         return AVSpeechSynthesisVoice(language: lang) ?? AVSpeechSynthesisVoice(language: base)
     }
 
-    private static func strip(_ s: String) -> String {
+    nonisolated private static func strip(_ s: String) -> String {
         var t = s
         t = t.replacingOccurrences(of: "```[\\s\\S]*?```", with: L(" (bloco de código) "), options: .regularExpression)
         t = t.replacingOccurrences(of: "`([^`]*)`", with: "$1", options: .regularExpression)
@@ -289,7 +623,29 @@ final class SpeechManager: NSObject, ObservableObject {
         t = t.replacingOccurrences(of: "[*_#>]", with: "", options: .regularExpression)
         t = t.replacingOccurrences(of: "\\[([^\\]]*)\\]\\([^)]*\\)", with: "$1", options: .regularExpression)
         t = t.replacingOccurrences(of: "<think>[\\s\\S]*?</think>", with: "", options: .regularExpression)
-        return t.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Table rows arrive as chunks of their own (the sentence cutter breaks on
+        // newlines) and were being read out verbatim, pipes and all. Nobody hit
+        // it until a reply came back with a comparison table, and then the voice
+        // spent half a minute reciting "Duração 4 anos 1914-1918 6 anos". A
+        // separator row carries no words at all; a data row is a list of cells,
+        // so it is spoken as one.
+        if t.contains("|") {
+            let cells = t.split(separator: "|", omittingEmptySubsequences: false)
+                .map { $0.trimmingCharacters(in: .whitespaces) }
+                .filter { !$0.isEmpty }
+            let isRule = !cells.isEmpty && cells.allSatisfy { cell in
+                cell.allSatisfy { $0 == "-" || $0 == ":" }
+            }
+            t = isRule ? "" : cells.joined(separator: ", ")
+        }
+        let cleaned = t.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Whatever is left with no letter and no digit is markup the rules above
+        // didn't recognize: an unclosed code fence (the fence rule needs both
+        // ends, so a lone ``` survives as a stray backtick), a horizontal rule,
+        // a bare bullet. Speaking it produces a garbage utterance — and it also
+        // defeats `isSpeakable`, letting the voice loop commit to .speaking for
+        // a chunk that says nothing.
+        return cleaned.contains(where: { $0.isLetter || $0.isNumber }) ? cleaned : ""
     }
 }
 
@@ -311,6 +667,16 @@ extension SpeechManager: AVAudioPlayerDelegate {
 private extension SpeechManager {
     func finished() {
         speakingID = nil
+        if speakingChunk {
+            speakingChunk = false
+            // More sentences ready: keep going without telling the caller the
+            // reply is over.
+            if !chunks.isEmpty { pump(); return }
+            // Nothing queued but the model is still writing — wait for the next
+            // sentence rather than ending the turn mid-reply.
+            guard chunkClosed else { return }
+            chunkID = nil
+        }
         let cb = onSpeechFinished
         onSpeechFinished = nil
         cb?()

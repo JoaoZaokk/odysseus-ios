@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld ལག་བསྟར་བྱེད་བཞིན། · %lld གྲལ་རིམ་ནང་།";
 "Processar só no aparelho" = "ཐབས་ཆས་ནང་ཁོ་ནར་སྒྲུབ་པ།";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "ཐབས་ཆས་ནང་ཁོ་ནར་སྒྲུབ་ན་སྒྲ་དེ་ Apple ལ་མི་སྐུར། འོན་ཀྱང་དྲ་མེད་དཔེ་དབྱིབས་ཀྱིས་ཚིག་མང་བ་ནོར་བར་བྱེད། ཡི་གེར་བསྒྱུར་བ་ཡག་པོ་མེད་ན་སྒོ་རྒྱག་རོགས།";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "རེའུ་མིག་གསར་སྒྱུར། (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in བེད་སྤྱོད་བྱེད་མི་ཐུབ། བརྡ་བརྙན་ལྡོག་སེལ་སྒུལ་སློང་བྱེད་མ་ཐུབ།";
+"Buscar modelos do servidor" = "ཞབས་ཞུ་བརྒྱུད་ཁང་ནས་དཔེ་གཞི་ལེན།";
+"Buscar voz" = "སྐད་ཤུགས་འཚོལ།";
+"Chave da API" = "API གསང་ལྡེ";
+"Compatível com OpenAI" = "OpenAI དང་མཐུན།";
+"Consultando…" = "འདྲི་བཞིན་པ…";
+"Endpoint de voz não configurado (falta a URL)." = "སྐད་ཤུགས་ endpoint བཀོད་སྒྲིག་མ་བྱས། (URL མེད།)";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint གིས་ཡི་གེ་གང་ཡང་མ་ལོག ལན། %@";
+"Endpoint próprio" = "རང་གི་ endpoint";
+"Endpoint respondeu %d." = "endpoint གིས་ %d ལོག";
+"Endpoint respondeu %d: %@" = "endpoint གིས་ %d ལོག %@";
+"Escolher voz" = "སྐད་ཤུགས་འདེམས།";
+"Escolher…" = "འདེམས…";
+"Formato" = "རྣམ་གཞག";
+"Mostrar chave" = "གསང་ལྡེ་སྟོན།";
+"Nenhuma voz encontrada." = "སྐད་ཤུགས་གང་ཡང་མ་རྙེད།";
+"Nome do modelo" = "དཔེ་གཞིའི་མིང་།";
+"O servidor não listou nenhum modelo." = "ཞབས་ཞུ་བརྒྱུད་ཁང་གིས་དཔེ་གཞི་གང་ཡང་མ་བཀོད།";
+"OK" = "འགྲིག";
+"Ocultar chave" = "གསང་ལྡེ་སྦས།";
+"Olá! Esta é a voz do endpoint." = "བཀྲ་ཤིས་བདེ་ལེགས། འདི་ནི་ endpoint གྱི་སྐད་ཤུགས་ཡིན།";
+"Outro…" = "གཞན…";
+"Só minhas vozes" = "ངའི་སྐད་ཤུགས་ཁོ་ན།";
+"URL base" = "རྩ་བའི་ URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "«རང་གི་ endpoint» = OpenAI གྱི་སྒྲ་ API དང་མཐུན་པའི་ཞབས་ཞུ་གང་རུང་། (POST /audio/transcriptions) སྒྲིག་ཆས་ལ་གང་ཡང་ཕབ་ལེན་མི་བྱེད།";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in བེད་སྤྱོད་བྱེད་མི་ཐུབ། སྐད་ཤུགས་ངོས་འཛིན་ཆས་ལེན་མ་ཐུབ།";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in བེད་སྤྱོད་བྱེད་མི་ཐུབ། མའི་ཁེ་སྒོ་འབྱེད་མ་ཐུབ།";
+"O modelo guardado (%@) não está na lista do servidor." = "ཉར་ཚགས་བྱས་པའི་དཔེ་གཞི་ (%@) ཞབས་ཞུ་བརྒྱུད་ཁང་གི་ཐོ་གཞུང་ནང་མེད།";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS མེད་ན། API གསང་ལྡེ་དྲ་རྒྱའི་ནང་ཡི་གེ་གསལ་པོའི་ངོས་ནས་འགྲོ།";
+"Gravando… toque para parar" = "སྒྲ་འཇུག་བཞིན་པ… མཚམས་འཇོག་ལ་རེག";
+"Ouvi: %@" = "གོ་བ: %@";
+"Testar reconhecimento" = "ངོས་འཛིན་ཚོད་ལྟ།";
+"Transcrevendo…" = "ཡི་གེར་བསྒྱུར་བཞིན་པ…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "སྐད་ཆའི་སྐད་རིགས།";
+"Seguir o app (%@)" = "ཉེར་སྤྱོད་དང་མཐུན་པ། (%@)";
+"Detectar automaticamente" = "རང་འགུལ་གྱིས་ངོས་འཛིན།";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "ནང་ཆས་ཀྱི་སྐད་གདངས་དེས་ཉེར་སྤྱོད་ཀྱི་སྐད་རིགས་རྗེས་འབྲངས་བྱེད། ངོས་འཛིན་གྱིས་ནི་གོང་དུ་བདམས་པའི་སྐད་རིགས་བེད་སྤྱོད་བྱེད། རང་འགུལ་ངོས་འཛིན་ནི་སྒྲ་ཐུང་ངམ་སྒྲ་སྐད་ཅན་ལ་ནོར་འཁྲུལ་མང་བ་ཡོང་། iOS ཀྱི་ནང་ཆས་ངོས་འཛིན་གྱིས་སྐད་རིགས་གཏན་ནས་ངོས་འཛིན་མི་ཐུབ་པས། དེའི་ནང་དུ་རྟག་ཏུ་ཉེར་སྤྱོད་ཀྱི་སྐད་རིགས་བེད་སྤྱོད་བྱེད།";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "རྒྱུན་འབབ་སྒྲ།";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "རྒྱུན་འབབ་སྒྲ་ཡིས་ཡིག་ཆ་ཧྲིལ་པོ་སྒུག་མི་དགོས་པར། ཚིག་གྲུབ་དང་པོ་བཟོ་བཞིན་པའི་སྐབས་སུ་སྒྲོག་འགོ་ཚུགས། གླེང་མོལ་སྒོ་ཁ་(སྒྲའི་ཤེལ་ངོས་)ནང་ཁོ་ནར་ཕན་ཐོགས། རྗེས་མའི་ཚིག་གྲུབ་རྣམས་སྔོན་མ་སྒྲོག་བཞིན་པའི་སྐབས་སུ་གྲ་སྒྲིག་བྱེད་ཟིན། སྒྲ་ཆད་ན་སྒོ་རྒྱག";

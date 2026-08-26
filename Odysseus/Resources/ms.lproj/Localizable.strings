@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld berjalan · %lld dalam baris giliran";
 "Processar só no aparelho" = "Proses pada peranti sahaja";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Memproses pada peranti sahaja tidak menghantar audio ke Apple, tetapi model luar talian lebih kerap tersalah perkataan. Biarkan tutup jika transkripsi lemah.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Segar semula senarai (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in tidak tersedia: pembatalan gema tidak dapat diaktifkan.";
+"Buscar modelos do servidor" = "Dapatkan model dari pelayan";
+"Buscar voz" = "Cari suara";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Serasi dengan OpenAI";
+"Consultando…" = "Bertanya…";
+"Endpoint de voz não configurado (falta a URL)." = "Endpoint suara belum ditetapkan (URL tiada).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint tidak mengembalikan teks. Respons: %@";
+"Endpoint próprio" = "Endpoint sendiri";
+"Endpoint respondeu %d." = "Endpoint membalas %d.";
+"Endpoint respondeu %d: %@" = "Endpoint membalas %d: %@";
+"Escolher voz" = "Pilih suara";
+"Escolher…" = "Pilih…";
+"Formato" = "Format";
+"Mostrar chave" = "Tunjuk kunci";
+"Nenhuma voz encontrada." = "Tiada suara dijumpai.";
+"Nome do modelo" = "Nama model";
+"O servidor não listou nenhum modelo." = "Pelayan tidak menyenaraikan sebarang model.";
+"OK" = "OK";
+"Ocultar chave" = "Sembunyikan kunci";
+"Olá! Esta é a voz do endpoint." = "Helo! Ini suara endpoint.";
+"Outro…" = "Lain…";
+"Só minhas vozes" = "Hanya suara saya";
+"URL base" = "URL asas";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Endpoint sendiri\" = mana-mana perkhidmatan yang serasi dengan audio API OpenAI (POST /audio/transcriptions). Tiada apa-apa dimuat turun ke peranti.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in tidak tersedia: pengesan suara tidak dapat dimuatkan.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in tidak tersedia: mikrofon tidak dapat dibuka.";
+"O modelo guardado (%@) não está na lista do servidor." = "Model tersimpan (%@) tiada dalam senarai pelayan.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Tanpa HTTPS, API key merentasi rangkaian sebagai teks biasa.";
+"Gravando… toque para parar" = "Merakam… ketik untuk berhenti";
+"Ouvi: %@" = "Terdengar: %@";
+"Testar reconhecimento" = "Uji pengecaman";
+"Transcrevendo…" = "Mentranskripsi…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Bahasa pertuturan";
+"Seguir o app (%@)" = "Ikut aplikasi (%@)";
+"Detectar automaticamente" = "Kesan secara automatik";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Suara terbina mengikut bahasa aplikasi. Pengecaman pula menggunakan bahasa yang dipilih di atas; pengesanan automatik lebih kerap tersilap pada audio pendek atau bising, dan pengecaman terbina iOS langsung tidak mengesan bahasa — di situ bahasa aplikasi sentiasa digunakan.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Audio penstriman";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Audio penstriman memainkan ayat pertama semasa ia masih dijana, bukannya menunggu keseluruhan fail. Hanya berkuat kuasa dalam mod perbualan (skrin suara); ayat seterusnya tetap disediakan semasa ayat sebelumnya dimainkan. Matikan jika audio tersekat-sekat.";

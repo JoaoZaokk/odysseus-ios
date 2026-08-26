@@ -559,3 +559,49 @@
 "%lld rodando · %lld na fila" = "%lld körs · %lld i kö";
 "Processar só no aparelho" = "Bearbeta endast på enheten";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Att bearbeta endast på enheten skickar inget ljud till Apple, men offlinemodellen missar fler ord. Låt den vara av om transkriberingen är dålig.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Uppdatera listan (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in är inte tillgängligt: ekosläckning kunde inte aktiveras.";
+"Buscar modelos do servidor" = "Hämta modeller från servern";
+"Buscar voz" = "Sök röst";
+"Chave da API" = "API-nyckel";
+"Compatível com OpenAI" = "OpenAI-kompatibel";
+"Consultando…" = "Hämtar…";
+"Endpoint de voz não configurado (falta a URL)." = "Röst-endpoint är inte konfigurerad (URL saknas).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpointen returnerade ingen text. Svar: %@";
+"Endpoint próprio" = "Egen endpoint";
+"Endpoint respondeu %d." = "Endpointen svarade %d.";
+"Endpoint respondeu %d: %@" = "Endpointen svarade %d: %@";
+"Escolher voz" = "Välj röst";
+"Escolher…" = "Välj…";
+"Formato" = "Format";
+"Mostrar chave" = "Visa nyckel";
+"Nenhuma voz encontrada." = "Ingen röst hittades.";
+"Nome do modelo" = "Modellnamn";
+"O servidor não listou nenhum modelo." = "Servern listade inga modeller.";
+"OK" = "OK";
+"Ocultar chave" = "Dölj nyckel";
+"Olá! Esta é a voz do endpoint." = "Hej! Det här är endpointens röst.";
+"Outro…" = "Annan…";
+"Só minhas vozes" = "Bara mina röster";
+"URL base" = "Bas-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Egen endpoint\" = vilken tjänst som helst som är kompatibel med OpenAI:s ljud-API (POST /audio/transcriptions). Inget laddas ner till enheten.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in är inte tillgängligt: röstdetektorn kunde inte läsas in.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in är inte tillgängligt: mikrofonen kunde inte öppnas.";
+"O modelo guardado (%@) não está na lista do servidor." = "Den sparade modellen (%@) finns inte i serverns lista.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Utan HTTPS skickas API-nyckeln i klartext över nätverket.";
+"Gravando… toque para parar" = "Spelar in… tryck för att stoppa";
+"Ouvi: %@" = "Hörde: %@";
+"Testar reconhecimento" = "Testa igenkänning";
+"Transcrevendo…" = "Transkriberar…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Talets språk";
+"Seguir o app (%@)" = "Följ appen (%@)";
+"Detectar automaticamente" = "Identifiera automatiskt";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Den inbyggda rösten följer appens språk. Igenkänningen använder däremot språket som valts ovan; automatisk identifiering gör fler fel på kort eller brusigt ljud, och iOS inbyggda igenkänning identifierar inget språk alls — där gäller alltid appens språk.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Strömmande ljud";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Strömmande ljud spelar upp den första meningen medan den fortfarande skapas, i stället för att vänta på hela filen. Gäller bara i samtalsläget (röstskärmen); följande meningar förbereds ändå medan den förra spelas. Stäng av om ljudet hackar.";

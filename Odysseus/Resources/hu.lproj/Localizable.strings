@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld fut · %lld sorban";
 "Processar só no aparelho" = "Feldolgozás csak az eszközön";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "A csak eszközön történő feldolgozás nem küld hangot az Apple-nek, de az offline modell több szót ront el. Hagyd kikapcsolva, ha rossz az átirat.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Lista frissítése (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "A barge-in nem érhető el: a visszhangszűrést nem sikerült bekapcsolni.";
+"Buscar modelos do servidor" = "Modellek lekérése a szerverről";
+"Buscar voz" = "Hang keresése";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-kompatibilis";
+"Consultando…" = "Lekérdezés…";
+"Endpoint de voz não configurado (falta a URL)." = "A hang-endpoint nincs beállítva (hiányzik az URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Az endpoint nem adott vissza szöveget. Válasz: %@";
+"Endpoint próprio" = "Saját endpoint";
+"Endpoint respondeu %d." = "Az endpoint %d kóddal válaszolt.";
+"Endpoint respondeu %d: %@" = "Az endpoint %d kóddal válaszolt: %@";
+"Escolher voz" = "Hang választása";
+"Escolher…" = "Választás…";
+"Formato" = "Formátum";
+"Mostrar chave" = "Kulcs megjelenítése";
+"Nenhuma voz encontrada." = "Nem található hang.";
+"Nome do modelo" = "Modell neve";
+"O servidor não listou nenhum modelo." = "A szerver egyetlen modellt sem sorolt fel.";
+"OK" = "OK";
+"Ocultar chave" = "Kulcs elrejtése";
+"Olá! Esta é a voz do endpoint." = "Szia! Ez az endpoint hangja.";
+"Outro…" = "Egyéb…";
+"Só minhas vozes" = "Csak a saját hangjaim";
+"URL base" = "Alap-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "„Saját endpoint” = bármely szolgáltatás, amely kompatibilis az OpenAI hang-API-jával (POST /audio/transcriptions). Semmi nem töltődik le a készülékre.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "A barge-in nem érhető el: a beszédfelismerőt nem sikerült betölteni.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "A barge-in nem érhető el: a mikrofont nem sikerült megnyitni.";
+"O modelo guardado (%@) não está na lista do servidor." = "A mentett modell (%@) nincs rajta a szerver listáján.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS nélkül az API key titkosítatlanul utazik a hálózaton.";
+"Gravando… toque para parar" = "Felvétel… koppintson a leállításhoz";
+"Ouvi: %@" = "Ezt hallottam: %@";
+"Testar reconhecimento" = "Felismerés tesztelése";
+"Transcrevendo…" = "Átírás…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "A beszéd nyelve";
+"Seguir o app (%@)" = "Az alkalmazás szerint (%@)";
+"Detectar automaticamente" = "Automatikus felismerés";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "A beépített hang az alkalmazás nyelvét követi. A felismerés viszont a fent választott nyelvet használja; az automatikus felismerés rövid vagy zajos hangnál többet téved, az iOS beépített felismerése pedig egyáltalán nem ismeri fel a nyelvet — ott mindig az alkalmazás nyelve érvényes.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Folyamatos hang";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "A folyamatos hang már a generálás közben lejátssza az első mondatot, ahelyett hogy a teljes fájlra várna. Csak beszélgetés módban (a hangképernyőn) érvényes; a további mondatok amúgy is elkészülnek, amíg az előző szól. Kapcsold ki, ha a hang akadozik.";

@@ -18,6 +18,8 @@ struct VoiceSettingsView: View {
     @AppStorage("voice.tts.engine") private var ttsEngine = "native"
     @AppStorage("voice.tts.pocketVoice") private var pocketVoice = "alba"
     @AppStorage("voice.stt.onDeviceOnly") private var sttOnDeviceOnly = false
+    @AppStorage(SpeechLanguage.key) private var sttLanguage = SpeechLanguage.followApp
+    @AppStorage("voice.tts.streaming") private var ttsStreaming = true
     @AppStorage("voice.bargein.enabled") private var bargeEnabled = true
     @AppStorage("voice.bargein.sensitivity") private var bargeSensitivity = 0.5
     @State private var langFilter = "all"
@@ -31,6 +33,11 @@ struct VoiceSettingsView: View {
                     Text("Nativo iOS").tag("native")
                     Text("Modelo on-device").tag("model")
                     Text("Servidor").tag("server")
+                    Text("Endpoint próprio").tag("endpoint")
+                }
+                if sttEngine == "endpoint" {
+                    VoiceEndpointFields(kind: .stt)
+                    STTTestRow()
                 }
                 if sttEngine == "model" {
                     LabeledContent("Modelo ativo", value: modelName(sttModelID) ?? L("nenhum"))
@@ -38,10 +45,29 @@ struct VoiceSettingsView: View {
                 if sttEngine == "native" {
                     Toggle("Processar só no aparelho", isOn: $sttOnDeviceOnly)
                 }
+                Picker("Idioma da fala", selection: $sttLanguage) {
+                    Text(verbatim: L("Seguir o app (%@)", uiLanguage.active.nativeName))
+                        .tag(SpeechLanguage.followApp)
+                    // Offered even under the native engine, where it degrades to
+                    // the app language: dropping the row when the engine changes
+                    // would leave an already-chosen "detect" selecting nothing,
+                    // and the footer says what it does instead.
+                    Text("Detectar automaticamente").tag(SpeechLanguage.auto)
+                    // Native names, so someone hunting for their own language
+                    // can find it without reading the current one.
+                    ForEach(AppLanguage.allCases) { l in
+                        Text(verbatim: l.nativeName).tag(l.rawValue)
+                    }
+                }
             } header: { Text("Voz → Texto") } footer: {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline no aparelho. \"Servidor\" = o Whisper do seu Odysseus (envia o áudio e transcreve no fim).")
-                    Text("A voz nativa e o reconhecimento nativo seguem o idioma do app (Ajustes › Idioma).")
+                    Text("\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho.")
+                    if sttLanguage == SpeechLanguage.followApp {
+                        Text("A voz nativa e o reconhecimento nativo seguem o idioma do app (Ajustes › Idioma).")
+                    } else {
+                        Text("A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app.")
+                    }
                     if sttEngine == "native" {
                         Text("Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim.")
                     }
@@ -57,6 +83,23 @@ struct VoiceSettingsView: View {
                          ? L("Neural (%@)", uiLanguage.active.nativeName)
                          : L("Neural (indisponível)")).tag("neural")
                     Text("Servidor").tag("server")
+                    Text("Endpoint próprio").tag("endpoint")
+                }
+                if ttsEngine == "endpoint" {
+                    VoiceEndpointFields(kind: .tts)
+                    Toggle("Áudio em streaming", isOn: $ttsStreaming)
+                    Button {
+                        speech.toggle(L("Olá! Esta é a voz do endpoint."), id: "__test__")
+                    } label: {
+                        if speech.isPreparing("__test__") {
+                            HStack { ProgressView(); Text("Sintetizando…") }
+                        } else {
+                            Label("Testar voz", systemImage: "speaker.wave.2")
+                        }
+                    }
+                    if let e = speech.neuralError {
+                        Text(e).font(.footnote).foregroundStyle(theme.accent)
+                    }
                 }
                 if ttsEngine == "server" {
                     // No voice or model picker: /api/tts/synthesize takes only
@@ -105,6 +148,9 @@ struct VoiceSettingsView: View {
                     }
                 }
             } header: { Text("Texto → Voz") } footer: {
+                if ttsEngine == "endpoint" {
+                    Text("Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar.")
+                }
                 Text("Neural = PocketTTS (CoreML/Neural Engine), bem mais natural que a voz nativa. Existe em português, inglês, espanhol, francês, alemão e italiano — segue o idioma do app e baixa ~550 MB por idioma na primeira vez. Roda só no iPhone físico (não no simulador).")
             }
 
@@ -375,6 +421,60 @@ struct VoiceSettingsView: View {
                     .buttonStyle(.borderless)
                     .accessibilityLabel(Text("Apagar modelo"))
                 }
+            }
+        }
+    }
+}
+
+/// One-shot check of the STT endpoint, running exactly the path a real turn
+/// takes: record, then transcribe through `VoiceInputManager`. Setup mistakes —
+/// wrong URL, key, model, dialect — surface here as the endpoint's own message
+/// instead of as silence in the middle of a conversation. The TTS side has had
+/// its "Testar voz" from the start; this is the missing half.
+private struct STTTestRow: View {
+    @Environment(\.theme) private var theme
+    @StateObject private var voice = VoiceInputManager()
+    @State private var heard: String?
+    @State private var failure: String?
+
+    var body: some View {
+        Group {
+            Button {
+                Task { await toggle() }
+            } label: {
+                if voice.processing {
+                    HStack { ProgressView(); Text("Transcrevendo…") }
+                } else if voice.isRecording {
+                    Label(L("Gravando… toque para parar"), systemImage: "stop.circle")
+                } else {
+                    Label(L("Testar reconhecimento"), systemImage: "mic")
+                }
+            }
+            .disabled(voice.processing)
+
+            if let heard {
+                Text(L("Ouvi: %@", heard)).font(.footnote)
+            }
+            if let failure {
+                Text(failure).font(.footnote).foregroundStyle(theme.accent)
+            }
+        }
+    }
+
+    private func toggle() async {
+        failure = nil
+        if voice.isRecording {
+            let t = await voice.stop().trimmingCharacters(in: .whitespacesAndNewlines)
+            heard = t.isEmpty ? nil : t
+            // An empty transcript is the ambiguous case: the endpoint answered
+            // 200 with nothing, or it failed and published why. Prefer its own
+            // message over a generic one.
+            if t.isEmpty { failure = voice.error ?? L("Não captei nenhuma fala.") }
+        } else {
+            heard = nil
+            guard await voice.start() else {
+                failure = voice.error ?? L("Microfone indisponível.")
+                return
             }
         }
     }

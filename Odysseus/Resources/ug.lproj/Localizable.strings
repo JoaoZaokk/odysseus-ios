@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld ئىجرا بولۇۋاتىدۇ · %lld ئۆچرەتتە";
 "Processar só no aparelho" = "پەقەت ئۈسكۈنىدە بىر تەرەپ قىلىش";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "پەقەت ئۈسكۈنىدە بىر تەرەپ قىلىش ئاۋازنى Apple غا ئەۋەتمەيدۇ، ئەمما تورسىز مودېل تېخىمۇ كۆپ سۆزنى خاتا تونۇيدۇ. خەتكە ئايلاندۇرۇش ناچار بولسا ئېتىۋېتىڭ.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "تىزىملىكنى يېڭىلاش (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in ئىشلەتكىلى بولمايدۇ: ئەكس سادانى تازىلاشنى قوزغىتىش مەغلۇپ بولدى.";
+"Buscar modelos do servidor" = "مۇلازىمېتىردىن مودېللارنى ئېلىش";
+"Buscar voz" = "ئاۋاز ئىزدەش";
+"Chave da API" = "API ئاچقۇچى";
+"Compatível com OpenAI" = "OpenAI بىلەن ماس";
+"Consultando…" = "سۈرۈشتۈرۈۋاتىدۇ…";
+"Endpoint de voz não configurado (falta a URL)." = "ئاۋاز endpoint تەڭشەلمىگەن (URL يوق).";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint تېكىست قايتۇرمىدى. ئىنكاس: %@";
+"Endpoint próprio" = "ئۆز endpoint";
+"Endpoint respondeu %d." = "endpoint %d قايتۇردى.";
+"Endpoint respondeu %d: %@" = "endpoint %d قايتۇردى: %@";
+"Escolher voz" = "ئاۋاز تاللاش";
+"Escolher…" = "تاللاش…";
+"Formato" = "فورمات";
+"Mostrar chave" = "ئاچقۇچنى كۆرسەت";
+"Nenhuma voz encontrada." = "ھېچقانداق ئاۋاز تېپىلمىدى.";
+"Nome do modelo" = "مودېل ئىسمى";
+"O servidor não listou nenhum modelo." = "مۇلازىمېتىر ھېچقانداق مودېل تىزىملىمىدى.";
+"OK" = "جەزملە";
+"Ocultar chave" = "ئاچقۇچنى يوشۇر";
+"Olá! Esta é a voz do endpoint." = "ياخشىمۇسىز! بۇ endpoint نىڭ ئاۋازى.";
+"Outro…" = "باشقا…";
+"Só minhas vozes" = "پەقەت مېنىڭ ئاۋازلىرىم";
+"URL base" = "ئاساسىي URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "«ئۆز endpoint» = OpenAI ئاۋاز API سى بىلەن ماس كېلىدىغان ھەرقانداق مۇلازىمەت (POST /audio/transcriptions). ئۈسكۈنىگە ھېچنېمە چۈشۈرۈلمەيدۇ.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in ئىشلەتكىلى بولمايدۇ: ئاۋاز بايقىغۇچنى يۈكلىگىلى بولمىدى.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in ئىشلەتكىلى بولمايدۇ: مىكروفوننى ئاچقىلى بولمىدى.";
+"O modelo guardado (%@) não está na lista do servidor." = "ساقلانغان مودېل (%@) مۇلازىمېتىر تىزىملىكىدە يوق.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS بولمىسا، API ئاچقۇچى توردا ئوچۇق تېكىست بىلەن ئۆتىدۇ.";
+"Gravando… toque para parar" = "خاتىرىلىنىۋاتىدۇ… توختىتىشقا چېكىڭ";
+"Ouvi: %@" = "ئاڭلىغىنىم: %@";
+"Testar reconhecimento" = "تونۇشنى سىناش";
+"Transcrevendo…" = "تېكىستكە ئايلىنىۋاتىدۇ…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "سۆزلەش تىلى";
+"Seguir o app (%@)" = "ئەپكە ئەگىشىش (%@)";
+"Detectar automaticamente" = "ئاپتوماتىك بايقاش";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "ئىچكى ئۈن ئەپنىڭ تىلىغا ئەگىشىدۇ. تونۇش بولسا يۇقىرىدا تاللانغان تىلنى ئىشلىتىدۇ؛ ئاپتوماتىك بايقاش قىسقا ياكى شاۋقۇنلۇق ئاۋازدا تېخىمۇ كۆپ خاتالىشىدۇ، iOS نىڭ ئىچكى تونۇشى تىلنى پۈتۈنلەي بايقىمايدۇ — ئۇ يەردە ھەمىشە ئەپنىڭ تىلى كۈچكە ئىگە.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "ئېقىم ئاۋاز";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "ئېقىم ئاۋاز پۈتۈن ھۆججەتنى ساقلىماي، بىرىنچى جۈملىنى تېخى ياسىلىۋاتقان چېغىدا قويىدۇ. پەقەت سۆھبەت ھالىتىدە (ئاۋاز ئېكرانىدا) كۈچكە ئىگە؛ كېيىنكى جۈملىلەر ئاللىقاچان ئالدىنقىسى قويۇلۇۋاتقاندا تەييارلىنىدۇ. ئاۋاز ئۈزۈلسە ئېتىۋېتىڭ.";

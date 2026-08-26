@@ -46,6 +46,8 @@ final class VoiceInputManager: ObservableObject {
 
     private var useModel: Bool { UserDefaults.standard.string(forKey: "voice.stt.engine") == "model" }
     private var useServer: Bool { UserDefaults.standard.string(forKey: "voice.stt.engine") == "server" }
+    /// A speech endpoint the user configured themselves (URL + key + model).
+    private var useEndpoint: Bool { UserDefaults.standard.string(forKey: "voice.stt.engine") == "endpoint" }
     private var activeModelID: String { UserDefaults.standard.string(forKey: "voice.stt.model") ?? "" }
     /// Keeps Apple's dictation on the device instead of sending audio to its
     /// servers. Off by default: the on-device model is the less accurate of the
@@ -101,13 +103,17 @@ final class VoiceInputManager: ObservableObject {
             return false
         }
         hwRate = inputFormat.sampleRate
-        captureToModel = useModel || useServer   // both buffer raw audio to upload/transcribe
+        // Every non-native engine transcribes a finished recording, so they all
+        // need the raw buffer rather than Apple's live stream.
+        captureToModel = useModel || useServer || useEndpoint
 
-        if !useModel && !useServer {
-            guard let rec = Self.recognizer(for: LocalizationManager.shared.active), rec.isAvailable else {
+        if !useModel && !useServer && !useEndpoint {
+            // Apple ships no auto-detecting recognizer, so "detect" degrades to
+            // the app language here; only the Whisper engines can actually guess.
+            let want = SpeechLanguage.pinned() ?? LocalizationManager.shared.active
+            guard let rec = Self.recognizer(for: want), rec.isAvailable else {
                 deactivateSession()
-                error = L("Reconhecimento de voz indisponível para %@ neste aparelho.",
-                          LocalizationManager.shared.active.nativeName)
+                error = L("Reconhecimento de voz indisponível para %@ neste aparelho.", want.nativeName)
                 return false
             }
             let req = SFSpeechAudioBufferRecognitionRequest()
@@ -130,6 +136,8 @@ final class VoiceInputManager: ObservableObject {
             guard let self else { return }
             let lvl = Self.rms(buffer)
             Task { @MainActor in self.level = lvl }
+            VoiceLog.metered("mic.level", every: 0.5,
+                             "\(VoiceLog.bar(lvl)) rms=\(String(format: "%.4f", lvl))")
             if self.captureToModel { self.captureRaw(buffer) }
             else { self.request?.append(buffer) }
         }
@@ -158,6 +166,7 @@ final class VoiceInputManager: ObservableObject {
         deactivateSession()
 
         if useServer { return await transcribeWithServer() }
+        if useEndpoint { return await transcribeWithEndpoint() }
         if useModel { return await transcribeWithWhisper() }
 
         for _ in 0..<30 { if sawFinal { break }; try? await Task.sleep(nanoseconds: 100_000_000) }
@@ -205,9 +214,10 @@ final class VoiceInputManager: ObservableObject {
         var frames = resampleTo16k(raw, from: hwRate)
         normalize(&frames)
 
-        // Fixed language beats "auto" (auto guesses romanian on imperfect audio).
-        // Language-tuned models pin their own language; universal models follow
-        // the app UI language.
+        // A fixed language beats "auto" (auto guesses romanian on imperfect
+        // audio), so the setting defaults to one. Language-tuned models pin
+        // their own language regardless — a pt-tuned checkpoint cannot honour a
+        // request for German — and only the universal ones read the setting.
         let lang: WhisperLanguage
         switch VoiceCatalog.all.first(where: { $0.id == activeModelID })?.lang {
         case .english:    lang = .english
@@ -215,7 +225,7 @@ final class VoiceInputManager: ObservableObject {
         case .japanese:   lang = .japanese
         case .french:     lang = .french
         case .portuguese: lang = .portuguese
-        default:          lang = Self.appWhisperLanguage()
+        default:          lang = Self.chosenWhisperLanguage()
         }
 
         do {
@@ -261,6 +271,30 @@ final class VoiceInputManager: ObservableObject {
             return t
         } catch {
             self.error = L("Transcrição (servidor): %@", error.localizedDescription)
+            return ""
+        }
+    }
+
+    /// Same upload as `transcribeWithServer`, but to the user's own endpoint.
+    /// Errors surface the response body verbatim: without it a wrong path and a
+    /// bad key are indistinguishable from the phone.
+    private func transcribeWithEndpoint() async -> String {
+        let raw = lock.withLock { rawSamples }
+        guard raw.count > Int(hwRate * 0.3) else {
+            error = L("Áudio muito curto — toque, fale e toque de novo pra parar.")
+            return ""
+        }
+        processing = true; defer { processing = false }
+        var frames = resampleTo16k(raw, from: hwRate)
+        normalize(&frames)
+        let wav = Self.wavData(frames, sampleRate: 16_000)
+        do {
+            let t = try await VoiceEndpoint.transcribe(wav)
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            if t.isEmpty { error = L("Não captei nenhuma fala.") }
+            return t
+        } catch {
+            self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
             return ""
         }
     }
@@ -320,10 +354,11 @@ final class VoiceInputManager: ObservableObject {
         return nil
     }
 
-    /// Maps the app's UI language to a Whisper language for the universal
-    /// models. Unknown/unsupported → .auto.
-    private static func appWhisperLanguage() -> WhisperLanguage {
-        switch LocalizationManager.shared.active {
+    /// Maps the chosen speech language to a Whisper language for the universal
+    /// models. "Detect", and languages whisper has no model for, → .auto.
+    private static func chosenWhisperLanguage() -> WhisperLanguage {
+        guard let chosen = SpeechLanguage.pinned() else { return .auto }
+        switch chosen {
         case .ptBR:           return .portuguese
         case .en:             return .english
         case .es:             return .spanish
@@ -442,7 +477,7 @@ final class VoiceInputManager: ObservableObject {
             AVAudioApplication.requestRecordPermission { c.resume(returning: $0) }
         }
         guard mic else { return false }
-        if useModel || useServer { return true }   // no SFSpeech auth needed
+        if useModel || useServer || useEndpoint { return true }   // no SFSpeech auth needed
         let speech = await withCheckedContinuation { c in
             SFSpeechRecognizer.requestAuthorization { c.resume(returning: $0 == .authorized) }
         }

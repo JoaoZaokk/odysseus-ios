@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld çalışıyor · %lld kuyrukta";
 "Processar só no aparelho" = "Yalnızca cihazda işle";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Yalnızca cihazda işlemek Apple'a ses göndermez, ancak çevrimdışı model daha çok kelimeyi yanlış anlar. Yazıya dökme kötüyse kapalı bırakın.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Listeyi yenile (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in kullanılamıyor: yankı engelleme açılamadı.";
+"Buscar modelos do servidor" = "Modelleri sunucudan al";
+"Buscar voz" = "Ses ara";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI uyumlu";
+"Consultando…" = "Sorgulanıyor…";
+"Endpoint de voz não configurado (falta a URL)." = "Ses endpoint'i yapılandırılmadı (URL eksik).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint metin döndürmedi. Yanıt: %@";
+"Endpoint próprio" = "Kendi endpoint'in";
+"Endpoint respondeu %d." = "Endpoint %d yanıtı verdi.";
+"Endpoint respondeu %d: %@" = "Endpoint %d yanıtı verdi: %@";
+"Escolher voz" = "Ses seç";
+"Escolher…" = "Seç…";
+"Formato" = "Biçim";
+"Mostrar chave" = "Anahtarı göster";
+"Nenhuma voz encontrada." = "Ses bulunamadı.";
+"Nome do modelo" = "Model adı";
+"O servidor não listou nenhum modelo." = "Sunucu hiçbir model listelemedi.";
+"OK" = "Tamam";
+"Ocultar chave" = "Anahtarı gizle";
+"Olá! Esta é a voz do endpoint." = "Merhaba! Bu endpoint'in sesi.";
+"Outro…" = "Diğer…";
+"Só minhas vozes" = "Yalnızca kendi seslerim";
+"URL base" = "Temel URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Kendi endpoint'in\" = OpenAI'nin ses API'siyle uyumlu herhangi bir servis (POST /audio/transcriptions). Cihaza hiçbir şey indirilmez.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in kullanılamıyor: ses algılayıcı yüklenemedi.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in kullanılamıyor: mikrofon açılamadı.";
+"O modelo guardado (%@) não está na lista do servidor." = "Kayıtlı model (%@) sunucunun listesinde yok.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS olmadan API key ağ üzerinde düz metin olarak gider.";
+"Gravando… toque para parar" = "Kaydediliyor… durdurmak için dokun";
+"Ouvi: %@" = "Duydum: %@";
+"Testar reconhecimento" = "Tanımayı test et";
+"Transcrevendo…" = "Yazıya dökülüyor…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Konuşma dili";
+"Seguir o app (%@)" = "Uygulamayı izle (%@)";
+"Detectar automaticamente" = "Otomatik algıla";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Yerleşik ses uygulamanın dilini izler. Tanıma ise yukarıda seçilen dili kullanır; otomatik algılama kısa ya da gürültülü seste daha çok yanılır ve iOS'un yerleşik tanıması dili hiç algılamaz — orada her zaman uygulamanın dili geçerlidir.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Akışlı ses";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Akışlı ses, ilk cümleyi tüm dosyayı beklemeden, daha üretilirken çalar. Yalnızca konuşma modunda (ses ekranı) geçerlidir; sonraki cümleler zaten bir öncekisi çalarken hazırlanır. Ses kesiliyorsa kapatın.";

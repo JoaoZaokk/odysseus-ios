@@ -567,3 +567,49 @@
 "%lld rodando · %lld na fila" = "%lld قيد التشغيل · %lld في الانتظار";
 "Processar só no aparelho" = "المعالجة على الجهاز فقط";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "المعالجة على الجهاز فقط لا ترسل الصوت إلى Apple، لكن النموذج دون اتصال يخطئ في كلمات أكثر. اتركه معطّلاً إذا كان النسخ سيئاً.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "تحديث القائمة (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in غير متاح: تعذّر تفعيل إلغاء الصدى.";
+"Buscar modelos do servidor" = "جلب النماذج من الخادم";
+"Buscar voz" = "البحث عن صوت";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "متوافق مع OpenAI";
+"Consultando…" = "جارٍ الاستعلام…";
+"Endpoint de voz não configurado (falta a URL)." = "لم يتم إعداد endpoint الصوت (الرابط مفقود).";
+"Endpoint não devolveu texto. Resposta: %@" = "لم يُعِد الـ endpoint أي نص. الاستجابة: %@";
+"Endpoint próprio" = "endpoint خاص";
+"Endpoint respondeu %d." = "استجاب الـ endpoint بالرمز %d.";
+"Endpoint respondeu %d: %@" = "استجاب الـ endpoint بالرمز %d: %@";
+"Escolher voz" = "اختيار صوت";
+"Escolher…" = "اختيار…";
+"Formato" = "الصيغة";
+"Mostrar chave" = "إظهار المفتاح";
+"Nenhuma voz encontrada." = "لم يُعثر على أي صوت.";
+"Nome do modelo" = "اسم النموذج";
+"O servidor não listou nenhum modelo." = "لم يسرد الخادم أي نموذج.";
+"OK" = "موافق";
+"Ocultar chave" = "إخفاء المفتاح";
+"Olá! Esta é a voz do endpoint." = "مرحباً! هذا هو صوت الـ endpoint.";
+"Outro…" = "أخرى…";
+"Só minhas vozes" = "أصواتي فقط";
+"URL base" = "الرابط الأساسي";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "«endpoint خاص» = أي خدمة متوافقة مع واجهة الصوت من OpenAI (POST /audio/transcriptions). لا يتم تنزيل أي شيء على الجهاز.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in غير متاح: تعذّر تحميل كاشف الصوت.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in غير متاح: تعذّر فتح الميكروفون.";
+"O modelo guardado (%@) não está na lista do servidor." = "النموذج المحفوظ (%@) ليس في قائمة الخادم.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "بدون HTTPS ينتقل API key عبر الشبكة كنص صريح.";
+"Gravando… toque para parar" = "جارٍ التسجيل… اضغط للإيقاف";
+"Ouvi: %@" = "سمعت: %@";
+"Testar reconhecimento" = "اختبار التعرّف";
+"Transcrevendo…" = "جارٍ النسخ…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "لغة الكلام";
+"Seguir o app (%@)" = "اتّباع لغة التطبيق (%@)";
+"Detectar automaticamente" = "الكشف تلقائيًا";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "الصوت المدمج يتبع لغة التطبيق. أمّا التعرّف فيستخدم اللغة المختارة أعلاه؛ والكشف التلقائي يخطئ أكثر مع المقاطع القصيرة أو المشوّشة، كما أنّ تعرّف iOS المدمج لا يكشف اللغة إطلاقًا — فيه تُعتمد لغة التطبيق دائمًا.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "الصوت المتدفق";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "الصوت المتدفق يشغّل الجملة الأولى وهي ما تزال قيد التوليد بدل انتظار الملف كاملًا. ينطبق فقط في وضع المحادثة (شاشة الصوت)؛ أما الجمل التالية فتُجهَّز أصلًا أثناء تشغيل سابقتها. أوقفه إذا تقطّع الصوت.";
