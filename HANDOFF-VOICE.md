@@ -682,7 +682,7 @@ Commit `38ad3b8`, 97 arquivos. 101 testes passam (2 novos). Validação sem ITMS
 Duas chaves novas de erro nos 44 catálogos (596 no total, conjuntos idênticos): reprodução
 interrompida e endpoint que aceitou e não mandou áudio.
 
-## O que a auditoria apontou e **não** foi feito
+## O que a auditoria apontou e não foi feito **na 16** — tudo fechado na 17
 
 - **#8 `VoiceEndpoint` continua sem teste.** Nenhum cobre caminho de URL, campo multipart ou
   troca de dialeto. É o arquivo mais exposto do release e o menos coberto.
@@ -693,3 +693,49 @@ interrompida e endpoint que aceitou e não mandou áudio.
 - Avisos de concorrência do Swift 6 (`loudestLeak`, `openingSoft`/`openingHard` isolados no
   MainActor lidos de contexto nonisolated; `NSLock` em contexto async). São avisos no modo Swift 5
   e viram erro no 6. Já existiam na build 15.
+
+---
+
+# Build 17 — o resto da auditoria (26/08 07:25)
+
+**1.8 (17) `VALID`**, anexado, delivery `65b6f01d-c9e4-424f-89e3-274fb10f380d`, expira 24/11.
+Versão em `PREPARE_FOR_SUBMISSION` — **o dono submete**. Commit `8426c21`. 117 testes.
+Release arquiva **sem nenhum aviso**.
+
+**#8 `VoiceEndpoint` coberto.** A montagem da request saiu de dentro da chamada de rede
+(`transcribeRequest`, `speechRequest`, `parseTranscript`) — foi isso que tornou testável. 16
+testes fixam: caminhos (`/audio/transcriptions` vs `/asr`, `/audio/speech` vs `/tts`), nome da
+parte do arquivo (`file` vs `audio`), onde cada dialeto põe modelo e voz (Fish manda modelo em
+**header** e chama voz de `reference_id`), que idioma ausente fica ausente em vez de ir vazio,
+que `sample_rate` só existe no Fish e só em WAV, que URL base com caminho é preservada, e que
+corpo vazio é **falha**, não transcrição vazia — senão manda mensagem em branco no lugar do dono.
+
+**#9 Piso do barge-in retunado.** Era `0.055 - s*0.027`; o padrão dava **0.0415**, acima dos
+**0.038** da voz mais baixa das medições. Quem fala baixo não conseguia interromper no ajuste que
+vai enviado — e esse ajuste nunca tinha sido exercitado, porque toda validação foi no máximo.
+Agora `0.046 - s*0.020`: o topo é o próprio `loudestLeak` em vez de um número acima dele.
+
+| s | piso antes | piso agora | blocos |
+|---|---|---|---|
+| 0 | 0.055 | 0.046 | 2 |
+| 0,5 (padrão) | 0.0415 | **0.036** | 3 |
+| 1 | 0.028 | 0.026 | 3 |
+
+Da primeira marca para cima o piso para de fingir que separa vazamento de voz e passa isso para a
+duração — que é o que os traços mostram funcionando. Teto do residual (0.022) segue abaixo de todo
+o slider, com teste varrendo as 101 posições.
+
+**#10 "Testar voz" usa o caminho real.** Ia por `synthesize` (mp3 bufferizado): passava verde num
+endpoint que não serve `response_format: "wav"` e a conversa real ficava muda sem nada avisar.
+`toggleTest` agora toma o caminho que o modo mãos livres tomaria.
+
+**Swift 6.** `loudestLeak` e `openingSoft`/`openingHard` viraram `nonisolated`; o `busy` é
+liberado por helper síncrono em vez de travar `NSLock` dentro de `defer` async.
+
+## Continua em aberto
+
+- **TestFlight sem nenhum grupo.** Build 17 está lá, não há para quem distribuir.
+- **Barge-in ainda não rodou em aparelho no padrão.** O piso agora admite a voz mais baixa já
+  medida, mas isso é aritmética, não medição. Testar falando baixo.
+- **Traduções sem revisão de nativo** — 28 notas de loja e as chaves novas dos catálogos.
+- Servidor: 14–23 s até o primeiro token. 96% da espera, fora do alcance do iOS.
