@@ -846,3 +846,84 @@ Aqui, não no chat — foi cobrado, com razão, que eu repetia isto a cada mensa
 - Relatório de agente **não é fonte**: o promotor da auditoria inventou um erro em croata
   (`zaplijeće`) que nunca esteve no arquivo, e a defesa afirmou "zero warnings" quando a build 15
   tinha avisos de concorrência do Swift 6. Abrir o arquivo antes de agir.
+
+---
+
+# 1.8 REJEITADA — Guideline 5 (China/DST), 28/08. Corrigida na build 21
+
+**Motivo textual da Apple:** *"the app's metadata includes the following references to
+ChatGPT and/or OpenAI: **GPT**"*. Submissão `b4bdc572`, revisada em iPad Air 11" (M3).
+
+## Isto foi reincidência, e a causa é a mesma das duas vezes
+
+A 1.7 caiu no **mesmo** Guideline 5 em 23/07. Naquela hora limpei `description` e `keywords` do
+zh-Hans/zh-Hant e a versão passou. **Só que limpei o que existia e não a regra.** Em 26/08
+escrevi as notas da 1.8 com "OpenAI" e mandei PATCH nos 30 locais — incluindo os dois chineses —
+e o recurso novo de voz trouxe duas strings zh de interface nomeando OpenAI. Recoloquei nos dois
+lugares a palavra que tinha acabado de tirar.
+
+**Regra permanente do dono, de julho:** *"zero menções a gpt ou openai em chinês"*. Ela vale para
+**texto novo também**, não só para o que já estava lá. Antes de qualquer PATCH de ficha ou string
+nova, rodar a varredura abaixo.
+
+## O que a Apple aceita
+
+Ou a ficha inteira sem nenhuma referência, ou desmarcar a China em Availability. Metadata é
+global — não dá para ter texto diferente só na China. Escolhido: **tirar tudo, manter a China.**
+
+Saiu de tudo: `ChatGPT`, `OpenAI`, `GPT`, `Whisper` (Whisper é produto da OpenAI — não foi citado
+pelo reviewer, mas é referência). Ficaram `Fish Audio`, `Ollama`, `OpenRouter`: empresas
+distintas, nenhuma citada pela Apple.
+
+| Campo | Locais mexidos | Como ficou |
+|---|---|---|
+| `keywords` | 25 (`GPT`) + 4 (`Whisper`) | token removido, resto intacto |
+| `description` | 23 | "endpoints compatíveis com OpenAI" → "outros endpoints compatíveis" |
+| `description` | 5 (fi, fr, he, sv, th) | "com Whisper embutido" → "no aparelho" |
+| `whatsNew` | 30 | "API de áudio da OpenAI" → "uma API de áudio compatível" |
+| strings do app | zh-Hans, zh-Hant | `兼容 OpenAI` → `通用音频接口` / `通用音訊介面` |
+
+Screenshots conferidas nos 5 quadros: nenhuma referência. Modelo que aparece é `mimo-v2.5-pro`.
+Nome e subtítulo nos 30: limpos.
+
+## Varredura antes de submeter
+
+```python
+BAD = ("ChatGPT","OpenAI","Open AI","openai","GPT","gpt","Whisper","whisper")
+# ficha:   /v1/appStoreVersions/{v}/appStoreVersionLocalizations
+#          description whatsNew keywords promotionalText supportUrl marketingUrl
+# nome:    /v1/appInfos/{id}/appInfoLocalizations  ->  name subtitle privacyPolicyText
+# app:     grep -rn "OpenAI\|ChatGPT\|GPT" Odysseus/Resources/zh-Han*.lproj/
+```
+
+No app, só o **lado direito** do `=` conta. As chaves são os literais pt-BR do catálogo, nunca
+renderizadas — continuam com "OpenAI" e isso é aceitável. Renomeá-las mexeria em 44 `.lproj` mais
+o código-fonte.
+
+## Notas de revisão reescritas
+
+Apple pede explicitamente: *"update the Review Notes to confirm you've suppressed this
+functionality"*. As notas agora estão em inglês e afirmam três coisas: nenhuma funcionalidade
+ChatGPT/OpenAI é embutida; todas as referências saíram das 30 fichas; e — **corrigindo uma frase
+que tinha virado falsa** — a transcrição roda no aparelho por padrão, e só vai para um endpoint
+externo se o próprio usuário configurar um, sem padrão nem provedor pré-selecionado. As notas
+antigas juravam "nenhum dado é enviado a terceiros", o que deixou de ser verdade com o endpoint
+de voz da 1.8.
+
+## Estado
+
+| | |
+|---|---|
+| Versão | 1.8, `PREPARE_FOR_SUBMISSION` |
+| Build | **21**, `VALID`, delivery `fa01ba5f-2727-4300-99ad-16b0fa8faf5e`, já anexada |
+| Submissões abertas | nenhuma — o caminho de três chamadas está livre |
+| Lançamento | manual |
+
+Build 20 já servia para o que a Apple citou (era metadata). A 21 foi feita porque a interface
+chinesa ainda mostrava `兼容 OpenAI` na tela de voz, e esta é a segunda rejeição na mesma
+guideline — um terceiro ciclo custa mais que um arquivamento.
+
+## Erro meu, nomeado
+
+Corrigi ocorrências em vez de instalar a regra. Duas rejeições no mesmo guideline, a segunda
+causada por texto que eu mesmo escrevi depois de ter consertado a primeira.
