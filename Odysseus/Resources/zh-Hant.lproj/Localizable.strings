@@ -574,7 +574,7 @@
 "Buscar modelos do servidor" = "從伺服器取得模型";
 "Buscar voz" = "搜尋語音";
 "Chave da API" = "API key";
-"Compatível com OpenAI" = "相容 OpenAI";
+"Compatível com OpenAI" = "通用音訊介面";
 "Consultando…" = "查詢中…";
 "Endpoint de voz não configurado (falta a URL)." = "語音端點未設定（缺少 URL）。";
 "Endpoint não devolveu texto. Resposta: %@" = "端點未回傳文字。回應：%@";
@@ -594,7 +594,7 @@
 "Outro…" = "其他…";
 "Só minhas vozes" = "只顯示我的語音";
 "URL base" = "基礎 URL";
-"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "「自訂端點」= 任何相容 OpenAI 音訊 API 的服務（POST /audio/transcriptions）。不會在裝置上下載任何內容。";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "「自訂端點」= 任何採用通用音訊介面的服務（POST /audio/transcriptions）。不會在裝置上下載任何內容。";
 "Barge-in indisponível: o detector de voz não pôde ser carregado." = "無法使用 barge-in：語音偵測模型載入失敗。";
 "Barge-in indisponível: o microfone não pôde ser aberto." = "無法使用 barge-in：無法開啟麥克風。";
 "O modelo guardado (%@) não está na lista do servidor." = "已儲存的模型（%@）不在伺服器清單中。";
