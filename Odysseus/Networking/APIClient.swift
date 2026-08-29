@@ -177,7 +177,7 @@ final class APIClient: @unchecked Sendable {
         } catch {
             // A request cancelled by a view transition (.task teardown) should
             // not surface as a user-facing error.
-            if error is CancellationError || (error as? URLError)?.code == .cancelled {
+            if error.isCancellation {
                 throw CancellationError()
             }
             throw APIError.transport(error.localizedDescription)

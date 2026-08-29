@@ -79,19 +79,21 @@ final class VoicePipelineTests: XCTestCase {
 
     // MARK: - Sensitivity mapping
 
+    private func tuning(_ sensitivity: Double) -> BargeInMonitor.Tuning {
+        .init(sensitivity: sensitivity)
+    }
+
     func testSensitivityMovesBothGatesTowardEasierInterruption() {
         // Higher sensitivity must lower both bars, or the slider fights itself.
-        XCTAssertGreaterThan(BargeInMonitor.thresholdForSensitivity(0),
-                             BargeInMonitor.thresholdForSensitivity(1))
-        XCTAssertGreaterThan(BargeInMonitor.floorForSensitivity(0),
-                             BargeInMonitor.floorForSensitivity(1))
+        XCTAssertGreaterThan(tuning(0).threshold, tuning(1).threshold)
+        XCTAssertGreaterThan(tuning(0).floor, tuning(1).floor)
     }
 
     func testSensitivityIsClampedOutsideZeroToOne() {
-        XCTAssertEqual(BargeInMonitor.thresholdForSensitivity(-5),
-                       BargeInMonitor.thresholdForSensitivity(0))
-        XCTAssertEqual(BargeInMonitor.floorForSensitivity(9),
-                       BargeInMonitor.floorForSensitivity(1))
+        // Every gate at once, not one of them: the three are derived together
+        // precisely so an out-of-range slider cannot move one without the others.
+        XCTAssertEqual(tuning(-5), tuning(0))
+        XCTAssertEqual(tuning(9), tuning(1))
     }
 
     /// The floor separates echo residual from the user's voice, using numbers
@@ -105,43 +107,43 @@ final class VoicePipelineTests: XCTestCase {
     /// slider needs to reach a soft speaker.
     func testFloorAlwaysClearsEchoResidual() {
         for s in stride(from: 0.0, through: 1.0, by: 0.1) {
-            XCTAssertGreaterThan(BargeInMonitor.floorForSensitivity(s), 0.022,
+            XCTAssertGreaterThan(tuning(s).floor, 0.022,
                                  "floor would admit echo residual at s=\(s)")
         }
     }
 
     func testMaximumSensitivityReachesASoftVoice() {
-        XCTAssertLessThan(BargeInMonitor.floorForSensitivity(1), 0.038)
+        XCTAssertLessThan(tuning(1).floor, 0.038)
     }
 
     // MARK: - Sentence cutting (time-to-first-word)
 
     func testCutsOnATerminatorFollowedByWhitespace() {
         let s = "Oi. Tudo bem?"
-        XCTAssertEqual(VoiceConversation.sentenceCut(in: s), 3)
+        XCTAssertEqual(SpokenText.sentenceCut(in: s), 3)
     }
 
     func testDecimalNumbersAreNotSentenceBreaks() {
-        XCTAssertNil(VoiceConversation.sentenceCut(in: "A versão 3.5 saiu"))
+        XCTAssertNil(SpokenText.sentenceCut(in: "A versão 3.5 saiu"))
     }
 
     func testThousandsSeparatorsAreNotSentenceBreaks() {
-        XCTAssertNil(VoiceConversation.sentenceCut(in: "Custa R$ 1.200,00 hoje"))
+        XCTAssertNil(SpokenText.sentenceCut(in: "Custa R$ 1.200,00 hoje"))
     }
 
     func testNewlineEndsASentence() {
-        XCTAssertEqual(VoiceConversation.sentenceCut(in: "Primeira\nSegunda"), 9)
+        XCTAssertEqual(SpokenText.sentenceCut(in: "Primeira\nSegunda"), 9)
     }
 
     func testCJKTerminatorsCut() {
-        XCTAssertNotNil(VoiceConversation.sentenceCut(in: "こんにちは。 元気ですか"))
+        XCTAssertNotNil(SpokenText.sentenceCut(in: "こんにちは。 元気ですか"))
     }
 
     func testNoCutWhileTheSentenceIsStillArriving() {
-        XCTAssertNil(VoiceConversation.sentenceCut(in: "ainda escrevendo"))
+        XCTAssertNil(SpokenText.sentenceCut(in: "ainda escrevendo"))
         // A terminator at the very end has no following whitespace yet — the
         // next delta may turn it into "3.5". Waiting is correct.
-        XCTAssertNil(VoiceConversation.sentenceCut(in: "quase pronto."))
+        XCTAssertNil(SpokenText.sentenceCut(in: "quase pronto."))
     }
 
     // MARK: - Speakability
@@ -150,13 +152,13 @@ final class VoicePipelineTests: XCTestCase {
         // Committing the loop to .speaking for one of these left the turn with
         // an empty queue that could never be closed.
         for junk in ["```", "**", "---", "   ", "#"] {
-            XCTAssertFalse(SpeechManager.isSpeakable(junk), "\(junk) should not be spoken")
+            XCTAssertFalse(SpokenText.isSpeakable(junk), "\(junk) should not be spoken")
         }
     }
 
     func testOrdinaryTextIsSpeakable() {
-        XCTAssertTrue(SpeechManager.isSpeakable("Bom dia"))
-        XCTAssertTrue(SpeechManager.isSpeakable("**negrito** conta"))
+        XCTAssertTrue(SpokenText.isSpeakable("Bom dia"))
+        XCTAssertTrue(SpokenText.isSpeakable("**negrito** conta"))
     }
 
     // MARK: - Transcription language
@@ -183,17 +185,27 @@ final class VoicePipelineTests: XCTestCase {
 
     // MARK: - Speech language setting
 
+    /// Runs `body` with `key` holding `raw` (or nothing), then puts back
+    /// whatever was there before.
+    ///
+    /// These tests read the real `UserDefaults.standard` — the same one the app
+    /// writes — so a test that left its value behind would change what the next
+    /// test, and the developer's own simulator, starts from.
+    private func withDefault(_ key: String, _ raw: String?, _ body: () -> Void) {
+        let d = UserDefaults.standard
+        let saved = d.string(forKey: key)
+        defer {
+            if let saved { d.set(saved, forKey: key) }
+            else { d.removeObject(forKey: key) }
+        }
+        if let raw { d.set(raw, forKey: key) }
+        else { d.removeObject(forKey: key) }
+        body()
+    }
+
     @MainActor
     private func withSpeechLanguage(_ raw: String?, _ body: () -> Void) {
-        let d = UserDefaults.standard
-        let saved = d.string(forKey: SpeechLanguage.key)
-        defer {
-            if let saved { d.set(saved, forKey: SpeechLanguage.key) }
-            else { d.removeObject(forKey: SpeechLanguage.key) }
-        }
-        if let raw { d.set(raw, forKey: SpeechLanguage.key) }
-        else { d.removeObject(forKey: SpeechLanguage.key) }
-        body()
+        withDefault(SpeechLanguage.key, raw, body)
     }
 
     @MainActor func testUnsetSpeechLanguageFollowsTheApp() {
@@ -224,37 +236,140 @@ final class VoicePipelineTests: XCTestCase {
         }
     }
 
+    // MARK: - Which engine is selected
+    //
+    // The engine used to be a raw string compared at nine call sites across four
+    // files, one of them written as a negation of the *other* engines — so a new
+    // engine inherited whatever the negation happened to say about it. These
+    // pin the decisions those comparisons were making, case by case, so a case
+    // added without deciding its behaviour fails here instead of defaulting.
+
+    func testAnUnsetEngineIsTheNativeOne() {
+        // Nothing stored is the state of every fresh install: the answer has to
+        // be the engine that needs no model downloaded and no server reachable.
+        withDefault(STTEngine.key, nil) { XCTAssertEqual(STTEngine.current, .native) }
+        withDefault(TTSEngine.key, nil) { XCTAssertEqual(TTSEngine.current, .native) }
+    }
+
+    func testAnUnrecognisedStoredEngineIsTheNativeOne() {
+        // A value written by a later build, or a case this build dropped. Same
+        // answer as unset for the same reason — and never a crash on a string
+        // that is, after all, just whatever is on disk.
+        withDefault(STTEngine.key, "quantico") { XCTAssertEqual(STTEngine.current, .native) }
+        withDefault(TTSEngine.key, "quantico") { XCTAssertEqual(TTSEngine.current, .native) }
+    }
+
+    func testStoredEngineNamesAreExactlyTheOnesAlreadyOnDisk() {
+        // These raw values are persisted user state, not identifiers. Renaming
+        // one is not a refactor: it silently resets the engine of every user who
+        // had chosen it, on their next launch, with no way to notice.
+        XCTAssertEqual(STTEngine.allCases.map(\.rawValue),
+                       ["native", "model", "server", "endpoint"])
+        XCTAssertEqual(TTSEngine.allCases.map(\.rawValue),
+                       ["native", "neural", "server", "endpoint"])
+        XCTAssertEqual(STTEngine.key, "voice.stt.engine")
+        XCTAssertEqual(TTSEngine.key, "voice.tts.engine")
+    }
+
+    func testEveryStoredEngineValueResolvesBackToItsOwnCase() {
+        // The round trip the Picker relies on: what Settings writes is what the
+        // next launch reads back, for every case rather than for the two that
+        // happened to be tried by hand.
+        for e in STTEngine.allCases {
+            withDefault(STTEngine.key, e.rawValue) { XCTAssertEqual(STTEngine.current, e) }
+        }
+        for e in TTSEngine.allCases {
+            withDefault(TTSEngine.key, e.rawValue) { XCTAssertEqual(TTSEngine.current, e) }
+        }
+    }
+
+    // MARK: - What each engine can do
+
+    func testOnlyTheNativeEngineReportsATranscriptWhileTheUserIsStillTalking() {
+        for e in STTEngine.allCases {
+            XCTAssertEqual(e.hasLivePartials, e == .native, e.rawValue)
+        }
+    }
+
+    func testRawCaptureIsExactlyTheEnginesWithoutLivePartials() {
+        // These two are one decision seen from both sides: an engine that gives
+        // no partials transcribes a finished recording, so it needs the raw
+        // buffer. Stated as a negated list of the *other* engines, the old shape
+        // got the complement structurally wrong the moment a case was added.
+        for e in STTEngine.allCases {
+            XCTAssertEqual(e.needsRawCapture, !e.hasLivePartials, e.rawValue)
+        }
+    }
+
+    func testOnlyTheNativeEngineNeedsSpeechRecognitionAuthorization() {
+        // Asking for it on behalf of an engine that never touches
+        // SFSpeechRecognizer puts a second permission dialog in front of a user
+        // who gains nothing by granting it — and a refusal there used to read
+        // as the microphone being denied.
+        for e in STTEngine.allCases {
+            XCTAssertEqual(e.needsSpeechAuthorization, e == .native, e.rawValue)
+        }
+    }
+
+    func testOnlyTheNetworkVoicesAreFetchedAhead() {
+        // Prefetching the next sentence hides a round trip, and only a round
+        // trip. On the Neural Engine a second synthesis competes with the one
+        // being played instead of hiding behind it.
+        for e in TTSEngine.allCases {
+            XCTAssertEqual(e.isNetwork, e == .server || e == .endpoint, e.rawValue)
+        }
+    }
+
+    func testOnlyTheUsersOwnEndpointStreams() {
+        for e in TTSEngine.allCases {
+            XCTAssertEqual(e.canStream, e == .endpoint, e.rawValue)
+        }
+        // Streaming is the stronger claim of the two: nothing can stream that
+        // does not answer over the network in the first place.
+        for e in TTSEngine.allCases where e.canStream {
+            XCTAssertTrue(e.isNetwork, e.rawValue)
+        }
+    }
+
+    func testEveryEngineHasItsOwnNameInThePickerAndInTheTrace() {
+        // Two cases sharing a Picker label leaves the user unable to tell which
+        // row they are on; two sharing a logName makes the trace unreadable at
+        // the exact moment it is being read to find out which engine answered.
+        XCTAssertEqual(Set(STTEngine.allCases.map(\.label)).count, STTEngine.allCases.count)
+        XCTAssertEqual(Set(TTSEngine.allCases.map(\.logName)).count, TTSEngine.allCases.count)
+    }
+
     // MARK: - Opening cut (first chunk of a reply)
 
     func testOpeningPrefersARealSentenceWhenThereIsOne() {
         let s = "Oi. " + String(repeating: "a", count: 200)
-        XCTAssertEqual(VoiceConversation.openingCut(in: s), 3)
+        XCTAssertEqual(SpokenText.openingCut(in: s), 3)
     }
 
     func testOpeningLeavesAShortReplyAlone() {
         // Under the soft floor and no terminator yet: waiting is right, the
         // looser rule exists to shorten silence, not to chop three words out.
-        XCTAssertNil(VoiceConversation.openingCut(in: "Deixa eu ver isso pra você"))
+        XCTAssertNil(SpokenText.openingCut(in: "Deixa eu ver isso pra você"))
     }
 
     func testOpeningCutsAtTheLastClauseBreakInBudget() {
         let head = String(repeating: "a", count: 55)   // first comma lands under the floor
         let mid = String(repeating: "b", count: 30)
         let s = head + ", " + mid + ", " + String(repeating: "c", count: 200)
-        XCTAssertEqual(VoiceConversation.openingCut(in: s), head.count + 2 + mid.count + 1)
+        XCTAssertEqual(SpokenText.openingCut(in: s), head.count + 2 + mid.count + 1)
     }
 
     func testOpeningNeverCutsBeforeTheSoftFloor() {
         let s = "Sim, " + Array(repeating: "palavra", count: 60).joined(separator: " ")
-        let cut = try! XCTUnwrap(VoiceConversation.openingCut(in: s))
-        XCTAssertGreaterThanOrEqual(cut, VoiceConversation.openingSoft)
-        XCTAssertLessThanOrEqual(cut, VoiceConversation.openingHard)
+        let cut = try! XCTUnwrap(SpokenText.openingCut(in: s))
+        XCTAssertGreaterThanOrEqual(cut, SpokenText.openingSoft)
+        XCTAssertLessThanOrEqual(cut, SpokenText.openingHard)
     }
 
     func testOpeningFallbackDoesNotSplitAWord() {
         let s = Array(repeating: "palavra", count: 60).joined(separator: " ")
         let chars = Array(s)
-        let cut = try! XCTUnwrap(VoiceConversation.openingCut(in: s))
+        let cut = try! XCTUnwrap(SpokenText.openingCut(in: s))
         XCTAssertTrue(chars[cut].isWhitespace)
         XCTAssertFalse(chars[cut - 1].isWhitespace)
     }
@@ -262,7 +377,7 @@ final class VoicePipelineTests: XCTestCase {
     func testOpeningStillDoesNotBreakADecimal() {
         // Past the soft floor, no clause break, short of the hard limit: the
         // looser rule must not invent a cut at "3.5".
-        XCTAssertNil(VoiceConversation.openingCut(in:
+        XCTAssertNil(SpokenText.openingCut(in:
             "A versão 3.5 saiu ontem e mudou bastante coisa no modelo"))
     }
 
@@ -405,15 +520,15 @@ final class VoicePipelineTests: XCTestCase {
         // The floor is under the observed leak everywhere except the very
         // bottom, so two chunks were never going to reject it — this is the
         // case that actually broke.
-        XCTAssertEqual(BargeInMonitor.chunksForSensitivity(0.2), 3)
-        XCTAssertEqual(BargeInMonitor.chunksForSensitivity(0.5), 3)
-        XCTAssertEqual(BargeInMonitor.chunksForSensitivity(1), 3)
+        XCTAssertEqual(tuning(0.2).chunks, 3)
+        XCTAssertEqual(tuning(0.5).chunks, 3)
+        XCTAssertEqual(tuning(1).chunks, 3)
     }
 
     func testMinimumSensitivityKeepsTheShorterRun() {
         // Only at the bottom does the floor alone reject the leak, and there is
         // nothing to buy by also making the user hold a syllable longer.
-        XCTAssertEqual(BargeInMonitor.chunksForSensitivity(0), 2)
+        XCTAssertEqual(tuning(0).chunks, 2)
     }
 
     func testTheDefaultAdmitsTheQuietestVoiceEverMeasured() {
@@ -422,14 +537,14 @@ final class VoicePipelineTests: XCTestCase {
         // traces, so a soft-spoken user could not interrupt at the setting the
         // app actually ships with — and that setting had never been exercised
         // on a device, because every barge-in run was done at maximum.
-        XCTAssertLessThan(BargeInMonitor.floorForSensitivity(0.5), 0.038)
+        XCTAssertLessThan(tuning(0.5).floor, 0.038)
     }
 
     func testNoSettingLetsTheResidualCeilingThroughToTheModel() {
         // The other side of the same trade: drop the floor far enough and the
         // 0.006–0.022 residual reaches the VAD, which scores it 1.00.
         for i in 0...100 {
-            XCTAssertGreaterThan(BargeInMonitor.floorForSensitivity(Double(i) / 100), 0.022,
+            XCTAssertGreaterThan(tuning(Double(i) / 100).floor, 0.022,
                                  "s=\(Double(i) / 100)")
         }
     }
@@ -437,8 +552,8 @@ final class VoicePipelineTests: XCTestCase {
     func testTheLongerRunStartsExactlyWhereTheFloorStopsRejectingTheLeak() {
         for i in 0...100 {
             let s = Double(i) / 100
-            let rejectsTheLeak = BargeInMonitor.floorForSensitivity(s) >= BargeInMonitor.loudestLeak
-            XCTAssertEqual(BargeInMonitor.chunksForSensitivity(s), rejectsTheLeak ? 2 : 3, "s=\(s)")
+            let rejectsTheLeak = tuning(s).floor >= BargeInMonitor.loudestLeak
+            XCTAssertEqual(tuning(s).chunks, rejectsTheLeak ? 2 : 3, "s=\(s)")
         }
     }
 
@@ -600,23 +715,31 @@ final class VoicePipelineTests: XCTestCase {
 
     func testTableSeparatorRowIsNotSpoken() {
         for rule in ["|---|---|", "| --- | :--- |", "|:-:|-:|"] {
-            XCTAssertFalse(SpeechManager.isSpeakable(rule), "\(rule) is formatting")
+            XCTAssertFalse(SpokenText.isSpeakable(rule), "\(rule) is formatting")
         }
     }
 
     func testTableRowIsSpokenAsAListOfCells() {
         let row = "| **Duração** | 4 anos (1914-1918) | 6 anos (1939-1945) |"
-        XCTAssertEqual(SpeechManager.spokenText(row),
+        XCTAssertEqual(SpokenText.strip(row),
                        "Duração, 4 anos (1914-1918), 6 anos (1939-1945)")
     }
 
     func testEmptyLeadingCellDoesNotProduceALeadingComma() {
-        XCTAssertEqual(SpeechManager.spokenText("| | **Primeira** | **Segunda** |"),
+        XCTAssertEqual(SpokenText.strip("| | **Primeira** | **Segunda** |"),
                        "Primeira, Segunda")
     }
 
     func testOrdinarySentenceWithNoPipeIsUntouched() {
-        XCTAssertEqual(SpeechManager.spokenText("- **Eixo** — Alemanha e Japão"),
+        XCTAssertEqual(SpokenText.strip("- **Eixo** — Alemanha e Japão"),
                        "- Eixo — Alemanha e Japão")
+    }
+
+    func testAPipeInPassingDoesNotMakeASentenceATableRow() {
+        // What tells a table row apart is the *leading* pipe. Matching on merely
+        // containing one shredded any sentence with a pipe in it into cells:
+        // this line came back spoken as "roda ls, grep erro no terminal".
+        XCTAssertEqual(SpokenText.strip("roda ls | grep erro no terminal"),
+                       "roda ls | grep erro no terminal")
     }
 }

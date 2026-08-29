@@ -28,11 +28,14 @@ final class PCMStreamPlayer {
     /// the producer said no more are coming. Not called after `stop()`.
     var onFinished: (() -> Void)?
     /// Fires when the graph is torn down by something outside this class — an
-    /// audio-session interruption (a call), or the engine's configuration
-    /// changing under it (a route change, which this app causes itself every
-    /// time proximity flips the output port). Neither delivers the completion
-    /// callbacks the scheduled buffers were waiting on, so without this the
-    /// outstanding count never reaches zero and the turn never ends.
+    /// audio-session interruption (a call), the engine's configuration changing
+    /// under it, or a route change this app did *not* cause (headphones pulled
+    /// out). The route changes it does cause — every time proximity flips the
+    /// output port — are filtered out in `tearsDownTheGraph`; treating those as
+    /// interruptions meant lifting the phone to your ear killed the very reply
+    /// you leaned in to hear. Nothing that does get here delivers the
+    /// completion callbacks the scheduled buffers were waiting on, so without
+    /// this the outstanding count never reaches zero and the turn never ends.
     var onInterrupted: (() -> Void)?
     /// Fires when the first buffer is handed to the node — not when the speaker
     /// actually moves. The engine is already running by then, so the gap is
@@ -116,6 +119,15 @@ final class PCMStreamPlayer {
     /// it as one is what used to advance the queue on top of a live recording.
     func stop() {
         epoch &+= 1
+        teardown()
+    }
+
+    /// The one way this graph comes down, for both the stop and the completion
+    /// path. They used to keep a copy each and had already drifted apart on
+    /// three fields; the only things that legitimately differ between them are
+    /// the epoch bump and which callback fires, so only those stay in the
+    /// callers.
+    private func teardown() {
         observers.forEach(NotificationCenter.default.removeObserver)
         observers.removeAll()
         node?.stop()
@@ -135,10 +147,65 @@ final class PCMStreamPlayer {
         #endif
         for name in names {
             let object: Any? = (name == .AVAudioEngineConfigurationChange) ? e : nil
-            observers.append(center.addObserver(forName: name, object: object, queue: .main) { [weak self] _ in
+            observers.append(center.addObserver(forName: name, object: object, queue: .main) { [weak self] note in
+                // Read here rather than on the main actor: `userInfo` is not
+                // `Sendable`, and the only thing the actor needs out of it is
+                // this yes/no.
+                guard Self.tearsDownTheGraph(name, note) else { return }
                 Task { @MainActor in self?.interrupted(name) }
             })
         }
+    }
+
+    /// Whether a notification means this graph is actually gone.
+    ///
+    /// Every one of them used to count, and that had the app knocking over its
+    /// own playback: mid-reply the user lifts the phone to their ear,
+    /// `SpeechManager.applyProximityRoute()` calls `overrideOutputAudioPort`,
+    /// the route change that follows was read as an interruption, and the
+    /// sentence was marked failed and the turn ended.
+    ///
+    /// Ignored, because this app causes them itself: `.override` (that same
+    /// proximity flip) and `.categoryChange` (its own session reconfiguration
+    /// around each engine). Everything else counts — `.oldDeviceUnavailable`
+    /// above all, where the headphones the audio was going to have physically
+    /// left, but equally `.newDeviceAvailable`, `.noSuitableRouteForCategory`,
+    /// `.wakeFromSleep`, `.routeConfigurationChange` and `.unknown`, none of
+    /// which this app asks for. A reason that will not parse counts as well, on
+    /// purpose: missing a real teardown parks the turn forever with the mic
+    /// shut, while a spurious one costs a single sentence.
+    ///
+    /// Interruptions are narrowed to `.began` for the same reason in reverse —
+    /// `.ended` arrives when the call is over, by which point the graph has
+    /// been down for the length of that call and there is nothing left to
+    /// interrupt.
+    private nonisolated static func tearsDownTheGraph(_ name: Notification.Name, _ note: Notification) -> Bool {
+        #if os(iOS)
+        switch name {
+        case AVAudioSession.routeChangeNotification:
+            guard let raw = note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt,
+                  let reason = AVAudioSession.RouteChangeReason(rawValue: raw)
+            else { return true }
+            switch reason {
+            case .override, .categoryChange:
+                return false
+            case .oldDeviceUnavailable, .newDeviceAvailable, .noSuitableRouteForCategory,
+                 .wakeFromSleep, .routeConfigurationChange, .unknown:
+                return true
+            @unknown default:
+                return true
+            }
+        case AVAudioSession.interruptionNotification:
+            guard let raw = note.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+                  let type = AVAudioSession.InterruptionType(rawValue: raw)
+            else { return true }
+            return type == .began
+        default:
+            return true
+        }
+        #else
+        return true
+        #endif
     }
 
     private func interrupted(_ name: Notification.Name) {
@@ -156,12 +223,7 @@ final class PCMStreamPlayer {
 
     private func finishIfDone() {
         guard started, producerDone, outstanding == 0 else { return }
-        started = false
-        observers.forEach(NotificationCenter.default.removeObserver)
-        observers.removeAll()
-        node?.stop(); engine?.stop()
-        node = nil; engine = nil; format = nil
-        firstAudioSent = false
+        teardown()
         onFinished?()
     }
 

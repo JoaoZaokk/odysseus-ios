@@ -271,7 +271,7 @@ extension ModelDownloadManager: URLSessionDownloadDelegate {
         guard let id = task.taskDescription else { return }
         Task { @MainActor in
             self.tasks[id] = nil; self.progress[id] = nil
-            if let err, (err as? URLError)?.code != .cancelled { self.error = err.localizedDescription }
+            if let err, !err.isCancellation { self.error = err.localizedDescription }
         }
     }
 

@@ -13,9 +13,11 @@ struct VoiceSettingsView: View {
     @State private var customURL = ""
     @State private var addingModel = false
 
-    @AppStorage("voice.stt.engine") private var sttEngine = "native"
+    // Key and default come from the enums, so this screen — the one place that
+    // WRITES the engine — cannot disagree with the places that read it.
+    @AppStorage(STTEngine.key) private var sttEngine = STTEngine.native.rawValue
     @AppStorage("voice.stt.model") private var sttModelID = ""
-    @AppStorage("voice.tts.engine") private var ttsEngine = "native"
+    @AppStorage(TTSEngine.key) private var ttsEngine = TTSEngine.native.rawValue
     @AppStorage("voice.tts.pocketVoice") private var pocketVoice = "alba"
     @AppStorage("voice.stt.onDeviceOnly") private var sttOnDeviceOnly = false
     @AppStorage(SpeechLanguage.key) private var sttLanguage = SpeechLanguage.followApp
@@ -26,23 +28,29 @@ struct VoiceSettingsView: View {
 
     private var lang: VoiceLang? { VoiceLang(rawValue: langFilter) }
 
+    /// The engines are *persisted* as raw strings — that is what the pickers
+    /// bind to — but every question this screen asks about them is asked of the
+    /// enum, so the list of engines exists in one place instead of once per
+    /// screen that reads it.
+    private var stt: STTEngine { STTEngine(rawValue: sttEngine) ?? .native }
+    private var tts: TTSEngine { TTSEngine(rawValue: ttsEngine) ?? .native }
+
     var body: some View {
         List {
             Section {
                 Picker("Reconhecimento (STT)", selection: $sttEngine) {
-                    Text("Nativo iOS").tag("native")
-                    Text("Modelo on-device").tag("model")
-                    Text("Servidor").tag("server")
-                    Text("Endpoint próprio").tag("endpoint")
+                    ForEach(STTEngine.allCases) { engine in
+                        Text(verbatim: engine.label).tag(engine.rawValue)
+                    }
                 }
-                if sttEngine == "endpoint" {
+                if stt == .endpoint {
                     VoiceEndpointFields(kind: .stt)
                     STTTestRow()
                 }
-                if sttEngine == "model" {
+                if stt == .model {
                     LabeledContent("Modelo ativo", value: modelName(sttModelID) ?? L("nenhum"))
                 }
-                if sttEngine == "native" {
+                if stt == .native {
                     Toggle("Processar só no aparelho", isOn: $sttOnDeviceOnly)
                 }
                 Picker("Idioma da fala", selection: $sttLanguage) {
@@ -68,7 +76,7 @@ struct VoiceSettingsView: View {
                     } else {
                         Text("A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app.")
                     }
-                    if sttEngine == "native" {
+                    if stt == .native {
                         Text("Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim.")
                     }
                 }
@@ -76,32 +84,28 @@ struct VoiceSettingsView: View {
 
             Section {
                 Picker("Voz da IA (TTS)", selection: $ttsEngine) {
-                    Text("Nativo iOS").tag("native")
+                    Text("Nativo iOS").tag(TTSEngine.native.rawValue)
                     // Names the pack that will actually be used, so picking
                     // "Neural" in a language with no pack isn't a surprise.
                     Text(verbatim: speech.neuralAvailableForCurrentLanguage
                          ? L("Neural (%@)", uiLanguage.active.nativeName)
-                         : L("Neural (indisponível)")).tag("neural")
-                    Text("Servidor").tag("server")
-                    Text("Endpoint próprio").tag("endpoint")
+                         : L("Neural (indisponível)")).tag(TTSEngine.neural.rawValue)
+                    Text("Servidor").tag(TTSEngine.server.rawValue)
+                    Text("Endpoint próprio").tag(TTSEngine.endpoint.rawValue)
                 }
-                if ttsEngine == "endpoint" {
+                if tts == .endpoint {
                     VoiceEndpointFields(kind: .tts)
                     Toggle("Áudio em streaming", isOn: $ttsStreaming)
-                    Button {
-                        speech.toggleTest(L("Olá! É assim que a voz vai soar."), id: "__test__")
-                    } label: {
-                        if speech.isPreparing("__test__") {
-                            HStack { ProgressView(); Text("Sintetizando…") }
-                        } else {
-                            Label("Testar voz", systemImage: "speaker.wave.2")
-                        }
+                    // `toggleTest`, not `toggle`: the test has to take whichever
+                    // path the conversation itself would take (streaming
+                    // included), or it passes green against an endpoint the
+                    // conversation then cannot use — see `SpeechManager.toggleTest`.
+                    testVoiceButton(L("Olá! É assim que a voz vai soar.")) {
+                        speech.toggleTest($0, id: SpeechManager.testID)
                     }
-                    if let e = speech.neuralError {
-                        Text(e).font(.footnote).foregroundStyle(theme.accent)
-                    }
+                    speechErrorLine
                 }
-                if ttsEngine == "server" {
+                if tts == .server {
                     // No voice or model picker: /api/tts/synthesize takes only
                     // the text. Report what the server is set to instead, so an
                     // unexpected voice has a visible explanation.
@@ -111,20 +115,12 @@ struct VoiceSettingsView: View {
                             LabeledContent("Configuração do servidor", value: s.summary)
                         }
                     }
-                    Button {
-                        speech.toggle(L("Olá! Esta é a voz do servidor."), id: "__test__")
-                    } label: {
-                        if speech.isPreparing("__test__") {
-                            HStack { ProgressView(); Text("Sintetizando…") }
-                        } else {
-                            Label("Testar voz", systemImage: "speaker.wave.2")
-                        }
+                    testVoiceButton(L("Olá! Esta é a voz do servidor.")) {
+                        speech.toggle($0, id: SpeechManager.testID)
                     }
-                    if let e = speech.neuralError {
-                        Text(e).font(.footnote).foregroundStyle(theme.accent)
-                    }
+                    speechErrorLine
                 }
-                if ttsEngine == "neural" {
+                if tts == .neural {
                     // The 26 voice names are identical in every pack, so the
                     // picker never has to change with the language.
                     Picker("Voz", selection: $pocketVoice) {
@@ -132,7 +128,7 @@ struct VoiceSettingsView: View {
                     }
                     .disabled(!speech.neuralAvailableForCurrentLanguage)
                     Button { speech.prepareNeural() } label: {
-                        if speech.isPreparing("__prepare__") {
+                        if speech.isPreparing(SpeechManager.prepareID) {
                             HStack { ProgressView(); Text("Baixando voz neural…") }
                         } else if speech.neuralReady {
                             Label("Voz neural pronta", systemImage: "checkmark.circle.fill")
@@ -141,14 +137,12 @@ struct VoiceSettingsView: View {
                             Label("Baixar voz neural (~550 MB)", systemImage: "arrow.down.circle")
                         }
                     }
-                    .disabled(speech.isPreparing("__prepare__") || speech.neuralReady
+                    .disabled(speech.isPreparing(SpeechManager.prepareID) || speech.neuralReady
                               || !speech.neuralAvailableForCurrentLanguage)
-                    if let e = speech.neuralError {
-                        Text(e).font(.footnote).foregroundStyle(theme.accent)
-                    }
+                    speechErrorLine
                 }
             } header: { Text("Texto → Voz") } footer: {
-                if ttsEngine == "endpoint" {
+                if tts == .endpoint {
                     Text("Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar.")
                 }
                 Text("Neural = PocketTTS (CoreML/Neural Engine), bem mais natural que a voz nativa. Existe em português, inglês, espanhol, francês, alemão e italiano — segue o idioma do app e baixa ~550 MB por idioma na primeira vez. Roda só no iPhone físico (não no simulador).")
@@ -187,7 +181,7 @@ struct VoiceSettingsView: View {
             customModelSection
 
             modelSection(title: L("Modelos STT · Whisper"), task: .stt,
-                         selectedID: sttModelID) { id in sttModelID = id; sttEngine = "model" }
+                         selectedID: sttModelID) { id in sttModelID = id; sttEngine = STTEngine.model.rawValue }
 
             if totalOnDisk > 0 {
                 Section {
@@ -219,7 +213,7 @@ struct VoiceSettingsView: View {
         } message: {
             Text("Apagar libera o espaço; a voz é baixada de novo na próxima vez que você usar aquele idioma.")
         }
-        .task(id: ttsEngine) { if ttsEngine == "server" { await speech.loadServerInfo() } }
+        .task(id: ttsEngine) { if tts == .server { await speech.loadServerInfo() } }
         .alert("Erro no download", isPresented: Binding(get: { downloads.error != nil }, set: { if !$0 { downloads.error = nil } })) {
             Button("OK") { downloads.error = nil }
         } message: { Text(downloads.error ?? "") }
@@ -227,6 +221,28 @@ struct VoiceSettingsView: View {
 
     private func modelName(_ id: String) -> String? {
         VoiceCatalog.all.first { $0.id == id }?.name
+    }
+
+    /// The endpoint and server rows differ only in the phrase and in which
+    /// method speaks it; the spinner, its label and the icon are the same
+    /// button, and used to be written twice.
+    private func testVoiceButton(_ phrase: String, speak: @escaping (String) -> Void) -> some View {
+        Button { speak(phrase) } label: {
+            if speech.isPreparing(SpeechManager.testID) {
+                HStack { ProgressView(); Text("Sintetizando…") }
+            } else {
+                Label("Testar voz", systemImage: "speaker.wave.2")
+            }
+        }
+    }
+
+    /// All three engine blocks report through the same `neuralError` slot: it
+    /// carries whatever the *active* engine last failed with, neural or not.
+    @ViewBuilder
+    private var speechErrorLine: some View {
+        if let e = speech.neuralError {
+            Text(e).font(.footnote).foregroundStyle(theme.accent)
+        }
     }
 
     /// Install a Whisper checkpoint the app doesn't ship, by URL.

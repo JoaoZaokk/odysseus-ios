@@ -48,6 +48,36 @@ enum VoiceEndpoint {
             case .fish:   return "Fish Audio"
             }
         }
+
+        /// Fish puts transcription under `/asr`; the OpenAI dialect under
+        /// `/audio/transcriptions`.
+        var transcribePath: String {
+            switch self {
+            case .openai: return "audio/transcriptions"
+            case .fish:   return "asr"
+            }
+        }
+
+        /// Fish puts synthesis under `/tts`; the OpenAI dialect under
+        /// `/audio/speech`.
+        var speechPath: String {
+            switch self {
+            case .openai: return "audio/speech"
+            case .fish:   return "tts"
+            }
+        }
+
+        /// Whether the transcription call may carry a `language` field: it is
+        /// documented only in the OpenAI dialect, where it is ISO-639-1. Fish's
+        /// `/asr` is left alone rather than fed a field verified only from its
+        /// docs. Asked before the code is resolved, so a Fish user never pays a
+        /// MainActor hop for a field that is then dropped.
+        var takesTranscriptionLanguage: Bool {
+            switch self {
+            case .openai: return true
+            case .fish:   return false
+            }
+        }
     }
 
     struct Config {
@@ -96,10 +126,7 @@ enum VoiceEndpoint {
         var req = URLRequest(url: cfg.base.appendingPathComponent("models"))
         if let k = cfg.key, !k.isEmpty { req.setValue("Bearer \(k)", forHTTPHeaderField: "Authorization") }
 
-        let (data, resp) = try await session().data(for: req)
-        let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
-        guard (200..<300).contains(status) else { throw Failure.http(status: status, body: snippet(data)) }
-
+        let data = try await send(req)
         guard let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             throw Failure.noText(body: snippet(data))
         }
@@ -161,10 +188,7 @@ enum VoiceEndpoint {
 
         var req = URLRequest(url: url)
         if let k = cfg.key, !k.isEmpty { req.setValue("Bearer \(k)", forHTTPHeaderField: "Authorization") }
-        let (data, resp) = try await session().data(for: req)
-        let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
-        guard (200..<300).contains(status) else { throw Failure.http(status: status, body: snippet(data)) }
-
+        let data = try await send(req)
         guard let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let items = obj["items"] as? [[String: Any]] else {
             throw Failure.noText(body: snippet(data))
@@ -224,14 +248,13 @@ enum VoiceEndpoint {
         return URLSession(configuration: c)
     }()
 
-    private static func session() -> URLSession { sharedSession }
-
-    /// `URLSession` reports a cancelled request as `URLError.cancelled`, never
-    /// as `CancellationError`, so `catch is CancellationError` silently misses
-    /// it and a superseded request surfaces as a real failure.
-    static func isCancellation(_ e: Error) -> Bool {
-        if e is CancellationError { return true }
-        return (e as? URLError)?.code == .cancelled
+    /// Sends a request and returns its body, turning any non-2xx into a
+    /// `Failure.http` carrying the server's own explanation.
+    private static func send(_ req: URLRequest) async throws -> Data {
+        let (data, resp) = try await sharedSession.data(for: req)
+        let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
+        guard (200..<300).contains(status) else { throw Failure.http(status: status, body: snippet(data)) }
+        return data
     }
 
     private static func authorized(_ url: URL, _ cfg: Config) -> URLRequest {
@@ -250,13 +273,10 @@ enum VoiceEndpoint {
         // builder stays a pure function of its arguments — the paths, the field
         // names and the dialect rules are the part worth pinning in tests, and
         // they cannot be if reading it needs the MainActor.
-        let isFish = cfg.dialect == .fish
-        let language = isFish ? nil : await MainActor.run(body: { SpeechLanguage.pinned()?.iso639 })
-        let req = transcribeRequest(wav, cfg, language: language)
-
-        let (data, resp) = try await session().data(for: req)
-        let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
-        guard (200..<300).contains(status) else { throw Failure.http(status: status, body: snippet(data)) }
+        let language = cfg.dialect.takesTranscriptionLanguage
+            ? await MainActor.run(body: { SpeechLanguage.pinned()?.iso639 })
+            : nil
+        let data = try await send(transcribeRequest(wav, cfg, language: language))
         return try parseTranscript(data)
     }
 
@@ -269,12 +289,7 @@ enum VoiceEndpoint {
     /// Whisper-family servers pick a random language on imperfect audio and hand
     /// back nothing, the same reason the on-device engine stopped using "auto".
     static func transcribeRequest(_ wav: Data, _ cfg: Config, language: String?) -> URLRequest {
-        let isFish = cfg.dialect == .fish
-        // Fish calls the file part "audio" and puts it under /asr; OpenAI calls
-        // it "file" under /audio/transcriptions.
-        let path = isFish ? "asr" : "audio/transcriptions"
-        let filePart = isFish ? "audio" : "file"
-        var req = authorized(cfg.base.appendingPathComponent(path), cfg)
+        var req = authorized(cfg.base.appendingPathComponent(cfg.dialect.transcribePath), cfg)
 
         let boundary = "odysseus-\(UUID().uuidString)"
         req.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
@@ -284,19 +299,30 @@ enum VoiceEndpoint {
             body.append(Data("Content-Disposition: form-data; name=\"\(name)\"\r\n\r\n".utf8))
             body.append(Data("\(value)\r\n".utf8))
         }
-        body.append(Data("--\(boundary)\r\n".utf8))
-        body.append(Data("Content-Disposition: form-data; name=\"\(filePart)\"; filename=\"audio.wav\"\r\n".utf8))
-        body.append(Data("Content-Type: audio/wav\r\n\r\n".utf8))
-        body.append(wav)
-        body.append(Data("\r\n".utf8))
-        // Fish takes no model on /asr (the model rides a header there, and only
-        // for TTS). Elsewhere: send a model only when the user gave one rather
-        // than inventing a default, since some gateways reject an unknown one.
-        if !isFish, !cfg.model.isEmpty { field("model", cfg.model) }
-        // Sent only in the OpenAI dialect, where `language` (ISO-639-1) is
-        // documented; Fish's /asr is left alone rather than fed a field
-        // verified only from its docs.
-        if !isFish, let language { field("language", language) }
+        // The dialects disagree on what the recording is called, so the name is
+        // the caller's to pick.
+        func audioPart(named name: String) {
+            body.append(Data("--\(boundary)\r\n".utf8))
+            body.append(Data("Content-Disposition: form-data; name=\"\(name)\"; filename=\"audio.wav\"\r\n".utf8))
+            body.append(Data("Content-Type: audio/wav\r\n\r\n".utf8))
+            body.append(wav)
+            body.append(Data("\r\n".utf8))
+        }
+
+        switch cfg.dialect {
+        case .openai:
+            audioPart(named: "file")
+            // Send a model only when the user gave one rather than inventing a
+            // default, since some gateways reject an unknown one.
+            if !cfg.model.isEmpty { field("model", cfg.model) }
+            // `language` is documented here and nowhere else; see
+            // `Dialect.takesTranscriptionLanguage` for why Fish is left alone.
+            if let language { field("language", language) }
+        case .fish:
+            // Fish calls the file part "audio", and /asr takes no model at all
+            // — there the model rides a header, and only for TTS.
+            audioPart(named: "audio")
+        }
         body.append(Data("--\(boundary)--\r\n".utf8))
         req.httpBody = body
         return req
@@ -325,10 +351,7 @@ enum VoiceEndpoint {
     static func synthesize(_ text: String) async throws -> Data {
         guard let cfg = config(.tts) else { throw Failure.notConfigured }
         let req = try speechRequest(text, cfg, container: .mp3)
-
-        let (data, resp) = try await session().data(for: req)
-        let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
-        guard (200..<300).contains(status) else { throw Failure.http(status: status, body: snippet(data)) }
+        let data = try await send(req)
         // A JSON body here means the server reported a problem with 200, which
         // some gateways do; audio never starts with '{'.
         guard data.first != UInt8(ascii: "{") else { throw Failure.noText(body: snippet(data)) }
@@ -372,11 +395,15 @@ enum VoiceEndpoint {
     /// on what the text is called, on where the model goes, and on what a voice
     /// is called, and every one of those is a silent 400 when it drifts.
     static func speechRequest(_ text: String, _ cfg: Config, container: Container) throws -> URLRequest {
-        let isFish = cfg.dialect == .fish
-        var req = authorized(cfg.base.appendingPathComponent(isFish ? "tts" : "audio/speech"), cfg)
+        var req = authorized(cfg.base.appendingPathComponent(cfg.dialect.speechPath), cfg)
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         var payload: [String: Any]
-        if isFish {
+        switch cfg.dialect {
+        case .openai:
+            payload = ["input": text, "response_format": container.rawValue]
+            if !cfg.model.isEmpty { payload["model"] = cfg.model }
+            if !cfg.voice.isEmpty { payload["voice"] = cfg.voice }
+        case .fish:
             // Fish names the text "text", the voice "reference_id" (a voice
             // model id, including one you trained), and carries the model in a
             // header rather than the body.
@@ -391,10 +418,6 @@ enum VoiceEndpoint {
             if let rate = container.fishSampleRate { payload["sample_rate"] = rate }
             if !cfg.voice.isEmpty { payload["reference_id"] = cfg.voice }
             if !cfg.model.isEmpty { req.setValue(cfg.model, forHTTPHeaderField: "model") }
-        } else {
-            payload = ["input": text, "response_format": container.rawValue]
-            if !cfg.model.isEmpty { payload["model"] = cfg.model }
-            if !cfg.voice.isEmpty { payload["voice"] = cfg.voice }
         }
         req.httpBody = try JSONSerialization.data(withJSONObject: payload)
         return req

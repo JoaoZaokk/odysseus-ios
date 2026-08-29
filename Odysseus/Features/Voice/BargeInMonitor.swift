@@ -26,53 +26,68 @@ final class BargeInMonitor {
 
     // MARK: - Tuning
 
-    /// Speech probability a chunk must reach. From the sensitivity slider:
-    /// high sensitivity → lower bar → easier to interrupt.
-    nonisolated(unsafe) private var speechThreshold: Float = 0.65
-    /// Consecutive speech chunks required. Each chunk is 4096 samples at 16 kHz
-    /// (256 ms), so two of them is roughly half a second of continuous voice —
-    /// long enough to rule out a cough or a door.
-    ///
-    /// Three of them wherever the loudness floor cannot reject `loudestLeak` on
-    /// its own — see `chunksForSensitivity`, which includes the default 0.5.
-    ///
-    /// Confirmed on device: with three required, the same class of spike that
-    /// used to cut the assistant (0.046, 0.037, 0.031, all scoring 0.88–0.98 on
-    /// the VAD) stalled at 1/3 and never fired, while a real interruption
-    /// (0.141 then 0.081) reached 3/3 and cut immediately.
-    nonisolated(unsafe) private var chunksNeeded = 2
-    nonisolated(unsafe) private var speechChunks = 0
+    /// The three gates, all derived from the one sensitivity setting so they
+    /// cannot drift apart when the mapping is retuned.
+    struct Tuning: Equatable {
+        /// Speech probability a chunk must reach. From the sensitivity slider:
+        /// high sensitivity → lower bar → easier to interrupt.
+        let threshold: Float
 
-    /// Minimum level for a chunk to even reach the model.
-    ///
-    /// This is the second half of the decision, and it is not an optimization.
-    /// The VAD answers "is this a human voice?", and echo residual *is* one —
-    /// device traces show it scoring 1.00 at rms 0.014, which fired barge-in on
-    /// the assistant's own words. What separates the two is loudness, and on
-    /// device the gap is *almost* clean: residual sits at 0.006–0.022, the user's
-    /// voice at 0.038–0.206 — but the loudest leak excursion reached 0.046, over
-    /// the quietest voice. So the floor's job is only to rule out anything too
-    /// quiet to have come from the room; the overlap is duration's problem.
-    /// See `floorForSensitivity` for why the default sits under 0.038.
-    nonisolated(unsafe) private var speechFloor: Float = 0.04
+        /// Minimum level for a chunk to even reach the model.
+        ///
+        /// This is the second half of the decision, and it is not an optimization.
+        /// The VAD answers "is this a human voice?", and echo residual *is* one —
+        /// device traces show it scoring 1.00 at rms 0.014, which fired barge-in on
+        /// the assistant's own words. What separates the two is loudness, and on
+        /// device the gap is *almost* clean: residual sits at 0.006–0.022, the user's
+        /// voice at 0.038–0.206 — but the loudest leak excursion reached 0.046, over
+        /// the quietest voice. So the floor's job is only to rule out anything too
+        /// quiet to have come from the room; the overlap is duration's problem.
+        /// See `init(sensitivity:)` for why the default sits under 0.038.
+        let floor: Float
 
-    /// s=0 → 0.046, s=0.5 → 0.036, s=1 → 0.026.
-    ///
-    /// Retuned in build 16. The old mapping put the **default** floor at 0.0415,
-    /// above the quietest voice ever measured here (0.038), which meant a
-    /// soft-spoken user could not interrupt at all at the shipping setting —
-    /// and the whole barge-in validation had been run at maximum sensitivity
-    /// (floor 0.028), so the configuration that actually shipped had never been
-    /// exercised. The top of the range is now `loudestLeak` rather than a number
-    /// above it, so from the first notch upward the floor stops pretending it
-    /// can separate leak from voice and hands that job to duration, which is
-    /// what the device traces show working.
-    nonisolated static func floorForSensitivity(_ s: Double) -> Float {
-        Float(0.046 - max(0, min(1, s)) * 0.020)
-    }
+        /// Consecutive speech chunks required. Each chunk is 4096 samples at 16 kHz
+        /// (256 ms), so two of them is roughly half a second of continuous voice —
+        /// long enough to rule out a cough or a door.
+        ///
+        /// Three of them wherever the loudness floor cannot reject `loudestLeak` on
+        /// its own — see `init(sensitivity:)`, which includes the default 0.5.
+        ///
+        /// Confirmed on device: with three required, the same class of spike that
+        /// used to cut the assistant (0.046, 0.037, 0.031, all scoring 0.88–0.98 on
+        /// the VAD) stalled at 1/3 and never fired, while a real interruption
+        /// (0.141 then 0.081) reached 3/3 and cut immediately.
+        let chunks: Int
 
-    nonisolated static func thresholdForSensitivity(_ s: Double) -> Float {
-        Float(0.85 - max(0, min(1, s)) * 0.45)   // s=0 → 0.85 (hard), s=1 → 0.40 (easy)
+        init(sensitivity s: Double) {
+            let s = max(0, min(1, s))
+            threshold = Float(0.85 - s * 0.45)   // s=0 → 0.85 (hard), s=1 → 0.40 (easy)
+
+            // s=0 → 0.046, s=0.5 → 0.036, s=1 → 0.026.
+            //
+            // Retuned in build 16. The old mapping put the **default** floor at
+            // 0.0415, above the quietest voice ever measured here (0.038), which
+            // meant a soft-spoken user could not interrupt at all at the shipping
+            // setting — and the whole barge-in validation had been run at maximum
+            // sensitivity (floor 0.028), so the configuration that actually shipped
+            // had never been exercised. The top of the range is now `loudestLeak`
+            // rather than a number above it, so from the first notch upward the
+            // floor stops pretending it can separate leak from voice and hands that
+            // job to duration, which is what the device traces show working.
+            let floor = Float(0.046 - s * 0.020)
+            self.floor = floor
+
+            // Three chunks (768 ms) wherever the floor cannot reject that leak on
+            // its own, two (512 ms) where it can. Derived from the floor rather
+            // than written as its own sensitivity number, so the two cannot drift
+            // apart when the mapping is retuned.
+            //
+            // Since build 16 the floor only reaches the leak at the very bottom of
+            // the slider, so everything above minimum sensitivity gets three. That
+            // is the honest reading of the device traces: the floor never separated
+            // the two populations, duration did.
+            chunks = floor < BargeInMonitor.loudestLeak ? 3 : 2
+        }
     }
 
     /// Loudest echo excursion caught on device — a 0.046 spike, 2.4× the
@@ -85,18 +100,24 @@ final class BargeInMonitor {
     /// duration has to.
     nonisolated static let loudestLeak: Float = 0.046
 
-    /// Three chunks (768 ms) wherever the floor cannot reject that leak on its
-    /// own, two (512 ms) where it can. Derived from the floor rather than
-    /// written as its own sensitivity number, so the two cannot drift apart
-    /// when the mapping is retuned.
-    ///
-    /// Since build 16 the floor only reaches the leak at the very bottom of the
-    /// slider, so everything above minimum sensitivity gets three. That is the
-    /// honest reading of the device traces: the floor never separated the two
-    /// populations, duration did.
-    nonisolated static func chunksForSensitivity(_ s: Double) -> Int {
-        floorForSensitivity(s) < loudestLeak ? 3 : 2
+    /// Guards the two values `start()` computes on the MainActor and `analyze`
+    /// then reads on the audio thread. A second lock rather than `bufLock`:
+    /// that one is taken around the per-buffer sample bookkeeping, while these
+    /// are written once per armed sentence and only read afterwards, so sharing
+    /// would put a write-once slot inside the hot critical section for nothing.
+    private let cfgLock = NSLock()
+
+    /// Never read before `start()` overwrites it — the tap that calls `analyze`
+    /// is installed after — so this initial value only keeps the slot
+    /// non-optional, at the slider's shipping default.
+    nonisolated(unsafe) private var storedTuning = Tuning(sensitivity: 0.5)
+
+    nonisolated private var tuning: Tuning {
+        get { cfgLock.lock(); defer { cfgLock.unlock() }; return storedTuning }
+        set { cfgLock.lock(); storedTuning = newValue; cfgLock.unlock() }
     }
+
+    private var speechChunks = 0
 
     // MARK: - Resampling buffer
     //
@@ -114,7 +135,15 @@ final class BargeInMonitor {
     /// units it was calibrated in on device.
     nonisolated(unsafe) private var pendingSq: [Float] = []
     nonisolated(unsafe) private var busy = false
-    nonisolated(unsafe) private var decimation = 3
+
+    /// Guarded by `cfgLock`, like the tuning: same write-once-per-`start()`,
+    /// read-per-buffer traffic across the audio thread.
+    nonisolated(unsafe) private var storedDecimation = 3
+
+    nonisolated private var decimation: Int {
+        get { cfgLock.lock(); defer { cfgLock.unlock() }; return storedDecimation }
+        set { cfgLock.lock(); storedDecimation = newValue; cfgLock.unlock() }
+    }
 
     /// Downloads and loads the VAD model. Call when the voice screen opens so the
     /// first reply isn't delayed by it.
@@ -179,9 +208,8 @@ final class BargeInMonitor {
         bufLock.lock(); pending.removeAll(); pendingSq.removeAll(); busy = false; bufLock.unlock()
 
         let s = UserDefaults.standard.object(forKey: "voice.bargein.sensitivity") as? Double ?? 0.5
-        speechThreshold = Self.thresholdForSensitivity(s)
-        speechFloor = Self.floorForSensitivity(s)
-        chunksNeeded = Self.chunksForSensitivity(s)
+        let tuning = Tuning(sensitivity: s)
+        self.tuning = tuning
 
         engine = AVAudioEngine()   // fresh engine each time (reuse is unstable)
         let input = engine.inputNode
@@ -208,7 +236,8 @@ final class BargeInMonitor {
             stop()
             return .microphone
         }
-        decimation = max(1, Int((format.sampleRate / 16_000).rounded()))
+        let decimation = max(1, Int((format.sampleRate / 16_000).rounded()))
+        self.decimation = decimation
 
         input.removeTap(onBus: 0)
         input.installTap(onBus: 0, bufferSize: 2048, format: format) { [weak self] buf, _ in
@@ -219,7 +248,7 @@ final class BargeInMonitor {
             VoiceLog.log("barge.start", "engine falhou: \(error.localizedDescription)")
             stop()   // the tap is installed and VPIO is on; both must come back off
         }
-        VoiceLog.log("barge.start", "armado=\(running) rate=\(Int(format.sampleRate)) decim=\(decimation) limiar=\(speechThreshold) piso=\(speechFloor) blocos=\(chunksNeeded)")
+        VoiceLog.log("barge.start", "armado=\(running) rate=\(Int(format.sampleRate)) decim=\(decimation) limiar=\(tuning.threshold) piso=\(tuning.floor) blocos=\(tuning.chunks)")
         return running ? nil : .microphone
         #endif
     }
@@ -307,16 +336,17 @@ final class BargeInMonitor {
 
         guard let chunk else { return }
 
+        let floor = tuning.floor
         // Too quiet, across the whole chunk, to be the user talking into the
         // phone. Skipping here also keeps the Neural Engine idle for most of a
         // reply. A miss costs one chunk off the run rather than the whole run:
         // zeroing it threw away a real interruption whenever one window of it
         // happened to fall quiet.
-        guard rms > speechFloor else {
+        guard rms > floor else {
             bufLock.lock(); busy = false; bufLock.unlock()
             Task { @MainActor in self.speechChunks = max(0, self.speechChunks - 1) }
             VoiceLog.metered("barge.level", every: 1.0,
-                             "\(VoiceLog.bar(rms)) rms=\(String(format: "%.4f", rms)) < piso \(String(format: "%.3f", speechFloor)) (VAD pulado)")
+                             "\(VoiceLog.bar(rms)) rms=\(String(format: "%.4f", rms)) < piso \(String(format: "%.3f", floor)) (VAD pulado)")
             return
         }
 
@@ -340,15 +370,16 @@ final class BargeInMonitor {
         let prob = results.map(\.probability).max() ?? 0
 
         await MainActor.run {
-            let isSpeech = prob >= self.speechThreshold
+            let tuning = self.tuning
+            let isSpeech = prob >= tuning.threshold
             if isSpeech {
                 self.speechChunks += 1
             } else {
                 self.speechChunks = 0
             }
             VoiceLog.metered("barge.vad", every: 0.5,
-                             "\(VoiceLog.bar(rms)) rms=\(String(format: "%.4f", rms)) fala=\(String(format: "%.2f", prob)) limiar=\(self.speechThreshold) blocos=\(self.speechChunks)/\(self.chunksNeeded)")
-            if self.speechChunks >= self.chunksNeeded { self.fire() }
+                             "\(VoiceLog.bar(rms)) rms=\(String(format: "%.4f", rms)) fala=\(String(format: "%.2f", prob)) limiar=\(tuning.threshold) blocos=\(self.speechChunks)/\(tuning.chunks)")
+            if self.speechChunks >= tuning.chunks { self.fire() }
         }
     }
 

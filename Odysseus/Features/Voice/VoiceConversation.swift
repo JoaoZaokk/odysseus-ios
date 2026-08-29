@@ -13,14 +13,74 @@ import UIKit
 /// session that already persists every turn, so the conversation shows up in
 /// Conversas on its own. For the same reason no voice-specific system prompt is
 /// injected — the session's own prompt is the server's to decide. Replies can
-/// therefore arrive with markdown, which `SpeechManager.strip` removes before
+/// therefore arrive with markdown, which `SpokenText.strip` removes before
 /// speaking.
 @MainActor
 final class VoiceConversation: ObservableObject {
-    enum Phase: Equatable { case idle, listening, thinking, speaking }
+    /// Where the loop is — and, for the two phases that belong to a reply,
+    /// which reply.
+    ///
+    /// The turn id used to sit beside the phase in its own `speakingTurnID`,
+    /// and a `finishing` flag beside that. Every bug recorded in this file came
+    /// from the three of them disagreeing, and from `.thinking` standing for
+    /// three different situations at once (really thinking, handing the turn
+    /// back, finalizing a recording). One value now names each state once and
+    /// carries the id where the id exists, so nothing can drift out of step.
+    enum Phase: Equatable {
+        case idle
+        case listening
+        /// The recording is being finalized into text. No turn id exists yet.
+        case transcribing
+        case thinking(turn: String)
+        case speaking(turn: String)
+        /// The turn is over and the recorder is coming back up. Nothing may
+        /// queue audio or end the turn a second time from here.
+        case finishing
+
+        /// Which reply is this phase about? Nil outside a reply — which is also
+        /// the answer to "may a sentence be queued right now?".
+        /// Exhaustive on purpose: this is the only gate on queueing audio, so
+        /// a case added without deciding its answer must not default to one.
+        var turn: String? {
+            switch self {
+            case .thinking(let id), .speaking(let id):        return id
+            case .idle, .listening, .transcribing, .finishing: return nil
+            }
+        }
+
+        /// Is the microphone open?
+        var isListening: Bool { self == .listening }
+
+        /// Is the reply being played?
+        var isSpeaking: Bool { if case .speaking = self { return true } else { return false } }
+
+        /// Is something audible happening right now — the orb pulses.
+        var isLive: Bool { isListening || isSpeaking }
+
+        /// Is the app working with nothing to hear yet — the orb spins.
+        var isBusy: Bool {
+            switch self {
+            case .transcribing, .thinking, .finishing: return true
+            case .idle, .listening, .speaking:         return false
+            }
+        }
+
+        /// The case's own name, for the transition log: the payload is a UUID
+        /// and says nothing there.
+        var logName: String {
+            switch self {
+            case .idle:         return "idle"
+            case .listening:    return "listening"
+            case .transcribing: return "transcribing"
+            case .thinking:     return "thinking"
+            case .speaking:     return "speaking"
+            case .finishing:    return "finishing"
+            }
+        }
+    }
 
     @Published private(set) var phase: Phase = .idle {
-        didSet { if phase != oldValue { VoiceLog.log("phase", "\(oldValue) → \(phase)") } }
+        didSet { if phase != oldValue { VoiceLog.log("phase", "\(oldValue.logName) → \(phase.logName)") } }
     }
     @Published private(set) var active = false
     @Published var turns: [Turn] = []
@@ -70,18 +130,10 @@ final class VoiceConversation: ObservableObject {
     private var speechGate: Float {
         max(0.015, min(speechLevel, loudestHeard * 0.35))
     }
-    private var sttIsNative: Bool {
-        let e = UserDefaults.standard.string(forKey: "voice.stt.engine")
-        return e != "model" && e != "server" && e != "endpoint"
-    }
     private var streamTask: Task<Void, Never>?
-    private var speakingTurnID = ""
-    /// False until this reply has queued its first chunk — see `openingCut`.
+    /// False until this reply has queued its first chunk — see
+    /// `SpokenText.openingCut`.
     private var openedThisTurn = false
-    /// Set while a turn is being handed back to `listen()`, cleared once the
-    /// recorder is actually up. Stops two finalizers from queueing two
-    /// `listen()` calls; see `afterSpeaking()`.
-    private var finishing = false
     /// Reply text received but not yet handed to TTS. Complete sentences are cut
     /// off the front as they arrive, so speaking starts on the first one instead
     /// of after the whole generation.
@@ -107,16 +159,6 @@ final class VoiceConversation: ObservableObject {
         voice.$error
             .receive(on: RunLoop.main)
             .sink { [weak self] e in if let e { self?.error = e } }
-            .store(in: &cancellables)
-        // Recover the loop if TTS fails to produce audio — without this the
-        // conversation would sit in .speaking forever and never listen again.
-        tts.$neuralError
-            .receive(on: RunLoop.main)
-            .sink { [weak self] e in
-                guard let self, let e, self.phase == .speaking else { return }
-                self.error = e
-                self.afterSpeaking()
-            }
             .store(in: &cancellables)
     }
 
@@ -160,11 +202,11 @@ final class VoiceConversation: ObservableObject {
 
     func stop() {
         active = false
-        finishing = false
         streamTask?.cancel(); streamTask = nil
         silenceTimer?.invalidate(); silenceTimer = nil
         bargeMonitor.stop()
         tts.onSpeechFinished = nil
+        tts.onSpeechFailed = nil
         tts.duplexSession = false
         tts.stop()
         voice.cancel()
@@ -197,17 +239,19 @@ final class VoiceConversation: ObservableObject {
         switch phase {
         case .listening: endTurn()
         case .speaking:  bargeIn()
-        case .thinking, .idle: break
+        case .idle, .transcribing, .thinking, .finishing: break
         }
     }
 
     // MARK: - Listen (STT)
 
     private func listen() async {
-        // Every exit from here must release the handoff latch, including this
-        // one. Leaving it set would park the loop exactly the way the old
-        // phase-based guard in afterSpeaking() did.
-        guard active else { finishing = false; return }
+        // Every exit from here must leave `.finishing` behind, this one
+        // included: nothing else moves out of that phase, and staying in it
+        // would park the loop exactly the way the old phase-based guard in
+        // afterSpeaking() did. Arriving here inactive means stop() ran during
+        // the handoff, and .idle is the phase it already left.
+        guard active else { phase = .idle; return }
         // Cleared per turn: a single failure used to replace "Ouvindo…" for the
         // rest of the session, hiding whether the loop was still alive.
         error = nil
@@ -220,11 +264,10 @@ final class VoiceConversation: ObservableObject {
         voice.cancel()
         guard await voice.start() else {
             VoiceLog.log("listen", "voice.start() FALHOU — encerrando sessão")
-            active = false; phase = .idle; finishing = false; return
+            active = false; phase = .idle; return
         }
-        VoiceLog.log("listen", "gravando (nativo=\(sttIsNative))")
-        phase = .listening
-        finishing = false            // the turn handoff is complete
+        VoiceLog.log("listen", "gravando (nativo=\(STTEngine.current.hasLivePartials))")
+        phase = .listening           // the turn handoff is complete
         lastChange = Date(); lastLoud = Date(); turnStarted = Date()
         silenceTimer?.invalidate()
         silenceTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { [weak self] _ in
@@ -233,20 +276,25 @@ final class VoiceConversation: ObservableObject {
     }
 
     private func partialChanged(_ t: String) {
-        guard phase == .listening else { return }
+        guard phase.isListening else { return }
         liveText = t
         if t != lastPartial { lastPartial = t; lastChange = Date() }
     }
 
     private func levelChanged(_ lvl: Float) {
-        guard phase == .listening else { return }
+        guard phase.isListening else { return }
         loudestHeard = max(loudestHeard, lvl)
         if lvl > speechGate { heardSpeech = true; lastLoud = Date() }
     }
 
     private func checkSilence() {
-        guard phase == .listening else { return }
-        if sttIsNative {
+        guard phase.isListening else { return }
+        // The engine decides how the turn ends, and only the one with live
+        // partials can end it on the transcript going quiet. Asking the engine
+        // rather than listing its rivals matters here: an engine wrongly taken
+        // for the native one waits forever for a partial that never arrives,
+        // and the turn never ends.
+        if STTEngine.current.hasLivePartials {
             guard !lastPartial.isEmpty else { return }
             if Date().timeIntervalSince(lastChange) > endpointSilence { endTurn() }
         } else {
@@ -267,9 +315,9 @@ final class VoiceConversation: ObservableObject {
     }
 
     private func endTurn() {
-        guard phase == .listening else { return }
+        guard phase.isListening else { return }
         silenceTimer?.invalidate(); silenceTimer = nil
-        phase = .thinking          // freezes the silence watcher; stop() finalizes STT
+        phase = .transcribing      // freezes the silence watcher; stop() finalizes STT
         Task {
             let text = await voice.stop()
             guard active else { return }
@@ -285,13 +333,12 @@ final class VoiceConversation: ObservableObject {
     // MARK: - Think (the model)
 
     private func ask(_ userText: String) {
-        phase = .thinking
         reply = ""
         pendingSpeech = ""
         openedThisTurn = false
         let replyTurn = Turn(role: "assistant", text: "")
         turns.append(replyTurn)
-        speakingTurnID = replyTurn.id
+        phase = .thinking(turn: replyTurn.id)
         streamTask = Task { [weak self] in
             guard let self else { return }
             // Timed because the voice loop's wait is *not* obviously the TTS:
@@ -368,12 +415,12 @@ final class VoiceConversation: ObservableObject {
     /// `flush`, whatever is left goes too — the model's last sentence often has
     /// no trailing space to detect.
     ///
-    /// The first chunk of a reply is cut by a looser rule (`openingCut`), for
-    /// the reason spelled out there.
+    /// The first chunk of a reply is cut by a looser rule
+    /// (`SpokenText.openingCut`), for the reason spelled out there.
     private func emitSentences(flush: Bool = false) {
         guard active else { return }
-        while let cut = openedThisTurn ? Self.sentenceCut(in: pendingSpeech)
-                                       : Self.openingCut(in: pendingSpeech) {
+        while let cut = openedThisTurn ? SpokenText.sentenceCut(in: pendingSpeech)
+                                       : SpokenText.openingCut(in: pendingSpeech) {
             let sentence = String(pendingSpeech.prefix(cut))
             pendingSpeech.removeFirst(cut)
             queueSpeech(sentence)
@@ -385,78 +432,24 @@ final class VoiceConversation: ObservableObject {
         }
     }
 
-    /// Offset just past the first sentence terminator that is followed by
-    /// whitespace. Requiring the space keeps "3.5" and "R$ 1.200,00" intact.
-    nonisolated static func sentenceCut(in s: String) -> Int? {
-        let chars = Array(s)
-        guard chars.count >= 2 else { return nil }
-        let terms: Set<Character> = [".", "!", "?", "\n", "。", "！", "？", "…"]
-        for i in 0..<(chars.count - 1) where terms.contains(chars[i]) {
-            // A newline can't be a decimal separator, so it ends a sentence on
-            // its own. Requiring whitespace after it too — as the other
-            // terminators do — meant a single line break never cut, and "\n"
-            // was effectively dead in the set above.
-            if chars[i].isNewline || chars[i + 1].isWhitespace { return i + 1 }
-        }
-        return nil
-    }
-
-    /// Where to cut the **first** chunk of a reply.
-    ///
-    /// Every later sentence is synthesized while the previous one is still
-    /// playing, so its round trip is invisible and it can afford to wait for a
-    /// real sentence boundary. The first one has nothing to hide behind: it
-    /// costs a whole round trip of silence, and a long opening sentence pays
-    /// that round trip *plus* the synthesis of every word in it. So the opening
-    /// may also break at a clause boundary once it is long enough not to sound
-    /// clipped, and is forced out near `openingHard`.
-    ///
-    /// The cost is prosody: the engine synthesizes each chunk on its own, so a
-    /// clause cut can land a falling intonation mid-sentence. That is the
-    /// trade being made deliberately — in a hands-free loop the wait before the
-    /// first word is what the user actually notices.
-    nonisolated static let openingSoft = 60
-    nonisolated static let openingHard = 140
-
-    nonisolated static func openingCut(in s: String) -> Int? {
-        if let end = sentenceCut(in: s) { return end }
-        let chars = Array(s)
-        guard chars.count > openingSoft else { return nil }
-        let clause: Set<Character> = [",", ";", ":", "—", "–", "，", "；", "：", "、"]
-        // The LAST clause break inside the budget, not the first: cutting at the
-        // first comma would open the reply with two or three words.
-        var best: Int?
-        for i in 0..<(chars.count - 1) where clause.contains(chars[i]) {
-            let cut = i + 1
-            if cut >= openingSoft, cut <= openingHard, chars[cut].isWhitespace { best = cut }
-        }
-        if let best { return best }
-        // No clause break in range — only then split on a space, and only once
-        // the text is past the hard limit, so a short opening is never chopped.
-        guard chars.count > openingHard else { return nil }
-        for i in stride(from: openingHard, through: openingSoft, by: -1) where chars[i].isWhitespace {
-            return i
-        }
-        return nil
-    }
-
     private func queueSpeech(_ sentence: String) {
         let t = sentence.trimmingCharacters(in: .whitespacesAndNewlines)
         // Only a turn that is still thinking (first sentence) or speaking may
-        // queue audio. Once it has been finalized — barge-in, TTS failure,
-        // stream error — a late sentence from the still-live stream would
-        // otherwise re-enter .speaking on top of a live recording, swapping the
-        // audio-session category out from under the recorder.
-        guard active, !finishing, !t.isEmpty,
-              phase == .thinking || phase == .speaking else { return }
+        // queue audio — which is exactly the two phases that carry a turn id,
+        // so asking for the id is the whole guard. Once the turn has been
+        // finalized — barge-in, TTS failure, stream error — a late sentence
+        // from the still-live stream would otherwise re-enter .speaking on top
+        // of a live recording, swapping the audio-session category out from
+        // under the recorder.
+        guard active, !t.isEmpty, let turn = phase.turn else { return }
         // Ask before committing: `enqueue` silently drops a sentence that is
         // pure markdown, and entering .speaking for one left the turn with an
         // empty queue that `closeQueue` could never finish.
-        guard SpeechManager.isSpeakable(t) else { return }
+        guard SpokenText.isSpeakable(t) else { return }
         VoiceLog.log("tts.frase", "\(openedThisTurn ? "" : "ABERTURA ")\(t.count) chars: \"\(t.prefix(50))\"")
         openedThisTurn = true
-        beginSpeaking()
-        tts.enqueue(t, id: speakingTurnID)
+        beginSpeaking(turn: turn)
+        tts.enqueue(t, id: turn)
     }
 
     /// Hands the reply over: if audio is playing, let the queue drain and end
@@ -464,7 +457,7 @@ final class VoiceConversation: ObservableObject {
     /// clean end of the stream and the error path, so a mid-reply failure can't
     /// jump back to listening while sentences are still being spoken.
     private func finalizeReply(_ id: String) {
-        if phase == .speaking {
+        if phase.isSpeaking {
             tts.closeQueue(id: id)
         } else {
             afterSpeaking()      // nothing was ever spoken — empty or failed reply
@@ -474,10 +467,24 @@ final class VoiceConversation: ObservableObject {
     /// Enters the speaking phase on the first sentence. Barge-in is armed here
     /// rather than earlier so the monitor's noise floor settles against audio
     /// that is about to exist.
-    private func beginSpeaking() {
-        guard phase != .speaking else { return }
-        phase = .speaking
+    private func beginSpeaking(turn: String) {
+        guard !phase.isSpeaking else { return }
+        phase = .speaking(turn: turn)
         tts.onSpeechFinished = { [weak self] in self?.afterSpeaking() }
+        // Recovers the loop when TTS produces no audio — without it the
+        // conversation sits in .speaking forever and never listens again.
+        //
+        // This used to watch `SpeechManager.neuralError`, which has a second
+        // writer that is not a failure: the "no PocketTTS pack for this
+        // language" branch sets it and then speaks anyway through the native
+        // voice. Reading that as "TTS died" reopened the microphone over the
+        // assistant's own speech, in every one of the 38 languages without a
+        // pack. Only the real failure path calls this.
+        tts.onSpeechFailed = { [weak self] message in
+            guard let self else { return }
+            self.error = message
+            self.afterSpeaking()
+        }
         // The recorder leaves the session in .record/.measurement — a mode that
         // disables system signal processing, i.e. the echo cancellation the
         // monitor depends on. Switch to .playAndRecord/.voiceChat first, or the
@@ -517,9 +524,10 @@ final class VoiceConversation: ObservableObject {
             // something else flushes it, there is nothing left to speak.
             pendingSpeech = ""
             tts.onSpeechFinished = nil   // transition here; AVAudioPlayer.stop fires no callback
+            tts.onSpeechFailed = nil
             tts.stop()
             afterSpeaking()
-        case .idle, .listening, .thinking:
+        case .idle, .listening, .transcribing, .thinking, .finishing:
             // Not armed outside .speaking. Cancelling a streaming reply from
             // here raced the stream's own completion — the loop ends normally
             // on cancellation rather than throwing, so speak() ran anyway and
@@ -531,31 +539,31 @@ final class VoiceConversation: ObservableObject {
     /// Ends the current turn and goes back to listening.
     ///
     /// Several things can report the turn is over at once — the TTS finish
-    /// callback, a barge-in, the neuralError sink, and `ask()`'s own tail — and
-    /// two of them arriving used to queue two `listen()` calls. The second found
-    /// the recorder already running, `voice.start()` returned false, and the
-    /// session was killed with the audio engine still live.
+    /// callback, a barge-in, the TTS failure callback, and `ask()`'s own tail —
+    /// and two of them arriving used to queue two `listen()` calls. The second
+    /// found the recorder already running, `voice.start()` returned false, and
+    /// the session was killed with the audio engine still live. Moving to
+    /// `.finishing` on the first call is what stops the second.
     ///
-    /// The gate for that is `finishing`, not the phase. Gating on
-    /// `phase == .speaking` looks equivalent but isn't: a reply that never
-    /// produces a speakable sentence (empty completion, tool-only turn, stream
-    /// error before the first delta) is finalized by `ask()` from `.thinking`,
-    /// and that guard swallowed the call, parking the loop in "Pensando…" with
-    /// no way back except restarting the session.
+    /// Both `.thinking` and `.speaking` end a turn here, and that is not
+    /// interchangeable with "only `.speaking`": a reply that never produces a
+    /// speakable sentence (empty completion, tool-only turn, stream error
+    /// before the first delta) is finalized by `ask()` from `.thinking`, and a
+    /// speaking-only guard swallowed the call, parking the loop in "Pensando…"
+    /// with no way back except restarting the session.
     private func afterSpeaking() {
-        guard phase == .speaking || phase == .thinking else {
-            VoiceLog.log("afterSpeaking", "ignorado, fase=\(phase)")
+        switch phase {
+        case .thinking, .speaking:
+            break
+        case .idle, .listening, .transcribing, .finishing:
+            VoiceLog.log("afterSpeaking", "ignorado, fase=\(phase.logName)")
             return
         }
-        guard !finishing else {
-            VoiceLog.log("afterSpeaking", "ignorado, turno já finalizando")
-            return
-        }
-        finishing = true
-        phase = .thinking            // transitional: not speaking, not yet listening
+        phase = .finishing
         bargeMonitor.stop()
         tts.onSpeechFinished = nil
-        guard active else { finishing = false; phase = .idle; return }
+        tts.onSpeechFailed = nil
+        guard active else { phase = .idle; return }
         Task { await listen() }
     }
 }

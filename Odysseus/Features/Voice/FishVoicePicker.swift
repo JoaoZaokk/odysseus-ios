@@ -84,7 +84,7 @@ struct FishVoicePicker: View {
             // CancellationError` looks like it does this but never matches:
             // URLSession raises URLError.cancelled, so every keystroke used to
             // blank the list and flash a spurious error.
-            guard !VoiceEndpoint.isCancellation(error) else { return }
+            guard !error.isCancellation else { return }
             self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
             voices = []
         }

@@ -48,10 +48,10 @@ struct VoiceView: View {
             }
         }
         .tint(theme.accent)
-        .onChange(of: convo.phase) { _, p in pulse = (p == .listening || p == .speaking) }
+        .onChange(of: convo.phase) { _, p in pulse = p.isLive }
         .task {
             await convo.loadModels()
-            if speech.useServer { await speech.loadServerInfo() }
+            if TTSEngine.current == .server { await speech.loadServerInfo() }
         }
         .onAppear {
             if let s = seedSession { convo.seed(sessionID: s.id, messages: s.messages) }
@@ -110,7 +110,7 @@ struct VoiceView: View {
             Circle().fill(theme.accent.opacity(0.30)).frame(width: 140, height: 140)
             Circle().fill(theme.accent).frame(width: 104, height: 104)
             Group {
-                if convo.phase == .thinking {
+                if convo.phase.isBusy {
                     ProgressView().tint(theme.bg).controlSize(.large)
                 } else {
                     Image(systemName: orbIcon).font(.ody(size: 40, weight: .semibold))
@@ -123,11 +123,9 @@ struct VoiceView: View {
     }
 
     private var orbIcon: String {
-        switch convo.phase {
-        case .listening: return "waveform"
-        case .speaking:  return "speaker.wave.3.fill"
-        default:         return "mic.fill"
-        }
+        if convo.phase.isListening { return "waveform" }
+        if convo.phase.isSpeaking  { return "speaker.wave.3.fill" }
+        return "mic.fill"
     }
 
     private var statusLine: some View {
@@ -140,11 +138,16 @@ struct VoiceView: View {
 
     private var statusText: String {
         if let e = convo.error { return e }
+        // Switched rather than asked, so a new phase has to be given a line
+        // here instead of falling into a default that says the wrong thing.
         switch convo.phase {
         case .idle:      return convo.active ? "…" : L("Toque para conversar")
         case .listening: return L("Ouvindo…")
-        case .thinking:  return L("Pensando…")
         case .speaking:  return L("Falando…")
+        // Finalizing the recording and handing the turn back are the same thing
+        // to the person waiting: working, nothing to hear yet. They share the
+        // one string that already says that.
+        case .transcribing, .thinking, .finishing: return L("Pensando…")
         }
     }
 
