@@ -914,10 +914,14 @@ de voz da 1.8.
 
 | | |
 |---|---|
-| Versão | 1.8, `PREPARE_FOR_SUBMISSION` |
-| Build | **21**, `VALID`, delivery `fa01ba5f-2727-4300-99ad-16b0fa8faf5e`, já anexada |
-| Submissões abertas | nenhuma — o caminho de três chamadas está livre |
-| Lançamento | manual |
+| Versão | 1.8, `WAITING_FOR_REVIEW` — **submetida pelo dono em 28/08** |
+| Build | **21**, `VALID`, delivery `fa01ba5f-2727-4300-99ad-16b0fa8faf5e` |
+| Submissão | `f6a0839f` (a anterior, `b4bdc572`, é a que foi rejeitada) |
+| Lançamento | manual — mesmo aprovada, só vai ao ar quando o dono mandar |
+
+Nada a fazer até a Apple responder. Se cair de novo, o texto da rejeição só existe no Resolution
+Center: a API devolve estado, nunca a mensagem. Pedir o texto colado antes de mexer em qualquer
+coisa — sem o número da guideline, conserto às cegas queima um ciclo inteiro de review.
 
 Build 20 já servia para o que a Apple citou (era metadata). A 21 foi feita porque a interface
 chinesa ainda mostrava `兼容 OpenAI` na tela de voz, e esta é a segunda rejeição na mesma
