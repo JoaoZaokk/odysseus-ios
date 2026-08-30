@@ -95,10 +95,17 @@ def _normalize_language(value: str) -> str:
         return ""
     global _WHISPER_LANGS
     if _WHISPER_LANGS is None:
+        # `faster_whisper`, não `openai-whisper` — é o que este servidor importa
+        # em `_ensure_model`. A constante é privada (`_LANGUAGE_CODES`), então o
+        # fallback importa: se ela sumir numa versão futura, o set fica vazio e a
+        # validação passa a aceitar tudo, que é o comportamento de hoje. Melhor
+        # que quebrar a transcrição por causa de um detalhe interno da lib.
         try:
-            from whisper.tokenizer import LANGUAGES
-            _WHISPER_LANGS = set(LANGUAGES)
+            from faster_whisper.tokenizer import _LANGUAGE_CODES
+            _WHISPER_LANGS = set(_LANGUAGE_CODES)
         except Exception:
+            logger.warning("STT: lista de idiomas do faster-whisper indisponível, "
+                           "seguindo sem validar")
             _WHISPER_LANGS = set()
     if _WHISPER_LANGS and code not in _WHISPER_LANGS:
         logger.warning("STT: idioma desconhecido %r, detectando", value)
@@ -122,7 +129,12 @@ perder a gravação por um código mal formado é pior que transcrever adivinhan
 - campo ausente mantém o fallback para `stt_language`;
 - idioma do pedido vence o ajuste global;
 - `" en-US "` chega como `en` no provedor;
-- código desconhecido (`ug`, `zz`) vira `""` e não levanta;
+- código desconhecido (`ug`, `zz`) vira `""` e não levanta — `ug` é real, é o
+  único dos 44 idiomas do app que o Whisper não conhece, e o app já manda nil
+  para ele (`AppLanguage.sttServerCode`); o teste existe para o caso de outro
+  cliente mandar mesmo assim;
+- com `_LANGUAGE_CODES` indisponível, a normalização degrada para "aceita tudo"
+  em vez de levantar no import;
 - `_transcribe_local` e `_transcribe_api` recebem o valor já normalizado.
 
 ## Compatibilidade
