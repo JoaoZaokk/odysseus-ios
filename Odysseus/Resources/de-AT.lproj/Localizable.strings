@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Benutzer hinzufügen";
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
+"Agendado %@" = "Geplant %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "Geplante Agenten";
 "Agentes agendados do Odysseus aparecem aqui." = "Geplante Odysseus-Agenten werden hier angezeigt.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Notizen und Erinnerungen";
 "Apagar" = "Löschen";
 "Aparência" = "Erscheinungsbild";
+"apertado" = "knapp";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Verweise zunächst auf die lokale IP; wenn du es über HTTPS erreichbar machst, ersetze durch https://deine-domain.";
 "Arquivar" = "Archivieren";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Abgeschlossene Recherchen werden hier angezeigt. Tippe auf „Visueller Bericht\", um sie nebeneinander zu öffnen.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Suche";
 "Buscar nos logs…" = "In Logs suchen…";
+"cabe" = "passt";
 "Cabe na máquina (estimativa, melhor GPU)" = "Passt auf die Maschine (Schätzung, beste GPU)";
 "Cadastro aberto" = "Offene Registrierung";
 "Caixa de entrada" = "Posteingang";
@@ -54,6 +57,7 @@
 "Conta" = "Konto";
 "Contas de email" = "E-Mail-Konten";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Default";
 "Desativado" = "Deaktiviert";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "Mit %@ entsperren";
 "Detectado: %@ %@" = "Erkannt: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Live-Diagnose des Odysseus-Prozesses.";
+"Diário %@" = "Täglich %@";
 "Documentos pessoais (RAG)" = "Persönliche Dokumente (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Gib diesem Agenten einen Namen, um ihn von den anderen zu unterscheiden (z. B. \"Claude Agent — laptop\").";
 "Email" = "E-Mail";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus-Serveradresse";
 "Envie a mesma pergunta para os dois modelos." = "Sende dieselbe Frage an beide Modelle.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Sende Dokumente (PDF, txt, md…), damit der Assistent sie per RAG abrufen kann.";
+"Erro %d" = "Fehler %d";
 "Erro no download" = "Download-Fehler";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Schreibe oben in natürlicher Sprache\noder tippe auf +, um zu erstellen.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Schätzung nach Name (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB Reserve. Ersetzt keinen echten Test.";
+"Evento: %@" = "Ereignis: %@";
 "Eventos e agenda" = "Termine und Kalender";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "z. B. Die Theorien zum Untergang der Bronzezeit und die Belege";
 "ex.: assistente direto e objetivo" = "z. B. ein direkter, sachlicher Assistent";
@@ -80,6 +87,7 @@
 "Exportar dados" = "Daten exportieren";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportiere Erinnerungen, Voreinstellungen, Einstellungen, Fähigkeiten und Präferenzen als JSON.";
 "Falha ao carregar logs: %@" = "Protokolle konnten nicht geladen werden: %@";
+"Falha ao instalar %@: %@" = "Installation von %@ fehlgeschlagen: %@";
 "Fallback automático" = "Automatischer Fallback";
 "Fechar" = "Schließen";
 "Ferramentas integradas" = "Integrierte Werkzeuge";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "Gespräch umbenennen";
 "Renomear usuário" = "Benutzer umbenennen";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "Unerwartete Serverantwort: %@";
 "Resumir com IA" = "Mit KI zusammenfassen";
 "Rodar agora" = "Jetzt ausführen";
 "Sair da conta" = "Abmelden";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "Wähle die App-Sprache.";
 "Sem memórias ainda" = "Noch keine Erinnerungen";
 "Sem tarefas" = "Keine Aufgaben";
+"Semanal %@" = "Wöchentlich %@";
 "Servidor" = "Server";
 "Servidores MCP" = "MCP-Server";
 "Sistema" = "System";
@@ -194,6 +204,7 @@
 "Transparência" = "Transparenz";
 "Trocar senha" = "Passwort ändern";
 "Título" = "Titel";
+"Uma vez %@" = "Einmal %@";
 "Usuários" = "Benutzer";
 "vazio = usa o host da URL" = "leer = verwendet den URL-Host";
 "vazio = usa o servidor principal" = "leer = verwendet den Hauptserver";

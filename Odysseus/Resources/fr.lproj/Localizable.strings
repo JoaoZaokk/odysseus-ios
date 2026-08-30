@@ -1,6 +1,16 @@
 /* Odysseus iOS — Localizable.strings (French) */
 /* Generated from pt-BR source keys via the translation council. */
 
+"Agendado %@" = "Planifié %@";
+"apertado" = "tout juste";
+"cabe" = "tient";
+"Cron: %@" = "Cron : %@";
+"Diário %@" = "Quotidien %@";
+"Erro %d" = "Erreur %d";
+"Evento: %@" = "Événement : %@";
+"Falha ao instalar %@: %@" = "Échec de l’installation de %@ : %@";
+"Resposta inesperada do servidor: %@" = "Réponse inattendue du serveur : %@";
+"Semanal %@" = "Hebdomadaire %@";
 "Timeout do stream (s)" = "Délai d'expiration du flux (s)";
 "Cookbook" = "Cookbook";
 "Segurança (%@)" = "Sécurité (%@)";
@@ -51,6 +61,7 @@
 "Não consegui carregar o relatório." = "Impossible de charger le rapport.";
 "Modelos usados ao criar uma nova conversa e em tarefas de fundo." = "Modèles utilisés lors de la création d'une nouvelle conversation et dans les tâches en arrière-plan.";
 "Não consegui carregar o email" = "Impossible de charger votre e-mail";
+"Uma vez %@" = "Une fois %@";
 "Usar como conta padrão" = "Utiliser comme compte par défaut";
 "Desarquivar" = "Désarchiver";
 "Desativar" = "Désactiver";

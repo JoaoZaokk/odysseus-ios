@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Benotzer bäifügen";
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
+"Agendado %@" = "Geplangt %@";
 "Agent Tools" = "Agent-Tools";
 "Agentes agendados" = "Geplangten Agenten";
 "Agentes agendados do Odysseus aparecem aqui." = "D'geplangten Agenten vum Odysseus erschéngen hei.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Notizen an Erënnerungen";
 "Apagar" = "Läschen";
 "Aparência" = "Erscheinung";
+"apertado" = "knapp";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Weis fir de Moment op déi lokal IP; wann s du se iwwer HTTPS fräigëss, wiessel op https://deng-domain.";
 "Arquivar" = "Archivéieren";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Ofgeschlossen Fuerschungen erschéngen hei. Tipp op “Visuellen Rapport”, fir se niewenteneen opzemaachen.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Sichen";
 "Buscar nos logs…" = "Logs duerchsichen…";
+"cabe" = "passt";
 "Cabe na máquina (estimativa, melhor GPU)" = "Passt op d'Maschinn (Schätzung, bescht GPU)";
 "Cadastro aberto" = "Offen Umeldung";
 "Caixa de entrada" = "Posteingang";
@@ -54,6 +57,7 @@
 "Conta" = "Konto";
 "Contas de email" = "E-Mail-Konten";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Standard";
 "Desativado" = "Deaktivéiert";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "Mat %@ entspären";
 "Detectado: %@ %@" = "Erkannt: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Live-Diagnostik vum Odysseus-Prozess.";
+"Diário %@" = "Deeglech %@";
 "Documentos pessoais (RAG)" = "Perséinlech Dokumenter (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Gëff dësem Agent en Numm, fir en vun deenen aneren z'ënnerscheeden (z.B. \"Claude Agent — Laptop\").";
 "Email" = "E-Mail";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus-Serveradress";
 "Envie a mesma pergunta para os dois modelos." = "Schéck déiselwecht Fro un déi zwee Modeller.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Schéck Dokumenter (PDF, txt, md…), déi den Assistent iwwer RAG consultéiere kann.";
+"Erro %d" = "Feeler %d";
 "Erro no download" = "Feeler beim Download";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Schreif hei uewen an natierlecher Sprooch\noder tipp op +, fir z'erstellen.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Schätzung no Numm (fp8≈1B/Param, fp16/bf16≈2B/Param) + ~3 GB Loft. Ersetzt kee richtege Test.";
+"Evento: %@" = "Evenement: %@";
 "Eventos e agenda" = "Evenementer a Kalenner";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "z.B. D'Theorië vum Zesummebroch vun der Bronzezäit an d'Beweiser";
 "ex.: assistente direto e objetivo" = "z.B. en direkten, präzisen Assistent";
@@ -80,6 +87,7 @@
 "Exportar dados" = "Date exportéieren";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportéier Erënnerungen, Presets, Astellungen, Skills a Preferenzen als JSON.";
 "Falha ao carregar logs: %@" = "Konnt Logs net lueden: %@";
+"Falha ao instalar %@: %@" = "D’Installatioun vun %@ ass feelgeschloen: %@";
 "Fallback automático" = "Automateschen Fallback";
 "Fechar" = "Zoumaachen";
 "Ferramentas integradas" = "Integréiert Tools";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "Gespréich ëmbenennen";
 "Renomear usuário" = "Benotzer ëmbenennen";
 "Research" = "Fuerschung";
+"Resposta inesperada do servidor: %@" = "Onerwaart Äntwert vum Server: %@";
 "Resumir com IA" = "Mat KI zesummefaassen";
 "Rodar agora" = "Elo lafen loossen";
 "Sair da conta" = "Ofmellen";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "Wiel d'Sprooch vun der App.";
 "Sem memórias ainda" = "Nach keng Erënnerungen";
 "Sem tarefas" = "Keng Aufgaben";
+"Semanal %@" = "Wéchentlech %@";
 "Servidor" = "Server";
 "Servidores MCP" = "MCP-Server";
 "Sistema" = "System";
@@ -195,6 +205,7 @@
 "Transparência" = "Transparenz";
 "Trocar senha" = "Passwuert änneren";
 "Título" = "Titel";
+"Uma vez %@" = "Eemol %@";
 "Usuários" = "Benotzer";
 "vazio = usa o host da URL" = "eidel = benotzt de Host vun der URL";
 "vazio = usa o servidor principal" = "eidel = benotzt den Haaptserver";

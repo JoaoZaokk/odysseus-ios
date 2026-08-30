@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Lisää käyttäjä";
 "ADMIN" = "YLLÄPITO";
 "Admin" = "Ylläpitäjä";
+"Agendado %@" = "Ajastettu %@";
 "Agent Tools" = "Agentin työkalut";
 "Agentes agendados" = "Ajastetut agentit";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseuksen ajastetut agentit näkyvät täällä.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Muistiinpanot ja muistutukset";
 "Apagar" = "Poista";
 "Aparência" = "Ulkoasu";
+"apertado" = "niukasti";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Käytä toistaiseksi paikallista IP-osoitetta; kun julkaiset palvelun HTTPS:n kautta, vaihda osoitteeksi https://oma-verkkotunnus.";
 "Arquivar" = "Arkistoi";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Valmiit tutkimukset näkyvät täällä. Napauta “Visuaalinen raportti” avataksesi sen viereen.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Haku";
 "Buscar nos logs…" = "Hae logeista…";
+"cabe" = "mahtuu";
 "Cabe na máquina (estimativa, melhor GPU)" = "Mahtuu koneelle (arvio, paras GPU)";
 "Cadastro aberto" = "Avoin rekisteröityminen";
 "Caixa de entrada" = "Saapuneet";
@@ -54,6 +57,7 @@
 "Conta" = "Tili";
 "Contas de email" = "Sähköpostitilit";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Oletus";
 "Desativado" = "Pois käytöstä";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "Avaa lukitus %@:lla";
 "Detectado: %@ %@" = "Tunnistettu: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus-prosessin reaaliaikainen diagnostiikka.";
+"Diário %@" = "Päivittäin %@";
 "Documentos pessoais (RAG)" = "Henkilökohtaiset asiakirjat (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Anna tälle agentille nimi, jotta erotat sen muista (esim. \"Claude Agent — kannettava\").";
 "Email" = "Sähköposti";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus-palvelimen osoite";
 "Envie a mesma pergunta para os dois modelos." = "Lähetä sama kysymys molemmille malleille.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Lähetä asiakirjoja (PDF, txt, md…), joita avustaja voi käyttää RAG:n kautta.";
+"Erro %d" = "Virhe %d";
 "Erro no download" = "Latausvirhe";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Kirjoita luonnollisella kielellä yllä\ntai napauta + luodaksesi.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Arvio nimen perusteella (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 Gt liikkumavaraa. Ei korvaa oikeaa testiä.";
+"Evento: %@" = "Tapahtuma: %@";
 "Eventos e agenda" = "Tapahtumat ja aikataulu";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "esim. Pronssikauden romahduksen teoriat ja todisteet";
 "ex.: assistente direto e objetivo" = "esim. suora ja asiapitoinen avustaja";
@@ -80,6 +87,7 @@
 "Exportar dados" = "Vie tiedot";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Vie muistot, esiasetukset, asetukset, taidot ja mieltymykset JSON-muodossa.";
 "Falha ao carregar logs: %@" = "Lokien lataus epäonnistui: %@";
+"Falha ao instalar %@: %@" = "Paketin %@ asennus epäonnistui: %@";
 "Fallback automático" = "Automaattinen varajärjestelmä";
 "Fechar" = "Sulje";
 "Ferramentas integradas" = "Sisäänrakennetut työkalut";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "Nimeä keskustelu uudelleen";
 "Renomear usuário" = "Nimeä käyttäjä uudelleen";
 "Research" = "Tutkimus";
+"Resposta inesperada do servidor: %@" = "Odottamaton palvelinvastaus: %@";
 "Resumir com IA" = "Tiivistä tekoälyllä";
 "Rodar agora" = "Suorita nyt";
 "Sair da conta" = "Kirjaudu ulos";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "Valitse sovelluksen kieli.";
 "Sem memórias ainda" = "Ei vielä muistoja";
 "Sem tarefas" = "Ei tehtäviä";
+"Semanal %@" = "Viikoittain %@";
 "Servidor" = "Palvelin";
 "Servidores MCP" = "MCP-palvelimet";
 "Sistema" = "Järjestelmä";
@@ -195,6 +205,7 @@
 "Transparência" = "Läpinäkyvyys";
 "Trocar senha" = "Vaihda salasana";
 "Título" = "Otsikko";
+"Uma vez %@" = "Kerran %@";
 "Usuários" = "Käyttäjät";
 "vazio = usa o host da URL" = "tyhjä = käyttää URL-osoitteen isäntää";
 "vazio = usa o servidor principal" = "tyhjä = käyttää pääpalvelinta";
