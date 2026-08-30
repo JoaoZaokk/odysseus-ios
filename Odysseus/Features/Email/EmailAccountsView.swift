@@ -68,6 +68,13 @@ struct EmailAccountsView: View {
                     macHeader
                     Rectangle().fill(theme.border).frame(height: 1)
                     #endif
+                    if let e = vm.error, !vm.accounts.isEmpty {
+                        Text(LocalizedStringKey(e))
+                            .font(.ody(size: 11, design: .monospaced))
+                            .foregroundStyle(theme.accent)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 14).padding(.top, 6)
+                    }
                     ZStack { content }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
@@ -148,6 +155,8 @@ struct EmailAccountsView: View {
     private var content: some View {
         if vm.accounts.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.accounts.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.accounts.isEmpty {
             VStack(spacing: 16) {
                 // The whole icon+text block is a button — the "+person" glyph adds
@@ -295,7 +304,7 @@ struct AddEmailAccountView: View {
                 ForEach(EmailProvider.all) { p in Button(p.label) { applyProvider(p.id) } }
             } label: {
                 HStack {
-                    Text(providerID.isEmpty ? "Custom…" : current.label)
+                    Text(providerID.isEmpty ? L("Personalizado…") : current.label)
                         .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
                     Spacer()
                     Image(systemName: "chevron.up.chevron.down").font(.caption2).foregroundStyle(theme.secondaryText)
@@ -436,7 +445,9 @@ struct AddEmailAccountView: View {
                 Button("Nenhum") { smtpSecurity = "none" }
             } label: {
                 HStack {
-                    Text(smtpSecurity.uppercased()).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    // The menu offers "Nenhum" / "STARTTLS" / "SSL"; the closed row
+                    // used to show the wire value ("NONE").
+                    Text(LocalizedStringKey(smtpSecurity == "none" ? "Nenhum" : smtpSecurity.uppercased())).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
                     Spacer()
                     Image(systemName: "chevron.up.chevron.down").font(.caption2).foregroundStyle(theme.secondaryText)
                 }

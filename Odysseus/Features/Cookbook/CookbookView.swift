@@ -70,12 +70,18 @@ final class CookbookViewModel: ObservableObject {
         defer { installing.remove(pkg.id) }
         do {
             try await api.installCookbookPackage(pkg)
-            note = "Instalação de \(pkg.name) iniciada no servidor — pode levar alguns minutos."
-            // Give the background job a head start, then refresh status.
-            try? await Task.sleep(nanoseconds: 4_000_000_000)
-            await load()
+            note = L("Instalação de %@ iniciada no servidor — pode levar alguns minutos.", pkg.name)
+            // Poll for the real thing rather than sleeping once: a `pip install`
+            // of something like diffusers[torch] runs for minutes, and a spinner
+            // tied to a 4-second sleep always appeared to finish while the job was
+            // still going — inviting a second tap and a duplicate install.
+            for _ in 0..<24 {
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
+                await load()
+                if packages.first(where: { $0.id == pkg.id })?.installed == true { break }
+            }
         } catch {
-            self.error = "Falha ao instalar \(pkg.name): \(msg(error))"
+            self.error = L("Falha ao instalar %@: %@", pkg.name, msg(error))
         }
     }
 
