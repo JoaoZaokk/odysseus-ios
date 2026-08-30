@@ -47,9 +47,7 @@ import SwiftUI
         } catch APIError.http(403, _) {
             error = "Só um administrador pode escolher quais modelos aparecem."
         } catch {
-            // Interpolated, so it can never match a key at render time — resolve
-            // the format here instead.
-            self.error = String(format: L("Não foi possível carregar os modelos: %@"), SettingsUI.msg(error))
+            self.error = L("Não foi possível carregar os modelos: %@", SettingsUI.msg(error))
         }
     }
 
@@ -77,7 +75,7 @@ import SwiftUI
         } catch APIError.http(403, _) {
             error = "Só um administrador pode escolher quais modelos aparecem."
         } catch {
-            self.error = String(format: L("Não foi possível salvar: %@"), SettingsUI.msg(error))
+            self.error = L("Não foi possível salvar: %@", SettingsUI.msg(error))
         }
     }
 
