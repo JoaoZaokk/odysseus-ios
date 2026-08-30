@@ -298,7 +298,7 @@ struct AIDefaultsSection: View {
             }
 
             if !vm.status.isEmpty {
-                Text(vm.status).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                Text(LocalizedStringKey(vm.status)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
             }
         }
         .task { await vm.load() }
