@@ -239,7 +239,7 @@ struct VoiceEndpointFields: View {
                 .disabled(config.url.isEmpty || probing)
 
                 if let probeError {
-                    Text(probeError).font(.footnote).foregroundStyle(theme.accent)
+                    Text(LocalizedStringKey(probeError)).font(.footnote).foregroundStyle(theme.danger)
                 }
             }
 

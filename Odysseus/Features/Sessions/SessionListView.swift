@@ -79,7 +79,7 @@ struct SidebarView: View {
                 if let e = store.error {
                     Text(LocalizedStringKey(e))
                         .font(.ody(.footnote))
-                        .foregroundStyle(theme.accent)
+                        .foregroundStyle(theme.danger)
                         .listRowBackground(theme.bg)
                 } else if store.sessions.isEmpty && !store.loading {
                     Text("Nenhuma conversa ainda.")

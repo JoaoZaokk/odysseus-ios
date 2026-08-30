@@ -134,7 +134,7 @@ struct CalendarView: View {
             if let err = vm.error {
                 Text(LocalizedStringKey(err))
                     .font(.ody(size: 11))
-                    .foregroundStyle(theme.accent)
+                    .foregroundStyle(theme.danger)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .lineLimit(2)
             }

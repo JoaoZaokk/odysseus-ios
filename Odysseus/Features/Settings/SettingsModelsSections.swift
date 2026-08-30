@@ -22,7 +22,7 @@ import SwiftUI
     }
     func toggle(_ ep: ModelEndpoint) async {
         do { try await api.setEndpointEnabled(ep.id, !ep.isEnabled); await load() }
-        catch { self.error = L("Falha ao salvar: %@", SettingsUI.msg(error)) }
+        catch { self.error = SettingsUI.failure(error, "Falha ao salvar: %@") }
     }
 
     /// Re-probes the endpoint. The list endpoint never probes on its own, so an
@@ -34,15 +34,14 @@ import SwiftUI
             let found = try await api.refreshEndpointModels(ep.id)
             await load()
             refreshResult = found.count
-        } catch APIError.http(403, _) {
-            error = "Só um administrador pode atualizar a lista de modelos."
         } catch {
-            self.error = L("Não foi possível carregar os modelos: %@", SettingsUI.msg(error))
+            self.error = SettingsUI.failure(error, "Não foi possível carregar os modelos: %@",
+                                            admin: "Só um administrador pode atualizar a lista de modelos.")
         }
     }
     func delete(_ ep: ModelEndpoint) async {
         do { try await api.deleteEndpoint(ep.id); await load() }
-        catch { self.error = L("Falha ao remover: %@", SettingsUI.msg(error)) }
+        catch { self.error = SettingsUI.failure(error, "Falha ao remover: %@") }
     }
 }
 
@@ -65,7 +64,7 @@ struct AddedModelsSection: View {
             if let e = vm.error {
                 // Through LocalizedStringKey so the fixed messages translate;
                 // anything the server worded falls through to itself.
-                Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.accent)
+                Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger)
             }
             if let n = vm.refreshResult {
                 Group {
