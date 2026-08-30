@@ -251,10 +251,10 @@ struct RemindersSection: View {
     func load() async {
         loading = true; defer { loading = false }
         let bag = (try? await api.getSettings()) ?? SettingsBag(dict: [:])
-        maxRounds = String(bag.int("agent_max_rounds"))
-        tokenBudget = String(bag.int("agent_input_token_budget"))
-        tokenHardMax = String(bag.int("agent_input_token_hard_max"))
-        streamTimeout = String(bag.int("agent_stream_timeout_seconds"))
+        maxRounds = bag.intText("agent_max_rounds")
+        tokenBudget = bag.intText("agent_input_token_budget")
+        tokenHardMax = bag.intText("agent_input_token_hard_max")
+        streamTimeout = bag.intText("agent_stream_timeout_seconds")
         emailConfirm = bag.bool("agent_email_confirm")
         servers = (try? await api.mcpServers()) ?? []
         tools = (try? await api.agentTools()) ?? []

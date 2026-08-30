@@ -97,6 +97,15 @@ struct SettingsBag {
         return d
     }
     func bool(_ k: String, default d: Bool = false) -> Bool { (dict[k] as? Bool) ?? d }
+    /// A numeric setting as field text, or `""` when the server has no such key.
+    /// `int(_:)` would answer 0, which renders as a real value the user then saves
+    /// back as configuration; empty lets the field show its placeholder instead,
+    /// and `save` skips keys whose text is not a number.
+    func intText(_ k: String) -> String {
+        if let i = dict[k] as? Int { return String(i) }
+        if let s = dict[k] as? String, Int(s) != nil { return s }
+        return ""
+    }
 
     /// `[{endpoint_id, model}]` fallback chains.
     func fallbacks(_ k: String) -> [(endpointId: String, model: String)] {
