@@ -1,7 +1,7 @@
 # Handoff — fase de arquitetura, encerrada
 
 Estado em 2026-08-30, fim da rodada 3. Tudo abaixo está em `main`, **1.9 / build 23**
-(macOS build 17). **173 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
+(macOS build 17). **184 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
 zero PRs abertos.
 
 ## O que aconteceu nesta rodada
@@ -60,15 +60,31 @@ completo continua em `docs/ROUND2-ACHADOS.md` — se uma das 61 se provar real, 
 issue própria com o fonte conferido, que é a única forma que qualquer uma delas deveria ter
 tido.
 
-Duas coisas conscientemente **não** feitas, com o motivo:
+Uma coisa conscientemente **não** feita:
 
-- **`SettingsUI.failure(_:_:admin:)`.** Sobreviveu à refutação, mas com teto declarado de
-  ~1 linha por site em ~20 sites. A parte genuinamente nova era o braço do 403 e a regra
-  "o formato continua sendo chave" — e os cinco sites que quebravam essa regra já foram
-  corrigidos direto. O que sobra não paga a rotação.
 - **Uma string nova em 43 idiomas.** `"Barge-in indisponível: a sessão de áudio está em
   modo de gravação."` está nos 44 catálogos com valor igual à chave e comentário dizendo
   isso. **Só pt-BR está correto.** Vai para a próxima rodada de tradução — não foi chutada.
+
+### `SettingsUI.failure`: recusado, depois construído
+
+Vale registrar por que a recusa estava errada, porque o erro é de método.
+
+Eu recusei o helper pela conta de linhas: seis linhas economizadas em ~20 call sites.
+A conta estava certa e a métrica estava errada. **Linha não é o teste** — o teste que esta
+rodada inteira usou é profundidade (alavancagem por unidade de interface) e locality
+(o conhecimento mora num lugar só).
+
+O que decidiu foi remedir na métrica certa: das 23 capturas em Settings que escrevem texto
+de erro, **2 checavam cancelamento e 21 não**. A divisão é até coerente — cargas guardam,
+ações de botão não — mas **nada em lugar nenhum diz isso**, então o próximo `load()` tem
+dois exemplos para copiar e vinte e um contraexemplos.
+
+E a varredura que veio junto provou o argumento: **13 sites de falha ainda em
+`theme.accent`** que a lista anterior não continha. Corrigir caso a caso não impede o
+próximo caso. Uma regra sem casa não pode ser testada — e agora tem onze testes, um deles
+varrendo o fonte, então todo call site novo é conferido contra o catálogo no dia em que
+é escrito.
 
 ## Armadilhas desta base
 
