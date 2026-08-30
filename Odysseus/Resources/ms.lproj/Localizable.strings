@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Tambah pengguna";
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
+"Agendado %@" = "Dijadualkan %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "Ejen berjadual";
 "Agentes agendados do Odysseus aparecem aqui." = "Ejen berjadual Odysseus akan muncul di sini.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Nota dan peringatan";
 "Apagar" = "Padam";
 "Aparência" = "Penampilan";
+"apertado" = "sempit";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Arahkan ke IP tempatan buat masa ini; apabila mendedahkan melalui HTTPS, tukar kepada https://domain-anda.";
 "Arquivar" = "Arkib";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Penyelidikan yang selesai muncul di sini. Ketik \"Laporan visual\" untuk membukanya bersebelahan.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Cari";
 "Buscar nos logs…" = "Cari dalam log…";
+"cabe" = "muat";
 "Cabe na máquina (estimativa, melhor GPU)" = "Muat dalam mesin (anggaran, GPU terbaik)";
 "Cadastro aberto" = "Pendaftaran terbuka";
 "Caixa de entrada" = "Peti masuk";
@@ -54,6 +57,7 @@
 "Conta" = "Akaun";
 "Contas de email" = "Akaun email";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Lalai";
 "Desativado" = "Dinyahaktifkan";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "Buka kunci dengan %@";
 "Detectado: %@ %@" = "Dikesan: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Diagnostik langsung proses Odysseus.";
+"Diário %@" = "Setiap hari %@";
 "Documentos pessoais (RAG)" = "Dokumen peribadi (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Berikan nama kepada ejen ini untuk membezakannya daripada yang lain (cth. \"Claude Agent — laptop\").";
 "Email" = "E-mel";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Alamat pelayan Odysseus";
 "Envie a mesma pergunta para os dois modelos." = "Hantar soalan yang sama kepada kedua-dua model.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Hantar dokumen (PDF, txt, md…) untuk pembantu rujuk melalui RAG.";
+"Erro %d" = "Ralat %d";
 "Erro no download" = "Ralat muat turun";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Tulis dalam bahasa semula jadi di atas\natau ketik + untuk mencipta.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Anggaran mengikut nama (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB ruang lapang. Tidak menggantikan ujian sebenar.";
+"Evento: %@" = "Acara: %@";
 "Eventos e agenda" = "Acara dan jadual";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "cth. Teori-teori keruntuhan Zaman Gangsa dan buktinya";
 "ex.: assistente direto e objetivo" = "cth. pembantu yang terus dan ringkas";
@@ -80,6 +87,7 @@
 "Exportar dados" = "Eksport data";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Eksport kenangan, pratetap, tetapan, kemahiran dan pilihan sebagai JSON.";
 "Falha ao carregar logs: %@" = "Gagal memuatkan log: %@";
+"Falha ao instalar %@: %@" = "Gagal memasang %1$@: %2$@";
 "Fallback automático" = "Sandaran automatik";
 "Fechar" = "Tutup";
 "Ferramentas integradas" = "Alat terbina dalam";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "Namakan semula perbualan";
 "Renomear usuário" = "Namakan semula pengguna";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "Respons tidak dijangka daripada pelayan: %@";
 "Resumir com IA" = "Ringkaskan dengan AI";
 "Rodar agora" = "Jalankan sekarang";
 "Sair da conta" = "Log keluar";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "Pilih bahasa aplikasi.";
 "Sem memórias ainda" = "Belum ada kenangan";
 "Sem tarefas" = "Tiada tugas";
+"Semanal %@" = "Setiap minggu %@";
 "Servidor" = "Pelayan";
 "Servidores MCP" = "Pelayan MCP";
 "Sistema" = "Sistem";
@@ -194,6 +204,7 @@
 "Transparência" = "Ketelusan";
 "Trocar senha" = "Tukar kata laluan";
 "Título" = "Tajuk";
+"Uma vez %@" = "Sekali %@";
 "Usuários" = "Pengguna";
 "vazio = usa o host da URL" = "kosong = gunakan hos URL";
 "vazio = usa o servidor principal" = "kosong = gunakan pelayan utama";

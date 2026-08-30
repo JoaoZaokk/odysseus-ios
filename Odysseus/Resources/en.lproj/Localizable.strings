@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Add user";
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
+"Agendado %@" = "Scheduled %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "Scheduled agents";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus scheduled agents show up here.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Notes and reminders";
 "Apagar" = "Delete";
 "Aparência" = "Appearance";
+"apertado" = "tight";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Point to the local IP for now; when you expose it over HTTPS, switch to https://your-domain.";
 "Arquivar" = "Archive";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Completed research shows up here. Tap “Visual report” to open it side by side.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Search";
 "Buscar nos logs…" = "Search logs…";
+"cabe" = "fits";
 "Cabe na máquina (estimativa, melhor GPU)" = "Fits on the machine (estimate, best GPU)";
 "Cadastro aberto" = "Open sign-up";
 "Caixa de entrada" = "Inbox";
@@ -54,6 +57,7 @@
 "Conta" = "Account";
 "Contas de email" = "Email accounts";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Default";
 "Desativado" = "Disabled";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "Unlock with %@";
 "Detectado: %@ %@" = "Detected: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Live diagnostics of the Odysseus process.";
+"Diário %@" = "Daily %@";
 "Documentos pessoais (RAG)" = "Personal documents (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Give this agent a name to tell it apart from the others (e.g. \"Claude Agent — laptop\").";
 "Email" = "Email";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus server address";
 "Envie a mesma pergunta para os dois modelos." = "Send the same question to both models.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Send documents (PDF, txt, md…) for the assistant to consult via RAG.";
+"Erro %d" = "Error %d";
 "Erro no download" = "Download error";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Write in natural language above\nor tap + to create.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Estimate by name (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB of headroom. No substitute for a real test.";
+"Evento: %@" = "Event: %@";
 "Eventos e agenda" = "Events and schedule";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "e.g. The Bronze Age collapse theories and the evidence";
 "ex.: assistente direto e objetivo" = "e.g. a direct, to-the-point assistant";
@@ -80,6 +87,7 @@
 "Exportar dados" = "Export data";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Export memories, presets, settings, skills and preferences as JSON.";
 "Falha ao carregar logs: %@" = "Failed to load logs: %@";
+"Falha ao instalar %@: %@" = "Failed to install %@: %@";
 "Fallback automático" = "Automatic fallback";
 "Fechar" = "Close";
 "Ferramentas integradas" = "Built-in tools";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "Rename conversation";
 "Renomear usuário" = "Rename user";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "Unexpected response from the server: %@";
 "Resumir com IA" = "Summarize with AI";
 "Rodar agora" = "Run now";
 "Sair da conta" = "Sign out";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "Choose the app language.";
 "Sem memórias ainda" = "No memories yet";
 "Sem tarefas" = "No tasks";
+"Semanal %@" = "Weekly %@";
 "Servidor" = "Server";
 "Servidores MCP" = "MCP servers";
 "Sistema" = "System";
@@ -195,6 +205,7 @@
 "Transparência" = "Transparency";
 "Trocar senha" = "Change password";
 "Título" = "Title";
+"Uma vez %@" = "Once %@";
 "Usuários" = "Users";
 "vazio = usa o host da URL" = "empty = uses the URL host";
 "vazio = usa o servidor principal" = "empty = uses the main server";

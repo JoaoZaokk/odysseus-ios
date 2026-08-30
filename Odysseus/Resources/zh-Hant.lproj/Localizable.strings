@@ -11,6 +11,7 @@
 "Adicionar usuário" = "新增使用者";
 "ADMIN" = "管理";
 "Admin" = "管理員";
+"Agendado %@" = "已排程 %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "已排程的代理程式";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus 的已排程代理程式會顯示在此處。";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "備忘錄與提醒";
 "Apagar" = "刪除";
 "Aparência" = "外觀";
+"apertado" = "勉強放得下";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "現在指向本機 IP；透過 HTTPS 公開後，改為 https://your-domain。";
 "Arquivar" = "封存";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "已完成的研究會顯示在此處。點選「視覺報告」以並排開啟。";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "搜尋";
 "Buscar nos logs…" = "搜尋日誌（log）…";
+"cabe" = "放得下";
 "Cabe na máquina (estimativa, melhor GPU)" = "適合此機器執行（估算，最佳 GPU）";
 "Cadastro aberto" = "開放註冊";
 "Caixa de entrada" = "收件匣";
@@ -54,6 +57,7 @@
 "Conta" = "帳戶";
 "Contas de email" = "郵件帳戶";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron：%@";
 "Deep Research" = "Deep Research";
 "Default" = "預設";
 "Desativado" = "已停用";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "使用 %@ 解鎖";
 "Detectado: %@ %@" = "已偵測到：%@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus 處理程序的即時診斷。";
+"Diário %@" = "每天 %@";
 "Documentos pessoais (RAG)" = "個人文件（RAG）";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "為此代理程式命名以與其他代理程式區分（例如：\"Claude Agent — laptop\"）。";
 "Email" = "郵件";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus 伺服器位址";
 "Envie a mesma pergunta para os dois modelos." = "向兩個模型傳送相同的問題。";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "傳送文件（PDF、txt、md…）供助理透過 RAG 參考。";
+"Erro %d" = "錯誤 %d";
 "Erro no download" = "下載錯誤";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "在上方以自然語言輸入\n或點選 + 建立。";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "按名稱估算（fp8≈1B/param，fp16/bf16≈2B/param）+ 約 3 GB 餘量。無法取代實際測試。";
+"Evento: %@" = "事件：%@";
 "Eventos e agenda" = "事件與行程";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "例：青銅時代崩潰的理論及證據";
 "ex.: assistente direto e objetivo" = "例：直接且簡潔的助理";
@@ -80,6 +87,7 @@
 "Exportar dados" = "匯出資料";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "將記憶、預設集、設定、技能和偏好設定匯出為 JSON。";
 "Falha ao carregar logs: %@" = "載入日誌失敗：%@";
+"Falha ao instalar %@: %@" = "安裝 %1$@ 失敗：%2$@";
 "Fallback automático" = "自動備用";
 "Fechar" = "關閉";
 "Ferramentas integradas" = "內建工具";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "重新命名對話";
 "Renomear usuário" = "重新命名使用者";
 "Research" = "研究";
+"Resposta inesperada do servidor: %@" = "伺服器意外回應：%@";
 "Resumir com IA" = "使用 AI 摘要";
 "Rodar agora" = "立即執行";
 "Sair da conta" = "登出";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "選擇應用程式語言。";
 "Sem memórias ainda" = "尚無記憶";
 "Sem tarefas" = "無工作";
+"Semanal %@" = "每週 %@";
 "Servidor" = "伺服器";
 "Servidores MCP" = "MCP 伺服器";
 "Sistema" = "系統";
@@ -194,6 +204,7 @@
 "Transparência" = "透明度";
 "Trocar senha" = "變更密碼";
 "Título" = "標題";
+"Uma vez %@" = "一次 %@";
 "Usuários" = "使用者";
 "vazio = usa o host da URL" = "空 = 使用 URL 主機";
 "vazio = usa o servidor principal" = "空 = 使用主伺服器";

@@ -11,6 +11,7 @@
 "Adicionar usuário" = "صارف شامل کریں";
 "ADMIN" = "ADMIN";
 "Admin" = "منتظم";
+"Agendado %@" = "طے شدہ %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "شیڈول کردہ ایجنٹ";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus کے شیڈول کردہ ایجنٹ یہاں دکھائی دیتے ہیں۔";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "نوٹس اور یاددہانیاں";
 "Apagar" = "حذف کریں";
 "Aparência" = "ظاہری شکل";
+"apertado" = "مشکل سے سماتا ہے";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "ابھی مقامی IP کی طرف اشارہ کریں؛ جب HTTPS پر شائع کریں تو https://your-domain میں بدل لیں۔";
 "Arquivar" = "آرکائیو کریں";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "مکمل تحقیقات یہاں دکھائی دیتی ہیں۔ ساتھ کھولنے کے لیے «بصری رپورٹ» کو ٹیپ کریں۔";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "تلاش";
 "Buscar nos logs…" = "log میں تلاش…";
+"cabe" = "سماتا ہے";
 "Cabe na máquina (estimativa, melhor GPU)" = "مشین میں فٹ ہے (تخمینہ، بہترین GPU)";
 "Cadastro aberto" = "کھلی رجسٹریشن";
 "Caixa de entrada" = "ان باکس";
@@ -54,6 +57,7 @@
 "Conta" = "اکاؤنٹ";
 "Contas de email" = "ای میل اکاؤنٹس";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "پہلے سے طے شدہ";
 "Desativado" = "غیر فعال";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "%@ سے کھولیں";
 "Detectado: %@ %@" = "شناخت ہوا: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus عمل کی براہ راست تشخیص۔";
+"Diário %@" = "روزانہ %@";
 "Documentos pessoais (RAG)" = "ذاتی دستاویزات (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "اس ایجنٹ کو دوسروں سے الگ کرنے کے لیے نام دیں (مثال: «Claude Agent — laptop»)۔";
 "Email" = "ای میل";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus سرور کا پتہ";
 "Envie a mesma pergunta para os dois modelos." = "دونوں ماڈلز کو ایک ہی سوال بھیجیں۔";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "RAG کے ذریعے مشاورت کے لیے دستاویزات (PDF, txt, md…) بھیجیں۔";
+"Erro %d" = "خرابی %d";
 "Erro no download" = "ڈاؤن لوڈ میں خرابی";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "اوپر قدرتی زبان میں لکھیں\nیا بنانے کے لیے + ٹیپ کریں۔";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "نام کے مطابق تخمینہ (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB اضافی۔ حقیقی ٹیسٹ کا متبادل نہیں۔";
+"Evento: %@" = "ایونٹ: %@";
 "Eventos e agenda" = "واقعات اور شیڈول";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "مثال: کانسی دور کے خاتمے کے نظریات اور شواہد";
 "ex.: assistente direto e objetivo" = "مثال: براہ راست اور مقصد پر مبنی مددگار";
@@ -80,6 +87,7 @@
 "Exportar dados" = "ڈیٹا برآمد کریں";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "یادداشتیں، پری سیٹس، ترتیبات، مہارتیں اور ترجیحات JSON کے طور پر برآمد کریں۔";
 "Falha ao carregar logs: %@" = "لاگز لوڈ کرنے میں ناکامی: %@";
+"Falha ao instalar %@: %@" = "%1$@ نصب کرنے میں ناکام: %2$@";
 "Fallback automático" = "خودکار متبادل";
 "Fechar" = "بند کریں";
 "Ferramentas integradas" = "بلٹ ان ٹولز";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "گفتگو کا نام بدلیں";
 "Renomear usuário" = "صارف کا نام بدلیں";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "سرور سے غیر متوقع جواب: %@";
 "Resumir com IA" = "AI سے خلاصہ کریں";
 "Rodar agora" = "ابھی چلائیں";
 "Sair da conta" = "لاگ آؤٹ کریں";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "ایپ کی زبان منتخب کریں۔";
 "Sem memórias ainda" = "ابھی تک کوئی یادداشت نہیں";
 "Sem tarefas" = "کوئی کام نہیں";
+"Semanal %@" = "ہر ہفتے %@";
 "Servidor" = "سرور";
 "Servidores MCP" = "MCP سرورز";
 "Sistema" = "سسٹم";
@@ -195,6 +205,7 @@
 "Transparência" = "شفافیت";
 "Trocar senha" = "پاس ورڈ بدلیں";
 "Título" = "عنوان";
+"Uma vez %@" = "ایک بار %@";
 "Usuários" = "صارفین";
 "vazio = usa o host da URL" = "خالی = URL کا ہوسٹ استعمال کرتا ہے";
 "vazio = usa o servidor principal" = "خالی = اصل سرور استعمال کرتا ہے";

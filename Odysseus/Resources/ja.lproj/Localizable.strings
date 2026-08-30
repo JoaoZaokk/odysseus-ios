@@ -11,6 +11,7 @@
 "Adicionar usuário" = "ユーザーを追加";
 "ADMIN" = "管理";
 "Admin" = "管理者";
+"Agendado %@" = "スケジュール済み %@";
 "Agent Tools" = "エージェントツール";
 "Agentes agendados" = "スケジュール済みエージェント";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus のスケジュール済みエージェントがここに表示されます。";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "メモとリマインダー";
 "Apagar" = "削除";
 "Aparência" = "外観";
+"apertado" = "ぎりぎり";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "今はローカル IP を指定してください。HTTPS で公開する際は https://seu-dominio に変更してください。";
 "Arquivar" = "アーカイブ";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "完了したリサーチがここに表示されます。「ビジュアルレポート」をタップすると並べて開けます。";
@@ -36,6 +38,7 @@
 "Brain" = "ブレイン";
 "Busca" = "検索";
 "Buscar nos logs…" = "ログを検索…";
+"cabe" = "収まります";
 "Cabe na máquina (estimativa, melhor GPU)" = "このマシンで動作可能（推定、最良の GPU）";
 "Cadastro aberto" = "登録を開放";
 "Caixa de entrada" = "受信トレイ";
@@ -54,6 +57,7 @@
 "Conta" = "アカウント";
 "Contas de email" = "メールアカウント";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "デフォルト";
 "Desativado" = "無効";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "%@ でロック解除";
 "Detectado: %@ %@" = "検出: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus プロセスのライブ診断。";
+"Diário %@" = "毎日 %@";
 "Documentos pessoais (RAG)" = "個人ドキュメント（RAG）";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "このエージェントを他と区別できるよう名前を付けてください（例：「Claude Agent — laptop」）。";
 "Email" = "メール";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus サーバーのアドレス";
 "Envie a mesma pergunta para os dois modelos." = "同じ質問を両方のモデルに送信します。";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "ドキュメント（PDF、txt、md…）を送信すると、アシスタントが RAG で参照します。";
+"Erro %d" = "エラー %d";
 "Erro no download" = "ダウンロードエラー";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "上に自然な言葉で入力するか\n＋をタップして作成してください。";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "名前から推定（fp8≈1B/param、fp16/bf16≈2B/param）＋~3 GB の余裕。実際のテストの代わりにはなりません。";
+"Evento: %@" = "イベント: %@";
 "Eventos e agenda" = "イベントと予定";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "例：青銅器時代崩壊の諸説とその証拠";
 "ex.: assistente direto e objetivo" = "例：率直で要点を押さえたアシスタント";
@@ -80,6 +87,7 @@
 "Exportar dados" = "データをエクスポート";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "メモリ、プリセット、設定、スキル、環境設定を JSON としてエクスポートします。";
 "Falha ao carregar logs: %@" = "ログの読み込みに失敗しました：%@";
+"Falha ao instalar %@: %@" = "%1$@ のインストールに失敗しました：%2$@";
 "Fallback automático" = "自動フォールバック";
 "Fechar" = "閉じる";
 "Ferramentas integradas" = "組み込みツール";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "会話の名前を変更";
 "Renomear usuário" = "ユーザー名を変更";
 "Research" = "リサーチ";
+"Resposta inesperada do servidor: %@" = "サーバーからの予期しない応答: %@";
 "Resumir com IA" = "AI で要約";
 "Rodar agora" = "今すぐ実行";
 "Sair da conta" = "ログアウト";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "アプリの言語を選択してください。";
 "Sem memórias ainda" = "まだメモリがありません";
 "Sem tarefas" = "タスクがありません";
+"Semanal %@" = "毎週 %@";
 "Servidor" = "サーバー";
 "Servidores MCP" = "MCP サーバー";
 "Sistema" = "システム";
@@ -194,6 +204,7 @@
 "Transparência" = "透明度";
 "Trocar senha" = "パスワードを変更";
 "Título" = "タイトル";
+"Uma vez %@" = "1回のみ %@";
 "Usuários" = "ユーザー";
 "vazio = usa o host da URL" = "空 = URL のホストを使用";
 "vazio = usa o servidor principal" = "空 = メインサーバーを使用";

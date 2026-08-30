@@ -7,6 +7,14 @@
 "%lld de %lld linhas" = "%lld de %lld linhas";
 "%lld linhas" = "%lld linhas";
 "%lld mensagens antigas saíram do contexto para caber no limite." = "%lld mensagens antigas saíram do contexto para caber no limite.";
+"Agendado %@" = "Agendado %@";
+"apertado" = "apertado";
+"cabe" = "cabe";
+"Cron: %@" = "Cron: %@";
+"Diário %@" = "Diário %@";
+"Erro %d" = "Erro %d";
+"Evento: %@" = "Evento: %@";
+"Falha ao instalar %@: %@" = "Falha ao instalar %@: %@";
 "Modelos encontrados: %lld" = "Modelos encontrados: %lld";
 "(sem conteúdo)" = "(sem conteúdo)";
 "(sem nome)" = "(sem nome)";
@@ -140,6 +148,8 @@
 "Exportar dados" = "Exportar dados";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exporte memórias, presets, settings, skills e preferências como JSON.";
 "Extração paralela" = "Extração paralela";
+"Resposta inesperada do servidor: %@" = "Resposta inesperada do servidor: %@";
+"Semanal %@" = "Semanal %@";
 "Timeout da extração (s)" = "Timeout da extração (s)";
 "Falha" = "Falha";
 "Falha ao carregar logs: %@" = "Falha ao carregar logs: %@";
@@ -356,6 +366,7 @@
 "Trocar senha" = "Trocar senha";
 "Tudo" = "Tudo";
 "Título" = "Título";
+"Uma vez %@" = "Uma vez %@";
 "URL (opcional)" = "URL (opcional)";
 "Usada quando nenhuma outra está selecionada." = "Usada quando nenhuma outra está selecionada.";
 "Usar como conta padrão" = "Usar como conta padrão";

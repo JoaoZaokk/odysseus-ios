@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Felhasználó hozzáadása";
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
+"Agendado %@" = "Ütemezve %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "Ütemezett ügynökök";
 "Agentes agendados do Odysseus aparecem aqui." = "Az Odysseus ütemezett ügynökei itt jelennek meg.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Jegyzetek és emlékeztetők";
 "Apagar" = "Törlés";
 "Aparência" = "Megjelenés";
+"apertado" = "szűkös";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Egyelőre mutasson a helyi IP-re; ha HTTPS-en teszi elérhetővé, váltson a https://az-on-domain.com-ra.";
 "Arquivar" = "Archiválás";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "A befejezett kutatások itt jelennek meg. A \"Vizuális jelentés\" gombra koppintva nyissa meg egymás mellett.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Keresés";
 "Buscar nos logs…" = "Keresés a logokban…";
+"cabe" = "fér el";
 "Cabe na máquina (estimativa, melhor GPU)" = "Elfér a gépen (becslés, legjobb GPU)";
 "Cadastro aberto" = "Nyílt regisztráció";
 "Caixa de entrada" = "Beérkező levelek";
@@ -54,6 +57,7 @@
 "Conta" = "Fiók";
 "Contas de email" = "E-mail fiókok";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Alapértelmezett";
 "Desativado" = "Letiltva";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "Feloldás %@-vel";
 "Detectado: %@ %@" = "Felismerve: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Az Odysseus folyamat élő diagnosztikája.";
+"Diário %@" = "Naponta %@";
 "Documentos pessoais (RAG)" = "Személyes dokumentumok (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Adjon nevet ennek az ügynöknek, hogy megkülönböztesse a többitől (pl. \"Claude Agent — laptop\").";
 "Email" = "E-mail";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Odysseus szerver címe";
 "Envie a mesma pergunta para os dois modelos." = "Küldje el ugyanazt a kérdést mindkét modellnek.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Küldjön dokumentumokat (PDF, txt, md…), amelyeket az asszisztens RAG-on keresztül tud lekérdezni.";
+"Erro %d" = "Hiba %d";
 "Erro no download" = "Letöltési hiba";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Írjon természetes nyelven fent\nvagy koppintson a + gombra a létrehozáshoz.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Névből becsülve (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB tartalék. Nem helyettesíti a valós tesztet.";
+"Evento: %@" = "Esemény: %@";
 "Eventos e agenda" = "Események és menetrend";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "pl. A bronzkori összeomlás elméletei és bizonyítékai";
 "ex.: assistente direto e objetivo" = "pl. egyenes és tömör asszisztens";
@@ -80,6 +87,7 @@
 "Exportar dados" = "Adatok exportálása";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportálja az emlékeket, előbeállításokat, beállításokat, készségeket és preferenciákat JSON formátumban.";
 "Falha ao carregar logs: %@" = "Naplók betöltése sikertelen: %@";
+"Falha ao instalar %@: %@" = "%1$@ telepítése sikertelen: %2$@";
 "Fallback automático" = "Automatikus tartalék";
 "Fechar" = "Bezárás";
 "Ferramentas integradas" = "Beépített eszközök";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "Csevegés átnevezése";
 "Renomear usuário" = "Felhasználó átnevezése";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "Váratlan szerverválasz: %@";
 "Resumir com IA" = "Összefoglalás MI-vel";
 "Rodar agora" = "Futtatás most";
 "Sair da conta" = "Kijelentkezés";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "Válassza ki az alkalmazás nyelvét.";
 "Sem memórias ainda" = "Még nincsenek emlékek";
 "Sem tarefas" = "Nincs feladat";
+"Semanal %@" = "Hetente %@";
 "Servidor" = "Szerver";
 "Servidores MCP" = "MCP szerverek";
 "Sistema" = "Rendszer";
@@ -194,6 +204,7 @@
 "Transparência" = "Átlátszóság";
 "Trocar senha" = "Jelszó módosítása";
 "Título" = "Cím";
+"Uma vez %@" = "Egyszer %@";
 "Usuários" = "Felhasználók";
 "vazio = usa o host da URL" = "üres = az URL hosztnevet használja";
 "vazio = usa o servidor principal" = "üres = a fő szervert használja";

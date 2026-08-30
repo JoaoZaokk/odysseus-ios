@@ -11,6 +11,7 @@
 "Adicionar usuário" = "הוספת משתמש";
 "ADMIN" = "מנהל";
 "Admin" = "מנהל";
+"Agendado %@" = "מתוזמן %@";
 "Agent Tools" = "כלי הסוכן";
 "Agentes agendados" = "סוכנים מתוזמנים";
 "Agentes agendados do Odysseus aparecem aqui." = "סוכנים מתוזמנים של Odysseus מופיעים כאן.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "פתקים ותזכורות";
 "Apagar" = "מחיקה";
 "Aparência" = "מראה";
+"apertado" = "דחוק";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "כרגע הפנה ל-IP המקומי; כשתחשוף את השרת דרך HTTPS, עבור ל-https://your-domain.";
 "Arquivar" = "העברה לארכיון";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "מחקרים שהושלמו מופיעים כאן. הקש על “דוח חזותי” כדי לפתוח אותם בצד.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "חיפוש";
 "Buscar nos logs…" = "חיפוש ב-logים…";
+"cabe" = "נכנס";
 "Cabe na máquina (estimativa, melhor GPU)" = "מתאים למכונה (הערכה, GPU הטוב ביותר)";
 "Cadastro aberto" = "הרשמה פתוחה";
 "Caixa de entrada" = "תיבת דואר נכנס";
@@ -54,6 +57,7 @@
 "Conta" = "חשבון";
 "Contas de email" = "חשבונות אימייל";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "ברירת מחדל";
 "Desativado" = "מושבת";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "ביטול נעילה באמצעות %@";
 "Detectado: %@ %@" = "זוהה: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "אבחון חי של תהליך Odysseus.";
+"Diário %@" = "מדי יום %@";
 "Documentos pessoais (RAG)" = "מסמכים אישיים (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "תן שם לסוכן הזה כדי להבדיל אותו מהאחרים (למשל: \"Claude Agent — laptop\").";
 "Email" = "אימייל";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "כתובת שרת Odysseus";
 "Envie a mesma pergunta para os dois modelos." = "שלח את אותה שאלה לשני המודלים.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "שלח מסמכים (PDF, txt, md…) כדי שהעוזר יוכל להיעזר בהם דרך RAG.";
+"Erro %d" = "שגיאה %d";
 "Erro no download" = "שגיאת הורדה";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "כתוב בשפה טבעית למעלה\nאו הקש על + כדי ליצור.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "הערכה לפי שם (fp8≈1B/פרמטר, fp16/bf16≈2B/פרמטר) + כ-3GB רזרבה. לא מחליף בדיקה אמיתית.";
+"Evento: %@" = "אירוע: %@";
 "Eventos e agenda" = "אירועים ולוח זמנים";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "למשל: תיאוריות קריסת תקופת הברונזה והראיות התומכות בהן";
 "ex.: assistente direto e objetivo" = "למשל: עוזר ישיר וממוקד";
@@ -80,6 +87,7 @@
 "Exportar dados" = "ייצוא נתונים";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "ייצוא זיכרונות, פריסטים, הגדרות, כישורים והעדפות כ-JSON.";
 "Falha ao carregar logs: %@" = "טעינת הלוגים נכשלה: %@";
+"Falha ao instalar %@: %@" = "התקנת %1$@ נכשלה: %2$@";
 "Fallback automático" = "גיבוי אוטומטי";
 "Fechar" = "סגירה";
 "Ferramentas integradas" = "כלים מובנים";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "שינוי שם שיחה";
 "Renomear usuário" = "שינוי שם משתמש";
 "Research" = "מחקר";
+"Resposta inesperada do servidor: %@" = "תגובה לא צפויה מהשרת: %@";
 "Resumir com IA" = "סיכום באמצעות AI";
 "Rodar agora" = "הרצה עכשיו";
 "Sair da conta" = "התנתקות";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "בחר את שפת האפליקציה.";
 "Sem memórias ainda" = "עדיין אין זיכרונות";
 "Sem tarefas" = "אין משימות";
+"Semanal %@" = "מדי שבוע %@";
 "Servidor" = "שרת";
 "Servidores MCP" = "שרתי MCP";
 "Sistema" = "מערכת";
@@ -195,6 +205,7 @@
 "Transparência" = "שקיפות";
 "Trocar senha" = "החלפת סיסמה";
 "Título" = "כותרת";
+"Uma vez %@" = "פעם אחת %@";
 "Usuários" = "משתמשים";
 "vazio = usa o host da URL" = "ריק = משתמש במארח של ה-URL";
 "vazio = usa o servidor principal" = "ריק = משתמש בשרת הראשי";
