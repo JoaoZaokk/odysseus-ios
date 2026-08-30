@@ -20,7 +20,12 @@ struct ModelEndpoint: Decodable, Identifiable, Hashable {
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        id = (try? c.decode(String.self, forKey: .id)) ?? UUID().uuidString
+        // A numeric id decodes too — the sibling models (Note, GalleryImage,
+        // EmailAccount, ChatSession) all carry this branch. Without it the row
+        // gets a client-invented UUID, and every button on it addresses nothing.
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) }
+        else { id = UUID().uuidString }
         name = (try? c.decode(String.self, forKey: .name)) ?? "—"
         isEnabled = (try? c.decode(Bool.self, forKey: .isEnabled)) ?? true
         online = try? c.decodeIfPresent(Bool.self, forKey: .online)
@@ -75,7 +80,12 @@ struct EndpointModel: Decodable, Identifiable, Hashable {
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        id = (try? c.decode(String.self, forKey: .id)) ?? UUID().uuidString
+        // A numeric id decodes too — the sibling models (Note, GalleryImage,
+        // EmailAccount, ChatSession) all carry this branch. Without it the row
+        // gets a client-invented UUID, and every button on it addresses nothing.
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) }
+        else { id = UUID().uuidString }
         display = (try? c.decode(String.self, forKey: .display)) ?? id
         isHidden = (try? c.decode(Bool.self, forKey: .isHidden)) ?? false
         isPinned = (try? c.decode(Bool.self, forKey: .isPinned)) ?? false

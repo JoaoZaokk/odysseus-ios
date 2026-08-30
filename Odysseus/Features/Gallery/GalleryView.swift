@@ -68,7 +68,13 @@ struct GalleryView: View {
         .refreshable { await vm.load() }
         .sheet(item: $selected) { img in
             GalleryDetail(image: img, url: vm.url(img)) {
-                Task { await vm.toggleFavorite(img) }
+                Task {
+                    await vm.toggleFavorite(img)
+                    // The sheet holds a value copy, so the view model's update
+                    // never reached it and the heart never changed. Re-seeding
+                    // with the same id keeps the sheet up and refreshes it.
+                    selected = vm.images.first { $0.id == img.id }
+                }
             }
         }
     }

@@ -205,7 +205,14 @@ struct CalendarView: View {
 
     private func timeLabel(_ ev: CalendarEvent) -> String {
         if ev.allDay { return "Dia todo" }
-        let f = DateFormatter(); f.dateFormat = "HH:mm"; f.timeZone = .current
+        // Display, not wire: a fixed "HH" pattern gets rewritten to the region's
+        // hour cycle, so 14:30 printed as "2:30" with no AM/PM to tell it from
+        // 02:30. The template asks for the locale's own hour format instead —
+        // the same thing `dayLabel` below already does.
+        let f = DateFormatter()
+        f.locale = LocalizationManager.shared.locale
+        f.setLocalizedDateFormatFromTemplate("jmm")
+        f.timeZone = .current
         guard let s = ev.startDate else { return "" }
         let start = f.string(from: s)
         if let e = ev.endDate { return "\(start)–\(f.string(from: e))" }

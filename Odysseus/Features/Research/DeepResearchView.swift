@@ -158,11 +158,13 @@ struct DeepResearchView: View {
         runner.start(api: api, query: p, maxRounds: vm.maxRounds, category: vm.mode,
                      searchProvider: vm.searchProvider, endpointID: vm.endpointId, model: vm.model)
         // Refresh the "Past research" list once the run completes.
+        // Follow the run, not a stopwatch: the old `0..<60` gave up after three
+        // minutes, so a longer research finished and never appeared in "Pesquisas
+        // anteriores" until the pane was closed and reopened.
         Task {
-            for _ in 0..<60 {
+            while runner.run != nil, runner.run?.status != "complete", runner.run?.error != true {
                 try? await Task.sleep(nanoseconds: 3_000_000_000)
                 await vm.loadPast()
-                if runner.run?.status == "complete" || runner.run?.error == true { break }
             }
             await vm.loadPast()
         }
@@ -333,7 +335,11 @@ struct VisualReportView: View {
                 Divider().overlay(theme.border)
 
                 // Body blocks
-                ForEach(r.blocks) { block in blockView(block) }
+                // Positional identity: `ReportBlock.id` is derived from the first
+                // 24 characters of the block's content, so two headings that share
+                // a prefix, two tables with the same header row, or the same image
+                // twice collide — and a ForEach with duplicate ids drops blocks.
+                ForEach(Array(r.blocks.enumerated()), id: \.offset) { _, block in blockView(block) }
 
                 // Sources
                 if !r.sources.isEmpty {
