@@ -15,10 +15,25 @@ cada um entregue a um refutador adversarial cujo padrão era REFUTADO.
 | Sobreviveram em escopo menor | **4** |
 | Mortos | **6** |
 
-Os dois primeiros e os escopos que sobreviveram das dez refutações foram implementados em
-[PR #29](https://github.com/JoaoZaokk/odysseus-ios/pull/29) e no commit seguinte.
-
 **A taxa de refutação é o dado que importa: 10 de 12.** Ela vale para a próxima rodada.
+
+### O que foi entregue, PR a PR
+
+Oito. Todos mergeados em `main`, nenhum aberto.
+
+| PR | O quê |
+|---|---|
+| [#29](https://github.com/JoaoZaokk/odysseus-ios/pull/29) | Os dois candidatos que sobreviveram limpos — o seam de transporte e `Theme.danger` — mais os escopos que sobreviveram das dez refutações: seam de plataforma, vazamento de credencial, `ResearchRun`, `ReportBlock`, `Font.ody(design:)`, veredito de e-mail, `SettingsUI` com casa própria, clock e poll do Deep Research, pré-condição do barge-in, sessão de TTS silenciosa |
+| [#30](https://github.com/JoaoZaokk/odysseus-ios/pull/30) | Três cópias de conhecimento que o enum já tinha: `lprojName` deixou de ser `String?` nunca-nil, `whisperCode` (morto em produção) foi deletado, e a tabela de 39 entradas do `AppLanguage.match` virou `AppLanguage(rawValue:)` com **teste de propriedade** no lugar de 39 conferências pontuais |
+| [#31](https://github.com/JoaoZaokk/odysseus-ios/pull/31) | Uma grafia só para chave formatada: `L(_:_:)` já roda `String(format:)`, então `String(format: L("… %@"), x)` era a mesma chamada escrita duas vezes |
+| [#32](https://github.com/JoaoZaokk/odysseus-ios/pull/32) | `SettingsUI.failure` — as três regras de falha ganham casa e onze testes; mais 13 sites de falha que ainda pintavam com `theme.accent` |
+| [#33](https://github.com/JoaoZaokk/odysseus-ios/pull/33) | O registro de por que a recusa do helper estava errada (erro de método, não de conta) |
+| [#34](https://github.com/JoaoZaokk/odysseus-ios/pull/34) | A string do barge-in traduzida em 43 idiomas, composta da irmã já revisada de cada catálogo |
+| [#35](https://github.com/JoaoZaokk/odysseus-ios/pull/35) | O patch de STT do servidor marcado como não-aplicável em vez de pendente |
+| [#36](https://github.com/JoaoZaokk/odysseus-ios/pull/36) | Este handoff fechado |
+
+E a issue [#20](https://github.com/JoaoZaokk/odysseus-ios/issues/20) fechada com o balanço no
+topo dela: 12 corrigidas, 3 retratadas, 61 nunca verificadas.
 
 ## O que a rodada 3 mudou de estrutural
 
