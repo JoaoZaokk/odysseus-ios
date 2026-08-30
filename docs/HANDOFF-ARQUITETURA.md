@@ -19,7 +19,7 @@ cada um entregue a um refutador adversarial cujo padrão era REFUTADO.
 
 ### O que foi entregue, PR a PR
 
-Oito. Todos mergeados em `main`, nenhum aberto.
+Nove. Todos mergeados em `main`, nenhum aberto.
 
 | PR | O quê |
 |---|---|
@@ -31,6 +31,7 @@ Oito. Todos mergeados em `main`, nenhum aberto.
 | [#34](https://github.com/JoaoZaokk/odysseus-ios/pull/34) | A string do barge-in traduzida em 43 idiomas, composta da irmã já revisada de cada catálogo |
 | [#35](https://github.com/JoaoZaokk/odysseus-ios/pull/35) | O patch de STT do servidor marcado como não-aplicável em vez de pendente |
 | [#36](https://github.com/JoaoZaokk/odysseus-ios/pull/36) | Este handoff fechado |
+| [#37](https://github.com/JoaoZaokk/odysseus-ios/pull/37) | Esta tabela — o handoff citava um PR de oito |
 
 E a issue [#20](https://github.com/JoaoZaokk/odysseus-ios/issues/20) fechada com o balanço no
 topo dela: 12 corrigidas, 3 retratadas, 61 nunca verificadas.
