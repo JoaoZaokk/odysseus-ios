@@ -69,15 +69,7 @@ struct DeepResearchView: View {
                     // Active research — the live animated node graph.
                     if let run = runner.run {
                         VStack(alignment: .leading, spacing: 8) {
-                            HStack(spacing: 6) {
-                                Text("Active").font(.ody(.headline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
-                                if run.isPreview {
-                                    Text("prévia").font(.ody(size: 9, design: .monospaced))
-                                        .padding(.horizontal, 6).padding(.vertical, 2)
-                                        .background(theme.accent.opacity(0.18), in: Capsule())
-                                        .foregroundStyle(theme.accent)
-                                }
-                            }
+                            Text("Active").font(.ody(.headline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
                             ResearchActiveCard(run: run, elapsed: runner.elapsed) { runner.close() }
                         }
                         .animation(.spring(response: 0.4, dampingFraction: 0.85), value: run.rounds.count)
@@ -206,7 +198,7 @@ struct DeepResearchView: View {
                     Text(c).foregroundStyle(theme.secondaryText)
                 }
                 Text(failed ? "no results" : "\(job.source_count ?? 0) sources")
-                    .foregroundStyle(failed ? Color(hex: "e05a4a") : theme.secondaryText)
+                    .foregroundStyle(failed ? theme.danger : theme.secondaryText)
                 if let r = job.rounds, r > 0 { Text("· \(r) rodadas").foregroundStyle(theme.secondaryText) }
                 if let d = job.duration, !d.isEmpty { Text("· \(d)").foregroundStyle(theme.secondaryText) }
             }
@@ -334,11 +326,8 @@ struct VisualReportView: View {
                 }
                 Divider().overlay(theme.border)
 
-                // Body blocks
-                // Positional identity: `ReportBlock.id` is derived from the first
-                // 24 characters of the block's content, so two headings that share
-                // a prefix, two tables with the same header row, or the same image
-                // twice collide — and a ForEach with duplicate ids drops blocks.
+                // Body blocks. Positional identity — see `ReportBlock`, which no
+                // longer offers an `id` to be tempted by.
                 ForEach(Array(r.blocks.enumerated()), id: \.offset) { _, block in blockView(block) }
 
                 // Sources

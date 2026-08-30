@@ -589,7 +589,7 @@ struct SistemaSection: View {
             }
             TerminalLogsCard(vm: vm)
             SettingsCard {
-                Text("⚠️ Zona de perigo").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(Color(hex: "e05a4a"))
+                Text("⚠️ Zona de perigo").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.danger)
                 Text("Irreversível. Cada item apaga uma categoria.")
                     .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
                 ForEach(dangers, id: \.cat) { d in
@@ -601,7 +601,7 @@ struct SistemaSection: View {
                         }
                         Spacer()
                         Button("Apagar", role: .destructive) { confirming = (d.cat, d.label) }
-                            .buttonStyle(.plain).foregroundStyle(Color(hex: "e05a4a")).font(.ody(size: 12, design: .monospaced))
+                            .buttonStyle(.plain).foregroundStyle(theme.danger).font(.ody(size: 12, design: .monospaced))
                     }
                 }
             }
@@ -620,8 +620,8 @@ struct TerminalLogsCard: View {
 
     private func color(_ level: String) -> Color {
         switch level {
-        case "ERROR", "CRITICAL": return Color(hex: "e05a4a")
-        case "WARNING": return Color(hex: "e0a33a")
+        case "ERROR", "CRITICAL": return theme.danger
+        case "WARNING": return theme.warning
         case "DEBUG": return theme.secondaryText.opacity(0.7)
         default: return theme.secondaryText
         }

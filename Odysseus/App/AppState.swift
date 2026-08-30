@@ -127,7 +127,12 @@ final class AppState: ObservableObject {
                 keepSignedIn = true
             } else {
                 // "Don't keep me signed in" → wipe any prior persisted session.
+                // The credentials go too: a previous login with `remember` on
+                // left them in the Keychain, and only `logout()` used to clear
+                // them — so unchecking the box silently kept them on device.
                 api.clearPersistedCookies()
+                Keychain.delete(Keychain.usernameKey)
+                Keychain.delete(Keychain.passwordKey)
                 keepSignedIn = false
             }
             username = u

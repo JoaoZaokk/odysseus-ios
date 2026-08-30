@@ -118,9 +118,7 @@ struct AddIntegrationView: View {
             }
             .background(theme.bg)
             .navigationTitle("Adicionar integração")
-            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {

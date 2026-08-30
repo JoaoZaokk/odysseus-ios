@@ -46,11 +46,9 @@ struct ServerSetupView: View {
                             .foregroundStyle(theme.fg)
                             .textFieldStyle(.plain)
                             .autocorrectionDisabled()
-                            #if os(iOS)
                             .textInputAutocapitalization(.never)
                             .keyboardType(.URL)
                             .submitLabel(.go)
-                            #endif
                             .focused($focused)
                             .onSubmit(save)
                             .padding(.horizontal, 14).padding(.vertical, 12)

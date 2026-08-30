@@ -12,8 +12,11 @@ struct ResearchRun: Equatable {
     var query: String
     var rounds: [ResearchRound] = []
     var status: String = "planning strategy"   // planning / searching / comparison / warning
-    var error: Bool = false
-    var isPreview: Bool = false
+
+    /// Derived, not stored. It used to be a second `Bool` next to `status`, which
+    /// let the struct hold "error but not failed" and "failed but not error" —
+    /// two states nothing could render.
+    var error: Bool { status == "error" }
     var sourcesTotal: Int { rounds.reduce(0) { $0 + $1.sources } }
     var roundCount: Int { rounds.count }
 }
@@ -38,7 +41,7 @@ struct ResearchGraph: View {
     }
 
     private func draw(_ ctx: inout GraphicsContext, size: CGSize, t: TimeInterval) {
-        let accent = run.error ? Color(hex: "e05a4a") : theme.accent
+        let accent = run.error ? theme.danger : theme.accent
         let cx = size.width / 2
         let cy = size.height * 0.72
         let center = CGPoint(x: cx, y: cy)
@@ -118,7 +121,7 @@ struct ResearchActiveCard: View {
                 }
             }
             Text(LocalizedStringKey(statusTitle)).font(.ody(size: 12, design: .monospaced))
-                .foregroundStyle(run.error ? Color(hex: "e05a4a") : theme.secondaryText)
+                .foregroundStyle(run.error ? theme.danger : theme.secondaryText)
 
             ResearchGraph(run: run)
                 .frame(height: 230)
@@ -129,13 +132,13 @@ struct ResearchActiveCard: View {
 
             Text("\(run.error ? "warning" : run.status)  ·  round \(run.roundCount)  ·  \(run.sourcesTotal) sources  ·  \(elapsed)")
                 .font(.ody(size: 11, design: .monospaced))
-                .foregroundStyle(run.error ? Color(hex: "e05a4a") : theme.accent)
+                .foregroundStyle(run.error ? theme.danger : theme.accent)
         }
         .padding(14)
         .background(theme.panel, in: RoundedRectangle(cornerRadius: 12))
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(run.error ? Color(hex: "e05a4a") : theme.border, lineWidth: run.error ? 1.6 : 1)
+                .stroke(run.error ? theme.danger : theme.border, lineWidth: run.error ? 1.6 : 1)
         )
     }
 
@@ -163,7 +166,7 @@ final class ResearchRunner: ObservableObject {
                searchProvider: String? = nil, endpointID: String? = nil, model: String? = nil) {
         cancel()
         start = Date()
-        run = ResearchRun(query: query, status: "planning strategy", isPreview: false)
+        run = ResearchRun(query: query, status: "planning strategy")
         startTimer()
         task = Task { [weak self] in
             guard let self else { return }
@@ -180,7 +183,7 @@ final class ResearchRunner: ObservableObject {
                     if evt.final == true || evt.status == "done" || evt.status == "complete" {
                         // A finished run with no sources is the web's "no results" state.
                         if (self.run?.sourcesTotal ?? 0) == 0 {
-                            self.run?.error = true; self.run?.status = "error"
+                            self.run?.status = "error"
                         } else {
                             self.run?.status = "complete"
                         }
@@ -190,7 +193,6 @@ final class ResearchRunner: ObservableObject {
             } catch let e where e.isCancellation {
                 // user closed the panel
             } catch {
-                self.run?.error = true
                 self.run?.status = "error"
             }
         }
@@ -200,7 +202,7 @@ final class ResearchRunner: ObservableObject {
     private func apply(_ evt: ResearchEvent, lastPhase: inout String, lastTotalSources: inout Int) {
         guard run != nil else { return }
         if evt.status == "error" || evt.phase == "error" || evt.status == "cancelled" || evt.status == "not_found" {
-            run?.error = true; run?.status = "error"; return
+            run?.status = "error"; return
         }
         if let raw = evt.phase {
             run?.status = Self.label(raw)
@@ -234,25 +236,6 @@ final class ResearchRunner: ObservableObject {
         if p.hasPrefix("writ")   { return "writing report" }
         if p.hasPrefix("complet") || p == "done" { return "complete" }
         return phase
-    }
-
-    // MARK: - Preview (offline fallback / SwiftUI previews)
-
-    func startPreview(query: String) {
-        cancel()
-        start = Date()
-        run = ResearchRun(query: query, status: "planning strategy", isPreview: true)
-        startTimer()
-        task = Task {
-            func sleep(_ s: Double) async { try? await Task.sleep(nanoseconds: UInt64(s * 1_000_000_000)) }
-            await sleep(1.3); guard !Task.isCancelled else { return }
-            run?.status = "searching"; run?.rounds = [ResearchRound(index: 1, sources: 0)]
-            for s in 1...6 { await sleep(0.32); guard !Task.isCancelled else { return }; run?.rounds[0].sources = s }
-            await sleep(0.7); guard !Task.isCancelled else { return }
-            run?.rounds.append(ResearchRound(index: 2, sources: 0))
-            for s in 1...5 { await sleep(0.32); guard !Task.isCancelled else { return }; run?.rounds[1].sources = s }
-            await sleep(0.7); run?.status = "comparison"
-        }
     }
 
     func close() { cancel(); run = nil }

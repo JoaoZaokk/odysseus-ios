@@ -37,9 +37,7 @@ struct VoiceView: View {
                 .padding(16)
             }
             .navigationTitle("Voz")
-            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Fechar") { convo.stop(); dismiss() }

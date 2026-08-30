@@ -57,9 +57,7 @@ struct FishVoicePicker: View {
                 }
             }
             .navigationTitle(L("Escolher voz"))
-            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(L("Cancelar")) { dismiss() }

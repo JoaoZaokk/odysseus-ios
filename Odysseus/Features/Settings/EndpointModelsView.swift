@@ -117,9 +117,7 @@ struct EndpointModelsView: View {
             }
             // The endpoint's own name — user data, shown verbatim.
             .navigationTitle(vm.endpoint.name)
-            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Fechar") { dismiss() }
@@ -164,9 +162,7 @@ struct EndpointModelsView: View {
                         .textFieldStyle(.plain)
                         .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg)
                         .autocorrectionDisabled()
-                        #if !os(macOS)
                         .textInputAutocapitalization(.never)
-                        #endif
                         .padding(8)
                         .background(theme.panel, in: RoundedRectangle(cornerRadius: 8))
                         .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))

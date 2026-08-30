@@ -211,7 +211,7 @@ struct EmailAccountsView: View {
                             }.buttonStyle(.plain).help("Definir como padrão")
                         }
                         Button { toDelete = acc } label: {
-                            Image(systemName: "trash").foregroundStyle(Color(hex: "e05a4a"))
+                            Image(systemName: "trash").foregroundStyle(theme.danger)
                         }.buttonStyle(.plain).help("Remover conta")
                     }
                     .listRowBackground(theme.bg)
@@ -286,9 +286,7 @@ struct AddEmailAccountView: View {
             }
             .background(theme.bg)
             .navigationTitle("Nova conta")
-            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
             }
@@ -388,15 +386,15 @@ struct AddEmailAccountView: View {
     @ViewBuilder
     private var statusRow: some View {
         if let error {
-            Text(LocalizedStringKey(error)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+            Text(LocalizedStringKey(error)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.danger)
         }
         switch testResult {
         case .ok:
             Label("Conexão OK", systemImage: "checkmark.circle.fill")
-                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "50fa7b"))
+                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
         case .fail(let m):
             Label { Text(LocalizedStringKey(m)) } icon: { Image(systemName: "xmark.octagon.fill") }
-                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.danger)
                 .fixedSize(horizontal: false, vertical: true)
         case nil:
             EmptyView()

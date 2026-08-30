@@ -60,9 +60,7 @@ struct EmailLoginHelpView: View {
             }
             .background(theme.bg)
             .navigationTitle("Login")
-            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { dismiss() } } }
         }
         .tint(theme.accent)

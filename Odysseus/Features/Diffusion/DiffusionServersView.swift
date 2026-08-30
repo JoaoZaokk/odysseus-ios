@@ -141,7 +141,7 @@ struct DiffusionServersView: View {
                 Spacer()
             }
             if let e = vm.error {
-                Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+                Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.danger)
                     .fixedSize(horizontal: false, vertical: true)
             }
             if let s = vm.stats { statusDetail(s) }
@@ -152,7 +152,7 @@ struct DiffusionServersView: View {
         Group {
             if vm.loading { Text("testando…").foregroundStyle(theme.secondaryText) }
             else if vm.stats != nil { Text("online").foregroundStyle(theme.green) }
-            else if vm.error != nil { Text("offline").foregroundStyle(Color(hex: "e05a4a")) }
+            else if vm.error != nil { Text("offline").foregroundStyle(theme.danger) }
             else { Text("não testado").foregroundStyle(theme.secondaryText) }
         }
         .font(.ody(size: 10, design: .monospaced))
@@ -204,8 +204,8 @@ struct DiffusionServersView: View {
     private func fitColor(_ f: ComfyCapacity.Fit) -> Color {
         switch f {
         case .fits: return theme.green
-        case .tight: return Color(hex: "e0a33a")
-        case .tooBig: return Color(hex: "e05a4a")
+        case .tight: return theme.warning
+        case .tooBig: return theme.danger
         case .unknown: return theme.secondaryText
         }
     }
