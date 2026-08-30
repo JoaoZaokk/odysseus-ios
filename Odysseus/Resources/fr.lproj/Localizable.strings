@@ -118,7 +118,7 @@
 "Salvo" = "Enregistré";
 "Ativar todas" = "Tout activer";
 "Falha" = "Échec";
-"Timeout" = "Délai d'expiration";
+"Timeout" = "Délai d’expiration";
 "Provedor usado para busca na web e pesquisa profunda." = "Fournisseur utilisé pour la recherche sur le web et la recherche approfondie.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Activez ou désactivez les outils disponibles pour l'agent.";
 "Modelos conectados" = "Modèles connectés";
@@ -201,7 +201,7 @@
 "prévia" = "aperçu";
 "Modelos e engines" = "Modèles et moteurs";
 "Sem memórias ainda" = "Aucune mémoire pour le moment";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"ID do mecanismo de busca (CX)" = "ID du moteur de recherche (CX)";
 "Remover conta" = "Supprimer le compte";
 "Remover conta?" = "Supprimer le compte ?";
 "Entre no seu Apple ID, vá em Iniciar Sessão e Segurança → Senhas de App e gere uma (precisa de 2FA no Apple ID)." = "Connectez-vous à votre identifiant Apple, allez dans Connexion et sécurité → Mots de passe pour app et générez-en un (nécessite la 2FA sur votre identifiant Apple).";
@@ -239,7 +239,7 @@
 "Senha atual" = "Mot de passe actuel";
 "Odysseus bloqueado" = "Odysseus verrouillé";
 "Exportar dados" = "Exporter les données";
-"Past research" = "Recherches précédentes";
+"Pesquisas anteriores" = "Recherches précédentes";
 "Agente" = "Agent";
 "O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar." = "Odysseus est un client pour votre propre serveur. Saisissez l'adresse de votre serveur Odysseus pour continuer.";
 "Conta padrão" = "Compte par défaut";
@@ -255,7 +255,7 @@
 "Fonte" = "Police";
 "Nenhuma conta — adicione uma conta IMAP." = "Aucun compte — ajoutez un compte IMAP.";
 "Sem favoritos" = "Aucun favori";
-"Extract paralelo" = "Extraction parallèle";
+"Extração paralela" = "Extraction parallèle";
 "Notes" = "Notes";
 "O Gmail precisa de uma senha de app" = "Gmail nécessite un mot de passe d'application";
 "Nome para exibição" = "Nom affiché";
@@ -316,7 +316,7 @@
 "Senha" = "Mot de passe";
 "Falha ao salvar" = "Échec de l'enregistrement";
 "Segurança" = "Sécurité";
-"Extract timeout (s)" = "Délai d'expiration de l'extraction (s)";
+"Timeout da extração (s)" = "Délai d’expiration de l’extraction (s)";
 "Concluído" = "Terminé";
 "Padrão" = "Par défaut";
 "Início" = "Début";
@@ -324,7 +324,7 @@
 "Álbum" = "Album";
 "Como o fallback funciona" = "Comment fonctionne le repli";
 "Backup de dados" = "Sauvegarde des données";
-"Run timeout (s)" = "Délai d'expiration de l'exécution (s)";
+"Timeout de execução (s)" = "Délai d’expiration de l’exécution (s)";
 "Cancelar" = "Annuler";
 "Mesma pergunta para os dois…" = "Même question pour les deux…";
 "Email (IMAP/SMTP)" = "E-mail (IMAP/SMTP)";
@@ -381,7 +381,7 @@
 "Atualizar" = "Actualiser";
 "Só um administrador pode atualizar a lista de modelos." = "Seul un administrateur peut actualiser la liste des modèles.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Aucun modèle trouvé. Le point de terminaison a-t-il répondu ?";
-"%lld modelo(s) encontrado(s)." = "%lld modèles trouvés.";
+"Modelos encontrados: %lld" = "Modèles trouvés : %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Aucun modèle en cache. Utilisez Actualiser pour sonder le point de terminaison.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -467,8 +467,8 @@
 "Escolher modelos" = "Choisir les modèles";
 "Padrão do servidor" = "Défaut du serveur";
 "Outros modelos" = "Autres modèles";
-"%lld modelo(s) · ativo" = "%lld modèle(s) · actif";
-"%lld modelo(s) · desativado" = "%lld modèle(s) · désactivé";
+"Modelos: %lld · ativo" = "Modèles : %lld · actif";
+"Modelos: %lld · desativado" = "Modèles : %lld · désactivé";
 "· %lld rodadas" = "· %lld tours";
 "Personalizado…" = "Personnalisé…";
 "online" = "en ligne";
@@ -536,8 +536,8 @@
 "indisponível" = "indisponible";
 "%.0f GB livre / %.0f GB" = "%.0f Go libres / %.0f Go";
 "%.1f GB livre / %.1f GB" = "%.1f Go libres / %.1f Go";
-"http://host:porta" = "http://hôte:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organisé : %lld supprimée(s) (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Rangé : %lld → %lld · supprimées : %lld";
 "Falha ao organizar: %@" = "Échec de l'organisation : %@";
 "Backup exportado." = "Sauvegarde exportée.";
 "Salvo." = "Enregistré.";
@@ -561,3 +561,53 @@
 "%lld rodando · %lld na fila" = "%lld en cours · %lld en attente";
 "Processar só no aparelho" = "Traiter uniquement sur l'appareil";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Le traitement uniquement sur l'appareil n'envoie aucun audio à Apple, mais le modèle hors ligne se trompe plus souvent. Laissez-le désactivé si la transcription est mauvaise.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Actualiser la liste (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in indisponible : impossible d'activer l'annulation d'écho.";
+"Buscar modelos do servidor" = "Récupérer les modèles du serveur";
+"Buscar voz" = "Rechercher une voix";
+"Chave da API" = "Clé API";
+"Compatível com OpenAI" = "Compatible OpenAI";
+"Consultando…" = "Interrogation…";
+"Endpoint de voz não configurado (falta a URL)." = "Endpoint vocal non configuré (URL manquante).";
+"Endpoint não devolveu texto. Resposta: %@" = "L'endpoint n'a renvoyé aucun texte. Réponse : %@";
+"Endpoint próprio" = "Endpoint personnalisé";
+"Endpoint respondeu %d." = "L'endpoint a répondu %d.";
+"Endpoint respondeu %d: %@" = "L'endpoint a répondu %d : %@";
+"Escolher voz" = "Choisir une voix";
+"Escolher…" = "Choisir…";
+"Formato" = "Format";
+"Mostrar chave" = "Afficher la clé";
+"Nenhuma voz encontrada." = "Aucune voix trouvée.";
+"Nome do modelo" = "Nom du modèle";
+"O servidor não listou nenhum modelo." = "Le serveur n'a listé aucun modèle.";
+"OK" = "OK";
+"Ocultar chave" = "Masquer la clé";
+"Olá! É assim que a voz vai soar." = "Bonjour ! Voici le rendu de la voix.";
+"Outro…" = "Autre…";
+"Só minhas vozes" = "Seulement mes voix";
+"URL base" = "URL de base";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "« Endpoint personnalisé » = tout service compatible avec l'API audio d'OpenAI (POST /audio/transcriptions). Rien n'est téléchargé sur l'appareil.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in indisponible : le détecteur de voix n'a pas pu être chargé.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in indisponible : le microphone n'a pas pu être ouvert.";
+"O modelo guardado (%@) não está na lista do servidor." = "Le modèle enregistré (%@) ne figure pas dans la liste du serveur.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Sans HTTPS, la clé API circule en clair sur le réseau.";
+"Gravando… toque para parar" = "Enregistrement… touchez pour arrêter";
+"Ouvi: %@" = "Entendu : %@";
+"Testar reconhecimento" = "Tester la reconnaissance";
+"Transcrevendo…" = "Transcription…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Langue de la parole";
+"Seguir o app (%@)" = "Suivre l'app (%@)";
+"Detectar automaticamente" = "Détecter automatiquement";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "La voix native suit la langue de l'app. La reconnaissance, elle, utilise la langue choisie ci-dessus ; la détection automatique se trompe davantage sur un audio court ou bruité, et la reconnaissance native d'iOS ne détecte rien — la langue de l'app y prime toujours.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Audio en streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "L'audio en streaming lit la première phrase pendant qu'elle est encore générée, au lieu d'attendre le fichier entier. Cela ne s'applique qu'au mode conversation (l'écran vocal) ; les phrases suivantes sont déjà préparées pendant que la précédente est lue. Désactivez-le si le son saccade.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "La lecture audio a été interrompue.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Le point de terminaison a accepté la requête sans envoyer d’audio.";

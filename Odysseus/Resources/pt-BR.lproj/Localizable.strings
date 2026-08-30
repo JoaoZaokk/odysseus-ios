@@ -7,7 +7,7 @@
 "%lld de %lld linhas" = "%lld de %lld linhas";
 "%lld linhas" = "%lld linhas";
 "%lld mensagens antigas saíram do contexto para caber no limite." = "%lld mensagens antigas saíram do contexto para caber no limite.";
-"%lld modelo(s) encontrado(s)." = "%lld modelo(s) encontrado(s).";
+"Modelos encontrados: %lld" = "Modelos encontrados: %lld";
 "(sem conteúdo)" = "(sem conteúdo)";
 "(sem nome)" = "(sem nome)";
 "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado.";
@@ -139,8 +139,8 @@
 "Expandir / jogar pro canto" = "Expandir / jogar pro canto";
 "Exportar dados" = "Exportar dados";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exporte memórias, presets, settings, skills e preferências como JSON.";
-"Extract paralelo" = "Extract paralelo";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Extração paralela";
+"Timeout da extração (s)" = "Timeout da extração (s)";
 "Falha" = "Falha";
 "Falha ao carregar logs: %@" = "Falha ao carregar logs: %@";
 "Falha ao salvar" = "Falha ao salvar";
@@ -263,7 +263,7 @@
 "Padrões de IA" = "Padrões de IA";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA.";
 "Password" = "Password";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Pesquisas anteriores";
 "Pausar" = "Pausar";
 "Pede %@ antes de usar a senha salva." = "Pede %@ antes de usar a senha salva.";
 "Pede %@ ao abrir e ao voltar pro app." = "Pede %@ ao abrir e ao voltar pro app.";
@@ -301,7 +301,7 @@
 "Retomar" = "Retomar";
 "Revogar admin" = "Revogar admin";
 "Rodar agora" = "Rodar agora";
-"Run timeout (s)" = "Run timeout (s)";
+"Timeout de execução (s)" = "Timeout de execução (s)";
 "SMTP (envio)" = "SMTP (envio)";
 "SMTP igual ao IMAP" = "SMTP igual ao IMAP";
 "Sair da conta" = "Sair da conta";
@@ -309,7 +309,7 @@
 "Salvar servidor" = "Salvar servidor";
 "Salvo" = "Salvo";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Se o provedor padrão falhar, tenta os outros na ordem: %@.";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"ID do mecanismo de busca (CX)" = "ID do mecanismo de busca (CX)";
 "Segurança" = "Segurança";
 "Segurança (%@)" = "Segurança (%@)";
 "Selecionar…" = "Selecionar…";
@@ -466,8 +466,8 @@
 "Escolher modelos" = "Escolher modelos";
 "Padrão do servidor" = "Padrão do servidor";
 "Outros modelos" = "Outros modelos";
-"%lld modelo(s) · ativo" = "%lld modelo(s) · ativo";
-"%lld modelo(s) · desativado" = "%lld modelo(s) · desativado";
+"Modelos: %lld · ativo" = "Modelos: %lld · ativo";
+"Modelos: %lld · desativado" = "Modelos: %lld · desativado";
 "· %lld rodadas" = "· %lld rodadas";
 "Personalizado…" = "Personalizado…";
 "online" = "online";
@@ -535,8 +535,8 @@
 "indisponível" = "indisponível";
 "%.0f GB livre / %.0f GB" = "%.0f GB livre / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB livre / %.1f GB";
-"http://host:porta" = "http://host:porta";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organizado: %lld removida(s) (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Organizado: %lld → %lld · removidas: %lld";
 "Falha ao organizar: %@" = "Falha ao organizar: %@";
 "Backup exportado." = "Backup exportado.";
 "Salvo." = "Salvo.";
@@ -560,3 +560,53 @@
 "%lld rodando · %lld na fila" = "%lld rodando · %lld na fila";
 "Processar só no aparelho" = "Processar só no aparelho";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Atualizar lista (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in indisponível: cancelamento de eco não pôde ser ativado.";
+"Buscar modelos do servidor" = "Buscar modelos do servidor";
+"Buscar voz" = "Buscar voz";
+"Chave da API" = "Chave da API";
+"Compatível com OpenAI" = "Compatível com OpenAI";
+"Consultando…" = "Consultando…";
+"Endpoint de voz não configurado (falta a URL)." = "Endpoint de voz não configurado (falta a URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint não devolveu texto. Resposta: %@";
+"Endpoint próprio" = "Endpoint próprio";
+"Endpoint respondeu %d." = "Endpoint respondeu %d.";
+"Endpoint respondeu %d: %@" = "Endpoint respondeu %d: %@";
+"Escolher voz" = "Escolher voz";
+"Escolher…" = "Escolher…";
+"Formato" = "Formato";
+"Mostrar chave" = "Mostrar chave";
+"Nenhuma voz encontrada." = "Nenhuma voz encontrada.";
+"Nome do modelo" = "Nome do modelo";
+"O servidor não listou nenhum modelo." = "O servidor não listou nenhum modelo.";
+"OK" = "OK";
+"Ocultar chave" = "Ocultar chave";
+"Olá! É assim que a voz vai soar." = "Olá! É assim que a voz vai soar.";
+"Outro…" = "Outro…";
+"Só minhas vozes" = "Só minhas vozes";
+"URL base" = "URL base";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in indisponível: o detector de voz não pôde ser carregado.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in indisponível: o microfone não pôde ser aberto.";
+"O modelo guardado (%@) não está na lista do servidor." = "O modelo guardado (%@) não está na lista do servidor.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Sem HTTPS a chave da API viaja em texto puro pela rede.";
+"Gravando… toque para parar" = "Gravando… toque para parar";
+"Ouvi: %@" = "Ouvi: %@";
+"Testar reconhecimento" = "Testar reconhecimento";
+"Transcrevendo…" = "Transcrevendo…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Idioma da fala";
+"Seguir o app (%@)" = "Seguir o app (%@)";
+"Detectar automaticamente" = "Detectar automaticamente";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Áudio em streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "A reprodução do áudio foi interrompida.";
+"O endpoint aceitou o pedido e não enviou áudio." = "O endpoint aceitou o pedido e não enviou áudio.";

@@ -35,7 +35,7 @@
 "Bloquear o app" = "اپ لاک کول";
 "Brain" = "Brain";
 "Busca" = "لټون";
-"Buscar nos logs…" = "لاګونو کې لټون…";
+"Buscar nos logs…" = "په log کې لټون…";
 "Cabe na máquina (estimativa, melhor GPU)" = "ماشین کې ځاینه لري (اټکل، غوره GPU)";
 "Cadastro aberto" = "خلاص ثبت نام";
 "Caixa de entrada" = "ان باکس";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "دا بیرته نه ختلو وړ دی. تایید کوئ؟";
 "Lembretes" = "یادونې";
 "Library" = "Library";
-"Logs do sistema" = "د سیسټم لاګونه";
+"Logs do sistema" = "د سیسټم log";
 "Manter conectado" = "وصل پاتې کول";
 "Memórias do assistente" = "د مرستندویه یادونې";
 "Mesma pergunta para os dois…" = "دواړو ته ورته پوښتنه…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "ماډلونه او انجنونه";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "اصلي = د خبرو پر وخت ژوندی لیکلو (لکه Claude/Gemini). «ماډل» = آف لاین Whisper (په پای کې لیکي). ډاونلوډ شویو ماډلونو کې، ⚡ د Core ML ګړندی کونکی (Neural Engine) ډاونلوډ کوي ← خورا ګړندی.";
 "Nativo iOS" = "اصلي iOS";
-"Nenhum endpoint conectado." = "هیڅ اینډ پوینټ وصل ندی.";
+"Nenhum endpoint conectado." = "هیڅ endpoint نښلول شوی نه دی.";
 "Nenhum evento" = "هیڅ پیښه نشته";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "هیڅ MCP سرور وصل ندی. د ویب (مدیر) له لارې زیاتول وکړئ.";
 "Nenhuma conta" = "هیڅ حساب نشته";
@@ -141,7 +141,7 @@
 "Padrão" = "ډیفالټ";
 "Padrões de IA" = "د AI ډیفالټ ترتیبات";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "ډیرو چمتو کوونکو لپاره، د IMAP اعتبارنامې کار کوي. که 2FA لرئ App Password وکاروئ.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "پخوانۍ څېړنې";
 "Pede %@ antes de usar a senha salva." = "د ذخیره شوي پاسورډ د کارولو دمخه %@ غواړي.";
 "Pede %@ ao abrir e ao voltar pro app." = "اپ پرانیستلو او بیرته راتلو کې %@ غواړي.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "د انځور غوښتنه ← ډیفالټ چمتو کوونکی ← که ناکام او بدیل فعال وي، بل آزموي ← که ټول ناکام وي، روښانه تیروتنه. لاګونه حساس معلومات نه لري. ژور جوړول (txt2img, upscale, inpaint, outpaint, multi-GPU) د راتلونکي مرحلې لپاره DIFFUSION_COMFYUI_PLAN.md کې سند شوی.";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(مینځپانګه نشته)";
 "Ativar" = "فعالول";
 "Criar" = "جوړول";
-"Criar token" = "ټوکن جوړول";
+"Criar token" = "token جوړول";
 "Código 2FA" = "د 2FA کوډ";
 "Desafixar" = "پن لرې کول";
 "Desarquivar" = "له آرشیف نه راوتل";
@@ -232,7 +232,7 @@
 "Revogar admin" = "د مدیریت اجازه لرې کول";
 "Selecionar…" = "غوره کول…";
 "Sem favoritos" = "هیڅ خوښ شوي نشته";
-"Sem logs." = "هیڅ لاګ نشته.";
+"Sem logs." = "هیڅ log نشته.";
 "Sem notas ainda" = "لا هیڅ نوټ نشته";
 "Tornar admin" = "مدیر کول";
 "Tudo" = "هر څه";
@@ -264,8 +264,8 @@
 "Escrevendo" = "لیکي";
 "Espaços" = "ځایونه";
 "Executando" = "چلیږي";
-"Extract paralelo" = "موازي ایستل";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "موازي استخراج";
+"Timeout da extração (s)" = "د استخراج مهلت (ثانیې)";
 "Falha" = "ناکام";
 "Falha ao salvar" = "خوندي کول ناکام شول";
 "Fallbacks" = "بدیلونه";
@@ -300,8 +300,8 @@
 "Provedor" = "چمتو کوونکی";
 "Provedor usado para busca na web e pesquisa profunda." = "د ویب لټون او ژور لټون لپاره کارول شوی چمتو کوونکی.";
 "Resultados por busca" = "د هر لټون پایلې";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "د چلولو مهلت (ثانیې)";
+"ID do mecanismo de busca (CX)" = "د لټون انجن پېژندنه (CX)";
 "Senha atual" = "اوسنی پاسورډ";
 "Senha atualizada" = "پاسورډ تازه شو";
 "Servidor SMTP" = "SMTP سرور";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "اعظمي پړاوونه";
 "Orçamento de tokens (entrada)" = "د ټوکن بودیجه (ورودي)";
 "Teto duro de tokens" = "د ټوکن سخت برید";
-"Timeout do stream (s)" = "د سټریم وخت پای (ثانیه)";
+"Timeout do stream (s)" = "د stream مهلت (ثانیې)";
 "Limites de execução do agente e servidores MCP." = "د اجنټ د اجرا حدونه او د MCP سرورونه.";
 "Código & Arquivos" = "کوډ او فایلونه";
 "Busca & Web" = "لټون او ویب";
@@ -387,7 +387,7 @@
 "Atualizar" = "تازه کول";
 "Só um administrador pode atualizar a lista de modelos." = "یوازې مدیر کولی شي د ماډلونو لیست تازه کړي.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "هیڅ ماډل ونه موندل شو. ایا اینډ پوینټ ځواب ورکړ؟";
-"%lld modelo(s) encontrado(s)." = "%lld ماډلونه وموندل شول.";
+"Modelos encontrados: %lld" = "موندل شوي ماډلونه: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "په کیش کې هیڅ ماډل نشته. د اینډ پوینټ لټولو لپاره تازه کول وکاروئ.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "غږ شتون نلري: %@";
 "Falha ao descompactar o modelo Core ML." = "د Core ML موډل نه شو خلاصېدلی.";
 "Sessão expirada. Faça login novamente." = "غونډه پای ته ورسېده. بیا ننوځئ.";
-"Falha ao iniciar o stream" = "جریان پیل نه شو";
-"Erro no stream" = "د جریان تېروتنه";
+"Falha ao iniciar o stream" = "stream پیل نه شو";
+"Erro no stream" = "د stream تېروتنه";
 "Autenticar para entrar no Odysseus" = "Odysseus ته د ننوتلو لپاره تصدیق وکړئ";
 "Desbloquear o Odysseus" = "Odysseus خلاص کړئ";
 "Pacote sem alvo pip." = "کڅوړه pip هدف نلري.";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "ماډلونه وټاکه";
 "Padrão do servidor" = "د سرور تلواله";
 "Outros modelos" = "نور ماډلونه";
-"%lld modelo(s) · ativo" = "%lld ماډل · فعال";
-"%lld modelo(s) · desativado" = "%lld ماډل · غیرفعال";
+"Modelos: %lld · ativo" = "ماډلونه: %lld · فعال";
+"Modelos: %lld · desativado" = "ماډلونه: %lld · ناکاره";
 "· %lld rodadas" = "· %lld پړاوونه";
 "Personalizado…" = "دودیز…";
 "online" = "آنلاین";
@@ -542,8 +542,8 @@
 "indisponível" = "نشته";
 "%.0f GB livre / %.0f GB" = "%.0f GB خالي / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB خالي / %.1f GB";
-"http://host:porta" = "http://هوسټ:پورټ";
-"Organizado: %lld removida(s) (%lld → %lld)." = "سمال شوی: %lld لرې کړل شول (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "منظم شو: %lld ← %lld · لرې شوي: %lld";
 "Falha ao organizar: %@" = "سمول ناکام شو: %@";
 "Backup exportado." = "بیک اپ صادر شو.";
 "Salvo." = "خونډ شو.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld روان دي · %lld په کتار کې";
 "Processar só no aparelho" = "یوازې په وسیله کې پروسس کول";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "یوازې په وسیله کې پروسس کول غږ Apple ته نه لېږي، خو آفلاین ماډل ډېرې کلمې تېروځي. که لیکنه ښه نه وي، مړ یې پرېږده.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "لیست تازه کړئ (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in شتون نلري: د اکو لغوه کول فعال نه شول.";
+"Buscar modelos do servidor" = "له سرور څخه ماډلونه راوړه";
+"Buscar voz" = "غږ ولټوئ";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "له OpenAI سره برابر";
+"Consultando…" = "پوښتنه روانه ده…";
+"Endpoint de voz não configurado (falta a URL)." = "د غږ endpoint نه دی تنظیم شوی (URL نشته).";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint هېڅ متن ونه ګرځاوه. ځواب: %@";
+"Endpoint próprio" = "خپل endpoint";
+"Endpoint respondeu %d." = "endpoint %d ځواب ورکړ.";
+"Endpoint respondeu %d: %@" = "endpoint %d ځواب ورکړ: %@";
+"Escolher voz" = "غږ وټاکئ";
+"Escolher…" = "وټاکئ…";
+"Formato" = "بڼه";
+"Mostrar chave" = "کلي وښیه";
+"Nenhuma voz encontrada." = "هېڅ غږ ونه موندل شو.";
+"Nome do modelo" = "د ماډل نوم";
+"O servidor não listou nenhum modelo." = "سرور هېڅ ماډل ونه لیست کړ.";
+"OK" = "سمه ده";
+"Ocultar chave" = "کلي پټ کړه";
+"Olá! É assim que a voz vai soar." = "سلام! غږ به داسې واورېدل شي.";
+"Outro…" = "بل…";
+"Só minhas vozes" = "یوازې زما غږونه";
+"URL base" = "بنسټیز URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"خپل endpoint\" = هره هغه خدمت چې د OpenAI د غږ API سره برابر وي (POST /audio/transcriptions). په وسیله کې هېڅ نه ډاونلوډېږي.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in شتون نلري: د غږ کشف کوونکی نه شو پورته کېدای.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in شتون نلري: مایکروفون نه شو پرانیستل کېدای.";
+"O modelo guardado (%@) não está na lista do servidor." = "خوندي شوی ماډل (%@) د سرور په لیست کې نشته.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "پرته له HTTPS، API key په ساده متن کې د شبکې له لارې ځي.";
+"Gravando… toque para parar" = "ثبتول… د ودرولو لپاره کېکاږئ";
+"Ouvi: %@" = "واورېدل: %@";
+"Testar reconhecimento" = "پېژندنه وازموئ";
+"Transcrevendo…" = "لیکل کیږي…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "د خبرو ژبه";
+"Seguir o app (%@)" = "د اپلیکیشن په شان (%@)";
+"Detectar automaticamente" = "پخپله پېژندل";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "جوړ شوی غږ د اپلیکیشن ژبې پیروي کوي. پېژندنه خو پورته ټاکل شوې ژبه کاروي؛ اتوماتیک پېژندل په لنډ یا شور لرونکي غږ کې ډېرې تېروتنې کوي، او د iOS جوړ شوې پېژندنه هېڅ ژبه نه پېژني — هلته تل د اپلیکیشن ژبه کار کوي.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "د streaming غږ";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "روان اوریدل لومړۍ جمله د بشپړې فایلې د انتظار پرځای هغه مهال غږوي چې لا جوړېږي. یوازې په خبرو اترو حالت (غږ پرده) کې کار کوي؛ راتلونکې جملې هرومرو د مخکینۍ د غږېدو پر مهال چمتو کېږي. که غږ ودرېږي، ویې بندوئ.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "د غږ غږول ودرېدل.";
+"O endpoint aceitou o pedido e não enviou áudio." = "پای ټکي غوښتنه ومنله او هیڅ غږ یې ونه لېږه.";

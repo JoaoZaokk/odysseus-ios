@@ -141,7 +141,7 @@
 "Padrão" = "기본값";
 "Padrões de IA" = "AI 기본값";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "대부분의 제공자는 IMAP 자격 증명이 그대로 사용됩니다. 2FA를 사용하는 경우 App Password를 사용하세요.";
-"Past research" = "이전 연구";
+"Pesquisas anteriores" = "지난 리서치";
 "Pede %@ antes de usar a senha salva." = "저장된 비밀번호를 사용하기 전에 %@을(를) 요청합니다.";
 "Pede %@ ao abrir e ao voltar pro app." = "앱을 열거나 돌아올 때 %@을(를) 요청합니다.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "이미지 요청 → 기본 제공자 → 실패하고 폴백이 켜져 있으면 다음을 순서대로 시도 → 모두 실패하면 명확한 오류. 로그에는 민감한 데이터가 없습니다. 심화 생성(txt2img, upscale, inpaint, outpaint, multi-GPU)은 다음 단계를 위해 DIFFUSION_COMFYUI_PLAN.md에 문서화되어 있습니다.";
@@ -185,7 +185,7 @@
 "Testar" = "테스트";
 "Testar lembrete" = "알림 테스트";
 "Texto → Voz" = "텍스트 → 음성";
-"Timeout" = "Timeout";
+"Timeout" = "제한 시간";
 "Todos" = "전체";
 "Toque em + para conectar uma conta IMAP." = "+를 눌러 IMAP 계정을 연결하세요.";
 "Toque em + para criar sua primeira nota." = "+를 눌러 첫 번째 메모를 만드세요.";
@@ -230,7 +230,7 @@
 "Revogar admin" = "관리자 권한 취소";
 "Selecionar…" = "선택…";
 "Sem favoritos" = "즐겨찾기 없음";
-"Sem logs." = "로그 없음.";
+"Sem logs." = "로그가 없습니다.";
 "Sem notas ainda" = "아직 메모 없음";
 "Tornar admin" = "관리자로 설정";
 "Tudo" = "전체";
@@ -262,8 +262,8 @@
 "Escrevendo" = "작성 중";
 "Espaços" = "스페이스";
 "Executando" = "실행 중";
-"Extract paralelo" = "병렬 추출";
-"Extract timeout (s)" = "추출 제한 시간(초)";
+"Extração paralela" = "병렬 추출";
+"Timeout da extração (s)" = "추출 제한 시간(초)";
 "Falha" = "실패";
 "Falha ao salvar" = "저장 실패";
 "Fallbacks" = "폴백";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP 포트";
 "Provedor usado para busca na web e pesquisa profunda." = "웹 검색 및 심층 리서치에 사용되는 제공자.";
 "Resultados por busca" = "검색당 결과 수";
-"Run timeout (s)" = "실행 제한 시간(초)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "실행 제한 시간(초)";
+"ID do mecanismo de busca (CX)" = "검색 엔진 ID(CX)";
 "Senha atual" = "현재 비밀번호";
 "Senha atualizada" = "비밀번호가 업데이트되었습니다";
 "Servidor SMTP" = "SMTP 서버";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "최대 라운드";
 "Orçamento de tokens (entrada)" = "토큰 예산(입력)";
 "Teto duro de tokens" = "토큰 하드 한도";
-"Timeout do stream (s)" = "스트림 시간 초과(초)";
+"Timeout do stream (s)" = "스트림 제한 시간(초)";
 "Limites de execução do agente e servidores MCP." = "에이전트 실행 제한 및 MCP 서버.";
 "Código & Arquivos" = "코드 및 파일";
 "Busca & Web" = "검색 및 웹";
@@ -376,7 +376,7 @@
 
 // v1.6 — agent limits & model endpoints
 "%lld mensagens antigas saíram do contexto para caber no limite." = "한도에 맞추기 위해 오래된 메시지 %lld 개가 컨텍스트에서 제거되었습니다.";
-"%lld modelo(s) encontrado(s)." = "모델 %lld 개를 찾았습니다.";
+"Modelos encontrados: %lld" = "찾은 모델: %lld";
 "Atualizar" = "새로고침";
 "Mensagens antigas saíram do contexto para caber no limite." = "한도에 맞추기 위해 오래된 메시지가 컨텍스트에서 제거되었습니다.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "모델을 찾을 수 없습니다. 엔드포인트가 응답했나요?";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "모델 선택";
 "Padrão do servidor" = "서버 기본값";
 "Outros modelos" = "기타 모델";
-"%lld modelo(s) · ativo" = "모델 %lld개 · 활성";
-"%lld modelo(s) · desativado" = "모델 %lld개 · 비활성";
+"Modelos: %lld · ativo" = "모델: %lld · 켜짐";
+"Modelos: %lld · desativado" = "모델: %lld · 꺼짐";
 "· %lld rodadas" = "· %lld 라운드";
 "Personalizado…" = "사용자 지정…";
 "online" = "온라인";
@@ -542,8 +542,8 @@
 "indisponível" = "사용 불가";
 "%.0f GB livre / %.0f GB" = "여유 %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "여유 %.1f GB / %.1f GB";
-"http://host:porta" = "http://호스트:포트";
-"Organizado: %lld removida(s) (%lld → %lld)." = "정리됨: %lld개 삭제됨(%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "정리됨: %lld → %lld · 삭제: %lld";
 "Falha ao organizar: %@" = "정리 실패: %@";
 "Backup exportado." = "백업을 내보냈습니다.";
 "Salvo." = "저장됨.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "실행 중 %lld · 대기 중 %lld";
 "Processar só no aparelho" = "기기에서만 처리";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "기기에서만 처리하면 오디오가 Apple로 전송되지 않지만 오프라인 모델은 단어를 더 많이 틀립니다. 인식이 나쁘면 꺼 두세요.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "목록 새로고침 (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in을 사용할 수 없음: 에코 제거를 켤 수 없습니다.";
+"Buscar modelos do servidor" = "서버에서 모델 가져오기";
+"Buscar voz" = "음성 검색";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI 호환";
+"Consultando…" = "조회 중…";
+"Endpoint de voz não configurado (falta a URL)." = "음성 엔드포인트가 설정되지 않았습니다(URL 없음).";
+"Endpoint não devolveu texto. Resposta: %@" = "엔드포인트가 텍스트를 반환하지 않았습니다. 응답: %@";
+"Endpoint próprio" = "자체 엔드포인트";
+"Endpoint respondeu %d." = "엔드포인트 응답: %d.";
+"Endpoint respondeu %d: %@" = "엔드포인트 응답: %d: %@";
+"Escolher voz" = "음성 선택";
+"Escolher…" = "선택…";
+"Formato" = "형식";
+"Mostrar chave" = "키 표시";
+"Nenhuma voz encontrada." = "음성을 찾을 수 없습니다.";
+"Nome do modelo" = "모델 이름";
+"O servidor não listou nenhum modelo." = "서버가 모델을 하나도 나열하지 않았습니다.";
+"OK" = "확인";
+"Ocultar chave" = "키 숨기기";
+"Olá! É assim que a voz vai soar." = "안녕하세요! 목소리는 이렇게 들립니다.";
+"Outro…" = "기타…";
+"Só minhas vozes" = "내 음성만";
+"URL base" = "기본 URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"직접 엔드포인트\" = OpenAI 오디오 API와 호환되는 모든 서비스(POST /audio/transcriptions). 기기에 아무것도 다운로드하지 않습니다.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in을 사용할 수 없음: 음성 감지기를 불러오지 못했습니다.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in을 사용할 수 없음: 마이크를 열지 못했습니다.";
+"O modelo guardado (%@) não está na lista do servidor." = "저장된 모델(%@)이 서버 목록에 없습니다.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS가 아니면 API key가 네트워크를 평문으로 지나갑니다.";
+"Gravando… toque para parar" = "녹음 중… 탭하여 중지";
+"Ouvi: %@" = "들은 내용: %@";
+"Testar reconhecimento" = "인식 테스트";
+"Transcrevendo…" = "받아쓰는 중…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "말하는 언어";
+"Seguir o app (%@)" = "앱 따르기 (%@)";
+"Detectar automaticamente" = "자동으로 감지";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "내장 음성은 앱 언어를 따릅니다. 인식은 위에서 선택한 언어를 사용합니다. 자동 감지는 짧거나 잡음이 많은 오디오에서 더 자주 틀리고, iOS 내장 인식은 언어를 전혀 감지하지 못합니다 — 거기서는 항상 앱 언어가 적용됩니다.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "스트리밍 오디오";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "스트리밍 재생은 파일 전체를 기다리지 않고 첫 문장을 생성되는 도중에 재생합니다. 대화 모드(음성 화면)에서만 적용되며, 이후 문장은 앞 문장이 재생되는 동안 미리 준비됩니다. 소리가 끊기면 끄세요.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "오디오 재생이 중단되었습니다.";
+"O endpoint aceitou o pedido e não enviou áudio." = "엔드포인트가 요청을 수락했지만 오디오를 보내지 않았습니다.";

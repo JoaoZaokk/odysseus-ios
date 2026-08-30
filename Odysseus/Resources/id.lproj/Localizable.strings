@@ -141,7 +141,7 @@
 "Padrão" = "Default";
 "Padrões de IA" = "Default AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Untuk sebagian besar penyedia, kredensial IMAP sudah cukup. Gunakan App Password jika Anda mengaktifkan 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Riset sebelumnya";
 "Pede %@ antes de usar a senha salva." = "Meminta %@ sebelum menggunakan kata sandi tersimpan.";
 "Pede %@ ao abrir e ao voltar pro app." = "Meminta %@ saat membuka dan kembali ke aplikasi.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Permintaan gambar → penyedia default → jika gagal dan cadangan aktif, coba yang berikutnya → jika semua gagal, pesan kesalahan jelas. Log tidak mengandung data sensitif. Pembuatan mendalam (txt2img, upscale, inpaint, outpaint, multi-GPU) didokumentasikan dalam DIFFUSION_COMFYUI_PLAN.md untuk fase berikutnya.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Sedang menulis";
 "Espaços" = "Ruang";
 "Executando" = "Berjalan";
-"Extract paralelo" = "Ekstrak paralel";
-"Extract timeout (s)" = "Batas waktu ekstrak (dtk)";
+"Extração paralela" = "Ekstraksi paralel";
+"Timeout da extração (s)" = "Waktu habis ekstraksi (dtk)";
 "Falha" = "Gagal";
 "Falha ao salvar" = "Gagal menyimpan";
 "Fallbacks" = "Cadangan";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Port SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Penyedia yang digunakan untuk pencarian web dan riset mendalam.";
 "Resultados por busca" = "Hasil per pencarian";
-"Run timeout (s)" = "Batas waktu eksekusi (dtk)";
-"Search Engine ID (CX)" = "ID Mesin Pencari (CX)";
+"Timeout de execução (s)" = "Waktu habis eksekusi (dtk)";
+"ID do mecanismo de busca (CX)" = "ID mesin pencari (CX)";
 "Senha atual" = "Kata sandi saat ini";
 "Senha atualizada" = "Kata sandi diperbarui";
 "Servidor SMTP" = "Server SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "Segarkan";
 "Só um administrador pode atualizar a lista de modelos." = "Hanya admin yang dapat menyegarkan daftar model.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Tidak ada model ditemukan. Apakah endpoint merespons?";
-"%lld modelo(s) encontrado(s)." = "Ditemukan %lld model.";
+"Modelos encontrados: %lld" = "Model ditemukan: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Belum ada model dalam cache. Gunakan Segarkan untuk memeriksa endpoint.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Audio tidak tersedia: %@";
 "Falha ao descompactar o modelo Core ML." = "Gagal mengekstrak model Core ML.";
 "Sessão expirada. Faça login novamente." = "Sesi kedaluwarsa. Silakan masuk lagi.";
-"Falha ao iniciar o stream" = "Tidak dapat memulai aliran";
-"Erro no stream" = "Kesalahan aliran";
+"Falha ao iniciar o stream" = "Gagal memulai stream";
+"Erro no stream" = "Kesalahan stream";
 "Autenticar para entrar no Odysseus" = "Autentikasi untuk masuk ke Odysseus";
 "Desbloquear o Odysseus" = "Buka kunci Odysseus";
 "Pacote sem alvo pip." = "Paket tidak punya target pip.";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Pilih model";
 "Padrão do servidor" = "Bawaan server";
 "Outros modelos" = "Model lainnya";
-"%lld modelo(s) · ativo" = "%lld model · aktif";
-"%lld modelo(s) · desativado" = "%lld model · nonaktif";
+"Modelos: %lld · ativo" = "Model: %lld · aktif";
+"Modelos: %lld · desativado" = "Model: %lld · nonaktif";
 "· %lld rodadas" = "· %lld putaran";
 "Personalizado…" = "Kustom…";
 "online" = "daring";
@@ -542,8 +542,8 @@
 "indisponível" = "tidak tersedia";
 "%.0f GB livre / %.0f GB" = "%.0f GB bebas / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB bebas / %.1f GB";
-"http://host:porta" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Terorganisir: %lld dihapus (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Dirapikan: %lld → %lld · dihapus: %lld";
 "Falha ao organizar: %@" = "Gagal mengorganisir: %@";
 "Backup exportado." = "Cadangan diekspor.";
 "Salvo." = "Tersimpan.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld berjalan · %lld dalam antrean";
 "Processar só no aparelho" = "Proses hanya di perangkat";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Memproses hanya di perangkat tidak mengirim audio ke Apple, tetapi model luring lebih sering salah kata. Biarkan mati jika transkripsi buruk.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Segarkan daftar (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in tidak tersedia: peredaman gema tidak dapat diaktifkan.";
+"Buscar modelos do servidor" = "Ambil model dari server";
+"Buscar voz" = "Cari suara";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Kompatibel dengan OpenAI";
+"Consultando…" = "Meminta…";
+"Endpoint de voz não configurado (falta a URL)." = "Endpoint suara belum diatur (URL tidak ada).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint tidak mengembalikan teks. Respons: %@";
+"Endpoint próprio" = "Endpoint sendiri";
+"Endpoint respondeu %d." = "Endpoint menjawab %d.";
+"Endpoint respondeu %d: %@" = "Endpoint menjawab %d: %@";
+"Escolher voz" = "Pilih suara";
+"Escolher…" = "Pilih…";
+"Formato" = "Format";
+"Mostrar chave" = "Tampilkan kunci";
+"Nenhuma voz encontrada." = "Tidak ada suara ditemukan.";
+"Nome do modelo" = "Nama model";
+"O servidor não listou nenhum modelo." = "Server tidak mencantumkan model apa pun.";
+"OK" = "OK";
+"Ocultar chave" = "Sembunyikan kunci";
+"Olá! É assim que a voz vai soar." = "Halo! Beginilah suaranya nanti.";
+"Outro…" = "Lainnya…";
+"Só minhas vozes" = "Hanya suara saya";
+"URL base" = "URL dasar";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Endpoint sendiri\" = layanan apa pun yang kompatibel dengan audio API OpenAI (POST /audio/transcriptions). Tidak ada yang diunduh ke perangkat.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in tidak tersedia: pendeteksi suara tidak dapat dimuat.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in tidak tersedia: mikrofon tidak dapat dibuka.";
+"O modelo guardado (%@) não está na lista do servidor." = "Model tersimpan (%@) tidak ada dalam daftar server.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Tanpa HTTPS, API key melintasi jaringan sebagai teks biasa.";
+"Gravando… toque para parar" = "Merekam… ketuk untuk berhenti";
+"Ouvi: %@" = "Terdengar: %@";
+"Testar reconhecimento" = "Uji pengenalan";
+"Transcrevendo…" = "Mentranskripsi…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Bahasa ucapan";
+"Seguir o app (%@)" = "Ikuti aplikasi (%@)";
+"Detectar automaticamente" = "Deteksi otomatis";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Suara bawaan mengikuti bahasa aplikasi. Pengenalan memakai bahasa yang dipilih di atas; deteksi otomatis lebih sering salah pada audio pendek atau berisik, dan pengenalan bawaan iOS sama sekali tidak mendeteksi bahasa — di sana bahasa aplikasi selalu berlaku.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Audio streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Audio streaming memutar kalimat pertama saat masih dibuat, alih-alih menunggu seluruh berkas. Hanya berlaku di mode percakapan (layar suara); kalimat berikutnya tetap disiapkan saat kalimat sebelumnya diputar. Matikan jika audio tersendat.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Pemutaran audio terputus.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Endpoint menerima permintaan dan tidak mengirim audio.";

@@ -141,7 +141,7 @@
 "Padrão" = "Standard";
 "Padrões de IA" = "KI-Standards";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Bei de meeschte Ubidder funktionéieren deng IMAP-Umeldungsdaten. Benotz e App-Passwuert, wann s du 2FA aktivéiert hues.";
-"Past research" = "Vergaangen Fuerschungen";
+"Pesquisas anteriores" = "Fréier Recherchen";
 "Pede %@ antes de usar a senha salva." = "Freet no %@, ier d'gespäichert Passwuert benotzt gëtt.";
 "Pede %@ ao abrir e ao voltar pro app." = "Freet no %@, wann d'App opgemaach oder erëm opgeruff gëtt.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Bildufro → Standard-Ubidder → wa se feelt an de Fallback un ass, probéiert en déi nächst → wann all feelen, e klore Feeler. D'Logs enthalen keng sensibel Date. Déif Generatioun (txt2img, Upscale, Inpaint, Outpaint, Multi-GPU) ass an DIFFUSION_COMFYUI_PLAN.md fir déi nächst Phase dokumentéiert.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Schreift";
 "Espaços" = "Raim";
 "Executando" = "Leeft";
-"Extract paralelo" = "Paralleler Extract";
-"Extract timeout (s)" = "Extract-Timeout (s)";
+"Extração paralela" = "Parallel Extraktioun";
+"Timeout da extração (s)" = "Timeout vun der Extraktioun (s)";
 "Falha" = "Feelgeschloen";
 "Falha ao salvar" = "Feeler beim Späicheren";
 "Fallbacks" = "Fallbacks";
@@ -300,8 +300,8 @@
 "Provedor" = "Ubidder";
 "Provedor usado para busca na web e pesquisa profunda." = "Ubidder, deen fir Web-Sich an déif Fuerschung benotzt gëtt.";
 "Resultados por busca" = "Resultater pro Sich";
-"Run timeout (s)" = "Run-Timeout (s)";
-"Search Engine ID (CX)" = "Sichmaschinn-ID (CX)";
+"Timeout de execução (s)" = "Timeout vun der Ausféierung (s)";
+"ID do mecanismo de busca (CX)" = "Sichmaschinn-ID (CX)";
 "Senha atual" = "Aktuellt Passwuert";
 "Senha atualizada" = "Passwuert aktualiséiert";
 "Servidor SMTP" = "SMTP-Server";
@@ -387,7 +387,7 @@
 "Atualizar" = "Aktualiséieren";
 "Só um administrador pode atualizar a lista de modelos." = "Nëmmen en Admin kann d'Lëscht vun de Modeller aktualiséieren.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Kee Modell fonnt. Huet den Endpoint geäntwert?";
-"%lld modelo(s) encontrado(s)." = "%lld Modeller fonnt.";
+"Modelos encontrados: %lld" = "Fonnt Modeller: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Keng Modeller am Cache. Benotz Aktualiséieren, fir den Endpoint ze préiwen.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Modeller auswielen";
 "Padrão do servidor" = "Server-Standard";
 "Outros modelos" = "Aner Modeller";
-"%lld modelo(s) · ativo" = "%lld Modell(er) · aktiv";
-"%lld modelo(s) · desativado" = "%lld Modell(er) · deaktivéiert";
+"Modelos: %lld · ativo" = "Modeller: %lld · aktiv";
+"Modelos: %lld · desativado" = "Modeller: %lld · aus";
 "· %lld rodadas" = "· %lld Ronnen";
 "Personalizado…" = "Personaliséiert…";
 "online" = "online";
@@ -542,8 +542,8 @@
 "indisponível" = "net verfügbar";
 "%.0f GB livre / %.0f GB" = "%.0f GB fräi / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB fräi / %.1f GB";
-"http://host:porta" = "http://Server:Port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organiséiert: %lld geläscht (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Opgeraumt: %lld → %lld · ewechgeholl: %lld";
 "Falha ao organizar: %@" = "Organiséieren feelgeschloen: %@";
 "Backup exportado." = "Backup exportéiert.";
 "Salvo." = "Gespäichert.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld lafen · %lld an der Waardeschlange";
 "Processar só no aparelho" = "Nëmmen um Apparat veraarbechten";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Nëmmen um Apparat ze veraarbechten schéckt keen Audio un Apple, mee d'Offline-Modell mécht méi Feeler. Loosst et aus, wann d'Transkriptioun schlecht ass.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Lëscht aktualiséieren (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in net verfügbar: Echo-Ënnerdréckung konnt net aktivéiert ginn.";
+"Buscar modelos do servidor" = "Modeller vum Server huelen";
+"Buscar voz" = "Stëmm sichen";
+"Chave da API" = "API-Schlëssel";
+"Compatível com OpenAI" = "OpenAI-kompatibel";
+"Consultando…" = "Ufro leeft…";
+"Endpoint de voz não configurado (falta a URL)." = "Sprooch-Endpoint net konfiguréiert (URL feelt).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint huet keen Text geliwwert. Äntwert: %@";
+"Endpoint próprio" = "Eegenen Endpoint";
+"Endpoint respondeu %d." = "Endpoint huet %d geäntwert.";
+"Endpoint respondeu %d: %@" = "Endpoint huet %d geäntwert: %@";
+"Escolher voz" = "Stëmm wielen";
+"Escolher…" = "Wielen…";
+"Formato" = "Format";
+"Mostrar chave" = "Schlëssel weisen";
+"Nenhuma voz encontrada." = "Keng Stëmm fonnt.";
+"Nome do modelo" = "Modellnumm";
+"O servidor não listou nenhum modelo." = "De Server huet keng Modeller opgelëscht.";
+"OK" = "OK";
+"Ocultar chave" = "Schlëssel verstoppen";
+"Olá! É assim que a voz vai soar." = "Moien! Sou wäert d’Stëmm kléngen.";
+"Outro…" = "Anerer…";
+"Só minhas vozes" = "Nëmme meng Stëmmen";
+"URL base" = "Basis-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Eegenen Endpoint\" = all Service, dee mat der Audio-API vun OpenAI kompatibel ass (POST /audio/transcriptions). Et gëtt näischt op den Apparat gelueden.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in net verfügbar: De Sproochdetekter konnt net gelueden ginn.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in net verfügbar: De Mikro konnt net opgemaach ginn.";
+"O modelo guardado (%@) não está na lista do servidor." = "Dat gespäichert Modell (%@) steet net op der Lëscht vum Server.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Ouni HTTPS geet den API-Schlëssel am Kloertext iwwer d'Netz.";
+"Gravando… toque para parar" = "Ophuelen… tippen fir ze stoppen";
+"Ouvi: %@" = "Gehéiert: %@";
+"Testar reconhecimento" = "Erkennung testen";
+"Transcrevendo…" = "Transkribéieren…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Sprooch vum Schwätzen";
+"Seguir o app (%@)" = "Wéi d'App (%@)";
+"Detectar automaticamente" = "Automatesch erkennen";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Déi agebaute Stëmm follegt der App-Sprooch. D'Erkennung benotzt awer déi uewe gewielte Sprooch; automatescht Erkenne mécht méi Feeler bei kuerzem oder verrauschtem Toun, an d'agebaute Erkennung vun iOS erkennt guer keng Sprooch — do gëllt ëmmer d'App-Sprooch.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming-Toun";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streaming-Toun spillt de éischte Saz scho wärend hie generéiert gëtt, amplaz op déi ganz Datei ze waarden. Gëllt nëmmen am Gespréichsmodus (dem Sproochbildschierm); déi weider Sätz gi souwisou virbereet, wärend dee viregen leeft. Ausschalten, wann den Toun hackt.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "D’Audiowidderginn gouf ënnerbrach.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Den Endpunkt huet d’Ufro ugeholl a kee Audio geschéckt.";

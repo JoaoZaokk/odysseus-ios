@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "Odysseus benotzt de Mikro, fir datt Dir Är Noriichten diktéiere kënnt.";
-"NSSpeechRecognitionUsageDescription" = "Odysseus setzt Är Stëmm direkt um Apparat an Text ëm, sou datt Dir Är Noriichten diktéiere kënnt.";
+"NSMicrophoneUsageDescription" = "Fir Noriichten ze diktéieren an — am Fräisprechmodus — d’KI z’ënnerbriechen, wärend se schwätzt.";
+"NSSpeechRecognitionUsageDescription" = "Fir Är Sprooch an Text ëmzewandelen — um Apparat oder um Déngscht, deen Dir an den Astellungen auswielt.";
 "NSLocalNetworkUsageDescription" = "Odysseus brauch Zougrëff op d'lokaalt Netz, fir Äre KI-Server an Ärem Netz z'erreechen.";
 "NSFaceIDUsageDescription" = "Odysseus benotzt Face ID, fir d'App ze spären an Iech automatesch unzemellen (optional).";

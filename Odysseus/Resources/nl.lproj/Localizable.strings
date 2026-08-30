@@ -141,7 +141,7 @@
 "Padrão" = "Standaard";
 "Padrões de IA" = "AI-standaardinstellingen";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Voor de meeste providers werken IMAP-inloggegevens. Gebruik een app-wachtwoord als je 2FA hebt.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Eerdere onderzoeken";
 "Pede %@ antes de usar a senha salva." = "Vraagt %@ voordat het opgeslagen wachtwoord wordt gebruikt.";
 "Pede %@ ao abrir e ao voltar pro app." = "Vraagt %@ bij het openen en terugkeren naar de app.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Afbeeldingsverzoek → standaardprovider → als dat mislukt en fallback is ingeschakeld, worden de volgende geprobeerd → als alles mislukt, duidelijke foutmelding. Logboeken bevatten geen gevoelige gegevens. Geavanceerde generatie (txt2img, upscale, inpaint, outpaint, multi-GPU) is gedocumenteerd in DIFFUSION_COMFYUI_PLAN.md voor de volgende fase.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Schrijven";
 "Espaços" = "Spaties";
 "Executando" = "Bezig";
-"Extract paralelo" = "Parallelle extract";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Parallelle extractie";
+"Timeout da extração (s)" = "Timeout van de extractie (s)";
 "Falha" = "Mislukt";
 "Falha ao salvar" = "Opslaan mislukt";
 "Fallbacks" = "Fallbacks";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP-poort";
 "Provedor usado para busca na web e pesquisa profunda." = "Provider die wordt gebruikt voor webzoekopdrachten en diepgaand onderzoek.";
 "Resultados por busca" = "Resultaten per zoekopdracht";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout van de uitvoering (s)";
+"ID do mecanismo de busca (CX)" = "Zoekmachine-ID (CX)";
 "Senha atual" = "Huidig wachtwoord";
 "Senha atualizada" = "Wachtwoord bijgewerkt";
 "Servidor SMTP" = "SMTP-server";
@@ -389,7 +389,7 @@
 "Atualizar" = "Vernieuwen";
 "Só um administrador pode atualizar a lista de modelos." = "Alleen een beheerder kan de modellenlijst vernieuwen.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Geen modellen gevonden. Heeft de endpoint gereageerd?";
-"%lld modelo(s) encontrado(s)." = "%lld modellen gevonden.";
+"Modelos encontrados: %lld" = "Gevonden modellen: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Geen modellen in cache. Gebruik Vernieuwen om de endpoint te sonderen.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Modellen kiezen";
 "Padrão do servidor" = "Serverstandaard";
 "Outros modelos" = "Andere modellen";
-"%lld modelo(s) · ativo" = "%lld model(len) · actief";
-"%lld modelo(s) · desativado" = "%lld model(len) · uitgeschakeld";
+"Modelos: %lld · ativo" = "Modellen: %lld · actief";
+"Modelos: %lld · desativado" = "Modellen: %lld · uit";
 "· %lld rodadas" = "· %lld rondes";
 "Personalizado…" = "Aangepast…";
 "online" = "online";
@@ -544,8 +544,8 @@
 "indisponível" = "niet beschikbaar";
 "%.0f GB livre / %.0f GB" = "%.0f GB vrij / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB vrij / %.1f GB";
-"http://host:porta" = "http://host:poort";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Georganiseerd: %lld verwijderd (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Opgeruimd: %lld → %lld · verwijderd: %lld";
 "Falha ao organizar: %@" = "Organiseren mislukt: %@";
 "Backup exportado." = "Back-up geëxporteerd.";
 "Salvo." = "Opgeslagen.";
@@ -569,3 +569,53 @@
 "%lld rodando · %lld na fila" = "%lld draaien · %lld in wachtrij";
 "Processar só no aparelho" = "Alleen op het apparaat verwerken";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Alleen op het apparaat verwerken stuurt geen audio naar Apple, maar het offlinemodel maakt meer fouten. Laat het uit als de transcriptie slecht is.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Lijst verversen (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in niet beschikbaar: echo-onderdrukking kon niet worden ingeschakeld.";
+"Buscar modelos do servidor" = "Modellen van server ophalen";
+"Buscar voz" = "Stem zoeken";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-compatibel";
+"Consultando…" = "Opvragen…";
+"Endpoint de voz não configurado (falta a URL)." = "Spraak-endpoint niet ingesteld (URL ontbreekt).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint gaf geen tekst terug. Antwoord: %@";
+"Endpoint próprio" = "Eigen endpoint";
+"Endpoint respondeu %d." = "Endpoint antwoordde %d.";
+"Endpoint respondeu %d: %@" = "Endpoint antwoordde %d: %@";
+"Escolher voz" = "Stem kiezen";
+"Escolher…" = "Kiezen…";
+"Formato" = "Formaat";
+"Mostrar chave" = "Sleutel tonen";
+"Nenhuma voz encontrada." = "Geen stem gevonden.";
+"Nome do modelo" = "Modelnaam";
+"O servidor não listou nenhum modelo." = "De server gaf geen modellen op.";
+"OK" = "OK";
+"Ocultar chave" = "Sleutel verbergen";
+"Olá! É assim que a voz vai soar." = "Hallo! Zo gaat de stem klinken.";
+"Outro…" = "Anders…";
+"Só minhas vozes" = "Alleen mijn stemmen";
+"URL base" = "Basis-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Eigen endpoint\" = elke dienst die compatibel is met de audio-API van OpenAI (POST /audio/transcriptions). Er wordt niets naar het apparaat gedownload.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in niet beschikbaar: de spraakdetector kon niet worden geladen.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in niet beschikbaar: de microfoon kon niet worden geopend.";
+"O modelo guardado (%@) não está na lista do servidor." = "Het opgeslagen model (%@) staat niet in de lijst van de server.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Zonder HTTPS gaat de API key onversleuteld over het netwerk.";
+"Gravando… toque para parar" = "Opnemen… tik om te stoppen";
+"Ouvi: %@" = "Gehoord: %@";
+"Testar reconhecimento" = "Herkenning testen";
+"Transcrevendo…" = "Transcriberen…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Taal van de spraak";
+"Seguir o app (%@)" = "Volg de app (%@)";
+"Detectar automaticamente" = "Automatisch detecteren";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "De ingebouwde stem volgt de taal van de app. De herkenning gebruikt de hierboven gekozen taal; automatische detectie maakt meer fouten bij korte of ruizige audio, en de ingebouwde herkenning van iOS detecteert helemaal geen taal — daar geldt altijd de taal van de app.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming-audio";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streaming-audio speelt de eerste zin al af terwijl die nog wordt gegenereerd, in plaats van op het hele bestand te wachten. Dit geldt alleen in de gespreksmodus (het spraakscherm); latere zinnen worden toch al voorbereid terwijl de vorige speelt. Zet het uit als het geluid hapert.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "De audioweergave is onderbroken.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Het endpoint accepteerde het verzoek en stuurde geen audio.";

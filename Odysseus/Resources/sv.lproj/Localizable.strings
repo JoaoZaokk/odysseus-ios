@@ -113,7 +113,7 @@
 "Modelos e engines" = "Modeller och motorer";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativ = livetranskribering medan du talar (som Claude/Gemini). \"Modell\" = Whisper offline (transkriberar i slutet). För nedladdade modeller laddar ⚡ ner Core ML-acceleratorn (Neural Engine) → mycket snabbare.";
 "Nativo iOS" = "Nativ iOS";
-"Nenhum endpoint conectado." = "Ingen slutpunkt ansluten.";
+"Nenhum endpoint conectado." = "Ingen endpoint ansluten.";
 "Nenhum evento" = "Inga händelser";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Ingen MCP-server ansluten. Lägg till en via webben (Admin).";
 "Nenhuma conta" = "Inga konton";
@@ -141,7 +141,7 @@
 "Padrão" = "Standard";
 "Padrões de IA" = "AI-standardinställningar";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "För de flesta leverantörer fungerar dina IMAP-uppgifter. Använd ett app-lösenord om du har 2FA.";
-"Past research" = "Tidigare undersökningar";
+"Pesquisas anteriores" = "Tidigare efterforskningar";
 "Pede %@ antes de usar a senha salva." = "Frågar efter %@ innan det sparade lösenordet används.";
 "Pede %@ ao abrir e ao voltar pro app." = "Frågar efter %@ vid öppning och återgång till appen.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Bildförfrågan → standardleverantör → om den misslyckas och reservlösningen är på provas nästa → om alla misslyckas, ett tydligt fel. Loggarna innehåller inga känsliga data. Djupgenerering (txt2img, upscale, inpaint, outpaint, multi-GPU) finns dokumenterad i DIFFUSION_COMFYUI_PLAN.md för nästa fas.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Skriver";
 "Espaços" = "Utrymmen";
 "Executando" = "Kör";
-"Extract paralelo" = "Parallell extrahering";
-"Extract timeout (s)" = "Tidsgräns för extrahering (s)";
+"Extração paralela" = "Parallell extrahering";
+"Timeout da extração (s)" = "Tidsgräns för extrahering (s)";
 "Falha" = "Misslyckades";
 "Falha ao salvar" = "Det gick inte att spara";
 "Fallbacks" = "Reservlösningar";
@@ -300,8 +300,8 @@
 "Provedor" = "Leverantör";
 "Provedor usado para busca na web e pesquisa profunda." = "Leverantör som används för webbsökning och djupforskning.";
 "Resultados por busca" = "Resultat per sökning";
-"Run timeout (s)" = "Tidsgräns för körning (s)";
-"Search Engine ID (CX)" = "Sökmotor-ID (CX)";
+"Timeout de execução (s)" = "Tidsgräns för körning (s)";
+"ID do mecanismo de busca (CX)" = "Sökmotor-ID (CX)";
 "Senha atual" = "Nuvarande lösenord";
 "Senha atualizada" = "Lösenord uppdaterat";
 "Servidor SMTP" = "SMTP-server";
@@ -379,7 +379,7 @@
 "Atualizar" = "Uppdatera";
 "Só um administrador pode atualizar a lista de modelos." = "Endast en admin kan uppdatera modellistan.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Inga modeller hittades. Svarade slutpunkten?";
-"%lld modelo(s) encontrado(s)." = "%lld modeller hittades.";
+"Modelos encontrados: %lld" = "Hittade modeller: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Inga modeller i cacheminnet. Använd Uppdatera för att söka av slutpunkten.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -429,8 +429,8 @@
 "Áudio indisponível: %@" = "Ljud inte tillgängligt: %@";
 "Falha ao descompactar o modelo Core ML." = "Kunde inte packa upp Core ML-modellen.";
 "Sessão expirada. Faça login novamente." = "Sessionen har gått ut. Logga in igen.";
-"Falha ao iniciar o stream" = "Kunde inte starta strömmen";
-"Erro no stream" = "Strömfel";
+"Falha ao iniciar o stream" = "Kunde inte starta stream";
+"Erro no stream" = "Stream-fel";
 "Autenticar para entrar no Odysseus" = "Autentisera för att öppna Odysseus";
 "Desbloquear o Odysseus" = "Lås upp Odysseus";
 "Pacote sem alvo pip." = "Paketet har inget pip-mål.";
@@ -465,8 +465,8 @@
 "Escolher modelos" = "Välj modeller";
 "Padrão do servidor" = "Serverns standard";
 "Outros modelos" = "Andra modeller";
-"%lld modelo(s) · ativo" = "%lld modell(er) · aktiv";
-"%lld modelo(s) · desativado" = "%lld modell(er) · inaktiverad";
+"Modelos: %lld · ativo" = "Modeller: %lld · på";
+"Modelos: %lld · desativado" = "Modeller: %lld · av";
 "· %lld rodadas" = "· %lld rundor";
 "Personalizado…" = "Anpassad…";
 "online" = "online";
@@ -534,8 +534,8 @@
 "indisponível" = "otillgänglig";
 "%.0f GB livre / %.0f GB" = "%.0f GB ledigt / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB ledigt / %.1f GB";
-"http://host:porta" = "http://värd:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organiserat: %lld borttagna (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Rensat: %lld → %lld · borttagna: %lld";
 "Falha ao organizar: %@" = "Kunde inte organisera: %@";
 "Backup exportado." = "Säkerhetskopiering exporterad.";
 "Salvo." = "Sparat.";
@@ -559,3 +559,53 @@
 "%lld rodando · %lld na fila" = "%lld körs · %lld i kö";
 "Processar só no aparelho" = "Bearbeta endast på enheten";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Att bearbeta endast på enheten skickar inget ljud till Apple, men offlinemodellen missar fler ord. Låt den vara av om transkriberingen är dålig.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Uppdatera listan (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in är inte tillgängligt: ekosläckning kunde inte aktiveras.";
+"Buscar modelos do servidor" = "Hämta modeller från servern";
+"Buscar voz" = "Sök röst";
+"Chave da API" = "API-nyckel";
+"Compatível com OpenAI" = "OpenAI-kompatibel";
+"Consultando…" = "Hämtar…";
+"Endpoint de voz não configurado (falta a URL)." = "Röst-endpoint är inte konfigurerad (URL saknas).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpointen returnerade ingen text. Svar: %@";
+"Endpoint próprio" = "Egen endpoint";
+"Endpoint respondeu %d." = "Endpointen svarade %d.";
+"Endpoint respondeu %d: %@" = "Endpointen svarade %d: %@";
+"Escolher voz" = "Välj röst";
+"Escolher…" = "Välj…";
+"Formato" = "Format";
+"Mostrar chave" = "Visa nyckel";
+"Nenhuma voz encontrada." = "Ingen röst hittades.";
+"Nome do modelo" = "Modellnamn";
+"O servidor não listou nenhum modelo." = "Servern listade inga modeller.";
+"OK" = "OK";
+"Ocultar chave" = "Dölj nyckel";
+"Olá! É assim que a voz vai soar." = "Hej! Så här kommer rösten att låta.";
+"Outro…" = "Annan…";
+"Só minhas vozes" = "Bara mina röster";
+"URL base" = "Bas-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Egen endpoint\" = vilken tjänst som helst som är kompatibel med OpenAI:s ljud-API (POST /audio/transcriptions). Inget laddas ner till enheten.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in är inte tillgängligt: röstdetektorn kunde inte läsas in.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in är inte tillgängligt: mikrofonen kunde inte öppnas.";
+"O modelo guardado (%@) não está na lista do servidor." = "Den sparade modellen (%@) finns inte i serverns lista.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Utan HTTPS skickas API-nyckeln i klartext över nätverket.";
+"Gravando… toque para parar" = "Spelar in… tryck för att stoppa";
+"Ouvi: %@" = "Hörde: %@";
+"Testar reconhecimento" = "Testa igenkänning";
+"Transcrevendo…" = "Transkriberar…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Talets språk";
+"Seguir o app (%@)" = "Följ appen (%@)";
+"Detectar automaticamente" = "Identifiera automatiskt";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Den inbyggda rösten följer appens språk. Igenkänningen använder däremot språket som valts ovan; automatisk identifiering gör fler fel på kort eller brusigt ljud, och iOS inbyggda igenkänning identifierar inget språk alls — där gäller alltid appens språk.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming-ljud";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Strömmande ljud spelar upp den första meningen medan den fortfarande skapas, i stället för att vänta på hela filen. Gäller bara i samtalsläget (röstskärmen); följande meningar förbereds ändå medan den förra spelas. Stäng av om ljudet hackar.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Ljuduppspelningen avbröts.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Slutpunkten accepterade begäran och skickade inget ljud.";

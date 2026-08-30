@@ -35,7 +35,7 @@
 "Bloquear o app" = "Bloquear la app";
 "Brain" = "Brain";
 "Busca" = "Búsqueda";
-"Buscar nos logs…" = "Buscar en los registros…";
+"Buscar nos logs…" = "Buscar en los logs…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Cabe en la máquina (estimación, mejor GPU)";
 "Cadastro aberto" = "Registro abierto";
 "Caixa de entrada" = "Bandeja de entrada";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Esto es irreversible. ¿Confirmas?";
 "Lembretes" = "Recordatorios";
 "Library" = "Library";
-"Logs do sistema" = "Registros del sistema";
+"Logs do sistema" = "Logs del sistema";
 "Manter conectado" = "Mantener sesión iniciada";
 "Memórias do assistente" = "Memorias del asistente";
 "Mesma pergunta para os dois…" = "La misma pregunta para ambos…";
@@ -141,7 +141,7 @@
 "Padrão" = "Predeterminado";
 "Padrões de IA" = "Ajustes de IA";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Para la mayoría de proveedores, las credenciales IMAP funcionan. Usa una contraseña de aplicación si tienes 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Búsquedas anteriores";
 "Pede %@ antes de usar a senha salva." = "Solicita %@ antes de usar la contraseña guardada.";
 "Pede %@ ao abrir e ao voltar pro app." = "Solicita %@ al abrir y al volver a la app.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Solicitud de imagen → proveedor predeterminado → si falla y el fallback está activo, prueba los siguientes → si todos fallan, error claro. Los registros no contienen datos sensibles. La generación avanzada (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada en DIFFUSION_COMFYUI_PLAN.md para la próxima fase.";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Revocar admin";
 "Selecionar…" = "Seleccionar…";
 "Sem favoritos" = "Sin favoritos";
-"Sem logs." = "Sin registros.";
+"Sem logs." = "Sin logs.";
 "Sem notas ainda" = "Sin notas todavía";
 "Tornar admin" = "Hacer admin";
 "Tudo" = "Todo";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Escribiendo";
 "Espaços" = "Espacios";
 "Executando" = "Ejecutando";
-"Extract paralelo" = "Extract paralelo";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Extracción paralela";
+"Timeout da extração (s)" = "Timeout de la extracción (s)";
 "Falha" = "Fallido";
 "Falha ao salvar" = "Error al guardar";
 "Fallbacks" = "Fallbacks";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Puerto SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Proveedor usado para búsqueda web e investigación profunda.";
 "Resultados por busca" = "Resultados por búsqueda";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout de ejecución (s)";
+"ID do mecanismo de busca (CX)" = "ID del motor de búsqueda (CX)";
 "Senha atual" = "Contraseña actual";
 "Senha atualizada" = "Contraseña actualizada";
 "Servidor SMTP" = "Servidor SMTP";
@@ -389,7 +389,7 @@
 "Atualizar" = "Actualizar";
 "Só um administrador pode atualizar a lista de modelos." = "Solo un administrador puede actualizar la lista de modelos.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "No se encontraron modelos. ¿Respondió el endpoint?";
-"%lld modelo(s) encontrado(s)." = "%lld modelos encontrados.";
+"Modelos encontrados: %lld" = "Modelos encontrados: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Sin modelos en caché. Usa Actualizar para sondear el endpoint.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Elegir modelos";
 "Padrão do servidor" = "Predeterminado del servidor";
 "Outros modelos" = "Otros modelos";
-"%lld modelo(s) · ativo" = "%lld modelo(s) · activo";
-"%lld modelo(s) · desativado" = "%lld modelo(s) · desactivado";
+"Modelos: %lld · ativo" = "Modelos: %lld · activo";
+"Modelos: %lld · desativado" = "Modelos: %lld · desactivado";
 "· %lld rodadas" = "· %lld rondas";
 "Personalizado…" = "Personalizado…";
 "online" = "en línea";
@@ -544,8 +544,8 @@
 "indisponível" = "no disponible";
 "%.0f GB livre / %.0f GB" = "%.0f GB libres / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB libres / %.1f GB";
-"http://host:porta" = "http://host:puerto";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organizado: %lld eliminada(s) (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Organizado: %lld → %lld · eliminadas: %lld";
 "Falha ao organizar: %@" = "Error al organizar: %@";
 "Backup exportado." = "Copia de seguridad exportada.";
 "Salvo." = "Guardado.";
@@ -569,3 +569,53 @@
 "%lld rodando · %lld na fila" = "%lld en ejecución · %lld en cola";
 "Processar só no aparelho" = "Procesar solo en el dispositivo";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Procesar solo en el dispositivo no envía audio a Apple, pero el modelo sin conexión falla más palabras. Déjalo desactivado si la transcripción es mala.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Actualizar lista (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in no disponible: no se pudo activar la cancelación de eco.";
+"Buscar modelos do servidor" = "Buscar modelos del servidor";
+"Buscar voz" = "Buscar voz";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Compatible con OpenAI";
+"Consultando…" = "Consultando…";
+"Endpoint de voz não configurado (falta a URL)." = "Endpoint de voz sin configurar (falta la URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "El endpoint no devolvió texto. Respuesta: %@";
+"Endpoint próprio" = "Endpoint propio";
+"Endpoint respondeu %d." = "El endpoint respondió %d.";
+"Endpoint respondeu %d: %@" = "El endpoint respondió %d: %@";
+"Escolher voz" = "Elegir voz";
+"Escolher…" = "Elegir…";
+"Formato" = "Formato";
+"Mostrar chave" = "Mostrar clave";
+"Nenhuma voz encontrada." = "No se encontró ninguna voz.";
+"Nome do modelo" = "Nombre del modelo";
+"O servidor não listou nenhum modelo." = "El servidor no listó ningún modelo.";
+"OK" = "OK";
+"Ocultar chave" = "Ocultar clave";
+"Olá! É assim que a voz vai soar." = "¡Hola! Así va a sonar la voz.";
+"Outro…" = "Otro…";
+"Só minhas vozes" = "Solo mis voces";
+"URL base" = "URL base";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Endpoint propio\" = cualquier servicio compatible con la API de audio de OpenAI (POST /audio/transcriptions). No se descarga nada en el dispositivo.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in no disponible: no se pudo cargar el detector de voz.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in no disponible: no se pudo abrir el micrófono.";
+"O modelo guardado (%@) não está na lista do servidor." = "El modelo guardado (%@) no está en la lista del servidor.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Sin HTTPS la clave de API viaja en texto plano por la red.";
+"Gravando… toque para parar" = "Grabando… toca para parar";
+"Ouvi: %@" = "Escuché: %@";
+"Testar reconhecimento" = "Probar reconocimiento";
+"Transcrevendo…" = "Transcribiendo…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Idioma del habla";
+"Seguir o app (%@)" = "Seguir la app (%@)";
+"Detectar automaticamente" = "Detectar automáticamente";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "La voz nativa sigue el idioma de la app. El reconocimiento usa el idioma elegido arriba; la detección automática falla más con audio corto o con ruido, y el reconocimiento nativo de iOS no detecta nada: ahí siempre manda el idioma de la app.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Audio en streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "El audio en streaming reproduce la primera frase mientras aún se está generando, en vez de esperar al archivo completo. Solo se aplica en el modo conversación (la pantalla de voz); las frases siguientes ya se preparan mientras suena la anterior. Desactívalo si el audio se entrecorta.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Se interrumpió la reproducción del audio.";
+"O endpoint aceitou o pedido e não enviou áudio." = "El endpoint aceptó la petición y no envió audio.";

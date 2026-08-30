@@ -3,7 +3,7 @@
    Info.plist fallback (English) no matter what language the app is in —
    that is what App Review flagged under guideline 4.0 (Design). */
 
-"NSMicrophoneUsageDescription" = "Odysseus používá mikrofon, abyste mohli diktovat zprávy hlasem.";
-"NSSpeechRecognitionUsageDescription" = "Odysseus převádí vaši řeč na text přímo v zařízení.";
+"NSMicrophoneUsageDescription" = "K diktování zpráv a, v režimu hands-free, k přerušení AI, když mluví.";
+"NSSpeechRecognitionUsageDescription" = "K převodu řeči na text — v zařízení nebo ve službě zvolené v Nastavení.";
 "NSLocalNetworkUsageDescription" = "Odysseus potřebuje přístup k místní síti, aby se mohl připojit k vašemu serveru s umělou inteligencí.";
 "NSFaceIDUsageDescription" = "Odysseus používá Face ID k zamknutí aplikace a automatickému přihlášení (volitelné).";

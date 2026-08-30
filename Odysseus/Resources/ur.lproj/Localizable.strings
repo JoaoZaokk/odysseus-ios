@@ -35,7 +35,7 @@
 "Bloquear o app" = "ایپ کو لاک کریں";
 "Brain" = "Brain";
 "Busca" = "تلاش";
-"Buscar nos logs…" = "لاگز میں تلاش کریں…";
+"Buscar nos logs…" = "log میں تلاش…";
 "Cabe na máquina (estimativa, melhor GPU)" = "مشین میں فٹ ہے (تخمینہ، بہترین GPU)";
 "Cadastro aberto" = "کھلی رجسٹریشن";
 "Caixa de entrada" = "ان باکس";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "یہ ناقابل واپسی ہے۔ تصدیق کریں؟";
 "Lembretes" = "یاددہانیاں";
 "Library" = "Library";
-"Logs do sistema" = "سسٹم لاگز";
+"Logs do sistema" = "سسٹم log";
 "Manter conectado" = "جڑا رہیں";
 "Memórias do assistente" = "مددگار کی یادداشتیں";
 "Mesma pergunta para os dois…" = "دونوں کے لیے ایک ہی سوال…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "ماڈلز اور انجن";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "مقامی = بولتے وقت براہ راست ٹرانسکرپشن (Claude/Gemini کی طرح)۔ «ماڈل» = آف لائن Whisper (آخر میں ٹرانسکرائب کرتا ہے)۔ ڈاؤن لوڈ کردہ ماڈلز میں، ⚡ Core ML ایکسلریٹر (Neural Engine) ڈاؤن لوڈ کرتا ہے ← بہت تیز۔";
 "Nativo iOS" = "مقامی iOS";
-"Nenhum endpoint conectado." = "کوئی اینڈ پوائنٹ جڑا نہیں۔";
+"Nenhum endpoint conectado." = "کوئی endpoint منسلک نہیں ہے۔";
 "Nenhum evento" = "کوئی واقعہ نہیں";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "کوئی MCP سرور جڑا نہیں۔ ویب (منتظم) سے شامل کریں۔";
 "Nenhuma conta" = "کوئی اکاؤنٹ نہیں";
@@ -141,7 +141,7 @@
 "Padrão" = "پہلے سے طے شدہ";
 "Padrões de IA" = "AI کی پہلے سے طے شدہ ترتیبات";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "زیادہ تر فراہم کنندگان کے لیے، IMAP اعتبارنامے کام کرتے ہیں۔ اگر 2FA ہے تو App Password استعمال کریں۔";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "پچھلی تحقیقات";
 "Pede %@ antes de usar a senha salva." = "محفوظ پاس ورڈ استعمال کرنے سے پہلے %@ مانگتا ہے۔";
 "Pede %@ ao abrir e ao voltar pro app." = "ایپ کھولتے اور واپس آتے وقت %@ مانگتا ہے۔";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "تصویر کی درخواست ← پہلے سے طے شدہ فراہم کنندہ ← اگر ناکام اور متبادل فعال تو اگلے آزماتا ہے ← سب ناکام ہوں تو واضح خرابی۔ لاگز میں حساس ڈیٹا نہیں۔ گہری تخلیق (txt2img, upscale, inpaint, outpaint, multi-GPU) اگلے مرحلے کے لیے DIFFUSION_COMFYUI_PLAN.md میں دستاویز ہے۔";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(کوئی مواد نہیں)";
 "Ativar" = "فعال کریں";
 "Criar" = "بنائیں";
-"Criar token" = "ٹوکن بنائیں";
+"Criar token" = "token بنائیں";
 "Código 2FA" = "2FA کوڈ";
 "Desafixar" = "پن ہٹائیں";
 "Desarquivar" = "آرکائیو سے نکالیں";
@@ -232,7 +232,7 @@
 "Revogar admin" = "منتظم اختیارات منسوخ کریں";
 "Selecionar…" = "منتخب کریں…";
 "Sem favoritos" = "کوئی پسندیدہ نہیں";
-"Sem logs." = "کوئی لاگ نہیں۔";
+"Sem logs." = "کوئی log نہیں۔";
 "Sem notas ainda" = "ابھی تک کوئی نوٹ نہیں";
 "Tornar admin" = "منتظم بنائیں";
 "Tudo" = "سب کچھ";
@@ -264,8 +264,8 @@
 "Escrevendo" = "لکھ رہا ہے";
 "Espaços" = "جگہیں";
 "Executando" = "چل رہا ہے";
-"Extract paralelo" = "متوازی نکاسی";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "متوازی استخراج";
+"Timeout da extração (s)" = "استخراج کی مہلت (سیکنڈ)";
 "Falha" = "ناکام";
 "Falha ao salvar" = "محفوظ کرنے میں ناکامی";
 "Fallbacks" = "متبادل";
@@ -300,8 +300,8 @@
 "Provedor" = "فراہم کنندہ";
 "Provedor usado para busca na web e pesquisa profunda." = "ویب تلاش اور گہری تحقیق کے لیے استعمال ہونے والا فراہم کنندہ۔";
 "Resultados por busca" = "ہر تلاش کے نتائج";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "چلانے کی مہلت (سیکنڈ)";
+"ID do mecanismo de busca (CX)" = "سرچ انجن آئی ڈی (CX)";
 "Senha atual" = "موجودہ پاس ورڈ";
 "Senha atualizada" = "پاس ورڈ اپ ڈیٹ ہو گیا";
 "Servidor SMTP" = "SMTP سرور";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "زیادہ سے زیادہ راؤنڈز";
 "Orçamento de tokens (entrada)" = "ٹوکن بجٹ (ان پٹ)";
 "Teto duro de tokens" = "ٹوکن کی سخت حد";
-"Timeout do stream (s)" = "اسٹریم ٹائم آؤٹ (سیکنڈ)";
+"Timeout do stream (s)" = "stream کی مہلت (سیکنڈ)";
 "Limites de execução do agente e servidores MCP." = "ایجنٹ کے نفاذ کی حدود اور MCP سرورز۔";
 "Código & Arquivos" = "کوڈ اور فائلیں";
 "Busca & Web" = "تلاش اور ویب";
@@ -387,7 +387,7 @@
 "Atualizar" = "ریفریش کریں";
 "Só um administrador pode atualizar a lista de modelos." = "صرف منتظم ماڈلز کی فہرست ریفریش کر سکتا ہے۔";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "کوئی ماڈل نہیں ملا۔ کیا اینڈ پوائنٹ نے جواب دیا؟";
-"%lld modelo(s) encontrado(s)." = "%lld ماڈلز ملے۔";
+"Modelos encontrados: %lld" = "ملے ہوئے ماڈلز: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "کیش میں کوئی ماڈل نہیں۔ اینڈ پوائنٹ جانچنے کے لیے ریفریش استعمال کریں۔";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "آڈیو دستیاب نہیں: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML ماڈل کو ان زپ نہیں کیا جا سکا۔";
 "Sessão expirada. Faça login novamente." = "سیشن ختم ہو گیا۔ دوبارہ سائن اِن کریں۔";
-"Falha ao iniciar o stream" = "سٹریم شروع نہ ہو سکی";
-"Erro no stream" = "سٹریم کی خرابی";
+"Falha ao iniciar o stream" = "stream شروع نہیں ہو سکا";
+"Erro no stream" = "stream میں خرابی";
 "Autenticar para entrar no Odysseus" = "Odysseus میں داخل ہونے کے لیے تصدیق کریں";
 "Desbloquear o Odysseus" = "Odysseus کو اَن لاک کریں";
 "Pacote sem alvo pip." = "پیکیج کا کوئی pip ہدف نہیں۔";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "ماڈل منتخب کریں";
 "Padrão do servidor" = "سرور کا ڈیفالٹ";
 "Outros modelos" = "دیگر ماڈل";
-"%lld modelo(s) · ativo" = "%lld ماڈل · فعال";
-"%lld modelo(s) · desativado" = "%lld ماڈل · غیر فعال";
+"Modelos: %lld · ativo" = "ماڈلز: %lld · فعال";
+"Modelos: %lld · desativado" = "ماڈلز: %lld · غیر فعال";
 "· %lld rodadas" = "· %lld راؤنڈ";
 "Personalizado…" = "حسب ضرورت…";
 "online" = "آن لائن";
@@ -542,8 +542,8 @@
 "indisponível" = "دستیاب نہیں";
 "%.0f GB livre / %.0f GB" = "%.0f GB دستیاب / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB دستیاب / %.1f GB";
-"http://host:porta" = "http://میزبان:پورٹ";
-"Organizado: %lld removida(s) (%lld → %lld)." = "منظم ہو گیا: %lld ہٹا دیا گیا (%lld → %lld)۔";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "ترتیب دیا گیا: %lld ← %lld · ہٹائے گئے: %lld";
 "Falha ao organizar: %@" = "منظم کرنے میں ناکامی: %@";
 "Backup exportado." = "بیک اپ برآمد ہو گیا۔";
 "Salvo." = "محفوظ ہو گیا۔";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld چل رہے ہیں · %lld قطار میں";
 "Processar só no aparelho" = "صرف ڈیوائس پر پروسیس کریں";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "صرف ڈیوائس پر پروسیس کرنے سے آڈیو Apple کو نہیں بھیجا جاتا، مگر آف لائن ماڈل زیادہ الفاظ غلط پہچانتا ہے۔ اگر نقل خراب ہو تو بند رکھیں۔";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "فہرست تازہ کریں (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in دستیاب نہیں: ایکو کینسلیشن فعال نہیں ہو سکی۔";
+"Buscar modelos do servidor" = "سرور سے ماڈل حاصل کریں";
+"Buscar voz" = "آواز تلاش کریں";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI کے مطابق";
+"Consultando…" = "استفسار جاری ہے…";
+"Endpoint de voz não configurado (falta a URL)." = "صوتی endpoint ترتیب نہیں دیا گیا (URL موجود نہیں)۔";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint نے کوئی متن واپس نہیں کیا۔ جواب: %@";
+"Endpoint próprio" = "اپنا endpoint";
+"Endpoint respondeu %d." = "endpoint نے %d جواب دیا۔";
+"Endpoint respondeu %d: %@" = "endpoint نے %d جواب دیا: %@";
+"Escolher voz" = "آواز منتخب کریں";
+"Escolher…" = "منتخب کریں…";
+"Formato" = "فارمیٹ";
+"Mostrar chave" = "کلید دکھائیں";
+"Nenhuma voz encontrada." = "کوئی آواز نہیں ملی۔";
+"Nome do modelo" = "ماڈل کا نام";
+"O servidor não listou nenhum modelo." = "سرور نے کوئی ماڈل درج نہیں کیا۔";
+"OK" = "ٹھیک ہے";
+"Ocultar chave" = "کلید چھپائیں";
+"Olá! É assim que a voz vai soar." = "سلام! آواز ایسی سنائی دے گی۔";
+"Outro…" = "دیگر…";
+"Só minhas vozes" = "صرف میری آوازیں";
+"URL base" = "بنیادی URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"اپنا endpoint\" = کوئی بھی سروس جو OpenAI کے آڈیو API کے مطابق ہو (POST /audio/transcriptions)۔ ڈیوائس پر کچھ ڈاؤن لوڈ نہیں ہوتا۔";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in دستیاب نہیں: صوتی ڈٹیکٹر لوڈ نہیں ہو سکا۔";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in دستیاب نہیں: مائیکروفون نہیں کھل سکا۔";
+"O modelo guardado (%@) não está na lista do servidor." = "محفوظ ماڈل (%@) سرور کی فہرست میں نہیں ہے۔";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS کے بغیر API key نیٹ ورک پر سادہ متن میں جاتی ہے۔";
+"Gravando… toque para parar" = "ریکارڈنگ… روکنے کے لیے ٹیپ کریں";
+"Ouvi: %@" = "میں نے سنا: %@";
+"Testar reconhecimento" = "شناخت آزمائیں";
+"Transcrevendo…" = "نقل کیا جا رہا ہے…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "بولنے کی زبان";
+"Seguir o app (%@)" = "ایپ کے مطابق (%@)";
+"Detectar automaticamente" = "خودکار شناخت";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "بلٹ اِن آواز ایپ کی زبان کی پیروی کرتی ہے۔ شناخت اوپر منتخب کردہ زبان استعمال کرتی ہے؛ خودکار شناخت مختصر یا شور والی آواز پر زیادہ غلطی کرتی ہے، اور iOS کی اپنی شناخت زبان بالکل نہیں پہچانتی — وہاں ہمیشہ ایپ کی زبان ہی چلتی ہے۔";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "streaming آڈیو";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "اسٹریمنگ آڈیو پوری فائل کا انتظار کیے بغیر پہلا جملہ بنتے ہی چلا دیتا ہے۔ یہ صرف گفتگو موڈ (وائس اسکرین) میں لاگو ہوتا ہے؛ اگلے جملے ویسے بھی پچھلے جملے کے چلنے کے دوران تیار ہو جاتے ہیں۔ آواز رکے تو اسے بند کر دیں۔";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "آڈیو کی پلے بیک منقطع ہو گئی۔";
+"O endpoint aceitou o pedido e não enviou áudio." = "اینڈ پوائنٹ نے درخواست قبول کی اور کوئی آڈیو نہیں بھیجا۔";

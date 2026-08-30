@@ -71,7 +71,7 @@ struct AddedModelsSection: View {
             if let n = vm.refreshResult {
                 Group {
                     if n == 0 { Text("Nenhum modelo encontrado. O endpoint respondeu?") }
-                    else { Text("\(n) modelo(s) encontrado(s).") }
+                    else { Text("Modelos encontrados: \(n)") }
                 }
                 .font(.ody(size: 11, design: .monospaced))
                 .foregroundStyle(n == 0 ? theme.accent : theme.green)
@@ -107,8 +107,8 @@ struct AddedModelsSection: View {
                 // interpolated form produces a key ("%lld modelo(s)%@") no
                 // locale has, so it always rendered in Portuguese.
                 Group {
-                    if ep.isEnabled { Text("\(ep.models.count) modelo(s) · ativo") }
-                    else { Text("\(ep.models.count) modelo(s) · desativado") }
+                    if ep.isEnabled { Text("Modelos: \(ep.models.count) · ativo") }
+                    else { Text("Modelos: \(ep.models.count) · desativado") }
                 }
                 .font(.ody(size: 11, design: .monospaced))
                 .foregroundStyle(ep.isEnabled ? theme.green : theme.secondaryText)

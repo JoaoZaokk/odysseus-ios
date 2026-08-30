@@ -141,7 +141,7 @@
 "Padrão" = "Default";
 "Padrões de IA" = "AI defaults";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "For most providers, your IMAP credentials work. Use an app password if you have 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Past research";
 "Pede %@ antes de usar a senha salva." = "Asks for %@ before using the saved password.";
 "Pede %@ ao abrir e ao voltar pro app." = "Asks for %@ when opening and returning to the app.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Image request → default provider → if it fails and fallback is on, it tries the next ones → if all fail, a clear error. Logs carry no sensitive data. Deep generation (txt2img, upscale, inpaint, outpaint, multi-GPU) is documented in DIFFUSION_COMFYUI_PLAN.md for the next phase.";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Writing";
 "Espaços" = "Spaces";
 "Executando" = "Running";
-"Extract paralelo" = "Parallel extract";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Parallel extraction";
+"Timeout da extração (s)" = "Extraction timeout (s)";
 "Falha" = "Failed";
 "Falha ao salvar" = "Failed to save";
 "Fallbacks" = "Fallbacks";
@@ -300,8 +300,8 @@
 "Provedor" = "Provider";
 "Provedor usado para busca na web e pesquisa profunda." = "Provider used for web search and deep research.";
 "Resultados por busca" = "Results per search";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Run timeout (s)";
+"ID do mecanismo de busca (CX)" = "Search engine ID (CX)";
 "Senha atual" = "Current password";
 "Senha atualizada" = "Password updated";
 "Servidor SMTP" = "SMTP server";
@@ -389,7 +389,7 @@
 "Atualizar" = "Refresh";
 "Só um administrador pode atualizar a lista de modelos." = "Only an administrator can refresh the model list.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "No models found. Did the endpoint respond?";
-"%lld modelo(s) encontrado(s)." = "%lld models found.";
+"Modelos encontrados: %lld" = "Models found: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "No cached models. Use Refresh to probe the endpoint.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Choose models";
 "Padrão do servidor" = "Server default";
 "Outros modelos" = "Other models";
-"%lld modelo(s) · ativo" = "%lld model(s) · active";
-"%lld modelo(s) · desativado" = "%lld model(s) · disabled";
+"Modelos: %lld · ativo" = "Models: %lld · on";
+"Modelos: %lld · desativado" = "Models: %lld · off";
 "· %lld rodadas" = "· %lld rounds";
 "Personalizado…" = "Custom…";
 "online" = "online";
@@ -544,8 +544,8 @@
 "indisponível" = "unavailable";
 "%.0f GB livre / %.0f GB" = "%.0f GB free / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB free / %.1f GB";
-"http://host:porta" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organized: %lld removed (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Tidied: %lld → %lld · removed: %lld";
 "Falha ao organizar: %@" = "Failed to organize: %@";
 "Backup exportado." = "Backup exported.";
 "Salvo." = "Saved.";
@@ -569,3 +569,53 @@
 "%lld rodando · %lld na fila" = "%lld running · %lld queued";
 "Processar só no aparelho" = "Process on device only";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Processing on device only doesn't send audio to Apple, but the offline model gets more words wrong. Leave it off if transcription is poor.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Refresh list (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in unavailable: echo cancellation couldn't be enabled.";
+"Buscar modelos do servidor" = "Fetch models from server";
+"Buscar voz" = "Search voice";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-compatible";
+"Consultando…" = "Querying…";
+"Endpoint de voz não configurado (falta a URL)." = "Voice endpoint not configured (URL missing).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint returned no text. Response: %@";
+"Endpoint próprio" = "Custom endpoint";
+"Endpoint respondeu %d." = "Endpoint responded %d.";
+"Endpoint respondeu %d: %@" = "Endpoint responded %d: %@";
+"Escolher voz" = "Choose voice";
+"Escolher…" = "Choose…";
+"Formato" = "Format";
+"Mostrar chave" = "Show key";
+"Nenhuma voz encontrada." = "No voices found.";
+"Nome do modelo" = "Model name";
+"O servidor não listou nenhum modelo." = "The server listed no models.";
+"OK" = "OK";
+"Ocultar chave" = "Hide key";
+"Olá! É assim que a voz vai soar." = "Hi! This is how the voice will sound.";
+"Outro…" = "Other…";
+"Só minhas vozes" = "Only my voices";
+"URL base" = "Base URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Custom endpoint\" = any service compatible with OpenAI's audio API (POST /audio/transcriptions). Nothing is downloaded to the device.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in unavailable: the voice detector could not be loaded.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in unavailable: the microphone could not be opened.";
+"O modelo guardado (%@) não está na lista do servidor." = "The stored model (%@) is not in the server's list.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Without HTTPS the API key travels over the network in plain text.";
+"Gravando… toque para parar" = "Recording… tap to stop";
+"Ouvi: %@" = "Heard: %@";
+"Testar reconhecimento" = "Test recognition";
+"Transcrevendo…" = "Transcribing…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Speech language";
+"Seguir o app (%@)" = "Follow the app (%@)";
+"Detectar automaticamente" = "Detect automatically";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "The built-in voice follows the app language. Recognition uses the language chosen above; automatic detection makes more mistakes on short or noisy audio, and iOS's built-in recognition detects nothing at all — there the app language always wins.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming audio";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streaming audio plays the first sentence while it is still being generated, instead of waiting for the whole file. It applies only in conversation mode (the voice screen); later sentences are already prepared while the previous one plays. Turn it off if the audio stutters.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Audio playback was interrupted.";
+"O endpoint aceitou o pedido e não enviou áudio." = "The endpoint accepted the request and sent no audio.";

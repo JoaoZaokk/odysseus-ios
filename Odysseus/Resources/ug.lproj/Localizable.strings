@@ -35,7 +35,7 @@
 "Bloquear o app" = "ئەپنى قۇلۇپلاش";
 "Brain" = "Brain";
 "Busca" = "ئىزدەش";
-"Buscar nos logs…" = "خاتىرىلەردىن ئىزدەش…";
+"Buscar nos logs…" = "log ئىزدەش…";
 "Cabe na máquina (estimativa, melhor GPU)" = "ماشىنىغا سىغىدۇ (تەخمىنى، ئەڭ ياخشى GPU)";
 "Cadastro aberto" = "ئوچۇق تىزىملىتىش";
 "Caixa de entrada" = "قوبۇللاش ساندۇقى";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "بۇ قايتۇرغىلى بولمايدۇ. جەزملەشتۈرەمسىز؟";
 "Lembretes" = "ئەسكەرتىشلەر";
 "Library" = "كۈتۈپخانا";
-"Logs do sistema" = "سىستېما خاتىرىلىرى";
+"Logs do sistema" = "سىستېما log";
 "Manter conectado" = "مېنى كىرگۈزۈلگەن ھالەتتە ساقلاڭ";
 "Memórias do assistente" = "ياردەمچىنىڭ ئەسلىمىلىرى";
 "Mesma pergunta para os dois…" = "ئىككىسىگىمۇ ئوخشاش سوئال…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "مودېللار ۋە ئېنجىنلار";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "يەرلىك = سۆزلىگىنىڭىزدە جانلىق تېكستكە ئۆزگەرتىش (Claude/Gemini غا ئوخشاش). \"مودېل\" = تورسىز Whisper (ئاخىرىدا تېكستكە ئۆزگەرتىدۇ). چۈشۈرۈلگەن مودېللاردا، ⚡ Core ML تېزلەتكۈچىنى (Neural Engine) چۈشۈرىدۇ → خېلى تېزلىشىدۇ.";
 "Nativo iOS" = "يەرلىك iOS";
-"Nenhum endpoint conectado." = "ھېچقانداق ئاخىرقى نۇقتا باغلانمىدى.";
+"Nenhum endpoint conectado." = "ئۇلانغان endpoint يوق.";
 "Nenhum evento" = "پائالىيەت يوق";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "ھېچقانداق MCP مۇلازىمېتىرى باغلانمىدى. تور ئارقىلىق (باشقۇرغۇچى) قوشۇڭ.";
 "Nenhuma conta" = "ھېسابات يوق";
@@ -141,7 +141,7 @@
 "Padrão" = "كۆڭۈلدىكى";
 "Padrões de IA" = "سۈنئىي ئىدراكنىڭ كۆڭۈلدىكى تەڭشەكلىرى";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "كۆپىنچە تەمىنلىگۈچىلەردە IMAP ئۇچۇرلىرىڭىز ئىشلەيدۇ. 2FA ئىڭىز بولسا ئەپ پارولىنى ئىشلىتىڭ.";
-"Past research" = "ئۆتكەن تەتقىقاتلار";
+"Pesquisas anteriores" = "بۇرۇنقى تەتقىقاتلار";
 "Pede %@ antes de usar a senha salva." = "ساقلانغان پارولنى ئىشلىتىشتىن ئىلگىرى %@ نى تەلەپ قىلىدۇ.";
 "Pede %@ ao abrir e ao voltar pro app." = "ئېچىلغاندا ۋە ئەپكە قايتقاندا %@ نى تەلەپ قىلىدۇ.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "رەسىم تەلىپى → كۆڭۈلدىكى تەمىنلىگۈچى → مەغلۇپ بولسا ۋە زاپاس ئوچۇق بولسا، كېيىنكىلىرىنى سىنايدۇ → ھەممىسى مەغلۇپ بولسا، ئوچۇق خاتالىق كۆرسىتىلىدۇ. خاتىرىلەردە مەخپىي سانلىق مەلۇمات بولمايدۇ. چوڭقۇر ھاسىل قىلىش (txt2img, upscale, inpaint, outpaint, multi-GPU) كېيىنكى باسقۇچ ئۈچۈن DIFFUSION_COMFYUI_PLAN.md دا خاتىرىلەنگەن.";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(مەزمۇن يوق)";
 "Ativar" = "قوزغىتىش";
 "Criar" = "قۇرۇش";
-"Criar token" = "توكېن قۇرۇش";
+"Criar token" = "token قۇرۇش";
 "Código 2FA" = "2FA كودى";
 "Desafixar" = "چاپلاشنى بىكار قىلىش";
 "Desarquivar" = "ئارخىپتىن چىقىرىش";
@@ -232,7 +232,7 @@
 "Revogar admin" = "باشقۇرغۇچىلىقنى بىكار قىلىش";
 "Selecionar…" = "تاللاش…";
 "Sem favoritos" = "ياقتۇرغانلار يوق";
-"Sem logs." = "خاتىرە يوق.";
+"Sem logs." = "log يوق.";
 "Sem notas ainda" = "تېخى خاتىرە يوق";
 "Tornar admin" = "باشقۇرغۇچى قىلىش";
 "Tudo" = "ھەممىسى";
@@ -264,8 +264,8 @@
 "Escrevendo" = "يېزىۋاتىدۇ";
 "Espaços" = "بوشلۇقلار";
 "Executando" = "ئىجرا بولۇۋاتىدۇ";
-"Extract paralelo" = "پاراللېل ئاجرىتىش";
-"Extract timeout (s)" = "ئاجرىتىش ۋاقىت چېكى (سانىيە)";
+"Extração paralela" = "پاراللېل ئاجرىتىش";
+"Timeout da extração (s)" = "ئاجرىتىش ۋاقىت چېكى (سانىيە)";
 "Falha" = "مەغلۇپ بولدى";
 "Falha ao salvar" = "ساقلىغىلى بولمىدى";
 "Fallbacks" = "زاپاسلار";
@@ -300,8 +300,8 @@
 "Provedor" = "تەمىنلىگۈچى";
 "Provedor usado para busca na web e pesquisa profunda." = "تور ئىزدەش ۋە چوڭقۇر تەتقىقات ئۈچۈن ئىشلىتىلىدىغان تەمىنلىگۈچى.";
 "Resultados por busca" = "ھەر قېتىملىق ئىزدەشتىكى نەتىجىلەر";
-"Run timeout (s)" = "ئىجرا ۋاقىت چېكى (سانىيە)";
-"Search Engine ID (CX)" = "ئىزدەش موتورى ID سى (CX)";
+"Timeout de execução (s)" = "ئىجرا ۋاقىت چېكى (سانىيە)";
+"ID do mecanismo de busca (CX)" = "ئىزدەش ماتورى كىملىكى (CX)";
 "Senha atual" = "ھازىرقى پارول";
 "Senha atualizada" = "پارول يېڭىلاندى";
 "Servidor SMTP" = "SMTP مۇلازىمېتىرى";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "ئەڭ چوڭ قېتىم سانى";
 "Orçamento de tokens (entrada)" = "توكېن مىقدارى (كىرىش)";
 "Teto duro de tokens" = "توكېننىڭ قاتتىق چېكى";
-"Timeout do stream (s)" = "ئېقىم ۋاقىت چېكى (سانىيە)";
+"Timeout do stream (s)" = "stream ۋاقىت چېكى (سانىيە)";
 "Limites de execução do agente e servidores MCP." = "ئاگېنت ئىجرا چەكلىمىلىرى ۋە MCP مۇلازىمېتىرلىرى.";
 "Código & Arquivos" = "كود ۋە ھۆججەتلەر";
 "Busca & Web" = "ئىزدەش ۋە تور";
@@ -387,7 +387,7 @@
 "Atualizar" = "يېڭىلاش";
 "Só um administrador pode atualizar a lista de modelos." = "پەقەت باشقۇرغۇچىلا مودېل تىزىملىكىنى يېڭىلىيالايدۇ.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "ھېچقانداق مودېل تېپىلمىدى. ئاخىرقى نۇقتا جاۋاب بەردىمۇ؟";
-"%lld modelo(s) encontrado(s)." = "%lld مودېل تېپىلدى.";
+"Modelos encontrados: %lld" = "تېپىلغان مودېللار: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "غەملەكتە مودېل يوق. ئاخىرقى نۇقتىنى تەكشۈرۈش ئۈچۈن يېڭىلاشنى ئىشلىتىڭ.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "ئۈننى ئىشلەتكىلى بولمايدۇ: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML مودېلىنى يېشىش مەغلۇپ بولدى.";
 "Sessão expirada. Faça login novamente." = "ئەڭگىمە ۋاقتى توشتى. قايتا كىرىڭ.";
-"Falha ao iniciar o stream" = "ئېقىمنى باشلىغىلى بولمىدى";
-"Erro no stream" = "ئېقىم خاتالىقى";
+"Falha ao iniciar o stream" = "stream باشلىغىلى بولمىدى";
+"Erro no stream" = "stream خاتالىقى";
 "Autenticar para entrar no Odysseus" = "Odysseus قا كىرىش ئۈچۈن دەلىللەڭ";
 "Desbloquear o Odysseus" = "Odysseus نى قۇلۇپسىزلاش";
 "Pacote sem alvo pip." = "بوغچىنىڭ pip نىشانى يوق.";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "مودېل تاللاش";
 "Padrão do servidor" = "مۇلازىمېتىر كۆڭۈلدىكى";
 "Outros modelos" = "باشقا مودېللار";
-"%lld modelo(s) · ativo" = "%lld مودېل · قوزغىتىلغان";
-"%lld modelo(s) · desativado" = "%lld مودېل · چەكلەنگەن";
+"Modelos: %lld · ativo" = "مودېللار: %lld · ئوچۇق";
+"Modelos: %lld · desativado" = "مودېللار: %lld · تاقاق";
 "· %lld rodadas" = "· %lld قېتىم";
 "Personalizado…" = "ئىختىيارىي…";
 "online" = "توردا";
@@ -542,8 +542,8 @@
 "indisponível" = "يوق";
 "%.0f GB livre / %.0f GB" = "%.0f GB بىكار / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB بىكار / %.1f GB";
-"http://host:porta" = "http://باشقۇرغۇچ:پورت";
-"Organizado: %lld removida(s) (%lld → %lld)." = "تەرتىپلەندى: %lld ئۆچۈرۈلدى (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "رەتلەندى: %lld ← %lld · ئۆچۈرۈلگىنى: %lld";
 "Falha ao organizar: %@" = "تەرتىپلەش مەغلۇپ بولدى: %@";
 "Backup exportado." = "زاپاس چىقىرىلدى.";
 "Salvo." = "ساقلاندى.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld ئىجرا بولۇۋاتىدۇ · %lld ئۆچرەتتە";
 "Processar só no aparelho" = "پەقەت ئۈسكۈنىدە بىر تەرەپ قىلىش";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "پەقەت ئۈسكۈنىدە بىر تەرەپ قىلىش ئاۋازنى Apple غا ئەۋەتمەيدۇ، ئەمما تورسىز مودېل تېخىمۇ كۆپ سۆزنى خاتا تونۇيدۇ. خەتكە ئايلاندۇرۇش ناچار بولسا ئېتىۋېتىڭ.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "تىزىملىكنى يېڭىلاش (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in ئىشلەتكىلى بولمايدۇ: ئەكس سادانى تازىلاشنى قوزغىتىش مەغلۇپ بولدى.";
+"Buscar modelos do servidor" = "مۇلازىمېتىردىن مودېللارنى ئېلىش";
+"Buscar voz" = "ئاۋاز ئىزدەش";
+"Chave da API" = "API ئاچقۇچى";
+"Compatível com OpenAI" = "OpenAI بىلەن ماس";
+"Consultando…" = "سۈرۈشتۈرۈۋاتىدۇ…";
+"Endpoint de voz não configurado (falta a URL)." = "ئاۋاز endpoint تەڭشەلمىگەن (URL يوق).";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint تېكىست قايتۇرمىدى. ئىنكاس: %@";
+"Endpoint próprio" = "ئۆز endpoint";
+"Endpoint respondeu %d." = "endpoint %d قايتۇردى.";
+"Endpoint respondeu %d: %@" = "endpoint %d قايتۇردى: %@";
+"Escolher voz" = "ئاۋاز تاللاش";
+"Escolher…" = "تاللاش…";
+"Formato" = "فورمات";
+"Mostrar chave" = "ئاچقۇچنى كۆرسەت";
+"Nenhuma voz encontrada." = "ھېچقانداق ئاۋاز تېپىلمىدى.";
+"Nome do modelo" = "مودېل ئىسمى";
+"O servidor não listou nenhum modelo." = "مۇلازىمېتىر ھېچقانداق مودېل تىزىملىمىدى.";
+"OK" = "جەزملە";
+"Ocultar chave" = "ئاچقۇچنى يوشۇر";
+"Olá! É assim que a voz vai soar." = "ياخشىمۇسىز! ئاۋاز مۇشۇنداق ئاڭلىنىدۇ.";
+"Outro…" = "باشقا…";
+"Só minhas vozes" = "پەقەت مېنىڭ ئاۋازلىرىم";
+"URL base" = "ئاساسىي URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "«ئۆز endpoint» = OpenAI ئاۋاز API سى بىلەن ماس كېلىدىغان ھەرقانداق مۇلازىمەت (POST /audio/transcriptions). ئۈسكۈنىگە ھېچنېمە چۈشۈرۈلمەيدۇ.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in ئىشلەتكىلى بولمايدۇ: ئاۋاز بايقىغۇچنى يۈكلىگىلى بولمىدى.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in ئىشلەتكىلى بولمايدۇ: مىكروفوننى ئاچقىلى بولمىدى.";
+"O modelo guardado (%@) não está na lista do servidor." = "ساقلانغان مودېل (%@) مۇلازىمېتىر تىزىملىكىدە يوق.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS بولمىسا، API ئاچقۇچى توردا ئوچۇق تېكىست بىلەن ئۆتىدۇ.";
+"Gravando… toque para parar" = "خاتىرىلىنىۋاتىدۇ… توختىتىشقا چېكىڭ";
+"Ouvi: %@" = "ئاڭلىغىنىم: %@";
+"Testar reconhecimento" = "تونۇشنى سىناش";
+"Transcrevendo…" = "تېكىستكە ئايلىنىۋاتىدۇ…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "سۆزلەش تىلى";
+"Seguir o app (%@)" = "ئەپكە ئەگىشىش (%@)";
+"Detectar automaticamente" = "ئاپتوماتىك بايقاش";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "ئىچكى ئۈن ئەپنىڭ تىلىغا ئەگىشىدۇ. تونۇش بولسا يۇقىرىدا تاللانغان تىلنى ئىشلىتىدۇ؛ ئاپتوماتىك بايقاش قىسقا ياكى شاۋقۇنلۇق ئاۋازدا تېخىمۇ كۆپ خاتالىشىدۇ، iOS نىڭ ئىچكى تونۇشى تىلنى پۈتۈنلەي بايقىمايدۇ — ئۇ يەردە ھەمىشە ئەپنىڭ تىلى كۈچكە ئىگە.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "streaming ئۈن";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "ئېقىم ئاۋاز پۈتۈن ھۆججەتنى ساقلىماي، بىرىنچى جۈملىنى تېخى ياسىلىۋاتقان چېغىدا قويىدۇ. پەقەت سۆھبەت ھالىتىدە (ئاۋاز ئېكرانىدا) كۈچكە ئىگە؛ كېيىنكى جۈملىلەر ئاللىقاچان ئالدىنقىسى قويۇلۇۋاتقاندا تەييارلىنىدۇ. ئاۋاز ئۈزۈلسە ئېتىۋېتىڭ.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "ئۈن قويۇش ئۈزۈلدى.";
+"O endpoint aceitou o pedido e não enviou áudio." = "ئاخىرلىشىش نۇقتىسى تەلەپنى قوبۇل قىلىپ ئۈن ئەۋەتمىدى.";

@@ -121,7 +121,7 @@ struct DeepResearchView: View {
                     // Past research — real list from /api/research/library.
                     card {
                         HStack {
-                            Text("Past research").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                            Text("Pesquisas anteriores").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
                             Spacer()
                             Text("\(vm.past.count)").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
                         }

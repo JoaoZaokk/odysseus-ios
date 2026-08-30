@@ -35,7 +35,7 @@
 "Bloquear o app" = "অ্যাপ লক করুন";
 "Brain" = "Brain";
 "Busca" = "সার্চ";
-"Buscar nos logs…" = "লগে সার্চ করুন…";
+"Buscar nos logs…" = "log-এ খুঁজুন…";
 "Cabe na máquina (estimativa, melhor GPU)" = "মেশিনে এঁটে যায় (আনুমানিক, সেরা GPU)";
 "Cadastro aberto" = "ওপেন সাইন-আপ";
 "Caixa de entrada" = "ইনবক্স";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "এটি অপরিবর্তনীয়। নিশ্চিত?";
 "Lembretes" = "রিমাইন্ডার";
 "Library" = "লাইব্রেরি";
-"Logs do sistema" = "সিস্টেম লগ";
+"Logs do sistema" = "সিস্টেম log";
 "Manter conectado" = "লগইন রাখুন";
 "Memórias do assistente" = "অ্যাসিস্ট্যান্ট মেমরি";
 "Mesma pergunta para os dois…" = "দুটোতেই একই প্রশ্ন…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "মডেল ও ইঞ্জিন";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "নেটিভ = আপনি বলার সাথে সাথে লাইভ ট্রান্সক্রিপশন (Claude/Gemini-এর মতো)। \"মডেল\" = অফলাইন Whisper (শেষে ট্রান্সক্রাইব করে)। ডাউনলোড করা মডেলে ⚡ Core ML অ্যাক্সিলারেটর (Neural Engine) ডাউনলোড করে → অনেক দ্রুত।";
 "Nativo iOS" = "নেটিভ iOS";
-"Nenhum endpoint conectado." = "কোনো এন্ডপয়েন্ট সংযুক্ত নেই।";
+"Nenhum endpoint conectado." = "কোনো endpoint সংযুক্ত নেই।";
 "Nenhum evento" = "কোনো ইভেন্ট নেই";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "কোনো MCP সার্ভার সংযুক্ত নেই। ওয়েব (অ্যাডমিন) থেকে যোগ করুন।";
 "Nenhuma conta" = "কোনো অ্যাকাউন্ট নেই";
@@ -141,7 +141,7 @@
 "Padrão" = "ডিফল্ট";
 "Padrões de IA" = "AI ডিফল্ট";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "বেশিরভাগ প্রোভাইডারে আপনার IMAP ক্রেডেনশিয়াল কাজ করে। 2FA থাকলে অ্যাপ পাসওয়ার্ড ব্যবহার করুন।";
-"Past research" = "পূর্ববর্তী গবেষণা";
+"Pesquisas anteriores" = "পূর্ববর্তী গবেষণা";
 "Pede %@ antes de usar a senha salva." = "সেভ করা পাসওয়ার্ড ব্যবহারের আগে %@ চায়।";
 "Pede %@ ao abrir e ao voltar pro app." = "অ্যাপ খোলা ও ফিরে আসার সময় %@ চায়।";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "ছবির অনুরোধ → ডিফল্ট প্রোভাইডার → ব্যর্থ হলে এবং ফলব্যাক চালু থাকলে পরেরগুলো চেষ্টা করে → সব ব্যর্থ হলে স্পষ্ট ত্রুটি। লগে কোনো সংবেদনশীল ডেটা থাকে না। গভীর জেনারেশন (txt2img, upscale, inpaint, outpaint, multi-GPU) পরের ধাপের জন্য DIFFUSION_COMFYUI_PLAN.md-এ ডকুমেন্ট করা আছে।";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ বিপদ অঞ্চল";
 "(sem conteúdo)" = "(কোনো কন্টেন্ট নেই)";
 "Ativar" = "চালু করুন";
-"Criar token" = "টোকেন তৈরি করুন";
+"Criar token" = "token তৈরি করুন";
 "Código 2FA" = "2FA কোড";
 "Desafixar" = "আনপিন করুন";
 "Desarquivar" = "আর্কাইভ থেকে সরান";
@@ -230,7 +230,7 @@
 "Revogar admin" = "অ্যাডমিন প্রত্যাহার করুন";
 "Selecionar…" = "নির্বাচন করুন…";
 "Sem favoritos" = "কোনো প্রিয় নেই";
-"Sem logs." = "কোনো লগ নেই।";
+"Sem logs." = "কোনো log নেই।";
 "Sem notas ainda" = "এখনও কোনো নোট নেই";
 "Tornar admin" = "অ্যাডমিন করুন";
 "Tudo" = "সব";
@@ -262,8 +262,8 @@
 "Escrevendo" = "লিখছে";
 "Espaços" = "স্পেস";
 "Executando" = "চলছে";
-"Extract paralelo" = "প্যারালাল extract";
-"Extract timeout (s)" = "Extract টাইমআউট (s)";
+"Extração paralela" = "সমান্তরাল নিষ্কাশন";
+"Timeout da extração (s)" = "নিষ্কাশন টাইমআউট (সে.)";
 "Falha" = "ব্যর্থ";
 "Falha ao salvar" = "সেভ করতে ব্যর্থ";
 "Fallbacks" = "ফলব্যাক";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP পোর্ট";
 "Provedor usado para busca na web e pesquisa profunda." = "ওয়েব সার্চ ও গভীর গবেষণার জন্য ব্যবহৃত প্রোভাইডার।";
 "Resultados por busca" = "প্রতি সার্চে ফলাফল";
-"Run timeout (s)" = "Run টাইমআউট (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "সম্পাদন টাইমআউট (সে.)";
+"ID do mecanismo de busca (CX)" = "সার্চ ইঞ্জিন আইডি (CX)";
 "Senha atual" = "বর্তমান পাসওয়ার্ড";
 "Senha atualizada" = "পাসওয়ার্ড আপডেট হয়েছে";
 "Servidor SMTP" = "SMTP সার্ভার";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "সর্বোচ্চ রাউন্ড";
 "Orçamento de tokens (entrada)" = "টোকেন বাজেট (ইনপুট)";
 "Teto duro de tokens" = "টোকেনের কঠোর সীমা";
-"Timeout do stream (s)" = "স্ট্রিম টাইমআউট (সে.)";
+"Timeout do stream (s)" = "stream টাইমআউট (সে.)";
 "Limites de execução do agente e servidores MCP." = "এজেন্ট সম্পাদনের সীমা ও MCP সার্ভার।";
 "Código & Arquivos" = "কোড ও ফাইল";
 "Busca & Web" = "অনুসন্ধান ও ওয়েব";
@@ -389,7 +389,7 @@
 "Atualizar" = "রিফ্রেশ করুন";
 "Só um administrador pode atualizar a lista de modelos." = "শুধুমাত্র একজন অ্যাডমিনই মডেলের তালিকা রিফ্রেশ করতে পারেন।";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "কোনো মডেল পাওয়া যায়নি। এন্ডপয়েন্ট কি উত্তর দিয়েছে?";
-"%lld modelo(s) encontrado(s)." = "%lld মডেল পাওয়া গেছে।";
+"Modelos encontrados: %lld" = "পাওয়া মডেল: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "ক্যাশে কোনো মডেল নেই। এন্ডপয়েন্ট প্রোব করতে রিফ্রেশ ব্যবহার করুন।";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -439,8 +439,8 @@
 "Áudio indisponível: %@" = "অডিও উপলব্ধ নয়: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML মডেল আনজিপ করা যায়নি।";
 "Sessão expirada. Faça login novamente." = "সেশনের মেয়াদ শেষ। আবার সাইন ইন করুন।";
-"Falha ao iniciar o stream" = "স্ট্রিম শুরু করা যায়নি";
-"Erro no stream" = "স্ট্রিম ত্রুটি";
+"Falha ao iniciar o stream" = "stream শুরু করা যায়নি";
+"Erro no stream" = "stream ত্রুটি";
 "Autenticar para entrar no Odysseus" = "Odysseus-এ প্রবেশ করতে প্রমাণীকরণ করুন";
 "Desbloquear o Odysseus" = "Odysseus আনলক করুন";
 "Pacote sem alvo pip." = "প্যাকেজের কোনো pip টার্গেট নেই।";
@@ -475,8 +475,8 @@
 "Escolher modelos" = "মডেল বাছুন";
 "Padrão do servidor" = "সার্ভারের ডিফল্ট";
 "Outros modelos" = "অন্যান্য মডেল";
-"%lld modelo(s) · ativo" = "%lld মডেল · সক্রিয়";
-"%lld modelo(s) · desativado" = "%lld মডেল · নিষ্ক্রিয়";
+"Modelos: %lld · ativo" = "মডেল: %lld · চালু";
+"Modelos: %lld · desativado" = "মডেল: %lld · বন্ধ";
 "· %lld rodadas" = "· %lld রাউন্ড";
 "Personalizado…" = "কাস্টম…";
 "online" = "অনলাইন";
@@ -544,8 +544,8 @@
 "indisponível" = "অনুপলব্ধ";
 "%.0f GB livre / %.0f GB" = "%.0f GB খালি / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB খালি / %.1f GB";
-"http://host:porta" = "http://হোস্ট:পোর্ট";
-"Organizado: %lld removida(s) (%lld → %lld)." = "সাজানো হয়েছে: %lld সরানো হয়েছে (%lld → %lld)।";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "গোছানো হয়েছে: %lld → %lld · সরানো হয়েছে: %lld";
 "Falha ao organizar: %@" = "সাজাতে ব্যর্থ: %@";
 "Backup exportado." = "ব্যাকআপ রপ্তানি হয়েছে।";
 "Salvo." = "সংরক্ষিত।";
@@ -569,3 +569,53 @@
 "%lld rodando · %lld na fila" = "%lld চলছে · %lld সারিতে";
 "Processar só no aparelho" = "শুধু ডিভাইসে প্রসেস করুন";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "শুধু ডিভাইসে প্রসেস করলে অডিও Apple-এ পাঠানো হয় না, তবে অফলাইন মডেল বেশি শব্দ ভুল করে। প্রতিলিপি খারাপ হলে বন্ধ রাখুন।";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "তালিকা রিফ্রেশ করুন (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in পাওয়া যাচ্ছে না: ইকো ক্যানসেলেশন চালু করা যায়নি।";
+"Buscar modelos do servidor" = "সার্ভার থেকে মডেল আনুন";
+"Buscar voz" = "কণ্ঠ খুঁজুন";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-সঙ্গতিপূর্ণ";
+"Consultando…" = "জিজ্ঞাসা করা হচ্ছে…";
+"Endpoint de voz não configurado (falta a URL)." = "ভয়েস endpoint সেট করা নেই (URL নেই)।";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint কোনো টেক্সট ফেরত দেয়নি। উত্তর: %@";
+"Endpoint próprio" = "নিজের endpoint";
+"Endpoint respondeu %d." = "endpoint %d ফেরত দিয়েছে।";
+"Endpoint respondeu %d: %@" = "endpoint %d ফেরত দিয়েছে: %@";
+"Escolher voz" = "কণ্ঠ নির্বাচন";
+"Escolher…" = "নির্বাচন…";
+"Formato" = "ফরম্যাট";
+"Mostrar chave" = "কী দেখান";
+"Nenhuma voz encontrada." = "কোনো কণ্ঠ পাওয়া যায়নি।";
+"Nome do modelo" = "মডেলের নাম";
+"O servidor não listou nenhum modelo." = "সার্ভার কোনো মডেল তালিকাভুক্ত করেনি।";
+"OK" = "ঠিক আছে";
+"Ocultar chave" = "কী লুকান";
+"Olá! É assim que a voz vai soar." = "নমস্কার! কণ্ঠস্বর এমন শোনাবে।";
+"Outro…" = "অন্য…";
+"Só minhas vozes" = "শুধু আমার কণ্ঠ";
+"URL base" = "বেস URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"নিজের endpoint\" = OpenAI-এর অডিও API-এর সঙ্গে সঙ্গতিপূর্ণ যেকোনো সেবা (POST /audio/transcriptions)। ডিভাইসে কিছুই ডাউনলোড হয় না।";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in পাওয়া যাচ্ছে না: কণ্ঠ শনাক্তকারী লোড করা যায়নি।";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in পাওয়া যাচ্ছে না: মাইক্রোফোন খোলা যায়নি।";
+"O modelo guardado (%@) não está na lista do servidor." = "সংরক্ষিত মডেল (%@) সার্ভারের তালিকায় নেই।";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS ছাড়া API key নেটওয়ার্কে সাধারণ টেক্সট হিসেবে যায়।";
+"Gravando… toque para parar" = "রেকর্ড হচ্ছে… থামাতে ট্যাপ করুন";
+"Ouvi: %@" = "শুনলাম: %@";
+"Testar reconhecimento" = "শনাক্তকরণ পরীক্ষা করুন";
+"Transcrevendo…" = "প্রতিলিপি হচ্ছে…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "কথার ভাষা";
+"Seguir o app (%@)" = "অ্যাপের মতো (%@)";
+"Detectar automaticamente" = "স্বয়ংক্রিয়ভাবে শনাক্ত করা";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "বিল্ট-ইন কণ্ঠ অ্যাপের ভাষা অনুসরণ করে। তবে শনাক্তকরণ উপরে বেছে নেওয়া ভাষা ব্যবহার করে; ছোট বা কোলাহলপূর্ণ অডিওতে স্বয়ংক্রিয় শনাক্তকরণ বেশি ভুল করে, আর iOS-এর নিজস্ব শনাক্তকরণ ভাষা একেবারেই ধরতে পারে না — সেখানে সবসময় অ্যাপের ভাষাই চলে।";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "streaming অডিও";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "স্ট্রিমিং অডিও পুরো ফাইলের জন্য অপেক্ষা না করে প্রথম বাক্যটি তৈরি হওয়ার সময়েই বাজাতে শুরু করে। এটি শুধু কথোপকথন মোডে (ভয়েস স্ক্রিনে) কাজ করে; পরের বাক্যগুলো এমনিতেই আগেরটি বাজার সময় প্রস্তুত হয়ে যায়। শব্দ আটকে গেলে বন্ধ করে দিন।";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "অডিও চালানো বাধাগ্রস্ত হয়েছে।";
+"O endpoint aceitou o pedido e não enviou áudio." = "এন্ডপয়েন্ট অনুরোধ গ্রহণ করেছে কিন্তু কোনো অডিও পাঠায়নি।";

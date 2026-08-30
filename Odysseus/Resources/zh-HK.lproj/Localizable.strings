@@ -35,7 +35,7 @@
 "Bloquear o app" = "鎖定應用程式";
 "Brain" = "Brain";
 "Busca" = "搜尋";
-"Buscar nos logs…" = "搜尋日誌…";
+"Buscar nos logs…" = "搜尋日誌（log）…";
 "Cabe na máquina (estimativa, melhor GPU)" = "適合此機器執行（估算，最佳 GPU）";
 "Cadastro aberto" = "開放註冊";
 "Caixa de entrada" = "收件匣";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "此操作無法復原。確認嗎？";
 "Lembretes" = "提醒";
 "Library" = "媒體庫";
-"Logs do sistema" = "系統日誌";
+"Logs do sistema" = "系統日誌（log）";
 "Manter conectado" = "保持登入";
 "Memórias do assistente" = "助理記憶";
 "Mesma pergunta para os dois…" = "向兩者傳送相同問題…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "模型與引擎";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "原生 = 邊說邊即時轉錄（類似 Claude/Gemini）。\"模型\" = 離線 Whisper（結束時轉錄）。對於已下載的模型，⚡ 可下載 Core ML 加速器（Neural Engine）→ 速度大幅提升。";
 "Nativo iOS" = "原生 iOS";
-"Nenhum endpoint conectado." = "未連線任何端點。";
+"Nenhum endpoint conectado." = "冇已連接嘅端點（endpoint）。";
 "Nenhum evento" = "無事件";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "未連線任何 MCP 伺服器。請透過 Web（管理員）新增。";
 "Nenhuma conta" = "無帳戶";
@@ -141,7 +141,7 @@
 "Padrão" = "預設";
 "Padrões de IA" = "AI 預設值";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "對於大多數提供者，使用 IMAP 憑證即可。如果啟用了 2FA，請使用 App Password。";
-"Past research" = "過往研究";
+"Pesquisas anteriores" = "過往研究";
 "Pede %@ antes de usar a senha salva." = "使用已儲存密碼前要求 %@。";
 "Pede %@ ao abrir e ao voltar pro app." = "開啟應用程式和返回應用程式時要求 %@。";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "影像請求 → 預設提供者 → 如果失敗且備用已啟用，依序嘗試下一個 → 如果全部失敗，顯示明確錯誤。日誌不含敏感資料。深度生成（txt2img、upscale、inpaint、outpaint、multi-GPU）已記錄於 DIFFUSION_COMFYUI_PLAN.md，留待下一階段。";
@@ -185,7 +185,7 @@
 "Testar" = "測試";
 "Testar lembrete" = "測試提醒";
 "Texto → Voz" = "文字 → 語音";
-"Timeout" = "Timeout";
+"Timeout" = "逾時";
 "Todos" = "全部";
 "Toque em + para conectar uma conta IMAP." = "點選 + 連線 IMAP 帳戶。";
 "Toque em + para criar sua primeira nota." = "點選 + 建立您的第一條備忘。";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ 危險區域";
 "(sem conteúdo)" = "（無內容）";
 "Ativar" = "啟用";
-"Criar token" = "建立權杖";
+"Criar token" = "建立 token";
 "Código 2FA" = "2FA 驗證碼";
 "Desafixar" = "取消固定";
 "Desarquivar" = "取消封存";
@@ -230,7 +230,7 @@
 "Revogar admin" = "撤銷管理員";
 "Selecionar…" = "選擇…";
 "Sem favoritos" = "無最愛";
-"Sem logs." = "無日誌。";
+"Sem logs." = "冇日誌（log）。";
 "Sem notas ainda" = "尚無備忘";
 "Tornar admin" = "設為管理員";
 "Tudo" = "全部";
@@ -262,8 +262,8 @@
 "Escrevendo" = "寫入中";
 "Espaços" = "空間";
 "Executando" = "執行中";
-"Extract paralelo" = "平行擷取";
-"Extract timeout (s)" = "擷取逾時（秒）";
+"Extração paralela" = "並行擷取";
+"Timeout da extração (s)" = "擷取逾時（秒）";
 "Falha" = "失敗";
 "Falha ao salvar" = "儲存失敗";
 "Fallbacks" = "備用方案";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP 連接埠";
 "Provedor usado para busca na web e pesquisa profunda." = "用於網絡搜尋和深度研究的提供者。";
 "Resultados por busca" = "每次搜尋的結果數";
-"Run timeout (s)" = "執行逾時（秒）";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "執行逾時（秒）";
+"ID do mecanismo de busca (CX)" = "搜尋引擎 ID（CX）";
 "Senha atual" = "目前密碼";
 "Senha atualizada" = "密碼已更新";
 "Servidor SMTP" = "SMTP 伺服器";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "最大回合數";
 "Orçamento de tokens (entrada)" = "權杖預算（輸入）";
 "Teto duro de tokens" = "權杖硬上限";
-"Timeout do stream (s)" = "串流逾時（秒）";
+"Timeout do stream (s)" = "串流（stream）逾時（秒）";
 "Limites de execução do agente e servidores MCP." = "代理執行限制與 MCP 伺服器。";
 "Código & Arquivos" = "程式碼與檔案";
 "Busca & Web" = "搜尋與網頁";
@@ -376,7 +376,7 @@
 
 // v1.6 — agent limits & model endpoints
 "%lld mensagens antigas saíram do contexto para caber no limite." = "為了符合上限，%lld 則舊訊息已從上下文中移除。";
-"%lld modelo(s) encontrado(s)." = "找到 %lld 個模型。";
+"Modelos encontrados: %lld" = "搵到嘅模型：%lld";
 "Atualizar" = "重新整理";
 "Mensagens antigas saíram do contexto para caber no limite." = "為了符合上限，舊訊息已從上下文中移除。";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "找不到任何模型。端點是否有回應？";
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "音訊無法使用：%@";
 "Falha ao descompactar o modelo Core ML." = "解壓縮 Core ML 模型失敗。";
 "Sessão expirada. Faça login novamente." = "工作階段已過期，請重新登入。";
-"Falha ao iniciar o stream" = "無法啟動串流";
-"Erro no stream" = "串流錯誤";
+"Falha ao iniciar o stream" = "無法啟動串流（stream）";
+"Erro no stream" = "串流（stream）錯誤";
 "Autenticar para entrar no Odysseus" = "請驗證身分以進入 Odysseus";
 "Desbloquear o Odysseus" = "解鎖 Odysseus";
 "Pacote sem alvo pip." = "此套件沒有 pip 目標。";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "選擇模型";
 "Padrão do servidor" = "伺服器預設";
 "Outros modelos" = "其他模型";
-"%lld modelo(s) · ativo" = "%lld 個模型 · 已啟用";
-"%lld modelo(s) · desativado" = "%lld 個模型 · 已停用";
+"Modelos: %lld · ativo" = "模型：%lld · 已啟用";
+"Modelos: %lld · desativado" = "模型：%lld · 已停用";
 "· %lld rodadas" = "· %lld 輪";
 "Personalizado…" = "自訂…";
 "online" = "線上";
@@ -542,8 +542,8 @@
 "indisponível" = "不可用";
 "%.0f GB livre / %.0f GB" = "可用 %.0f GB / %.0f GB";
 "%.1f GB livre / %.1f GB" = "可用 %.1f GB / %.1f GB";
-"http://host:porta" = "http://主機:連接埠";
-"Organizado: %lld removida(s) (%lld → %lld)." = "已整理：移除了 %lld 條（%lld → %lld）。";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "已整理：%lld → %lld · 已移除：%lld";
 "Falha ao organizar: %@" = "整理失敗：%@";
 "Backup exportado." = "備份已匯出。";
 "Salvo." = "已儲存。";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld 個執行中 · %lld 個排隊中";
 "Processar só no aparelho" = "僅在裝置上處理";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "僅在裝置上處理不會將音訊傳送給 Apple，但離線模型辨識錯誤較多。轉寫效果差時請關閉。";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "重新整理清單 (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "無法使用 barge-in：回音消除未能啟用。";
+"Buscar modelos do servidor" = "從伺服器取得模型";
+"Buscar voz" = "搜尋語音";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "相容 OpenAI";
+"Consultando…" = "查詢中…";
+"Endpoint de voz não configurado (falta a URL)." = "語音端點未設定（缺少 URL）。";
+"Endpoint não devolveu texto. Resposta: %@" = "端點未回傳文字。回應：%@";
+"Endpoint próprio" = "自訂端點（endpoint）";
+"Endpoint respondeu %d." = "端點（endpoint）回應 %d。";
+"Endpoint respondeu %d: %@" = "端點（endpoint）回應 %d：%@";
+"Escolher voz" = "選擇語音";
+"Escolher…" = "選擇…";
+"Formato" = "格式";
+"Mostrar chave" = "顯示金鑰";
+"Nenhuma voz encontrada." = "找不到語音。";
+"Nome do modelo" = "模型名稱";
+"O servidor não listou nenhum modelo." = "伺服器未列出任何模型。";
+"OK" = "好";
+"Ocultar chave" = "隱藏金鑰";
+"Olá! É assim que a voz vai soar." = "你好！把聲會係咁樣。";
+"Outro…" = "其他…";
+"Só minhas vozes" = "只顯示我的語音";
+"URL base" = "基礎 URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "「自訂端點」= 任何相容 OpenAI 音訊 API 的服務（POST /audio/transcriptions）。不會在裝置上下載任何內容。";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "無法使用 barge-in：語音偵測模型載入失敗。";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "無法使用 barge-in：無法開啟麥克風。";
+"O modelo guardado (%@) não está na lista do servidor." = "已儲存的模型（%@）不在伺服器清單中。";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "未使用 HTTPS 時，API key 會以明文在網路上傳輸。";
+"Gravando… toque para parar" = "錄音中…點一下停止";
+"Ouvi: %@" = "聽到：%@";
+"Testar reconhecimento" = "測試辨識";
+"Transcrevendo…" = "轉寫中…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "語音語言";
+"Seguir o app (%@)" = "跟隨應用程式（%@）";
+"Detectar automaticamente" = "自動偵測";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "內建語音會跟隨應用程式語言。辨識則使用上面選擇的語言；自動偵測在短音訊或吵雜音訊上更容易出錯，而 iOS 內建辨識根本不做語言偵測——那裡一律使用應用程式語言。";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "串流（streaming）音訊";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "串流播放會在第一句還在生成時就開始播放，而不是等待整個檔案。僅在對話模式（語音畫面）生效；後續句子本來就會在上一句播放時預先準備。若聲音卡頓請關閉。";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "音訊播放俾中斷咗。";
+"O endpoint aceitou o pedido e não enviou áudio." = "服務端點接受咗請求，但係冇回傳音訊。";

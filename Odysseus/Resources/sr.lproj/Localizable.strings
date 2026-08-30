@@ -35,7 +35,7 @@
 "Bloquear o app" = "Закључај апликацију";
 "Brain" = "Brain";
 "Busca" = "Претрага";
-"Buscar nos logs…" = "Претражи евиденцију…";
+"Buscar nos logs…" = "Претражи logove…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Стаје на уређај (процена, најбољи GPU)";
 "Cadastro aberto" = "Отворена регистрација";
 "Caixa de entrada" = "Пријемно сандуче";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Ово је неповратно. Потврђујете?";
 "Lembretes" = "Подсетници";
 "Library" = "Library";
-"Logs do sistema" = "Системска евиденција";
+"Logs do sistema" = "Системски logovi";
 "Manter conectado" = "Остани пријављен";
 "Memórias do assistente" = "Сећања асистента";
 "Mesma pergunta para os dois…" = "Исто питање за оба…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Модели и покретачи";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Нативно = транскрипција уживо током говора (попут Claude/Gemini). \"Модел\" = Whisper офлајн (транскрибује на крају). Код преузетих модела ⚡ преузима убрзивач Core ML (Neural Engine) → знатно брже.";
 "Nativo iOS" = "Нативни iOS";
-"Nenhum endpoint conectado." = "Нема повезаних крајњих тачака.";
+"Nenhum endpoint conectado." = "Нема повезаног endpoint-а.";
 "Nenhum evento" = "Нема догађаја";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Нема повезаних MCP сервера. Додајте преко веба (Admin).";
 "Nenhuma conta" = "Нема налога";
@@ -141,7 +141,7 @@
 "Padrão" = "Подразумевано";
 "Padrões de IA" = "Подешавања ВИ";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "За већину провајдера, IMAP акредитиви функционишу. Користите App Password ако имате 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Ранија истраживања";
 "Pede %@ antes de usar a senha salva." = "Тражи %@ пре коришћења сачуване лозинке.";
 "Pede %@ ao abrir e ao voltar pro app." = "Тражи %@ при отварању и повратку у апликацију.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Захтев за слику → подразумевани провајдер → ако не успе и резервна опција је укључена, покушава следеће → ако сви не успеју, јасна грешка. Евиденција не садржи осетљиве податке. Напредно генерисање (txt2img, upscale, inpaint, outpaint, multi-GPU) документовано је у DIFFUSION_COMFYUI_PLAN.md за следећу фазу.";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(без садржаја)";
 "Ativar" = "Укључи";
 "Criar" = "Направи";
-"Criar token" = "Направи токен";
+"Criar token" = "Направи token";
 "Código 2FA" = "Код 2FA";
 "Desafixar" = "Одкачи";
 "Desarquivar" = "Разархивирај";
@@ -232,7 +232,7 @@
 "Revogar admin" = "Опозови права администратора";
 "Selecionar…" = "Изабери…";
 "Sem favoritos" = "Нема омиљених";
-"Sem logs." = "Нема евиденције.";
+"Sem logs." = "Нема logova.";
 "Sem notas ainda" = "Нема белешки";
 "Tornar admin" = "Постави за администратора";
 "Tudo" = "Све";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Куцам";
 "Espaços" = "Простори";
 "Executando" = "Извршава се";
-"Extract paralelo" = "Паралелно издвајање";
-"Extract timeout (s)" = "Extract timeout (с)";
+"Extração paralela" = "Паралелна екстракција";
+"Timeout da extração (s)" = "Timeout екстракције (s)";
 "Falha" = "Грешка";
 "Falha ao salvar" = "Чување није успело";
 "Fallbacks" = "Резервне опције";
@@ -300,8 +300,8 @@
 "Provedor" = "Провајдер";
 "Provedor usado para busca na web e pesquisa profunda." = "Провајдер за веб претрагу и дубинску претрагу.";
 "Resultados por busca" = "Резултата по претрази";
-"Run timeout (s)" = "Run timeout (с)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout извршавања (s)";
+"ID do mecanismo de busca (CX)" = "ID претраживача (CX)";
 "Senha atual" = "Тренутна лозинка";
 "Senha atualizada" = "Лозинка је ажурирана";
 "Servidor SMTP" = "SMTP сервер";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Макс. рунди";
 "Orçamento de tokens (entrada)" = "Буџет токена (улаз)";
 "Teto duro de tokens" = "Тврдо ограничење токена";
-"Timeout do stream (s)" = "Истек времена стрима (с)";
+"Timeout do stream (s)" = "Timeout stream-а (s)";
 "Limites de execução do agente e servidores MCP." = "Ограничења извршавања агента и MCP сервери.";
 "Código & Arquivos" = "Кôд и датотеке";
 "Busca & Web" = "Претрага и веб";
@@ -389,7 +389,7 @@
 "Atualizar" = "Освежи";
 "Só um administrador pode atualizar a lista de modelos." = "Само администратор може да освежи листу модела.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Нису пронађени модели. Да ли је крајња тачка одговорила?";
-"%lld modelo(s) encontrado(s)." = "Пронађено модела: %lld.";
+"Modelos encontrados: %lld" = "Пронађени модели: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Нема кешираних модела. Користите «Освежи» да испитате крајњу тачку.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -439,8 +439,8 @@
 "Áudio indisponível: %@" = "Звук није доступан: %@";
 "Falha ao descompactar o modelo Core ML." = "Није успело распакивање Core ML модела.";
 "Sessão expirada. Faça login novamente." = "Сесија је истекла. Пријавите се поново.";
-"Falha ao iniciar o stream" = "Није могуће покренути стрим";
-"Erro no stream" = "Грешка стрима";
+"Falha ao iniciar o stream" = "Није могуће покренути stream";
+"Erro no stream" = "Грешка stream-а";
 "Autenticar para entrar no Odysseus" = "Аутентификујте се за улазак у Odysseus";
 "Desbloquear o Odysseus" = "Откључај Odysseus";
 "Pacote sem alvo pip." = "Пакет нема pip циљ.";
@@ -475,8 +475,8 @@
 "Escolher modelos" = "Изабери моделе";
 "Padrão do servidor" = "Подразумевано са сервера";
 "Outros modelos" = "Остали модели";
-"%lld modelo(s) · ativo" = "%lld модел(а) · активан";
-"%lld modelo(s) · desativado" = "%lld модел(а) · онемогућен";
+"Modelos: %lld · ativo" = "Модели: %lld · активно";
+"Modelos: %lld · desativado" = "Модели: %lld · искључено";
 "· %lld rodadas" = "· %lld рунди";
 "Personalizado…" = "Прилагођено…";
 "online" = "на мрежи";
@@ -544,8 +544,8 @@
 "indisponível" = "недоступна";
 "%.0f GB livre / %.0f GB" = "%.0f GB слободно / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB слободно / %.1f GB";
-"http://host:porta" = "http://хост:порт";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Организовано: уклоњено %lld (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Сређено: %lld → %lld · уклоњено: %lld";
 "Falha ao organizar: %@" = "Организовање није успело: %@";
 "Backup exportado." = "Резервна копија је извезена.";
 "Salvo." = "Сачувано.";
@@ -569,3 +569,53 @@
 "%lld rodando · %lld na fila" = "%lld ради · %lld у реду";
 "Processar só no aparelho" = "Обради само на уређају";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Обрада само на уређају не шаље звук Apple-у, али офлајн модел греши више речи. Оставите искључено ако је транскрипција лоша.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Освежи листу (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in није доступан: поништавање еха није могло да се укључи.";
+"Buscar modelos do servidor" = "Преузми моделе са сервера";
+"Buscar voz" = "Тражи глас";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Компатибилно са OpenAI";
+"Consultando…" = "Упит…";
+"Endpoint de voz não configurado (falta a URL)." = "Гласовни endpoint није подешен (недостаје URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint није вратио текст. Одговор: %@";
+"Endpoint próprio" = "Сопствени endpoint";
+"Endpoint respondeu %d." = "Endpoint је одговорио %d.";
+"Endpoint respondeu %d: %@" = "Endpoint је одговорио %d: %@";
+"Escolher voz" = "Изабери глас";
+"Escolher…" = "Изабери…";
+"Formato" = "Формат";
+"Mostrar chave" = "Прикажи кључ";
+"Nenhuma voz encontrada." = "Није пронађен ниједан глас.";
+"Nome do modelo" = "Назив модела";
+"O servidor não listou nenhum modelo." = "Сервер није навео ниједан модел.";
+"OK" = "У реду";
+"Ocultar chave" = "Сакриј кључ";
+"Olá! É assim que a voz vai soar." = "Здраво! Овако ће глас звучати.";
+"Outro…" = "Друго…";
+"Só minhas vozes" = "Само моји гласови";
+"URL base" = "Основни URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "„Сопствени endpoint“ = било која услуга компатибилна са OpenAI аудио API-јем (POST /audio/transcriptions). Ништа се не преузима на уређај.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in није доступан: детектор говора није могао да се учита.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in није доступан: микрофон није могао да се отвори.";
+"O modelo guardado (%@) não está na lista do servidor." = "Сачувани модел (%@) није на листи сервера.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Без HTTPS-а API key путује мрежом у отвореном тексту.";
+"Gravando… toque para parar" = "Снимање… додирните да зауставите";
+"Ouvi: %@" = "Чуо сам: %@";
+"Testar reconhecimento" = "Тестирај препознавање";
+"Transcrevendo…" = "Преписујем…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Језик говора";
+"Seguir o app (%@)" = "Према апликацији (%@)";
+"Detectar automaticamente" = "Аутоматско препознавање";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Уграђени глас прати језик апликације. Препознавање пак користи језик изабран изнад; аутоматско препознавање чешће греши на кратком или бучном звуку, а уграђено препознавање на iOS-у језик уопште не препознаје — тамо увек важи језик апликације.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Аудио у streaming-у";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Стриминг звук репродукује прву реченицу док се још генерише, уместо да чека цео фајл. Важи само у режиму разговора (гласовни екран); следеће реченице се ионако припремају док траје претходна. Искључите ако звук запиње.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Репродукција звука је прекинута.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Крајња тачка је прихватила захтев и није послала звук.";

@@ -35,7 +35,7 @@
 "Bloquear o app" = "Zakleni aplikacijo";
 "Brain" = "Brain";
 "Busca" = "Iskanje";
-"Buscar nos logs…" = "Išči v zapisnikih…";
+"Buscar nos logs…" = "Išči po logih…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Se prilega stroju (ocena, najboljša GPU)";
 "Cadastro aberto" = "Odprta registracija";
 "Caixa de entrada" = "Prejeta pošta";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "To je nepovratno. Potrdiš?";
 "Lembretes" = "Opomniki";
 "Library" = "Library";
-"Logs do sistema" = "Sistemski zapisniki";
+"Logs do sistema" = "Sistemski logi";
 "Manter conectado" = "Ostani prijavljen";
 "Memórias do assistente" = "Spomini pomočnika";
 "Mesma pergunta para os dois…" = "Isto vprašanje za oba…";
@@ -141,7 +141,7 @@
 "Padrão" = "Privzeto";
 "Padrões de IA" = "Privzete nastavitve AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Za večino ponudnikov poverilnice IMAP delujejo. Uporabi geslo aplikacije, če imaš 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Prejšnje raziskave";
 "Pede %@ antes de usar a senha salva." = "Zahteva %@ pred uporabo shranjenega gesla.";
 "Pede %@ ao abrir e ao voltar pro app." = "Zahteva %@ ob odpiranju in vračanju v aplikacijo.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Zahteva slike → privzeti ponudnik → če ne uspe in je rezervno vklopljeno, poskusi naslednje → če vsi ne uspejo, jasna napaka. Zapisniki ne vsebujejo občutljivih podatkov. Globoko ustvarjanje (txt2img, upscale, inpaint, outpaint, multi-GPU) je dokumentirano v DIFFUSION_COMFYUI_PLAN.md za naslednjo fazo.";
@@ -204,7 +204,7 @@
 "⚠️ Zona de perigo" = "⚠️ Nevarno območje";
 "(sem conteúdo)" = "(brez vsebine)";
 "Ativar" = "Vklopi";
-"Criar token" = "Ustvari žeton";
+"Criar token" = "Ustvari token";
 "Código 2FA" = "Koda 2FA";
 "Desafixar" = "Odpni";
 "Desarquivar" = "Obnovi iz arhiva";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Prekliči pravice admina";
 "Selecionar…" = "Izberi…";
 "Sem favoritos" = "Ni priljubljenih";
-"Sem logs." = "Ni zapisnikov.";
+"Sem logs." = "Ni logov.";
 "Sem notas ainda" = "Še ni opomb";
 "Tornar admin" = "Nastavi kot admina";
 "Tudo" = "Vse";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Pisanje";
 "Espaços" = "Prostori";
 "Executando" = "Izvajanje";
-"Extract paralelo" = "Vzporedna ekstrakcija";
-"Extract timeout (s)" = "Timeout ekstrakcije (s)";
+"Extração paralela" = "Vzporedno izvlečenje";
+"Timeout da extração (s)" = "Timeout izvlečenja (s)";
 "Falha" = "Neuspeh";
 "Falha ao salvar" = "Shranjevanje ni uspelo";
 "Fallbacks" = "Rezervne možnosti";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Vrata SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Ponudnik, ki se uporablja za spletno iskanje in globoko iskanje.";
 "Resultados por busca" = "Rezultati na iskanje";
-"Run timeout (s)" = "Timeout izvajanja (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout izvajanja (s)";
+"ID do mecanismo de busca (CX)" = "ID iskalnika (CX)";
 "Senha atual" = "Trenutno geslo";
 "Senha atualizada" = "Geslo posodobljeno";
 "Servidor SMTP" = "Strežnik SMTP";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Najv. krogov";
 "Orçamento de tokens (entrada)" = "Proračun žetonov (vhod)";
 "Teto duro de tokens" = "Trda omejitev žetonov";
-"Timeout do stream (s)" = "Časovna omejitev toka (s)";
+"Timeout do stream (s)" = "Timeout streama (s)";
 "Limites de execução do agente e servidores MCP." = "Omejitve izvajanja agenta in strežniki MCP.";
 "Código & Arquivos" = "Koda in datoteke";
 "Busca & Web" = "Iskanje in splet";
@@ -387,7 +387,7 @@
 "Atualizar" = "Osveži";
 "Só um administrador pode atualizar a lista de modelos." = "Samo admin lahko osveži seznam modelov.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Ni bilo najdenih modelov. Se je endpoint odzval?";
-"%lld modelo(s) encontrado(s)." = "Najdenih: %lld modelov.";
+"Modelos encontrados: %lld" = "Najdeni modeli: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "V predpomnilniku ni modelov. Uporabi „Osveži”, da sondiraš endpoint.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Zvok ni na voljo: %@";
 "Falha ao descompactar o modelo Core ML." = "Modela Core ML ni bilo mogoče razpakirati.";
 "Sessão expirada. Faça login novamente." = "Seja je potekla. Znova se prijavite.";
-"Falha ao iniciar o stream" = "Pretoka ni bilo mogoče zagnati";
-"Erro no stream" = "Napaka pretoka";
+"Falha ao iniciar o stream" = "Streama ni bilo mogoče zagnati";
+"Erro no stream" = "Napaka stream";
 "Autenticar para entrar no Odysseus" = "Overite se za vstop v Odysseus";
 "Desbloquear o Odysseus" = "Odkleni Odysseus";
 "Pacote sem alvo pip." = "Paket nima cilja pip.";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Izberi modele";
 "Padrão do servidor" = "Privzeto s strežnika";
 "Outros modelos" = "Drugi modeli";
-"%lld modelo(s) · ativo" = "%lld model(ov) · aktiven";
-"%lld modelo(s) · desativado" = "%lld model(ov) · onemogočen";
+"Modelos: %lld · ativo" = "Modeli: %lld · aktivno";
+"Modelos: %lld · desativado" = "Modeli: %lld · izklopljeno";
 "· %lld rodadas" = "· %lld krogov";
 "Personalizado…" = "Po meri…";
 "online" = "povezano";
@@ -542,8 +542,8 @@
 "indisponível" = "ni na voljo";
 "%.0f GB livre / %.0f GB" = "%.0f GB prosto / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB prosto / %.1f GB";
-"http://host:porta" = "http://gostitelj:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organizirano: odstranjeno %lld (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Urejeno: %lld → %lld · odstranjeno: %lld";
 "Falha ao organizar: %@" = "Organiziranje ni uspelo: %@";
 "Backup exportado." = "Varnostna kopija izvožena.";
 "Salvo." = "Shranjeno.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld v teku · %lld v čakalni vrsti";
 "Processar só no aparelho" = "Obdelaj samo v napravi";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Obdelava samo v napravi ne pošilja zvoka Applu, vendar model brez povezave zgreši več besed. Pustite izklopljeno, če je prepis slab.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Osveži seznam (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in ni na voljo: odprave odmeva ni bilo mogoče vklopiti.";
+"Buscar modelos do servidor" = "Pridobi modele s strežnika";
+"Buscar voz" = "Iskanje glasu";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Združljivo z OpenAI";
+"Consultando…" = "Poizvedovanje…";
+"Endpoint de voz não configurado (falta a URL)." = "Glasovni endpoint ni nastavljen (manjka URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint ni vrnil besedila. Odgovor: %@";
+"Endpoint próprio" = "Lasten endpoint";
+"Endpoint respondeu %d." = "Endpoint je odgovoril %d.";
+"Endpoint respondeu %d: %@" = "Endpoint je odgovoril %d: %@";
+"Escolher voz" = "Izberi glas";
+"Escolher…" = "Izberi…";
+"Formato" = "Oblika";
+"Mostrar chave" = "Pokaži ključ";
+"Nenhuma voz encontrada." = "Ni najdenega glasu.";
+"Nome do modelo" = "Ime modela";
+"O servidor não listou nenhum modelo." = "Strežnik ni navedel nobenega modela.";
+"OK" = "V redu";
+"Ocultar chave" = "Skrij ključ";
+"Olá! É assim que a voz vai soar." = "Živjo! Tako bo zvenel glas.";
+"Outro…" = "Drugo…";
+"Só minhas vozes" = "Samo moji glasovi";
+"URL base" = "Osnovni URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "»Lasten endpoint« = katera koli storitev, združljiva z zvočnim API-jem OpenAI (POST /audio/transcriptions). V napravo se ne prenese nič.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in ni na voljo: zaznavalnika govora ni bilo mogoče naložiti.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in ni na voljo: mikrofona ni bilo mogoče odpreti.";
+"O modelo guardado (%@) não está na lista do servidor." = "Shranjeni model (%@) ni na seznamu strežnika.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Brez HTTPS potuje API key po omrežju v čistopisu.";
+"Gravando… toque para parar" = "Snemanje… tapnite za ustavitev";
+"Ouvi: %@" = "Slišal sem: %@";
+"Testar reconhecimento" = "Preizkusi prepoznavanje";
+"Transcrevendo…" = "Prepisujem…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Jezik govora";
+"Seguir o app (%@)" = "Sledi aplikaciji (%@)";
+"Detectar automaticamente" = "Samodejno zaznaj";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Vgrajeni glas sledi jeziku aplikacije. Prepoznavanje pa uporablja zgoraj izbrani jezik; samodejno zaznavanje se pogosteje zmoti pri kratkem ali hrupnem zvoku, vgrajeno prepoznavanje v iOS pa jezika sploh ne zazna — tam vedno velja jezik aplikacije.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Zvok v streamingu";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Pretočni zvok predvaja prvi stavek že med ustvarjanjem, namesto da bi čakal na celotno datoteko. Velja samo v pogovornem načinu (glasovni zaslon); naslednji stavki se tako ali tako pripravljajo, medtem ko se predvaja prejšnji. Izklopite, če zvok zatika.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Predvajanje zvoka je bilo prekinjeno.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Končna točka je zahtevo sprejela in ni poslala zvoka.";

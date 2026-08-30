@@ -35,7 +35,7 @@
 "Bloquear o app" = "Khóa ứng dụng";
 "Brain" = "Brain";
 "Busca" = "Tìm kiếm";
-"Buscar nos logs…" = "Tìm trong nhật ký…";
+"Buscar nos logs…" = "Tìm trong log…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Phù hợp với máy (ước tính, GPU tốt nhất)";
 "Cadastro aberto" = "Đăng ký mở";
 "Caixa de entrada" = "Hộp thư đến";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Thao tác này không thể hoàn tác. Xác nhận?";
 "Lembretes" = "Nhắc nhở";
 "Library" = "Library";
-"Logs do sistema" = "Nhật ký hệ thống";
+"Logs do sistema" = "Log hệ thống";
 "Manter conectado" = "Duy trì đăng nhập";
 "Memórias do assistente" = "Ký ức của trợ lý";
 "Mesma pergunta para os dois…" = "Cùng một câu hỏi cho cả hai…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Mô hình và động cơ";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Gốc = phiên âm trực tiếp khi bạn nói (như Claude/Gemini). \"Mô hình\" = Whisper ngoại tuyến (phiên âm ở cuối). Với các mô hình đã tải, ⚡ tải bộ tăng tốc Core ML (Neural Engine) → nhanh hơn nhiều.";
 "Nativo iOS" = "iOS gốc";
-"Nenhum endpoint conectado." = "Không có điểm cuối nào được kết nối.";
+"Nenhum endpoint conectado." = "Chưa kết nối endpoint nào.";
 "Nenhum evento" = "Không có sự kiện";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Không có máy chủ MCP nào được kết nối. Thêm qua web (Quản trị).";
 "Nenhuma conta" = "Không có tài khoản";
@@ -141,7 +141,7 @@
 "Padrão" = "Mặc định";
 "Padrões de IA" = "Mặc định AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Với hầu hết nhà cung cấp, thông tin đăng nhập IMAP là đủ. Dùng App Password nếu bạn bật 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Nghiên cứu trước đây";
 "Pede %@ antes de usar a senha salva." = "Yêu cầu %@ trước khi dùng mật khẩu đã lưu.";
 "Pede %@ ao abrir e ao voltar pro app." = "Yêu cầu %@ khi mở và khi quay lại ứng dụng.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Yêu cầu hình ảnh → nhà cung cấp mặc định → nếu thất bại và dự phòng bật, thử các cái tiếp theo → nếu tất cả thất bại, báo lỗi rõ ràng. Nhật ký không chứa dữ liệu nhạy cảm. Tạo ảnh chuyên sâu (txt2img, upscale, inpaint, outpaint, multi-GPU) được ghi tài liệu trong DIFFUSION_COMFYUI_PLAN.md cho giai đoạn tiếp theo.";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Thu hồi quyền quản trị";
 "Selecionar…" = "Chọn…";
 "Sem favoritos" = "Không có mục yêu thích";
-"Sem logs." = "Không có nhật ký.";
+"Sem logs." = "Không có log.";
 "Sem notas ainda" = "Chưa có ghi chú nào";
 "Tornar admin" = "Đặt làm quản trị viên";
 "Tudo" = "Tất cả";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Đang viết";
 "Espaços" = "Không gian";
 "Executando" = "Đang chạy";
-"Extract paralelo" = "Trích xuất song song";
-"Extract timeout (s)" = "Thời gian chờ trích xuất (s)";
+"Extração paralela" = "Trích xuất song song";
+"Timeout da extração (s)" = "Hết thời gian trích xuất (giây)";
 "Falha" = "Thất bại";
 "Falha ao salvar" = "Lưu thất bại";
 "Fallbacks" = "Dự phòng";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Cổng SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Nhà cung cấp dùng cho tìm kiếm web và nghiên cứu sâu.";
 "Resultados por busca" = "Kết quả mỗi lần tìm kiếm";
-"Run timeout (s)" = "Thời gian chờ chạy (s)";
-"Search Engine ID (CX)" = "ID công cụ tìm kiếm (CX)";
+"Timeout de execução (s)" = "Hết thời gian chạy (giây)";
+"ID do mecanismo de busca (CX)" = "ID công cụ tìm kiếm (CX)";
 "Senha atual" = "Mật khẩu hiện tại";
 "Senha atualizada" = "Mật khẩu đã cập nhật";
 "Servidor SMTP" = "Máy chủ SMTP";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Số vòng tối đa";
 "Orçamento de tokens (entrada)" = "Ngân sách token (đầu vào)";
 "Teto duro de tokens" = "Giới hạn token cứng";
-"Timeout do stream (s)" = "Thời gian chờ luồng (giây)";
+"Timeout do stream (s)" = "Hết thời gian stream (giây)";
 "Limites de execução do agente e servidores MCP." = "Giới hạn thực thi tác nhân và máy chủ MCP.";
 "Código & Arquivos" = "Mã & Tệp";
 "Busca & Web" = "Tìm kiếm & Web";
@@ -387,7 +387,7 @@
 "Atualizar" = "Làm mới";
 "Só um administrador pode atualizar a lista de modelos." = "Chỉ quản trị viên mới có thể làm mới danh sách mô hình.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Không tìm thấy mô hình nào. Điểm cuối có phản hồi không?";
-"%lld modelo(s) encontrado(s)." = "Đã tìm thấy %lld mô hình.";
+"Modelos encontrados: %lld" = "Mô hình tìm thấy: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Chưa có mô hình nào trong bộ nhớ đệm. Dùng Làm mới để thăm dò điểm cuối.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Âm thanh không khả dụng: %@";
 "Falha ao descompactar o modelo Core ML." = "Không giải nén được mô hình Core ML.";
 "Sessão expirada. Faça login novamente." = "Phiên đã hết hạn. Vui lòng đăng nhập lại.";
-"Falha ao iniciar o stream" = "Không khởi động được luồng";
-"Erro no stream" = "Lỗi luồng";
+"Falha ao iniciar o stream" = "Không thể bắt đầu stream";
+"Erro no stream" = "Lỗi stream";
 "Autenticar para entrar no Odysseus" = "Xác thực để vào Odysseus";
 "Desbloquear o Odysseus" = "Mở khoá Odysseus";
 "Pacote sem alvo pip." = "Gói không có đích pip.";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Chọn mô hình";
 "Padrão do servidor" = "Mặc định của máy chủ";
 "Outros modelos" = "Mô hình khác";
-"%lld modelo(s) · ativo" = "%lld mô hình · đang bật";
-"%lld modelo(s) · desativado" = "%lld mô hình · đã tắt";
+"Modelos: %lld · ativo" = "Mô hình: %lld · bật";
+"Modelos: %lld · desativado" = "Mô hình: %lld · tắt";
 "· %lld rodadas" = "· %lld vòng";
 "Personalizado…" = "Tùy chỉnh…";
 "online" = "trực tuyến";
@@ -542,8 +542,8 @@
 "indisponível" = "không khả dụng";
 "%.0f GB livre / %.0f GB" = "%.0f GB trống / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB trống / %.1f GB";
-"http://host:porta" = "http://host:cổng";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Đã tổ chức: đã xóa %lld (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Đã dọn: %lld → %lld · đã xoá: %lld";
 "Falha ao organizar: %@" = "Tổ chức thất bại: %@";
 "Backup exportado." = "Đã xuất bản sao lưu.";
 "Salvo." = "Đã lưu.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld đang chạy · %lld trong hàng đợi";
 "Processar só no aparelho" = "Chỉ xử lý trên thiết bị";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Chỉ xử lý trên thiết bị sẽ không gửi âm thanh đến Apple, nhưng mô hình ngoại tuyến sai nhiều từ hơn. Hãy tắt nếu bản ghi kém.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Làm mới danh sách (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Không dùng được barge-in: không thể bật khử tiếng vọng.";
+"Buscar modelos do servidor" = "Lấy mô hình từ máy chủ";
+"Buscar voz" = "Tìm giọng";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Tương thích OpenAI";
+"Consultando…" = "Đang truy vấn…";
+"Endpoint de voz não configurado (falta a URL)." = "Chưa cấu hình endpoint giọng nói (thiếu URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint không trả về văn bản. Phản hồi: %@";
+"Endpoint próprio" = "Endpoint riêng";
+"Endpoint respondeu %d." = "Endpoint trả về %d.";
+"Endpoint respondeu %d: %@" = "Endpoint trả về %d: %@";
+"Escolher voz" = "Chọn giọng";
+"Escolher…" = "Chọn…";
+"Formato" = "Định dạng";
+"Mostrar chave" = "Hiện khoá";
+"Nenhuma voz encontrada." = "Không tìm thấy giọng nào.";
+"Nome do modelo" = "Tên mô hình";
+"O servidor não listou nenhum modelo." = "Máy chủ không liệt kê mô hình nào.";
+"OK" = "OK";
+"Ocultar chave" = "Ẩn khoá";
+"Olá! É assim que a voz vai soar." = "Xin chào! Giọng sẽ nghe như thế này.";
+"Outro…" = "Khác…";
+"Só minhas vozes" = "Chỉ giọng của tôi";
+"URL base" = "URL gốc";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Endpoint riêng\" = bất kỳ dịch vụ nào tương thích với audio API của OpenAI (POST /audio/transcriptions). Không tải gì về thiết bị.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Không dùng được barge-in: không tải được bộ phát hiện giọng nói.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Không dùng được barge-in: không mở được micro.";
+"O modelo guardado (%@) não está na lista do servidor." = "Mô hình đã lưu (%@) không có trong danh sách của máy chủ.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Không có HTTPS, API key đi qua mạng dưới dạng văn bản thuần.";
+"Gravando… toque para parar" = "Đang ghi… chạm để dừng";
+"Ouvi: %@" = "Nghe được: %@";
+"Testar reconhecimento" = "Thử nhận dạng";
+"Transcrevendo…" = "Đang chuyển thành văn bản…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Ngôn ngữ khi nói";
+"Seguir o app (%@)" = "Theo ứng dụng (%@)";
+"Detectar automaticamente" = "Tự động nhận diện";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Giọng tích hợp đi theo ngôn ngữ của ứng dụng. Còn nhận dạng thì dùng ngôn ngữ chọn ở trên; tự động nhận diện sai nhiều hơn với âm thanh ngắn hoặc nhiều tạp âm, và nhận dạng tích hợp của iOS không nhận diện ngôn ngữ nào cả — ở đó luôn dùng ngôn ngữ của ứng dụng.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Âm thanh streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Âm thanh phát trực tiếp phát câu đầu tiên ngay khi nó còn đang được tạo, thay vì chờ toàn bộ tệp. Chỉ áp dụng ở chế độ trò chuyện (màn hình giọng nói); các câu sau vẫn được chuẩn bị trong lúc câu trước đang phát. Tắt đi nếu âm thanh bị giật.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Việc phát âm thanh đã bị gián đoạn.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Điểm cuối đã nhận yêu cầu nhưng không gửi âm thanh.";

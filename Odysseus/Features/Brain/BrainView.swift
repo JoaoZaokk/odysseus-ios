@@ -55,7 +55,7 @@ final class BrainViewModel: ObservableObject {
             await load()
             auditMessage = r.removed == 0
                 ? L("Memórias já estão organizadas — nada a remover.")
-                : L("Organizado: %lld removida(s) (%lld → %lld).", r.removed, r.before, r.after)
+                : L("Organizado: %lld → %lld · removidas: %lld", r.before, r.after, r.removed)
         } catch {
             auditMessage = L("Falha ao organizar: %@", msg(error))
         }

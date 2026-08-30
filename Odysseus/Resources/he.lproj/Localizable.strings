@@ -35,7 +35,7 @@
 "Bloquear o app" = "נעילת האפליקציה";
 "Brain" = "Brain";
 "Busca" = "חיפוש";
-"Buscar nos logs…" = "חיפוש בלוגים…";
+"Buscar nos logs…" = "חיפוש ב-logים…";
 "Cabe na máquina (estimativa, melhor GPU)" = "מתאים למכונה (הערכה, GPU הטוב ביותר)";
 "Cadastro aberto" = "הרשמה פתוחה";
 "Caixa de entrada" = "תיבת דואר נכנס";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "פעולה זו בלתי הפיכה. לאשר?";
 "Lembretes" = "תזכורות";
 "Library" = "ספרייה";
-"Logs do sistema" = "לוגים של המערכת";
+"Logs do sistema" = "logים של המערכת";
 "Manter conectado" = "השאר אותי מחובר";
 "Memórias do assistente" = "זיכרונות העוזר";
 "Mesma pergunta para os dois…" = "אותה שאלה לשניהם…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "מודלים ומנועים";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "מקומי = תמלול חי תוך כדי דיבור (כמו Claude/Gemini). \"מודל\" = Whisper במצב לא מקוון (מתמלל בסוף). במודלים שהורדת, ⚡ מוריד את מאיץ Core ML (Neural Engine) → הרבה יותר מהיר.";
 "Nativo iOS" = "iOS מקורי";
-"Nenhum endpoint conectado." = "אין נקודת קצה מחוברת.";
+"Nenhum endpoint conectado." = "אין endpoint מחובר.";
 "Nenhum evento" = "אין אירועים";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "אין שרת MCP מחובר. הוסף אחד דרך האתר (מנהל).";
 "Nenhuma conta" = "אין חשבונות";
@@ -141,7 +141,7 @@
 "Padrão" = "ברירת מחדל";
 "Padrões de IA" = "ברירות מחדל של AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "אצל רוב הספקים, פרטי הכניסה של IMAP עובדים. השתמש בסיסמת אפליקציה אם יש לך 2FA.";
-"Past research" = "מחקרים קודמים";
+"Pesquisas anteriores" = "מחקרים קודמים";
 "Pede %@ antes de usar a senha salva." = "מבקש %@ לפני שימוש בסיסמה השמורה.";
 "Pede %@ ao abrir e ao voltar pro app." = "מבקש %@ בעת פתיחת האפליקציה והחזרה אליה.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "בקשת תמונה → ספק ברירת המחדל → אם נכשל והגיבוי מופעל, מנסה את הבאים בתור → אם כולם נכשלים, שגיאה ברורה. הלוגים לא מכילים נתונים רגישים. יצירה מתקדמת (txt2img, upscale, inpaint, outpaint, multi-GPU) מתועדת בקובץ DIFFUSION_COMFYUI_PLAN.md לשלב הבא.";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(אין תוכן)";
 "Ativar" = "הפעלה";
 "Criar" = "יצירה";
-"Criar token" = "יצירת טוקן";
+"Criar token" = "יצירת token";
 "Código 2FA" = "קוד 2FA";
 "Desafixar" = "ביטול הצמדה";
 "Desarquivar" = "הוצאה מהארכיון";
@@ -232,7 +232,7 @@
 "Revogar admin" = "ביטול הרשאות מנהל";
 "Selecionar…" = "בחירה…";
 "Sem favoritos" = "אין מועדפים";
-"Sem logs." = "אין לוגים.";
+"Sem logs." = "אין logים.";
 "Sem notas ainda" = "עדיין אין פתקים";
 "Tornar admin" = "הענקת הרשאות מנהל";
 "Tudo" = "הכול";
@@ -264,8 +264,8 @@
 "Escrevendo" = "כותב";
 "Espaços" = "מרחבים";
 "Executando" = "פועל";
-"Extract paralelo" = "חילוץ מקבילי";
-"Extract timeout (s)" = "פסק זמן לחילוץ (שנ')";
+"Extração paralela" = "חילוץ מקבילי";
+"Timeout da extração (s)" = "פסק זמן לחילוץ (שנ׳)";
 "Falha" = "נכשל";
 "Falha ao salvar" = "השמירה נכשלה";
 "Fallbacks" = "גיבויים";
@@ -300,8 +300,8 @@
 "Provedor" = "ספק";
 "Provedor usado para busca na web e pesquisa profunda." = "ספק המשמש לחיפוש ברשת ולמחקר מעמיק.";
 "Resultados por busca" = "תוצאות לחיפוש";
-"Run timeout (s)" = "פסק זמן להרצה (שנ')";
-"Search Engine ID (CX)" = "מזהה מנוע חיפוש (CX)";
+"Timeout de execução (s)" = "פסק זמן להרצה (שנ׳)";
+"ID do mecanismo de busca (CX)" = "מזהה מנוע החיפוש (CX)";
 "Senha atual" = "סיסמה נוכחית";
 "Senha atualizada" = "הסיסמה עודכנה";
 "Servidor SMTP" = "שרת SMTP";
@@ -350,7 +350,7 @@
 "Máx. de rounds" = "מקסימום סבבים";
 "Orçamento de tokens (entrada)" = "תקציב טוקנים (קלט)";
 "Teto duro de tokens" = "תקרת טוקנים קשיחה";
-"Timeout do stream (s)" = "פסק זמן לזרם (שנ')";
+"Timeout do stream (s)" = "פסק זמן ל-stream (שנ׳)";
 "Limites de execução do agente e servidores MCP." = "מגבלות הרצה של הסוכן ושרתי MCP.";
 "Código & Arquivos" = "קוד וקבצים";
 "Busca & Web" = "חיפוש ורשת";
@@ -379,7 +379,7 @@
 "Atualizar" = "רענון";
 "Só um administrador pode atualizar a lista de modelos." = "רק מנהל יכול לרענן את רשימת המודלים.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "לא נמצא אף מודל. האם נקודת הקצה הגיבה?";
-"%lld modelo(s) encontrado(s)." = "נמצאו %lld מודלים.";
+"Modelos encontrados: %lld" = "מודלים שנמצאו: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "אין מודלים במטמון. השתמש ברענון כדי לבדוק את נקודת הקצה.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -429,8 +429,8 @@
 "Áudio indisponível: %@" = "אודיו לא זמין: %@";
 "Falha ao descompactar o modelo Core ML." = "פתיחת מודל ה-Core ML נכשלה.";
 "Sessão expirada. Faça login novamente." = "פג תוקף ההפעלה. התחבר שוב.";
-"Falha ao iniciar o stream" = "לא ניתן להתחיל את הזרם";
-"Erro no stream" = "שגיאת זרם";
+"Falha ao iniciar o stream" = "לא ניתן להתחיל stream";
+"Erro no stream" = "שגיאת stream";
 "Autenticar para entrar no Odysseus" = "אמת את זהותך כדי להיכנס ל-Odysseus";
 "Desbloquear o Odysseus" = "בטל נעילה של Odysseus";
 "Pacote sem alvo pip." = "לחבילה אין יעד pip.";
@@ -465,8 +465,8 @@
 "Escolher modelos" = "בחירת מודלים";
 "Padrão do servidor" = "ברירת המחדל של השרת";
 "Outros modelos" = "מודלים אחרים";
-"%lld modelo(s) · ativo" = "%lld דגמים · פעיל";
-"%lld modelo(s) · desativado" = "%lld דגמים · מושבת";
+"Modelos: %lld · ativo" = "מודלים: %lld · פעיל";
+"Modelos: %lld · desativado" = "מודלים: %lld · כבוי";
 "· %lld rodadas" = "· %lld סבבים";
 "Personalizado…" = "מותאם אישית…";
 "online" = "מקוון";
@@ -534,8 +534,8 @@
 "indisponível" = "לא זמין";
 "%.0f GB livre / %.0f GB" = "%.0f GB פנוי / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB פנוי / %.1f GB";
-"http://host:porta" = "http://מארח:פורט";
-"Organizado: %lld removida(s) (%lld → %lld)." = "אורגן: %lld הוסרו (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "אורגן: %lld ← %lld · הוסרו: %lld";
 "Falha ao organizar: %@" = "הארגון נכשל: %@";
 "Backup exportado." = "הגיבוי יוצא.";
 "Salvo." = "נשמר.";
@@ -559,3 +559,53 @@
 "%lld rodando · %lld na fila" = "%lld פועלים · %lld בתור";
 "Processar só no aparelho" = "עיבוד במכשיר בלבד";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "עיבוד במכשיר בלבד לא שולח אודיו ל-Apple, אבל המודל הלא-מקוון טועה ביותר מילים. השאירו כבוי אם התמלול גרוע.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "רענן רשימה (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in לא זמין: לא ניתן היה להפעיל ביטול הד.";
+"Buscar modelos do servidor" = "משיכת מודלים מהשרת";
+"Buscar voz" = "חיפוש קול";
+"Chave da API" = "מפתח API";
+"Compatível com OpenAI" = "תואם OpenAI";
+"Consultando…" = "שולח שאילתה…";
+"Endpoint de voz não configurado (falta a URL)." = "נקודת הקצה לקול לא הוגדרה (חסר URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "נקודת הקצה לא החזירה טקסט. תגובה: %@";
+"Endpoint próprio" = "endpoint משלך";
+"Endpoint respondeu %d." = "ה-endpoint החזיר %d.";
+"Endpoint respondeu %d: %@" = "ה-endpoint החזיר %d: %@";
+"Escolher voz" = "בחירת קול";
+"Escolher…" = "בחירה…";
+"Formato" = "פורמט";
+"Mostrar chave" = "הצג מפתח";
+"Nenhuma voz encontrada." = "לא נמצא קול.";
+"Nome do modelo" = "שם המודל";
+"O servidor não listou nenhum modelo." = "השרת לא הציג אף מודל.";
+"OK" = "אישור";
+"Ocultar chave" = "הסתר מפתח";
+"Olá! É assim que a voz vai soar." = "שלום! ככה הקול יישמע.";
+"Outro…" = "אחר…";
+"Só minhas vozes" = "רק הקולות שלי";
+"URL base" = "כתובת בסיס";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"נקודת קצה משלך\" = כל שירות התואם ל-API האודיו של OpenAI (POST /audio/transcriptions). שום דבר לא יורד למכשיר.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in לא זמין: לא ניתן היה לטעון את מזהה הדיבור.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in לא זמין: לא ניתן היה לפתוח את המיקרופון.";
+"O modelo guardado (%@) não está na lista do servidor." = "המודל השמור (%@) אינו ברשימת השרת.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "בלי HTTPS מפתח ה-API עובר ברשת כטקסט גלוי.";
+"Gravando… toque para parar" = "מקליט… הקש כדי לעצור";
+"Ouvi: %@" = "שמעתי: %@";
+"Testar reconhecimento" = "בדיקת זיהוי";
+"Transcrevendo…" = "מתמלל…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "שפת הדיבור";
+"Seguir o app (%@)" = "לפי האפליקציה (%@)";
+"Detectar automaticamente" = "זיהוי אוטומטי";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "הקול המובנה עוקב אחר שפת האפליקציה. הזיהוי, לעומת זאת, משתמש בשפה שנבחרה למעלה; זיהוי אוטומטי טועה יותר באודיו קצר או רועש, והזיהוי המובנה של iOS אינו מזהה שפה כלל — שם תמיד קובעת שפת האפליקציה.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "אודיו ב-streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "אודיו בהזרמה מנגן את המשפט הראשון בזמן שהוא עדיין נוצר, במקום לחכות לקובץ כולו. חל רק במצב שיחה (מסך הקול); המשפטים הבאים מוכנים ממילא בזמן שהקודם מתנגן. כבה אם הצליל נתקע.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "השמעת האודיו הופסקה.";
+"O endpoint aceitou o pedido e não enviou áudio." = "נקודת הקצה קיבלה את הבקשה ולא שלחה אודיו.";

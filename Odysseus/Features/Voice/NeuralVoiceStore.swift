@@ -84,8 +84,9 @@ final class NeuralVoiceStore: ObservableObject {
             guard let walker = fm.enumerator(at: root,
                                              includingPropertiesForKeys: [.isDirectoryKey],
                                              options: [.skipsHiddenFiles]) else { return [] }
-            for case let url as URL in walker {
-                guard let lang = wanted[url.lastPathComponent],
+            while let obj = walker.nextObject() {
+                guard let url = obj as? URL,
+                      let lang = wanted[url.lastPathComponent],
                       (try? url.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true
                 else { continue }
                 walker.skipDescendants()   // don't walk into it twice

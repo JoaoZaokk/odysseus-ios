@@ -78,12 +78,28 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zao.odysseus
         PRODUCT_NAME: Odysseus
-        # 1.9: dictation no longer falls back to the phone's language for the
-        # ten locales Apple has no speech model for (it says so instead), the
-        # English region is picked deterministically, and on-device recognition
-        # is an opt-in toggle rather than forced — all issue #9.
-        MARKETING_VERSION: "1.9"
-        CURRENT_PROJECT_VERSION: "14"
+        # 1.8: own speech endpoint (STT and TTS), speech language unbound from
+        # the UI language, streaming playback, and barge-in that survives its
+        # own echo. Build 16 corrected the permission strings, which claimed
+        # on-device transcription, and closed the stalls found in audit; 17
+        # retunes the barge-in floor so the shipping default admits a soft
+        # voice, covers the endpoint's wire shape, and makes "test voice" take
+        # the path the conversation actually takes; 18 carries the owner's
+        # review of the 44 permission dialogs; 19-20 the reviewers' term
+        # decisions across the 30 store locales; 21 removes the last OpenAI
+        # references from the Chinese in-app strings, which is what App Review
+        # rejected build 20 for (Guideline 5, China / Deep Synthesis).
+        #
+        # This is LOWER than the 1.9 on `main`, and that is deliberate: 1.9
+        # (build 14) was bumped there and never submitted — App Store Connect
+        # has never seen a 1.9, its last published version is 1.7, and 1.8
+        # build 21 is the one in review. The work that bump was named for
+        # (issue #9: dictation stops falling back to the phone's language,
+        # on-device recognition became opt-in) is an ancestor of this branch
+        # and ships inside 1.8. Do not "restore" 1.9 when merging; the next
+        # release after 1.8 takes it.
+        MARKETING_VERSION: "1.8"
+        CURRENT_PROJECT_VERSION: "21"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -151,7 +167,7 @@ targets:
         PRODUCT_NAME: Odysseus
         # 1.7: /api/models adoption (curated+extra merge, display names,
         # non-LLM endpoint filter) with old-server fallback; Compare submenu
-        # localized in 44 languages. Rest of AUDIT-1.7.md continues next.
+        # localized in 44 languages. Rest of docs/AUDIT-1.7.md continues next.
         MARKETING_VERSION: "1.7"
         CURRENT_PROJECT_VERSION: "15"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon

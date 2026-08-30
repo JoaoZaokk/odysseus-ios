@@ -35,7 +35,7 @@
 "Bloquear o app" = "Az alkalmazás zárolása";
 "Brain" = "Brain";
 "Busca" = "Keresés";
-"Buscar nos logs…" = "Keresés a naplókban…";
+"Buscar nos logs…" = "Keresés a logokban…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Elfér a gépen (becslés, legjobb GPU)";
 "Cadastro aberto" = "Nyílt regisztráció";
 "Caixa de entrada" = "Beérkező levelek";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Ez visszafordíthatatlan. Megerősíti?";
 "Lembretes" = "Emlékeztetők";
 "Library" = "Library";
-"Logs do sistema" = "Rendszernaplók";
+"Logs do sistema" = "Rendszer logok";
 "Manter conectado" = "Maradjak bejelentkezve";
 "Memórias do assistente" = "Asszisztens emlékei";
 "Mesma pergunta para os dois…" = "Ugyanaz a kérdés mindkettőnek…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Modellek és motorok";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Natív = élő átírás beszéd közben (mint Claude/Gemini). \"Modell\" = offline Whisper (a végén ír át). A letöltött modelleknél a ⚡ letölti a Core ML gyorsítót (Neural Engine) → sokkal gyorsabb.";
 "Nativo iOS" = "Natív iOS";
-"Nenhum endpoint conectado." = "Nincs csatlakoztatott végpont.";
+"Nenhum endpoint conectado." = "Nincs csatlakoztatott endpoint.";
 "Nenhum evento" = "Nincs esemény";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Nincs csatlakoztatott MCP szerver. Adjon hozzá egyet a weben (Admin).";
 "Nenhuma conta" = "Nincs fiók";
@@ -141,7 +141,7 @@
 "Padrão" = "Alapértelmezett";
 "Padrões de IA" = "MI alapértelmezések";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "A legtöbb szolgáltatónál az IMAP hitelesítő adatok elegendők. Ha 2FA van engedélyezve, használjon App Password-öt.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Korábbi kutatások";
 "Pede %@ antes de usar a senha salva." = "%@-t kér a mentett jelszó használata előtt.";
 "Pede %@ ao abrir e ao voltar pro app." = "%@-t kér az alkalmazás megnyitásakor és visszatéréskor.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Képkérés → alapértelmezett szolgáltató → ha meghiúsul és a tartalék be van kapcsolva, a következőket próbálja → ha mind meghiúsul, egyértelmű hiba. A naplók nem tartalmaznak érzékeny adatokat. A mély generálás (txt2img, upscale, inpaint, outpaint, multi-GPU) a DIFFUSION_COMFYUI_PLAN.md-ben van dokumentálva a következő fázisra.";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Admin jogok visszavonása";
 "Selecionar…" = "Kiválasztás…";
 "Sem favoritos" = "Nincsenek kedvencek";
-"Sem logs." = "Nincs napló.";
+"Sem logs." = "Nincsenek logok.";
 "Sem notas ainda" = "Még nincsenek jegyzetek";
 "Tornar admin" = "Admin kinevezése";
 "Tudo" = "Összes";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Írás";
 "Espaços" = "Terek";
 "Executando" = "Futtatás";
-"Extract paralelo" = "Párhuzamos kinyerés";
-"Extract timeout (s)" = "Kinyerési időtúllépés (mp)";
+"Extração paralela" = "Párhuzamos kinyerés";
+"Timeout da extração (s)" = "Kinyerés időtúllépése (mp)";
 "Falha" = "Sikertelen";
 "Falha ao salvar" = "Mentés sikertelen";
 "Fallbacks" = "Tartalékok";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP port";
 "Provedor usado para busca na web e pesquisa profunda." = "Webkereséshez és mélykutatáshoz használt szolgáltató.";
 "Resultados por busca" = "Eredmények keresésenként";
-"Run timeout (s)" = "Futási időtúllépés (mp)";
-"Search Engine ID (CX)" = "Keresőmotor azonosítója (CX)";
+"Timeout de execução (s)" = "Futás időtúllépése (mp)";
+"ID do mecanismo de busca (CX)" = "Keresőmotor-azonosító (CX)";
 "Senha atual" = "Jelenlegi jelszó";
 "Senha atualizada" = "Jelszó frissítve";
 "Servidor SMTP" = "SMTP szerver";
@@ -387,7 +387,7 @@
 "Atualizar" = "Frissítés";
 "Só um administrador pode atualizar a lista de modelos." = "A modellek listáját csak egy admin frissítheti.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Nem található modell. Válaszolt a végpont?";
-"%lld modelo(s) encontrado(s)." = "%lld modell található.";
+"Modelos encontrados: %lld" = "Talált modellek: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Nincs gyorsítótárazott modell. Használja a Frissítést a végpont megvizsgálásához.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Modellek kiválasztása";
 "Padrão do servidor" = "Kiszolgáló alapértelmezése";
 "Outros modelos" = "További modellek";
-"%lld modelo(s) · ativo" = "%lld modell · aktív";
-"%lld modelo(s) · desativado" = "%lld modell · letiltva";
+"Modelos: %lld · ativo" = "Modellek: %lld · aktív";
+"Modelos: %lld · desativado" = "Modellek: %lld · kikapcsolva";
 "· %lld rodadas" = "· %lld kör";
 "Personalizado…" = "Egyéni…";
 "online" = "online";
@@ -542,8 +542,8 @@
 "Média" = "Közepes";
 "%.0f GB livre / %.0f GB" = "%.0f GB szabad / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB szabad / %.1f GB";
-"http://host:porta" = "http://kiszolgáló:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Rendezve: %lld eltávolítva (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Rendezve: %lld → %lld · eltávolítva: %lld";
 "Falha ao organizar: %@" = "A rendezés nem sikerült: %@";
 "Backup exportado." = "Biztonsági mentés exportálva.";
 "Salvo." = "Mentve.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld fut · %lld sorban";
 "Processar só no aparelho" = "Feldolgozás csak az eszközön";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "A csak eszközön történő feldolgozás nem küld hangot az Apple-nek, de az offline modell több szót ront el. Hagyd kikapcsolva, ha rossz az átirat.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Lista frissítése (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "A barge-in nem érhető el: a visszhangszűrést nem sikerült bekapcsolni.";
+"Buscar modelos do servidor" = "Modellek lekérése a szerverről";
+"Buscar voz" = "Hang keresése";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-kompatibilis";
+"Consultando…" = "Lekérdezés…";
+"Endpoint de voz não configurado (falta a URL)." = "A hang-endpoint nincs beállítva (hiányzik az URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Az endpoint nem adott vissza szöveget. Válasz: %@";
+"Endpoint próprio" = "Saját endpoint";
+"Endpoint respondeu %d." = "Az endpoint %d kóddal válaszolt.";
+"Endpoint respondeu %d: %@" = "Az endpoint %d kóddal válaszolt: %@";
+"Escolher voz" = "Hang választása";
+"Escolher…" = "Választás…";
+"Formato" = "Formátum";
+"Mostrar chave" = "Kulcs megjelenítése";
+"Nenhuma voz encontrada." = "Nem található hang.";
+"Nome do modelo" = "Modell neve";
+"O servidor não listou nenhum modelo." = "A szerver egyetlen modellt sem sorolt fel.";
+"OK" = "OK";
+"Ocultar chave" = "Kulcs elrejtése";
+"Olá! É assim que a voz vai soar." = "Szia! Így fog szólni a hang.";
+"Outro…" = "Egyéb…";
+"Só minhas vozes" = "Csak a saját hangjaim";
+"URL base" = "Alap-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "„Saját endpoint” = bármely szolgáltatás, amely kompatibilis az OpenAI hang-API-jával (POST /audio/transcriptions). Semmi nem töltődik le a készülékre.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "A barge-in nem érhető el: a beszédfelismerőt nem sikerült betölteni.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "A barge-in nem érhető el: a mikrofont nem sikerült megnyitni.";
+"O modelo guardado (%@) não está na lista do servidor." = "A mentett modell (%@) nincs rajta a szerver listáján.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS nélkül az API key titkosítatlanul utazik a hálózaton.";
+"Gravando… toque para parar" = "Felvétel… koppintson a leállításhoz";
+"Ouvi: %@" = "Ezt hallottam: %@";
+"Testar reconhecimento" = "Felismerés tesztelése";
+"Transcrevendo…" = "Átírás…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "A beszéd nyelve";
+"Seguir o app (%@)" = "Az alkalmazás szerint (%@)";
+"Detectar automaticamente" = "Automatikus felismerés";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "A beépített hang az alkalmazás nyelvét követi. A felismerés viszont a fent választott nyelvet használja; az automatikus felismerés rövid vagy zajos hangnál többet téved, az iOS beépített felismerése pedig egyáltalán nem ismeri fel a nyelvet — ott mindig az alkalmazás nyelve érvényes.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming hang";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "A folyamatos hang már a generálás közben lejátssza az első mondatot, ahelyett hogy a teljes fájlra várna. Csak beszélgetés módban (a hangképernyőn) érvényes; a további mondatok amúgy is elkészülnek, amíg az előző szól. Kapcsold ki, ha a hang akadozik.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "A hanglejátszás megszakadt.";
+"O endpoint aceitou o pedido e não enviou áudio." = "A végpont elfogadta a kérést, és nem küldött hangot.";

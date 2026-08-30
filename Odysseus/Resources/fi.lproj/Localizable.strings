@@ -35,7 +35,7 @@
 "Bloquear o app" = "Lukitse sovellus";
 "Brain" = "Brain";
 "Busca" = "Haku";
-"Buscar nos logs…" = "Hae lokeista…";
+"Buscar nos logs…" = "Hae logeista…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Mahtuu koneelle (arvio, paras GPU)";
 "Cadastro aberto" = "Avoin rekisteröityminen";
 "Caixa de entrada" = "Saapuneet";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Tämä on peruuttamaton toimenpide. Vahvistetaanko?";
 "Lembretes" = "Muistutukset";
 "Library" = "Kirjasto";
-"Logs do sistema" = "Järjestelmälokit";
+"Logs do sistema" = "Järjestelmän logit";
 "Manter conectado" = "Pidä minut kirjautuneena";
 "Memórias do assistente" = "Avustajan muistot";
 "Mesma pergunta para os dois…" = "Sama kysymys molemmille…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Mallit ja moottorit";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Natiivi = reaaliaikainen litterointi puhuessasi (kuten Claude/Gemini). \"Malli\" = offline-Whisper (litteroi lopuksi). Ladattujen mallien kohdalla ⚡ lataa Core ML -kiihdyttimen (Neural Engine) → paljon nopeampi.";
 "Nativo iOS" = "Natiivi iOS";
-"Nenhum endpoint conectado." = "Ei yhdistettyä päätepistettä.";
+"Nenhum endpoint conectado." = "Ei yhdistettyä endpointia.";
 "Nenhum evento" = "Ei tapahtumia";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Ei yhdistettyä MCP-palvelinta. Lisää yksi verkkokäyttöliittymän kautta (Admin).";
 "Nenhuma conta" = "Ei tilejä";
@@ -141,7 +141,7 @@
 "Padrão" = "Oletus";
 "Padrões de IA" = "Tekoälyn oletusasetukset";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Useimpien palveluntarjoajien kohdalla IMAP-tunnuksesi toimivat. Käytä sovelluksen salasanaa, jos sinulla on 2FA käytössä.";
-"Past research" = "Aiemmat tutkimukset";
+"Pesquisas anteriores" = "Aiemmat tutkimukset";
 "Pede %@ antes de usar a senha salva." = "Pyytää %@ ennen tallennetun salasanan käyttöä.";
 "Pede %@ ao abrir e ao voltar pro app." = "Pyytää %@ sovellusta avattaessa ja siihen palatessa.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Kuvapyyntö → oletuspalveluntarjoaja → jos se epäonnistuu ja varajärjestelmä on käytössä, kokeillaan seuraavia → jos kaikki epäonnistuvat, selkeä virheilmoitus. Lokit eivät sisällä arkaluonteisia tietoja. Syvällinen kuvantuotanto (txt2img, upscale, inpaint, outpaint, multi-GPU) on dokumentoitu tiedostossa DIFFUSION_COMFYUI_PLAN.md seuraavaa vaihetta varten.";
@@ -232,7 +232,7 @@
 "Revogar admin" = "Poista ylläpitäjän oikeudet";
 "Selecionar…" = "Valitse…";
 "Sem favoritos" = "Ei suosikkeja";
-"Sem logs." = "Ei lokeja.";
+"Sem logs." = "Ei logeja.";
 "Sem notas ainda" = "Ei vielä muistiinpanoja";
 "Tornar admin" = "Tee ylläpitäjäksi";
 "Tudo" = "Kaikki";
@@ -264,8 +264,8 @@
 "Escrevendo" = "Kirjoittaa";
 "Espaços" = "Tilat";
 "Executando" = "Suoritetaan";
-"Extract paralelo" = "Rinnakkainen poiminta";
-"Extract timeout (s)" = "Poiminnan aikakatkaisu (s)";
+"Extração paralela" = "Rinnakkainen poiminta";
+"Timeout da extração (s)" = "Poiminnan aikakatkaisu (s)";
 "Falha" = "Epäonnistui";
 "Falha ao salvar" = "Tallennus epäonnistui";
 "Fallbacks" = "Varajärjestelmät";
@@ -300,8 +300,8 @@
 "Provedor" = "Palveluntarjoaja";
 "Provedor usado para busca na web e pesquisa profunda." = "Palveluntarjoaja, jota käytetään verkkohaussa ja syväntutkimuksessa.";
 "Resultados por busca" = "Tuloksia hakua kohden";
-"Run timeout (s)" = "Suorituksen aikakatkaisu (s)";
-"Search Engine ID (CX)" = "Hakukoneen tunnus (CX)";
+"Timeout de execução (s)" = "Suorituksen aikakatkaisu (s)";
+"ID do mecanismo de busca (CX)" = "Hakukoneen tunnus (CX)";
 "Senha atual" = "Nykyinen salasana";
 "Senha atualizada" = "Salasana päivitetty";
 "Servidor SMTP" = "SMTP-palvelin";
@@ -379,7 +379,7 @@
 "Atualizar" = "Päivitä";
 "Só um administrador pode atualizar a lista de modelos." = "Vain ylläpitäjä voi päivittää mallien listan.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Malleja ei löytynyt. Vastasiko päätepiste?";
-"%lld modelo(s) encontrado(s)." = "Malleja löytyi %lld.";
+"Modelos encontrados: %lld" = "Löydetyt mallit: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Ei välimuistissa olevia malleja. Käytä Päivitä-painiketta päätepisteen tutkimiseen.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -429,8 +429,8 @@
 "Áudio indisponível: %@" = "Ääni ei ole käytettävissä: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML -mallin purkaminen epäonnistui.";
 "Sessão expirada. Faça login novamente." = "Istunto vanhentui. Kirjaudu uudelleen.";
-"Falha ao iniciar o stream" = "Striimin käynnistys epäonnistui";
-"Erro no stream" = "Striimivirhe";
+"Falha ao iniciar o stream" = "Streamin käynnistys epäonnistui";
+"Erro no stream" = "Stream-virhe";
 "Autenticar para entrar no Odysseus" = "Tunnistaudu päästäksesi Odysseukseen";
 "Desbloquear o Odysseus" = "Avaa Odysseus";
 "Pacote sem alvo pip." = "Paketilla ei ole pip-kohdetta.";
@@ -465,8 +465,8 @@
 "Escolher modelos" = "Valitse mallit";
 "Padrão do servidor" = "Palvelimen oletus";
 "Outros modelos" = "Muut mallit";
-"%lld modelo(s) · ativo" = "%lld malli(a) · käytössä";
-"%lld modelo(s) · desativado" = "%lld malli(a) · pois käytöstä";
+"Modelos: %lld · ativo" = "Mallit: %lld · käytössä";
+"Modelos: %lld · desativado" = "Mallit: %lld · pois";
 "· %lld rodadas" = "· %lld kierrosta";
 "Personalizado…" = "Mukautettu…";
 "online" = "verkossa";
@@ -534,8 +534,8 @@
 "indisponível" = "ei käytettävissä";
 "%.0f GB livre / %.0f GB" = "%.0f GB vapaana / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB vapaana / %.1f GB";
-"http://host:porta" = "http://isäntä:portti";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Järjestetty: %lld poistettu (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Siivottu: %lld → %lld · poistettu: %lld";
 "Falha ao organizar: %@" = "Järjestäminen epäonnistui: %@";
 "Backup exportado." = "Varmuuskopio viety.";
 "Salvo." = "Tallennettu.";
@@ -559,3 +559,53 @@
 "%lld rodando · %lld na fila" = "%lld käynnissä · %lld jonossa";
 "Processar só no aparelho" = "Käsittele vain laitteessa";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Vain laitteessa käsittely ei lähetä ääntä Applelle, mutta offline-malli erehtyy useammista sanoista. Jätä pois päältä, jos litterointi on huonoa.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Päivitä lista (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in ei käytettävissä: kaiun poistoa ei voitu ottaa käyttöön.";
+"Buscar modelos do servidor" = "Hae mallit palvelimelta";
+"Buscar voz" = "Hae ääntä";
+"Chave da API" = "API-avain";
+"Compatível com OpenAI" = "OpenAI-yhteensopiva";
+"Consultando…" = "Haetaan…";
+"Endpoint de voz não configurado (falta a URL)." = "Ääni-endpointia ei ole määritetty (URL puuttuu).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint ei palauttanut tekstiä. Vastaus: %@";
+"Endpoint próprio" = "Oma endpoint";
+"Endpoint respondeu %d." = "Endpoint vastasi %d.";
+"Endpoint respondeu %d: %@" = "Endpoint vastasi %d: %@";
+"Escolher voz" = "Valitse ääni";
+"Escolher…" = "Valitse…";
+"Formato" = "Muoto";
+"Mostrar chave" = "Näytä avain";
+"Nenhuma voz encontrada." = "Ääniä ei löytynyt.";
+"Nome do modelo" = "Mallin nimi";
+"O servidor não listou nenhum modelo." = "Palvelin ei listannut yhtään mallia.";
+"OK" = "OK";
+"Ocultar chave" = "Piilota avain";
+"Olá! É assim que a voz vai soar." = "Hei! Tältä ääni kuulostaa.";
+"Outro…" = "Muu…";
+"Só minhas vozes" = "Vain omat ääneni";
+"URL base" = "Perus-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Oma endpoint\" = mikä tahansa palvelu, joka on yhteensopiva OpenAI:n ääni-API:n kanssa (POST /audio/transcriptions). Laitteelle ei ladata mitään.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in ei käytettävissä: puheentunnistinta ei voitu ladata.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in ei käytettävissä: mikrofonia ei voitu avata.";
+"O modelo guardado (%@) não está na lista do servidor." = "Tallennettu malli (%@) ei ole palvelimen listalla.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Ilman HTTPS:ää API-avain kulkee verkossa selkokielisenä.";
+"Gravando… toque para parar" = "Tallennetaan… napauta lopettaaksesi";
+"Ouvi: %@" = "Kuulin: %@";
+"Testar reconhecimento" = "Testaa tunnistus";
+"Transcrevendo…" = "Puretaan tekstiksi…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Puheen kieli";
+"Seguir o app (%@)" = "Seuraa sovellusta (%@)";
+"Detectar automaticamente" = "Tunnista automaattisesti";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Sisäänrakennettu ääni seuraa sovelluksen kieltä. Tunnistus käyttää kuitenkin yllä valittua kieltä; automaattinen tunnistus erehtyy useammin lyhyessä tai meluisassa äänessä, eikä iOS:n oma tunnistus tunnista kieltä lainkaan — siinä pätee aina sovelluksen kieli.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming-ääni";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Suoratoistoääni toistaa ensimmäisen lauseen jo sitä luotaessa sen sijaan, että odottaisi koko tiedostoa. Koskee vain keskustelutilaa (puhenäyttöä); seuraavat lauseet valmistellaan muutenkin edellisen soidessa. Kytke pois, jos ääni pätkii.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Äänen toisto keskeytyi.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Päätepiste hyväksyi pyynnön eikä lähettänyt ääntä.";

@@ -35,7 +35,7 @@
 "Bloquear o app" = "Uygulamayı kilitle";
 "Brain" = "Brain";
 "Busca" = "Ara";
-"Buscar nos logs…" = "Günlüklerde ara…";
+"Buscar nos logs…" = "Loglarda ara…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Makineye sığar (tahmin, en iyi GPU)";
 "Cadastro aberto" = "Açık kayıt";
 "Caixa de entrada" = "Gelen kutusu";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "Bu işlem geri alınamaz. Onaylıyor musunuz?";
 "Lembretes" = "Hatırlatıcılar";
 "Library" = "Library";
-"Logs do sistema" = "Sistem günlükleri";
+"Logs do sistema" = "Sistem logları";
 "Manter conectado" = "Oturumu açık tut";
 "Memórias do assistente" = "Asistan anıları";
 "Mesma pergunta para os dois…" = "Her ikisine aynı soru…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "Modeller ve motorlar";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Yerel = konuşurken canlı transkripsiyon (Claude/Gemini gibi). \"Model\" = çevrimdışı Whisper (sonda transkripsyon yapar). İndirilen modellerde ⚡, Core ML hızlandırıcısını (Neural Engine) indirir → çok daha hızlı.";
 "Nativo iOS" = "Yerel iOS";
-"Nenhum endpoint conectado." = "Bağlı uç nokta yok.";
+"Nenhum endpoint conectado." = "Bağlı endpoint yok.";
 "Nenhum evento" = "Etkinlik yok";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "Bağlı MCP sunucusu yok. Web üzerinden ekleyin (Yönetici).";
 "Nenhuma conta" = "Hesap yok";
@@ -141,7 +141,7 @@
 "Padrão" = "Varsayılan";
 "Padrões de IA" = "YZ varsayılanları";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Çoğu sağlayıcı için IMAP kimlik bilgileriniz işe yarar. 2FA varsa App Password kullanın.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Önceki araştırmalar";
 "Pede %@ antes de usar a senha salva." = "Kaydedilen şifreyi kullanmadan önce %@ ister.";
 "Pede %@ ao abrir e ao voltar pro app." = "Uygulamayı açarken ve geri dönerken %@ ister.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Görüntü isteği → varsayılan sağlayıcı → başarısız olursa ve yedek açıksa sıradakileri dener → hepsi başarısız olursa açık hata. Günlüklerde hassas veri yok. Derin oluşturma (txt2img, upscale, inpaint, outpaint, multi-GPU) bir sonraki aşama için DIFFUSION_COMFYUI_PLAN.md'de belgelenmiştir.";
@@ -230,7 +230,7 @@
 "Revogar admin" = "Yönetici yetkisini iptal et";
 "Selecionar…" = "Seçin…";
 "Sem favoritos" = "Favori yok";
-"Sem logs." = "Günlük yok.";
+"Sem logs." = "Log yok.";
 "Sem notas ainda" = "Henüz not yok";
 "Tornar admin" = "Yönetici yap";
 "Tudo" = "Tümü";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Yazıyor";
 "Espaços" = "Alanlar";
 "Executando" = "Çalışıyor";
-"Extract paralelo" = "Paralel çıkarma";
-"Extract timeout (s)" = "Çıkarma zaman aşımı (s)";
+"Extração paralela" = "Paralel çıkarma";
+"Timeout da extração (s)" = "Çıkarma zaman aşımı (sn)";
 "Falha" = "Başarısız";
 "Falha ao salvar" = "Kaydetme başarısız";
 "Fallbacks" = "Yedekler";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP portu";
 "Provedor usado para busca na web e pesquisa profunda." = "Web araması ve derin araştırma için kullanılan sağlayıcı.";
 "Resultados por busca" = "Arama başına sonuç";
-"Run timeout (s)" = "Çalıştırma zaman aşımı (s)";
-"Search Engine ID (CX)" = "Arama Motoru Kimliği (CX)";
+"Timeout de execução (s)" = "Çalıştırma zaman aşımı (sn)";
+"ID do mecanismo de busca (CX)" = "Arama motoru kimliği (CX)";
 "Senha atual" = "Mevcut parola";
 "Senha atualizada" = "Parola güncellendi";
 "Servidor SMTP" = "SMTP sunucusu";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "Maks. tur";
 "Orçamento de tokens (entrada)" = "Token bütçesi (giriş)";
 "Teto duro de tokens" = "Katı token sınırı";
-"Timeout do stream (s)" = "Akış zaman aşımı (sn)";
+"Timeout do stream (s)" = "Stream zaman aşımı (sn)";
 "Limites de execução do agente e servidores MCP." = "Aracı yürütme sınırları ve MCP sunucuları.";
 "Código & Arquivos" = "Kod ve Dosyalar";
 "Busca & Web" = "Arama ve Web";
@@ -387,7 +387,7 @@
 "Atualizar" = "Yenile";
 "Só um administrador pode atualizar a lista de modelos." = "Model listesini yalnızca bir yönetici yenileyebilir.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Model bulunamadı. Uç nokta yanıt verdi mi?";
-"%lld modelo(s) encontrado(s)." = "%lld model bulundu.";
+"Modelos encontrados: %lld" = "Bulunan modeller: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Önbellekte model yok. Uç noktayı sondalamak için Yenile'yi kullanın.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "Ses kullanılamıyor: %@";
 "Falha ao descompactar o modelo Core ML." = "Core ML modeli açılamadı.";
 "Sessão expirada. Faça login novamente." = "Oturum sona erdi. Lütfen tekrar giriş yapın.";
-"Falha ao iniciar o stream" = "Akış başlatılamadı";
-"Erro no stream" = "Akış hatası";
+"Falha ao iniciar o stream" = "Stream başlatılamadı";
+"Erro no stream" = "Stream hatası";
 "Autenticar para entrar no Odysseus" = "Odysseus'a girmek için kimlik doğrulayın";
 "Desbloquear o Odysseus" = "Odysseus'un kilidini aç";
 "Pacote sem alvo pip." = "Paketin pip hedefi yok.";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Model seç";
 "Padrão do servidor" = "Sunucu varsayılanı";
 "Outros modelos" = "Diğer modeller";
-"%lld modelo(s) · ativo" = "%lld model · etkin";
-"%lld modelo(s) · desativado" = "%lld model · devre dışı";
+"Modelos: %lld · ativo" = "Modeller: %lld · etkin";
+"Modelos: %lld · desativado" = "Modeller: %lld · devre dışı";
 "· %lld rodadas" = "· %lld tur";
 "Personalizado…" = "Özel…";
 "online" = "çevrimiçi";
@@ -542,8 +542,8 @@
 "indisponível" = "kullanılamıyor";
 "%.0f GB livre / %.0f GB" = "%.0f GB boş / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB boş / %.1f GB";
-"http://host:porta" = "http://sunucu:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Düzenlendi: %lld kaldırıldı (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Düzenlendi: %lld → %lld · kaldırılan: %lld";
 "Falha ao organizar: %@" = "Düzenleme başarısız: %@";
 "Backup exportado." = "Yedek dışa aktarıldı.";
 "Salvo." = "Kaydedildi.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld çalışıyor · %lld kuyrukta";
 "Processar só no aparelho" = "Yalnızca cihazda işle";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Yalnızca cihazda işlemek Apple'a ses göndermez, ancak çevrimdışı model daha çok kelimeyi yanlış anlar. Yazıya dökme kötüyse kapalı bırakın.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Listeyi yenile (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in kullanılamıyor: yankı engelleme açılamadı.";
+"Buscar modelos do servidor" = "Modelleri sunucudan al";
+"Buscar voz" = "Ses ara";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI uyumlu";
+"Consultando…" = "Sorgulanıyor…";
+"Endpoint de voz não configurado (falta a URL)." = "Ses endpoint'i yapılandırılmadı (URL eksik).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint metin döndürmedi. Yanıt: %@";
+"Endpoint próprio" = "Kendi endpoint'in";
+"Endpoint respondeu %d." = "Endpoint %d yanıtı verdi.";
+"Endpoint respondeu %d: %@" = "Endpoint %d yanıtı verdi: %@";
+"Escolher voz" = "Ses seç";
+"Escolher…" = "Seç…";
+"Formato" = "Biçim";
+"Mostrar chave" = "Anahtarı göster";
+"Nenhuma voz encontrada." = "Ses bulunamadı.";
+"Nome do modelo" = "Model adı";
+"O servidor não listou nenhum modelo." = "Sunucu hiçbir model listelemedi.";
+"OK" = "Tamam";
+"Ocultar chave" = "Anahtarı gizle";
+"Olá! É assim que a voz vai soar." = "Merhaba! Ses böyle duyulacak.";
+"Outro…" = "Diğer…";
+"Só minhas vozes" = "Yalnızca kendi seslerim";
+"URL base" = "Temel URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Kendi endpoint'in\" = OpenAI'nin ses API'siyle uyumlu herhangi bir servis (POST /audio/transcriptions). Cihaza hiçbir şey indirilmez.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in kullanılamıyor: ses algılayıcı yüklenemedi.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in kullanılamıyor: mikrofon açılamadı.";
+"O modelo guardado (%@) não está na lista do servidor." = "Kayıtlı model (%@) sunucunun listesinde yok.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "HTTPS olmadan API key ağ üzerinde düz metin olarak gider.";
+"Gravando… toque para parar" = "Kaydediliyor… durdurmak için dokun";
+"Ouvi: %@" = "Duydum: %@";
+"Testar reconhecimento" = "Tanımayı test et";
+"Transcrevendo…" = "Yazıya dökülüyor…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Konuşma dili";
+"Seguir o app (%@)" = "Uygulamayı izle (%@)";
+"Detectar automaticamente" = "Otomatik algıla";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Yerleşik ses uygulamanın dilini izler. Tanıma ise yukarıda seçilen dili kullanır; otomatik algılama kısa ya da gürültülü seste daha çok yanılır ve iOS'un yerleşik tanıması dili hiç algılamaz — orada her zaman uygulamanın dili geçerlidir.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming ses";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Akışlı ses, ilk cümleyi tüm dosyayı beklemeden, daha üretilirken çalar. Yalnızca konuşma modunda (ses ekranı) geçerlidir; sonraki cümleler zaten bir öncekisi çalarken hazırlanır. Ses kesiliyorsa kapatın.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Ses çalma kesildi.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Uç nokta isteği kabul etti ve ses göndermedi.";

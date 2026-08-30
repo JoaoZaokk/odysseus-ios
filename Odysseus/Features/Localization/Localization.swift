@@ -138,6 +138,11 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         }
     }
 
+    /// ISO-639-1 code, which is what transcription APIs take (OpenAI's
+    /// `/audio/transcriptions` documents exactly that). Region and script
+    /// subtags are dropped: `pt-BR` → `pt`, `zh-Hans` → `zh`, `de-AT` → `de`.
+    var iso639: String { String(rawValue.prefix(while: { $0 != "-" })) }
+
     /// ISO-639-1 code whisper.cpp expects. Hebrew is the one mismatch —
     /// SwiftWhisper spells it `iw`. Languages whisper has no pack for
     /// (Uyghur) return nil so the caller can fall back to auto-detect.
@@ -295,5 +300,39 @@ extension Bundle {
             langBundle = nil   // pt-BR / not found → literal (Portuguese) keys
         }
         objc_setAssociatedObject(Bundle.main, &kAppLanguageBundle, langBundle, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+}
+
+// MARK: - Speech recognition language
+
+/// Which language the transcriber is told to expect.
+///
+/// Recognition used to be welded to the app's UI language. That is right for
+/// most people most of the time and wrong the moment someone is bilingual: a
+/// German who wants to dictate one English sentence had to switch the whole app
+/// to English and back, and a Cantonese speaker running the app in zh-Hant got
+/// pinned to Mandarin. So the bind stays the default and is now one picker away
+/// from an explicit choice.
+enum SpeechLanguage {
+    static let key = "voice.stt.language"
+    /// Stored value meaning "whatever Ajustes › Idioma says".
+    static let followApp = ""
+    /// Stored value meaning "let the engine guess".
+    static let auto = "auto"
+
+    static var stored: String { UserDefaults.standard.string(forKey: key) ?? followApp }
+
+    /// The language to pin, or nil when the engine should detect it itself.
+    ///
+    /// An unrecognised stored code (a language dropped by a later build) falls
+    /// back to the app's language rather than to detection — detection is the
+    /// worse of the two failure modes, since Whisper-family models guess a
+    /// random language on short or noisy audio and hand back nothing.
+    @MainActor static func pinned() -> AppLanguage? {
+        switch stored {
+        case auto:      return nil
+        case followApp: return LocalizationManager.shared.active
+        case let raw:   return AppLanguage(rawValue: raw) ?? LocalizationManager.shared.active
+        }
     }
 }

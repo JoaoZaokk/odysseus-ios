@@ -141,7 +141,7 @@
 "Padrão" = "Predvolený";
 "Padrões de IA" = "Predvolené nastavenia AI";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Pre väčšinu poskytovateľov fungujú prihlasovacie údaje IMAP. Použite heslo aplikácie, ak máte 2FA.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Skoršie rešerše";
 "Pede %@ antes de usar a senha salva." = "Žiada o %@ pred použitím uloženého hesla.";
 "Pede %@ ao abrir e ao voltar pro app." = "Žiada o %@ pri otváraní a návrate do aplikácie.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Požiadavka obrázku → predvolený poskytovateľ → ak zlyhá a záložný je zapnutý, skúsi ďalších → ak všetci zlyhajú, jasná chyba. Logy neobsahujú citlivé dáta. Hlboké generovanie (txt2img, upscale, inpaint, outpaint, multi-GPU) je zdokumentované v DIFFUSION_COMFYUI_PLAN.md pre ďalšiu fázu.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Písanie";
 "Espaços" = "Priestory";
 "Executando" = "Spúšťanie";
-"Extract paralelo" = "Paralelná extrakcia";
-"Extract timeout (s)" = "Timeout extrakcie (s)";
+"Extração paralela" = "Paralelná extrakcia";
+"Timeout da extração (s)" = "Timeout extrakcie (s)";
 "Falha" = "Zlyhanie";
 "Falha ao salvar" = "Nepodarilo sa uložiť";
 "Fallbacks" = "Záložné";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "Port SMTP";
 "Provedor usado para busca na web e pesquisa profunda." = "Poskytovateľ používaný na webové vyhľadávanie a hlboký výskum.";
 "Resultados por busca" = "Výsledky na vyhľadávanie";
-"Run timeout (s)" = "Timeout spustenia (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout behu (s)";
+"ID do mecanismo de busca (CX)" = "ID vyhľadávača (CX)";
 "Senha atual" = "Aktuálne heslo";
 "Senha atualizada" = "Heslo aktualizované";
 "Servidor SMTP" = "Server SMTP";
@@ -387,7 +387,7 @@
 "Atualizar" = "Obnoviť";
 "Só um administrador pode atualizar a lista de modelos." = "Iba admin môže obnoviť zoznam modelov.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Neboli nájdené žiadne modely. Odpovedal endpoint?";
-"%lld modelo(s) encontrado(s)." = "Nájdených: %lld modelov.";
+"Modelos encontrados: %lld" = "Nájdené modely: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Žiadne modely v medzipamäti. Použite „Obnoviť” na sondovanie endpointu.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Vybrať modely";
 "Padrão do servidor" = "Predvolené zo servera";
 "Outros modelos" = "Ďalšie modely";
-"%lld modelo(s) · ativo" = "%lld model(ov) · aktívny";
-"%lld modelo(s) · desativado" = "%lld model(ov) · vypnuté";
+"Modelos: %lld · ativo" = "Modely: %lld · aktívny";
+"Modelos: %lld · desativado" = "Modely: %lld · vypnuté";
 "· %lld rodadas" = "· %lld kôl";
 "Personalizado…" = "Vlastné…";
 "online" = "online";
@@ -542,8 +542,8 @@
 "indisponível" = "nedostupná";
 "%.0f GB livre / %.0f GB" = "%.0f GB voľné / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB voľné / %.1f GB";
-"http://host:porta" = "http://host:port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Usporiadané: odstránené %lld (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Upratané: %lld → %lld · odstránené: %lld";
 "Falha ao organizar: %@" = "Usporiadanie zlyhalo: %@";
 "Backup exportado." = "Záloha bola exportovaná.";
 "Salvo." = "Uložené.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld beží · %lld vo fronte";
 "Processar só no aparelho" = "Spracovať len v zariadení";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Spracovanie len v zariadení neposiela zvuk Applu, ale offline model chybuje vo viacerých slovách. Nechajte vypnuté, ak je prepis zlý.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Obnoviť zoznam (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in nie je dostupný: potlačenie ozveny sa nepodarilo zapnúť.";
+"Buscar modelos do servidor" = "Načítať modely zo servera";
+"Buscar voz" = "Hľadať hlas";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "Kompatibilné s OpenAI";
+"Consultando…" = "Zisťujem…";
+"Endpoint de voz não configurado (falta a URL)." = "Hlasový endpoint nie je nastavený (chýba URL).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint nevrátil žiadny text. Odpoveď: %@";
+"Endpoint próprio" = "Vlastný endpoint";
+"Endpoint respondeu %d." = "Endpoint odpovedal %d.";
+"Endpoint respondeu %d: %@" = "Endpoint odpovedal %d: %@";
+"Escolher voz" = "Vybrať hlas";
+"Escolher…" = "Vybrať…";
+"Formato" = "Formát";
+"Mostrar chave" = "Zobraziť kľúč";
+"Nenhuma voz encontrada." = "Nenašiel sa žiadny hlas.";
+"Nome do modelo" = "Názov modelu";
+"O servidor não listou nenhum modelo." = "Server neuviedol žiadny model.";
+"OK" = "OK";
+"Ocultar chave" = "Skryť kľúč";
+"Olá! É assim que a voz vai soar." = "Ahoj! Takto bude hlas znieť.";
+"Outro…" = "Iný…";
+"Só minhas vozes" = "Len moje hlasy";
+"URL base" = "Základná URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "„Vlastný endpoint“ = akákoľvek služba kompatibilná so zvukovým API OpenAI (POST /audio/transcriptions). Do zariadenia sa nič nesťahuje.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in nie je dostupný: detektor reči sa nepodarilo načítať.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in nie je dostupný: mikrofón sa nepodarilo otvoriť.";
+"O modelo guardado (%@) não está na lista do servidor." = "Uložený model (%@) nie je v zozname servera.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Bez HTTPS putuje API key po sieti v otvorenom texte.";
+"Gravando… toque para parar" = "Nahrávanie… klepnutím zastavíte";
+"Ouvi: %@" = "Počul som: %@";
+"Testar reconhecimento" = "Otestovať rozpoznávanie";
+"Transcrevendo…" = "Prepisujem…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Jazyk reči";
+"Seguir o app (%@)" = "Podľa aplikácie (%@)";
+"Detectar automaticamente" = "Rozpoznať automaticky";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Vstavaný hlas sa riadi jazykom aplikácie. Rozpoznávanie však používa jazyk zvolený vyššie; automatické rozpoznanie chybuje častejšie pri krátkom alebo hlučnom zvuku a vstavané rozpoznávanie iOS jazyk nerozpozná vôbec — tam vždy platí jazyk aplikácie.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming zvuku";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streamovaný zvuk prehrá prvú vetu už počas jej generovania namiesto čakania na celý súbor. Platí len v režime konverzácie (hlasová obrazovka); ďalšie vety sa aj tak pripravujú, kým hrá predchádzajúca. Vypnite, ak zvuk trhá.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Prehrávanie zvuku bolo prerušené.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Endpoint požiadavku prijal a neposlal žiadny zvuk.";

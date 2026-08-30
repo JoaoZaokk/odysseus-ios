@@ -141,7 +141,7 @@
 "Padrão" = "Standard";
 "Padrões de IA" = "KI-Standardeinstellungen";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Bei den meisten Anbietern funktionieren IMAP-Zugangsdaten. Verwende ein App-Passwort, wenn du 2FA aktiviert hast.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "Frühere Recherchen";
 "Pede %@ antes de usar a senha salva." = "Fordert %@ an, bevor das gespeicherte Passwort verwendet wird.";
 "Pede %@ ao abrir e ao voltar pro app." = "Fordert %@ beim Öffnen und beim Zurückkehren zur App an.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Bildanfrage → Standardanbieter → schlägt er fehl und der Fallback ist aktiv, werden die nächsten versucht → schlagen alle fehl, klare Fehlermeldung. Protokolle enthalten keine sensiblen Daten. Erweiterte Generierung (txt2img, upscale, inpaint, outpaint, multi-GPU) ist in DIFFUSION_COMFYUI_PLAN.md für die nächste Phase dokumentiert.";
@@ -262,8 +262,8 @@
 "Escrevendo" = "Schreiben";
 "Espaços" = "Leerzeichen";
 "Executando" = "Wird ausgeführt";
-"Extract paralelo" = "Paralleles Extract";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "Parallele Extraktion";
+"Timeout da extração (s)" = "Timeout der Extraktion (s)";
 "Falha" = "Fehlgeschlagen";
 "Falha ao salvar" = "Speichern fehlgeschlagen";
 "Fallbacks" = "Fallbacks";
@@ -297,8 +297,8 @@
 "Porta SMTP" = "SMTP-Port";
 "Provedor usado para busca na web e pesquisa profunda." = "Anbieter für die Websuche und Tiefenrecherche.";
 "Resultados por busca" = "Ergebnisse pro Suche";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "Timeout der Ausführung (s)";
+"ID do mecanismo de busca (CX)" = "Suchmaschinen-ID (CX)";
 "Senha atual" = "Aktuelles Passwort";
 "Senha atualizada" = "Passwort aktualisiert";
 "Servidor SMTP" = "SMTP-Server";
@@ -387,7 +387,7 @@
 "Atualizar" = "Aktualisieren";
 "Só um administrador pode atualizar a lista de modelos." = "Nur ein Admin kann die Modellliste aktualisieren.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "Keine Modelle gefunden. Hat der Endpunkt geantwortet?";
-"%lld modelo(s) encontrado(s)." = "%lld Modelle gefunden.";
+"Modelos encontrados: %lld" = "Gefundene Modelle: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "Keine Modelle im Cache. Verwende Aktualisieren, um den Endpunkt zu sondieren.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -473,8 +473,8 @@
 "Escolher modelos" = "Modelle auswählen";
 "Padrão do servidor" = "Server-Standard";
 "Outros modelos" = "Weitere Modelle";
-"%lld modelo(s) · ativo" = "%lld Modell(e) · aktiv";
-"%lld modelo(s) · desativado" = "%lld Modell(e) · deaktiviert";
+"Modelos: %lld · ativo" = "Modelle: %lld · aktiv";
+"Modelos: %lld · desativado" = "Modelle: %lld · deaktiviert";
 "· %lld rodadas" = "· %lld Runden";
 "Personalizado…" = "Benutzerdefiniert…";
 "online" = "online";
@@ -542,8 +542,8 @@
 "indisponível" = "nicht verfügbar";
 "%.0f GB livre / %.0f GB" = "%.0f GB frei / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB frei / %.1f GB";
-"http://host:porta" = "http://Host:Port";
-"Organizado: %lld removida(s) (%lld → %lld)." = "Organisiert: %lld entfernt (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "Aufgeräumt: %lld → %lld · entfernt: %lld";
 "Falha ao organizar: %@" = "Organisieren fehlgeschlagen: %@";
 "Backup exportado." = "Backup exportiert.";
 "Salvo." = "Gespeichert.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld laufen · %lld in Warteschlange";
 "Processar só no aparelho" = "Nur auf dem Gerät verarbeiten";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "Die Verarbeitung nur auf dem Gerät sendet kein Audio an Apple, aber das Offline-Modell macht mehr Fehler. Lass sie aus, wenn die Transkription schlecht ist.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "Liste aktualisieren (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in nicht verfügbar: Echounterdrückung konnte nicht aktiviert werden.";
+"Buscar modelos do servidor" = "Modelle vom Server holen";
+"Buscar voz" = "Stimme suchen";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "OpenAI-kompatibel";
+"Consultando…" = "Abfrage läuft…";
+"Endpoint de voz não configurado (falta a URL)." = "Sprach-Endpoint nicht konfiguriert (URL fehlt).";
+"Endpoint não devolveu texto. Resposta: %@" = "Endpoint hat keinen Text geliefert. Antwort: %@";
+"Endpoint próprio" = "Eigener Endpoint";
+"Endpoint respondeu %d." = "Endpoint antwortete %d.";
+"Endpoint respondeu %d: %@" = "Endpoint antwortete %d: %@";
+"Escolher voz" = "Stimme wählen";
+"Escolher…" = "Wählen…";
+"Formato" = "Format";
+"Mostrar chave" = "Schlüssel anzeigen";
+"Nenhuma voz encontrada." = "Keine Stimme gefunden.";
+"Nome do modelo" = "Modellname";
+"O servidor não listou nenhum modelo." = "Der Server hat keine Modelle gelistet.";
+"OK" = "OK";
+"Ocultar chave" = "Schlüssel ausblenden";
+"Olá! É assim que a voz vai soar." = "Hallo! So wird die Stimme klingen.";
+"Outro…" = "Andere…";
+"Só minhas vozes" = "Nur meine Stimmen";
+"URL base" = "Basis-URL";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Eigener Endpoint\" = jeder Dienst, der mit der Audio-API von OpenAI kompatibel ist (POST /audio/transcriptions). Es wird nichts auf das Gerät geladen.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in nicht verfügbar: Der Sprachdetektor konnte nicht geladen werden.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in nicht verfügbar: Das Mikrofon konnte nicht geöffnet werden.";
+"O modelo guardado (%@) não está na lista do servidor." = "Das gespeicherte Modell (%@) steht nicht in der Liste des Servers.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Ohne HTTPS wird der API key im Klartext über das Netzwerk gesendet.";
+"Gravando… toque para parar" = "Aufnahme… zum Stoppen tippen";
+"Ouvi: %@" = "Gehört: %@";
+"Testar reconhecimento" = "Erkennung testen";
+"Transcrevendo…" = "Transkribiere…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "Gesprochene Sprache";
+"Seguir o app (%@)" = "Der App folgen (%@)";
+"Detectar automaticamente" = "Automatisch erkennen";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "Die integrierte Stimme folgt der App-Sprache. Die Erkennung verwendet dagegen die oben gewählte Sprache; die automatische Erkennung irrt sich bei kurzem oder verrauschtem Audio häufiger, und die integrierte Erkennung von iOS erkennt die Sprache gar nicht — dort gilt immer die App-Sprache.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "Streaming-Audio";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "Streaming-Audio gibt den ersten Satz schon während der Erzeugung wieder, statt auf die ganze Datei zu warten. Das gilt nur im Gesprächsmodus (der Sprachbildschirm); spätere Sätze werden ohnehin vorbereitet, während der vorherige läuft. Bei stockendem Ton ausschalten.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "Die Audiowiedergabe wurde unterbrochen.";
+"O endpoint aceitou o pedido e não enviou áudio." = "Der Endpunkt hat die Anfrage angenommen und kein Audio gesendet.";

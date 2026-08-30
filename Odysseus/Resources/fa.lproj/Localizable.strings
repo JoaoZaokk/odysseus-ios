@@ -35,7 +35,7 @@
 "Bloquear o app" = "قفل‌کردن برنامه";
 "Brain" = "Brain";
 "Busca" = "جستجو";
-"Buscar nos logs…" = "جستجو در گزارش‌ها…";
+"Buscar nos logs…" = "جستجو در logها…";
 "Cabe na máquina (estimativa, melhor GPU)" = "در دستگاه جا می‌شود (تخمین، بهترین GPU)";
 "Cadastro aberto" = "ثبت‌نام آزاد";
 "Caixa de entrada" = "صندوق ورودی";
@@ -102,7 +102,7 @@
 "Isso é irreversível. Confirma?" = "این عمل غیرقابل بازگشت است. تأیید می‌کنید؟";
 "Lembretes" = "یادآوری‌ها";
 "Library" = "Library";
-"Logs do sistema" = "گزارش‌های سیستم";
+"Logs do sistema" = "logهای سیستم";
 "Manter conectado" = "متصل نگه دار";
 "Memórias do assistente" = "حافظه دستیار";
 "Mesma pergunta para os dois…" = "همان سؤال برای هر دو…";
@@ -113,7 +113,7 @@
 "Modelos e engines" = "مدل‌ها و موتورها";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "بومی = رونویسی زنده هنگام صحبت (مثل Claude/Gemini). «مدل» = Whisper آفلاین (در پایان رونویسی می‌کند). برای مدل‌های دانلودشده، ⚡ شتاب‌دهنده Core ML (Neural Engine) را دانلود می‌کند ← بسیار سریع‌تر.";
 "Nativo iOS" = "iOS بومی";
-"Nenhum endpoint conectado." = "هیچ نقطه اتصالی متصل نیست.";
+"Nenhum endpoint conectado." = "هیچ endpoint متصلی وجود ندارد.";
 "Nenhum evento" = "هیچ رویدادی نیست";
 "Nenhum servidor MCP conectado. Adicione pela web (Admin)." = "هیچ سرور MCP متصل نیست. از طریق وب (مدیر) اضافه کنید.";
 "Nenhuma conta" = "هیچ حسابی وجود ندارد";
@@ -141,7 +141,7 @@
 "Padrão" = "پیش‌فرض";
 "Padrões de IA" = "تنظیمات پیش‌فرض هوش مصنوعی";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "برای اکثر ارائه‌دهندگان، استفاده از اعتبارنامه‌های IMAP کار می‌کند. اگر 2FA دارید از App Password استفاده کنید.";
-"Past research" = "Past research";
+"Pesquisas anteriores" = "پژوهش‌های پیشین";
 "Pede %@ antes de usar a senha salva." = "قبل از استفاده از رمز ذخیره‌شده، %@ را می‌خواهد.";
 "Pede %@ ao abrir e ao voltar pro app." = "هنگام باز کردن و بازگشت به برنامه، %@ را می‌خواهد.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "درخواست تصویر ← ارائه‌دهنده پیش‌فرض ← اگر ناموفق بود و جایگزین فعال بود، بقیه را امتحان می‌کند ← اگر همه ناموفق بودند، خطای واضح. گزارش‌ها داده حساس ندارند. تولید عمیق (txt2img, upscale, inpaint, outpaint, multi-GPU) در DIFFUSION_COMFYUI_PLAN.md برای فاز بعدی مستند شده.";
@@ -206,7 +206,7 @@
 "(sem conteúdo)" = "(بدون محتوا)";
 "Ativar" = "فعال‌سازی";
 "Criar" = "ایجاد";
-"Criar token" = "ایجاد توکن";
+"Criar token" = "ایجاد token";
 "Código 2FA" = "کد 2FA";
 "Desafixar" = "برداشتن پین";
 "Desarquivar" = "خارج از بایگانی";
@@ -232,7 +232,7 @@
 "Revogar admin" = "لغو دسترسی مدیریت";
 "Selecionar…" = "انتخاب…";
 "Sem favoritos" = "موردعلاقه‌ای نیست";
-"Sem logs." = "گزارشی نیست.";
+"Sem logs." = "هیچ logی نیست.";
 "Sem notas ainda" = "هنوز یادداشتی نیست";
 "Tornar admin" = "تبدیل به مدیر";
 "Tudo" = "همه";
@@ -264,8 +264,8 @@
 "Escrevendo" = "در حال نوشتن";
 "Espaços" = "فضاها";
 "Executando" = "در حال اجرا";
-"Extract paralelo" = "استخراج موازی";
-"Extract timeout (s)" = "Extract timeout (s)";
+"Extração paralela" = "استخراج موازی";
+"Timeout da extração (s)" = "مهلت استخراج (ثانیه)";
 "Falha" = "ناموفق";
 "Falha ao salvar" = "ذخیره ناموفق بود";
 "Fallbacks" = "جایگزین‌ها";
@@ -300,8 +300,8 @@
 "Provedor" = "ارائه‌دهنده";
 "Provedor usado para busca na web e pesquisa profunda." = "ارائه‌دهنده مورد استفاده برای جستجوی وب و جستجوی عمیق.";
 "Resultados por busca" = "نتایج هر جستجو";
-"Run timeout (s)" = "Run timeout (s)";
-"Search Engine ID (CX)" = "Search Engine ID (CX)";
+"Timeout de execução (s)" = "مهلت اجرا (ثانیه)";
+"ID do mecanismo de busca (CX)" = "شناسهٔ موتور جستجو (CX)";
 "Senha atual" = "رمز عبور فعلی";
 "Senha atualizada" = "رمز عبور به‌روزرسانی شد";
 "Servidor SMTP" = "سرور SMTP";
@@ -356,7 +356,7 @@
 "Máx. de rounds" = "حداکثر دورها";
 "Orçamento de tokens (entrada)" = "بودجه توکن (ورودی)";
 "Teto duro de tokens" = "سقف سخت توکن";
-"Timeout do stream (s)" = "مهلت استریم (ثانیه)";
+"Timeout do stream (s)" = "مهلت stream (ثانیه)";
 "Limites de execução do agente e servidores MCP." = "محدودیت‌های اجرای عامل و سرورهای MCP.";
 "Código & Arquivos" = "کد و فایل‌ها";
 "Busca & Web" = "جست‌وجو و وب";
@@ -387,7 +387,7 @@
 "Atualizar" = "تازه‌سازی";
 "Só um administrador pode atualizar a lista de modelos." = "فقط یک مدیر می‌تواند فهرست مدل‌ها را تازه‌سازی کند.";
 "Nenhum modelo encontrado. O endpoint respondeu?" = "هیچ مدلی پیدا نشد. آیا نقطه اتصال پاسخ داد؟";
-"%lld modelo(s) encontrado(s)." = "%lld مدل پیدا شد.";
+"Modelos encontrados: %lld" = "مدل‌های یافت‌شده: %lld";
 "Sem modelos em cache. Use Atualizar para sondar o endpoint." = "مدلی در کش نیست. برای بررسی نقطه اتصال از تازه‌سازی استفاده کنید.";
 
 /* Compare — non-curated rest of the model list (newer servers) */
@@ -437,8 +437,8 @@
 "Áudio indisponível: %@" = "صدا در دسترس نیست: %@";
 "Falha ao descompactar o modelo Core ML." = "باز کردن فایل مدل Core ML ناموفق بود.";
 "Sessão expirada. Faça login novamente." = "نشست منقضی شد. دوباره وارد شوید.";
-"Falha ao iniciar o stream" = "شروع جریان ممکن نشد";
-"Erro no stream" = "خطای جریان";
+"Falha ao iniciar o stream" = "شروع stream ناموفق بود";
+"Erro no stream" = "خطای stream";
 "Autenticar para entrar no Odysseus" = "برای ورود به Odysseus احراز هویت کنید";
 "Desbloquear o Odysseus" = "باز کردن قفل Odysseus";
 "Pacote sem alvo pip." = "این بسته هدف pip ندارد.";
@@ -473,8 +473,8 @@
 "Escolher modelos" = "انتخاب مدل‌ها";
 "Padrão do servidor" = "پیش‌فرض سرور";
 "Outros modelos" = "مدل‌های دیگر";
-"%lld modelo(s) · ativo" = "%lld مدل · فعال";
-"%lld modelo(s) · desativado" = "%lld مدل · غیرفعال";
+"Modelos: %lld · ativo" = "مدل‌ها: %lld · فعال";
+"Modelos: %lld · desativado" = "مدل‌ها: %lld · غیرفعال";
 "· %lld rodadas" = "· %lld دور";
 "Personalizado…" = "سفارشی…";
 "online" = "آنلاین";
@@ -542,8 +542,8 @@
 "indisponível" = "در دسترس نیست";
 "%.0f GB livre / %.0f GB" = "%.0f GB آزاد / %.0f GB";
 "%.1f GB livre / %.1f GB" = "%.1f GB آزاد / %.1f GB";
-"http://host:porta" = "http://میزبان:پورت";
-"Organizado: %lld removida(s) (%lld → %lld)." = "سازماندهی شد: %lld مورد حذف شد (%lld → %lld).";
+"http://host:port" = "http://host:port";
+"Organizado: %lld → %lld · removidas: %lld" = "مرتب شد: %lld ← %lld · حذف‌شده: %lld";
 "Falha ao organizar: %@" = "سازماندهی ناموفق بود: %@";
 "Backup exportado." = "پشتیبان صادر شد.";
 "Salvo." = "ذخیره شد.";
@@ -567,3 +567,53 @@
 "%lld rodando · %lld na fila" = "%lld در حال اجرا · %lld در صف";
 "Processar só no aparelho" = "پردازش فقط روی دستگاه";
 "Processar só no aparelho não envia áudio à Apple, mas o modelo offline erra mais palavras. Deixe desligado se a transcrição estiver ruim." = "پردازش فقط روی دستگاه صدا را به Apple نمی‌فرستد، اما مدل آفلاین کلمات بیشتری را اشتباه می‌گیرد. اگر رونویسی بد است، خاموش بگذارید.";
+
+/* Endpoint de voz (STT/TTS) */
+"Atualizar lista (%d)" = "به‌روزرسانی فهرست (%d)";
+"Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "barge-in در دسترس نیست: حذف اکو فعال نشد.";
+"Buscar modelos do servidor" = "دریافت مدل‌ها از سرور";
+"Buscar voz" = "جست‌وجوی صدا";
+"Chave da API" = "API key";
+"Compatível com OpenAI" = "سازگار با OpenAI";
+"Consultando…" = "در حال پرس‌وجو…";
+"Endpoint de voz não configurado (falta a URL)." = "endpoint صدا پیکربندی نشده است (URL موجود نیست).";
+"Endpoint não devolveu texto. Resposta: %@" = "endpoint هیچ متنی برنگرداند. پاسخ: %@";
+"Endpoint próprio" = "endpoint اختصاصی";
+"Endpoint respondeu %d." = "endpoint با کد %d پاسخ داد.";
+"Endpoint respondeu %d: %@" = "endpoint با کد %d پاسخ داد: %@";
+"Escolher voz" = "انتخاب صدا";
+"Escolher…" = "انتخاب…";
+"Formato" = "قالب";
+"Mostrar chave" = "نمایش کلید";
+"Nenhuma voz encontrada." = "هیچ صدایی پیدا نشد.";
+"Nome do modelo" = "نام مدل";
+"O servidor não listou nenhum modelo." = "سرور هیچ مدلی فهرست نکرد.";
+"OK" = "تأیید";
+"Ocultar chave" = "پنهان کردن کلید";
+"Olá! É assim que a voz vai soar." = "سلام! صدا این‌طور شنیده می‌شود.";
+"Outro…" = "دیگر…";
+"Só minhas vozes" = "فقط صداهای من";
+"URL base" = "URL پایه";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "«endpoint اختصاصی» = هر سرویسی که با API صوتی OpenAI سازگار باشد (POST /audio/transcriptions). چیزی روی دستگاه دانلود نمی‌شود.";
+"Barge-in indisponível: o detector de voz não pôde ser carregado." = "barge-in در دسترس نیست: آشکارساز صدا بارگذاری نشد.";
+"Barge-in indisponível: o microfone não pôde ser aberto." = "barge-in در دسترس نیست: میکروفون باز نشد.";
+"O modelo guardado (%@) não está na lista do servidor." = "مدل ذخیره‌شده (%@) در فهرست سرور نیست.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "بدون HTTPS، API key به‌صورت متن ساده در شبکه منتقل می‌شود.";
+"Gravando… toque para parar" = "در حال ضبط… برای توقف ضربه بزنید";
+"Ouvi: %@" = "شنیدم: %@";
+"Testar reconhecimento" = "آزمایش تشخیص";
+"Transcrevendo…" = "در حال رونویسی…";
+
+/* Speech recognition language (Voice settings) */
+"Idioma da fala" = "زبان گفتار";
+"Seguir o app (%@)" = "پیروی از برنامه (%@)";
+"Detectar automaticamente" = "تشخیص خودکار";
+"A voz nativa segue o idioma do app. O reconhecimento usa o idioma escolhido acima; detectar automaticamente erra mais em áudio curto ou com ruído, e o reconhecimento nativo do iOS não detecta nada — nele vale sempre o idioma do app." = "صدای داخلی از زبان برنامه پیروی می‌کند. اما تشخیص گفتار از زبان انتخاب‌شده در بالا استفاده می‌کند؛ تشخیص خودکار در صدای کوتاه یا پرنویز بیشتر اشتباه می‌کند و تشخیص داخلی iOS اصلاً زبان را تشخیص نمی‌دهد — آنجا همیشه زبان برنامه اعمال می‌شود.";
+
+/* Streaming TTS playback (Voice settings) */
+"Áudio em streaming" = "صدای streaming";
+"Áudio em streaming toca a primeira frase enquanto ela ainda está sendo gerada, em vez de esperar o arquivo inteiro. Vale só no modo conversa (a tela de voz); as frases seguintes já são preparadas enquanto a anterior toca. Desligue se o áudio picotar." = "پخش جریانی صدا جملهٔ اول را همان‌طور که در حال ساخت است پخش می‌کند، به‌جای انتظار برای کل فایل. فقط در حالت گفت‌وگو (صفحهٔ صدا) کار می‌کند؛ جمله‌های بعدی به‌هر حال هنگام پخش جملهٔ قبلی آماده می‌شوند. اگر صدا بریده‌بریده شد خاموشش کنید.";
+
+/* Voz — falhas do streaming (1.8 build 16) */
+"A reprodução do áudio foi interrompida." = "پخش صدا قطع شد.";
+"O endpoint aceitou o pedido e não enviou áudio." = "نقطهٔ پایانی درخواست را پذیرفت و صدایی نفرستاد.";
