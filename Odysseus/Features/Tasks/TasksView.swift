@@ -99,20 +99,19 @@ final class TasksViewModel: ObservableObject {
         loading = true; defer { loading = false }
         do { tasks = try await api.tasks(); error = nil }
         catch let e where e.isCancellation {}
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
     func run(_ t: ScheduledTask) async {
         busyID = t.id; defer { busyID = nil }
-        do { try await api.runTask(t.id) } catch { self.error = msg(error) }
+        do { try await api.runTask(t.id) } catch { self.error = SettingsUI.msg(error) }
     }
     func toggle(_ t: ScheduledTask) async {
         busyID = t.id; defer { busyID = nil }
         do {
             if t.isPaused { try await api.resumeTask(t.id) } else { try await api.pauseTask(t.id) }
             await load()
-        } catch { self.error = msg(error) }
+        } catch { self.error = SettingsUI.msg(error) }
     }
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct TasksView: View {

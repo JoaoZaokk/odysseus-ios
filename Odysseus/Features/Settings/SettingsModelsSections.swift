@@ -18,11 +18,11 @@ import SwiftUI
         loading = true; defer { loading = false }
         do { endpoints = try await api.modelEndpoints(); self.error = nil }
         catch let e where e.isCancellation {}
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
     func toggle(_ ep: ModelEndpoint) async {
         do { try await api.setEndpointEnabled(ep.id, !ep.isEnabled); await load() }
-        catch { self.error = "Não foi possível alterar: \(msg(error))" }
+        catch { self.error = L("Falha ao salvar: %@", SettingsUI.msg(error)) }
     }
 
     /// Re-probes the endpoint. The list endpoint never probes on its own, so an
@@ -37,14 +37,13 @@ import SwiftUI
         } catch APIError.http(403, _) {
             error = "Só um administrador pode atualizar a lista de modelos."
         } catch {
-            self.error = "Não foi possível atualizar: \(msg(error))"
+            self.error = L("Não foi possível carregar os modelos: %@", SettingsUI.msg(error))
         }
     }
     func delete(_ ep: ModelEndpoint) async {
         do { try await api.deleteEndpoint(ep.id); await load() }
-        catch { self.error = "Não foi possível remover: \(msg(error))" }
+        catch { self.error = L("Falha ao remover: %@", SettingsUI.msg(error)) }
     }
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct AddedModelsSection: View {
@@ -365,7 +364,7 @@ struct AIDefaultsSection: View {
             name = ""; baseURL = ""; apiKey = ""
         } catch {
             ok = false
-            message = "Falha: \((error as? LocalizedError)?.errorDescription ?? error.localizedDescription)"
+            message = L("Falha: %@", SettingsUI.msg(error))
         }
     }
 

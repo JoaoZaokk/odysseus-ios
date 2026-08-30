@@ -81,7 +81,7 @@ final class CookbookViewModel: ObservableObject {
                 if packages.first(where: { $0.id == pkg.id })?.installed == true { break }
             }
         } catch {
-            self.error = L("Falha ao instalar %@: %@", pkg.name, msg(error))
+            self.error = L("Falha ao instalar %@: %@", pkg.name, SettingsUI.msg(error))
         }
     }
 
@@ -94,9 +94,8 @@ final class CookbookViewModel: ObservableObject {
         loading = true; defer { loading = false }
         do { packages = try await api.cookbookPackages(); error = nil }
         catch let e where e.isCancellation {}
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct CookbookView: View {

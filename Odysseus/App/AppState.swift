@@ -28,10 +28,15 @@ final class AppState: ObservableObject {
     private(set) var api: APIClient
     private(set) var stream: ChatStreamClient
 
-    init() {
+    /// - Parameter protocolClasses: forwarded verbatim to `APIClient`. Nil is the
+    ///   production path and the only thing the app asks for; a test passes a
+    ///   `URLProtocol` subclass so the 401 → `sessionExpired` → `.login` wire —
+    ///   the most load-bearing untested path in this file — can be driven.
+    ///   This is the same seam as `APIClient`'s, passed through, not a new one.
+    init(protocolClasses: [AnyClass]? = nil) {
         let cfg = ServerConfig.load()
         self.serverConfig = cfg
-        let client = APIClient(config: cfg)
+        let client = APIClient(config: cfg, protocolClasses: protocolClasses)
         self.api = client
         self.stream = ChatStreamClient(api: client)
         // The "server" speech engines talk to /api/tts and /api/stt, so they

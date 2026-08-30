@@ -36,7 +36,7 @@ final class CompareViewModel: ObservableObject {
             models = try await api.models()
             if modelA == nil { modelA = models.first }
             if modelB == nil { modelB = models.count > 1 ? models[1] : models.first }
-        } catch let e where e.isCancellation {} catch { self.error = msg(error) }
+        } catch let e where e.isCancellation {} catch { self.error = SettingsUI.msg(error) }
     }
 
     var canSend: Bool {
@@ -78,7 +78,7 @@ final class CompareViewModel: ObservableObject {
                 }
             }
         } catch let e where e.isCancellation {
-        } catch { appendDelta("\n⚠️ \(msg(error))", isA: isA) }
+        } catch { appendDelta("\n⚠️ \(SettingsUI.msg(error))", isA: isA) }
     }
 
     private func appendDelta(_ d: String, isA: Bool) {
@@ -97,7 +97,6 @@ final class CompareViewModel: ObservableObject {
         return sid
     }
 
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct CompareView: View {

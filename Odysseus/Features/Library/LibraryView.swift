@@ -72,7 +72,7 @@ final class LibraryViewModel: ObservableObject {
         loading = true; defer { loading = false }
         do { files = try await api.personalFiles().files; error = nil }
         catch let e where e.isCancellation {}
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
     func upload(_ url: URL) async {
         uploading = true; defer { uploading = false }
@@ -82,13 +82,12 @@ final class LibraryViewModel: ObservableObject {
             let data = try Data(contentsOf: url)
             try await api.uploadPersonal(data, filename: url.lastPathComponent)
             await load()
-        } catch { self.error = msg(error) }
+        } catch { self.error = SettingsUI.msg(error) }
     }
     func delete(_ f: PersonalFile) async {
         do { try await api.deletePersonal(f.path); files.removeAll { $0.id == f.id } }
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct LibraryView: View {

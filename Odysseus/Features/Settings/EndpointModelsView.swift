@@ -49,7 +49,7 @@ import SwiftUI
         } catch {
             // Interpolated, so it can never match a key at render time — resolve
             // the format here instead.
-            self.error = String(format: L("Não foi possível carregar os modelos: %@"), msg(error))
+            self.error = String(format: L("Não foi possível carregar os modelos: %@"), SettingsUI.msg(error))
         }
     }
 
@@ -77,11 +77,10 @@ import SwiftUI
         } catch APIError.http(403, _) {
             error = "Só um administrador pode escolher quais modelos aparecem."
         } catch {
-            self.error = String(format: L("Não foi possível salvar: %@"), msg(error))
+            self.error = String(format: L("Não foi possível salvar: %@"), SettingsUI.msg(error))
         }
     }
 
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct EndpointModelsView: View {
