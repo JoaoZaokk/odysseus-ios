@@ -640,7 +640,9 @@
 "A reprodução do áudio foi interrompida." = "ऑडियो चलना बीच में रुक गया।";
 "O endpoint aceitou o pedido e não enviou áudio." = "एंडपॉइंट ने अनुरोध स्वीकार किया और कोई ऑडियो नहीं भेजा।";
 
-/* Voz — barge-in recusado por categoria de sessão (1.9 build 22).
-   NÃO TRADUZIDO: valor idêntico à chave de propósito, aguardando a
-   próxima rodada de tradução. Só pt-BR está correto abaixo. */
-"Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in indisponível: a sessão de áudio está em modo de gravação.";
+/* Voz — barge-in recusado por categoria de sessão (1.9 build 23).
+   Composta, não inventada: o prefixo e o separador vêm verbatim da string
+   irmã "…o microfone não pôde ser aberto." deste mesmo catálogo, e só a
+   oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
+   nativa, como a rodada do tibetano decidiu. */
+"Barge-in indisponível: a sessão de áudio está em modo de gravação." = "barge-in उपलब्ध नहीं: ऑडियो सत्र रिकॉर्डिंग मोड में है।";
