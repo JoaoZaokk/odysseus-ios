@@ -96,8 +96,8 @@ tela roda.** O que é testável hoje foi extraído como função pura porque o r
 
 ### O que a refutação matou
 
-Três claims plausíveis caíram. Taxa de erro de 27% numa amostra que eu já achava
-sólida — é o argumento inteiro para a fase (a) existir.
+Três claims plausíveis caíram. Taxa de erro de 37% (3 de 8) numa amostra que eu já
+achava sólida — é o argumento inteiro para a fase (a) existir.
 
 - `Font.ody(design:)` descarta o parâmetro: **fato real, "e daí" falso.** Nenhuma
   fonte renderizada mudaria. Limpeza menor, não achado.
@@ -113,7 +113,7 @@ sólida — é o argumento inteiro para a fase (a) existir.
 | **Q1** | O que "verificar todos" entrega | **(a)** backlog confiável primeiro, sem código. Depois **(b)** corrigir os 8 defeitos, depois **(c)** tudo. **(d)** spec de arquitetura fica por último. |
 | **Q2** | Quanta verificação | **(c)** primeiro: só claims de *comportamento* levam refutação adversarial; claims estruturais ("existem 29 cópias") se confirmam por `grep` e custam nada. Depois rodar **(a)**, verificação completa. |
 | **Q3** | Relação com a 1.8 na Apple | **(c)** ignorar — tudo vai para a 1.9. |
-| **Q4** | Escopo de "todos" | **(b)**: os 8 defeitos + 7 candidatos entram no mapa; os outros 68 achados viram **um issue guarda-chuva**, registrados e linkados, prontos para graduar. Depois **(a)**, os 116. |
+| **Q4** | Escopo de "todos" | **(b)**: os 8 defeitos + 7 candidatos entram no mapa; os outros 76 achados viram **um issue guarda-chuva**, registrados e linkados, prontos para graduar. Depois **(a)**, os 116. |
 
 **Regra permanente que ele deu, e que vale além deste esforço:**
 > Se o escopo maior for selecionado no lugar de um menor, escolha o menor, depois
@@ -131,7 +131,7 @@ mapa pior que nenhum.
 ### Destino do primeiro mapa (fase `a`, o menor escopo)
 
 > Um backlog em que o dono confia: cada um dos 15 achados destacados (8 defeitos
-> + 7 candidatos de arquitetura) confirmado ou descartado, com os outros 68
+> + 7 candidatos de arquitetura) confirmado ou descartado, com os outros 76
 > registrados num issue guarda-chuva. Nenhum código alterado.
 
 Repare que os 8 defeitos **já estão verificados** — o trabalho real da fase (a)
@@ -158,8 +158,8 @@ medidas dentro deles.
   precisa de onde o 401 chegar (que é o 3) e de uma costura de transporte (que é
   o 4); fazer o 1 primeiro define a forma dos outros dois, o inverso não vale.
   A pergunta "são um ou três?" não está afiada o bastante para virar ticket.
-- Quanto dos 68 achados parqueados sobrevive a uma leitura crítica. Suspeita:
-  bem menos que 68, pelos mesmos 27% de cima.
+- Quanto dos 76 achados parqueados sobrevive a uma leitura crítica. Suspeita:
+  bem menos que 76, pelos mesmos 37% de cima.
 - Se `CONTEXT.md` vale a pena para este repo, e quais termos ele fixaria
   ("sessão", "coleção remota", "configuração", "motor"). Depende de quantos
   candidatos sobreviverem à fase (a).
@@ -194,6 +194,80 @@ formato produz — "configuração declarada uma vez" saiu de três lentes
 separadamente, "leitor de SSE" de três, "tela de lista remota" de duas.
 
 O sinal **menos** confiável é um achado isolado, de uma lente só, que ninguém
-refutou. Os 68 parqueados são majoritariamente disso. Trate-os como hipóteses,
+refutou. Os 76 parqueados são majoritariamente disso. Trate-os como hipóteses,
 não como dívida conhecida — foi exatamente essa a diferença entre os 5 claims
 que sobreviveram e os 3 que caíram.
+
+---
+
+# Resultado da fase (a) — backlog verificado
+
+Fechada em 2026-08-30, na mesma sessão. **O mapa do wayfinder não foi criado, de
+propósito:** com os 8 defeitos já verificados, a fase (a) era verificar 7 candidatos,
+e isso coube em uma sessão. Wayfinder manda parar quando não há névoa. O mapa
+continua fazendo sentido para a fase (d), a spec — lá a névoa é real.
+
+## Os 7 candidatos: 6 refutados, 1 sobreviveu
+
+Cada um mediu a alegação estrutural por `grep` (nada estimado), aplicou o teste da
+deleção, contou adaptadores reais, e depois levou dois refutadores com lentes
+distintas — costura hipotética, e variação de domínio real.
+
+| Candidato | Alegado | Medido | Veredito |
+|---|---|---|---|
+| A tela de coleção remota | ~20 sítios | **13** | refutado 2/2 |
+| Uma configuração declarada uma vez | ~8 view models | **5** | refutado 2/2 |
+| A autoridade da sessão | vários donos | **1** dono | refutado na medição |
+| A descrição do request | 81 métodos | **82** | refutado 2/2 |
+| Decodificação tolerante | ~25 decoders | **33** | refutado 2/2 |
+| O leitor de SSE | 2 sítios | **2** | refutado 2/2 |
+| `Features` — ninguém lê | 0 leitores | **0** | **sobrevive** |
+
+Taxa de erro nos candidatos de arquitetura: **6 de 7**. Nos defeitos, que já tinham
+passado por refutação, foi 0 de 8 — nenhum caiu na reconferência à mão.
+
+A razão recorrente está gravada em
+[docs/adr/0001](adr/0001-no-shared-abstractions-over-the-api-surface.md), para nenhuma
+revisão futura re-propor os mesmos seis: **o app não declara nenhum protocolo**, então
+toda costura proposta teria exatamente um adaptador.
+
+## O que a verificação achou que a auditoria não tinha
+
+Quatro defeitos novos, todos confirmados à mão (não por agente):
+
+- **[#21](https://github.com/JoaoZaokk/odysseus-ios/issues/21)** — 21 sítios usam
+  `catch is CancellationError`, que `URLSession` nunca lança. O próprio
+  `Cancellation.swift` do repo documenta o bug; só 6 sítios usam a forma correta.
+- **[#22](https://github.com/JoaoZaokk/odysseus-ios/issues/22)** — deletar `Features`.
+- **[#23](https://github.com/JoaoZaokk/odysseus-ios/issues/23)** — `notAuthenticated`
+  é lançado em 2 lugares e tratado em **0**. Sessão expirada não volta pro login;
+  as listas ficam vazias pra sempre.
+- **[#24](https://github.com/JoaoZaokk/odysseus-ios/issues/24)** — as mensagens de erro
+  da API não passam por `L()`. As 44 traduções existem e nenhuma é exibida.
+
+O #23 é o achado mais valioso da fase inteira, e nenhum dos 7 candidatos o nomeou
+corretamente: "autoridade da sessão" apostou em estado espalhado, e o problema é o
+oposto — o dono é único e **ninguém reage**.
+
+## O backlog
+
+Todos em [JoaoZaokk/odysseus-ios](https://github.com/JoaoZaokk/odysseus-ios/issues),
+rótulo `audit-round2`.
+
+- **#12–#19** — os 8 defeitos verificados, reconfirmados no fonte atual.
+- **#20** — guarda-chuva com os 76 achados não verificados, com o aviso de 37% no topo.
+- **#21–#24** — os quatro achados da própria verificação.
+
+Uma imprecisão do handoff original corrigida no #18: em `WorkspacePane.Kind` a
+conformância é `Equatable` (não `Hashable`), e o sintoma é **painel duplicado** mais
+destaque perdido na sidebar, não "endereço do painel trocado".
+
+## Fase (b) — corrigir
+
+O escopo da fase (b) é #12–#19 e #21–#24. Ordem sugerida, do mais barato ao mais caro:
+#21 e #22 são mecânicos; #15, #16, #17 e #19 são de uma linha cada; #13, #18 e #24 pedem
+uma decisão pequena; #23 e #14 mudam comportamento visível e merecem ser feitos juntos,
+porque uma sessão expirada e uma lista vazia são hoje a mesma tela.
+
+Nenhum desses precisa de mapa. A fase (d) — a spec de arquitetura — precisa, e agora
+tem o ADR 0001 como ponto de partida em vez de sete hipóteses.

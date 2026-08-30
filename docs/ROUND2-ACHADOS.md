@@ -1,8 +1,14 @@
 # Round 2 — índice completo dos achados
 
 Gerado da auditoria de 2026-08-30. Cada linha é uma afirmação de UM agente;
-só os marcados abaixo passaram por refutação adversarial. Trate o resto como
-hipótese, não como dívida conhecida — 3 de 8 claims refutados caíram.
+só os marcados ✅ passaram por refutação adversarial. Trate o resto como
+hipótese, não como dívida conhecida — 3 de 8 claims refutados caíram (37%).
+
+> **Fase (a) fechada.** Os ✅ viraram os issues #12–#19; os 76 restantes estão no
+> guarda-chuva #20. Os 33 candidatos de arquitetura abaixo foram verificados e
+> **6 dos 7 agrupamentos foram refutados** — a razão está no ADR
+> [0001](adr/0001-no-shared-abstractions-over-the-api-surface.md). Não re-proponha
+> os itens da seção Arquitetura sem lê-lo. O resultado completo está no handoff.
 
 Detalhe completo (problem / move / payoff) nos journals citados no handoff.
 
