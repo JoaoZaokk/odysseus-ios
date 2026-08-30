@@ -70,7 +70,7 @@ final class LibraryViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { files = try await api.personalFiles().files; error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
     func upload(_ url: URL) async {

@@ -493,7 +493,7 @@ struct BuiltinToolsCard: View {
     func loadLogs() async {
         loadingLogs = true; logsError = nil; defer { loadingLogs = false }
         do { logs = try await api.diagnosticsLogs(limit: logLimit) }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { logsError = SettingsUI.msg(error) }
     }
     /// Extracts the level token from a "TS - module - LEVEL - msg" line.

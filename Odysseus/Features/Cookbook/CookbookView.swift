@@ -87,7 +87,7 @@ final class CookbookViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { packages = try await api.cookbookPackages(); error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
     private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }

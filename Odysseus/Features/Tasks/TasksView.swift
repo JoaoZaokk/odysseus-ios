@@ -90,7 +90,7 @@ final class TasksViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { tasks = try await api.tasks(); error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
     func run(_ t: ScheduledTask) async {

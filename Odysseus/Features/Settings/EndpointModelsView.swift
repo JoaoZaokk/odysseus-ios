@@ -43,7 +43,7 @@ import SwiftUI
             models = list
             visible = Set(list.filter(\.isVisible).map(\.id))
             error = nil
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
         } catch APIError.http(403, _) {
             error = "Só um administrador pode escolher quais modelos aparecem."
         } catch {

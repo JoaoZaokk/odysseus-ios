@@ -28,7 +28,7 @@ final class EmailViewModel: ObservableObject {
             } else {
                 notConfigured = false; error = nil
             }
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
             // view transition tore down the load — ignore
         } catch {
             self.error = msg(error)

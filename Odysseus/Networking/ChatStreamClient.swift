@@ -84,7 +84,7 @@ final class ChatStreamClient: @unchecked Sendable {
                         }
                     }
                     continuation.finish()
-                } catch is CancellationError {
+                } catch let e where e.isCancellation {
                     continuation.finish()
                 } catch {
                     continuation.finish(throwing: error)

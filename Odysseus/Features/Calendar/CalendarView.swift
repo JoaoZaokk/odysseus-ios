@@ -42,7 +42,7 @@ final class CalendarViewModel: ObservableObject {
             calendars = try await cals
             events = try await evs
             error = nil
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
             // view transition tore down the load — ignore
         } catch { self.error = msg(error) }
     }

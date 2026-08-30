@@ -13,7 +13,7 @@ final class EmailAccountsViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { accounts = try await api.emailAccounts(); error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
 

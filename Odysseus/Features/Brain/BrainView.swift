@@ -27,7 +27,7 @@ final class BrainViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { memories = try await api.memories(); error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
 

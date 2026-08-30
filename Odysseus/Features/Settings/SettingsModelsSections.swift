@@ -17,7 +17,7 @@ import SwiftUI
     func load() async {
         loading = true; defer { loading = false }
         do { endpoints = try await api.modelEndpoints(); self.error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
     func toggle(_ ep: ModelEndpoint) async {

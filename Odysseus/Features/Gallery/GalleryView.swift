@@ -23,7 +23,7 @@ final class GalleryViewModel: ObservableObject {
             images = try await imgs
             albums = (try? await albs) ?? []
             error = nil
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
         } catch { self.error = msg(error) }
     }
 

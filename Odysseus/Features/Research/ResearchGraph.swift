@@ -184,7 +184,7 @@ final class ResearchRunner: ObservableObject {
                         return
                     }
                 }
-            } catch is CancellationError {
+            } catch let e where e.isCancellation {
                 // user closed the panel
             } catch {
                 self.run?.error = true
