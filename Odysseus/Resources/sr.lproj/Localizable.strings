@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Додај корисника";
 "ADMIN" = "ADMIN";
 "Admin" = "Администратор";
+"Agendado %@" = "Заказано %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "Заказани агенти";
 "Agentes agendados do Odysseus aparecem aqui." = "Заказани агенти Odysseus-а приказују се овде.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Белешке и подсетници";
 "Apagar" = "Обриши";
 "Aparência" = "Изглед";
+"apertado" = "тесно";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "За сада укажите на локални IP; када подесите HTTPS, замените са https://ваш-домен.";
 "Arquivar" = "Архивирај";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Завршена истраживања приказују се овде. Додирните «Визуелни извештај» да отворите поред.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Претрага";
 "Buscar nos logs…" = "Претражи logove…";
+"cabe" = "стаје";
 "Cabe na máquina (estimativa, melhor GPU)" = "Стаје на уређај (процена, најбољи GPU)";
 "Cadastro aberto" = "Отворена регистрација";
 "Caixa de entrada" = "Пријемно сандуче";
@@ -54,6 +57,7 @@
 "Conta" = "Налог";
 "Contas de email" = "Налози е-поште";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Подразумевано";
 "Desativado" = "Искључено";
@@ -61,6 +65,7 @@
 "Desbloquear com %@" = "Откључај помоћу %@";
 "Detectado: %@ %@" = "Откривено: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Дијагностика процеса Odysseus у реалном времену.";
+"Diário %@" = "Дневно %@";
 "Documentos pessoais (RAG)" = "Лични документи (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Дајте овом агенту ime да би се разликовао од осталих (нпр. „Claude Agent — лаптоп”).";
 "Email" = "Email";
@@ -68,9 +73,11 @@
 "Endereço do servidor Odysseus" = "Адреса сервера Odysseus";
 "Envie a mesma pergunta para os dois modelos." = "Пошаљите исто питање оба модела.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Пошаљите документе (PDF, txt, md…) да асистент консултује преко RAG-а.";
+"Erro %d" = "Грешка %d";
 "Erro no download" = "Грешка при преузимању";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Напишите на природном језику изнад\nили додирните + да бисте креирали.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Процена по називу (fp8≈1B/пар., fp16/bf16≈2B/пар.) + ~3 ГБ резерве. Не замењује стварно тестирање.";
+"Evento: %@" = "Догађај: %@";
 "Eventos e agenda" = "Догађаји и распоред";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "нпр.: Теорије колапса Бронзаног доба и докази";
 "ex.: assistente direto e objetivo" = "нпр.: директан и прецизан асистент";
@@ -80,6 +87,7 @@
 "Exportar dados" = "Извези податке";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Извезите сећања, пресете, подешавања, вештине и поставке у формату JSON.";
 "Falha ao carregar logs: %@" = "Није успело учитавање евиденције: %@";
+"Falha ao instalar %@: %@" = "Инсталирање пакета %@ није успело: %@";
 "Fallback automático" = "Аутоматска резервна опција";
 "Fechar" = "Затвори";
 "Ferramentas integradas" = "Уграђени алати";
@@ -160,6 +168,7 @@
 "Renomear conversa" = "Преименуј разговор";
 "Renomear usuário" = "Преименуј корисника";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "Неочекивани одговор сервера: %@";
 "Resumir com IA" = "Сажми помоћу ВИ";
 "Rodar agora" = "Покрени одмах";
 "Sair da conta" = "Одјави се";
@@ -171,6 +180,7 @@
 "Selecione o idioma do aplicativo." = "Изаберите језик апликације.";
 "Sem memórias ainda" = "Нема сећања";
 "Sem tarefas" = "Нема задатака";
+"Semanal %@" = "Недељно %@";
 "Servidor" = "Сервер";
 "Servidores MCP" = "MCP сервери";
 "Sistema" = "Систем";
@@ -195,6 +205,7 @@
 "Transparência" = "Прозирност";
 "Trocar senha" = "Промени лозинку";
 "Título" = "Наслов";
+"Uma vez %@" = "Једном %@";
 "Usuários" = "Корисници";
 "vazio = usa o host da URL" = "празно = користи хост URL адресе";
 "vazio = usa o servidor principal" = "празно = користи главни сервер";
