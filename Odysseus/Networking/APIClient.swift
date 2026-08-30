@@ -8,9 +8,15 @@ enum APIError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .http(let code, let msg): return msg ?? "Erro \(code)"
+        // The two interpolated cases cannot be catalogue keys as written, so they
+        // resolve here through `L`. Their format keys are not in the catalogues
+        // yet, so they fall back to Portuguese exactly as before — no regression,
+        // and ready for the next translation pass. `.notAuthenticated` is a plain
+        // key that every render site already looks up, and `.transport` carries
+        // the OS's own localized text.
+        case .http(let code, let msg): return msg ?? L("Erro %d", code)
         case .notAuthenticated: return "Sessão expirada. Faça login novamente."
-        case .decoding(let m): return "Resposta inesperada do servidor: \(m)"
+        case .decoding(let m): return L("Resposta inesperada do servidor: %@", m)
         case .transport(let m): return m
         }
     }

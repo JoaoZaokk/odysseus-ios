@@ -211,7 +211,7 @@ struct SearchSection: View {
                 label("Provedor")
                 Menu {
                     ForEach(SearchSettingsVM.providers, id: \.self) { p in
-                        Button(SearchSettingsVM.labels[p] ?? p) { vm.provider = p; Task { await vm.save() } }
+                        Button(LocalizedStringKey(SearchSettingsVM.labels[p] ?? p)) { vm.provider = p; Task { await vm.save() } }
                     }
                 } label: { menuLabel(SearchSettingsVM.labels[vm.provider] ?? vm.provider) }
 
@@ -255,7 +255,7 @@ struct SearchSection: View {
         Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
     }
     private func menuLabel(_ s: String) -> some View {
-        HStack { Text(s).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg); Spacer(); Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
+        HStack { Text(LocalizedStringKey(s)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg); Spacer(); Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
             .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
     }
