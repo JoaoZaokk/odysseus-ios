@@ -23,7 +23,9 @@ final class NotesViewModel: ObservableObject {
     }
 
     func save(id: String?, title: String, content: String) async {
-        let payload = NotePayload(title: title, content: content, archived: false, pinned: nil)
+        // nil, not false: the field is omitted from the body, so the server keeps
+        // whatever the note already had. Sending `false` unarchived it on every edit.
+        let payload = NotePayload(title: title, content: content, archived: nil, pinned: nil)
         do {
             if let id { try await api.updateNote(id, payload) }
             else { try await api.createNote(payload) }
