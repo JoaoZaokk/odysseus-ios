@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odysseus iOS — Revisão de arquitetura</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: {
+    background: '#0b0f14', primaryColor: '#16202b', primaryTextColor: '#dbe4ee',
+    primaryBorderColor: '#2b3a4a', lineColor: '#4a6076', secondaryColor: '#1d2833',
+    tertiaryColor: '#131b24', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', fontSize: '13px'
+  }});
+</script>
+<style>
+  :root { color-scheme: dark; }
+  body { background:#0b0f14; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .card { background:#111820; border:1px solid #1f2c39; }
+  .rule { background:linear-gradient(90deg,#2b3a4a,transparent); height:1px; }
+  .mermaid { background:#0e151d; border:1px solid #1c2836; border-radius:.5rem; padding:.75rem; overflow-x:auto; }
+  .beforeafter { display:grid; grid-template-columns:1fr; gap:.75rem; }
+  @media (min-width:900px){ .beforeafter { grid-template-columns:1fr 1fr; } }
+  .chip { font-size:11px; letter-spacing:.03em; padding:2px 8px; border-radius:999px; display:inline-block; }
+  .massbox { border:1px solid #24323f; background:#0e151d; border-radius:4px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .kbd { background:#16202b; border:1px solid #2b3a4a; border-radius:3px; padding:1px 5px; font-size:11px; }
+  table.tight td, table.tight th { padding:.35rem .6rem; border-bottom:1px solid #1c2836; vertical-align:top; }
+</style>
+</head>
+<body class="text-slate-300">
+<div class="max-w-6xl mx-auto px-5 py-10">
+
+  <!-- ══ HEADER ══ -->
+  <header class="mb-10">
+    <div class="text-xs mono text-slate-500 tracking-widest uppercase mb-2">Odysseus iOS / macOS · main @ db1b07c</div>
+    <h1 class="text-4xl font-semibold text-slate-100 tracking-tight">Revisão de arquitetura</h1>
+    <p class="mt-3 text-slate-400 max-w-3xl leading-relaxed">
+      86 arquivos Swift, 17 292 linhas, dois alvos compartilhando uma árvore de fonte.
+      Duas lentes independentes sobre o mesmo código: uma auditoria de qualidade de implementação
+      (8 fatias) e uma busca por <em>oportunidades de aprofundamento</em> de módulos (6 lentes).
+      Depois, refutação adversarial de todo claim que afirmava mudança de comportamento.
+    </p>
+    <div class="mt-5 grid grid-cols-2 md:grid-cols-5 gap-3 text-center">
+      <div class="card rounded-lg p-3"><div class="text-2xl mono text-slate-100">83</div><div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">achados de qualidade</div></div>
+      <div class="card rounded-lg p-3"><div class="text-2xl mono text-slate-100">33</div><div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">candidatos de arquitetura</div></div>
+      <div class="card rounded-lg p-3"><div class="text-2xl mono text-emerald-400">8</div><div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">defeitos verificados</div></div>
+      <div class="card rounded-lg p-3"><div class="text-2xl mono text-amber-400">3</div><div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">claims refutados</div></div>
+      <div class="card rounded-lg p-3"><div class="text-2xl mono text-slate-100">128</div><div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">testes, 0 falhas</div></div>
+    </div>
+  </header>
+
+  <!-- ══ O NÚMERO QUE EXPLICA O RESTO ══ -->
+  <section class="mb-12">
+    <div class="card rounded-xl p-6">
+      <h2 class="text-lg text-slate-100 font-medium mb-1">O número que organiza o resto do relatório</h2>
+      <p class="text-sm text-slate-400 mb-5 max-w-3xl">
+        Os 128 testes cobrem decimação de áudio, RMS, corte de frase, códigos ISO e decodificação de JSON.
+        <strong class="text-slate-200">Zero deles tocam o caminho de carga que toda tela do app executa.</strong>
+        Não é falta de disciplina — é forma. O que é testável hoje foi extraído como função pura
+        justamente porque o resto não é alcançável através da interface que tem.
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 items-center">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Onde os testes estão</div>
+          <table class="tight w-full text-sm mono">
+            <tr><td class="text-slate-300">VoicePipelineTests</td><td class="text-right text-emerald-400">78</td></tr>
+            <tr><td class="text-slate-300">StreamEvent (decode)</td><td class="text-right text-slate-400">11</td></tr>
+            <tr><td class="text-slate-300">CalendarEventParse</td><td class="text-right text-slate-400">10</td></tr>
+            <tr><td class="text-slate-300">AppLanguage</td><td class="text-right text-slate-400">9</td></tr>
+            <tr><td class="text-slate-300">ModelsListDecoding</td><td class="text-right text-slate-400">6</td></tr>
+            <tr><td class="text-slate-300">Message / Multipart</td><td class="text-right text-slate-400">10</td></tr>
+            <tr><td class="text-slate-300">ServerConfig</td><td class="text-right text-slate-400">4</td></tr>
+            <tr class="text-slate-500"><td class="pt-3">orquestração, carga, sessão, erro</td><td class="text-right pt-3 text-rose-400">0</td></tr>
+          </table>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">O mesmo contrato, escrito à mão</div>
+          <div class="space-y-1.5 text-sm mono">
+            <div class="flex items-center gap-2"><div class="massbox h-5" style="width:72%"></div><span class="text-slate-400 text-xs">29 × <code>msg(_:)</code> idêntico</span></div>
+            <div class="flex items-center gap-2"><div class="massbox h-5" style="width:55%"></div><span class="text-slate-400 text-xs">22 × <code>catch is CancellationError</code></span></div>
+            <div class="flex items-center gap-2"><div class="massbox h-5" style="width:52%"></div><span class="text-slate-400 text-xs">21 × <code>.task { await vm.load() }</code></span></div>
+            <div class="flex items-center gap-2"><div class="massbox h-5" style="width:47%"></div><span class="text-slate-400 text-xs">19 × <code>@Published var error</code></span></div>
+            <div class="flex items-center gap-2"><div class="massbox h-5" style="width:45%"></div><span class="text-slate-400 text-xs">18 × <code>@Published var loading</code></span></div>
+            <div class="flex items-center gap-2"><div class="massbox h-5" style="width:42%"></div><span class="text-slate-400 text-xs">17 × <code>loading = true; defer</code></span></div>
+            <div class="flex items-center gap-2 pt-2"><div class="h-5 rounded" style="width:20%;background:#7f1d1d;border:1px solid #b91c1c"></div><span class="text-rose-300 text-xs">8 × <code>error</code> que nenhuma view lê</span></div>
+          </div>
+          <p class="text-xs text-slate-500 mt-3 leading-relaxed">Contagens conferidas à mão sobre a árvore, não estimadas.
+          O contrato tem quatro cláusulas — marcar carregando, engolir cancelamento, mapear o erro, <em>mostrar</em> o erro.
+          A quarta falta em metade das cópias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DEFEITOS VERIFICADOS ══ -->
+  <section class="mb-14">
+    <div class="flex items-baseline gap-3 mb-1">
+      <h2 class="text-2xl text-slate-100 font-medium">Defeitos verificados</h2>
+      <span class="text-xs text-slate-500">acionáveis agora — cada um sobreviveu a dois refutadores independentes ou foi confirmado à mão</span>
+    </div>
+    <div class="rule mb-6"></div>
+
+    <div class="space-y-4">
+
+      <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#dc2626">
+        <div class="flex flex-wrap items-center gap-3 mb-2">
+          <span class="chip bg-red-950 text-red-300 border border-red-800">BLOQUEADOR</span>
+          <h3 class="text-slate-100 font-medium">Quatro controles do Deep Research são placebo</h3>
+        </div>
+        <p class="text-sm text-slate-400 mb-3">
+          <code class="text-slate-300">DeepResearchView</code> renderiza menus para <strong>Format</strong>, <strong>Search</strong>,
+          <strong>Endpoint</strong> e <strong>Model</strong>, ligados a <code>vm.format</code>, <code>vm.searchEngine</code>,
+          <code>vm.endpointId</code>, <code>vm.model</code>. O <code>start()</code> passa apenas <code>query</code>,
+          <code>maxRounds</code> e <code>category</code>; <code>startResearch</code> monta o corpo
+          <code>{query, max_rounds, category}</code>. Os quatro campos nunca são lidos por nada que monte um request.
+        </p>
+        <p class="text-sm text-slate-500">
+          O usuário escolhe "Detalhado", ou um endpoint e modelo específicos, e nada muda.
+          <code>api.modelEndpoints()</code> é chamado a cada abertura só para popular um menu inerte.
+        </p>
+        <div class="mt-3 text-xs mono text-slate-600">Features/Research/DeepResearchView.swift:145 · ResearchAPI.swift:67</div>
+      </div>
+
+      <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#ea580c">
+        <div class="flex flex-wrap items-center gap-3 mb-2">
+          <span class="chip bg-orange-950 text-orange-300 border border-orange-800">SEGREDO NO LUGAR ERRADO</span>
+          <h3 class="text-slate-100 font-medium">Trocar de provedor de busca grava a chave do anterior sob o nome do novo</h3>
+        </div>
+        <p class="text-sm text-slate-400 mb-3">
+          <code>SearchSettingsVM</code> tem <strong>um único campo <code>key</code></strong> para quatro provedores.
+          O menu faz <code>vm.provider = p; Task { await vm.save() }</code>, e o <code>save()</code> grava esse mesmo
+          campo sob <code>keyField[provider]</code> — já o novo.
+        </p>
+        <pre class="text-xs mono bg-[#0e151d] border border-[#1c2836] rounded p-3 overflow-x-auto text-slate-400">Brave selecionado, key = "brave-secret"
+  → toca "Tavily" no menu
+  → provider = "tavily", save()
+  → body["tavily_api_key"] = "brave-secret"   ← chave da Brave, no campo da Tavily</pre>
+        <p class="text-sm text-slate-500 mt-3">
+          O <code>load()</code> também não limpa <code>key</code> quando o provedor não tem campo de chave,
+          então passar por SearXNG no meio do caminho carrega o segredo junto.
+        </p>
+        <div class="mt-3 text-xs mono text-slate-600">Features/Settings/SettingsSections.swift:145–190</div>
+      </div>
+
+      <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#dc2626">
+        <div class="flex flex-wrap items-center gap-3 mb-2">
+          <span class="chip bg-red-950 text-red-300 border border-red-800">FALHA SILENCIOSA × 6 TELAS</span>
+          <h3 class="text-slate-100 font-medium">Oito view models escrevem um <code>error</code> que nenhuma view lê</h3>
+        </div>
+        <p class="text-sm text-slate-400 mb-3">
+          Brain, Notes, Tasks, Gallery, Library, Compare — mais <code>ChatViewModel</code> e <code>SessionStore</code>.
+          Cada um declara <code>@Published var error</code>, escreve em todo <code>catch</code>, carrega seu próprio
+          <code>msg(_:)</code> para formatar — e nenhuma view do módulo renderiza. Calendar, Cookbook e Settings renderizam as delas.
+        </p>
+        <table class="tight w-full text-sm">
+          <tr><td class="text-slate-300 w-32">Notes</td><td class="text-slate-400">Salvar com o servidor em 500: a folha fecha, a nota some, nenhuma mensagem. O usuário redigita e perde de novo.</td></tr>
+          <tr><td class="text-slate-300">Tasks</td><td class="text-slate-400">"Rodar agora" com 403: o spinner some. <em>Idêntico ao sucesso.</em> O usuário acredita que rodou.</td></tr>
+          <tr><td class="text-slate-300">Library</td><td class="text-slate-400">Upload rejeitado (413): o ícone volta, nenhuma linha aparece. Igual a "ainda pensando".</td></tr>
+          <tr><td class="text-slate-300">Gallery</td><td class="text-slate-400">Favoritar com falha: o coração simplesmente não mexe.</td></tr>
+          <tr><td class="text-slate-300">Compare</td><td class="text-slate-400"><code>GET /api/models</code> falha: os dois menus ficam no placeholder e o botão enviar fica permanentemente desabilitado, sem dizer por quê.</td></tr>
+        </table>
+        <p class="text-sm text-slate-500 mt-3">
+          E em todas: o estado vazio é gateado só por <code>items.isEmpty</code>, então uma carga que <em>falhou</em>
+          renderiza "Sem notas ainda" / "Galeria vazia" — dizendo ao usuário que os dados dele não existem.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#ca8a04">
+          <span class="chip bg-yellow-950 text-yellow-300 border border-yellow-800 mb-2">DESTRUTIVO</span>
+          <h3 class="text-slate-100 font-medium mb-2 text-sm">Arquivo com <code>&amp;</code> no nome não pode ser apagado — e o app diz que apagou</h3>
+          <p class="text-sm text-slate-400"><code>deletePersonal</code> usa <code>.urlQueryAllowed</code> cru, que preserva <code>&amp;</code>,
+          em vez do <code>encQuery</code> canônico que existe exatamente para isso. "Termos &amp; Condições.pdf" vira dois parâmetros;
+          o servidor não apaga nada e responde 200. A linha some da lista, e o arquivo volta no próximo refresh — ainda indexado, ainda alimentando o RAG.</p>
+          <div class="mt-2 text-xs mono text-slate-600">Features/Library/LibraryView.swift:52</div>
+        </div>
+
+        <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#ca8a04">
+          <span class="chip bg-yellow-950 text-yellow-300 border border-yellow-800 mb-2">PERDA DE ESTADO</span>
+          <h3 class="text-slate-100 font-medium mb-2 text-sm">Editar uma nota arquivada a desarquiva</h3>
+          <p class="text-sm text-slate-400"><code>save</code> monta <code>NotePayload(archived: false)</code> fixo.
+          Abrir uma nota em "arquivadas", corrigir um typo, Salvar — o PUT desarquiva, o <code>load()</code> seguinte tira ela da lista.
+          Da cadeira do usuário a nota <em>sumiu ao salvar</em>. Ela pulou para a grade ativa, sem aviso.</p>
+          <div class="mt-2 text-xs mono text-slate-600">Features/Notes/NotesView.swift:26</div>
+        </div>
+
+        <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#ca8a04">
+          <span class="chip bg-yellow-950 text-yellow-300 border border-yellow-800 mb-2">TEXTO CRU NA TELA</span>
+          <h3 class="text-slate-100 font-medium mb-2 text-sm">Erro de stream mostra JSON em vez de mensagem</h3>
+          <p class="text-sm text-slate-400"><code>ChatStreamClient.extractError</code> casa a regex
+          <code>"message"\s*:\s*"([^"]+)"</code> e devolve <code>String(body[r])</code> — o <em>match inteiro</em>,
+          não o grupo capturado. O usuário vê <code>"message": "..."</code> com aspas e dois-pontos, dentro do balão do chat.</p>
+          <div class="mt-2 text-xs mono text-slate-600">Networking/ChatStreamClient.swift:136</div>
+        </div>
+
+        <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#ca8a04">
+          <span class="chip bg-yellow-950 text-yellow-300 border border-yellow-800 mb-2">IDENTIDADE</span>
+          <h3 class="text-slate-100 font-medium mb-2 text-sm">Navegação chaveada pelo valor inteiro da sessão</h3>
+          <p class="text-sm text-slate-400"><code>WorkspacePane.Kind.chat(ChatSession)</code> carrega o modelo inteiro,
+          e <code>ChatSession</code> tem <code>Hashable</code> sintetizado — compara <em>todos</em> os campos.
+          Renomear a sessão, ou um refresh mudar <code>updatedAt</code>, torna o painel um endereço diferente.
+          Todo outro caso do enum carrega só ids.</p>
+          <div class="mt-2 text-xs mono text-slate-600">Features/Navigation/Workspace.swift:10</div>
+        </div>
+      </div>
+
+      <div class="card rounded-xl p-5 border-l-4" style="border-left-color:#ca8a04">
+        <span class="chip bg-yellow-950 text-yellow-300 border border-yellow-800 mb-2">DEFAULT NO LUGAR ERRADO</span>
+        <h3 class="text-slate-100 font-medium mb-2">Quatro limites do agente viram zero num servidor novo</h3>
+        <p class="text-sm text-slate-400">
+          <code>bag.int("agent_max_rounds")</code> sem <code>default:</code> cai em <code>0</code>. Num servidor que nunca setou
+          essas chaves, os quatro campos renderizam "0" e o Salvar grava <code>agent_max_rounds: 0</code>.
+          Ao lado, <code>SearchSettingsVM</code> faz <code>s.int("search_result_count", default: 5)</code> — os dois idiomas convivem
+          porque <strong>o default mora no site de leitura</strong>, não na declaração do campo. É o mesmo buraco que o candidato
+          "Uma configuração, declarada uma vez" fecha.
+        </p>
+        <div class="mt-2 text-xs mono text-slate-600">Features/Settings/SettingsAdminSections.swift:254 · SettingsModels.swift:94</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CANDIDATOS ══ -->
+  <section class="mb-14">
+    <div class="flex items-baseline gap-3 mb-1">
+      <h2 class="text-2xl text-slate-100 font-medium">Candidatos de aprofundamento</h2>
+      <span class="text-xs text-slate-500">ordenados por convergência entre lentes independentes</span>
+    </div>
+    <div class="rule mb-6"></div>
+
+    <!-- 1 -->
+    <article class="card rounded-xl p-6 mb-6">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-1">Candidato 01 · nomeado por 2 lentes independentes</div>
+          <h3 class="text-xl text-slate-100 font-medium">A tela de coleção remota</h3>
+        </div>
+        <span class="chip bg-emerald-950 text-emerald-300 border border-emerald-800">Strong</span>
+      </div>
+
+      <div class="text-xs mono text-slate-500 mb-4">
+        Brain/BrainView:27 · Notes/NotesView:18 · Gallery/GalleryView:18 · Library/LibraryView:70 · Tasks/TasksView:90 · +15
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-5">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Problema</div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Não existe módulo para "uma tela que carrega uma lista do servidor", então o contrato é escrito à mão
+            <strong class="text-slate-200">20 vezes</strong>. Cada uma é uma <code>@MainActor final class XVM</code> com
+            <code>init(api:)</code>, <code>@Published items/loading/error</code>, um <code>load()</code> que abre com
+            <code>loading = true; defer</code> e fecha com <code>catch is CancellationError {}</code>, mais um
+            <code>msg(_:)</code> privado — e uma View que repete <code>ZStack { theme.bg…}</code>,
+            <code>.task</code>, <code>.refreshable</code> e uma linha de erro que o autor precisa <em>lembrar</em> de escrever.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            A regra de cada passo só existe nas outras dezenove cópias, então o desvio é invisível:
+            <code>VoiceSettingsView:244</code> e <code>FishVoicePicker:38</code> escrevem <code>Text(e)</code> em vez de
+            <code>Text(LocalizedStringKey(e))</code> — o erro aparece em português nos outros 43 idiomas.
+            E nada reconhece <code>APIError.notAuthenticated</code>, porque a única dependência do VM é o
+            <code>APIClient</code>, que sabe de requests e não de sessões: o 401 não tem receptor e morre como string.
+          </p>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Solução</div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Um <strong class="text-slate-200">módulo</strong> para "uma coleção remota renderizada numa tela": ele possui o fetch,
+            o estado carregando/carregado/falhou, o engolir de cancelamento, o retry, e o reconhecimento de que um 401 não é
+            uma mensagem — é um evento de sessão para reportar acima. Cada feature fornece só o que varia de verdade:
+            qual chamada fazer e como desenhar uma linha.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            <strong class="text-slate-200">Mostrar o erro precisa fazer parte da interface</strong>, não ser algo que cada
+            chamador opta por fazer — porque essa é demonstravelmente a cláusula que os chamadores esquecem.
+            A forma já foi descoberta duas vezes e deixada privada: <code>EmailView.stateView(icon:title:subtitle:)</code>
+            é exatamente o estado vazio que as outras sete telas redigitam, e <code>SettingsScroll</code>/<code>SettingsCard</code>
+            são a mesma ideia para a árvore de Ajustes. <strong>Dois adapters já existem: a costura é real, só não foi extraída.</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="beforeafter mb-5">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Antes — 20 cópias do mesmo contrato</div>
+          <div class="mermaid">
+flowchart TD
+  A1["NotesViewModel<br/>loading · error · msg()"] --> API[(APIClient)]
+  A2["BrainViewModel<br/>loading · error · msg()"] --> API
+  A3["TasksViewModel<br/>loading · error · msg()"] --> API
+  A4["GalleryViewModel<br/>loading · error · msg()"] --> API
+  A5["…mais 16"] --> API
+  A1 -.->|erro escrito,<br/>nunca lido| X1((✕))
+  A2 -.-> X1
+  A3 -.-> X1
+  A4 -.-> X1
+  API -.->|401 sem receptor| X2((✕))
+  style X1 fill:#450a0a,stroke:#b91c1c
+  style X2 fill:#450a0a,stroke:#b91c1c
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Depois — uma interface, o erro por construção</div>
+          <div class="mermaid">
+flowchart TD
+  B1["Notes: fetch + linha"] --> M
+  B2["Brain: fetch + linha"] --> M
+  B3["Tasks: fetch + linha"] --> M
+  B4["…mais 17"] --> M
+  M["Coleção remota<br/>─────────<br/>carrega · cancela · falha<br/>retry · renderiza o erro"]
+  M --> T[(transporte)]
+  M --> S["sessão<br/>(401 chega aqui)"]
+  M -.->|superfície de teste| TST["carga · 500 · expirado<br/>cancelado · vazio"]
+  style M fill:#052e26,stroke:#059669
+  style TST fill:#0e151d,stroke:#2b3a4a
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="rounded-lg p-3" style="background:#0e151d;border:1px solid #1c2836">
+          <div class="text-[11px] uppercase tracking-widest text-emerald-500 mb-1">Leverage</div>
+          <p class="text-slate-400">Uma tela nova aprende uma interface — fetch, linha, texto do vazio — em vez de transcrever seis convenções de um arquivo irmão. Só o módulo de Ajustes perderia nove view models quase idênticos.</p>
+        </div>
+        <div class="rounded-lg p-3" style="background:#0e151d;border:1px solid #1c2836">
+          <div class="text-[11px] uppercase tracking-widest text-sky-500 mb-1">Locality</div>
+          <p class="text-slate-400">Oito caminhos de falha hoje mudos ficam visíveis de uma vez. A próxima mudança na apresentação de erro — um botão de retry, um banner de offline — acontece em um arquivo, não em dezoito.</p>
+        </div>
+        <div class="rounded-lg p-3" style="background:#0e151d;border:1px solid #1c2836">
+          <div class="text-[11px] uppercase tracking-widest text-violet-400 mb-1">Testes</div>
+          <p class="text-slate-400">A interface vira a superfície de teste. Uma suíte sobre carga/cancelamento/falha/vazio cobre toda tela do app, substituindo <strong>zero</strong> cobertura no caminho que o app inteiro roda.</p>
+        </div>
+      </div>
+
+      <div class="mt-4 rounded-lg p-3" style="background:#0e151d;border:1px solid #1c2836">
+        <span class="text-[11px] uppercase tracking-widest text-slate-500">Teste da deleção</span>
+        <p class="text-sm text-slate-400 mt-1">Rodado ao contrário, já que o módulo ainda não existe: imagine que exista, e apague.
+        A flag de loading, o catch de cancelamento, o mapeamento de erro, o estado vazio e o ramo do ProgressView
+        <strong class="text-slate-200">reaparecem em 20 sítios</strong> — que é exatamente o estado de hoje.
+        Apagar a cópia de uma tela também não remove a lógica: ela sobrevive nas outras 19.
+        <span class="text-emerald-400">Concentra fortemente.</span></p>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="card rounded-xl p-6 mb-6">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-1">Candidato 02 · nomeado por 3 lentes independentes</div>
+          <h3 class="text-xl text-slate-100 font-medium">Uma configuração de servidor, declarada uma vez</h3>
+        </div>
+        <span class="chip bg-emerald-950 text-emerald-300 border border-emerald-800">Strong</span>
+      </div>
+
+      <div class="text-xs mono text-slate-500 mb-4">
+        Settings/SettingsModels.swift:88 (SettingsBag) · SettingsSections:145 · SettingsModelsSections:155 · SettingsAdminSections:146,236,473
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-5">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Problema</div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Não existe módulo para "uma configuração de servidor". <code>SettingsBag</code> concentra o <em>cast</em> e nada mais —
+            não possui chave, tipo nem default — então cada um dos oito view models de seção re-deriva os três.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            Seguindo <code>agent_max_rounds</code> de ponta a ponta: declarado como
+            <code>@Published var maxRounds = ""</code>, lido com a chave literal <span class="kbd">#1</span> e um default implícito,
+            escrito com a chave literal <span class="kbd">#2</span> e sua própria coerção <code>Int(v)</code>,
+            renderizado com uma quarta afirmação de tipo <code>numeric: true</code>.
+            <strong class="text-slate-200">Cinco lugares em dois arquivos, quatro afirmações independentes sobre o tipo do campo, nenhuma autoritativa.</strong>
+            O que atravessa a costura é <code>[String: Any]</code> nas duas direções, então nada é verificável.
+          </p>
+          <p class="text-sm text-rose-300/80 leading-relaxed mt-3">
+            Dois defeitos vivos saem daí direto: os quatro limites do agente que viram zero, e a chave de busca
+            gravada sob o nome do provedor errado. Ambos são "o default e a chave moram no site de leitura".
+          </p>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Solução</div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Dar identidade a uma configuração: um módulo onde cada setting é declarado <strong>uma vez</strong> com
+            chave, tipo, default e coerção, e onde <code>load</code> e <code>save</code> são ambos <em>derivados</em>
+            dessa declaração em vez de escritos duas vezes à mão.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            Isso torna estruturalmente impossível ler uma chave com um default e gravar com outro, incluir uma chave
+            no <code>load()</code> e esquecer no <code>save()</code>, ou gravar o segredo de um provedor sob o nome de outro.
+            <code>SettingsBag</code> se dissolve dentro dele.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            A direção importa: o ganho <em>não</em> é um protocolo sobre <code>APIClient</code> — um adapter real mais um fake
+            é uma costura hipotética. É separar a <strong>transformação do payload</strong> do <strong>transporte</strong>,
+            exatamente como <code>VoiceEndpoint</code> separa <code>transcribeRequest</code>/<code>parseTranscript</code> de <code>send</code>.
+          </p>
+        </div>
+      </div>
+
+      <div class="beforeafter mb-5">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Antes — o tipo afirmado quatro vezes</div>
+          <div class="mermaid">
+flowchart LR
+  V["@Published maxRounds<br/>: String"] --> L["load()<br/>chave #1 + default implícito"]
+  V --> S["save()<br/>chave #2 + Int(v)"]
+  V --> R["view<br/>numeric: true"]
+  L --> BAG["SettingsBag<br/><i>só o cast</i>"]
+  S --> BAG
+  BAG --> D[("[String: Any]")]
+  style D fill:#450a0a,stroke:#b91c1c
+  style BAG fill:#1d1a08,stroke:#a16207
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Depois — declarado uma vez, os dois lados derivados</div>
+          <div class="mermaid">
+flowchart LR
+  DECL["agent_max_rounds<br/>─────────<br/>Int · default 8"] --> RT["round-trip<br/>derivado"]
+  RT --> LD["load"]
+  RT --> SV["save"]
+  RT --> UI["campo tipado"]
+  RT -.->|função pura,<br/>sem APIClient| TST["testável"]
+  RT --> TR[(transporte)]
+  style DECL fill:#052e26,stroke:#059669
+  style TST fill:#0e151d,stroke:#2b3a4a
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-lg p-3" style="background:#0e151d;border:1px solid #1c2836">
+        <span class="text-[11px] uppercase tracking-widest text-slate-500">Teste da deleção</span>
+        <p class="text-sm text-slate-400 mt-1">Apague <code>SettingsBag</code> e o cast reaparece como
+        <code>dict[k] as? String ?? ""</code> em ~30 sítios — então concentra algo e merece existir.
+        Mas concentra <em>só o cast</em>: chave, tipo e default já reaparecem por view model hoje, duas vezes cada
+        (uma no <code>load</code>, outra no <code>save</code>). <span class="text-emerald-400">É precisamente essa a complexidade que um módulo de configuração absorveria.</span></p>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="card rounded-xl p-6 mb-6">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-1">Candidato 03 · nomeado por 2 lentes independentes</div>
+          <h3 class="text-xl text-slate-100 font-medium">A autoridade da sessão</h3>
+        </div>
+        <span class="chip bg-emerald-950 text-emerald-300 border border-emerald-800">Strong</span>
+      </div>
+
+      <div class="text-xs mono text-slate-500 mb-4">
+        App/AppState.swift:100–175 · Networking/APIClient.swift:74–117 · Networking/Keychain.swift:58 · Config/ServerConfig.swift:14
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-5">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Problema</div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Para responder "estou logado, e o que invalida isso?" a lente abriu <strong>8 arquivos</strong>, e só 2 dessas visitas
+            eram essenciais. Um fato lógico — a sessão — mora em cinco lugares que precisam se mover juntos:
+            <code>phase</code>/<code>username</code>/<code>keepSignedIn</code> (AppState), o cookie jar mais seu arquivo no Keychain
+            (APIClient), usuário e senha salvos (Keychain), a URL do servidor (ServerConfig, que <em>também</em> existe duas vezes),
+            e os dois toggles de bloqueio (BiometricLock).
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            Ninguém é dono da invariante. Ela é escrita à mão três vezes — <code>login</code>, <code>logout</code>,
+            <code>updateServer</code> — <strong class="text-slate-200">e as três cópias já discordam</strong>.
+          </p>
+          <p class="text-sm text-rose-300/80 leading-relaxed mt-3">
+            <code>login(remember: false)</code> limpa o cookie e zera <code>keepSignedIn</code>, mas <em>não</em> apaga as
+            credenciais salvas — e <code>tryAutoLogin()</code> precisa só delas. Entre com "Manter conectado" ligado,
+            entre de novo com ele desligado, feche e abra: o app te loga sozinho, derrotando o botão que o usuário acabou de desligar.
+          </p>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Solução</div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Um dono para a sessão, com uma interface pequena: as perguntas que os chamadores realmente fazem
+            (há servidor configurado; há sessão autenticada; quem é) e as transições que podem acontecer
+            (entrar com/sem lembrar, sair, trocar de servidor, <strong>sessão rejeitada pelo servidor</strong>, travar/destravar).
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            Atrás dessa interface os cinco stores viram detalhe de implementação, movidos como <em>um passo atômico por transição</em> —
+            então "lembrar desligado apaga credencial E cookie" vira propriedade da transição, não algo que três sítios
+            precisam escrever certo cada um.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            A interface precisa de uma coisa que hoje não tem: uma transição de entrada <code>sessionRejected</code>,
+            para que um 401 tenha <strong>onde chegar</strong>. Hoje <code>phase</code> só é atribuído dentro de AppState,
+            em 86 arquivos — então um servidor reiniciado que derruba o cookie não consegue devolver o usuário ao login;
+            toda tela mostra "Sessão expirada" inline e a única saída é achar Ajustes › Conta › Sair.
+          </p>
+        </div>
+      </div>
+
+      <div class="beforeafter mb-5">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Antes — cinco stores, três co-mutações divergentes</div>
+          <div class="mermaid">
+flowchart TD
+  LOGIN["login()"] --> P1["phase / username /<br/>keepSignedIn"]
+  LOGIN --> P2["cookie jar<br/>+ Keychain"]
+  LOGIN -.->|"esquece"| P3["credenciais<br/>salvas"]
+  LOGOUT["logout()"] --> P1
+  LOGOUT --> P2
+  LOGOUT --> P3
+  UPD["updateServer()"] --> P1
+  UPD --> P2
+  UPD --> P4["ServerConfig<br/><i>duplicado</i>"]
+  E401["401 em 2 lugares"] -.->|sem receptor| XX((✕))
+  style P3 fill:#450a0a,stroke:#b91c1c
+  style XX fill:#450a0a,stroke:#b91c1c
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Depois — transições atômicas, o 401 com destino</div>
+          <div class="mermaid">
+flowchart TD
+  C1["AppState<br/><i>superfície SwiftUI</i>"] --> SESS
+  C2["APIClient"] -->|sessionRejected| SESS
+  C3["ChatStreamClient"] -->|sessionRejected| SESS
+  SESS["Autoridade da sessão<br/>─────────<br/>entrar · sair · trocar servidor<br/>rejeitada · travar"]
+  SESS --- ST["stores privados<br/>movidos como um passo"]
+  SESS -.->|stores em memória| TST["máquina de estados<br/>testável"]
+  style SESS fill:#052e26,stroke:#059669
+  style TST fill:#0e151d,stroke:#2b3a4a
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-lg p-3" style="background:#0e151d;border:1px solid #1c2836">
+        <span class="text-[11px] uppercase tracking-widest text-slate-500">Teste da deleção</span>
+        <p class="text-sm text-slate-400 mt-1">Concentra. Apague e a complexidade não some — ela <em>é</em> o que existe hoje:
+        três sequências de co-mutação escritas à mão, dois sítios independentes de 401, um fato "está configurado" duplicado,
+        e nenhum caminho de um cookie expirado de volta à tela de login. Reaparece em pelo menos 5 chamadores.</p>
+      </div>
+    </article>
+
+    <!-- 4, 5, 6 compactos -->
+    <div class="grid lg:grid-cols-3 gap-5 mb-6">
+
+      <article class="card rounded-xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <h3 class="text-base text-slate-100 font-medium">A descrição do request</h3>
+          <span class="chip bg-emerald-950 text-emerald-300 border border-emerald-800">Strong</span>
+        </div>
+        <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">2 lentes</div>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          <code>APIClient</code> expõe blocos de montagem e <strong>81 métodos de endpoint</strong> que os colam dentro de um
+          corpo <code>async throws</code>. A forma do fio nunca é um <em>valor</em> — só existe como efeito.
+          Quatro decisões ficam com cada call site, nenhuma visível na assinatura: qual codificação de corpo
+          (JSON via Encodable / JSON via JSONSerialization / form-urlencoded / multipart — as quatro em uso),
+          se o id passa por <code>encPath</code>, qual URLSession, qual estratégia de decode.
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed mt-3">
+          A história do arquivo é feita disso: <code>fix(settings): MCP add-server posted JSON to a Form(...) route — always 422</code>,
+          <code>fix(net): long transfers no longer die at the 30s cap</code>, <code>security: percent-encode server-supplied ids</code>.
+          E já foi esquecida de novo: <code>SettingsAdminSections:97</code> monta o caminho com <code>.urlPathAllowed</code> cru,
+          que ainda permite <code>/</code> — o buraco exato que aquele commit de segurança fechou em todo o resto.
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed mt-3">
+          <strong class="text-slate-200">A interface é fina demais para o que esconde: 81 verbos, nenhum substantivo.</strong>
+          <code>VoiceEndpoint</code> já fez exatamente essa separação para as suas duas chamadas, e comprou 23 testes reais.
+        </p>
+      </article>
+
+      <article class="card rounded-xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <h3 class="text-base text-slate-100 font-medium">Decodificação tolerante</h3>
+          <span class="chip bg-emerald-950 text-emerald-300 border border-emerald-800">Strong</span>
+        </div>
+        <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">1 lente</div>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          <strong>25 <code>init(from:)</code> escritos à mão</strong> em 15 arquivos, todos fazendo as mesmas duas coisas:
+          escolher o primeiro não-nulo entre chaves alias (<code>text</code> ?? <code>content</code>,
+          <code>name</code> ?? <code>title</code> — ~40 dessas cadeias) e coagir um id que o servidor pode mandar
+          String ou Int, com fallback para um UUID novo (o mesmo bloco de quatro linhas, verbatim, 7 vezes).
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed mt-3">
+          <code>ChatSession</code> já extraiu a forma certa — <code>decodeID(_:keys:)</code> e <code>timestamp(_:keys:)</code> —
+          e a manteve <em>privada</em>, então os outros 24 reimplementam. Dos 25, exatamente <strong>4</strong> têm cobertura.
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed mt-3">
+          Já derivaram: <code>GalleryAlbum</code> fixa o literal português <code>"Álbum"</code> como fallback de nome,
+          fora da costura de localização — um usuário japonês recebe um nome de álbum em português.
+        </p>
+        <p class="text-xs text-slate-500 mt-3 italic">Não é sobre remover a tolerância — ela é correta e deliberada.
+        É sobre a tolerância ter uma implementação com uma suíte, em vez de 25 com quatro.</p>
+      </article>
+
+      <article class="card rounded-xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <h3 class="text-base text-slate-100 font-medium">O leitor de SSE</h3>
+          <span class="chip bg-sky-950 text-sky-300 border border-sky-800">Worth exploring</span>
+        </div>
+        <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">3 lentes</div>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Duas implementações independentes de "abrir SSE, checar status, iterar linhas <code>data:</code>, decodificar, cancelar":
+          <code>ChatStreamClient.send</code> e <code>APIClient.researchStream</code>.
+          <strong>Dois adapters, então a costura é real</strong> — e já divergiram de formas que são bugs:
+        </p>
+        <ul class="text-sm text-slate-400 leading-relaxed mt-3 space-y-2 list-disc pl-4">
+          <li>Chat mapeia 401/403 para "Sessão expirada"; Research lança <code>http(401)</code>, então a mesma condição lê "Erro 401".</li>
+          <li>Chat exige <code>"data: "</code> <em>com</em> espaço e descarta 6 chars; Research aceita <code>data:</code> pelado.
+              O espaço é opcional em SSE — um servidor emitindo <code>data:{…}</code> deixaria o chat mudo enquanto Research funciona.</li>
+          <li>Chat trata o sentinela <code>[DONE]</code>; Research ignora e depende da conexão fechar.</li>
+        </ul>
+        <p class="text-xs text-slate-500 mt-3 italic">Ganho mais estreito que o da tela de lista — 2 é o mínimo que qualifica como costura real.</p>
+      </article>
+    </div>
+
+    <!-- 7 -->
+    <article class="card rounded-xl p-6 mb-6">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-1">Candidato 07 · o teste da deleção mais limpo da árvore</div>
+          <h3 class="text-xl text-slate-100 font-medium"><code>Features</code> — um módulo que ninguém lê</h3>
+        </div>
+        <span class="chip bg-emerald-950 text-emerald-300 border border-emerald-800">Strong</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            <code>Features</code> é uma struct de 30 linhas com sete <code>Bool</code> e um decoder tolerante escrito à mão,
+            buscada por <code>APIClient.features()</code>, guardada em <code>@Published var features</code> no AppState,
+            e atualizada por <code>loadFeatures()</code> de <strong>três lugares</strong> no caminho de login.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            <strong class="text-slate-200">Nada, em lugar nenhum, lê qualquer campo dela.</strong>
+            <code>webSearch</code>, <code>webFetch</code>, <code>deepResearch</code>, <code>memory</code>,
+            <code>documentEditor</code>, <code>rag</code>, <code>gallery</code> nunca são referenciados fora da própria struct.
+            É um módulo cuja interface inteira é uma escrita.
+          </p>
+          <p class="text-sm text-rose-300/80 leading-relaxed mt-3">
+            O custo não são as linhas mortas: todo login e todo cold launch paga um round-trip a
+            <code>/api/auth/features</code> e <strong>espera por ele</strong> antes de <code>phase = .main</code>.
+            Uma chamada lenta ou pendurada atrasa o app chegar à UI principal — por um valor que é descartado.
+          </p>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Teste da deleção</div>
+          <div class="mermaid">
+flowchart LR
+  W1["bootstrap"] --> F["Features<br/>7 Bools"]
+  W2["auto-login"] --> F
+  W3["login manual"] --> F
+  F --> R{{"leitores"}}
+  R --> N["nenhum"]
+  style F fill:#1d1a08,stroke:#a16207
+  style N fill:#450a0a,stroke:#b91c1c
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            Apague: a complexidade <strong class="text-emerald-400">some por completo</strong>.
+            Nada reaparece em chamador nenhum, porque não há leitores — só três escritores, que são apagados junto.
+            É o resultado de pass-through mais limpo da árvore.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            E há um custo que não é o tempo: um leitor — humano ou agente — que encontra <code>app.features</code>
+            razoavelmente conclui que existe gating de funcionalidade em algum lugar, e vai procurar.
+            Não há o que achar. <strong>É uma costura falsa.</strong>
+          </p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ══ TOP RECOMENDAÇÃO ══ -->
+  <section class="mb-12">
+    <div class="rounded-xl p-6" style="background:linear-gradient(180deg,#07231d,#0b0f14);border:1px solid #065f46">
+      <div class="text-[11px] uppercase tracking-widest text-emerald-500 mb-2">Recomendação principal</div>
+      <h2 class="text-2xl text-slate-100 font-medium mb-4">Começar pela tela de coleção remota</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Três razões, nessa ordem.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            <strong class="text-slate-200">1. É o único candidato que já está cobrando o preço em defeitos.</strong>
+            O achado "oito view models escrevem um erro que ninguém lê" não é um risco futuro — são seis telas onde
+            falha e sucesso são visualmente idênticos hoje. Aprofundar esse módulo não <em>previne</em> o bug; ele o <em>conserta</em>,
+            e conserta as seis de uma vez porque o mostrar-o-erro passa a ser parte da interface, não uma cláusula opcional.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            <strong class="text-slate-200">2. Concentra mais do que qualquer outro.</strong> 20 sítios contra 5 (sessão),
+            2 (SSE) ou 8 (configuração). E o teste da deleção é o mais nítido: o estado de hoje <em>é</em> o resultado de apagá-lo.
+          </p>
+          <p class="text-sm text-slate-400 leading-relaxed mt-3">
+            <strong class="text-slate-200">3. Abre a porta dos outros dois.</strong> O módulo precisa de um lugar
+            para o 401 chegar — que é exatamente a transição <code>sessionRejected</code> que falta na autoridade da sessão.
+            E precisa de uma costura no transporte para ser testável, que é a mesma separação descrição/transporte
+            do candidato do request. Fazer este primeiro define a forma dos outros dois; fazer os outros primeiro não define este.
+          </p>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Ordem sugerida</div>
+          <div class="mermaid">
+flowchart TD
+  A["1 · Coleção remota<br/><i>20 sítios · conserta 6 telas</i>"] --> B["2 · Autoridade da sessão<br/><i>recebe o 401 que (1) reporta</i>"]
+  A --> C["3 · Descrição do request<br/><i>a costura de transporte que (1) precisa</i>"]
+  C --> D["4 · Decodificação tolerante<br/><i>25 decoders, 1 suíte</i>"]
+  B --> E["5 · Configuração declarada<br/><i>fecha 2 defeitos vivos</i>"]
+  F["0 · Apagar Features<br/><i>~30 linhas, 3 awaits</i>"] -.->|independente,<br/>faça a qualquer hora| A
+  style A fill:#052e26,stroke:#059669
+  style F fill:#0e151d,stroke:#2b3a4a
+          </div>
+          <div class="mt-4 rounded-lg p-3" style="background:#0e151d;border:1px solid #1c2836">
+            <p class="text-sm text-slate-400">
+              <strong class="text-slate-200">Nota sobre escopo.</strong> Nenhum destes é um refactor de fim de semana,
+              e os oito defeitos verificados <em>não dependem</em> deles — cada um tem uma correção pequena e local.
+              Se a prioridade for parar o sangramento, os defeitos vêm primeiro e os candidatos depois.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MÉTODO ══ -->
+  <section class="mb-8">
+    <h2 class="text-lg text-slate-100 font-medium mb-1">Método, e o que foi descartado</h2>
+    <div class="rule mb-4"></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          14 agentes de leitura em duas passadas independentes — 8 fatias de qualidade por área do código,
+          6 lentes de arquitetura por <em>pergunta</em> (profundidade dos módulos grandes, a costura do APIClient,
+          a superfície de teste, o atrito entre módulos, o teste da deleção, e por que os hot spots mudam tanto).
+          Depois 16 agentes de refutação, dois por claim de comportamento, instruídos a derrubá-los.
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed mt-3">
+          A convergência entre lentes que não se viram é o sinal mais confiável que esse formato produz.
+          "Configuração declarada uma vez" saiu de três lentes separadamente; "leitor de SSE" de três; "tela de lista remota" de duas.
+        </p>
+      </div>
+      <div>
+        <div class="text-[11px] uppercase tracking-widest text-amber-500 mb-2">Três claims plausíveis que não sobreviveram</div>
+        <table class="tight w-full text-sm">
+          <tr><td class="text-slate-300 w-40"><code>Font.ody(design:)</code></td><td class="text-slate-400">O parâmetro <em>é</em> descartado. Mas as contagens do claim estavam erradas e nenhuma fonte renderizada mudaria. Limpeza menor, não achado.</td></tr>
+          <tr><td class="text-slate-300"><code>decodeList</code></td><td class="text-slate-400">16 dos 17 tipos têm decoder tolerante por design — drift degrada linhas, nunca esvazia listas. A indistinguibilidade vem da camada de view, não do helper.</td></tr>
+          <tr><td class="text-slate-300">ChatViewModel</td><td class="text-slate-400">O objeto <em>é</em> alocado por render, mas <code>@StateObject</code> retém o primeiro e as duas linhas de configuração mutam a cópia descartada. Nada se perde.</td></tr>
+        </table>
+        <p class="text-xs text-slate-500 mt-3 italic">Os três teriam entrado num relatório sem esse passo.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pt-6 text-xs mono text-slate-600" style="border-top:1px solid #1c2836">
+    Odysseus iOS · main @ db1b07c · 86 arquivos, 17 292 linhas · iOS e macOS compilando sem warnings · 128 testes, 0 falhas
+  </footer>
+
+</div>
+</body>
+</html>
