@@ -164,7 +164,7 @@ struct ChatScreen: View {
             ForEach([voice.error, vm.error].compactMap { $0 }, id: \.self) { err in
                 Text(LocalizedStringKey(err))
                     .font(.ody(size: 11))
-                    .foregroundStyle(theme.accent)
+                    .foregroundStyle(theme.danger)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 14)
             }

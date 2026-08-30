@@ -241,7 +241,7 @@ struct VoiceSettingsView: View {
     @ViewBuilder
     private var speechErrorLine: some View {
         if let e = speech.neuralError {
-            Text(LocalizedStringKey(e)).font(.footnote).foregroundStyle(theme.accent)
+            Text(LocalizedStringKey(e)).font(.footnote).foregroundStyle(theme.danger)
         }
     }
 

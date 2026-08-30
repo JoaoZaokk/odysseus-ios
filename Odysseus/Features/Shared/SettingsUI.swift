@@ -11,6 +11,39 @@ import SwiftUI
 enum SettingsUI {
     static func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 
+    /// What to show the user when a call failed — or nothing, when there is
+    /// nothing to show.
+    ///
+    /// Three rules, and none of them was written down anywhere before this
+    /// function existed. Each had already been broken at least once:
+    ///
+    /// 1. **A cancelled request is not a failure.** Tearing down a `.task` when
+    ///    the user navigates away cancels its request, and reporting that leaves
+    ///    an error banner over a screen the user already left. Two load paths
+    ///    remembered to check; twenty-one call sites did not.
+    /// 2. **The format string stays a catalogue key.** `"Falha: \(x)"` can never
+    ///    match an entry, so it renders in Portuguese in the other 43 languages.
+    ///    Taking the format as a parameter and interpolating in here is what
+    ///    makes that hard to get wrong — five sites had got it wrong.
+    /// 3. **403 is not a generic failure.** It means this account may not do
+    ///    this, and the sentence that says so is the caller's to supply, because
+    ///    only the caller knows what was refused. Three sites spelled out this
+    ///    branch by hand.
+    ///
+    /// Returning `String?` rather than `String` is the first rule made
+    /// structural: `field = SettingsUI.failure(...)` clears the field on a
+    /// cancellation instead of writing noise into it.
+    ///
+    /// - Parameters:
+    ///   - format: a catalogue key with one `%@`, e.g. `"Falha ao salvar: %@"`.
+    ///   - admin: the sentence for 403, itself a catalogue key. Omit it where the
+    ///     endpoint is not admin-gated.
+    static func failure(_ e: Error, _ format: String, admin: String? = nil) -> String? {
+        if e.isCancellation { return nil }
+        if case APIError.http(403, _) = e, let admin { return L(admin) }
+        return L(format, msg(e))
+    }
+
     /// Delivers data to the user as a file. Returns `true` when it was actually
     /// delivered, `false` on failure, `nil` when the user cancelled — so callers
     /// can report honestly. The old iOS branch wrote into tmp (unreachable, and

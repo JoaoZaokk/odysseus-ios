@@ -110,7 +110,7 @@ struct AddIntegrationView: View {
                     }
                     group { fields }
                     if let e = vm.error {
-                        Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.accent)
+                        Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }

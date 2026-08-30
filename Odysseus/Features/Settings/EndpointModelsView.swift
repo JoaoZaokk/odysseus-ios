@@ -43,11 +43,9 @@ import SwiftUI
             models = list
             visible = Set(list.filter(\.isVisible).map(\.id))
             error = nil
-        } catch let e where e.isCancellation {
-        } catch APIError.http(403, _) {
-            error = "Só um administrador pode escolher quais modelos aparecem."
         } catch {
-            self.error = L("Não foi possível carregar os modelos: %@", SettingsUI.msg(error))
+            self.error = SettingsUI.failure(error, "Não foi possível carregar os modelos: %@",
+                                            admin: "Só um administrador pode escolher quais modelos aparecem.")
         }
     }
 
@@ -72,10 +70,9 @@ import SwiftUI
             await load()
             error = nil
             saved = true
-        } catch APIError.http(403, _) {
-            error = "Só um administrador pode escolher quais modelos aparecem."
         } catch {
-            self.error = L("Não foi possível salvar: %@", SettingsUI.msg(error))
+            self.error = SettingsUI.failure(error, "Não foi possível salvar: %@",
+                                            admin: "Só um administrador pode escolher quais modelos aparecem.")
         }
     }
 
@@ -147,7 +144,7 @@ struct EndpointModelsView: View {
 
             if let e = vm.error {
                 Text(LocalizedStringKey(e))
-                    .font(.ody(size: 11)).foregroundStyle(theme.accent)
+                    .font(.ody(size: 11)).foregroundStyle(theme.danger)
                     .fixedSize(horizontal: false, vertical: true)
             } else if vm.saved {
                 Text("Salvo").font(.ody(size: 11)).foregroundStyle(theme.green)

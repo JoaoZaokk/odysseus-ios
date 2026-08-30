@@ -122,7 +122,7 @@ struct CompareView: View {
                 if let e = vm.error, vm.models.isEmpty {
                     Text(LocalizedStringKey(e))
                         .font(.ody(size: 11))
-                        .foregroundStyle(theme.accent)
+                        .foregroundStyle(theme.danger)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 14).padding(.bottom, 4)
                 }

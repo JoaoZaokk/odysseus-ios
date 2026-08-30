@@ -189,12 +189,12 @@ extension APIClient {
                 "reminder_llm_persona": persona,
             ])
             note = "Salvo."
-        } catch { note = L("Falha ao salvar: %@", SettingsUI.msg(error)) }
+        } catch { note = SettingsUI.failure(error, "Falha ao salvar: %@") }
     }
     func test() async {
         note = nil
         do { try await api.fireReminder(); note = "Lembrete de teste disparado." }
-        catch { note = L("Falha no teste: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha no teste: %@") }
     }
 }
 
@@ -280,7 +280,7 @@ struct RemindersSection: View {
         savingTools = true; toolsNote = nil; defer { savingTools = false }
         let disabled = tools.filter { !$0.enabled }.map(\.id)
         do { try await api.saveAgentTools(disabled: disabled); toolsNote = "Salvo." }
-        catch { toolsNote = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { toolsNote = SettingsUI.failure(error, "Falha: %@") }
     }
     func save() async {
         note = nil
@@ -290,11 +290,11 @@ struct RemindersSection: View {
             if let n = Int(v) { p[k] = n }
         }
         do { try await api.saveSettings(p); note = "Salvo." }
-        catch { note = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
     func reconnect(_ s: MCPServer) async {
         do { try await api.reconnectMCP(s.id); await load() }
-        catch { note = L("Falha ao reconectar: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha ao reconectar: %@") }
     }
 }
 
@@ -527,7 +527,7 @@ struct BuiltinToolsCard: View {
     func save() async {
         note = nil
         do { try await api.saveSettings(["app_public_url": publicURL]); note = "Salvo." }
-        catch { note = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
     func export() async {
         note = nil
@@ -538,12 +538,12 @@ struct BuiltinToolsCard: View {
             case .some(false): note = "Falha ao gravar o arquivo do backup."
             case .none:        break   // user cancelled — saying anything would lie
             }
-        } catch { note = L("Falha ao exportar: %@", SettingsUI.msg(error)) }
+        } catch { note = SettingsUI.failure(error, "Falha ao exportar: %@") }
     }
     func wipe(_ cat: String) async {
         note = nil
         do { try await api.wipeCategory(cat); note = L("Apagado: %@.", cat) }
-        catch { note = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
 }
 
@@ -662,7 +662,7 @@ struct TerminalLogsCard: View {
                 } label: { menuChip(L("%lld linhas", vm.logLimit)) }
             }
             if let e = vm.logsError {
-                Text("Falha ao carregar logs: \(e)").font(.ody(size: 10)).foregroundStyle(theme.accent)
+                Text(L("Falha ao carregar logs: %@", e)).font(.ody(size: 10)).foregroundStyle(theme.danger)
             }
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 2) {
@@ -721,26 +721,26 @@ struct TerminalLogsCard: View {
     }
     func toggleSignup() async {
         do { try await api.toggleSignup(); signupOn = (try? await api.signupEnabled()) ?? signupOn }
-        catch { note = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
     func setAdmin(_ u: AdminUser, _ admin: Bool) async {
         do { try await api.setUserAdmin(u.username, admin); await load() }
-        catch { note = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
     func remove(_ u: AdminUser) async {
         do { try await api.deleteUser(u.username); await load() }
-        catch { note = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
     func rename(_ u: AdminUser, to name: String) async {
         do { try await api.renameUser(u.username, to: name); await load() }
-        catch { note = L("Falha: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
     func add() async {
         guard !newUser.isEmpty, newPass.count >= 8 else { note = "Usuário e senha (mín. 8) obrigatórios."; return }
         do {
             try await api.createUser(username: newUser, password: newPass, isAdmin: newAdmin)
             newUser = ""; newPass = ""; newAdmin = false; note = "Usuário criado."; await load()
-        } catch { note = L("Falha ao criar: %@", SettingsUI.msg(error)) }
+        } catch { note = SettingsUI.failure(error, "Falha ao criar: %@") }
     }
 }
 
@@ -819,11 +819,11 @@ struct UsuariosSection: View {
     func load() async { loading = true; defer { loading = false }; items = (try? await api.integrations()) ?? [] }
     func test(_ i: Integration) async {
         do { try await api.testIntegration(i.id); note = L("Teste enviado para %@.", i.name) }
-        catch { note = L("Falha no teste: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha no teste: %@") }
     }
     func remove(_ i: Integration) async {
         do { try await api.deleteIntegration(i.id); await load() }
-        catch { note = L("Falha ao remover: %@", SettingsUI.msg(error)) }
+        catch { note = SettingsUI.failure(error, "Falha ao remover: %@") }
     }
 }
 
