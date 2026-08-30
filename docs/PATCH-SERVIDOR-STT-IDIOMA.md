@@ -77,6 +77,54 @@ Por isso o idioma tem que vir no pedido.
 `_transcribe_local` e `_transcribe_api` já recebem `language` e já tratam string
 vazia como "detectar" — não mudam.
 
+### 3 · Normalizar e validar (defesa, não requisito)
+
+O app iOS já manda só código base — `AppLanguage.sttServerCode` corta região e
+script (`pt-BR` → `pt`, `zh-Hant` → `zh`) e devolve nil para uigur, que não existe
+na tabela `LANGUAGES` do Whisper. Mas a rota é pública e outro cliente pode mandar
+`en_US`, ` en-US ` ou lixo, e aí o faster-whisper levanta em vez de responder.
+
+```python
+_WHISPER_LANGS = None
+
+def _normalize_language(value: str) -> str:
+    """'en_US ' → 'en'. Devolve '' para vazio ou desconhecido, que é o mesmo
+    que não pedir idioma nenhum — detectar erra menos que abortar."""
+    code = (value or "").strip().replace("_", "-").split("-")[0].lower()
+    if not code:
+        return ""
+    global _WHISPER_LANGS
+    if _WHISPER_LANGS is None:
+        try:
+            from whisper.tokenizer import LANGUAGES
+            _WHISPER_LANGS = set(LANGUAGES)
+        except Exception:
+            _WHISPER_LANGS = set()
+    if _WHISPER_LANGS and code not in _WHISPER_LANGS:
+        logger.warning("STT: idioma desconhecido %r, detectando", value)
+        return ""
+    return code
+```
+
+Chame em `transcribe()`, antes do `or`:
+
+```diff
+-        language = language or settings.get("stt_language", "")
++        language = _normalize_language(language) or settings.get("stt_language", "")
+```
+
+**Degradar para detecção, não devolver 400.** O usuário está falando ao microfone;
+perder a gravação por um código mal formado é pior que transcrever adivinhando.
+
+### 4 · Testes mínimos
+
+- rota encaminha `language=en` ao serviço;
+- campo ausente mantém o fallback para `stt_language`;
+- idioma do pedido vence o ajuste global;
+- `" en-US "` chega como `en` no provedor;
+- código desconhecido (`ug`, `zz`) vira `""` e não levanta;
+- `_transcribe_local` e `_transcribe_api` recebem o valor já normalizado.
+
 ## Compatibilidade
 
 - **App antigo, servidor novo:** não manda o campo, `Form("")` dá `""`, cai no

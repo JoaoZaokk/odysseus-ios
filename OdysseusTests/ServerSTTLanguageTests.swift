@@ -37,6 +37,33 @@ final class ServerSTTLanguageTests: XCTestCase {
         }
     }
 
+    /// Uyghur is absent from Whisper's `LANGUAGES` table, which every server in
+    /// this family validates against. Naming it does not degrade to a guess —
+    /// faster-whisper raises and the recording is lost — so it has to travel as
+    /// no language at all. Every other one of the 44 is a code Whisper knows.
+    func testUyghurTravelsAsDetectRatherThanAnUnknownCode() {
+        XCTAssertNil(AppLanguage.ug.sttServerCode)
+        for lang in AppLanguage.allCases where lang != .ug {
+            XCTAssertEqual(lang.sttServerCode, lang.iso639,
+                           "\(lang.rawValue) should send its base code")
+        }
+    }
+
+    /// Region and script subtags are dropped before the wire: a server asked for
+    /// `pt-BR` or `zh-Hant` answers "unsupported language", not Portuguese.
+    func testRegionAndScriptAreStrippedBeforeSending() {
+        XCTAssertEqual(AppLanguage.ptBR.sttServerCode, "pt")
+        XCTAssertEqual(AppLanguage.zhHant.sttServerCode, "zh")
+        XCTAssertEqual(AppLanguage.deCH.sttServerCode, "de")
+    }
+
+    /// Hebrew is where the two engines genuinely disagree: whisper.cpp spells it
+    /// `iw`, servers spell it `he`. The properties must not be collapsed.
+    func testHebrewDiffersBetweenOnDeviceAndServer() {
+        XCTAssertEqual(AppLanguage.he.whisperCode, "iw")
+        XCTAssertEqual(AppLanguage.he.sttServerCode, "he")
+    }
+
     /// Both server-side engines resolve the language the same way, so picking a
     /// language does not mean two different things depending on which one is on.
     func testBothServerEnginesAgreeOnTheWireField() {

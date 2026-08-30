@@ -276,7 +276,7 @@ final class VoiceInputManager: ObservableObject {
         // Same resolution the custom-endpoint path uses, so the two server-side
         // engines agree on what the user picked: nil under "detect", otherwise
         // the pinned language (or the app's, under "follow the app").
-        let language = SpeechLanguage.pinned()?.iso639
+        let language = SpeechLanguage.pinned()?.sttServerCode
         do {
             return try await transcribeUpload { try await api.transcribeAudio($0, language: language) }
         } catch {
