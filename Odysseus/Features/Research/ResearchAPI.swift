@@ -64,10 +64,21 @@ struct ResearchJob: Decodable, Identifiable {
 
 extension APIClient {
     /// Starts a deep research run. `maxRounds == nil` lets the agent decide (Auto).
-    func startResearch(query: String, maxRounds: Int?, category: String? = nil) async throws -> String {
+    ///
+    /// Field names and accepted values follow `ResearchStartRequest` on the server
+    /// (`routes/research/research_routes.py`): `search_provider`, not
+    /// "search_engine"; `category` is one of product / comparison / howto /
+    /// factcheck. There is no report-format field — the category *is* the format
+    /// override, which is why the panel no longer offers a separate one.
+    func startResearch(query: String, maxRounds: Int?, category: String? = nil,
+                       searchProvider: String? = nil, endpointID: String? = nil,
+                       model: String? = nil) async throws -> String {
         var body: [String: Any] = ["query": query]
         if let maxRounds { body["max_rounds"] = maxRounds }
         if let category, category != "auto" { body["category"] = category }
+        if let searchProvider, !searchProvider.isEmpty { body["search_provider"] = searchProvider }
+        if let endpointID, !endpointID.isEmpty { body["endpoint_id"] = endpointID }
+        if let model, !model.isEmpty { body["model"] = model }
         var req = request("/api/research/start", method: "POST")
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = try JSONSerialization.data(withJSONObject: body)
