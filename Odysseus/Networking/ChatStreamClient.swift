@@ -133,8 +133,16 @@ final class ChatStreamClient: @unchecked Sendable {
         return req
     }
 
-    private static func extractError(_ body: String) -> String? {
-        guard let r = body.range(of: "\"message\"\\s*:\\s*\"([^\"]+)\"", options: .regularExpression) else {
+    /// Pulls `message` out of an error body. `range(of:options:.regularExpression)`
+    /// has no capture groups — it returns the whole match — so this needs a real
+    /// `NSRegularExpression` to avoid showing the user raw JSON.
+    static func extractError(_ body: String) -> String? {
+        // `(?:[^"\\]|\\.)*` so an escaped quote inside the message does not end the
+        // match — `[^"]+` stopped at the backslash, which is why the unescaping
+        // below never had anything to do.
+        guard let re = try? NSRegularExpression(pattern: "\"message\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)\""),
+              let m = re.firstMatch(in: body, range: NSRange(body.startIndex..., in: body)),
+              let r = Range(m.range(at: 1), in: body) else {
             return body.count < 200 ? body : nil
         }
         return String(body[r]).replacingOccurrences(of: "\\\"", with: "\"")
