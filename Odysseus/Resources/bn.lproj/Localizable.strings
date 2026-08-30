@@ -107,6 +107,7 @@
 "instalado" = "ইনস্টল করা";
 "instalando…" = "ইনস্টল হচ্ছে…";
 "Instalar" = "ইনস্টল করুন";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "সার্ভারে %@ ইনস্টল করা শুরু হয়েছে — এতে কয়েক মিনিট সময় লাগতে পারে।";
 "Integrações" = "ইন্টিগ্রেশন";
 "Irreversível. Cada item apaga uma categoria." = "অপরিবর্তনীয়। প্রতিটি আইটেম একটি ক্যাটেগরি মুছে দেয়।";
 "Isso é irreversível. Confirma?" = "এটি অপরিবর্তনীয়। নিশ্চিত?";

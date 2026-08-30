@@ -107,6 +107,7 @@
 "instalado" = "نصب شد";
 "instalando…" = "در حال نصب…";
 "Instalar" = "نصب";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "نصب %@ روی سرور آغاز شد — ممکن است چند دقیقه طول بکشد.";
 "Integrações" = "یکپارچه‌سازی‌ها";
 "Irreversível. Cada item apaga uma categoria." = "غیرقابل بازگشت. هر آیتم یک دسته را حذف می‌کند.";
 "Isso é irreversível. Confirma?" = "این عمل غیرقابل بازگشت است. تأیید می‌کنید؟";

@@ -107,6 +107,7 @@
 "instalado" = "nainštalované";
 "instalando…" = "inštalácia…";
 "Instalar" = "Inštalovať";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Inštalácia %@ na serveri sa začala — môže to trvať niekoľko minút.";
 "Integrações" = "Integrácie";
 "Irreversível. Cada item apaga uma categoria." = "Nevratné. Každá položka vymaže kategóriu.";
 "Isso é irreversível. Confirma?" = "Toto je nevratné. Potvrdiť?";

@@ -107,6 +107,7 @@
 "instalado" = "đã cài đặt";
 "instalando…" = "đang cài đặt…";
 "Instalar" = "Cài đặt";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Quá trình cài đặt %@ trên máy chủ đã bắt đầu — có thể mất vài phút.";
 "Integrações" = "Tích hợp";
 "Irreversível. Cada item apaga uma categoria." = "Không thể hoàn tác. Mỗi mục sẽ xóa một danh mục.";
 "Isso é irreversível. Confirma?" = "Thao tác này không thể hoàn tác. Xác nhận?";

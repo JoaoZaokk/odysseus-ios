@@ -107,6 +107,7 @@
 "instalado" = "نصب ہو گیا";
 "instalando…" = "نصب ہو رہا ہے…";
 "Instalar" = "نصب کریں";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "سرور پر %@ کی تنصیب شروع ہو گئی ہے — اس میں چند منٹ لگ سکتے ہیں۔";
 "Integrações" = "انضمامات";
 "Irreversível. Cada item apaga uma categoria." = "ناقابل واپسی۔ ہر آئٹم ایک زمرہ حذف کرتا ہے۔";
 "Isso é irreversível. Confirma?" = "یہ ناقابل واپسی ہے۔ تصدیق کریں؟";

@@ -107,6 +107,7 @@
 "instalado" = "इंस्टॉल हो गया";
 "instalando…" = "इंस्टॉल हो रहा है…";
 "Instalar" = "इंस्टॉल करें";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "सर्वर पर %@ की इंस्टॉलेशन शुरू हो गई है — इसमें कुछ मिनट लग सकते हैं।";
 "Integrações" = "इंटीग्रेशन";
 "Irreversível. Cada item apaga uma categoria." = "अपरिवर्तनीय। हर आइटम एक श्रेणी हटाता है।";
 "Isso é irreversível. Confirma?" = "यह अपरिवर्तनीय है। पुष्टि करें?";

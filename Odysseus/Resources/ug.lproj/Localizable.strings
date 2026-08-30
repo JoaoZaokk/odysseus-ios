@@ -107,6 +107,7 @@
 "instalado" = "ئورنىتىلدى";
 "instalando…" = "ئورنىتىلىۋاتىدۇ…";
 "Instalar" = "ئورنىتىش";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "مۇلازىمېتىردا %@ نى ئورنىتىش باشلاندى — بۇنىڭغا بىر نەچچە مىنۇت كېتىشى مۇمكىن.";
 "Integrações" = "باغلىنىشلار";
 "Irreversível. Cada item apaga uma categoria." = "قايتۇرغىلى بولمايدۇ. ھەر بىر تۈر بىر تۈرنى ئۆچۈرىدۇ.";
 "Isso é irreversível. Confirma?" = "بۇ قايتۇرغىلى بولمايدۇ. جەزملەشتۈرەمسىز؟";

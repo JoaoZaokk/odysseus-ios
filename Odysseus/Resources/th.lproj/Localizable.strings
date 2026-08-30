@@ -107,6 +107,7 @@
 "instalado" = "ติดตั้งแล้ว";
 "instalando…" = "กำลังติดตั้ง…";
 "Instalar" = "ติดตั้ง";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "เริ่มติดตั้ง %@ บนเซิร์ฟเวอร์แล้ว — อาจใช้เวลาสักครู่";
 "Integrações" = "การเชื่อมต่อ";
 "Irreversível. Cada item apaga uma categoria." = "ไม่สามารถย้อนกลับได้ แต่ละรายการจะลบข้อมูลทั้งหมวดหมู่";
 "Isso é irreversível. Confirma?" = "การกระทำนี้ไม่สามารถย้อนกลับได้ ยืนยันหรือไม่";

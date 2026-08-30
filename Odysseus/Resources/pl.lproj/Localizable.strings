@@ -107,6 +107,7 @@
 "instalado" = "zainstalowano";
 "instalando…" = "instalowanie…";
 "Instalar" = "Zainstaluj";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Rozpoczęto instalację %@ na serwerze — może to potrwać kilka minut.";
 "Integrações" = "Integracje";
 "Irreversível. Cada item apaga uma categoria." = "Nieodwracalne. Każdy element usuwa kategorię.";
 "Isso é irreversível. Confirma?" = "To jest nieodwracalne. Potwierdzasz?";

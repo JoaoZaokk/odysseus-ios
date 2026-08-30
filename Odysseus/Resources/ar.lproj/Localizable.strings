@@ -107,6 +107,7 @@
 "instalado" = "مُثبَّت";
 "instalando…" = "جارٍ التثبيت…";
 "Instalar" = "تثبيت";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "بدأ تثبيت %@ على الخادم — قد يستغرق ذلك بضع دقائق.";
 "Integrações" = "التكاملات";
 "Irreversível. Cada item apaga uma categoria." = "لا رجعة فيه. كل عنصر يحذف فئة.";
 "Isso é irreversível. Confirma?" = "هذا الإجراء لا رجعة فيه. هل تؤكد؟";

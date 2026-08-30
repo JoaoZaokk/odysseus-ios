@@ -107,6 +107,7 @@
 "instalado" = "усталявана";
 "instalando…" = "усталёўка…";
 "Instalar" = "Усталяваць";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Усталяванне %@ на серверы пачалося — гэта можа заняць некалькі хвілін.";
 "Integrações" = "Інтэграцыі";
 "Irreversível. Cada item apaga uma categoria." = "Незваротна. Кожны элемент выдаляе катэгорыю.";
 "Isso é irreversível. Confirma?" = "Гэта незваротна. Пацвярджаеце?";

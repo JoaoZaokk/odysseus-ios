@@ -107,6 +107,7 @@
 "instalado" = "instalēts";
 "instalando…" = "instalē…";
 "Instalar" = "Instalēt";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "%@ instalēšana serverī ir sākta — tas var aizņemt dažas minūtes.";
 "Integrações" = "Integrācijas";
 "Irreversível. Cada item apaga uma categoria." = "Neatgriezeniski. Katrs vienums izdzēš vienu kategoriju.";
 "Isso é irreversível. Confirma?" = "Tas ir neatgriezeniski. Apstiprināt?";

@@ -107,6 +107,7 @@
 "instalado" = "སྒྲིག་སྦྱོར་ཟིན";
 "instalando…" = "སྒྲིག་སྦྱོར་བྱེད་བཞིན…";
 "Instalar" = "སྒྲིག་སྦྱོར";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "ཞབས་ཞུའི་འཕྲུལ་ཆས་སྟེང་ %@ སྒྲིག་སྦྱོར་འགོ་བཙུགས་ཟིན། དེར་སྐར་མ་ཁ་ཤས་འགོར་སྲིད།";
 "Integrações" = "མཐུན་སྦྱོར";
 "Irreversível. Cada item apaga uma categoria." = "ཕྱིར་ལོག་མི་ཐུབ། རྣམ་གྲངས་རེ་རེས་རིགས་གཅིག་བསུབ་གྱི་རེད།";
 "Isso é irreversível. Confirma?" = "འདི་ཕྱིར་ལོག་མི་ཐུབ་པ་རེད། གཏན་འཁེལ་བྱེད་དམ།";

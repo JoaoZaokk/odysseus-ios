@@ -107,6 +107,7 @@
 "instalado" = "terinstal";
 "instalando…" = "menginstal…";
 "Instalar" = "Instal";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Instalasi %@ di server telah dimulai — proses ini mungkin memerlukan beberapa menit.";
 "Integrações" = "Integrasi";
 "Irreversível. Cada item apaga uma categoria." = "Tidak dapat dibatalkan. Setiap item menghapus satu kategori.";
 "Isso é irreversível. Confirma?" = "Ini tidak dapat dibatalkan. Konfirmasi?";

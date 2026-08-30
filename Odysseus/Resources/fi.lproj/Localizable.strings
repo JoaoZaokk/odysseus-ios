@@ -107,6 +107,7 @@
 "instalado" = "asennettu";
 "instalando…" = "asennetaan…";
 "Instalar" = "Asenna";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Paketin %@ asennus palvelimelle on aloitettu — tämä voi kestää muutaman minuutin.";
 "Integrações" = "Integraatiot";
 "Irreversível. Cada item apaga uma categoria." = "Peruuttamaton. Jokainen kohta poistaa yhden kategorian.";
 "Isso é irreversível. Confirma?" = "Tämä on peruuttamaton toimenpide. Vahvistetaanko?";

@@ -107,6 +107,7 @@
 "instalado" = "نصب شو";
 "instalando…" = "نصبیږي…";
 "Instalar" = "نصبول";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "په سرور کې د %@ نصبول پیل شول — دا ښايي څو دقیقې وخت ونیسي.";
 "Integrações" = "یوځای کولونه";
 "Irreversível. Cada item apaga uma categoria." = "بیرته نه ختلو وړ. هر توکی یوه کټګوري ړنګوي.";
 "Isso é irreversível. Confirma?" = "دا بیرته نه ختلو وړ دی. تایید کوئ؟";

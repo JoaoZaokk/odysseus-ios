@@ -11,6 +11,7 @@
 "Evento: %@" = "Événement : %@";
 "Falha ao instalar %@: %@" = "Échec de l’installation de %@ : %@";
 "Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Générez un mot de passe pour application sur le site de votre fournisseur. iCloud : account.apple.com → Connexion et sécurité → Mots de passe pour applications → +.";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Installation de %@ lancée sur le serveur — cela peut prendre quelques minutes.";
 "No Odysseus, abra Email → ícone de contas → toque em +." = "Dans Odysseus, ouvrez E-mail → l’icône des comptes → touchez +.";
 "Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Renseignez les champs suivants : Nom, votre e-mail, serveur IMAP et port, nom d’utilisateur (votre e-mail) et mot de passe pour application.";
 "Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Les fournisseurs utilisant l’identification à deux facteurs (iCloud, Gmail, Outlook) nécessitent un mot de passe pour application — et non le mot de passe habituel de votre compte.";

@@ -107,6 +107,7 @@
 "instalado" = "geïnstalleerd";
 "instalando…" = "installeren…";
 "Instalar" = "Installeren";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Installatie van %@ op de server gestart — dit kan enkele minuten duren.";
 "Integrações" = "Integraties";
 "Irreversível. Cada item apaga uma categoria." = "Onomkeerbaar. Elk item verwijdert een categorie.";
 "Isso é irreversível. Confirma?" = "Dit is onomkeerbaar. Bevestigen?";

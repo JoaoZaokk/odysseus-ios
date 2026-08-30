@@ -107,6 +107,7 @@
 "instalado" = "kurulu";
 "instalando…" = "kuruluyor…";
 "Instalar" = "Kur";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "%@ kurulumu sunucuda başlatıldı — bu işlem birkaç dakika sürebilir.";
 "Integrações" = "Entegrasyonlar";
 "Irreversível. Cada item apaga uma categoria." = "Geri alınamaz. Her öğe bir kategoriyi siler.";
 "Isso é irreversível. Confirma?" = "Bu işlem geri alınamaz. Onaylıyor musunuz?";

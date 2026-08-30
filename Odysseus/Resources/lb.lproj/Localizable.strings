@@ -107,6 +107,7 @@
 "instalado" = "installéiert";
 "instalando…" = "gëtt installéiert…";
 "Instalar" = "Installéieren";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Installatioun vun %@ um Server gestart — dat kann e puer Minutten daueren.";
 "Integrações" = "Integratiounen";
 "Irreversível. Cada item apaga uma categoria." = "Net réckgängeg ze maachen. All Element läscht eng Kategorie.";
 "Isso é irreversível. Confirma?" = "Dëst ass net réckgängeg ze maachen. Bestätegen?";

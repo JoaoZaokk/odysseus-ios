@@ -107,6 +107,7 @@
 "instalado" = "инсталирано";
 "instalando…" = "инсталирање…";
 "Instalar" = "Инсталирај";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Инсталацијата на %@ на серверот започна — може да потрае неколку минути.";
 "Integrações" = "Интеграции";
 "Irreversível. Cada item apaga uma categoria." = "Неповратно. Секоја ставка брише категорија.";
 "Isso é irreversível. Confirma?" = "Ова е неповратно. Потврдувате?";

@@ -107,6 +107,7 @@
 "instalado" = "installerad";
 "instalando…" = "installerar…";
 "Instalar" = "Installera";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Installationen av %@ har startats på servern — det kan ta några minuter.";
 "Integrações" = "Integrationer";
 "Irreversível. Cada item apaga uma categoria." = "Oåterkalleligt. Varje objekt raderar en kategori.";
 "Isso é irreversível. Confirma?" = "Det här går inte att ångra. Bekräfta?";
