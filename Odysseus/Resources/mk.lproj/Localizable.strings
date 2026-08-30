@@ -130,7 +130,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Се уште нема интеграции — користете «Додај интеграција» погоре.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS на португалски (Core ML/Neural Engine), многу поприроден од нативниот глас. При прво стартување преземa ~550 МБ на уредот; работи само на физички iPhone (не во симулатор).";
 "Neural pt-BR" = "Neural pt-BR";
-"Nome" = "Ime";
+"Nome" = "Име";
 "Notes" = "Notes";
 "Nova conta" = "Нова сметка";
 "Nova memória" = "Ново сеќавање";
