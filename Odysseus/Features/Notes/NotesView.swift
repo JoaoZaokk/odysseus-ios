@@ -82,6 +82,8 @@ struct NotesView: View {
     private var content: some View {
         if vm.notes.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.notes.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.visible.isEmpty {
             emptyState
         } else {

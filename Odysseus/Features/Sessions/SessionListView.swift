@@ -72,9 +72,12 @@ struct SidebarView: View {
                         }
                 }
                 if store.sessions.isEmpty && !store.loading {
-                    Text("Nenhuma conversa ainda.")
+                    // A failed load is not an empty account: saying "no
+                    // conversations yet" to someone whose sessions merely failed
+                    // to fetch tells them their history is gone.
+                    Text(LocalizedStringKey(store.error ?? "Nenhuma conversa ainda."))
                         .font(.ody(.footnote, design: .monospaced))
-                        .foregroundStyle(theme.secondaryText)
+                        .foregroundStyle(store.error == nil ? theme.secondaryText : theme.accent)
                         .listRowBackground(theme.bg)
                 }
             } header: {

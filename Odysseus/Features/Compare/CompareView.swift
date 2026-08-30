@@ -118,6 +118,15 @@ struct CompareView: View {
                     Divider().overlay(theme.border)
                     column(title: "B", model: $vm.modelB, turns: vm.turnsB)
                 }
+                // A failed model load left both pickers empty and `canSend`
+                // false, with nothing on screen to say why.
+                if let e = vm.error, vm.models.isEmpty {
+                    Text(LocalizedStringKey(e))
+                        .font(.ody(size: 11, design: .monospaced))
+                        .foregroundStyle(theme.accent)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 14).padding(.bottom, 4)
+                }
                 composer
             }
         }

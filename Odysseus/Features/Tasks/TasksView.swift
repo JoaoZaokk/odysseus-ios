@@ -126,6 +126,8 @@ struct TasksView: View {
     private var content: some View {
         if vm.tasks.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.tasks.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.tasks.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "checklist").font(.ody(size: 44)).foregroundStyle(theme.accent)

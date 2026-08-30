@@ -113,6 +113,8 @@ struct BrainView: View {
     private var content: some View {
         if vm.memories.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.memories.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.memories.isEmpty {
             emptyState
         } else {

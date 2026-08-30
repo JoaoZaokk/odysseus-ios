@@ -158,7 +158,10 @@ struct ChatScreen: View {
             }
             .padding(.horizontal, 12)
 
-            if let err = voice.error {
+            // `vm.error` covers a failed history load, a failed attachment upload,
+            // and a stream error that arrived after the bubble already had text —
+            // all three used to be written and never read.
+            ForEach([voice.error, vm.error].compactMap { $0 }, id: \.self) { err in
                 Text(LocalizedStringKey(err))
                     .font(.ody(size: 11, design: .monospaced))
                     .foregroundStyle(theme.accent)

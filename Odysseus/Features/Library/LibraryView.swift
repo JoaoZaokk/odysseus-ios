@@ -121,6 +121,8 @@ struct LibraryView: View {
     private var content: some View {
         if vm.files.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.files.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.files.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "books.vertical").font(.ody(size: 44)).foregroundStyle(theme.accent)

@@ -77,6 +77,8 @@ struct GalleryView: View {
     private var content: some View {
         if vm.images.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.images.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.shown.isEmpty {
             emptyState
         } else {
