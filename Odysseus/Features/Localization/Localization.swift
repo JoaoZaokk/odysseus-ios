@@ -116,12 +116,16 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     /// Right-to-left scripts (drive `\.layoutDirection`).
     var isRTL: Bool { self == .ar || self == .fa || self == .ur || self == .ps || self == .he || self == .ug }
 
-    /// `.lproj` folder name in the bundle. pt-BR returns nil (it's the literals).
-    /// pt-BR is the base language, but it still ships a `.lproj` (mapping every key
-    /// to itself). Without one, SwiftUI resolves `Text()` against the environment
-    /// locale, finds no pt-BR table, falls back to `CFBundleDevelopmentRegion` (en)
-    /// and shows Brazilians the English translation of their own app.
-    var lprojName: String? { rawValue }
+    /// `.lproj` folder name in the bundle — the raw value, for every language.
+    ///
+    /// Non-optional on purpose. It was `String?` from a time when pt-BR was the
+    /// literals and shipped no catalogue; it ships one now (mapping every key to
+    /// itself), because without it SwiftUI resolves `Text()` against the
+    /// environment locale, finds no pt-BR table, falls back to
+    /// `CFBundleDevelopmentRegion` (en) and shows Brazilians the English
+    /// translation of their own app. The optionality outlived its one nil case
+    /// and left four call sites guarding against something that cannot happen.
+    var lprojName: String { rawValue }
 
     var locale: Locale { Locale(identifier: rawValue) }
 
@@ -152,25 +156,11 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     /// so naming it does not degrade to a guess — faster-whisper raises and the
     /// recording is lost. Sending nothing leaves the server detecting, which is
     /// what a Uyghur speaker got before any of this and is still better than an
-    /// error. `whisperCode` already knew this for the on-device engine; the two
-    /// differ only in that whisper.cpp spells Hebrew `iw` and servers spell it
-    /// `he`, so they cannot simply be the same property.
+    /// error. The on-device engine answers the same question separately, in
+    /// `VoiceInputManager.chosenWhisperLanguage()`, because SwiftWhisper takes a
+    /// `WhisperLanguage` case rather than a code — and spells Hebrew `iw` where
+    /// servers spell it `he`.
     var sttServerCode: String? { self == .ug ? nil : iso639 }
-
-    /// ISO-639-1 code whisper.cpp expects. Hebrew is the one mismatch —
-    /// SwiftWhisper spells it `iw`. Languages whisper has no pack for
-    /// (Uyghur) return nil so the caller can fall back to auto-detect.
-    var whisperCode: String? {
-        switch self {
-        case .ptBR:                      return "pt"
-        case .zhHans, .zhHant, .zhHK:    return "zh"
-        case .deAT, .deCH:               return "de"
-        case .he:                        return "iw"
-        case .ind:                       return "id"
-        case .ug:                        return nil
-        default:                         return rawValue
-        }
-    }
 
     /// Best shipped match for a device/system BCP-47 code (e.g. "ja-JP", "zh-Hant-TW", "de-CH").
     static func match(systemCode code: String) -> AppLanguage? {
@@ -186,16 +176,16 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
             if c.contains("-ch") { return .deCH }
             return .de
         }
-        let map: [String: AppLanguage] = [
-            "en": .en, "es": .es, "fr": .fr, "it": .it, "nl": .nl, "pl": .pl, "cs": .cs,
-            "sk": .sk, "sl": .sl, "hr": .hr, "bg": .bg, "mk": .mk, "sr": .sr,
-            "uk": .uk, "be": .be, "ru": .ru, "tr": .tr, "hu": .hu, "vi": .vi,
-            "id": .ind, "in": .ind, "ms": .ms, "ja": .ja, "ko": .ko,
-            "hi": .hi, "bn": .bn, "ar": .ar, "fa": .fa, "ur": .ur, "ps": .ps,
-            "fi": .fi, "sv": .sv, "lv": .lv, "lb": .lb, "th": .th,
-            "he": .he, "iw": .he, "ug": .ug, "bo": .bo,
-        ]
-        return map[String(c.prefix(2))]
+        // Every remaining language's raw value IS its two-letter code, so the
+        // enum answers this. The 39-entry table that used to sit here restated
+        // exactly that plus the two legacy codes below — and the six raw values
+        // that are not two letters (pt-BR, de-AT, de-CH and the three Chinese)
+        // are all resolved by the prefix branches above.
+        let two = String(c.prefix(2))
+        // Codes some systems still emit for Indonesian and Hebrew.
+        if two == "in" { return .ind }
+        if two == "iw" { return .he }
+        return AppLanguage(rawValue: two)
     }
 }
 
@@ -306,13 +296,10 @@ extension Bundle {
         if !(Bundle.main is LocalizedBundle) {
             object_setClass(Bundle.main, LocalizedBundle.self)
         }
-        let langBundle: Bundle?
-        if let lproj = language.lprojName,
-           let path = Bundle.main.path(forResource: lproj, ofType: "lproj") {
-            langBundle = Bundle(path: path)
-        } else {
-            langBundle = nil   // pt-BR / not found → literal (Portuguese) keys
-        }
+        // nil when the folder is missing → the swizzle falls through to
+        // `super`, i.e. the literal (Portuguese) keys.
+        let langBundle = Bundle.main.path(forResource: language.lprojName, ofType: "lproj")
+            .flatMap(Bundle.init(path:))
         objc_setAssociatedObject(Bundle.main, &kAppLanguageBundle, langBundle, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }

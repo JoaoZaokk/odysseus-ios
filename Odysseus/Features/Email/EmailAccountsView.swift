@@ -451,27 +451,19 @@ struct AddEmailAccountView: View {
         }.tint(theme.accent)
     }
 
+    /// The wire values are `ssl`/`starttls`/`none`; the row shows the labels.
+    /// This was a hand-rolled copy of `SettingsUI.menuRow`'s id overload, which
+    /// exists precisely so a caller does not have to reverse-look-up a value
+    /// from its display label.
     private var securityField: some View {
-        VStack(alignment: .leading, spacing: 3) {
-            Text("Segurança").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
-            Menu {
-                Button("SSL") { smtpSecurity = "ssl" }
-                Button("STARTTLS") { smtpSecurity = "starttls" }
-                Button("Nenhum") { smtpSecurity = "none" }
-            } label: {
-                HStack {
-                    // The menu offers "Nenhum" / "STARTTLS" / "SSL"; the closed row
-                    // used to show the wire value ("NONE").
-                    Text(LocalizedStringKey(smtpSecurity == "none" ? "Nenhum" : smtpSecurity.uppercased())).font(.ody(.subheadline)).foregroundStyle(theme.fg)
-                    Spacer()
-                    Image(systemName: "chevron.up.chevron.down").font(.caption2).foregroundStyle(theme.secondaryText)
-                }
-                .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
-                .contentShape(Rectangle())
-            }
-        }
+        SettingsUI.menuRow("Segurança",
+                           value: Self.securityLabels.first { $0.id == smtpSecurity }?.label ?? "SSL",
+                           options: Self.securityLabels, theme: theme) { smtpSecurity = $0 }
     }
+
+    private static let securityLabels: [(id: String, label: String)] = [
+        ("ssl", "SSL"), ("starttls", "STARTTLS"), ("none", "Nenhum"),
+    ]
 
     // MARK: - Themed building blocks (labels above fields — fixes the macOS
     // Form left-label overflow that made this sheet look broken).

@@ -58,10 +58,13 @@ final class ServerSTTLanguageTests: XCTestCase {
     }
 
     /// Hebrew is where the two engines genuinely disagree: whisper.cpp spells it
-    /// `iw`, servers spell it `he`. The properties must not be collapsed.
-    func testHebrewDiffersBetweenOnDeviceAndServer() {
-        XCTAssertEqual(AppLanguage.he.whisperCode, "iw")
+    /// `iw`, servers spell it `he`. This used to also assert `whisperCode == "iw"`,
+    /// but that property was read by nothing in the app — the on-device engine
+    /// goes through `WhisperLanguage.hebrew`, which carries the `iw` spelling
+    /// itself — so it was a second copy of the mapping kept alive by its own test.
+    func testHebrewIsSpelledForTheServerNotForWhisperCpp() {
         XCTAssertEqual(AppLanguage.he.sttServerCode, "he")
+        XCTAssertEqual(AppLanguage.he.iso639, "he")
     }
 
     /// Both server-side engines resolve the language the same way, so picking a

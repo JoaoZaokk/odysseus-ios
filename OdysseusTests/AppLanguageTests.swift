@@ -73,12 +73,27 @@ final class AppLanguageTests: XCTestCase {
     func testAllShippedLanguagesHaveLproj() {
         let appBundle = Bundle(for: LocalizationManager.self)
         for lang in AppLanguage.allCases {
-            guard let lproj = lang.lprojName else {
-                XCTFail("\(lang.rawValue) has no lprojName — it will fall back to English")
-                continue
-            }
+            let lproj = lang.lprojName
             XCTAssertNotNil(appBundle.path(forResource: lproj, ofType: "lproj"),
                             "faltando \(lproj).lproj no bundle")
         }
     }
+    /// `match` used to carry a hand-written 39-entry table of codes the enum
+    /// already knew. It resolves through `AppLanguage(rawValue:)` now, so this
+    /// replaces the table: every language that is not one of the six
+    /// region/script variants handled by the prefix branches must round-trip
+    /// from its own raw value, with or without a region suffix.
+    func testEveryPlainLanguageResolvesFromItsOwnCode() {
+        let handledByPrefix: Set<AppLanguage> = [.ptBR, .de, .deAT, .deCH, .zhHans, .zhHant, .zhHK]
+        for lang in AppLanguage.allCases where !handledByPrefix.contains(lang) {
+            XCTAssertEqual(AppLanguage.match(systemCode: lang.rawValue), lang,
+                           "\(lang.rawValue) does not resolve from its own code")
+            XCTAssertEqual(AppLanguage.match(systemCode: "\(lang.rawValue)-XX"), lang,
+                           "\(lang.rawValue) does not survive a region suffix")
+            XCTAssertEqual(AppLanguage.match(systemCode: lang.rawValue.uppercased()), lang,
+                           "\(lang.rawValue) is case-sensitive")
+        }
+    }
+
+
 }
