@@ -1,95 +1,104 @@
-# Handoff — próxima fase: arquitetura
+# Handoff — fase de arquitetura, encerrada
 
-Estado em 2026-08-30, fim do ciclo de qualidade. Tudo abaixo está em `main`.
+Estado em 2026-08-30, fim da rodada 3. Tudo abaixo está em `main`, **1.9 / build 23**
+(macOS build 17). **173 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
+zero PRs abertos.
 
-## O que fechou
+## O que aconteceu nesta rodada
+
+Doze candidatos a aprofundamento, explorados por seis agentes independentes por subsistema,
+cada um entregue a um refutador adversarial cujo padrão era REFUTADO.
 
 | | |
 |---|---|
-| PR #27 | 34 defeitos verificados da auditoria round 2 — fecha #12–#19, #21–#24 |
-| PR #28 | localização em 44 idiomas, guia de email migrado, fix do Whisper — fecha #25, #26 |
-| #9 | fechada: as duas metades já estavam corrigidas antes do relato (autor estava na 1.7) |
+| Sobreviveram limpos | **2** |
+| Sobreviveram em escopo menor | **4** |
+| Mortos | **6** |
 
-`main` está em **1.9 / build 22** (macOS build 16). 152 testes, iOS e macOS
-compilando sem aviso. Os 44 catálogos têm exatamente 616 chaves cada, e nenhum
-literal em português no Swift está sem chave — varrido, não presumido.
+Os dois primeiros e os escopos que sobreviveram das dez refutações foram implementados em
+[PR #29](https://github.com/JoaoZaokk/odysseus-ios/pull/29) e no commit seguinte.
 
-## O que sobrou: issue #20
+**A taxa de refutação é o dado que importa: 10 de 12.** Ela vale para a próxima rodada.
 
-**Só isso.** 76 achados de qualidade que não viraram issue própria.
+## O que a rodada 3 mudou de estrutural
 
-### Leia o aviso da issue antes de agir
+### O seam de transporte — leia a ADR 0002
 
-Cada linha é a alegação de **um agente, sem ninguém tentar refutar**. Dos oito que
-passaram por verificação adversarial nesta mesma auditoria, **três caíram** — 37%
-de erro numa amostra que já parecia sólida.
+`docs/adr/0002-a-transport-seam-under-apiclient.md`.
 
-Tratar a lista como fila de tarefas gera trabalho inventado. Ela é matéria-prima
-para triagem, não backlog.
+A ADR 0001 recusou seis protocolos **sobre** a superfície da API e nomeou a lacuna que
+nenhum deles atacava: nenhum teste alcançava o `load()` de um view model. Ela mandou
+reabrir sobre **um** argumento — um seam cujo segundo adapter é o test double. Foi o que
+aconteceu.
 
-## Qual ferramenta usar
+`APIClient.init(config:protocolClasses:)`. `nil` é a cadeia da Foundation; o app nunca pede
+outra coisa. **Nenhum protocolo é declarado** — `grep -rE "protocol " Odysseus/` continua
+vazio, e a premissa da ADR 0001 continua literalmente verdadeira. O seam está **embaixo**
+do tipo, não na frente dele.
 
-**`improve-codebase-architecture`, sozinho.** Não repetir o
-`thermo-nuclear-code-quality-review`.
+`OdysseusTests/StubTransport.swift` é o segundo adapter. `AppState.init` repassa o mesmo
+parâmetro — não é seam novo, é o mesmo atravessando.
 
-O motivo é que já rodou: a issue #20 **é a saída dele**. Rodar de novo produz outra
-pilha de alegações não verificadas sobre o mesmo código, e o gargalo aqui nunca
-foi gerar achados — foi separar os reais dos plausíveis.
+**Duas coisas foram estabelecidas por experimento, não por raciocínio:**
 
-`improve-codebase-architecture` é instrumento diferente: explora, escreve um
-relatório HTML de candidatos a aprofundamento, e **para** para perguntar qual
-explorar antes de propor interface. É o que a #20 precisa.
+1. Um `URLProtocol` em `configuration.protocolClasses` intercepta **`data(for:)` e
+   `bytes(for:)`** — o leitor de SSE é alcançável.
+2. `URLProtocol.registerClass` **não** serve: retorna `true` e não alcança uma sessão feita
+   de `URLSessionConfiguration.default`, que é o que essas duas são.
 
-### Aponte para a #20, não deixe explorar do zero
+### O que continua fora do seam
 
-O skill diz para pesar o histórico recente do git. O histórico recente agora é
-**auditoria e tradução** — vai apontar para `Resources/*.lproj` e para os arquivos
-que os fixes tocaram, que não é onde a arquitetura dói.
+`ComfyUIClient`, `ModelDownloadManager` e as duas sessões do `VoiceEndpoint` criam
+`URLSession` própria. Difusão e o caminho de endpoint de voz seguem sem teste e
+precisariam do próprio seam.
 
-Dê a #20 como escopo explícito.
+## O que sobrou
 
-### Leia `docs/adr/0001` primeiro
+**Nada agendado.** A issue #20 foi fechada: 12 corrigidas, 3 retratadas (descreviam código
+já corrigido pelos PRs #27/#28 antes da lista ser escrita), 61 nunca verificadas. O índice
+completo continua em `docs/ROUND2-ACHADOS.md` — se uma das 61 se provar real, ela ganha
+issue própria com o fonte conferido, que é a única forma que qualquer uma delas deveria ter
+tido.
 
-Sete candidatos a aprofundamento foram propostos nesta auditoria. **Seis foram
-refutados** por verificação adversarial, e o sétimo era uma deleção, não um
-aprofundamento.
+Duas coisas conscientemente **não** feitas, com o motivo:
 
-O motivo se repete nos seis: **o app não declara nenhum protocolo.**
-
-```bash
-grep -rE "^\s*(public|internal|private|fileprivate)? ?protocol " Odysseus/
-```
-
-Não devolve nada. `APIClient` é `final class` concreta, todo view model a recebe
-por esse tipo concreto, e não existe segunda implementação de nada. Então cada
-seam proposto teria exatamente um adapter — seam hipotético, indireção comprada
-sem alavancagem.
-
-A ADR existe para que a próxima revisão não re-proponha os mesmos seis. Se um
-deles voltar, ele precisa derrubar o argumento da ADR, não ignorá-lo.
-
-## Contexto que não está no código
-
-- **`docs/ROUND2-ACHADOS.md`** — os achados com o que foi verificado e o que não foi.
-- **`docs/HANDOFF-QUALITY-ROUND2.md`** — como a fase de qualidade foi conduzida.
-- **`docs/ROUND2-RELATORIO.html`** — o relatório visual.
-- **`docs/i18n-tibetano-revisao.md`** — o que a revisão do tibetano decidiu e o que não.
-- **`docs/PATCH-SERVIDOR-STT-IDIOMA.md`** — patch de 3 linhas para o servidor honrar o
-  idioma na transcrição. **Não é urgente:** o app usa o reconhecedor da Apple por
-  padrão e o servidor nasce com `stt_provider: "disabled"` — os dois lados precisam
-  ser ligados de propósito. Aplique só se ligar o Whisper no servidor.
+- **`SettingsUI.failure(_:_:admin:)`.** Sobreviveu à refutação, mas com teto declarado de
+  ~1 linha por site em ~20 sites. A parte genuinamente nova era o braço do 403 e a regra
+  "o formato continua sendo chave" — e os cinco sites que quebravam essa regra já foram
+  corrigidos direto. O que sobra não paga a rotação.
+- **Uma string nova em 43 idiomas.** `"Barge-in indisponível: a sessão de áudio está em
+  modo de gravação."` está nos 44 catálogos com valor igual à chave e comentário dizendo
+  isso. **Só pt-BR está correto.** Vai para a próxima rodada de tradução — não foi chutada.
 
 ## Armadilhas desta base
 
-1. **A chave é o literal em pt-BR.** Reescrever o texto em Swift desativa a tradução
-   em 43 idiomas, e nada falha. `OdysseusTests/EmailLoginGuideTests.swift` fixa isso
-   para o guia de email; o resto ainda depende de varredura.
-2. **`Text(x)` com `String` pula a busca.** Precisa ser
-   `Text(LocalizedStringKey(x))`. Texto interpolado nunca vira chave — tem que ser
-   `L("… %@", x)` na origem.
-3. **`perl -CSD -pi -e` com padrão não-ASCII não substitui nada e sai com status 0.**
-   Use `python3` com `assert t.count(old) == 1` antes do `replace`.
+1. **A chave é o literal em pt-BR.** Reescrever o texto em Swift desativa a tradução em 43
+   idiomas, e nada falha. `OdysseusTests/EmailLoginGuideTests.swift` fixa isso para o guia
+   de email; o resto ainda depende de varredura.
+2. **`Text(x)` com `String` pula a busca.** Precisa ser `Text(LocalizedStringKey(x))`.
+   **Texto interpolado nunca vira chave** — tem que ser `L("… %@", x)` na origem. Cinco
+   sites quebravam isso e foram corrigidos; a regra continua sem teste.
+3. **`perl -CSD -pi -e` com padrão não-ASCII não substitui nada e sai com status 0.** Use
+   `python3` com `assert t.count(old) == 1` antes do `replace`.
 4. **`Closes #1, #2, #3` fecha só a primeira.** Uma linha `Closes #N` por issue.
-5. **SwiftUI renderiza `Int` interpolado como `%lld`, não `%@`.** Varredura que
-   assume `%@` dá falso positivo.
+5. **SwiftUI renderiza `Int` interpolado como `%lld`, não `%@`.**
 6. **`xcodegen generate`** depois de adicionar ou remover arquivo.
+7. **`ServerConfig` persiste no simulador.** Um teste que deriva o alvo do que estiver
+   salvo está testando a execução anterior — declare a linha de base e restaure. Dois
+   testes desta rodada passaram isolados e caíram na suíte por isso.
+8. **`git checkout <arquivo>` volta ao último commit, não desfaz só a sabotagem.** Se você
+   sabotou de propósito para provar que um teste morde, desfaça pela mesma via que sabotou.
+
+## Método, se houver rodada 4
+
+O que funcionou e vale repetir:
+
+- **Refutador por candidato, com padrão REFUTADO.** Dez de doze caíram. Sem isso, os doze
+  teriam virado trabalho.
+- **Contagem é o ponto fraco de toda alegação.** Praticamente toda refutação começou por
+  recontar, e quase toda recontagem achou erro. Um refutador escreveu um *stack-walk* sobre
+  todo `#if/#else/#endif` da árvore em vez de confiar no `grep`, e corrigiu cinco números.
+- **Sabotar antes de acreditar.** Toda asserção nova desta rodada foi verificada quebrando
+  o código de propósito e vendo o teste cair. Uma delas parecia boa e não mordia.
+- **Medir contraste em vez de escolher cor.** `e05a4a` reprovava 4.5:1 em 9 dos 17 temas —
+  número que só aparece calculando, e que decidiu sozinho que a cor tinha de ser derivada.

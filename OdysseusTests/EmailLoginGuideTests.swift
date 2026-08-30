@@ -19,8 +19,8 @@ final class EmailLoginGuideTests: XCTestCase {
     func testEveryGuideStringIsAKeyInEveryCatalogue() throws {
         let appBundle = Bundle(for: LocalizationManager.self)
         for lang in AppLanguage.allCases {
-            guard let lproj = lang.lprojName,
-                  let path = appBundle.path(forResource: lproj, ofType: "lproj"),
+            let lproj = lang.lprojName
+            guard let path = appBundle.path(forResource: lproj, ofType: "lproj"),
                   let catalogue = Bundle(path: path) else {
                 XCTFail("\(lang.rawValue): no catalogue to check"); continue
             }
@@ -46,8 +46,8 @@ final class EmailLoginGuideTests: XCTestCase {
         let appBundle = Bundle(for: LocalizationManager.self)
         let expected = EmailLoginGuide.steps.prefix(2).map { $0.filter { $0 == "→" }.count }
         for lang in AppLanguage.allCases {
-            guard let lproj = lang.lprojName,
-                  let path = appBundle.path(forResource: lproj, ofType: "lproj"),
+            let lproj = lang.lprojName
+            guard let path = appBundle.path(forResource: lproj, ofType: "lproj"),
                   let catalogue = Bundle(path: path) else { continue }
             for (i, want) in expected.enumerated() {
                 let hit = catalogue.localizedString(forKey: EmailLoginGuide.steps[i], value: nil, table: nil)
