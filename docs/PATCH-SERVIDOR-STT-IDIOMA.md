@@ -1,5 +1,13 @@
 # Patch do servidor — aceitar o idioma no `/api/stt/transcribe`
 
+> **Não aplicável hoje, e não é pendência de ninguém.** O servidor deste projeto
+> **não roda STT**: `stt_provider` nasce `"disabled"` e nada foi ligado. O ditado
+> do app vem do reconhecedor da Apple (`.native`, o padrão) ou do whisper.cpp
+> embutido — nunca do servidor. Este documento fica como o desenho pronto, para o
+> dia em que o STT de servidor for ligado. Até lá, não listar como pendência.
+>
+> Barge-in e VAD são on-device e não têm relação com isto.
+
 Aplicar em `odysseus` (o servidor), não no app iOS. Três linhas.
 
 ## O problema
