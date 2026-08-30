@@ -238,7 +238,7 @@ final class SpeechManager: NSObject, ObservableObject {
                     guard self.chunkID == id else { self.preparingID = nil; return }
                     self.play(data, id: id)
                 } catch {
-                    self.chunkFailed(error, id: id, self.msg(error))
+                    self.chunkFailed(error, id: id, SettingsUI.msg(error))
                 }
             }
         } else {
@@ -326,7 +326,7 @@ final class SpeechManager: NSObject, ObservableObject {
                 if Task.isCancelled { self.preparingID = nil; return }
                 self.play(data, id: id)
             } catch {
-                self.chunkFailed(error, id: id, failure(self.msg(error)))
+                self.chunkFailed(error, id: id, failure(SettingsUI.msg(error)))
             }
         }
     }
@@ -343,7 +343,7 @@ final class SpeechManager: NSObject, ObservableObject {
             VoiceLog.log("tts.áudio", String(format: "%.1f s", p.duration))
             p.play()
         } catch {
-            chunkFailed(error, id: id, msg(error))
+            chunkFailed(error, id: id, SettingsUI.msg(error))
         }
     }
 
@@ -359,16 +359,27 @@ final class SpeechManager: NSObject, ObservableObject {
         #endif
     }
 
+    /// Configures the session for playback. Failures used to be four `try?`s, so
+    /// a session the OS refused to configure produced silent no-audio and nothing
+    /// else — while `VoiceInputManager` raises a localized error for the very same
+    /// failure on the recording side. It is reported now: `neuralError` is the
+    /// channel the voice UI already renders.
     private func activateTTSSession() {
         #if os(iOS)
         let s = AVAudioSession.sharedInstance()
-        if duplexSession {
-            try? s.setCategory(.playAndRecord, mode: .voiceChat, options: [.duckOthers, .allowBluetoothA2DP])
-            try? s.setActive(true)
-            applyProximityRoute()
-        } else {
-            try? s.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
-            try? s.setActive(true)
+        do {
+            if duplexSession {
+                try s.setCategory(.playAndRecord, mode: .voiceChat,
+                                  options: [.duckOthers, .allowBluetoothA2DP])
+                try s.setActive(true)
+                applyProximityRoute()
+            } else {
+                try s.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+                try s.setActive(true)
+            }
+        } catch {
+            VoiceLog.log("sessão", "activateTTSSession FALHOU: \(error.localizedDescription)")
+            neuralError = L("Áudio indisponível: %@", error.localizedDescription)
         }
         #endif
     }
@@ -531,7 +542,7 @@ final class SpeechManager: NSObject, ObservableObject {
         neuralError = nil
         speechTask = Task {
             do { _ = try await ensurePocket(pack); neuralReady = true }
-            catch { neuralError = msg(error) }
+            catch { neuralError = SettingsUI.msg(error) }
             if preparingID == Self.prepareID { preparingID = nil }
         }
     }
@@ -612,7 +623,7 @@ final class SpeechManager: NSObject, ObservableObject {
             guard let self, self.chunkID == id else { return }
             self.streamWatchdog?.cancel()
             self.speechTask?.cancel()
-            self.chunkFailed(Failure.interrupted, id: id, self.msg(Failure.interrupted))
+            self.chunkFailed(Failure.interrupted, id: id, SettingsUI.msg(Failure.interrupted))
         }
         // `pump` has already set `speakingChunk`, and only a completion or a
         // failure clears it. A socket that accepts the request and then says
@@ -627,7 +638,7 @@ final class SpeechManager: NSObject, ObservableObject {
             VoiceLog.log("tts.stream", "sem áudio em 25 s — liberando o turno")
             self.speechTask?.cancel()
             self.streamPlayer.stop()
-            self.chunkFailed(Failure.silent, id: id, self.msg(Failure.silent))
+            self.chunkFailed(Failure.silent, id: id, SettingsUI.msg(Failure.silent))
         }
         let t0 = Date()
         speechTask = Task { [weak self] in
@@ -661,7 +672,7 @@ final class SpeechManager: NSObject, ObservableObject {
             } catch {
                 self.streamWatchdog?.cancel()
                 self.streamPlayer.stop()
-                self.chunkFailed(error, id: id, self.msg(error))
+                self.chunkFailed(error, id: id, SettingsUI.msg(error))
             }
         }
     }
@@ -699,7 +710,6 @@ final class SpeechManager: NSObject, ObservableObject {
         return m
     }
 
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 
     // MARK: - Helpers
 

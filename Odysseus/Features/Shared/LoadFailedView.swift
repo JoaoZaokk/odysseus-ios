@@ -15,19 +15,19 @@ struct LoadFailedView: View {
     var body: some View {
         VStack(spacing: 12) {
             Image(systemName: "exclamationmark.triangle")
-                .font(.ody(size: 44)).foregroundStyle(theme.accent)
+                .font(.ody(size: 44)).foregroundStyle(theme.danger)
             // No generic headline on purpose: the message itself says what went
             // wrong, and it is a pt-BR literal that doubles as a catalogue key —
             // the contract every other error line in the app relies on. Adding a
             // heading would mean a 45th untranslated string for no information.
             Text(LocalizedStringKey(message))
-                .font(.ody(.headline, design: .monospaced))
+                .font(.ody(.headline))
                 .foregroundStyle(theme.fg)
                 .multilineTextAlignment(.center)
             if let retry {
                 Button(action: retry) {
                     Text("Tentar de novo")
-                        .font(.ody(.footnote, design: .monospaced))
+                        .font(.ody(.footnote))
                         .foregroundStyle(theme.accent)
                         .padding(.horizontal, 14).padding(.vertical, 7)
                         .overlay(Capsule().stroke(theme.border, lineWidth: 1))

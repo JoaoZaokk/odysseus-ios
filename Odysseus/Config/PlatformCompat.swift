@@ -4,28 +4,6 @@ import SwiftUI
 // macOS. The iOS app keeps using the real UIKit-backed modifiers (these macOS
 // stand-ins only compile when targeting macOS).
 
-// MARK: - Toolbar placements (both platforms)
-
-extension ToolbarItemPlacement {
-    /// Leading edge of the bar. `.topBarLeading` on iOS, `.navigation` on macOS.
-    static var odyLeading: ToolbarItemPlacement {
-        #if os(macOS)
-        return .navigation
-        #else
-        return .topBarLeading
-        #endif
-    }
-
-    /// Trailing edge of the bar. `.topBarTrailing` on iOS, `.primaryAction` on macOS.
-    static var odyTrailing: ToolbarItemPlacement {
-        #if os(macOS)
-        return .primaryAction
-        #else
-        return .topBarTrailing
-        #endif
-    }
-}
-
 // MARK: - iOS-only view modifiers, stubbed to no-ops on macOS
 
 #if os(macOS)

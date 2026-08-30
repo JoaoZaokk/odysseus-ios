@@ -104,12 +104,12 @@ struct LockView: View {
             VStack(spacing: 22) {
                 BrandMark(size: 64)
                 Text("Odysseus bloqueado")
-                    .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                    .font(.ody(.headline)).foregroundStyle(theme.fg)
                 Button {
                     unlock()
                 } label: {
                     Label("Desbloquear com \(BiometricLock.label)", systemImage: "faceid")
-                        .font(.ody(.subheadline, design: .monospaced))
+                        .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 11)
                         .background(theme.accent, in: Capsule())
                         .foregroundStyle(.white)

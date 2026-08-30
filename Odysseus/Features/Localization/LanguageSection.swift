@@ -23,7 +23,7 @@ struct LanguageSection: View {
             }
 
             Text("Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial.")
-                .font(.ody(size: 11, design: .monospaced))
+                .font(.ody(size: 11))
                 .foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -43,10 +43,10 @@ struct LanguageSection: View {
                     .frame(width: 26)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Automático (idioma do dispositivo)")
-                        .font(.ody(.subheadline, design: .monospaced))
+                        .font(.ody(.subheadline))
                         .foregroundStyle(theme.fg)
                     Text("Detectado: \(loc.detected.flag) \(loc.detected.nativeName)")
-                        .font(.ody(size: 10, design: .monospaced))
+                        .font(.ody(size: 10))
                         .foregroundStyle(theme.secondaryText)
                 }
                 Spacer()
@@ -67,10 +67,10 @@ struct LanguageSection: View {
                 Text(lang.flag).font(.ody(size: 20)).frame(width: 26)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(lang.nativeName)
-                        .font(.ody(.subheadline, design: .monospaced))
+                        .font(.ody(.subheadline))
                         .foregroundStyle(theme.fg)
                     Text(lang.englishName)
-                        .font(.ody(size: 10, design: .monospaced))
+                        .font(.ody(size: 10))
                         .foregroundStyle(theme.secondaryText)
                 }
                 Spacer()

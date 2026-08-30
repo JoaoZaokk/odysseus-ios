@@ -47,7 +47,7 @@ struct EmailAccount: Decodable, Identifiable, Hashable, Sendable {
 
 /// Body for POST /api/email/accounts and POST /api/email/accounts/test — the
 /// exact field set the server's web form sends (see static/js/settings.js).
-struct EmailAccountPayload: Encodable {
+struct EmailAccountPayload: Encodable, Equatable {
     var name: String
     var from_address: String
     var display_name: String

@@ -28,10 +28,15 @@ final class AppState: ObservableObject {
     private(set) var api: APIClient
     private(set) var stream: ChatStreamClient
 
-    init() {
+    /// - Parameter protocolClasses: forwarded verbatim to `APIClient`. Nil is the
+    ///   production path and the only thing the app asks for; a test passes a
+    ///   `URLProtocol` subclass so the 401 → `sessionExpired` → `.login` wire —
+    ///   the most load-bearing untested path in this file — can be driven.
+    ///   This is the same seam as `APIClient`'s, passed through, not a new one.
+    init(protocolClasses: [AnyClass]? = nil) {
         let cfg = ServerConfig.load()
         self.serverConfig = cfg
-        let client = APIClient(config: cfg)
+        let client = APIClient(config: cfg, protocolClasses: protocolClasses)
         self.api = client
         self.stream = ChatStreamClient(api: client)
         // The "server" speech engines talk to /api/tts and /api/stt, so they
@@ -52,6 +57,11 @@ final class AppState: ObservableObject {
     func sessionExpired() {
         guard phase == .main else { return }   // already at login, or still launching
         api.clearCookies()
+        // The archived copy is the same dead cookie. Leaving it there does not
+        // keep anyone signed in — `persistCookies()` guards on a non-empty jar,
+        // so backgrounding after an expiry would not overwrite it either — it
+        // just keeps a known-dead session in the Keychain until the next login.
+        api.clearPersistedCookies()
         username = nil
         loginError = APIError.notAuthenticated.errorDescription
         phase = .login
@@ -127,7 +137,12 @@ final class AppState: ObservableObject {
                 keepSignedIn = true
             } else {
                 // "Don't keep me signed in" → wipe any prior persisted session.
+                // The credentials go too: a previous login with `remember` on
+                // left them in the Keychain, and only `logout()` used to clear
+                // them — so unchecking the box silently kept them on device.
                 api.clearPersistedCookies()
+                Keychain.delete(Keychain.usernameKey)
+                Keychain.delete(Keychain.passwordKey)
                 keepSignedIn = false
             }
             username = u
@@ -140,6 +155,16 @@ final class AppState: ObservableObject {
 
     func logout() async {
         await api.logout()
+        forgetAccount()
+    }
+
+    /// Everything that must go when this device stops being signed in to this
+    /// account: the live jar, the archived cookie, the credentials, and the
+    /// flags that would otherwise auto-login again. Logout and a server switch
+    /// are the only two transitions that need all of it, and they used to spell
+    /// it out separately.
+    private func forgetAccount() {
+        api.clearCookies()
         api.clearPersistedCookies()
         Keychain.delete(Keychain.usernameKey)
         Keychain.delete(Keychain.passwordKey)
@@ -165,16 +190,7 @@ final class AppState: ObservableObject {
         api.updateConfig(cfg)
         // Switching servers must not carry server A's session (cookie) or A's saved
         // credentials to server B — clear both and force a fresh login against B.
-        if changed {
-            api.clearCookies()
-            api.clearPersistedCookies()
-            Keychain.delete(Keychain.usernameKey)
-            Keychain.delete(Keychain.passwordKey)
-            keepSignedIn = false
-            username = nil
-            totpRequired = false
-            phase = .login
-        }
+        if changed { forgetAccount() }
     }
 
     func makeSessionStore() -> SessionStore { SessionStore(api: api) }

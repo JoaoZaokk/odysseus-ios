@@ -18,11 +18,11 @@ import SwiftUI
         loading = true; defer { loading = false }
         do { endpoints = try await api.modelEndpoints(); self.error = nil }
         catch let e where e.isCancellation {}
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
     func toggle(_ ep: ModelEndpoint) async {
         do { try await api.setEndpointEnabled(ep.id, !ep.isEnabled); await load() }
-        catch { self.error = "Não foi possível alterar: \(msg(error))" }
+        catch { self.error = L("Falha ao salvar: %@", SettingsUI.msg(error)) }
     }
 
     /// Re-probes the endpoint. The list endpoint never probes on its own, so an
@@ -37,14 +37,13 @@ import SwiftUI
         } catch APIError.http(403, _) {
             error = "Só um administrador pode atualizar a lista de modelos."
         } catch {
-            self.error = "Não foi possível atualizar: \(msg(error))"
+            self.error = L("Não foi possível carregar os modelos: %@", SettingsUI.msg(error))
         }
     }
     func delete(_ ep: ModelEndpoint) async {
         do { try await api.deleteEndpoint(ep.id); await load() }
-        catch { self.error = "Não foi possível remover: \(msg(error))" }
+        catch { self.error = L("Falha ao remover: %@", SettingsUI.msg(error)) }
     }
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct AddedModelsSection: View {
@@ -66,19 +65,19 @@ struct AddedModelsSection: View {
             if let e = vm.error {
                 // Through LocalizedStringKey so the fixed messages translate;
                 // anything the server worded falls through to itself.
-                Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.accent)
             }
             if let n = vm.refreshResult {
                 Group {
                     if n == 0 { Text("Nenhum modelo encontrado. O endpoint respondeu?") }
                     else { Text("Modelos encontrados: \(n)") }
                 }
-                .font(.ody(size: 11, design: .monospaced))
-                .foregroundStyle(n == 0 ? theme.accent : theme.green)
+                .font(.ody(size: 11))
+                .foregroundStyle(n == 0 ? theme.danger : theme.green)
             }
             ForEach(vm.endpoints) { ep in card(ep) }
             if vm.endpoints.isEmpty && !vm.loading {
-                Text("Nenhum endpoint conectado.").font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text("Nenhum endpoint conectado.").font(.ody(size: 12)).foregroundStyle(theme.secondaryText)
             }
         }
         .task { await vm.load() }
@@ -91,16 +90,16 @@ struct AddedModelsSection: View {
         SettingsCard {
             HStack(spacing: 8) {
                 Circle().fill((ep.online ?? true) ? theme.green : theme.secondaryText).frame(width: 8, height: 8)
-                Text(ep.name).font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg).lineLimit(1)
+                Text(ep.name).font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg).lineLimit(1)
                 Text(ep.isLocal ? "LOCAL" : "API")
-                    .font(.ody(size: 9, design: .monospaced))
+                    .font(.ody(size: 9))
                     .padding(.horizontal, 6).padding(.vertical, 2)
                     .background(theme.accent.opacity(0.2), in: Capsule())
                     .foregroundStyle(theme.accent)
                 Spacer()
             }
             if let url = ep.url, !url.isEmpty {
-                Text(url).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText).lineLimit(1)
+                Text(url).font(.ody(size: 10)).foregroundStyle(theme.secondaryText).lineLimit(1)
             }
             HStack {
                 // Two whole sentences, not one with an interpolated tail: the
@@ -110,7 +109,7 @@ struct AddedModelsSection: View {
                     if ep.isEnabled { Text("Modelos: \(ep.models.count) · ativo") }
                     else { Text("Modelos: \(ep.models.count) · desativado") }
                 }
-                .font(.ody(size: 11, design: .monospaced))
+                .font(.ody(size: 11))
                 .foregroundStyle(ep.isEnabled ? theme.green : theme.secondaryText)
                 Spacer()
                 if vm.refreshing == ep.id {
@@ -124,13 +123,13 @@ struct AddedModelsSection: View {
                 Button("Remover", role: .destructive) { Task { await vm.delete(ep) } }
                     .buttonStyle(.plain).foregroundStyle(theme.accent)
             }
-            .font(.ody(size: 12, design: .monospaced))
+            .font(.ody(size: 12))
             .disabled(vm.refreshing != nil)
             // Its own row: the buttons above already fill an iPhone's width.
             Button { picking = ep } label: {
                 HStack(spacing: 6) {
                     Image(systemName: "slider.horizontal.3").font(.ody(size: 11))
-                    Text("Escolher modelos").font(.ody(size: 12, design: .monospaced))
+                    Text("Escolher modelos").font(.ody(size: 12))
                     Spacer()
                     Image(systemName: "chevron.right").font(.ody(size: 10))
                 }
@@ -141,7 +140,7 @@ struct AddedModelsSection: View {
             .buttonStyle(.plain)
             if ep.models.isEmpty {
                 Text("Sem modelos em cache. Use Atualizar para sondar o endpoint.")
-                    .font(.ody(size: 10, design: .monospaced))
+                    .font(.ody(size: 10))
                     .foregroundStyle(theme.secondaryText)
             }
         }
@@ -230,7 +229,7 @@ struct AIDefaultsSection: View {
     var body: some View {
         SettingsScroll("Padrões de IA", subtitle: "Modelos usados ao criar uma nova conversa e em tarefas de fundo.") {
             SettingsCard {
-                Text("Modelo de chat padrão").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                Text("Modelo de chat padrão").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                 label("Endpoint")
                 endpointMenu(selected: vm.chatEp, includeSame: false) { id in
                     vm.chatEp = id; vm.chatModel = vm.models(id).first ?? ""; Task { await vm.saveChat() }
@@ -250,13 +249,13 @@ struct AIDefaultsSection: View {
                     }
                 }
                 Button { vm.addFallback() } label: { Label("Adicionar fallback", systemImage: "plus") }
-                    .buttonStyle(.plain).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                    .buttonStyle(.plain).font(.ody(size: 11)).foregroundStyle(theme.accent)
             }
 
             SettingsCard {
-                Text("Modelo utilitário").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                Text("Modelo utilitário").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                 Text("Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat.")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 label("Endpoint")
                 endpointMenu(selected: vm.utilEp, includeSame: true) { id in
                     vm.utilEp = id; vm.utilModel = id.isEmpty ? "" : (vm.models(id).first ?? ""); Task { await vm.saveUtil() }
@@ -269,13 +268,13 @@ struct AIDefaultsSection: View {
 
             SettingsCard {
                 HStack {
-                    Text("Visão").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                    Text("Visão").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                     Spacer()
                     Toggle("", isOn: Binding(get: { vm.visionEnabled }, set: { vm.visionEnabled = $0; Task { await vm.saveVision() } }))
                         .labelsHidden().tint(theme.accent)
                 }
                 Text("Analisa imagens com um modelo com visão.")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 if vm.visionEnabled {
                     label("Modelo")
                     Menu {
@@ -286,7 +285,7 @@ struct AIDefaultsSection: View {
             }
 
             SettingsCard {
-                Text("Pesquisa profunda").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                Text("Pesquisa profunda").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                 label("Endpoint")
                 endpointMenu(selected: vm.researchEp, includeSame: true) { id in
                     vm.researchEp = id; vm.researchModel = id.isEmpty ? "" : (vm.models(id).first ?? ""); Task { await vm.saveResearch() }
@@ -298,14 +297,14 @@ struct AIDefaultsSection: View {
             }
 
             if !vm.status.isEmpty {
-                Text(LocalizedStringKey(vm.status)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                Text(LocalizedStringKey(vm.status)).font(.ody(size: 11)).foregroundStyle(theme.green)
             }
         }
         .task { await vm.load() }
     }
 
     private func label(_ s: String) -> some View {
-        Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+        Text(LocalizedStringKey(s)).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
     }
 
     private func endpointMenu(selected: String, includeSame: Bool, _ pick: @escaping (String) -> Void) -> some View {
@@ -327,7 +326,7 @@ struct AIDefaultsSection: View {
     }
     private func menuLabel(_ s: String) -> some View {
         HStack {
-            Text(LocalizedStringKey(s)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
+            Text(LocalizedStringKey(s)).font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
             Spacer()
             Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
         }
@@ -365,7 +364,7 @@ struct AIDefaultsSection: View {
             name = ""; baseURL = ""; apiKey = ""
         } catch {
             ok = false
-            message = "Falha: \((error as? LocalizedError)?.errorDescription ?? error.localizedDescription)"
+            message = L("Falha: %@", SettingsUI.msg(error))
         }
     }
 
@@ -397,8 +396,8 @@ struct AddModelsSection: View {
                 field($vm.apiKey, placeholder: "sk-…", secure: true)
                 HStack(spacing: 8) {
                     if let m = vm.message {
-                        Text(m).font(.ody(size: 11, design: .monospaced))
-                            .foregroundStyle(vm.ok ? theme.green : theme.accent)
+                        Text(m).font(.ody(size: 11))
+                            .foregroundStyle(vm.ok ? theme.green : theme.danger)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer(minLength: 8)
@@ -407,7 +406,7 @@ struct AddModelsSection: View {
                             if vm.saving { ProgressView().controlSize(.small) }
                             Text("Adicionar")
                         }
-                        .font(.ody(.subheadline, design: .monospaced).weight(.semibold))
+                        .font(.ody(.subheadline).weight(.semibold))
                         .padding(.horizontal, 16).padding(.vertical, 8)
                         .foregroundStyle(.white)
                         .background(vm.canAdd ? theme.accent : theme.border, in: RoundedRectangle(cornerRadius: 10))
@@ -416,13 +415,13 @@ struct AddModelsSection: View {
                 }
             }
             Text("O servidor sonda a Base URL e descobre os modelos sozinho. Depois, ative/desative em “Modelos conectados”.")
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
         }
     }
 
     private func typeChip(_ title: String, _ value: String) -> some View {
         Button { vm.kind = value; vm.message = nil } label: {
-            Text(LocalizedStringKey(title)).font(.ody(size: 12, design: .monospaced))
+            Text(LocalizedStringKey(title)).font(.ody(size: 12))
                 .padding(.horizontal, 14).padding(.vertical, 6)
                 .foregroundStyle(vm.kind == value ? .white : theme.secondaryText)
                 .background(vm.kind == value ? theme.accent : theme.bg, in: Capsule())
@@ -432,7 +431,7 @@ struct AddModelsSection: View {
     }
 
     private func label(_ s: String) -> some View {
-        Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+        Text(LocalizedStringKey(s)).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
     }
 
     @ViewBuilder private func field(_ bind: Binding<String>, placeholder: String, secure: Bool = false) -> some View {
@@ -440,7 +439,7 @@ struct AddModelsSection: View {
             if secure { SecureField(LocalizedStringKey(placeholder), text: bind) }
             else { TextField(LocalizedStringKey(placeholder), text: bind) }
         }
-        .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+        .textFieldStyle(.plain).font(.ody(.subheadline)).foregroundStyle(theme.fg)
         .autocorrectionDisabled()
         .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))

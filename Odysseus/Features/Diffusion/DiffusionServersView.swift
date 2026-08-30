@@ -42,6 +42,9 @@ enum DiffusionConfigKeys {
 
     func test(_ url: String, timeout: TimeInterval) async {
         loading = true; error = nil; stats = nil; models = nil; queue = nil
+        // Recorded up front, not on success: a verdict has to name the address it
+        // was reached on, or the badge keeps describing a server nobody probed.
+        lastTestedURL = url
         defer { loading = false }
         let client = ComfyUIClient(baseURL: url, timeout: timeout)
         do {
@@ -53,7 +56,6 @@ enum DiffusionConfigKeys {
             catch { models = nil; modelsError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription }
             do { queue = try await client.queueCounts(); queueError = nil }
             catch { queue = nil; queueError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription }
-            lastTestedURL = url
         } catch {
             self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
         }
@@ -92,23 +94,23 @@ struct DiffusionServersView: View {
 
     private var providersCard: some View {
         SettingsCard {
-            Text("Provedores").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+            Text("Provedores").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
             SettingsUI.menuRow("Provedor padrão",
                                value: ImageGenProvider(rawValue: defaultProvider)?.label ?? "ComfyUI",
                                options: ImageGenProvider.allCases.map(\.label), theme: theme) { picked in
                 if let p = ImageGenProvider.allCases.first(where: { $0.label == picked }) { defaultProvider = p.rawValue }
             }
             Toggle(isOn: $fallbackEnabled) {
-                Text("Fallback automático").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text("Fallback automático").font(.ody(.subheadline)).foregroundStyle(theme.fg)
             }.tint(theme.accent)
             Text("Se o provedor padrão falhar, tenta os outros na ordem: \(fallbackOrderText).")
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
             HStack {
-                Text("Timeout").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text("Timeout").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 Spacer()
                 Stepper("\(timeoutSeconds)s", value: $timeoutSeconds, in: 5...120, step: 5)
-                    .font(.ody(size: 11, design: .monospaced)).fixedSize()
+                    .font(.ody(size: 11)).fixedSize()
             }
         }
     }
@@ -127,7 +129,7 @@ struct DiffusionServersView: View {
         SettingsCard {
             HStack {
                 Image(systemName: "cpu").foregroundStyle(theme.accent)
-                Text("ComfyUI").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                Text("ComfyUI").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                 Spacer()
                 statusBadge
             }
@@ -135,13 +137,13 @@ struct DiffusionServersView: View {
             HStack(spacing: 10) {
                 Button { Task { await vm.test(comfyURL, timeout: TimeInterval(timeoutSeconds)) } } label: {
                     Label("Testar conexão", systemImage: "bolt.horizontal")
-                        .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.accent)
+                        .font(.ody(size: 12)).foregroundStyle(theme.accent)
                 }.buttonStyle(.plain).disabled(comfyURL.isEmpty || vm.loading)
                 if vm.loading { ProgressView().controlSize(.small) }
                 Spacer()
             }
             if let e = vm.error {
-                Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+                Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger)
                     .fixedSize(horizontal: false, vertical: true)
             }
             if let s = vm.stats { statusDetail(s) }
@@ -151,11 +153,15 @@ struct DiffusionServersView: View {
     private var statusBadge: some View {
         Group {
             if vm.loading { Text("testando…").foregroundStyle(theme.secondaryText) }
+            // `lastTestedURL`, not just `stats`: the badge described whatever the
+            // last probe found, so editing the address after a good probe left
+            // "online" standing over a server nobody had reached.
+            else if vm.lastTestedURL != comfyURL { Text("não testado").foregroundStyle(theme.secondaryText) }
             else if vm.stats != nil { Text("online").foregroundStyle(theme.green) }
-            else if vm.error != nil { Text("offline").foregroundStyle(Color(hex: "e05a4a")) }
+            else if vm.error != nil { Text("offline").foregroundStyle(theme.danger) }
             else { Text("não testado").foregroundStyle(theme.secondaryText) }
         }
-        .font(.ody(size: 10, design: .monospaced))
+        .font(.ody(size: 10))
     }
 
     @ViewBuilder private func statusDetail(_ s: ComfyStats) -> some View {
@@ -182,18 +188,18 @@ struct DiffusionServersView: View {
         if !rows.isEmpty {
             Rectangle().fill(theme.border).frame(height: 1)
             Text("Cabe na máquina (estimativa, melhor GPU)")
-                .font(.ody(size: 11, weight: .medium, design: .monospaced)).foregroundStyle(theme.fg)
+                .font(.ody(size: 11, weight: .medium)).foregroundStyle(theme.fg)
             ForEach(rows.prefix(14), id: \.name) { row in
                 HStack(spacing: 8) {
                     fitDot(row.fit)
-                    Text(row.name).font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    Text(row.name).font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
                         .lineLimit(1).truncationMode(.middle)
                     Spacer()
-                    Text(LocalizedStringKey(fitLabel(row.fit))).font(.ody(size: 9, design: .monospaced)).foregroundStyle(fitColor(row.fit))
+                    Text(LocalizedStringKey(fitLabel(row.fit))).font(.ody(size: 9)).foregroundStyle(fitColor(row.fit))
                 }
             }
             Text("Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real.")
-                .font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
@@ -204,8 +210,8 @@ struct DiffusionServersView: View {
     private func fitColor(_ f: ComfyCapacity.Fit) -> Color {
         switch f {
         case .fits: return theme.green
-        case .tight: return Color(hex: "e0a33a")
-        case .tooBig: return Color(hex: "e05a4a")
+        case .tight: return theme.warning
+        case .tooBig: return theme.danger
         case .unknown: return theme.secondaryText
         }
     }
@@ -222,28 +228,28 @@ struct DiffusionServersView: View {
 
     private var otherProvidersCard: some View {
         SettingsCard {
-            Text("Outros provedores").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+            Text("Outros provedores").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
             SettingsUI.field("OpenWebUI Gen URL", $openwebuiURL, placeholder: "vazio = usa o servidor principal", theme: theme)
             SettingsUI.field("Diffusion API URL", $genericURL, placeholder: "http://host:port", theme: theme)
             Text("OpenWebUI Gen usa a sessão do servidor principal por padrão. A Diffusion API genérica é um endpoint compatível para fallback.")
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
 
     private var fallbackNote: some View {
         SettingsCard {
-            Text("Como o fallback funciona").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+            Text("Como o fallback funciona").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
             Text("Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase.")
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
 
     private func infoRow(_ k: String, _ v: String) -> some View {
         HStack(alignment: .top) {
-            Text(LocalizedStringKey(k)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText).frame(width: 110, alignment: .leading)
-            Text(v).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(k)).font(.ody(size: 11)).foregroundStyle(theme.secondaryText).frame(width: 110, alignment: .leading)
+            Text(v).font(.ody(size: 11)).foregroundStyle(theme.fg)
                 .frame(maxWidth: .infinity, alignment: .leading).fixedSize(horizontal: false, vertical: true)
         }
     }

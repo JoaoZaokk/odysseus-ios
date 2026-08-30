@@ -172,10 +172,8 @@ struct VoiceEndpointFields: View {
             TextField(L("URL base"), text: $config.url, prompt: Text(verbatim: urlHint))
                 .textContentType(.URL)
                 .autocorrectionDisabled()
-                #if os(iOS)
                 .textInputAutocapitalization(.never)
                 .keyboardType(.URL)
-                #endif
                 .onChange(of: config.url) { _, _ in
                     // The list belongs to the server that answered the probe,
                     // not to the one now being typed in.
@@ -198,9 +196,7 @@ struct VoiceEndpointFields: View {
                     }
                 }
                 .autocorrectionDisabled()
-                #if os(iOS)
                 .textInputAutocapitalization(.never)
-                #endif
                 Button {
                     showKey.toggle()
                 } label: {
@@ -215,9 +211,7 @@ struct VoiceEndpointFields: View {
                 if offered.isEmpty {
                     TextField(L("Modelo"), text: $config.model, prompt: Text(verbatim: modelHint))
                         .autocorrectionDisabled()
-                        #if os(iOS)
                         .textInputAutocapitalization(.never)
-                        #endif
                 } else {
                     Picker(L("Modelo"), selection: modelChoice) {
                         ForEach(offered, id: \.self) { Text($0).tag($0) }
@@ -227,9 +221,7 @@ struct VoiceEndpointFields: View {
                         TextField(L("Nome do modelo"), text: $config.model,
                                   prompt: Text(verbatim: "s3-pro"))
                             .autocorrectionDisabled()
-                            #if os(iOS)
                             .textInputAutocapitalization(.never)
-                            #endif
                     }
                 }
 
@@ -274,9 +266,7 @@ struct VoiceEndpointFields: View {
                 case .generic:
                     TextField(L("Voz"), text: $config.voice, prompt: Text(verbatim: "alloy"))
                         .autocorrectionDisabled()
-                        #if os(iOS)
                         .textInputAutocapitalization(.never)
-                        #endif
                 }
             }
         }

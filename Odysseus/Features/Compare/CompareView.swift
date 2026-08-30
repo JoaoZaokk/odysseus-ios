@@ -36,7 +36,7 @@ final class CompareViewModel: ObservableObject {
             models = try await api.models()
             if modelA == nil { modelA = models.first }
             if modelB == nil { modelB = models.count > 1 ? models[1] : models.first }
-        } catch let e where e.isCancellation {} catch { self.error = msg(error) }
+        } catch let e where e.isCancellation {} catch { self.error = SettingsUI.msg(error) }
     }
 
     var canSend: Bool {
@@ -78,7 +78,7 @@ final class CompareViewModel: ObservableObject {
                 }
             }
         } catch let e where e.isCancellation {
-        } catch { appendDelta("\n⚠️ \(msg(error))", isA: isA) }
+        } catch { appendDelta("\n⚠️ \(SettingsUI.msg(error))", isA: isA) }
     }
 
     private func appendDelta(_ d: String, isA: Bool) {
@@ -97,7 +97,6 @@ final class CompareViewModel: ObservableObject {
         return sid
     }
 
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct CompareView: View {
@@ -122,7 +121,7 @@ struct CompareView: View {
                 // false, with nothing on screen to say why.
                 if let e = vm.error, vm.models.isEmpty {
                     Text(LocalizedStringKey(e))
-                        .font(.ody(size: 11, design: .monospaced))
+                        .font(.ody(size: 11))
                         .foregroundStyle(theme.accent)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 14).padding(.bottom, 4)
@@ -157,7 +156,7 @@ struct CompareView: View {
             } label: {
                 HStack(spacing: 4) {
                     Text(model.wrappedValue?.name ?? "Modelo \(title)")
-                        .font(.ody(size: 11, design: .monospaced)).lineLimit(1)
+                        .font(.ody(size: 11)).lineLimit(1)
                     Image(systemName: "chevron.down").font(.ody(size: 8))
                 }
                 .foregroundStyle(theme.fg)
@@ -172,7 +171,7 @@ struct CompareView: View {
                     LazyVStack(spacing: 10) {
                         if turns.isEmpty {
                             Text("Envie a mesma pergunta para os dois modelos.")
-                                .font(.ody(size: 11, design: .monospaced))
+                                .font(.ody(size: 11))
                                 .foregroundStyle(theme.secondaryText)
                                 .frame(maxWidth: .infinity)
                                 .padding(.top, 40)
@@ -196,7 +195,7 @@ struct CompareView: View {
             HStack {
                 Spacer(minLength: 24)
                 Text(turn.text)
-                    .font(.ody(size: 12, design: .monospaced))
+                    .font(.ody(size: 12))
                     .foregroundStyle(theme.fg)
                     .padding(.horizontal, 10).padding(.vertical, 7)
                     .background(theme.userBubble, in: RoundedRectangle(cornerRadius: 10))
@@ -206,7 +205,7 @@ struct CompareView: View {
             HStack {
                 Markdown(turn.text.isEmpty ? "_…_" : turn.text)
                     .markdownTextStyle { ForegroundColor(theme.fg) }
-                    .font(.ody(size: 12, design: .monospaced))
+                    .font(.ody(size: 12))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(10)
                     .background(theme.aiBubble, in: RoundedRectangle(cornerRadius: 10))
@@ -219,7 +218,7 @@ struct CompareView: View {
         HStack(spacing: 10) {
             TextField("Mesma pergunta para os dois…", text: $vm.prompt)
                 .textFieldStyle(.plain)
-                .font(.ody(.subheadline, design: .monospaced))
+                .font(.ody(.subheadline))
                 .foregroundStyle(theme.fg)
                 .focused($focused)
                 .onSubmit { vm.send() }

@@ -70,7 +70,7 @@ struct EmailAccountsView: View {
                     #endif
                     if let e = vm.error, !vm.accounts.isEmpty {
                         Text(LocalizedStringKey(e))
-                            .font(.ody(size: 11, design: .monospaced))
+                            .font(.ody(size: 11))
                             .foregroundStyle(theme.accent)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 14).padding(.top, 6)
@@ -130,17 +130,17 @@ struct EmailAccountsView: View {
         HStack(spacing: 12) {
             Button { dismiss() } label: {
                 Text("Fechar")
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                     .foregroundStyle(theme.accent)
             }.buttonStyle(.plain)
             Spacer(minLength: 8)
             Text("Contas de email")
-                .font(.ody(.headline, design: .monospaced))
+                .font(.ody(.headline))
                 .foregroundStyle(theme.fg)
             Spacer(minLength: 8)
             Button { showAdd = true } label: {
                 Image(systemName: "plus")
-                    .font(.ody(size: 15, weight: .semibold, design: .monospaced))
+                    .font(.ody(size: 15, weight: .semibold))
                     .foregroundStyle(.white)
                     .frame(width: 30, height: 30)
                     .background(theme.accent, in: Circle())
@@ -166,16 +166,16 @@ struct EmailAccountsView: View {
                         Image(systemName: "person.crop.circle.badge.plus")
                             .font(.ody(size: 52)).foregroundStyle(theme.accent)
                         Text("Nenhuma conta")
-                            .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                            .font(.ody(.headline)).foregroundStyle(theme.fg)
                         Text("Toque em + para conectar uma conta IMAP.")
-                            .font(.ody(.footnote, design: .monospaced))
+                            .font(.ody(.footnote))
                             .foregroundStyle(theme.secondaryText).multilineTextAlignment(.center)
                     }
                     .contentShape(Rectangle())
                 }.buttonStyle(.plain)
                 Button { showAdd = true } label: {
                     Label("Conectar conta", systemImage: "plus")
-                        .font(.ody(.subheadline, design: .monospaced))
+                        .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 10)
                         .background(theme.accent, in: Capsule())
                         .foregroundStyle(.white)
@@ -189,18 +189,18 @@ struct EmailAccountsView: View {
                         VStack(alignment: .leading, spacing: 3) {
                             HStack(spacing: 6) {
                                 Text(acc.name.isEmpty ? acc.fromAddress : acc.name)
-                                    .font(.ody(.subheadline, design: .monospaced))
+                                    .font(.ody(.subheadline))
                                     .foregroundStyle(theme.fg)
                                 if acc.isDefault {
                                     Text("padrão")
-                                        .font(.ody(size: 9, design: .monospaced))
+                                        .font(.ody(size: 9))
                                         .foregroundStyle(.white)
                                         .padding(.horizontal, 5).padding(.vertical, 1)
                                         .background(theme.accent, in: Capsule())
                                 }
                             }
                             Text(acc.subtitle)
-                                .font(.ody(size: 11, design: .monospaced))
+                                .font(.ody(size: 11))
                                 .foregroundStyle(theme.secondaryText).lineLimit(1)
                         }
                         Spacer()
@@ -211,7 +211,7 @@ struct EmailAccountsView: View {
                             }.buttonStyle(.plain).help("Definir como padrão")
                         }
                         Button { toDelete = acc } label: {
-                            Image(systemName: "trash").foregroundStyle(Color(hex: "e05a4a"))
+                            Image(systemName: "trash").foregroundStyle(theme.danger)
                         }.buttonStyle(.plain).help("Remover conta")
                     }
                     .listRowBackground(theme.bg)
@@ -258,10 +258,19 @@ struct AddEmailAccountView: View {
     @State private var isDefault = false
     @State private var saving = false
     @State private var testing = false
-    @State private var testResult: TestResult?
+    /// The verdict AND the payload it was reached on. A verdict that does not
+    /// name its subject goes stale silently: fix the password after a green
+    /// test and "Conexão OK" stays on screen over credentials nothing tried.
+    @State private var testResult: (subject: EmailAccountPayload, verdict: TestResult)?
     @State private var error: String?
 
     enum TestResult: Equatable { case ok, fail(String) }
+
+    /// The verdict, but only while it still describes what is on screen.
+    private var currentVerdict: TestResult? {
+        guard let t = testResult, t.subject == buildPayload() else { return nil }
+        return t.verdict
+    }
 
     private var canSave: Bool {
         !email.isEmpty && !imapHost.isEmpty && !password.isEmpty
@@ -286,9 +295,7 @@ struct AddEmailAccountView: View {
             }
             .background(theme.bg)
             .navigationTitle("Nova conta")
-            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
             }
@@ -305,7 +312,7 @@ struct AddEmailAccountView: View {
             } label: {
                 HStack {
                     Text(providerID.isEmpty ? L("Personalizado…") : current.label)
-                        .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                        .font(.ody(.subheadline)).foregroundStyle(theme.fg)
                     Spacer()
                     Image(systemName: "chevron.up.chevron.down").font(.caption2).foregroundStyle(theme.secondaryText)
                 }
@@ -320,15 +327,15 @@ struct AddEmailAccountView: View {
     private func providerBanner(_ note: EmailProvider.Note) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(LocalizedStringKey(note.title))
-                .font(.ody(size: 12, weight: .semibold, design: .monospaced)).foregroundStyle(theme.fg)
+                .font(.ody(size: 12, weight: .semibold)).foregroundStyle(theme.fg)
             Text(LocalizedStringKey(note.body))
-                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
             Button {
                 if let url = URL(string: note.url) { openURL(url) }
             } label: {
                 Label(LocalizedStringKey(note.linkLabel), systemImage: "arrow.up.forward.square")
-                    .font(.ody(size: 11, weight: .semibold, design: .monospaced))
+                    .font(.ody(size: 11, weight: .semibold))
                     .padding(.horizontal, 12).padding(.vertical, 7)
                     .background(theme.accent, in: Capsule()).foregroundStyle(.white)
             }.buttonStyle(.plain).padding(.top, 2)
@@ -363,7 +370,7 @@ struct AddEmailAccountView: View {
     private var smtpGroup: some View {
         group("SMTP (envio)") {
             Text("opcional — deixe em branco para somente leitura")
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             field("Servidor SMTP", $smtpHost, placeholder: "smtp.gmail.com")
             HStack(alignment: .bottom, spacing: 10) {
                 field("Porta SMTP", $smtpPort, placeholder: "465", numeric: true).frame(width: 110)
@@ -381,22 +388,30 @@ struct AddEmailAccountView: View {
         group("Conta padrão") {
             toggleRow("Usar como conta padrão", $isDefault)
             Text("Usada quando nenhuma outra está selecionada.")
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
         }
     }
 
     @ViewBuilder
     private var statusRow: some View {
         if let error {
-            Text(LocalizedStringKey(error)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+            // The verdict is deliberately not shown alongside: a failed save used
+            // to put a red sentence and a green "Conexão OK" on screen together.
+            Text(LocalizedStringKey(error)).font(.ody(size: 11)).foregroundStyle(theme.danger)
+        } else {
+            verdictRow
         }
-        switch testResult {
+    }
+
+    @ViewBuilder
+    private var verdictRow: some View {
+        switch currentVerdict {
         case .ok:
             Label("Conexão OK", systemImage: "checkmark.circle.fill")
-                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "50fa7b"))
+                .font(.ody(size: 11)).foregroundStyle(theme.green)
         case .fail(let m):
             Label { Text(LocalizedStringKey(m)) } icon: { Image(systemName: "xmark.octagon.fill") }
-                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(Color(hex: "e05a4a"))
+                .font(.ody(size: 11)).foregroundStyle(theme.danger)
                 .fixedSize(horizontal: false, vertical: true)
         case nil:
             EmptyView()
@@ -411,10 +426,10 @@ struct AddEmailAccountView: View {
                     else { Image(systemName: "bolt.horizontal.circle") }
                     Text("Testar conexão")
                 }
-                .font(.ody(.subheadline, design: .monospaced))
+                .font(.ody(.subheadline))
                 .padding(.horizontal, 16).padding(.vertical, 10)
                 .overlay(Capsule().stroke(theme.border, lineWidth: 1)).foregroundStyle(theme.fg)
-            }.buttonStyle(.plain).disabled(!canSave || testing)
+            }.buttonStyle(.plain).disabled(!canSave || testing || saving)
             Spacer()
             Button { save() } label: {
                 HStack(spacing: 6) {
@@ -422,23 +437,23 @@ struct AddEmailAccountView: View {
                     else { Image(systemName: "checkmark") }
                     Text("Criar")
                 }
-                .font(.ody(.subheadline, design: .monospaced))
+                .font(.ody(.subheadline))
                 .padding(.horizontal, 18).padding(.vertical, 10)
                 .background(canSave ? theme.accent : theme.border, in: Capsule())
                 .foregroundStyle(.white)
-            }.buttonStyle(.plain).disabled(!canSave || saving)
+            }.buttonStyle(.plain).disabled(!canSave || saving || testing)
         }
     }
 
     private func toggleRow(_ label: String, _ bind: Binding<Bool>) -> some View {
         Toggle(isOn: bind) {
-            Text(LocalizedStringKey(label)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(label)).font(.ody(.subheadline)).foregroundStyle(theme.fg)
         }.tint(theme.accent)
     }
 
     private var securityField: some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text("Segurança").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text("Segurança").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             Menu {
                 Button("SSL") { smtpSecurity = "ssl" }
                 Button("STARTTLS") { smtpSecurity = "starttls" }
@@ -447,7 +462,7 @@ struct AddEmailAccountView: View {
                 HStack {
                     // The menu offers "Nenhum" / "STARTTLS" / "SSL"; the closed row
                     // used to show the wire value ("NONE").
-                    Text(LocalizedStringKey(smtpSecurity == "none" ? "Nenhum" : smtpSecurity.uppercased())).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text(LocalizedStringKey(smtpSecurity == "none" ? "Nenhum" : smtpSecurity.uppercased())).font(.ody(.subheadline)).foregroundStyle(theme.fg)
                     Spacer()
                     Image(systemName: "chevron.up.chevron.down").font(.caption2).foregroundStyle(theme.secondaryText)
                 }
@@ -468,7 +483,7 @@ struct AddEmailAccountView: View {
             // `title.uppercased()` (a String, not a literal) skips localization —
             // that's why CONTA / IMAP (ENTRADA) / SMTP (ENVIO) stayed in Portuguese.
             Text(LocalizedStringKey(title))
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 .textCase(.uppercase)
             content()
         }
@@ -478,20 +493,13 @@ struct AddEmailAccountView: View {
         .overlay(RoundedRectangle(cornerRadius: 12).stroke(theme.border, lineWidth: 1))
     }
 
+    /// Forwards to the app's one field chrome. This used to be a byte-identical
+    /// copy of `SettingsUI.field`, which is why the two drifted apart for free.
     @ViewBuilder
     private func field(_ label: String, _ bind: Binding<String>, placeholder: String,
                        numeric: Bool = false, secure: Bool = false) -> some View {
-        VStack(alignment: .leading, spacing: 3) {
-            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
-            Group {
-                if secure { SecureField(LocalizedStringKey(placeholder), text: bind) }
-                else { TextField(LocalizedStringKey(placeholder), text: bind) }
-            }
-            .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
-            .autocorrectionDisabled()
-            .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
-        }
+        SettingsUI.field(label, bind, placeholder: placeholder, theme: theme,
+                         numeric: numeric, secure: secure)
     }
 
     // MARK: - Logic
@@ -500,7 +508,9 @@ struct AddEmailAccountView: View {
     /// the fields as the user has them.
     private func applyProvider(_ id: String) {
         providerID = id
-        testResult = nil
+        // No need to clear the verdict here: it names the payload it was reached
+        // on, so changing any field invalidates it on its own — and picking
+        // "Custom", which changes nothing, correctly leaves it standing.
         guard !id.isEmpty else { return }
         let p = EmailProvider.with(id: id)
         if !p.imapHost.isEmpty { imapHost = p.imapHost }
@@ -547,7 +557,7 @@ struct AddEmailAccountView: View {
         Task {
             let msg = await onTest(payload)
             testing = false
-            testResult = (msg == nil) ? .ok : .fail(msg ?? "")
+            testResult = (payload, msg == nil ? .ok : .fail(msg ?? ""))
         }
     }
 

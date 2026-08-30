@@ -131,9 +131,9 @@ struct GalleryView: View {
         VStack(spacing: 12) {
             Image(systemName: "photo.on.rectangle.angled").font(.ody(size: 44)).foregroundStyle(theme.accent)
             Text(LocalizedStringKey(vm.favoritesOnly ? "Sem favoritos" : "Galeria vazia"))
-                .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                .font(.ody(.headline)).foregroundStyle(theme.fg)
             Text("Imagens geradas e enviadas aparecem aqui.")
-                .font(.ody(.footnote, design: .monospaced))
+                .font(.ody(.footnote))
                 .foregroundStyle(theme.secondaryText)
         }
         .padding(40)
@@ -162,13 +162,13 @@ struct GalleryDetail: View {
                         }
                         if !image.prompt.isEmpty {
                             Text(image.prompt)
-                                .font(.ody(size: 12, design: .monospaced))
+                                .font(.ody(size: 12))
                                 .foregroundStyle(.white.opacity(0.8))
                                 .padding(.horizontal, 16)
                                 .textSelection(.enabled)
                         }
                         if let m = image.model {
-                            Text(m).font(.ody(size: 11, design: .monospaced)).foregroundStyle(.gray)
+                            Text(m).font(.ody(size: 11)).foregroundStyle(.gray)
                         }
                     }
                     .padding(.vertical, 12)

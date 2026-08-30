@@ -17,7 +17,9 @@ struct Theme: Equatable, Identifiable {
     var panel: Color
     var border: Color
     var accent: Color           // --red, used for the brand + primary actions
-    var green: Color
+    var green: Color            // "installed / active / connected"
+    var danger: Color           // "failed / offline / destructive"
+    var warning: Color          // "degraded / tight / non-fatal"
     var userBubble: Color
     var aiBubble: Color
     var secondaryText: Color
@@ -40,8 +42,14 @@ struct Theme: Equatable, Identifiable {
         self.userBubble = Color(hex: userBubbleBg ?? bg)
         self.aiBubble = Color(hex: aiBubbleBg ?? panel)
         self.secondaryText = Color(hex: fg).opacity(0.55)
-        // The web has no per-theme green; pick one that reads on this background.
-        self.green = Color(hex: dark ? "5fd97a" : "2f9e5b")
+        // The web has no per-theme status colors; derive them from the theme's
+        // lightness so each one clears WCAG AA (4.5:1) on every background in
+        // `Theme.all`. A single fixed value cannot: the `e05a4a` these three
+        // replace measured below 4.5:1 on 9 of the 17 themes, and the old light
+        // `green` measured 2.87:1 on all four light ones.
+        self.green   = Color(hex: dark ? "5fd97a" : "20713f")
+        self.danger  = Color(hex: dark ? "f2776a" : "b3372a")
+        self.warning = Color(hex: dark ? "e0a33a" : "7d5800")
     }
 
     // Deliberately memberwise (synthesized), not `l.id == r.id`: `translucent(_:)`
@@ -171,10 +179,16 @@ enum Appearance {
 
 extension Font {
     /// Drop-in for `Font.system` that honors the chosen `AppFontFamily`.
-    static func ody(_ style: Font.TextStyle, design: Font.Design = .monospaced, weight: Font.Weight = .regular) -> Font {
+    ///
+    /// There is deliberately no `design:` here. Both overloads used to take one
+    /// and throw it away — 360 call sites passed `.monospaced` and no rendered
+    /// font ever changed, because the family the user picked decides the design.
+    /// An interface that advertises a knob it does not turn is worse than one
+    /// that never offered it.
+    static func ody(_ style: Font.TextStyle, weight: Font.Weight = .regular) -> Font {
         Appearance.font(style: style, weight: weight)
     }
-    static func ody(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .monospaced) -> Font {
+    static func ody(size: CGFloat, weight: Font.Weight = .regular) -> Font {
         Appearance.font(size: size, weight: weight)
     }
 }

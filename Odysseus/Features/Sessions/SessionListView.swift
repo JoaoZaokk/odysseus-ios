@@ -33,7 +33,7 @@ struct SidebarView: View {
                        active: active(.deepSearch)) { workspace.openDeepSearch() }
                 Button { showThemes = true } label: {
                     Label {
-                        Text("Tema").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                        Text("Tema").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                     } icon: {
                         Image(systemName: "paintpalette").foregroundStyle(theme.accent)
                     }
@@ -78,12 +78,12 @@ struct SidebarView: View {
                 // app had simply ignored the tap.
                 if let e = store.error {
                     Text(LocalizedStringKey(e))
-                        .font(.ody(.footnote, design: .monospaced))
+                        .font(.ody(.footnote))
                         .foregroundStyle(theme.accent)
                         .listRowBackground(theme.bg)
                 } else if store.sessions.isEmpty && !store.loading {
                     Text("Nenhuma conversa ainda.")
-                        .font(.ody(.footnote, design: .monospaced))
+                        .font(.ody(.footnote))
                         .foregroundStyle(theme.secondaryText)
                         .listRowBackground(theme.bg)
                 }
@@ -125,7 +125,7 @@ struct SidebarView: View {
 
     private func header(_ text: String) -> some View {
         Text(LocalizedStringKey(text))
-            .font(.ody(.caption, design: .monospaced))
+            .font(.ody(.caption))
             .foregroundStyle(theme.secondaryText)
     }
 
@@ -133,7 +133,7 @@ struct SidebarView: View {
                         _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label {
-                Text(LocalizedStringKey(title)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text(LocalizedStringKey(title)).font(.ody(.subheadline)).foregroundStyle(theme.fg)
             } icon: {
                 Image(systemName: icon).foregroundStyle(tint)
             }
@@ -148,10 +148,10 @@ struct SidebarView: View {
         Label {
             VStack(alignment: .leading, spacing: 1) {
                 Text(LocalizedStringKey(section.title))
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                     .foregroundStyle(theme.fg)
                 Text(LocalizedStringKey(section.subtitle))
-                    .font(.ody(size: 10, design: .monospaced))
+                    .font(.ody(size: 10))
                     .foregroundStyle(theme.secondaryText)
                     .lineLimit(1)
             }
@@ -170,10 +170,10 @@ struct SidebarView: View {
             }
             VStack(alignment: .leading, spacing: 2) {
                 Text(session.title)
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                     .foregroundStyle(theme.fg).lineLimit(1)
                 if let m = session.shortModel {
-                    Text(m).font(.ody(size: 10, design: .monospaced))
+                    Text(m).font(.ody(size: 10))
                         .foregroundStyle(theme.secondaryText).lineLimit(1)
                 }
             }

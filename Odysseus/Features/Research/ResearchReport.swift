@@ -10,20 +10,17 @@ struct ResearchReport {
     var sources: [ReportSource]
 }
 
-enum ReportBlock: Identifiable {
+/// Deliberately NOT `Identifiable`. The old `id` hashed the first 24 characters
+/// of the block's content, so two headings sharing a prefix, two tables with the
+/// same header row, or the same image twice all collided — and a `ForEach` with
+/// duplicate ids silently drops blocks. A report block has no identity of its
+/// own; its position in the document is its identity, and the one render site
+/// enumerates for exactly that reason.
+enum ReportBlock {
     case heading(level: Int, text: String)
     case paragraph(String)
     case image(url: String)
     case table(headers: [String], rows: [[String]])
-
-    var id: String {
-        switch self {
-        case .heading(let l, let t): return "h\(l):\(t.prefix(24))"
-        case .paragraph(let t): return "p:\(t.prefix(24))\(t.count)"
-        case .image(let u): return "img:\(u)"
-        case .table(let h, _): return "tbl:\(h.joined())"
-        }
-    }
 }
 
 struct ReportSource: Identifiable {

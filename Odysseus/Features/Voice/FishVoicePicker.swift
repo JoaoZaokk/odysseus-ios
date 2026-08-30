@@ -35,7 +35,7 @@ struct FishVoicePicker: View {
                 if loading {
                     HStack { ProgressView(); Text("Carregando…") }
                 } else if let error {
-                    Text(LocalizedStringKey(error)).font(.footnote).foregroundStyle(theme.accent)
+                    Text(LocalizedStringKey(error)).font(.footnote).foregroundStyle(theme.danger)
                 } else if voices.isEmpty {
                     Text("Nenhuma voz encontrada.").foregroundStyle(.secondary)
                 }
@@ -57,9 +57,7 @@ struct FishVoicePicker: View {
                 }
             }
             .navigationTitle(L("Escolher voz"))
-            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(L("Cancelar")) { dismiss() }

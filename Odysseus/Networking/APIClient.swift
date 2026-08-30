@@ -58,29 +58,44 @@ final class APIClient: @unchecked Sendable {
         set { callbackLock.lock(); defer { callbackLock.unlock() }; _onUnauthenticated = newValue }
     }
 
-    init(config: ServerConfig) {
-        self._config = config
+    /// Everything the two sessions share. They differ only in their timeouts;
+    /// the cookie jar, the cache policy, the connectivity behaviour and the
+    /// transport are one decision, made once.
+    private static func sessionConfiguration(cookies: HTTPCookieStorage,
+                                             protocolClasses: [AnyClass]?) -> URLSessionConfiguration {
         let cfg = URLSessionConfiguration.default
-        cfg.httpCookieStorage = cookieStore
+        cfg.httpCookieStorage = cookies
         cfg.httpCookieAcceptPolicy = .always
         cfg.httpShouldSetCookies = true
         cfg.requestCachePolicy = .reloadIgnoringLocalCacheData
+        cfg.waitsForConnectivity = false      // fail fast with an error instead of waiting endlessly
+        // `nil` keeps Foundation's own protocol chain — the production path, and
+        // the only one the app itself ever asks for.
+        if let protocolClasses { cfg.protocolClasses = protocolClasses }
+        return cfg
+    }
+
+    /// - Parameter protocolClasses: the transport. Defaults to `nil`, which is
+    ///   Foundation's own chain and the single production construction. A test
+    ///   passes a `URLProtocol` subclass and the whole request stack becomes
+    ///   reachable without a server: both sessions, the cookie jar, the 401 hop
+    ///   to `onUnauthenticated`, the FastAPI 422 `detail`-array reader, and the
+    ///   SSE byte stream. `URLProtocol.registerClass` is NOT an alternative —
+    ///   it does not reach a session built from `URLSessionConfiguration.default`,
+    ///   which is what these two are.
+    init(config: ServerConfig, protocolClasses: [AnyClass]? = nil) {
+        self._config = config
+        let cfg = Self.sessionConfiguration(cookies: cookieStore, protocolClasses: protocolClasses)
         cfg.timeoutIntervalForRequest = 30
         cfg.timeoutIntervalForResource = 30   // cap the whole request — never hang forever
-        cfg.waitsForConnectivity = false      // fail fast with an error instead of waiting endlessly
         self.session = URLSession(configuration: cfg)
         // Long-lived transfers (SSE chat/research streams, attachment uploads).
         // `timeoutIntervalForResource` caps the WHOLE transfer regardless of the
         // per-request `timeoutInterval`, so these cannot ride the 30s session —
         // a chat reply streaming for >30s would be killed mid-stream.
-        let streamCfg = URLSessionConfiguration.default
-        streamCfg.httpCookieStorage = cookieStore
-        streamCfg.httpCookieAcceptPolicy = .always
-        streamCfg.httpShouldSetCookies = true
-        streamCfg.requestCachePolicy = .reloadIgnoringLocalCacheData
+        let streamCfg = Self.sessionConfiguration(cookies: cookieStore, protocolClasses: protocolClasses)
         streamCfg.timeoutIntervalForRequest = 300    // idle gap between bytes
         streamCfg.timeoutIntervalForResource = 7200  // total wall-clock (deep research runs long)
-        streamCfg.waitsForConnectivity = false
         self.streamSession = URLSession(configuration: streamCfg)
         // Bring back a previously persisted session BEFORE the first request, so a
         // cold launch stays logged in instead of bouncing to the login screen.

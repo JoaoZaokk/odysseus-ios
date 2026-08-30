@@ -168,6 +168,13 @@ final class BargeInMonitor {
         case vadLoading
         case vadUnavailable
         case echoCancellation
+        /// The audio session is in a category/mode that disables system signal
+        /// processing — typically `.record`/`.measurement`, which is where the
+        /// recorder leaves it. Distinct from `.echoCancellation`, which is the
+        /// engine refusing for some other reason: this one is a call-ordering
+        /// mistake in the caller, and saying so is the difference between
+        /// looking at the mic permission and looking at the line above.
+        case sessionCategory
         case microphone
         case simulator
 
@@ -180,6 +187,8 @@ final class BargeInMonitor {
                 return L("Barge-in indisponível: o detector de voz não pôde ser carregado.")
             case .echoCancellation:
                 return L("Barge-in indisponível: cancelamento de eco não pôde ser ativado.")
+            case .sessionCategory:
+                return L("Barge-in indisponível: a sessão de áudio está em modo de gravação.")
             case .microphone:
                 return L("Barge-in indisponível: o microfone não pôde ser aberto.")
             }
@@ -210,6 +219,20 @@ final class BargeInMonitor {
         let s = UserDefaults.standard.object(forKey: "voice.bargein.sensitivity") as? Double ?? 0.5
         let tuning = Tuning(sensitivity: s)
         self.tuning = tuning
+
+        // The precondition lives here now, not as prose in VoiceConversation.
+        // `setVoiceProcessingEnabled(true)` needs a session that permits system
+        // signal processing; the recorder leaves it on `.record`/`.measurement`,
+        // which does not. That used to surface as `.echoCancellation` — sending
+        // anyone troubleshooting a call-ordering mistake to look at AEC instead.
+        #if os(iOS)
+        let session = AVAudioSession.sharedInstance()
+        guard session.category == .playAndRecord, session.mode != .measurement else {
+            VoiceLog.log("barge.start",
+                         "sessão em \(session.category.rawValue)/\(session.mode.rawValue) — não armando")
+            return .sessionCategory
+        }
+        #endif
 
         engine = AVAudioEngine()   // fresh engine each time (reuse is unstable)
         let input = engine.inputNode

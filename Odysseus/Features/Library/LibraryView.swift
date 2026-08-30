@@ -72,7 +72,7 @@ final class LibraryViewModel: ObservableObject {
         loading = true; defer { loading = false }
         do { files = try await api.personalFiles().files; error = nil }
         catch let e where e.isCancellation {}
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
     func upload(_ url: URL) async {
         uploading = true; defer { uploading = false }
@@ -82,13 +82,12 @@ final class LibraryViewModel: ObservableObject {
             let data = try Data(contentsOf: url)
             try await api.uploadPersonal(data, filename: url.lastPathComponent)
             await load()
-        } catch { self.error = msg(error) }
+        } catch { self.error = SettingsUI.msg(error) }
     }
     func delete(_ f: PersonalFile) async {
         do { try await api.deletePersonal(f.path); files.removeAll { $0.id == f.id } }
-        catch { self.error = msg(error) }
+        catch { self.error = SettingsUI.msg(error) }
     }
-    private func msg(_ e: Error) -> String { (e as? LocalizedError)?.errorDescription ?? e.localizedDescription }
 }
 
 struct LibraryView: View {
@@ -126,9 +125,9 @@ struct LibraryView: View {
         } else if vm.files.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "books.vertical").font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Biblioteca vazia").font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text("Biblioteca vazia").font(.ody(.headline)).foregroundStyle(theme.fg)
                 Text("Envie documentos (PDF, txt, md…) para o assistente consultar via RAG.")
-                    .font(.ody(.footnote, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(.footnote)).foregroundStyle(theme.secondaryText)
                     .multilineTextAlignment(.center)
             }.padding(40)
         } else {
@@ -137,8 +136,8 @@ struct LibraryView: View {
                     HStack(spacing: 10) {
                         Image(systemName: "doc.text").foregroundStyle(theme.accent)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(f.displayName).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
-                            Text(f.humanSize).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            Text(f.displayName).font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
+                            Text(f.humanSize).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         }
                         Spacer()
                     }
