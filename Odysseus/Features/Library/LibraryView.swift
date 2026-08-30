@@ -50,8 +50,9 @@ extension APIClient {
         _ = try await send(req)
     }
     func deletePersonal(_ filepath: String) async throws {
-        let enc = filepath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? filepath
-        _ = try await send(request("/api/personal/file?filepath=\(enc)", method: "DELETE"))
+        // `.urlQueryAllowed` permits `&`, so a name containing one splits into extra
+        // query parameters and the server deletes nothing while answering 200.
+        _ = try await send(request("/api/personal/file?filepath=\(encQuery(filepath))", method: "DELETE"))
     }
 }
 
