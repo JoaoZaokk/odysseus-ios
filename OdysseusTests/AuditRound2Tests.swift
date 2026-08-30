@@ -68,3 +68,45 @@ final class AuditRound2Tests: XCTestCase {
     // cast always fails. That is exactly what `catch is CancellationError` was doing
     // at 21 sites, where the same impossibility is invisible.
 }
+
+/// Covers the round-2 *triage* fixes whose logic is pure enough to assert.
+final class AuditRound2TriageTests: XCTestCase {
+
+    // MARK: - #58 — a translucent theme is not its opaque original
+
+    func testTranslucentThemeDoesNotEqualItsOpaqueOriginal() {
+        let opaque = Theme.all[0]
+        let frosted = opaque.translucent(true)
+        XCTAssertEqual(frosted.id, opaque.id, "translucency keeps the identity — that is the trap")
+        XCTAssertNotEqual(frosted, opaque,
+                          "identity-only equality made SwiftUI treat a theme change as no change")
+    }
+
+    func testTranslucentFalseIsANoOp() {
+        let opaque = Theme.all[0]
+        XCTAssertEqual(opaque.translucent(false), opaque)
+    }
+
+    // MARK: - #15 — a numeric id decodes, instead of becoming an invented UUID
+
+    func testEndpointDecodesANumericID() throws {
+        let json = #"{"id": 7, "name": "local"}"#.data(using: .utf8)!
+        let ep = try JSONDecoder().decode(ModelEndpoint.self, from: json)
+        XCTAssertEqual(ep.id, "7", "a client-invented UUID makes every button on the row address nothing")
+    }
+
+    func testEndpointStillDecodesAStringID() throws {
+        let json = #"{"id": "abc", "name": "local"}"#.data(using: .utf8)!
+        XCTAssertEqual(try JSONDecoder().decode(ModelEndpoint.self, from: json).id, "abc")
+    }
+
+    // MARK: - #64 — the schedule line resolves through the catalogues
+
+    func testScheduleTextGoesThroughTheLocalizationTable() throws {
+        let json = #"{"id": "1", "name": "t", "schedule": "hourly"}"#.data(using: .utf8)!
+        let task = try JSONDecoder().decode(ScheduledTask.self, from: json)
+        // Under the test bundle's language this resolves to the key itself; the
+        // point is that it is a *key*, not interpolated prose no catalogue can match.
+        XCTAssertEqual(task.scheduleText, L("De hora em hora"))
+    }
+}
