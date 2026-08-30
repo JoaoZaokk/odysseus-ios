@@ -146,7 +146,7 @@ struct BrainView: View {
     private func chip(_ label: String, active: Bool, _ tap: @escaping () -> Void) -> some View {
         Button(action: tap) {
             Text(LocalizedStringKey(label))
-                .font(.ody(size: 12, design: .monospaced))
+                .font(.ody(size: 12))
                 .foregroundStyle(active ? .white : theme.secondaryText)
                 .padding(.horizontal, 12).padding(.vertical, 6)
                 .background(active ? theme.accent : theme.panel, in: Capsule())
@@ -162,10 +162,10 @@ struct BrainView: View {
                 .padding(.top, 5)
             VStack(alignment: .leading, spacing: 4) {
                 Text(m.text)
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                     .foregroundStyle(theme.fg)
                 Text(m.category)
-                    .font(.ody(size: 10, design: .monospaced))
+                    .font(.ody(size: 10))
                     .foregroundStyle(theme.green)
             }
             Spacer()
@@ -185,9 +185,9 @@ struct BrainView: View {
         VStack(spacing: 12) {
             Image(systemName: "brain").font(.ody(size: 44)).foregroundStyle(theme.accent)
             Text("Sem memórias ainda")
-                .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                .font(.ody(.headline)).foregroundStyle(theme.fg)
             Text("O que o assistente lembrar de você aparece aqui.")
-                .font(.ody(.footnote, design: .monospaced))
+                .font(.ody(.footnote))
                 .foregroundStyle(theme.secondaryText)
                 .multilineTextAlignment(.center)
         }

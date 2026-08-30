@@ -121,25 +121,25 @@ struct CookbookView: View {
         } else if vm.packages.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "fork.knife").font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Cookbook").font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text("Cookbook").font(.ody(.headline)).foregroundStyle(theme.fg)
                 Text("Pacotes e engines para servir modelos.")
-                    .font(.ody(.footnote, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(.footnote)).foregroundStyle(theme.secondaryText)
             }.padding(40)
         } else {
             List {
                 if let n = vm.note {
-                    Text(n).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                    Text(n).font(.ody(size: 11)).foregroundStyle(theme.green)
                         .listRowBackground(theme.bg)
                 }
                 if let e = vm.error {
-                    Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                    Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.accent)
                         .listRowBackground(theme.bg)
                 }
                 ForEach(vm.grouped, id: \.category) { group in
                     Section {
                         ForEach(group.items) { pkg in row(pkg).listRowBackground(theme.bg) }
                     } header: {
-                        Text(group.category).font(.ody(.caption, design: .monospaced)).foregroundStyle(theme.accent)
+                        Text(group.category).font(.ody(.caption)).foregroundStyle(theme.accent)
                     }
                 }
             }
@@ -152,23 +152,23 @@ struct CookbookView: View {
             Image(systemName: pkg.installed ? "checkmark.circle.fill" : "shippingbox")
                 .foregroundStyle(pkg.installed ? theme.green : theme.secondaryText)
             VStack(alignment: .leading, spacing: 2) {
-                Text(pkg.name).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text(pkg.name).font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 if !pkg.desc.isEmpty {
-                    Text(pkg.desc).font(.ody(size: 10, design: .monospaced))
+                    Text(pkg.desc).font(.ody(size: 10))
                         .foregroundStyle(theme.secondaryText).lineLimit(2)
                 }
             }
             Spacer()
             if pkg.installed {
-                Text("instalado").font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.green)
+                Text("instalado").font(.ody(size: 9)).foregroundStyle(theme.green)
             } else if vm.installing.contains(pkg.id) {
                 HStack(spacing: 6) {
                     ProgressView().controlSize(.small)
-                    Text("instalando…").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    Text("instalando…").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 }
             } else if pkg.canInstall {
                 Button { Task { await vm.install(pkg) } } label: {
-                    Text("Instalar").font(.ody(size: 11, weight: .semibold, design: .monospaced))
+                    Text("Instalar").font(.ody(size: 11, weight: .semibold))
                         .padding(.horizontal, 12).padding(.vertical, 5)
                         .foregroundStyle(.white)
                         .background(theme.accent, in: Capsule())

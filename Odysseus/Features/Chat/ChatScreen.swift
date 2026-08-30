@@ -47,12 +47,12 @@ struct ChatScreen: View {
             ToolbarItem(placement: .principal) {
                 VStack(spacing: 1) {
                     Text(vm.title)
-                        .font(.ody(.headline, design: .monospaced))
+                        .font(.ody(.headline))
                         .foregroundStyle(theme.fg)
                         .lineLimit(1)
                     if let m = vm.resolvedModel {
                         Text(m)
-                            .font(.ody(size: 10, design: .monospaced))
+                            .font(.ody(size: 10))
                             .foregroundStyle(theme.secondaryText)
                     }
                 }
@@ -107,7 +107,7 @@ struct ChatScreen: View {
                         HStack(spacing: 8) {
                             ProgressView().controlSize(.small).tint(theme.accent)
                             Text(LocalizedStringKey(tool))
-                                .font(.ody(size: 12, design: .monospaced))
+                                .font(.ody(size: 12))
                                 .foregroundStyle(theme.secondaryText)
                             Spacer()
                         }
@@ -135,10 +135,10 @@ struct ChatScreen: View {
         VStack(spacing: 14) {
             BrandMark(size: 56)
             Text("Como posso ajudar?")
-                .font(.ody(.title2, design: .monospaced).weight(.semibold))
+                .font(.ody(.title2).weight(.semibold))
                 .foregroundStyle(theme.fg)
             Text("Conectado a \(app.serverConfig.baseURL.host ?? "Odysseus")")
-                .font(.ody(.footnote, design: .monospaced))
+                .font(.ody(.footnote))
                 .foregroundStyle(theme.secondaryText)
         }
         .frame(maxWidth: .infinity)
@@ -163,7 +163,7 @@ struct ChatScreen: View {
             // all three used to be written and never read.
             ForEach([voice.error, vm.error].compactMap { $0 }, id: \.self) { err in
                 Text(LocalizedStringKey(err))
-                    .font(.ody(size: 11, design: .monospaced))
+                    .font(.ody(size: 11))
                     .foregroundStyle(theme.accent)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 14)
@@ -184,7 +184,7 @@ struct ChatScreen: View {
 
                 TextField(LocalizedStringKey(voice.isRecording ? "Ouvindo…" : "Mensagem…"),
                           text: voice.isRecording ? .constant(voice.partialText) : $vm.input, axis: .vertical)
-                    .font(.ody(.body, design: .monospaced))
+                    .font(.ody(.body))
                     .foregroundStyle(theme.fg)
                     .focused($inputFocused)
                     .lineLimit(1...6)
@@ -352,7 +352,7 @@ struct ChatScreen: View {
             HStack(spacing: 5) {
                 Image(systemName: "cpu").font(.ody(size: 11))
                 Text(vm.selectedModel?.name ?? vm.resolvedModel ?? L("Modelo"))
-                    .font(.ody(size: 12, design: .monospaced))
+                    .font(.ody(size: 12))
                     .lineLimit(1).truncationMode(.middle)
             }
             .padding(.horizontal, 10).padding(.vertical, 6)
@@ -370,7 +370,7 @@ struct ChatScreen: View {
         Button { on.wrappedValue.toggle() } label: {
             HStack(spacing: 5) {
                 Image(systemName: system).font(.ody(size: 11))
-                Text(LocalizedStringKey(label)).font(.ody(size: 12, design: .monospaced))
+                Text(LocalizedStringKey(label)).font(.ody(size: 12))
             }
             .padding(.horizontal, 10).padding(.vertical, 6)
             .foregroundStyle(on.wrappedValue ? .white : theme.secondaryText)

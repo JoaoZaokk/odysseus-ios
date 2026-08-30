@@ -27,22 +27,22 @@ struct ServerSetupView: View {
                     BrandMark(size: 72)
 
                     Text("Configure seu servidor")
-                        .font(.ody(.title2, design: .monospaced).weight(.semibold))
+                        .font(.ody(.title2).weight(.semibold))
                         .foregroundStyle(theme.fg)
                         .multilineTextAlignment(.center)
 
                     Text("O Odysseus é um cliente do seu próprio servidor. Informe o endereço do seu servidor Odysseus para continuar.")
-                        .font(.ody(.subheadline, design: .monospaced))
+                        .font(.ody(.subheadline))
                         .foregroundStyle(theme.secondaryText)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
 
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Endereço do servidor Odysseus")
-                            .font(.ody(.caption, design: .monospaced))
+                            .font(.ody(.caption))
                             .foregroundStyle(theme.secondaryText)
                         TextField("https://odysseus.example.com", text: $text)
-                            .font(.ody(.body, design: .monospaced))
+                            .font(.ody(.body))
                             .foregroundStyle(theme.fg)
                             .textFieldStyle(.plain)
                             .autocorrectionDisabled()
@@ -58,7 +58,7 @@ struct ServerSetupView: View {
 
                     Button(action: save) {
                         Text("Salvar")
-                            .font(.ody(.headline, design: .monospaced))
+                            .font(.ody(.headline))
                             .frame(maxWidth: .infinity).padding(.vertical, 14)
                             .background(validURL == nil ? theme.panel : theme.accent,
                                         in: RoundedRectangle(cornerRadius: 12))

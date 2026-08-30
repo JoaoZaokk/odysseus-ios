@@ -78,7 +78,7 @@ struct MacSearchField: View {
                 .font(.ody(size: 12))
             TextField(LocalizedStringKey(prompt), text: $text)
                 .textFieldStyle(.plain)
-                .font(.ody(.subheadline, design: .monospaced))
+                .font(.ody(.subheadline))
                 .foregroundStyle(theme.fg)
             if !text.isEmpty {
                 Button { text = "" } label: {
@@ -134,12 +134,12 @@ private struct ScreenChromeContainer<L: View, T: View, C: View>: View {
                 }
                 VStack(alignment: .leading, spacing: 1) {
                     Text(LocalizedStringKey(title))
-                        .font(.ody(.headline, design: .monospaced))
+                        .font(.ody(.headline))
                         .foregroundStyle(theme.fg)
                         .lineLimit(1)
                     if let subtitle, !subtitle.isEmpty {
                         Text(LocalizedStringKey(subtitle))
-                            .font(.ody(size: 10, design: .monospaced))
+                            .font(.ody(size: 10))
                             .foregroundStyle(theme.secondaryText)
                             .lineLimit(1)
                     }

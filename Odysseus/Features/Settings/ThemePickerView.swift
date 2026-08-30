@@ -38,11 +38,11 @@ struct ThemePickerView: View {
     private var header: some View {
         HStack {
             Text("Tema")
-                .font(.ody(.headline, design: .monospaced))
+                .font(.ody(.headline))
                 .foregroundStyle(theme.fg)
             Spacer()
             Button("Concluído") { dismiss() }
-                .font(.ody(.body, design: .monospaced))
+                .font(.ody(.body))
                 .foregroundStyle(theme.accent)
                 .buttonStyle(.plain)
         }
@@ -70,7 +70,7 @@ struct ThemePickerView: View {
         // (verbatim, no lookup), leaking the PT base literal in other languages.
         Text(LocalizedStringKey(s))
             .textCase(.uppercase)
-            .font(.ody(.caption, design: .monospaced))
+            .font(.ody(.caption))
             .foregroundStyle(theme.secondaryText)
     }
 
@@ -94,7 +94,7 @@ struct ThemePickerView: View {
             // Transparency
             Toggle(isOn: Binding(get: { themes.transparency }, set: { themes.transparency = $0 })) {
                 Text("Transparência")
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                     .foregroundStyle(theme.fg)
             }
             .tint(theme.accent)
@@ -122,7 +122,7 @@ struct ThemePickerView: View {
     private func chip(_ label: String, selected: Bool, labelFont: Font? = nil, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(LocalizedStringKey(label))
-                .font(labelFont ?? .ody(size: 12, design: .monospaced))
+                .font(labelFont ?? .ody(size: 12))
                 .padding(.horizontal, 12).padding(.vertical, 7)
                 .foregroundStyle(selected ? .white : theme.secondaryText)
                 .background(selected ? theme.accent : theme.panel, in: Capsule())
@@ -151,7 +151,7 @@ struct ThemePickerView: View {
                             .foregroundStyle(theme.accent)
                     }
                     Text(t.name)
-                        .font(.ody(size: 12, design: .monospaced))
+                        .font(.ody(size: 12))
                         .foregroundStyle(theme.fg)
                     Spacer()
                 }
@@ -166,16 +166,16 @@ struct ThemePickerView: View {
             HStack(spacing: 6) {
                 BrandMark(size: 16)
                 Text("Odysseus")
-                    .font(.ody(size: 11, weight: .semibold, design: .monospaced))
+                    .font(.ody(size: 11, weight: .semibold))
                     .foregroundStyle(t.accent)
                 Spacer(minLength: 0)
             }
             Text("Como posso ajudar?")
-                .font(.ody(size: 10, design: .monospaced))
+                .font(.ody(size: 10))
                 .foregroundStyle(t.fg)
                 .lineLimit(1)
             Text("mimo-v2.5-pro")
-                .font(.ody(size: 8, design: .monospaced))
+                .font(.ody(size: 8))
                 .foregroundStyle(t.green)
             Spacer(minLength: 0)
             HStack(spacing: 5) {

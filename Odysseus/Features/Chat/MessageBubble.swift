@@ -49,7 +49,7 @@ struct MessageBubble: View {
         HStack(spacing: 6) {
             BrandMark(size: 16)
             Text(message.model?.split(separator: "/").last.map(String.init) ?? "Odysseus")
-                .font(.ody(size: 11, design: .monospaced))
+                .font(.ody(size: 11))
                 .foregroundStyle(theme.secondaryText)
             if !message.content.isEmpty {
                 Button {
@@ -75,7 +75,7 @@ struct MessageBubble: View {
                 TypingDots()
             } else if isUser {
                 Text(message.content)
-                    .font(.ody(.body, design: .monospaced))
+                    .font(.ody(.body))
                     .foregroundStyle(theme.fg)
                     .textSelection(.enabled)
             } else {
@@ -103,14 +103,14 @@ struct MessageBubble: View {
     private func thinkingBlock(_ text: String) -> some View {
         DisclosureGroup(isExpanded: $showThinking) {
             Text(text)
-                .font(.ody(size: 12, design: .monospaced))
+                .font(.ody(size: 12))
                 .foregroundStyle(theme.secondaryText)
                 .textSelection(.enabled)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 4)
         } label: {
             Label(LocalizedStringKey(isStreaming ? "Pensando…" : "Raciocínio"), systemImage: "brain")
-                .font(.ody(size: 12, design: .monospaced))
+                .font(.ody(size: 12))
                 .foregroundStyle(theme.secondaryText)
         }
         .tint(theme.secondaryText)

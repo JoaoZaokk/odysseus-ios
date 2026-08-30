@@ -218,10 +218,10 @@ struct RemindersSection: View {
                 default: EmptyView()
                 }
                 Toggle(isOn: $vm.synthesis) {
-                    Text("Resumir com IA").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text("Resumir com IA").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 }.tint(theme.accent)
                 Text("Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook.")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                     .fixedSize(horizontal: false, vertical: true)
                 if vm.synthesis {
                     SettingsUI.field("Persona da IA", $vm.persona, placeholder: "ex.: assistente direto e objetivo", theme: theme)
@@ -230,9 +230,9 @@ struct RemindersSection: View {
             HStack {
                 Button("Testar lembrete") { Task { await vm.test() } }
                     .buttonStyle(.plain).foregroundStyle(theme.fg)
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                 Spacer()
-                if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+                if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
                 SettingsUI.saveButton(theme: theme) { Task { await vm.save() } }
             }
         }
@@ -306,35 +306,35 @@ struct AgentToolsSection: View {
     var body: some View {
         SettingsScroll("Agent Tools", subtitle: "Limites de execução do agente e servidores MCP.") {
             SettingsCard {
-                Text("Execução").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                Text("Execução").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                 SettingsUI.field("Máx. de rounds", $vm.maxRounds, placeholder: "ex.: 8", theme: theme, numeric: true)
                 SettingsUI.field("Orçamento de tokens (entrada)", $vm.tokenBudget, placeholder: "ex.: 120000", theme: theme, numeric: true)
                 SettingsUI.field("Teto duro de tokens", $vm.tokenHardMax, placeholder: "ex.: 200000", theme: theme, numeric: true)
                 SettingsUI.field("Timeout do stream (s)", $vm.streamTimeout, placeholder: "ex.: 300", theme: theme, numeric: true)
                 Toggle(isOn: $vm.emailConfirm) {
-                    Text("Confirmar envio de email").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text("Confirmar envio de email").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 }.tint(theme.accent)
                 HStack {
                     Spacer()
-                    if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+                    if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
                     SettingsUI.saveButton(theme: theme) { Task { await vm.save() } }
                 }
             }
             BuiltinToolsCard(vm: vm)
             SettingsCard {
-                Text("Servidores MCP").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                Text("Servidores MCP").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                 if vm.servers.isEmpty {
                     Text("Nenhum servidor MCP conectado. Adicione pela web (Admin).")
-                        .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                 }
                 ForEach(vm.servers) { s in
                     HStack(spacing: 8) {
                         Circle().fill(s.status == "connected" ? theme.green : theme.secondaryText).frame(width: 7, height: 7)
-                        Text(s.name).font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg)
-                        if let st = s.status { Text(st).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText) }
+                        Text(s.name).font(.ody(size: 12)).foregroundStyle(theme.fg)
+                        if let st = s.status { Text(st).font(.ody(size: 10)).foregroundStyle(theme.secondaryText) }
                         Spacer()
                         Button("Reconectar") { Task { await vm.reconnect(s) } }
-                            .buttonStyle(.plain).foregroundStyle(theme.accent).font(.ody(size: 11, design: .monospaced))
+                            .buttonStyle(.plain).foregroundStyle(theme.accent).font(.ody(size: 11))
                     }
                 }
             }
@@ -410,23 +410,23 @@ struct BuiltinToolsCard: View {
             HStack(alignment: .firstTextBaseline) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Ferramentas integradas")
-                        .font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                        .font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                     Text("Habilite ou desabilite as ferramentas disponíveis ao agente.")
-                        .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 }
                 Spacer()
                 Text("\(enabledCount)/\(vm.tools.count)")
-                    .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                    .font(.ody(size: 11)).foregroundStyle(theme.accent)
             }
             if vm.tools.isEmpty {
-                Text("Carregando…").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text("Carregando…").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
             }
             ForEach(BuiltinToolCatalog.grouped(vm.tools), id: \.0.id) { cat, items in
                 categoryView(cat, items)
             }
             HStack {
                 Spacer()
-                if let n = vm.toolsNote { Text(n).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+                if let n = vm.toolsNote { Text(n).font(.ody(size: 11)).foregroundStyle(theme.green) }
                 if vm.savingTools { ProgressView().controlSize(.small) }
                 else { SettingsUI.saveButton(theme: theme) { Task { await vm.saveTools() } } }
             }
@@ -444,9 +444,9 @@ struct BuiltinToolsCard: View {
             } label: {
                 HStack(spacing: 8) {
                     Image(systemName: cat.icon).font(.ody(size: 12)).foregroundStyle(theme.accent).frame(width: 18)
-                    Text(LocalizedStringKey(cat.label)).font(.ody(size: 12, weight: .medium, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text(LocalizedStringKey(cat.label)).font(.ody(size: 12, weight: .medium)).foregroundStyle(theme.fg)
                     Spacer()
-                    Text("\(on)/\(items.count)").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    Text("\(on)/\(items.count)").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                     Image(systemName: isOpen ? "chevron.down" : "chevron.right")
                         .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 }
@@ -456,17 +456,17 @@ struct BuiltinToolsCard: View {
             if isOpen {
                 HStack(spacing: 10) {
                     Button("Ativar todas") { vm.setCategory(items.map(\.id), enabled: true) }
-                        .buttonStyle(.plain).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.accent)
+                        .buttonStyle(.plain).font(.ody(size: 10)).foregroundStyle(theme.accent)
                     Button("Desativar todas") { vm.setCategory(items.map(\.id), enabled: false) }
-                        .buttonStyle(.plain).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        .buttonStyle(.plain).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 }
                 .padding(.leading, 26).padding(.bottom, 4)
                 ForEach(items) { t in
                     Toggle(isOn: Binding(get: { t.enabled }, set: { _ in vm.toggleTool(t.id) })) {
                         VStack(alignment: .leading, spacing: 1) {
                             Text(BuiltinToolCatalog.label(t.id))
-                                .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg)
-                            Text(t.id).font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                .font(.ody(size: 12)).foregroundStyle(theme.fg)
+                            Text(t.id).font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
                         }
                     }
                     .tint(theme.accent)
@@ -567,41 +567,41 @@ struct SistemaSection: View {
 
     var body: some View {
         SettingsScroll("Sistema", subtitle: "Configurações gerais, backup e zona de perigo.") {
-            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
             SettingsCard {
                 SettingsUI.field("URL pública do app", $vm.publicURL, placeholder: "https://odysseus.exemplo.com", theme: theme)
                 HStack {
-                    Text("2FA").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text("2FA").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                     Spacer()
                     Text(vm.twoFA ? "ativo" : "inativo")
-                        .font(.ody(size: 11, design: .monospaced)).foregroundStyle(vm.twoFA ? theme.green : theme.secondaryText)
+                        .font(.ody(size: 11)).foregroundStyle(vm.twoFA ? theme.green : theme.secondaryText)
                     SettingsUI.saveButton(theme: theme) { Task { await vm.save() } }
                 }
             }
             SettingsCard {
-                Text("Backup de dados").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                Text("Backup de dados").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                 Text("Exporte memórias, presets, settings, skills e preferências como JSON.")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 Button { Task { await vm.export() } } label: {
                     Label("Exportar dados", systemImage: "square.and.arrow.up")
-                        .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                        .font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 }.buttonStyle(.plain)
             }
             TerminalLogsCard(vm: vm)
             SettingsCard {
-                Text("⚠️ Zona de perigo").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.danger)
+                Text("⚠️ Zona de perigo").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.danger)
                 Text("Irreversível. Cada item apaga uma categoria.")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 ForEach(dangers, id: \.cat) { d in
                     Rectangle().fill(theme.border).frame(height: 1)
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(d.label).font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg)
-                            Text(d.desc).font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText).lineLimit(2)
+                            Text(d.label).font(.ody(size: 12)).foregroundStyle(theme.fg)
+                            Text(d.desc).font(.ody(size: 9)).foregroundStyle(theme.secondaryText).lineLimit(2)
                         }
                         Spacer()
                         Button("Apagar", role: .destructive) { confirming = (d.cat, d.label) }
-                            .buttonStyle(.plain).foregroundStyle(theme.danger).font(.ody(size: 12, design: .monospaced))
+                            .buttonStyle(.plain).foregroundStyle(theme.danger).font(.ody(size: 12))
                     }
                 }
             }
@@ -632,9 +632,9 @@ struct TerminalLogsCard: View {
             HStack(alignment: .firstTextBaseline) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Logs do sistema")
-                        .font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                        .font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                     Text("Diagnóstico ao vivo do processo Odysseus.")
-                        .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 }
                 Spacer()
                 Button { Task { await vm.loadLogs() } } label: {
@@ -646,7 +646,7 @@ struct TerminalLogsCard: View {
                 HStack(spacing: 6) {
                     Image(systemName: "magnifyingglass").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                     TextField("Buscar nos logs…", text: $vm.logSearch)
-                        .textFieldStyle(.plain).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.fg)
+                        .textFieldStyle(.plain).font(.ody(size: 11)).foregroundStyle(theme.fg)
                         .autocorrectionDisabled()
                 }
                 .padding(.horizontal, 8).padding(.vertical, 6)
@@ -662,13 +662,13 @@ struct TerminalLogsCard: View {
                 } label: { menuChip(L("%lld linhas", vm.logLimit)) }
             }
             if let e = vm.logsError {
-                Text("Falha ao carregar logs: \(e)").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.accent)
+                Text("Falha ao carregar logs: \(e)").font(.ody(size: 10)).foregroundStyle(theme.accent)
             }
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 2) {
                     ForEach(Array(vm.filteredLogs.enumerated()), id: \.offset) { _, line in
                         Text(line)
-                            .font(.ody(size: 9, design: .monospaced))
+                            .font(.ody(size: 9))
                             .foregroundStyle(color(SistemaVM.logLevel(line)))
                             .textSelection(.enabled)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -676,7 +676,7 @@ struct TerminalLogsCard: View {
                     }
                     if vm.filteredLogs.isEmpty && !vm.loadingLogs {
                         Text(vm.logs.isEmpty ? "Sem logs." : "Nenhuma linha corresponde ao filtro.")
-                            .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                     }
                 }
                 .padding(8)
@@ -685,13 +685,13 @@ struct TerminalLogsCard: View {
             .background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
             Text("\(vm.filteredLogs.count) de \(vm.logs.count) linhas")
-                .font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
         }
     }
 
     @ViewBuilder private func menuChip(_ label: String) -> some View {
         HStack(spacing: 4) {
-            Text(LocalizedStringKey(label)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(label)).font(.ody(size: 11)).foregroundStyle(theme.fg)
             Image(systemName: "chevron.up.chevron.down").font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
         }
         .padding(.horizontal, 8).padding(.vertical, 6)
@@ -753,13 +753,13 @@ struct UsuariosSection: View {
 
     var body: some View {
         SettingsScroll("Usuários", subtitle: "Contas com acesso a este servidor.") {
-            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent) }
+            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.accent) }
             SettingsCard {
                 Toggle(isOn: Binding(get: { vm.signupOn }, set: { _ in Task { await vm.toggleSignup() } })) {
                     VStack(alignment: .leading, spacing: 1) {
-                        Text("Cadastro aberto").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                        Text("Cadastro aberto").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                         Text("Qualquer um pode criar conta pela tela de login.")
-                            .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                     }
                 }.tint(theme.accent)
             }
@@ -767,9 +767,9 @@ struct UsuariosSection: View {
                 SettingsCard {
                     HStack(spacing: 8) {
                         Image(systemName: "person.crop.circle").foregroundStyle(theme.accent)
-                        Text(u.username).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                        Text(u.username).font(.ody(.subheadline)).foregroundStyle(theme.fg)
                         if u.isAdmin {
-                            Text("ADMIN").font(.ody(size: 9, design: .monospaced)).foregroundStyle(.white)
+                            Text("ADMIN").font(.ody(size: 9)).foregroundStyle(.white)
                                 .padding(.horizontal, 5).padding(.vertical, 1).background(theme.accent, in: Capsule())
                         }
                         Spacer()
@@ -783,16 +783,16 @@ struct UsuariosSection: View {
                         Button("Remover", role: .destructive) { Task { await vm.remove(u) } }
                             .buttonStyle(.plain).foregroundStyle(theme.accent)
                     }
-                    .font(.ody(size: 12, design: .monospaced))
+                    .font(.ody(size: 12))
                 }
             }
             SettingsCard {
-                Text("Adicionar usuário").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                Text("Adicionar usuário").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                 SettingsUI.field("Usuário", $vm.newUser, placeholder: "nome", theme: theme)
                 SettingsUI.field("Senha (mín. 8)", $vm.newPass, placeholder: "••••••••", theme: theme, secure: true)
                 HStack {
                     Toggle(isOn: $vm.newAdmin) {
-                        Text("Admin").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                        Text("Admin").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                     }.tint(theme.accent).fixedSize()
                     Spacer()
                     SettingsUI.saveButton(theme: theme, label: "Criar") { Task { await vm.add() } }
@@ -848,26 +848,26 @@ struct IntegracoesSection: View {
                 }
             } label: {
                 Label("Adicionar integração", systemImage: "plus")
-                    .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.accent)
+                    .font(.ody(.subheadline)).foregroundStyle(theme.accent)
             }
             .menuStyle(.borderlessButton)
 
             if vm.loading && vm.items.isEmpty { ProgressView().tint(theme.accent) }
-            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green) }
+            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
             if vm.items.isEmpty && !vm.loading {
                 Text("Nenhuma integração ainda — use “Adicionar integração” acima.")
-                    .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 12)).foregroundStyle(theme.secondaryText)
             }
             ForEach(vm.items) { i in
                 SettingsCard {
                     HStack(spacing: 8) {
                         Circle().fill(i.enabled ? theme.green : theme.secondaryText).frame(width: 7, height: 7)
-                        Text(i.name).font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                        Text(i.name).font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                         Spacer()
-                        if let t = i.authType { Text(t).font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText) }
+                        if let t = i.authType { Text(t).font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
                     }
                     if let u = i.baseURL, !u.isEmpty {
-                        Text(u).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText).lineLimit(1)
+                        Text(u).font(.ody(size: 10)).foregroundStyle(theme.secondaryText).lineLimit(1)
                     }
                     HStack {
                         Button("Testar") { Task { await vm.test(i) } }.buttonStyle(.plain).foregroundStyle(theme.fg)
@@ -875,7 +875,7 @@ struct IntegracoesSection: View {
                         Button("Remover", role: .destructive) { Task { await vm.remove(i) } }
                             .buttonStyle(.plain).foregroundStyle(theme.accent)
                     }
-                    .font(.ody(size: 12, design: .monospaced))
+                    .font(.ody(size: 12))
                 }
             }
         }
@@ -942,12 +942,12 @@ enum SettingsUI {
     static func field(_ label: String, _ bind: Binding<String>, placeholder: String, theme: Theme,
                       numeric: Bool = false, secure: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(label)).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             Group {
                 if secure { SecureField(LocalizedStringKey(placeholder), text: bind) }
                 else { TextField(LocalizedStringKey(placeholder), text: bind) }
             }
-            .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+            .textFieldStyle(.plain).font(.ody(.subheadline)).foregroundStyle(theme.fg)
             .autocorrectionDisabled()
             .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
@@ -963,12 +963,12 @@ enum SettingsUI {
     static func menuRow(_ label: String, value: String, options: [(id: String, label: String)],
                         theme: Theme, _ pick: @escaping (String) -> Void) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(label)).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             Menu {
                 ForEach(options, id: \.id) { o in Button(LocalizedStringKey(o.label)) { pick(o.id) } }
             } label: {
                 HStack {
-                    Text(LocalizedStringKey(value)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
+                    Text(LocalizedStringKey(value)).font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
                     Spacer()
                     Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
                 }
@@ -980,12 +980,12 @@ enum SettingsUI {
 
     static func menuRow(_ label: String, value: String, options: [String], theme: Theme, _ pick: @escaping (String) -> Void) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(label)).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             Menu {
                 ForEach(options, id: \.self) { o in Button(o) { pick(o) } }
             } label: {
                 HStack {
-                    Text(value).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
+                    Text(value).font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
                     Spacer()
                     Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
                 }
@@ -997,7 +997,7 @@ enum SettingsUI {
 
     static func saveButton(theme: Theme, label: String = "Salvar", _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(LocalizedStringKey(label)).font(.ody(.subheadline, design: .monospaced, weight: .semibold))
+            Text(LocalizedStringKey(label)).font(.ody(.subheadline, weight: .semibold))
                 .padding(.horizontal, 16).padding(.vertical, 8).foregroundStyle(.white)
                 .background(theme.accent, in: RoundedRectangle(cornerRadius: 10))
         }

@@ -69,19 +69,19 @@ struct DeepResearchView: View {
                     // Active research — the live animated node graph.
                     if let run = runner.run {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Active").font(.ody(.headline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                            Text("Active").font(.ody(.headline).weight(.semibold)).foregroundStyle(theme.fg)
                             ResearchActiveCard(run: run, elapsed: runner.elapsed) { runner.close() }
                         }
                         .animation(.spring(response: 0.4, dampingFraction: 0.85), value: run.rounds.count)
                     }
 
                     card {
-                        Text("Research").font(.ody(.headline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                        Text("Research").font(.ody(.headline).weight(.semibold)).foregroundStyle(theme.fg)
                         Text("Pesquisa web multi-etapas com um agente LLM no loop.")
-                            .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         // Composer
                         TextEditor(text: $vm.prompt)
-                            .font(.ody(.subheadline, design: .monospaced))
+                            .font(.ody(.subheadline))
                             .foregroundStyle(theme.fg)
                             .scrollContentBackground(.hidden)
                             .frame(minHeight: 90)
@@ -91,7 +91,7 @@ struct DeepResearchView: View {
                             .overlay(alignment: .topLeading) {
                                 if vm.prompt.isEmpty {
                                     Text("ex.: As teorias do colapso da Idade do Bronze e as evidências")
-                                        .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                        .font(.ody(.subheadline)).foregroundStyle(theme.secondaryText)
                                         .padding(.horizontal, 13).padding(.vertical, 16).allowsHitTesting(false)
                                 }
                             }
@@ -110,7 +110,7 @@ struct DeepResearchView: View {
                             Spacer()
                             Button { start() } label: {
                                 Label("Start", systemImage: "play.fill")
-                                    .font(.ody(.subheadline, design: .monospaced).weight(.semibold))
+                                    .font(.ody(.subheadline).weight(.semibold))
                                     .padding(.horizontal, 16).padding(.vertical, 9)
                                     .foregroundStyle(.white)
                                     .background(vm.canStart ? theme.accent : theme.border, in: RoundedRectangle(cornerRadius: 10))
@@ -122,13 +122,13 @@ struct DeepResearchView: View {
                     // Past research — real list from /api/research/library.
                     card {
                         HStack {
-                            Text("Pesquisas anteriores").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                            Text("Pesquisas anteriores").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                             Spacer()
-                            Text("\(vm.past.count)").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            Text("\(vm.past.count)").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         }
                         if vm.past.isEmpty {
                             Text("As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado.")
-                                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         }
                         ForEach(vm.past) { job in
                             Divider().overlay(theme.border)
@@ -192,7 +192,7 @@ struct DeepResearchView: View {
     private func pastRow(_ job: ResearchJob) -> some View {
         let failed = (job.source_count ?? 0) == 0 || (job.status == "error")
         return VStack(alignment: .leading, spacing: 6) {
-            Text(job.query).font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(2)
+            Text(job.query).font(.ody(size: 12)).foregroundStyle(theme.fg).lineLimit(2)
             HStack(spacing: 8) {
                 if let c = job.category, !c.isEmpty {
                     Text(c).foregroundStyle(theme.secondaryText)
@@ -202,7 +202,7 @@ struct DeepResearchView: View {
                 if let r = job.rounds, r > 0 { Text("· \(r) rodadas").foregroundStyle(theme.secondaryText) }
                 if let d = job.duration, !d.isEmpty { Text("· \(d)").foregroundStyle(theme.secondaryText) }
             }
-            .font(.ody(size: 10, design: .monospaced))
+            .font(.ody(size: 10))
             HStack(spacing: 14) {
                 Button { workspace.openVisualReport(id: job.id, title: job.query) } label: {
                     Label("Relatório visual", systemImage: "rectangle.righthalf.inset.filled")
@@ -210,7 +210,7 @@ struct DeepResearchView: View {
                 .buttonStyle(.plain).foregroundStyle(theme.green)
                 Spacer()
             }
-            .font(.ody(size: 11, design: .monospaced))
+            .font(.ody(size: 11))
         }
         .padding(.vertical, 4)
     }
@@ -227,7 +227,7 @@ struct DeepResearchView: View {
 
     private func chip(_ label: String, selected: Bool, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(LocalizedStringKey(label)).font(.ody(size: 12, design: .monospaced))
+            Text(LocalizedStringKey(label)).font(.ody(size: 12))
                 .padding(.horizontal, 12).padding(.vertical, 6)
                 .foregroundStyle(selected ? .white : theme.secondaryText)
                 .background(selected ? theme.accent : theme.bg, in: Capsule())
@@ -242,10 +242,10 @@ struct DeepResearchView: View {
 
     private func labeledMenuRaw<M: View>(_ label: String, value: String, @ViewBuilder _ menu: () -> M) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(label.uppercased()).font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(label.uppercased()).font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
             Menu { menu() } label: {
                 HStack {
-                    Text(value).font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
+                    Text(value).font(.ody(size: 12)).foregroundStyle(theme.fg).lineLimit(1)
                     Spacer(minLength: 4)
                     Image(systemName: "chevron.up.chevron.down").font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
                 }
@@ -281,7 +281,7 @@ struct VisualReportView: View {
                     Image(systemName: failed ? "exclamationmark.triangle" : "doc.richtext")
                         .font(.ody(size: 34)).foregroundStyle(theme.accent)
                     Text(failed ? "Não consegui carregar o relatório." : "Relatório vazio.")
-                        .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        .font(.ody(size: 12)).foregroundStyle(theme.secondaryText)
                 }
             }
         }
@@ -308,16 +308,16 @@ struct VisualReportView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 // Hero
-                Text(r.title).font(.ody(.title2, design: .monospaced, weight: .bold)).foregroundStyle(theme.fg)
+                Text(r.title).font(.ody(.title2, weight: .bold)).foregroundStyle(theme.fg)
                 if let s = r.subtitle, !s.isEmpty {
-                    Text(s).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    Text(s).font(.ody(.subheadline)).foregroundStyle(theme.secondaryText)
                 }
                 if !r.stats.isEmpty {
                     HStack(spacing: 8) {
                         ForEach(Array(r.stats.enumerated()), id: \.offset) { _, st in
                             VStack(spacing: 1) {
-                                Text(st.value).font(.ody(size: 13, weight: .semibold, design: .monospaced)).foregroundStyle(theme.accent)
-                                Text(st.label.uppercased()).font(.ody(size: 8, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                Text(st.value).font(.ody(size: 13, weight: .semibold)).foregroundStyle(theme.accent)
+                                Text(st.label.uppercased()).font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
                             }
                             .padding(.horizontal, 10).padding(.vertical, 6)
                             .background(theme.panel, in: RoundedRectangle(cornerRadius: 8))
@@ -334,7 +334,7 @@ struct VisualReportView: View {
                 if !r.sources.isEmpty {
                     Divider().overlay(theme.border)
                     Text("Fontes (\(r.sources.count))")
-                        .font(.ody(.headline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                        .font(.ody(.headline, weight: .semibold)).foregroundStyle(theme.fg)
                     ForEach(r.sources) { sourceRow($0) }
                 }
             }
@@ -347,11 +347,11 @@ struct VisualReportView: View {
         switch block {
         case .heading(let level, let text):
             Text(text)
-                .font(.ody(level == 2 ? .title3 : .headline, design: .monospaced, weight: .semibold))
+                .font(.ody(level == 2 ? .title3 : .headline, weight: .semibold))
                 .foregroundStyle(theme.fg)
                 .padding(.top, level == 2 ? 8 : 2)
         case .paragraph(let text):
-            Text(text).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg.opacity(0.92))
+            Text(text).font(.ody(.subheadline)).foregroundStyle(theme.fg.opacity(0.92))
                 .fixedSize(horizontal: false, vertical: true).lineSpacing(3)
         case .image(let url):
             // Resolve through config.resolve so only http(s) survive (blocks server-driven
@@ -389,7 +389,7 @@ struct VisualReportView: View {
         HStack(spacing: 0) {
             ForEach(0..<cols, id: \.self) { c in
                 Text(c < cells.count ? cells[c] : "")
-                    .font(.ody(size: 11, weight: header ? .semibold : .regular, design: .monospaced))
+                    .font(.ody(size: 11, weight: header ? .semibold : .regular))
                     .foregroundStyle(header ? theme.accent : theme.fg)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)
@@ -404,12 +404,12 @@ struct VisualReportView: View {
     private func sourceRow(_ s: ReportSource) -> some View {
         Link(destination: URL(string: s.url) ?? URL(string: "https://")!) {
             HStack(alignment: .top, spacing: 8) {
-                Text(s.num).font(.ody(size: 11, weight: .semibold, design: .monospaced))
+                Text(s.num).font(.ody(size: 11, weight: .semibold))
                     .foregroundStyle(theme.accent).frame(width: 22, alignment: .trailing)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(s.title).font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text(s.title).font(.ody(size: 12)).foregroundStyle(theme.fg)
                         .lineLimit(2).multilineTextAlignment(.leading)
-                    Text(s.domain).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    Text(s.domain).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 }
                 Spacer(minLength: 0)
                 Image(systemName: "arrow.up.right.square").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)

@@ -16,18 +16,18 @@ struct EmailLoginHelpView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     Text(LocalizedStringKey(EmailLoginGuide.title))
-                        .font(.ody(.title3, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                        .font(.ody(.title3).weight(.semibold)).foregroundStyle(theme.fg)
                     Text(LocalizedStringKey(EmailLoginGuide.intro))
-                        .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg.opacity(0.9))
+                        .font(.ody(.subheadline)).foregroundStyle(theme.fg.opacity(0.9))
                         .fixedSize(horizontal: false, vertical: true)
 
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(Array(EmailLoginGuide.steps.enumerated()), id: \.offset) { i, step in
                             HStack(alignment: .top, spacing: 10) {
                                 Text("\(i + 1)")
-                                    .font(.ody(size: 12, weight: .bold, design: .monospaced)).foregroundStyle(.white)
+                                    .font(.ody(size: 12, weight: .bold)).foregroundStyle(.white)
                                     .frame(width: 22, height: 22).background(theme.accent, in: Circle())
-                                Text(LocalizedStringKey(step)).font(.ody(size: 13, design: .monospaced)).foregroundStyle(theme.fg)
+                                Text(LocalizedStringKey(step)).font(.ody(size: 13)).foregroundStyle(theme.fg)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                         }
@@ -38,10 +38,10 @@ struct EmailLoginHelpView: View {
 
                     VStack(alignment: .leading, spacing: 6) {
                         Text(LocalizedStringKey(EmailLoginGuide.serversTitle))
-                            .font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                            .font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                         ForEach(EmailLoginGuide.servers, id: \.self) { s in
                             // Host names and ports: not localized on purpose.
-                            Text(s).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                            Text(s).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                                 .textSelection(.enabled)
                         }
                     }
@@ -51,7 +51,7 @@ struct EmailLoginHelpView: View {
 
                     HStack(alignment: .top, spacing: 8) {
                         Image(systemName: "lightbulb").foregroundStyle(theme.accent)
-                        Text(LocalizedStringKey(EmailLoginGuide.tip)).font(.ody(size: 12, design: .monospaced))
+                        Text(LocalizedStringKey(EmailLoginGuide.tip)).font(.ody(size: 12))
                             .foregroundStyle(theme.secondaryText)
                             .fixedSize(horizontal: false, vertical: true)
                     }

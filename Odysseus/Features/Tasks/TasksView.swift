@@ -139,9 +139,9 @@ struct TasksView: View {
         } else if vm.tasks.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "checklist").font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Sem tarefas").font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                Text("Sem tarefas").font(.ody(.headline)).foregroundStyle(theme.fg)
                 Text("Agentes agendados do Odysseus aparecem aqui.")
-                    .font(.ody(.footnote, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(.footnote)).foregroundStyle(theme.secondaryText)
             }.padding(40)
         } else {
             List {
@@ -155,16 +155,16 @@ struct TasksView: View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
                 Circle().fill(t.isPaused ? theme.secondaryText : theme.green).frame(width: 8, height: 8)
-                Text(t.name).font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                Text(t.name).font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                 Spacer()
                 if vm.busyID == t.id { ProgressView().controlSize(.small) }
             }
-            Text(t.scheduleText).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(t.scheduleText).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
             HStack(spacing: 12) {
                 if let last = t.lastRun { Label(relative(last), systemImage: "clock.arrow.circlepath").labelStyle(.titleAndIcon) }
                 Label("\(t.runCount)x", systemImage: "repeat")
             }
-            .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
 
             HStack(spacing: 8) {
                 actionButton(t.isPaused ? "Retomar" : "Pausar", system: t.isPaused ? "play.fill" : "pause.fill") {
@@ -179,7 +179,7 @@ struct TasksView: View {
     private func actionButton(_ label: String, system: String, _ tap: @escaping () -> Void) -> some View {
         Button(action: tap) {
             Label(LocalizedStringKey(label), systemImage: system)
-                .font(.ody(size: 11, design: .monospaced))
+                .font(.ody(size: 11))
                 .padding(.horizontal, 10).padding(.vertical, 5)
                 .background(theme.panel, in: Capsule())
                 .overlay(Capsule().stroke(theme.border, lineWidth: 1))

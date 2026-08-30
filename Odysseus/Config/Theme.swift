@@ -179,10 +179,16 @@ enum Appearance {
 
 extension Font {
     /// Drop-in for `Font.system` that honors the chosen `AppFontFamily`.
-    static func ody(_ style: Font.TextStyle, design: Font.Design = .monospaced, weight: Font.Weight = .regular) -> Font {
+    ///
+    /// There is deliberately no `design:` here. Both overloads used to take one
+    /// and throw it away — 360 call sites passed `.monospaced` and no rendered
+    /// font ever changed, because the family the user picked decides the design.
+    /// An interface that advertises a knob it does not turn is worse than one
+    /// that never offered it.
+    static func ody(_ style: Font.TextStyle, weight: Font.Weight = .regular) -> Font {
         Appearance.font(style: style, weight: weight)
     }
-    static func ody(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .monospaced) -> Font {
+    static func ody(size: CGFloat, weight: Font.Weight = .regular) -> Font {
         Appearance.font(size: size, weight: weight)
     }
 }

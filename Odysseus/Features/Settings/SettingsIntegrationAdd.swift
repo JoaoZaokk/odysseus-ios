@@ -110,7 +110,7 @@ struct AddIntegrationView: View {
                     }
                     group { fields }
                     if let e = vm.error {
-                        Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                        Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.accent)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }
@@ -155,7 +155,7 @@ struct AddIntegrationView: View {
             if vm.authType != "none" { f("API key", $vm.apiKey, "token/key", secure: true) }
         case .claude, .codex:
             Text("Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\").")
-                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
             f("Nome", $vm.name, "Claude Agent — laptop")
         case .mcp:

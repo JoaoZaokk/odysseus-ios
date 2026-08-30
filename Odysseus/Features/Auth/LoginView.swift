@@ -23,10 +23,10 @@ struct LoginView: View {
                 VStack(spacing: 10) {
                     BrandMark(size: 64)
                     Text("Odysseus")
-                        .font(.ody(.largeTitle, design: .monospaced).weight(.semibold))
+                        .font(.ody(.largeTitle).weight(.semibold))
                         .foregroundStyle(theme.fg)
                     Text(serverLabel)
-                        .font(.ody(.footnote, design: .monospaced))
+                        .font(.ody(.footnote))
                         .foregroundStyle(theme.secondaryText)
                         .onTapGesture { showServerSheet = true }
                 }
@@ -53,7 +53,7 @@ struct LoginView: View {
 
                     Toggle(isOn: $remember) {
                         Text("Manter conectado")
-                            .font(.ody(.subheadline, design: .monospaced))
+                            .font(.ody(.subheadline))
                             .foregroundStyle(theme.secondaryText)
                     }
                     .tint(theme.accent)
@@ -62,7 +62,7 @@ struct LoginView: View {
 
                 if let err = app.loginError {
                     Text(LocalizedStringKey(err))
-                        .font(.ody(.footnote, design: .monospaced))
+                        .font(.ody(.footnote))
                         .foregroundStyle(theme.accent)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -72,7 +72,7 @@ struct LoginView: View {
                     HStack {
                         if app.loggingIn { ProgressView().tint(.white) }
                         Text(LocalizedStringKey(app.totpRequired ? "Verificar" : "Entrar"))
-                            .font(.ody(.headline, design: .monospaced))
+                            .font(.ody(.headline))
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
@@ -116,7 +116,7 @@ struct LoginView: View {
     @ViewBuilder
     private func field(title: String, text: Binding<String>, field: Field) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(LocalizedStringKey(title)).font(.ody(.caption, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(title)).font(.ody(.caption)).foregroundStyle(theme.secondaryText)
             TextField("", text: text)
                 .focused($focus, equals: field)
                 .styledInput(theme)
@@ -126,7 +126,7 @@ struct LoginView: View {
     @ViewBuilder
     private func secureField(title: String, text: Binding<String>, field: Field) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(LocalizedStringKey(title)).font(.ody(.caption, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(LocalizedStringKey(title)).font(.ody(.caption)).foregroundStyle(theme.secondaryText)
             SecureField("", text: text)
                 .textContentType(.password)
                 .focused($focus, equals: field)
@@ -138,7 +138,7 @@ struct LoginView: View {
 private extension View {
     func styledInput(_ theme: Theme) -> some View {
         self
-            .font(.ody(.body, design: .monospaced))
+            .font(.ody(.body))
             .foregroundStyle(theme.fg)
             .padding(.horizontal, 14).padding(.vertical, 12)
             .background(theme.panel, in: RoundedRectangle(cornerRadius: 10))

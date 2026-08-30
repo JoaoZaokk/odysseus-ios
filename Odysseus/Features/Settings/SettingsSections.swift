@@ -11,10 +11,10 @@ struct ServerSection: View {
     var body: some View {
         SettingsScroll("Servidor", subtitle: "Endereço do servidor Odysseus.") {
             SettingsCard {
-                Text("URL").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text("URL").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                 TextField("https://odysseus.example.com", text: $text)
                     .textFieldStyle(.plain)
-                    .font(.ody(.body, design: .monospaced)).foregroundStyle(theme.fg)
+                    .font(.ody(.body)).foregroundStyle(theme.fg)
                     .textInputAutocapitalization(.never).autocorrectionDisabled().keyboardType(.URL)
                     .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
@@ -24,11 +24,11 @@ struct ServerSection: View {
                     }
                     .buttonStyle(.plain).foregroundStyle(theme.accent)
                     .disabled(ServerConfig.normalize(text) == nil)
-                    if saved { Label("Salvo", systemImage: "checkmark.circle.fill").foregroundStyle(theme.green).font(.ody(size: 11, design: .monospaced)) }
+                    if saved { Label("Salvo", systemImage: "checkmark.circle.fill").foregroundStyle(theme.green).font(.ody(size: 11)) }
                     Spacer()
                 }
                 Text("Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio.")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             }
         }
         .onAppear { text = app.serverConfig.baseURL.absoluteString }
@@ -57,7 +57,7 @@ struct AccountSection: View {
                 row("Usuário", value: app.username ?? "—")
                 Rectangle().fill(theme.border).frame(height: 1)
                 HStack {
-                    Text("2FA").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                    Text("2FA").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                     Spacer()
                     switch twoFA {
                     case .some(true): Label("Ativado", systemImage: "checkmark.shield.fill").foregroundStyle(theme.green)
@@ -65,11 +65,11 @@ struct AccountSection: View {
                     case .none: ProgressView().controlSize(.small)
                     }
                 }
-                .font(.ody(size: 12, design: .monospaced))
+                .font(.ody(size: 12))
             }
 
             SettingsCard {
-                Text("Trocar senha").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                Text("Trocar senha").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                 secure("Senha atual", $cur)
                 secure("Nova senha", $nw)
                 secure("Confirmar nova senha", $confirm)
@@ -78,35 +78,35 @@ struct AccountSection: View {
                         .buttonStyle(.plain).foregroundStyle(theme.accent)
                         .disabled(cur.isEmpty || nw.count < 4 || nw != confirm)
                     if let m = pwMsg {
-                        Text(m).font(.ody(size: 11, design: .monospaced)).foregroundStyle(pwOK ? theme.green : theme.accent)
+                        Text(m).font(.ody(size: 11)).foregroundStyle(pwOK ? theme.green : theme.accent)
                     }
                     Spacer()
                 }
             }
 
             SettingsCard {
-                Text("Segurança (\(BiometricLock.label))").font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                Text("Segurança (\(BiometricLock.label))").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                 if BiometricLock.available {
                     Toggle(isOn: $appLock) {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Bloquear o app").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                            Text("Bloquear o app").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                             Text("Pede \(BiometricLock.label) ao abrir e ao voltar pro app.")
-                                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         }
                     }.tint(theme.accent)
                     Rectangle().fill(theme.border).frame(height: 1)
                     Toggle(isOn: $bioAutoLogin) {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Exigir no login automático").font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                            Text("Exigir no login automático").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                             Text("Pede \(BiometricLock.label) antes de usar a senha salva.")
-                                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         }
                     }.tint(theme.accent)
                     Text("Opcional — desligado por padrão.")
-                        .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 } else {
                     Text("Biometria/senha do dispositivo indisponível neste aparelho.")
-                        .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                        .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                 }
             }
 
@@ -127,14 +127,14 @@ struct AccountSection: View {
 
     private func row(_ label: String, value: String) -> some View {
         HStack {
-            Text(LocalizedStringKey(label)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(label)).font(.ody(.subheadline)).foregroundStyle(theme.fg)
             Spacer()
-            Text(value).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Text(value).font(.ody(.subheadline)).foregroundStyle(theme.secondaryText)
         }
     }
     private func secure(_ ph: String, _ bind: Binding<String>) -> some View {
         SecureField(ph, text: bind)
-            .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+            .textFieldStyle(.plain).font(.ody(.subheadline)).foregroundStyle(theme.fg)
             .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
     }
@@ -231,13 +231,13 @@ struct SearchSection: View {
                     field($vm.cx) { Task { await vm.save() } }
                 }
                 if !vm.status.isEmpty {
-                    Text(LocalizedStringKey(vm.status)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                    Text(LocalizedStringKey(vm.status)).font(.ody(size: 11)).foregroundStyle(theme.green)
                 }
             }
             SettingsCard {
-                Text("Deep Research").font(.ody(.subheadline, design: .monospaced, weight: .semibold)).foregroundStyle(theme.fg)
+                Text("Deep Research").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                 Text("Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA.")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 HStack(spacing: 10) {
                     VStack(alignment: .leading, spacing: 3) { label("Max tokens"); field($vm.maxTokens) { Task { await vm.save() } } }
                     VStack(alignment: .leading, spacing: 3) { label("Extração paralela"); field($vm.extractParallel) { Task { await vm.save() } } }
@@ -252,10 +252,10 @@ struct SearchSection: View {
     }
 
     private func label(_ s: String) -> some View {
-        Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+        Text(LocalizedStringKey(s)).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
     }
     private func menuLabel(_ s: String) -> some View {
-        HStack { Text(LocalizedStringKey(s)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg); Spacer(); Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
+        HStack { Text(LocalizedStringKey(s)).font(.ody(.subheadline)).foregroundStyle(theme.fg); Spacer(); Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
             .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
     }
@@ -263,7 +263,7 @@ struct SearchSection: View {
         Group {
             if secure { SecureField("", text: bind) } else { TextField("", text: bind) }
         }
-        .textFieldStyle(.plain).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+        .textFieldStyle(.plain).font(.ody(.subheadline)).foregroundStyle(theme.fg)
         .autocorrectionDisabled().textInputAutocapitalization(.never)
         .onSubmit(onCommit)
         .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
@@ -283,7 +283,7 @@ struct EmailSection: View {
         SettingsScroll("Contas de email", subtitle: "Conecte contas IMAP/SMTP para ler e enviar.") {
             Button { showAdd = true } label: {
                 Label("Adicionar conta", systemImage: "plus")
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
             }
             .buttonStyle(.plain).foregroundStyle(theme.accent)
 
@@ -295,7 +295,7 @@ struct EmailSection: View {
                         HStack(spacing: 10) {
                             Image(systemName: "person.crop.circle.badge.plus").font(.ody(size: 22)).foregroundStyle(theme.accent)
                             Text("Nenhuma conta — adicione uma conta IMAP.")
-                                .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                .font(.ody(size: 12)).foregroundStyle(theme.secondaryText)
                             Spacer()
                             Image(systemName: "chevron.right").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                         }
@@ -307,14 +307,14 @@ struct EmailSection: View {
                 SettingsCard {
                     HStack(spacing: 6) {
                         Text(acc.name.isEmpty ? acc.fromAddress : acc.name)
-                            .font(.ody(.subheadline, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
+                            .font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                         if acc.isDefault {
-                            Text("padrão").font(.ody(size: 9, design: .monospaced)).foregroundStyle(.white)
+                            Text("padrão").font(.ody(size: 9)).foregroundStyle(.white)
                                 .padding(.horizontal, 5).padding(.vertical, 1).background(theme.accent, in: Capsule())
                         }
                         Spacer()
                     }
-                    Text(acc.subtitle).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText).lineLimit(1)
+                    Text(acc.subtitle).font(.ody(size: 11)).foregroundStyle(theme.secondaryText).lineLimit(1)
                     HStack {
                         Spacer()
                         if !acc.isDefault {
@@ -324,10 +324,10 @@ struct EmailSection: View {
                         Button("Remover", role: .destructive) { Task { await vm.delete(acc) } }
                             .buttonStyle(.plain).foregroundStyle(theme.accent)
                     }
-                    .font(.ody(size: 12, design: .monospaced))
+                    .font(.ody(size: 12))
                 }
             }
-            if let e = vm.error { Text(LocalizedStringKey(e)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent) }
+            if let e = vm.error { Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.accent) }
         }
         .task { await vm.load() }
         .sheet(isPresented: $showAdd) {

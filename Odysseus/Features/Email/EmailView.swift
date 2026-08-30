@@ -79,7 +79,7 @@ struct EmailView: View {
                 // which leave the previous mail on screen — showed nothing at all.
                 if let e = vm.error, !vm.emails.isEmpty {
                     Text(LocalizedStringKey(e))
-                        .font(.ody(size: 11, design: .monospaced))
+                        .font(.ody(size: 11))
                         .foregroundStyle(theme.accent)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 14).padding(.top, 6)
@@ -108,7 +108,7 @@ struct EmailView: View {
         if vm.emails.isEmpty && vm.loading {
             VStack(spacing: 10) {
                 ProgressView().tint(theme.accent)
-                Text("Carregando a caixa…").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text("Carregando a caixa…").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
             }
         } else if vm.emails.isEmpty, let err = vm.error {
             VStack(spacing: 14) {
@@ -116,24 +116,24 @@ struct EmailView: View {
                           title: "Não consegui carregar o email",
                           subtitle: err)
                 Text("Provedores como o iCloud exigem uma senha de app (não a senha do Apple ID).")
-                    .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                     .multilineTextAlignment(.center).padding(.horizontal, 30)
                 Button { showHelp = true } label: {
                     Label("Como conectar (passo a passo)", systemImage: "questionmark.circle")
-                        .font(.ody(.subheadline, design: .monospaced))
+                        .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 10)
                         .background(theme.accent, in: Capsule()).foregroundStyle(.white)
                 }.buttonStyle(.plain)
                 HStack(spacing: 10) {
                     Button { Task { await vm.load() } } label: {
                         Label("Tentar de novo", systemImage: "arrow.clockwise")
-                            .font(.ody(.subheadline, design: .monospaced))
+                            .font(.ody(.subheadline))
                             .padding(.horizontal, 16).padding(.vertical, 9)
                             .overlay(Capsule().stroke(theme.border, lineWidth: 1)).foregroundStyle(theme.fg)
                     }.buttonStyle(.plain)
                     Button { showAccounts = true } label: {
                         Label("Contas", systemImage: "person.crop.circle")
-                            .font(.ody(.subheadline, design: .monospaced))
+                            .font(.ody(.subheadline))
                             .padding(.horizontal, 16).padding(.vertical, 9)
                             .overlay(Capsule().stroke(theme.border, lineWidth: 1))
                             .foregroundStyle(theme.fg)
@@ -147,7 +147,7 @@ struct EmailView: View {
                           subtitle: "Conecte uma conta IMAP para ver sua caixa aqui.")
                 Button { showAccounts = true } label: {
                     Label("Conectar conta", systemImage: "plus")
-                        .font(.ody(.subheadline, design: .monospaced))
+                        .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 10)
                         .background(theme.accent, in: Capsule())
                         .foregroundStyle(.white)
@@ -183,13 +183,13 @@ struct EmailView: View {
             VStack(alignment: .leading, spacing: 3) {
                 HStack {
                     Text(m.displayFrom)
-                        .font(.ody(.subheadline, design: .monospaced).weight(m.isRead ? .regular : .semibold))
+                        .font(.ody(.subheadline).weight(m.isRead ? .regular : .semibold))
                         .foregroundStyle(theme.fg).lineLimit(1)
                     Spacer()
                     if m.hasAttachments { Image(systemName: "paperclip").font(.caption2).foregroundStyle(theme.secondaryText) }
                 }
                 Text(m.subject)
-                    .font(.ody(size: 13, design: .monospaced))
+                    .font(.ody(size: 13))
                     .foregroundStyle(m.isRead ? theme.secondaryText : theme.fg)
                     .lineLimit(1)
             }
@@ -201,9 +201,9 @@ struct EmailView: View {
     private func stateView(icon: String, title: String, subtitle: String) -> some View {
         VStack(spacing: 12) {
             Image(systemName: icon).font(.ody(size: 44)).foregroundStyle(theme.accent)
-            Text(LocalizedStringKey(title)).font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+            Text(LocalizedStringKey(title)).font(.ody(.headline)).foregroundStyle(theme.fg)
             Text(LocalizedStringKey(subtitle))
-                .font(.ody(.footnote, design: .monospaced))
+                .font(.ody(.footnote))
                 .foregroundStyle(theme.secondaryText)
                 .multilineTextAlignment(.center)
         }
@@ -226,15 +226,15 @@ struct EmailReader: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(detail?.subject ?? message.subject)
-                            .font(.ody(.title3, design: .monospaced).weight(.semibold))
+                            .font(.ody(.title3).weight(.semibold))
                             .foregroundStyle(theme.fg)
                         HStack {
                             Text(message.displayFrom)
-                                .font(.ody(size: 12, design: .monospaced))
+                                .font(.ody(size: 12))
                                 .foregroundStyle(theme.secondaryText)
                             Spacer()
                             if let d = message.date {
-                                Text(d).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                Text(d).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                             }
                         }
                         Divider().overlay(theme.border)
@@ -242,7 +242,7 @@ struct EmailReader: View {
                             ProgressView().tint(theme.accent).frame(maxWidth: .infinity).padding(.top, 30)
                         } else {
                             Text(detail?.body ?? "(sem conteúdo)")
-                                .font(.ody(.body, design: .monospaced))
+                                .font(.ody(.body))
                                 .foregroundStyle(theme.fg)
                                 .textSelection(.enabled)
                         }

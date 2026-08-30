@@ -153,10 +153,10 @@ struct VoiceSettingsView: View {
                 if bargeEnabled {
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
-                            Text("Sensibilidade").font(.ody(.subheadline, design: .monospaced))
+                            Text("Sensibilidade").font(.ody(.subheadline))
                             Spacer()
                             Text(LocalizedStringKey(bargeSensitivity > 0.66 ? "Alta" : bargeSensitivity < 0.34 ? "Baixa" : "Média"))
-                                .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                         }
                         Slider(value: $bargeSensitivity, in: 0...1)
                     }
@@ -249,7 +249,7 @@ struct VoiceSettingsView: View {
     private var customModelSection: some View {
         Section {
             TextField("https://…/ggml-modelo.bin", text: $customURL)
-                .font(.ody(size: 12, design: .monospaced))
+                .font(.ody(size: 12))
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .keyboardType(.URL)
@@ -267,7 +267,7 @@ struct VoiceSettingsView: View {
             Text("Modelo próprio")
         } footer: {
             Text("Aceita só link https de um modelo Whisper no formato ggml (.bin) — o mesmo do catálogo abaixo. Cole o link do arquivo; o link da página do Hugging Face é convertido sozinho.")
-                .font(.ody(size: 11, design: .monospaced))
+                .font(.ody(size: 11))
                 .foregroundStyle(theme.secondaryText)
         }
     }
@@ -310,9 +310,9 @@ struct VoiceSettingsView: View {
                     HStack(spacing: 10) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text(verbatim: NeuralVoiceStore.label(pack.language))
-                                .font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
+                                .font(.ody(.subheadline)).foregroundStyle(theme.fg)
                             Text(verbatim: ByteCountFormatter.string(fromByteCount: pack.bytes, countStyle: .file))
-                                .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         }
                         Spacer()
                         Button(role: .destructive) { pendingDelete = pack } label: {
@@ -327,7 +327,7 @@ struct VoiceSettingsView: View {
                 Text("Vozes neurais baixadas")
             } footer: {
                 Text("Apagar libera o espaço; a voz é baixada de novo na próxima vez que você usar aquele idioma.")
-                    .font(.ody(size: 11, design: .monospaced))
+                    .font(.ody(size: 11))
                     .foregroundStyle(theme.secondaryText)
             }
         }
@@ -338,7 +338,7 @@ struct VoiceSettingsView: View {
     private func coreMLControl(_ model: VoiceModel) -> some View {
         if let p = downloads.coreMLProgress(model) {
             HStack(spacing: 4) {
-                Text("\(Int(p * 100))%").font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text("\(Int(p * 100))%").font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
                 Button { downloads.cancelCoreML(model) } label: { Image(systemName: "xmark.circle") }
                     .buttonStyle(.borderless)
                     .accessibilityLabel(Text("Cancelar download"))
@@ -378,13 +378,13 @@ struct VoiceSettingsView: View {
     private func modelRow(_ model: VoiceModel, selected: Bool, select: @escaping (String) -> Void) -> some View {
         HStack(spacing: 10) {
             Text(model.lang.label)
-                .font(.ody(size: 9, design: .monospaced))
+                .font(.ody(size: 9))
                 .foregroundStyle(theme.secondaryText)
                 .padding(.horizontal, 6).padding(.vertical, 3)
                 .background(theme.panel, in: Capsule())
             VStack(alignment: .leading, spacing: 2) {
-                Text(model.name).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg)
-                Text(model.humanSize).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text(model.name).font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                Text(model.humanSize).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             }
             Spacer()
             trailing(model, selected: selected, select: select)
@@ -396,7 +396,7 @@ struct VoiceSettingsView: View {
     private func trailing(_ model: VoiceModel, selected: Bool, select: @escaping (String) -> Void) -> some View {
         if let p = downloads.progress[model.id] {
             HStack(spacing: 8) {
-                Text("\(Int(p * 100))%").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text("\(Int(p * 100))%").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 Button { downloads.cancel(model) } label: { Image(systemName: "xmark.circle") }
                     .buttonStyle(.borderless)
                     .accessibilityLabel(Text("Cancelar download"))

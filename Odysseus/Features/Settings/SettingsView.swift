@@ -100,7 +100,7 @@ struct SettingsView: View {
                     } header: {
                         if let label = group.0 {
                             Text(LocalizedStringKey(label))
-                                .font(.ody(.caption, design: .monospaced))
+                                .font(.ody(.caption))
                                 .foregroundStyle(theme.secondaryText)
                         }
                     }
@@ -121,10 +121,10 @@ struct SettingsView: View {
     private var header: some View {
         HStack {
             Image(systemName: "gearshape.fill").foregroundStyle(theme.accent)
-            Text("Ajustes").font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+            Text("Ajustes").font(.ody(.headline)).foregroundStyle(theme.fg)
             Spacer()
             Button("Concluído") { if let onClose { onClose() } else { dismiss() } }
-                .font(.ody(.body, design: .monospaced)).foregroundStyle(theme.accent)
+                .font(.ody(.body)).foregroundStyle(theme.accent)
                 .buttonStyle(.plain)
         }
         .padding(.horizontal, 16).padding(.vertical, 12)
@@ -136,7 +136,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 ForEach(Array(SettingsSection.groups.enumerated()), id: \.offset) { idx, group in
                     if let label = group.0 {
-                        Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced))
+                        Text(LocalizedStringKey(label)).font(.ody(size: 10))
                             .foregroundStyle(theme.secondaryText)
                             .padding(.horizontal, 12).padding(.top, 10)
                     } else if idx > 0 {
@@ -159,7 +159,7 @@ struct SettingsView: View {
     private func row(_ s: SettingsSection, active: Bool = false) -> some View {
         HStack(spacing: 10) {
             Image(systemName: s.icon).frame(width: 18).foregroundStyle(active ? theme.accent : theme.secondaryText)
-            Text(LocalizedStringKey(s.title)).font(.ody(.subheadline, design: .monospaced))
+            Text(LocalizedStringKey(s.title)).font(.ody(.subheadline))
                 .foregroundStyle(active ? theme.fg : theme.fg.opacity(0.85))
             Spacer()
         }
@@ -208,8 +208,8 @@ struct SettingsScroll<Content: View>: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(LocalizedStringKey(title)).font(.ody(.title3, design: .monospaced).weight(.semibold)).foregroundStyle(theme.fg)
-                    if let subtitle { Text(LocalizedStringKey(subtitle)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText) }
+                    Text(LocalizedStringKey(title)).font(.ody(.title3).weight(.semibold)).foregroundStyle(theme.fg)
+                    if let subtitle { Text(LocalizedStringKey(subtitle)).font(.ody(size: 11)).foregroundStyle(theme.secondaryText) }
                 }
                 content()
             }
@@ -244,14 +244,14 @@ struct ServerSheet: View {
             Form {
                 Section {
                     TextField("http://meu-servidor:porta", text: $text)
-                        .font(.ody(.body, design: .monospaced))
+                        .font(.ody(.body))
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                         .keyboardType(.URL)
                         .listRowBackground(theme.panel)
                 } header: {
                     Text("Endereço do servidor Odysseus")
-                        .font(.ody(.caption, design: .monospaced))
+                        .font(.ody(.caption))
                         .foregroundStyle(theme.secondaryText)
                 }
             }

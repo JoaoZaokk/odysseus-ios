@@ -104,7 +104,7 @@ struct EndpointModelsView: View {
                     } else if vm.models.isEmpty {
                         Spacer()
                         Text("Nenhum modelo em cache. Use “Atualizar” na lista de endpoints para sondar.")
-                            .font(.ody(size: 12, design: .monospaced))
+                            .font(.ody(size: 12))
                             .foregroundStyle(theme.secondaryText)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 24)
@@ -144,23 +144,23 @@ struct EndpointModelsView: View {
                     Text("Desmarque os modelos que não quer ver no seletor.")
                 }
             }
-            .font(.ody(size: 11, design: .monospaced))
+            .font(.ody(size: 11))
             .foregroundStyle(theme.secondaryText)
             .fixedSize(horizontal: false, vertical: true)
 
             if let e = vm.error {
                 Text(LocalizedStringKey(e))
-                    .font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.accent)
+                    .font(.ody(size: 11)).foregroundStyle(theme.accent)
                     .fixedSize(horizontal: false, vertical: true)
             } else if vm.saved {
-                Text("Salvo").font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                Text("Salvo").font(.ody(size: 11)).foregroundStyle(theme.green)
             }
 
             if !vm.models.isEmpty {
                 HStack(spacing: 8) {
                     TextField("Filtrar…", text: $vm.query)
                         .textFieldStyle(.plain)
-                        .font(.ody(size: 12, design: .monospaced)).foregroundStyle(theme.fg)
+                        .font(.ody(size: 12)).foregroundStyle(theme.fg)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .padding(8)
@@ -169,12 +169,12 @@ struct EndpointModelsView: View {
                     Button("Todos") { vm.setAll(true) }
                     Button("Nenhum") { vm.setAll(false) }
                 }
-                .font(.ody(size: 12, design: .monospaced))
+                .font(.ody(size: 12))
                 .buttonStyle(.plain)
                 .foregroundStyle(theme.accent)
 
                 Text("\(vm.visible.count)/\(vm.models.count) visíveis")
-                    .font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -203,12 +203,12 @@ struct EndpointModelsView: View {
                 .foregroundStyle(on ? theme.accent : theme.secondaryText)
             VStack(alignment: .leading, spacing: 2) {
                 Text(m.display)
-                    .font(.ody(size: 13, design: .monospaced))
+                    .font(.ody(size: 13))
                     .foregroundStyle(on ? theme.fg : theme.secondaryText)
                     .lineLimit(1)
                 if m.display != m.id {
                     Text(m.id)
-                        .font(.ody(size: 10, design: .monospaced))
+                        .font(.ody(size: 10))
                         .foregroundStyle(theme.secondaryText).lineLimit(1)
                 }
             }

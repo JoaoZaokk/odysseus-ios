@@ -111,16 +111,16 @@ struct ResearchActiveCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(run.query).font(.ody(.subheadline, design: .monospaced, weight: .semibold))
+                Text(run.query).font(.ody(.subheadline, weight: .semibold))
                     .foregroundStyle(theme.fg).lineLimit(1)
                 Spacer()
-                Text(elapsed).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
+                Text(elapsed).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                 if let onClose {
                     Button(action: onClose) { Image(systemName: "xmark") }
                         .buttonStyle(.plain).foregroundStyle(theme.secondaryText).font(.ody(size: 11))
                 }
             }
-            Text(LocalizedStringKey(statusTitle)).font(.ody(size: 12, design: .monospaced))
+            Text(LocalizedStringKey(statusTitle)).font(.ody(size: 12))
                 .foregroundStyle(run.error ? theme.danger : theme.secondaryText)
 
             ResearchGraph(run: run)
@@ -131,7 +131,7 @@ struct ResearchActiveCard: View {
                 )
 
             Text("\(run.error ? "warning" : run.status)  ·  round \(run.roundCount)  ·  \(run.sourcesTotal) sources  ·  \(elapsed)")
-                .font(.ody(size: 11, design: .monospaced))
+                .font(.ody(size: 11))
                 .foregroundStyle(run.error ? theme.danger : theme.accent)
         }
         .padding(14)

@@ -103,14 +103,14 @@ struct NotesView: View {
             HStack {
                 if !note.title.isEmpty {
                     Text(note.title)
-                        .font(.ody(.subheadline, design: .monospaced).weight(.semibold))
+                        .font(.ody(.subheadline).weight(.semibold))
                         .foregroundStyle(theme.fg).lineLimit(2)
                 }
                 Spacer(minLength: 0)
                 if note.pinned { Image(systemName: "pin.fill").font(.caption2).foregroundStyle(theme.accent) }
             }
             Text(note.content)
-                .font(.ody(size: 12, design: .monospaced))
+                .font(.ody(size: 12))
                 .foregroundStyle(theme.secondaryText)
                 .lineLimit(8)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -133,10 +133,10 @@ struct NotesView: View {
         VStack(spacing: 12) {
             Image(systemName: "note.text").font(.ody(size: 44)).foregroundStyle(theme.accent)
             Text(LocalizedStringKey(vm.showArchived ? "Nada arquivado" : "Sem notas ainda"))
-                .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                .font(.ody(.headline)).foregroundStyle(theme.fg)
             if !vm.showArchived {
                 Text("Toque em + para criar sua primeira nota.")
-                    .font(.ody(.footnote, design: .monospaced))
+                    .font(.ody(.footnote))
                     .foregroundStyle(theme.secondaryText)
             }
         }
@@ -158,12 +158,12 @@ struct NoteEditor: View {
                 theme.bg.ignoresSafeArea()
                 VStack(spacing: 0) {
                     TextField("Título", text: $title)
-                        .font(.ody(.title3, design: .monospaced).weight(.semibold))
+                        .font(.ody(.title3).weight(.semibold))
                         .foregroundStyle(theme.fg)
                         .padding(.horizontal, 16).padding(.top, 16)
                     Divider().overlay(theme.border).padding(.vertical, 8)
                     TextEditor(text: $content)
-                        .font(.ody(.body, design: .monospaced))
+                        .font(.ody(.body))
                         .foregroundStyle(theme.fg)
                         .scrollContentBackground(.hidden)
                         .background(theme.bg)

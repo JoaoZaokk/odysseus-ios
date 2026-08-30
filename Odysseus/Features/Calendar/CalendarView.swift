@@ -115,7 +115,7 @@ struct CalendarView: View {
             HStack(spacing: 8) {
                 Image(systemName: "sparkles").foregroundStyle(theme.accent)
                 TextField("Ex: reunião amanhã 14h", text: $quickText)
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                     .foregroundStyle(theme.fg)
                     .focused($quickFocused)
                     .submitLabel(.go)
@@ -133,7 +133,7 @@ struct CalendarView: View {
 
             if let err = vm.error {
                 Text(LocalizedStringKey(err))
-                    .font(.ody(size: 11, design: .monospaced))
+                    .font(.ody(size: 11))
                     .foregroundStyle(theme.accent)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .lineLimit(2)
@@ -162,7 +162,7 @@ struct CalendarView: View {
                         }
                     } header: {
                         Text(LocalizedStringKey(dayLabel(group.day)))
-                            .font(.ody(.caption, design: .monospaced))
+                            .font(.ody(.caption))
                             .foregroundStyle(theme.accent)
                     }
                 }
@@ -179,15 +179,15 @@ struct CalendarView: View {
                 .frame(width: 4)
             VStack(alignment: .leading, spacing: 3) {
                 Text(ev.summary)
-                    .font(.ody(.subheadline, design: .monospaced))
+                    .font(.ody(.subheadline))
                     .foregroundStyle(theme.fg)
                 HStack(spacing: 8) {
                     Text(LocalizedStringKey(timeLabel(ev)))
-                        .font(.ody(size: 11, design: .monospaced))
+                        .font(.ody(size: 11))
                         .foregroundStyle(theme.secondaryText)
                     if !ev.location.isEmpty {
                         Label(ev.location, systemImage: "mappin")
-                            .font(.ody(size: 11, design: .monospaced))
+                            .font(.ody(size: 11))
                             .foregroundStyle(theme.secondaryText)
                             .lineLimit(1)
                     }
@@ -235,9 +235,9 @@ struct CalendarView: View {
             VStack(spacing: 12) {
                 Image(systemName: "calendar").font(.ody(size: 44)).foregroundStyle(theme.accent)
                 Text("Nenhum evento")
-                    .font(.ody(.headline, design: .monospaced)).foregroundStyle(theme.fg)
+                    .font(.ody(.headline)).foregroundStyle(theme.fg)
                 Text("Escreva em linguagem natural acima\nou toque em + para criar.")
-                    .font(.ody(.footnote, design: .monospaced))
+                    .font(.ody(.footnote))
                     .foregroundStyle(theme.secondaryText)
                     .multilineTextAlignment(.center)
             }
@@ -260,7 +260,7 @@ struct EventEditor: View {
             Form {
                 Section {
                     TextField("Título", text: $summary)
-                        .font(.ody(.body, design: .monospaced))
+                        .font(.ody(.body))
                 }
                 Section {
                     Toggle("Dia inteiro", isOn: $allDay).tint(theme.accent)
