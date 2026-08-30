@@ -40,6 +40,18 @@ final class APIClient: @unchecked Sendable {
     // `clearCookies()` on logout/switch.
     private let cookieStore = HTTPCookieStorage.shared
 
+    // Written on the main actor at construction, read off it on every response.
+    private let callbackLock = NSLock()
+    private var _onUnauthenticated: (@Sendable () -> Void)?
+    /// Called when the server rejects the session (401). `AppState` sets this and
+    /// is the only owner of session state: 401 used to be *detected* here and
+    /// *handled* nowhere, so an expired cookie left the user on the main screen
+    /// with every list failing silently.
+    var onUnauthenticated: (@Sendable () -> Void)? {
+        get { callbackLock.lock(); defer { callbackLock.unlock() }; return _onUnauthenticated }
+        set { callbackLock.lock(); defer { callbackLock.unlock() }; _onUnauthenticated = newValue }
+    }
+
     init(config: ServerConfig) {
         self._config = config
         let cfg = URLSessionConfiguration.default
@@ -167,7 +179,13 @@ final class APIClient: @unchecked Sendable {
         do {
             let (data, resp) = try await (transport ?? session).data(for: req)
             guard let http = resp as? HTTPURLResponse else { return data }
-            if http.statusCode == 401 || http.statusCode == 403 { throw APIError.notAuthenticated }
+            // 401 and 403 are different facts: the session is gone vs. this account
+            // may not do this. Folding 403 in here made three `catch .http(403, _)`
+            // branches unreachable, and would now log a non-admin out of the app.
+            if http.statusCode == 401 {
+                onUnauthenticated?()
+                throw APIError.notAuthenticated
+            }
             guard (200..<300).contains(http.statusCode) else {
                 throw APIError.http(http.statusCode, Self.detail(from: data))
             }

@@ -38,6 +38,23 @@ final class AppState: ObservableObject {
         // need the authenticated client. Set here rather than per-view: the TTS
         // manager is a singleton shared by every message bubble.
         SpeechManager.shared.api = client
+        client.onUnauthenticated = { [weak self] in
+            Task { @MainActor in self?.sessionExpired() }
+        }
+    }
+
+    /// The one reaction to the server rejecting our session, wired in `init`.
+    ///
+    /// Deliberately does not touch the Keychain: the credentials are still good,
+    /// it is the cookie that died, so "keep me signed in" has to survive this.
+    /// `loginError` carries the reason, otherwise being thrown back to the login
+    /// screen mid-task reads as a crash.
+    func sessionExpired() {
+        guard phase == .main else { return }   // already at login, or still launching
+        api.clearCookies()
+        username = nil
+        loginError = APIError.notAuthenticated.errorDescription
+        phase = .login
     }
 
     /// Called by the lock screen after a successful biometric/passcode check.

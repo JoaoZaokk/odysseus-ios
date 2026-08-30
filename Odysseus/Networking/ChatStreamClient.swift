@@ -27,7 +27,8 @@ final class ChatStreamClient: @unchecked Sendable {
                     let (bytes, resp) = try await api.streamSession.bytes(for: req)
 
                     if let http = resp as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
-                        if http.statusCode == 401 || http.statusCode == 403 {
+                        if http.statusCode == 401 {
+                            api.onUnauthenticated?()
                             throw APIError.notAuthenticated
                         }
                         // Drain a little of the body for an error message.
