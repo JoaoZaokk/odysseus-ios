@@ -174,8 +174,9 @@ medidas dentro deles.
 
 Índice compacto dos 116 achados: [docs/ROUND2-ACHADOS.md](ROUND2-ACHADOS.md) — vive no repo,
 não depende de nada efêmero. Os journals têm o texto completo de cada um
-(problem / move / payoff, e para os candidatos também deletionTest / beforeShape / afterShape):
-os candidatos também deletionTest / beforeShape / afterShape). **Também são
+(problem / move / payoff, e para os candidatos também deletionTest / beforeShape /
+afterShape). **São locais e não versionados** — se a pasta da sessão sumir, o índice
+acima é o que resta:
 
 ```
 ~/.claude/projects/-Users-joaozao-Projetos/aae19c9d-e660-4976-b539-7f0d405bd454/subagents/workflows/
