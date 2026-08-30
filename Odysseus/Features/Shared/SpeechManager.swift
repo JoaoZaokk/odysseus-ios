@@ -440,8 +440,17 @@ final class SpeechManager: NSObject, ObservableObject {
         stop()
         let clean = SpokenText.strip(text)
         guard !clean.isEmpty else { return }
-        if streamingAllowed && TTSEngine.current.canStream { speakStreaming(clean, id: id) }
-        else { dispatchSpeak(clean, id: id) }
+        if streamingAllowed && TTSEngine.current.canStream {
+            // `speakStreaming` is a queue routine: every one of its callbacks —
+            // first audio, finished, interrupted, the watchdog, and the byte loop
+            // itself — is guarded by `chunkID == id`. `stop()` above cleared
+            // `chunkID`, so without this the first chunk off the socket returns
+            // out of the loop and nothing ever clears `preparingID`: the test
+            // spun "Sintetizando…" forever with no sound and no error.
+            chunkID = id
+            chunkClosed = true      // the whole utterance is already here
+            speakStreaming(clean, id: id)
+        } else { dispatchSpeak(clean, id: id) }
     }
 
     /// Routes already-stripped text to the configured engine.
@@ -576,6 +585,11 @@ final class SpeechManager: NSObject, ObservableObject {
     /// treating that as "spoke it" would advance the queue past a sentence
     /// nobody heard.
     private func speakStreaming(_ clean: String, id: String) {
+        // The one playback path that never configured the session. `play`,
+        // `prepareDuplexSession` and `speakNative` all do — so streamed audio was
+        // silenced by the ring switch under the default category, and silent
+        // outright after "Testar reconhecimento" left the session on `.record`.
+        activateTTSSession()
         preparingID = id
         neuralError = nil
         streamPlayer.onFirstAudio = { [weak self] in
