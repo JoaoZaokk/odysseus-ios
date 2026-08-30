@@ -60,11 +60,34 @@ completo continua em `docs/ROUND2-ACHADOS.md` — se uma das 61 se provar real, 
 issue própria com o fonte conferido, que é a única forma que qualquer uma delas deveria ter
 tido.
 
-Uma coisa conscientemente **não** feita:
+**Nada pendente.** Os 44 catálogos estão em 617 chaves cada, `plutil` limpo, e **nenhum
+valor em português sobrou fora do `pt-BR`** — varrido, não presumido. Os únicos
+`valor == chave` restantes são marca e estrangeirismo (`Cookbook`, `Deep Research`, `OK`)
+e cinco palavras espanholas que coincidem de verdade com o português.
 
-- **Uma string nova em 43 idiomas.** `"Barge-in indisponível: a sessão de áudio está em
-  modo de gravação."` está nos 44 catálogos com valor igual à chave e comentário dizendo
-  isso. **Só pt-BR está correto.** Vai para a próxima rodada de tradução — não foi chutada.
+`main` é a única branch, local e remota.
+
+### A string do barge-in: composta, não inventada
+
+`"Barge-in indisponível: a sessão de áudio está em modo de gravação."` chegou como
+placeholder e foi traduzida depois. O método vale mais que o resultado: cada catálogo já
+tinha a irmã `"…o microfone não pôde ser aberto."` traduzida e revisada, então o prefixo e
+o separador vieram **verbatim** de lá e só a oração depois dos dois-pontos é nova.
+
+Isso preservou sozinho o que se erraria à mão: dois-pontos de largura total em `ja`/`zh`,
+dois-pontos com espaço em `fr`, shad em `bo`, danda em `hi`/`bn`, ponto árabe em `ur`, e
+`th` sem pontuação final. **`bo` continua marcado para revisão nativa** — a primeira passada
+saiu com shad duplo.
+
+### O servidor não roda STT
+
+`docs/PATCH-SERVIDOR-STT-IDIOMA.md` **não é pendência de ninguém.** `stt_provider` nasce
+`"disabled"` e nada foi ligado. O ditado vem do reconhecedor da Apple (`.native`, o padrão
+do app) ou do whisper.cpp embutido — nunca do servidor. O motor STT `.server` não é caminho
+utilizável ali. **Barge-in e VAD são on-device (FluidAudio) e não têm relação com isso** —
+não confundir os dois quando algo de voz quebrar.
+
+O documento fica como desenho pronto para o dia em que o STT de servidor for ligado.
 
 ### `SettingsUI.failure`: recusado, depois construído
 
@@ -104,6 +127,11 @@ varrendo o fonte, então todo call site novo é conferido contra o catálogo no 
    testes desta rodada passaram isolados e caíram na suíte por isso.
 8. **`git checkout <arquivo>` volta ao último commit, não desfaz só a sabotagem.** Se você
    sabotou de propósito para provar que um teste morde, desfaça pela mesma via que sabotou.
+   Aconteceu nesta rodada e levou junto uma mudança não commitada.
+9. **A cor de falha é `theme.danger`, nunca `theme.accent`.** `accent` é o `red` do tema, e
+   em `forest` ele é `7cb871`, em `terminal` `00ff41`, em `gpt` `949494`. Um `ok ? green :
+   accent` pinta os dois ramos de verde nesses temas. Não existe mais nenhum `Color(hex:)`
+   fora do `Config/Theme.swift` — se aparecer um, é regressão.
 
 ## Método, se houver rodada 4
 
