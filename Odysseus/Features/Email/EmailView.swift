@@ -28,7 +28,7 @@ final class EmailViewModel: ObservableObject {
             } else {
                 notConfigured = false; error = nil
             }
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
             // view transition tore down the load — ignore
         } catch {
             self.error = msg(error)
@@ -73,7 +73,19 @@ struct EmailView: View {
     var body: some View {
         ZStack {
             theme.bg.ignoresSafeArea()
-            content
+            VStack(spacing: 0) {
+                // `content`'s branch chain only reaches its error line when the
+                // list is empty, so a failed archive, delete or refresh — all of
+                // which leave the previous mail on screen — showed nothing at all.
+                if let e = vm.error, !vm.emails.isEmpty {
+                    Text(LocalizedStringKey(e))
+                        .font(.ody(size: 11, design: .monospaced))
+                        .foregroundStyle(theme.accent)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 14).padding(.top, 6)
+                }
+                content
+            }
         }
         .screenChrome(title: "Email") {
         } trailing: {

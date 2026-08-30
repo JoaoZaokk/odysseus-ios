@@ -71,7 +71,17 @@ struct SidebarView: View {
                             .tint(theme.border)
                         }
                 }
-                if store.sessions.isEmpty && !store.loading {
+                // A failed load is not an empty account: saying "no conversations
+                // yet" to someone whose sessions merely failed to fetch tells them
+                // their history is gone. The error also needs a home when the list
+                // is NOT empty — a rejected delete or rename used to look like the
+                // app had simply ignored the tap.
+                if let e = store.error {
+                    Text(LocalizedStringKey(e))
+                        .font(.ody(.footnote, design: .monospaced))
+                        .foregroundStyle(theme.accent)
+                        .listRowBackground(theme.bg)
+                } else if store.sessions.isEmpty && !store.loading {
                     Text("Nenhuma conversa ainda.")
                         .font(.ody(.footnote, design: .monospaced))
                         .foregroundStyle(theme.secondaryText)

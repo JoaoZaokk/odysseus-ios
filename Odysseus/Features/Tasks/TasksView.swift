@@ -31,7 +31,12 @@ struct ScheduledTask: Decodable, Identifiable, Hashable, Sendable {
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        id = (try? c.decode(String.self, forKey: .id)) ?? UUID().uuidString
+        // A numeric id decodes too — the sibling models (Note, GalleryImage,
+        // EmailAccount, ChatSession) all carry this branch. Without it the row
+        // gets a client-invented UUID, and every button on it addresses nothing.
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) }
+        else { id = UUID().uuidString }
         name = (try? c.decode(String.self, forKey: .name)) ?? "(sem nome)"
         taskType = (try? c.decode(String.self, forKey: .taskType)) ?? "prompt"
         action = try? c.decodeIfPresent(String.self, forKey: .action)
@@ -49,17 +54,20 @@ struct ScheduledTask: Decodable, Identifiable, Hashable, Sendable {
     var isPaused: Bool { status == "paused" }
 
     /// Human description of when this task fires.
+    ///
+    /// Resolved here rather than at the render site: every branch but one is
+    /// interpolated, and an interpolated string can never match a catalogue key.
     var scheduleText: String {
         if (triggerType ?? "schedule") == "event" {
-            return "Evento: \(triggerEvent ?? "?")"
+            return L("Evento: %@", triggerEvent ?? "?")
         }
         switch schedule {
-        case "cron": return "Cron: \(cronExpression ?? "?")"
-        case "once": return "Uma vez \(scheduledTime ?? "")"
-        case "daily": return "Diário \(scheduledTime ?? "")"
-        case "hourly": return "De hora em hora"
-        case "weekly": return "Semanal \(scheduledTime ?? "")"
-        default: return scheduledTime.map { "Agendado \($0)" } ?? "Manual"
+        case "cron": return L("Cron: %@", cronExpression ?? "?")
+        case "once": return L("Uma vez %@", scheduledTime ?? "")
+        case "daily": return L("Diário %@", scheduledTime ?? "")
+        case "hourly": return L("De hora em hora")
+        case "weekly": return L("Semanal %@", scheduledTime ?? "")
+        default: return scheduledTime.map { L("Agendado %@", $0) } ?? L("Manual")
         }
     }
 }
@@ -90,7 +98,7 @@ final class TasksViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { tasks = try await api.tasks(); error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
     func run(_ t: ScheduledTask) async {
@@ -126,6 +134,8 @@ struct TasksView: View {
     private var content: some View {
         if vm.tasks.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.tasks.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.tasks.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "checklist").font(.ody(size: 44)).foregroundStyle(theme.accent)

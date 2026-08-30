@@ -5,20 +5,29 @@ final class DeepResearchVM: ObservableObject {
     @Published var prompt = ""
     @Published var mode = "auto"
     @Published var rounds = "Auto"
-    @Published var format = "Auto"
-    @Published var searchEngine = "Default"
+    @Published var searchProvider = ""    // "" = server default
     @Published var endpointId = ""        // "" = Default
     @Published var model = ""             // "" = Default
     @Published var endpoints: [ModelEndpoint] = []
     @Published var past: [ResearchJob] = []
 
+    /// Left value is the wire `category`. "compare" was sent for years and is not
+    /// a key the server knows — `deep_research.py` names it "comparison" — so the
+    /// Compare mode silently fell back to the generic report.
     static let modes: [(String, String)] = [
-        ("auto", "Auto"), ("product", "Product"), ("compare", "Compare"),
+        ("auto", "Auto"), ("product", "Product"), ("comparison", "Compare"),
         ("howto", "How-to"), ("factcheck", "Fact-check"),
     ]
     static let roundsOpts = ["Auto", "1", "2", "3", "4", "5"]
-    static let formatOpts = ["Auto", "Resumo", "Detalhado", "Tabela", "Bullet points"]
-    static let engineOpts = ["Default", "SearXNG", "DuckDuckGo", "Brave", "Tavily"]
+    /// Wire value → label. The ids are the server's (`_buildPanelHTML`), not
+    /// display names: sending "Brave" would be silently ignored.
+    static let providerOpts: [(String, String)] = [
+        ("", "Default"), ("searxng", "SearXNG"), ("duckduckgo", "DuckDuckGo"),
+        ("tavily", "Tavily"), ("brave", "Brave"), ("google", "Google"), ("serper", "Serper"),
+    ]
+    var searchProviderLabel: String {
+        Self.providerOpts.first { $0.0 == searchProvider }?.1 ?? "Default"
+    }
 
     private let api: APIClient
     init(api: APIClient) { self.api = api }
@@ -146,13 +155,16 @@ struct DeepResearchView: View {
         let p = vm.prompt.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !p.isEmpty else { return }
         // Drives the live node graph from the real /api/research SSE stream.
-        runner.start(api: api, query: p, maxRounds: vm.maxRounds, category: vm.mode)
+        runner.start(api: api, query: p, maxRounds: vm.maxRounds, category: vm.mode,
+                     searchProvider: vm.searchProvider, endpointID: vm.endpointId, model: vm.model)
         // Refresh the "Past research" list once the run completes.
+        // Follow the run, not a stopwatch: the old `0..<60` gave up after three
+        // minutes, so a longer research finished and never appeared in "Pesquisas
+        // anteriores" until the pane was closed and reopened.
         Task {
-            for _ in 0..<60 {
+            while runner.run != nil, runner.run?.status != "complete", runner.run?.error != true {
                 try? await Task.sleep(nanoseconds: 3_000_000_000)
                 await vm.loadPast()
-                if runner.run?.status == "complete" || runner.run?.error == true { break }
             }
             await vm.loadPast()
         }
@@ -162,19 +174,24 @@ struct DeepResearchView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 8) {
                 labeledMenu("Rounds", value: vm.rounds, options: DeepResearchVM.roundsOpts) { vm.rounds = $0 }
-                labeledMenu("Format", value: vm.format, options: DeepResearchVM.formatOpts) { vm.format = $0 }
+                // No "Format" menu: the server has no such field. Report shape is
+                // the mode/category above, which is the format override.
+                labeledMenuRaw("Search", value: vm.searchProviderLabel) {
+                    ForEach(DeepResearchVM.providerOpts, id: \.0) { id, label in
+                        Button(label) { vm.searchProvider = id }
+                    }
+                }
             }
             HStack(spacing: 8) {
-                labeledMenu("Search", value: vm.searchEngine, options: DeepResearchVM.engineOpts) { vm.searchEngine = $0 }
                 labeledMenuRaw("Endpoint", value: vm.endpointId.isEmpty ? "Default" : vm.endpointName(vm.endpointId)) {
                     Button("Default") { vm.endpointId = ""; vm.model = "" }
                     ForEach(vm.endpoints.filter { $0.isEnabled }) { ep in Button(ep.name) { vm.endpointId = ep.id; vm.model = "" } }
                 }
-            }
-            if !vm.endpointId.isEmpty {
-                labeledMenuRaw("Model", value: vm.model.isEmpty ? "Default" : vm.model) {
-                    Button("Default") { vm.model = "" }
-                    ForEach(vm.models(vm.endpointId), id: \.self) { m in Button(m) { vm.model = m } }
+                if !vm.endpointId.isEmpty {
+                    labeledMenuRaw("Model", value: vm.model.isEmpty ? "Default" : vm.model) {
+                        Button("Default") { vm.model = "" }
+                        ForEach(vm.models(vm.endpointId), id: \.self) { m in Button(m) { vm.model = m } }
+                    }
                 }
             }
         }
@@ -318,7 +335,11 @@ struct VisualReportView: View {
                 Divider().overlay(theme.border)
 
                 // Body blocks
-                ForEach(r.blocks) { block in blockView(block) }
+                // Positional identity: `ReportBlock.id` is derived from the first
+                // 24 characters of the block's content, so two headings that share
+                // a prefix, two tables with the same header row, or the same image
+                // twice collide — and a ForEach with duplicate ids drops blocks.
+                ForEach(Array(r.blocks.enumerated()), id: \.offset) { _, block in blockView(block) }
 
                 // Sources
                 if !r.sources.isEmpty {

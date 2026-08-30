@@ -18,12 +18,14 @@ final class NotesViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { notes = try await api.notes(); error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
 
     func save(id: String?, title: String, content: String) async {
-        let payload = NotePayload(title: title, content: content, archived: false, pinned: nil)
+        // nil, not false: the field is omitted from the body, so the server keeps
+        // whatever the note already had. Sending `false` unarchived it on every edit.
+        let payload = NotePayload(title: title, content: content, archived: nil, pinned: nil)
         do {
             if let id { try await api.updateNote(id, payload) }
             else { try await api.createNote(payload) }
@@ -80,6 +82,8 @@ struct NotesView: View {
     private var content: some View {
         if vm.notes.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.notes.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.visible.isEmpty {
             emptyState
         } else {

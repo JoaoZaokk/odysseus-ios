@@ -380,7 +380,7 @@ final class VoiceConversation: ObservableObject {
                 if Task.isCancelled { return }
                 self.emitSentences(flush: true)
                 self.finalizeReply(replyTurn.id)
-            } catch is CancellationError {
+            } catch let e where e.isCancellation {
                 self.afterSpeaking()
             } catch {
                 self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription

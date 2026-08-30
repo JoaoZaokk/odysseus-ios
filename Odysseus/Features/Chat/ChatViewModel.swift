@@ -93,7 +93,7 @@ final class ChatViewModel: ObservableObject {
                 self.messages = detail.messages
                 if let m = detail.model { self.resolvedModel = m.split(separator: "/").last.map(String.init) }
                 self.historyLoaded = true
-            } catch is CancellationError {
+            } catch let e where e.isCancellation {
             } catch {
                 self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
             }
@@ -136,7 +136,7 @@ final class ChatViewModel: ObservableObject {
 
     private func runStream(text: String, assistantID: String, attachmentIDs: [String]) async {
         do {
-            let sid = try await ensureSession(firstMessage: text.isEmpty ? "Imagem" : text)
+            let sid = try await ensureSession(firstMessage: text.isEmpty ? L("Imagem") : text)
             let opts = ChatStreamOptions(mode: agentMode ? "agent" : "chat",
                                          webSearch: webSearch, research: research,
                                          attachmentIDs: attachmentIDs,
@@ -158,7 +158,10 @@ final class ChatViewModel: ObservableObject {
                 case .notice(let n):
                     if !notices.contains(n) { notices.append(n) }
                 case .error(let msg):
-                    setAssistant(assistantID, content: msg)
+                    // Same policy as a thrown failure: an error that arrives
+                    // mid-stream must not erase the reply the user just watched
+                    // arrive. `setAssistant` overwrites unconditionally.
+                    handleStreamError(.transport(msg), assistantID: assistantID)
                 case .done:
                     break
                 }
@@ -167,7 +170,7 @@ final class ChatViewModel: ObservableObject {
                 // Rendered as markdown, so it can't go through Text's key lookup.
         messages[i].content = "_\(L("(sem resposta)"))_"
             }
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
             // user stopped — keep whatever streamed so far
         } catch let e as APIError {
             handleStreamError(e, assistantID: assistantID)
@@ -227,7 +230,10 @@ final class ChatViewModel: ObservableObject {
     }
 
     private func handleStreamError(_ e: APIError, assistantID: String) {
-        let msg = e.errorDescription ?? "Erro ao gerar resposta"
+        // The bubble goes through MarkdownUI, which does no key lookup — so this
+        // one has to resolve here. L returns the key unchanged when there is no
+        // entry, so a raw server message passes through untouched.
+        let msg = L(e.errorDescription ?? "Erro ao gerar resposta")
         if let i = index(of: assistantID), messages[i].content.isEmpty {
             messages[i].content = "⚠️ \(msg)"
         } else {

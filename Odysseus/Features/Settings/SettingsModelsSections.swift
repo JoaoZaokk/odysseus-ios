@@ -17,7 +17,7 @@ import SwiftUI
     func load() async {
         loading = true; defer { loading = false }
         do { endpoints = try await api.modelEndpoints(); self.error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
     func toggle(_ ep: ModelEndpoint) async {
@@ -298,7 +298,7 @@ struct AIDefaultsSection: View {
             }
 
             if !vm.status.isEmpty {
-                Text(vm.status).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                Text(LocalizedStringKey(vm.status)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
             }
         }
         .task { await vm.load() }

@@ -22,7 +22,7 @@ final class SessionStore: ObservableObject {
                     return (lhs.updatedAt ?? 0) > (rhs.updatedAt ?? 0)
                 }
             error = nil
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
         } catch {
             self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
         }

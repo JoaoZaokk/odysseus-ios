@@ -36,7 +36,7 @@ final class CompareViewModel: ObservableObject {
             models = try await api.models()
             if modelA == nil { modelA = models.first }
             if modelB == nil { modelB = models.count > 1 ? models[1] : models.first }
-        } catch is CancellationError {} catch { self.error = msg(error) }
+        } catch let e where e.isCancellation {} catch { self.error = msg(error) }
     }
 
     var canSend: Bool {
@@ -77,7 +77,7 @@ final class CompareViewModel: ObservableObject {
                 default: break
                 }
             }
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
         } catch { appendDelta("\n⚠️ \(msg(error))", isA: isA) }
     }
 
@@ -117,6 +117,15 @@ struct CompareView: View {
                     column(title: "A", model: $vm.modelA, turns: vm.turnsA)
                     Divider().overlay(theme.border)
                     column(title: "B", model: $vm.modelB, turns: vm.turnsB)
+                }
+                // A failed model load left both pickers empty and `canSend`
+                // false, with nothing on screen to say why.
+                if let e = vm.error, vm.models.isEmpty {
+                    Text(LocalizedStringKey(e))
+                        .font(.ody(size: 11, design: .monospaced))
+                        .foregroundStyle(theme.accent)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 14).padding(.bottom, 4)
                 }
                 composer
             }

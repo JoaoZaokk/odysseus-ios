@@ -27,7 +27,7 @@ final class BrainViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { memories = try await api.memories(); error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
 
@@ -113,6 +113,8 @@ struct BrainView: View {
     private var content: some View {
         if vm.memories.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.memories.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.memories.isEmpty {
             emptyState
         } else {

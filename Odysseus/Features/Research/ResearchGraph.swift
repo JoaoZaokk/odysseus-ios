@@ -117,7 +117,7 @@ struct ResearchActiveCard: View {
                         .buttonStyle(.plain).foregroundStyle(theme.secondaryText).font(.ody(size: 11))
                 }
             }
-            Text(statusTitle).font(.ody(size: 12, design: .monospaced))
+            Text(LocalizedStringKey(statusTitle)).font(.ody(size: 12, design: .monospaced))
                 .foregroundStyle(run.error ? Color(hex: "e05a4a") : theme.secondaryText)
 
             ResearchGraph(run: run)
@@ -159,7 +159,8 @@ final class ResearchRunner: ObservableObject {
     // MARK: - Live run (real /api/research/* stream)
 
     /// Starts a real research run and drives the graph from the SSE stream.
-    func start(api: APIClient, query: String, maxRounds: Int?, category: String?) {
+    func start(api: APIClient, query: String, maxRounds: Int?, category: String?,
+               searchProvider: String? = nil, endpointID: String? = nil, model: String? = nil) {
         cancel()
         start = Date()
         run = ResearchRun(query: query, status: "planning strategy", isPreview: false)
@@ -167,7 +168,9 @@ final class ResearchRunner: ObservableObject {
         task = Task { [weak self] in
             guard let self else { return }
             do {
-                let id = try await api.startResearch(query: query, maxRounds: maxRounds, category: category)
+                let id = try await api.startResearch(query: query, maxRounds: maxRounds, category: category,
+                                                     searchProvider: searchProvider, endpointID: endpointID,
+                                                     model: model)
                 var lastPhase = "planning"
                 var lastTotalSources = 0
                 for try await evt in api.researchStream(id) {
@@ -184,7 +187,7 @@ final class ResearchRunner: ObservableObject {
                         return
                     }
                 }
-            } catch is CancellationError {
+            } catch let e where e.isCancellation {
                 // user closed the panel
             } catch {
                 self.run?.error = true

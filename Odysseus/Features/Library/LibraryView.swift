@@ -50,8 +50,9 @@ extension APIClient {
         _ = try await send(req)
     }
     func deletePersonal(_ filepath: String) async throws {
-        let enc = filepath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? filepath
-        _ = try await send(request("/api/personal/file?filepath=\(enc)", method: "DELETE"))
+        // `.urlQueryAllowed` permits `&`, so a name containing one splits into extra
+        // query parameters and the server deletes nothing while answering 200.
+        _ = try await send(request("/api/personal/file?filepath=\(encQuery(filepath))", method: "DELETE"))
     }
 }
 
@@ -70,7 +71,7 @@ final class LibraryViewModel: ObservableObject {
     func load() async {
         loading = true; defer { loading = false }
         do { files = try await api.personalFiles().files; error = nil }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
     func upload(_ url: URL) async {
@@ -120,6 +121,8 @@ struct LibraryView: View {
     private var content: some View {
         if vm.files.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.files.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.files.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "books.vertical").font(.ody(size: 44)).foregroundStyle(theme.accent)

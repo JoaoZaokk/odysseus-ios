@@ -6,7 +6,6 @@ final class AppState: ObservableObject {
 
     @Published var phase: Phase = .launching
     @Published var serverConfig: ServerConfig
-    @Published var features = Features()
     @Published var username: String?
 
     /// False on first launch until the user saves a server address. While false,
@@ -39,6 +38,23 @@ final class AppState: ObservableObject {
         // need the authenticated client. Set here rather than per-view: the TTS
         // manager is a singleton shared by every message bubble.
         SpeechManager.shared.api = client
+        client.onUnauthenticated = { [weak self] in
+            Task { @MainActor in self?.sessionExpired() }
+        }
+    }
+
+    /// The one reaction to the server rejecting our session, wired in `init`.
+    ///
+    /// Deliberately does not touch the Keychain: the credentials are still good,
+    /// it is the cookie that died, so "keep me signed in" has to survive this.
+    /// `loginError` carries the reason, otherwise being thrown back to the login
+    /// screen mid-task reads as a crash.
+    func sessionExpired() {
+        guard phase == .main else { return }   // already at login, or still launching
+        api.clearCookies()
+        username = nil
+        loginError = APIError.notAuthenticated.errorDescription
+        phase = .login
     }
 
     /// Called by the lock screen after a successful biometric/passcode check.
@@ -59,7 +75,6 @@ final class AppState: ObservableObject {
             if status.authenticated {
                 username = status.username
                 keepSignedIn = true        // a restored cookie got us in → keep it fresh
-                await loadFeatures()
                 phase = .main
             } else {
                 await tryAutoLogin()
@@ -90,7 +105,6 @@ final class AppState: ObservableObject {
             username = u
             api.persistCookies()           // refresh the persisted session cookie
             keepSignedIn = true
-            await loadFeatures()
             phase = .main
         } catch {
             phase = .login
@@ -118,7 +132,6 @@ final class AppState: ObservableObject {
             }
             username = u
             totpRequired = false
-            await loadFeatures()
             phase = .main
         } catch {
             loginError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
@@ -140,10 +153,6 @@ final class AppState: ObservableObject {
     /// so the very latest session survives the next cold launch.
     func persistSessionIfNeeded() {
         if keepSignedIn { api.persistCookies() }
-    }
-
-    func loadFeatures() async {
-        features = (try? await api.features()) ?? Features()
     }
 
     func updateServer(_ url: URL) {

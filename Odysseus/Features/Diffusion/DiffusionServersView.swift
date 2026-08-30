@@ -33,6 +33,10 @@ enum DiffusionConfigKeys {
     @Published var stats: ComfyStats?
     @Published var models: ComfyModels?
     @Published var queue: (Int, Int)?
+    /// Why a section is missing, when it is missing because the probe failed
+    /// rather than because the server has nothing to report.
+    @Published var modelsError: String?
+    @Published var queueError: String?
     @Published var error: String?
     @Published var lastTestedURL: String?
 
@@ -42,8 +46,13 @@ enum DiffusionConfigKeys {
         let client = ComfyUIClient(baseURL: url, timeout: timeout)
         do {
             stats = try await client.systemStats()
-            models = try? await client.models()
-            queue = try? await client.queueCounts()
+            // These two used to be `try?`: a failed probe rendered exactly like a
+            // server with no models and an empty queue, so the capacity estimate
+            // the user came for silently was not there.
+            do { models = try await client.models(); modelsError = nil }
+            catch { models = nil; modelsError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription }
+            do { queue = try await client.queueCounts(); queueError = nil }
+            catch { queue = nil; queueError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription }
             lastTestedURL = url
         } catch {
             self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
@@ -159,9 +168,12 @@ struct DiffusionServersView: View {
                     L("%.1f GB livre / %.1f GB", g.vramFreeGB, g.vramTotalGB))
         }
         if let q = vm.queue { infoRow(L("Fila"), L("%lld rodando · %lld na fila", q.0, q.1)) }
+        else if let e = vm.queueError { infoRow(L("Fila"), e) }
         if let m = vm.models {
             infoRow(L("Modelos"), "\(m.checkpoints.count) ckpt · \(m.unets.count) unet · \(m.loras.count) lora · \(m.vae.count) vae · \(m.controlnet.count) cnet")
             fitSection()
+        } else if let e = vm.modelsError {
+            infoRow(L("Modelos"), e)
         }
     }
 
@@ -177,7 +189,7 @@ struct DiffusionServersView: View {
                     Text(row.name).font(.ody(size: 9, design: .monospaced)).foregroundStyle(theme.secondaryText)
                         .lineLimit(1).truncationMode(.middle)
                     Spacer()
-                    Text(fitLabel(row.fit)).font(.ody(size: 9, design: .monospaced)).foregroundStyle(fitColor(row.fit))
+                    Text(LocalizedStringKey(fitLabel(row.fit))).font(.ody(size: 9, design: .monospaced)).foregroundStyle(fitColor(row.fit))
                 }
             }
             Text("Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real.")

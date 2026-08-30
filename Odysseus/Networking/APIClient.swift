@@ -8,9 +8,15 @@ enum APIError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .http(let code, let msg): return msg ?? "Erro \(code)"
+        // The two interpolated cases cannot be catalogue keys as written, so they
+        // resolve here through `L`. Their format keys are not in the catalogues
+        // yet, so they fall back to Portuguese exactly as before — no regression,
+        // and ready for the next translation pass. `.notAuthenticated` is a plain
+        // key that every render site already looks up, and `.transport` carries
+        // the OS's own localized text.
+        case .http(let code, let msg): return msg ?? L("Erro %d", code)
         case .notAuthenticated: return "Sessão expirada. Faça login novamente."
-        case .decoding(let m): return "Resposta inesperada do servidor: \(m)"
+        case .decoding(let m): return L("Resposta inesperada do servidor: %@", m)
         case .transport(let m): return m
         }
     }
@@ -39,6 +45,18 @@ final class APIClient: @unchecked Sendable {
     // app-sandbox (no bleed to other apps); server A/B isolation is handled by
     // `clearCookies()` on logout/switch.
     private let cookieStore = HTTPCookieStorage.shared
+
+    // Written on the main actor at construction, read off it on every response.
+    private let callbackLock = NSLock()
+    private var _onUnauthenticated: (@Sendable () -> Void)?
+    /// Called when the server rejects the session (401). `AppState` sets this and
+    /// is the only owner of session state: 401 used to be *detected* here and
+    /// *handled* nowhere, so an expired cookie left the user on the main screen
+    /// with every list failing silently.
+    var onUnauthenticated: (@Sendable () -> Void)? {
+        get { callbackLock.lock(); defer { callbackLock.unlock() }; return _onUnauthenticated }
+        set { callbackLock.lock(); defer { callbackLock.unlock() }; _onUnauthenticated = newValue }
+    }
 
     init(config: ServerConfig) {
         self._config = config
@@ -167,7 +185,13 @@ final class APIClient: @unchecked Sendable {
         do {
             let (data, resp) = try await (transport ?? session).data(for: req)
             guard let http = resp as? HTTPURLResponse else { return data }
-            if http.statusCode == 401 || http.statusCode == 403 { throw APIError.notAuthenticated }
+            // 401 and 403 are different facts: the session is gone vs. this account
+            // may not do this. Folding 403 in here made three `catch .http(403, _)`
+            // branches unreachable, and would now log a non-admin out of the app.
+            if http.statusCode == 401 {
+                onUnauthenticated?()
+                throw APIError.notAuthenticated
+            }
             guard (200..<300).contains(http.statusCode) else {
                 throw APIError.http(http.statusCode, Self.detail(from: data))
             }
@@ -232,10 +256,6 @@ final class APIClient: @unchecked Sendable {
 
     func status() async throws -> AuthStatus {
         try decode(AuthStatus.self, try await send(request("/api/auth/status")))
-    }
-
-    func features() async throws -> Features {
-        (try? decode(Features.self, try await send(request("/api/auth/features")))) ?? Features()
     }
 
     /// POST /api/auth/login  — returns true on success, throws with a message on

@@ -23,7 +23,7 @@ final class GalleryViewModel: ObservableObject {
             images = try await imgs
             albums = (try? await albs) ?? []
             error = nil
-        } catch is CancellationError {
+        } catch let e where e.isCancellation {
         } catch { self.error = msg(error) }
     }
 
@@ -68,7 +68,13 @@ struct GalleryView: View {
         .refreshable { await vm.load() }
         .sheet(item: $selected) { img in
             GalleryDetail(image: img, url: vm.url(img)) {
-                Task { await vm.toggleFavorite(img) }
+                Task {
+                    await vm.toggleFavorite(img)
+                    // The sheet holds a value copy, so the view model's update
+                    // never reached it and the heart never changed. Re-seeding
+                    // with the same id keeps the sheet up and refreshes it.
+                    selected = vm.images.first { $0.id == img.id }
+                }
             }
         }
     }
@@ -77,6 +83,8 @@ struct GalleryView: View {
     private var content: some View {
         if vm.images.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.images.isEmpty, let e = vm.error {
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.shown.isEmpty {
             emptyState
         } else {

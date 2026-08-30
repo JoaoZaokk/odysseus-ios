@@ -27,7 +27,8 @@ final class ChatStreamClient: @unchecked Sendable {
                     let (bytes, resp) = try await api.streamSession.bytes(for: req)
 
                     if let http = resp as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
-                        if http.statusCode == 401 || http.statusCode == 403 {
+                        if http.statusCode == 401 {
+                            api.onUnauthenticated?()
                             throw APIError.notAuthenticated
                         }
                         // Drain a little of the body for an error message.
@@ -84,7 +85,7 @@ final class ChatStreamClient: @unchecked Sendable {
                         }
                     }
                     continuation.finish()
-                } catch is CancellationError {
+                } catch let e where e.isCancellation {
                     continuation.finish()
                 } catch {
                     continuation.finish(throwing: error)
@@ -133,8 +134,16 @@ final class ChatStreamClient: @unchecked Sendable {
         return req
     }
 
-    private static func extractError(_ body: String) -> String? {
-        guard let r = body.range(of: "\"message\"\\s*:\\s*\"([^\"]+)\"", options: .regularExpression) else {
+    /// Pulls `message` out of an error body. `range(of:options:.regularExpression)`
+    /// has no capture groups — it returns the whole match — so this needs a real
+    /// `NSRegularExpression` to avoid showing the user raw JSON.
+    static func extractError(_ body: String) -> String? {
+        // `(?:[^"\\]|\\.)*` so an escaped quote inside the message does not end the
+        // match — `[^"]+` stopped at the backslash, which is why the unescaping
+        // below never had anything to do.
+        guard let re = try? NSRegularExpression(pattern: "\"message\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)\""),
+              let m = re.firstMatch(in: body, range: NSRange(body.startIndex..., in: body)),
+              let r = Range(m.range(at: 1), in: body) else {
             return body.count < 200 ? body : nil
         }
         return String(body[r]).replacingOccurrences(of: "\\\"", with: "\"")

@@ -44,7 +44,10 @@ struct Theme: Equatable, Identifiable {
         self.green = Color(hex: dark ? "5fd97a" : "2f9e5b")
     }
 
-    static func == (l: Theme, r: Theme) -> Bool { l.id == r.id }
+    // Deliberately memberwise (synthesized), not `l.id == r.id`: `translucent(_:)`
+    // returns a copy with the SAME id and different colors, so identity-only
+    // equality made SwiftUI treat a theme change as no change — flipping
+    // "Transparência" left every view that had not otherwise redrawn opaque.
 
     /// Returns a copy whose surfaces are semi-transparent, so a frosted/vibrancy
     /// backdrop shows through (used by the "transparência" setting).

@@ -35,7 +35,7 @@ struct FishVoicePicker: View {
                 if loading {
                     HStack { ProgressView(); Text("Carregando…") }
                 } else if let error {
-                    Text(error).font(.footnote).foregroundStyle(theme.accent)
+                    Text(LocalizedStringKey(error)).font(.footnote).foregroundStyle(theme.accent)
                 } else if voices.isEmpty {
                     Text("Nenhuma voz encontrada.").foregroundStyle(.secondary)
                 }

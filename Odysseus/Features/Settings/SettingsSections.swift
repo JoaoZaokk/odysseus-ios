@@ -146,7 +146,10 @@ struct AccountSection: View {
     @Published var provider = "searxng"
     @Published var count = "5"
     @Published var url = ""
-    @Published var key = ""
+    /// One slot per provider, not one shared slot. A single `key` meant the menu's
+    /// `provider = p; save()` uploaded the *previous* provider's secret under the
+    /// *new* provider's settings name — Brave's key stored as `tavily_api_key`.
+    @Published var keys: [String: String] = [:]
     @Published var cx = ""
     @Published var status = ""
     // Deep Research runtime settings
@@ -156,6 +159,12 @@ struct AccountSection: View {
     @Published var runTimeout = "1800"
     private let api: APIClient
     init(api: APIClient) { self.api = api }
+
+    /// The credential field edits whichever provider is selected right now.
+    var keyBinding: Binding<String> {
+        Binding(get: { self.keys[self.provider] ?? "" },
+                set: { self.keys[self.provider] = $0 })
+    }
 
     static let providers = ["searxng", "duckduckgo", "brave", "google_pse", "tavily", "serper", "disabled"]
     static let labels = ["searxng": "SearXNG", "duckduckgo": "DuckDuckGo", "brave": "Brave Search",
@@ -169,7 +178,7 @@ struct AccountSection: View {
         count = String(s.int("search_result_count", default: 5))
         url = s.string("search_url")
         cx = s.string("google_pse_cx")
-        if let kf = Self.keyField[provider] { key = s.string(kf) }
+        for (p, kf) in Self.keyField { keys[p] = s.string(kf) }
         maxTokens = String(s.int("research_max_tokens", default: 16384))
         extractTimeout = String(s.int("research_extraction_timeout_seconds", default: 90))
         extractParallel = String(s.int("research_extraction_concurrency", default: 3))
@@ -180,7 +189,7 @@ struct AccountSection: View {
         var body: [String: Any] = ["search_provider": provider, "search_result_count": Int(count) ?? 5]
         if provider == "searxng" { body["search_url"] = url }
         if provider == "google_pse" { body["google_pse_cx"] = cx }
-        if let kf = Self.keyField[provider], !key.isEmpty { body[kf] = key }
+        if let kf = Self.keyField[provider], let k = keys[provider], !k.isEmpty { body[kf] = k }
         for (k, v) in [("research_max_tokens", maxTokens), ("research_extraction_timeout_seconds", extractTimeout),
                        ("research_extraction_concurrency", extractParallel), ("research_run_timeout_seconds", runTimeout)] {
             if let n = Int(v) { body[k] = n }
@@ -202,7 +211,7 @@ struct SearchSection: View {
                 label("Provedor")
                 Menu {
                     ForEach(SearchSettingsVM.providers, id: \.self) { p in
-                        Button(SearchSettingsVM.labels[p] ?? p) { vm.provider = p; Task { await vm.save() } }
+                        Button(LocalizedStringKey(SearchSettingsVM.labels[p] ?? p)) { vm.provider = p; Task { await vm.save() } }
                     }
                 } label: { menuLabel(SearchSettingsVM.labels[vm.provider] ?? vm.provider) }
 
@@ -215,14 +224,14 @@ struct SearchSection: View {
                 }
                 if SearchSettingsVM.needsKey.contains(vm.provider) {
                     label("API key")
-                    field($vm.key, secure: true) { Task { await vm.save() } }
+                    field(vm.keyBinding, secure: true) { Task { await vm.save() } }
                 }
                 if vm.provider == "google_pse" {
                     label("ID do mecanismo de busca (CX)")
                     field($vm.cx) { Task { await vm.save() } }
                 }
                 if !vm.status.isEmpty {
-                    Text(vm.status).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
+                    Text(LocalizedStringKey(vm.status)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.green)
                 }
             }
             SettingsCard {
@@ -246,7 +255,7 @@ struct SearchSection: View {
         Text(LocalizedStringKey(s)).font(.ody(size: 11, design: .monospaced)).foregroundStyle(theme.secondaryText)
     }
     private func menuLabel(_ s: String) -> some View {
-        HStack { Text(s).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg); Spacer(); Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
+        HStack { Text(LocalizedStringKey(s)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg); Spacer(); Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
             .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
     }

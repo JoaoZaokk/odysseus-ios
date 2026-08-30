@@ -29,7 +29,12 @@ struct Integration: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey { case id, name, base_url, url, auth_type, enabled, is_enabled }
     init(from d: Decoder) throws {
         let c = try d.container(keyedBy: CodingKeys.self)
-        id = (try? c.decode(String.self, forKey: .id)) ?? UUID().uuidString
+        // A numeric id decodes too — the sibling models (Note, GalleryImage,
+        // EmailAccount, ChatSession) all carry this branch. Without it the row
+        // gets a client-invented UUID, and every button on it addresses nothing.
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) }
+        else { id = UUID().uuidString }
         name = (try? c.decode(String.self, forKey: .name)) ?? "integração"
         baseURL = (try? c.decodeIfPresent(String.self, forKey: .base_url)) ?? (try? c.decodeIfPresent(String.self, forKey: .url))
         authType = try? c.decodeIfPresent(String.self, forKey: .auth_type)
@@ -46,7 +51,12 @@ struct MCPServer: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey { case id, name, status, url, base_url, auth_url, enabled, is_enabled }
     init(from d: Decoder) throws {
         let c = try d.container(keyedBy: CodingKeys.self)
-        id = (try? c.decode(String.self, forKey: .id)) ?? UUID().uuidString
+        // A numeric id decodes too — the sibling models (Note, GalleryImage,
+        // EmailAccount, ChatSession) all carry this branch. Without it the row
+        // gets a client-invented UUID, and every button on it addresses nothing.
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) }
+        else { id = UUID().uuidString }
         name = (try? c.decode(String.self, forKey: .name)) ?? "servidor"
         status = try? c.decodeIfPresent(String.self, forKey: .status)
         url = (try? c.decodeIfPresent(String.self, forKey: .url)) ?? (try? c.decodeIfPresent(String.self, forKey: .base_url))
@@ -202,9 +212,9 @@ struct RemindersSection: View {
                 case "email": SettingsUI.field("Email de destino", $vm.emailTo, placeholder: "voce@exemplo.com", theme: theme)
                 case "ntfy":  SettingsUI.field("Tópico ntfy", $vm.ntfyTopic, placeholder: "meu-topico", theme: theme)
                 case "webhook":
-                    SettingsUI.menuRow("Integração (webhook)", value: webhookName, options: ["—"] + vm.integrations.map(\.name), theme: theme) { name in
-                        vm.webhookId = vm.integrations.first { $0.name == name }?.id ?? ""
-                    }
+                    SettingsUI.menuRow("Integração (webhook)", value: webhookName,
+                                       options: [(id: "", label: "—")] + vm.integrations.map { (id: $0.id, label: $0.name) },
+                                       theme: theme) { vm.webhookId = $0 }
                 default: EmptyView()
                 }
                 Toggle(isOn: $vm.synthesis) {
@@ -251,10 +261,10 @@ struct RemindersSection: View {
     func load() async {
         loading = true; defer { loading = false }
         let bag = (try? await api.getSettings()) ?? SettingsBag(dict: [:])
-        maxRounds = String(bag.int("agent_max_rounds"))
-        tokenBudget = String(bag.int("agent_input_token_budget"))
-        tokenHardMax = String(bag.int("agent_input_token_hard_max"))
-        streamTimeout = String(bag.int("agent_stream_timeout_seconds"))
+        maxRounds = bag.intText("agent_max_rounds")
+        tokenBudget = bag.intText("agent_input_token_budget")
+        tokenHardMax = bag.intText("agent_input_token_hard_max")
+        streamTimeout = bag.intText("agent_stream_timeout_seconds")
         emailConfirm = bag.bool("agent_email_confirm")
         servers = (try? await api.mcpServers()) ?? []
         tools = (try? await api.agentTools()) ?? []
@@ -493,7 +503,7 @@ struct BuiltinToolsCard: View {
     func loadLogs() async {
         loadingLogs = true; logsError = nil; defer { loadingLogs = false }
         do { logs = try await api.diagnosticsLogs(limit: logLimit) }
-        catch is CancellationError {}
+        catch let e where e.isCancellation {}
         catch { logsError = SettingsUI.msg(error) }
     }
     /// Extracts the level token from a "TS - module - LEVEL - msg" line.
@@ -643,13 +653,13 @@ struct TerminalLogsCard: View {
                 .background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
                 Menu {
-                    ForEach(vm.logLevels, id: \.self) { lv in Button(lv) { vm.logLevel = lv } }
+                    ForEach(vm.logLevels, id: \.self) { lv in Button(LocalizedStringKey(lv)) { vm.logLevel = lv } }
                 } label: { menuChip(vm.logLevel) }
                 Menu {
                     ForEach([50, 100, 200, 500], id: \.self) { n in
-                        Button("\(n) linhas") { vm.logLimit = n; Task { await vm.loadLogs() } }
+                        Button(L("%lld linhas", n)) { vm.logLimit = n; Task { await vm.loadLogs() } }
                     }
-                } label: { menuChip("\(vm.logLimit) linhas") }
+                } label: { menuChip(L("%lld linhas", vm.logLimit)) }
             }
             if let e = vm.logsError {
                 Text("Falha ao carregar logs: \(e)").font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.accent)
@@ -945,6 +955,29 @@ enum SettingsUI {
     }
 
     @ViewBuilder
+    /// Variant whose options carry an id alongside the label, for menus over
+    /// server objects. The String-only version below hands the caller back the
+    /// display label, which forces a reverse lookup by name — fine for constant
+    /// options, wrong for anything the server names, where two rows can share a
+    /// name and the app would save the wrong id.
+    static func menuRow(_ label: String, value: String, options: [(id: String, label: String)],
+                        theme: Theme, _ pick: @escaping (String) -> Void) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
+            Menu {
+                ForEach(options, id: \.id) { o in Button(LocalizedStringKey(o.label)) { pick(o.id) } }
+            } label: {
+                HStack {
+                    Text(LocalizedStringKey(value)).font(.ody(.subheadline, design: .monospaced)).foregroundStyle(theme.fg).lineLimit(1)
+                    Spacer()
+                    Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
+                }
+                .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
+            }
+        }
+    }
+
     static func menuRow(_ label: String, value: String, options: [String], theme: Theme, _ pick: @escaping (String) -> Void) -> some View {
         VStack(alignment: .leading, spacing: 3) {
             Text(LocalizedStringKey(label)).font(.ody(size: 10, design: .monospaced)).foregroundStyle(theme.secondaryText)
