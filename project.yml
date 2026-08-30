@@ -98,8 +98,8 @@ targets:
         # on-device recognition became opt-in) is an ancestor of this branch
         # and ships inside 1.8. Do not "restore" 1.9 when merging; the next
         # release after 1.8 takes it.
-        MARKETING_VERSION: "1.8"
-        CURRENT_PROJECT_VERSION: "21"
+        MARKETING_VERSION: "1.9"
+        CURRENT_PROJECT_VERSION: "22"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -168,8 +168,8 @@ targets:
         # 1.7: /api/models adoption (curated+extra merge, display names,
         # non-LLM endpoint filter) with old-server fallback; Compare submenu
         # localized in 44 languages. Rest of docs/AUDIT-1.7.md continues next.
-        MARKETING_VERSION: "1.7"
-        CURRENT_PROJECT_VERSION: "15"
+        MARKETING_VERSION: "1.9"
+        CURRENT_PROJECT_VERSION: "16"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus-macOS.entitlements

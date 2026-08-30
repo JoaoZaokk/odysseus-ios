@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Pridať používateľa";
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
+"Agendado %@" = "Naplánované %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "Naplánovaní agenti";
 "Agentes agendados do Odysseus aparecem aqui." = "Naplánovaní agenti Odysseus sa zobrazujú tu.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Poznámky a pripomienky";
 "Apagar" = "Vymazať";
 "Aparência" = "Vzhľad";
+"apertado" = "tesne";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Namieriť na lokálnu IP adresu; keď budete vystavení cez HTTPS, zmeňte na https://vasa-domena.";
 "Arquivar" = "Archivovať";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Dokončený výskum sa zobrazuje tu. Klepnite na „Vizuálna správa” a otvorte ho vedľa.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Hľadať";
 "Buscar nos logs…" = "Hľadať v logoch…";
+"cabe" = "zmestí sa";
 "Cabe na máquina (estimativa, melhor GPU)" = "Zmestí sa do počítača (odhad, najlepšia GPU)";
 "Cadastro aberto" = "Otvorená registrácia";
 "Caixa de entrada" = "Doručená pošta";
@@ -43,6 +46,7 @@
 "Cancelar" = "Zrušiť";
 "Carregando…" = "Načítanie…";
 "Categoria" = "Kategória";
+"Como conectar seu email" = "Ako pripojiť E-mail";
 "Como o fallback funciona" = "Ako funguje záložný";
 "Como posso ajudar?" = "Ako môžem pomôcť?";
 "Comparar" = "Porovnať";
@@ -54,6 +58,7 @@
 "Conta" = "Účet";
 "Contas de email" = "E-mailové účty";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Predvolený";
 "Desativado" = "Vypnuté";
@@ -61,6 +66,7 @@
 "Desbloquear com %@" = "Odomknúť pomocou %@";
 "Detectado: %@ %@" = "Zistené: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Živá diagnostika procesu Odysseus.";
+"Diário %@" = "Denne %@";
 "Documentos pessoais (RAG)" = "Osobné dokumenty (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Pomenujte tohto agenta, aby ste ho odlíšili od ostatných (napr. \"Claude Agent — laptop\").";
 "Email" = "E-mail";
@@ -68,9 +74,11 @@
 "Endereço do servidor Odysseus" = "Adresa servera Odysseus";
 "Envie a mesma pergunta para os dois modelos." = "Pošlite tú istú otázku obom modelom.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Odošlite dokumenty (PDF, txt, md…) na konzultáciu asistentom cez RAG.";
+"Erro %d" = "Chyba %d";
 "Erro no download" = "Chyba sťahovania";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Píšte prirodzeným jazykom vyššie\nalebo klepnite na + pre vytvorenie.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Odhad podľa názvu (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB rezervy. Nenahrádza skutočný test.";
+"Evento: %@" = "Udalosť: %@";
 "Eventos e agenda" = "Udalosti a program";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "napr. Teórie kolapsu doby bronzovej a dôkazy";
 "ex.: assistente direto e objetivo" = "napr. priamy a vecný asistent";
@@ -80,6 +88,7 @@
 "Exportar dados" = "Exportovať dáta";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportujte spomienky, predvoľby, nastavenia, zručnosti a preferencie ako JSON.";
 "Falha ao carregar logs: %@" = "Nepodarilo sa načítať logy: %@";
+"Falha ao instalar %@: %@" = "Nepodarilo sa nainštalovať %@: %@";
 "Fallback automático" = "Automatický záložný";
 "Fechar" = "Zavrieť";
 "Ferramentas integradas" = "Vstavaté nástroje";
@@ -89,6 +98,7 @@
 "Fundo animado" = "Animované pozadie";
 "Galeria" = "Galéria";
 "Geração de imagem" = "Generovanie obrázku";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Vygenerujte osobitné heslo pre apku na webe poskytovateľa. iCloud: account.apple.com → Prihlásenie a zabezpečenie → Osobitné heslá pre apky → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Zapnite alebo vypnite nástroje dostupné agentovi.";
 "Idioma" = "Jazyk";
 "Igual ao chat" = "Rovnaké ako v chate";
@@ -97,6 +107,7 @@
 "instalado" = "nainštalované";
 "instalando…" = "inštalácia…";
 "Instalar" = "Inštalovať";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Inštalácia %@ na serveri sa začala — môže to trvať niekoľko minút.";
 "Integrações" = "Integrácie";
 "Irreversível. Cada item apaga uma categoria." = "Nevratné. Každá položka vymaže kategóriu.";
 "Isso é irreversível. Confirma?" = "Toto je nevratné. Potvrdiť?";
@@ -122,6 +133,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Zatiaľ žiadne integrácie — použite „Pridať integráciu” vyššie.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS v portugalčine (Core ML/Neural Engine), oveľa prirodzenejší ako natívny hlas. Stiahne ~550 MB do zariadenia pri prvom použití; funguje iba na fyzickom iPhone (nie v simulátore).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "V Odysseus otvorte E-mail → ikonu účtov → klepnite na +.";
 "Nome" = "Názov";
 "Notes" = "Notes";
 "Nova conta" = "Nový účet";
@@ -148,7 +160,9 @@
 "Pesquisa profunda" = "Hlboké vyhľadávanie";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Viacstupňové webové vyhľadávanie s agentom LLM v slučke.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Predvolene aplikácia sleduje jazyk zariadenia. Po zmene sa vráti na hlavnú obrazovku.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Vyplňte: Názov, váš E-mail, server IMAP a port, používateľské meno (váš E-mail) a osobitné heslo pre apku.";
 "Provedores" = "Poskytovatelia";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Poskytovatelia s dvojfaktorovou autentifikáciou (iCloud, Gmail, Outlook) vyžadujú osobitné heslo pre apku — nie bežné heslo k vášmu účtu.";
 "prévia" = "náhľad";
 "Qualquer um pode criar conta pela tela de login." = "Ktokoľvek môže vytvoriť účet na prihlasovacej obrazovke.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Keď je zapnuté, pomocný model napíše krátku a priateľskú pripomienku (jeden riadok) namiesto surového obsahu poznámky — pre prehliadač, e-mail, ntfy a webhook.";
@@ -160,18 +174,22 @@
 "Renomear conversa" = "Premenovať konverzáciu";
 "Renomear usuário" = "Premenovať používateľa";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "Neočakávaná odpoveď servera: %@";
 "Resumir com IA" = "Zhrnúť pomocou AI";
 "Rodar agora" = "Spustiť teraz";
 "Sair da conta" = "Odhlásiť sa";
 "Salvar" = "Uložiť";
 "Salvar servidor" = "Uložiť server";
 "Salvo" = "Uložené";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Ak sa zobrazí „timed out“, heslo je pravdepodobne nesprávne — vygenerujte nové osobitné heslo pre apku.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Ak predvolený poskytovateľ zlyhá, skúsi ostatných v poradí: %@.";
 "Segurança (%@)" = "Zabezpečenie (%@)";
 "Selecione o idioma do aplicativo." = "Vyberte jazyk aplikácie.";
 "Sem memórias ainda" = "Zatiaľ žiadne spomienky";
 "Sem tarefas" = "Žiadne úlohy";
+"Semanal %@" = "Týždenne %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Bežné servery";
 "Servidores MCP" = "Servery MCP";
 "Sistema" = "Systém";
 "SMTP igual ao IMAP" = "SMTP rovnaké ako IMAP";
@@ -189,11 +207,13 @@
 "Todos" = "Všetky";
 "Toque em + para conectar uma conta IMAP." = "Klepnite na + pre pripojenie účtu IMAP.";
 "Toque em + para criar sua primeira nota." = "Klepnite na + pre vytvorenie prvej poznámky.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Klepnite na Vytvoriť. Doručená pošta sa načíta o niekoľko sekúnd.";
 "Tornar padrão" = "Nastaviť ako predvolené";
 "Trabalho" = "Práca";
 "Transparência" = "Priehľadnosť";
 "Trocar senha" = "Zmeniť heslo";
 "Título" = "Názov";
+"Uma vez %@" = "Raz %@";
 "Usuários" = "Používatelia";
 "vazio = usa o host da URL" = "prázdne = používa hostiteľa URL";
 "vazio = usa o servidor principal" = "prázdne = používa hlavný server";

@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Добави потребител";
 "ADMIN" = "ADMIN";
 "Admin" = "Администратор";
+"Agendado %@" = "Насрочено %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "Планирани агенти";
 "Agentes agendados do Odysseus aparecem aqui." = "Планираните агенти на Odysseus се показват тук.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Бележки и напомняния";
 "Apagar" = "Изтрий";
 "Aparência" = "Вид";
+"apertado" = "на тясно";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Засега посочете локалния IP; когато настроите HTTPS, сменете с https://вашия-домейн.";
 "Arquivar" = "Архивирай";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Завършените изследвания се показват тук. Натиснете «Визуален отчет», за да го отворите до.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Търсене";
 "Buscar nos logs…" = "Търсене в logs…";
+"cabe" = "побира се";
 "Cabe na máquina (estimativa, melhor GPU)" = "Побира се на устройството (оценка, най-добър GPU)";
 "Cadastro aberto" = "Отворена регистрация";
 "Caixa de entrada" = "Входяща поща";
@@ -43,6 +46,7 @@
 "Cancelar" = "Отказ";
 "Carregando…" = "Зареждане…";
 "Categoria" = "Категория";
+"Como conectar seu email" = "Как да свържете Email";
 "Como o fallback funciona" = "Как работи резервната опция";
 "Como posso ajudar?" = "С какво мога да помогна?";
 "Comparar" = "Сравни";
@@ -54,6 +58,7 @@
 "Conta" = "Акаунт";
 "Contas de email" = "Имейл акаунти";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "По подразбиране";
 "Desativado" = "Изключено";
@@ -61,6 +66,7 @@
 "Desbloquear com %@" = "Отключи с %@";
 "Detectado: %@ %@" = "Открито: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Диагностика на процеса Odysseus в реално време.";
+"Diário %@" = "Ежедневно %@";
 "Documentos pessoais (RAG)" = "Лични документи (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Дайте на този агент ime, за да го различите от другите (напр. „Claude Agent — лаптоп”).";
 "Email" = "Email";
@@ -68,9 +74,11 @@
 "Endereço do servidor Odysseus" = "Адрес на сървъра Odysseus";
 "Envie a mesma pergunta para os dois modelos." = "Изпратете един и същ въпрос на двата модела.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Изпратете документи (PDF, txt, md…) за консултация от асистента чрез RAG.";
+"Erro %d" = "Грешка %d";
 "Erro no download" = "Грешка при изтегляне";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Напишете на естествен език по-горе\nили натиснете +, за да създадете.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Оценка по ime (fp8≈1B/пар., fp16/bf16≈2B/пар.) + ~3 ГБ резерв. Не замества реален тест.";
+"Evento: %@" = "Събитие: %@";
 "Eventos e agenda" = "Събития и програма";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "напр.: Теориите за колапса на Бронзовата епоха и доказателствата";
 "ex.: assistente direto e objetivo" = "напр.: директен и точен асистент";
@@ -80,6 +88,7 @@
 "Exportar dados" = "Експортирай данни";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Експортирайте спомени, пресети, настройки, умения и предпочитания като JSON.";
 "Falha ao carregar logs: %@" = "Неуспешно зареждане на дневници: %@";
+"Falha ao instalar %@: %@" = "Инсталирането на %@ беше неуспешно: %@";
 "Fallback automático" = "Автоматична резервна опция";
 "Fechar" = "Затвори";
 "Ferramentas integradas" = "Вградени инструменти";
@@ -89,6 +98,7 @@
 "Fundo animado" = "Анимиран фон";
 "Galeria" = "Галерия";
 "Geração de imagem" = "Генериране на изображения";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Генерирайте специфична парола за приложение в сайта на доставчика. iCloud: account.apple.com → Вход и сигурност → Специфични пароли за приложение → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Включвайте или изключвайте инструментите, достъпни за агента.";
 "Idioma" = "Език";
 "Igual ao chat" = "Същото като в чата";
@@ -97,6 +107,7 @@
 "instalado" = "инсталирано";
 "instalando…" = "инсталиране…";
 "Instalar" = "Инсталирай";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Инсталирането на %@ на сървъра започна — може да отнеме няколко минути.";
 "Integrações" = "Интеграции";
 "Irreversível. Cada item apaga uma categoria." = "Необратимо. Всеки елемент изтрива категория.";
 "Isso é irreversível. Confirma?" = "Това е необратимо. Потвърждавате?";
@@ -122,7 +133,8 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Все още няма интеграции — използвайте «Добави интеграция» по-горе.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS на португалски (Core ML/Neural Engine), много по-естествен от нативния глас. При първо стартиране изтегля ~550 МБ на устройството; работи само на физически iPhone (не в симулатор).";
 "Neural pt-BR" = "Neural pt-BR";
-"Nome" = "Ime";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "В Odysseus отворете Email → иконата на акаунтите → докоснете +.";
+"Nome" = "Име";
 "Notes" = "Notes";
 "Nova conta" = "Нов акаунт";
 "Nova memória" = "Нов спомен";
@@ -148,7 +160,9 @@
 "Pesquisa profunda" = "Задълбочено търсене";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Многоетапно уеб търсене с LLM агент в цикъл.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "По подразбиране приложението следва езика на устройството. При промяна се връща на началния екран.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Попълнете: Име, вашия Email, IMAP сървър и порт, потребител (вашия Email) и специфична парола за приложение.";
 "Provedores" = "Доставчици";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Доставчиците с двуфакторна идентификация (iCloud, Gmail, Outlook) изискват специфична парола за приложение — не обикновената парола за вашия акаунт.";
 "prévia" = "преглед";
 "Qualquer um pode criar conta pela tela de login." = "Всеки може да създаде акаунт от екрана за влизане.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Когато е включено, помощният модел пише кратко и приятелско напомняне (един ред) вместо необработеното съдържание на бележката — за браузър, email, ntfy и webhook.";
@@ -160,18 +174,22 @@
 "Renomear conversa" = "Преименувай разговора";
 "Renomear usuário" = "Преименувай потребителя";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "Неочакван отговор от сървъра: %@";
 "Resumir com IA" = "Обобщи с ИИ";
 "Rodar agora" = "Стартирай сега";
 "Sair da conta" = "Излез от акаунта";
 "Salvar" = "Запази";
 "Salvar servidor" = "Запази сървъра";
 "Salvo" = "Запазено";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Ако се появи „timed out“, паролата вероятно е грешна — генерирайте нова специфична парола за приложение.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Ако доставчикът по подразбиране се провали, опитва другите по ред: %@.";
 "Segurança (%@)" = "Сигурност (%@)";
 "Selecione o idioma do aplicativo." = "Изберете езика на приложението.";
 "Sem memórias ainda" = "Все още няма спомени";
 "Sem tarefas" = "Няма задачи";
+"Semanal %@" = "Седмично %@";
 "Servidor" = "Сървър";
+"Servidores comuns" = "Често използвани сървъри";
 "Servidores MCP" = "MCP сървъри";
 "Sistema" = "Система";
 "SMTP igual ao IMAP" = "SMTP съвпада с IMAP";
@@ -189,11 +207,13 @@
 "Todos" = "Всички";
 "Toque em + para conectar uma conta IMAP." = "Натиснете +, за да свържете IMAP акаунт.";
 "Toque em + para criar sua primeira nota." = "Натиснете +, за да създадете първата бележка.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Докоснете „Създай“. Входящата поща се зарежда за няколко секунди.";
 "Tornar padrão" = "Задай по подразбиране";
 "Trabalho" = "Работа";
 "Transparência" = "Прозрачност";
 "Trocar senha" = "Смени паролата";
 "Título" = "Заглавие";
+"Uma vez %@" = "Веднъж %@";
 "Usuários" = "Потребители";
 "vazio = usa o host da URL" = "празно = използва хоста на URL";
 "vazio = usa o servidor principal" = "празно = използва основния сървър";

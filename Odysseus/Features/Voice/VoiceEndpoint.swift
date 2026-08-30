@@ -274,7 +274,7 @@ enum VoiceEndpoint {
         // names and the dialect rules are the part worth pinning in tests, and
         // they cannot be if reading it needs the MainActor.
         let language = cfg.dialect.takesTranscriptionLanguage
-            ? await MainActor.run(body: { SpeechLanguage.pinned()?.iso639 })
+            ? await MainActor.run(body: { SpeechLanguage.pinned()?.sttServerCode })
             : nil
         let data = try await send(transcribeRequest(wav, cfg, language: language))
         return try parseTranscript(data)

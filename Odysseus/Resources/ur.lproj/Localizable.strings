@@ -11,6 +11,7 @@
 "Adicionar usuário" = "صارف شامل کریں";
 "ADMIN" = "ADMIN";
 "Admin" = "منتظم";
+"Agendado %@" = "طے شدہ %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "شیڈول کردہ ایجنٹ";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus کے شیڈول کردہ ایجنٹ یہاں دکھائی دیتے ہیں۔";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "نوٹس اور یاددہانیاں";
 "Apagar" = "حذف کریں";
 "Aparência" = "ظاہری شکل";
+"apertado" = "مشکل سے سماتا ہے";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "ابھی مقامی IP کی طرف اشارہ کریں؛ جب HTTPS پر شائع کریں تو https://your-domain میں بدل لیں۔";
 "Arquivar" = "آرکائیو کریں";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "مکمل تحقیقات یہاں دکھائی دیتی ہیں۔ ساتھ کھولنے کے لیے «بصری رپورٹ» کو ٹیپ کریں۔";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "تلاش";
 "Buscar nos logs…" = "log میں تلاش…";
+"cabe" = "سماتا ہے";
 "Cabe na máquina (estimativa, melhor GPU)" = "مشین میں فٹ ہے (تخمینہ، بہترین GPU)";
 "Cadastro aberto" = "کھلی رجسٹریشن";
 "Caixa de entrada" = "ان باکس";
@@ -43,6 +46,7 @@
 "Cancelar" = "منسوخ کریں";
 "Carregando…" = "لوڈ ہو رہا ہے…";
 "Categoria" = "زمرہ";
+"Como conectar seu email" = "اپنا ای میل کیسے کنیکٹ کریں";
 "Como o fallback funciona" = "متبادل کیسے کام کرتا ہے";
 "Como posso ajudar?" = "میں کیسے مدد کر سکتا ہوں؟";
 "Comparar" = "موازنہ کریں";
@@ -54,6 +58,7 @@
 "Conta" = "اکاؤنٹ";
 "Contas de email" = "ای میل اکاؤنٹس";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "پہلے سے طے شدہ";
 "Desativado" = "غیر فعال";
@@ -61,6 +66,7 @@
 "Desbloquear com %@" = "%@ سے کھولیں";
 "Detectado: %@ %@" = "شناخت ہوا: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus عمل کی براہ راست تشخیص۔";
+"Diário %@" = "روزانہ %@";
 "Documentos pessoais (RAG)" = "ذاتی دستاویزات (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "اس ایجنٹ کو دوسروں سے الگ کرنے کے لیے نام دیں (مثال: «Claude Agent — laptop»)۔";
 "Email" = "ای میل";
@@ -68,9 +74,11 @@
 "Endereço do servidor Odysseus" = "Odysseus سرور کا پتہ";
 "Envie a mesma pergunta para os dois modelos." = "دونوں ماڈلز کو ایک ہی سوال بھیجیں۔";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "RAG کے ذریعے مشاورت کے لیے دستاویزات (PDF, txt, md…) بھیجیں۔";
+"Erro %d" = "خرابی %d";
 "Erro no download" = "ڈاؤن لوڈ میں خرابی";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "اوپر قدرتی زبان میں لکھیں\nیا بنانے کے لیے + ٹیپ کریں۔";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "نام کے مطابق تخمینہ (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB اضافی۔ حقیقی ٹیسٹ کا متبادل نہیں۔";
+"Evento: %@" = "ایونٹ: %@";
 "Eventos e agenda" = "واقعات اور شیڈول";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "مثال: کانسی دور کے خاتمے کے نظریات اور شواہد";
 "ex.: assistente direto e objetivo" = "مثال: براہ راست اور مقصد پر مبنی مددگار";
@@ -80,6 +88,7 @@
 "Exportar dados" = "ڈیٹا برآمد کریں";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "یادداشتیں، پری سیٹس، ترتیبات، مہارتیں اور ترجیحات JSON کے طور پر برآمد کریں۔";
 "Falha ao carregar logs: %@" = "لاگز لوڈ کرنے میں ناکامی: %@";
+"Falha ao instalar %@: %@" = "%1$@ نصب کرنے میں ناکام: %2$@";
 "Fallback automático" = "خودکار متبادل";
 "Fechar" = "بند کریں";
 "Ferramentas integradas" = "بلٹ ان ٹولز";
@@ -89,6 +98,7 @@
 "Fundo animado" = "متحرک پس منظر";
 "Galeria" = "گیلری";
 "Geração de imagem" = "تصویر بنانا";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "فراہم کنندہ کی ویب سائٹ پر ایپ کے لیے مخصوص پاس ورڈ بنائیں۔ iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +۔";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "ایجنٹ کے لیے دستیاب ٹولز کو فعال یا غیر فعال کریں۔";
 "Idioma" = "زبان";
 "Igual ao chat" = "گفتگو کی طرح";
@@ -97,6 +107,7 @@
 "instalado" = "نصب ہو گیا";
 "instalando…" = "نصب ہو رہا ہے…";
 "Instalar" = "نصب کریں";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "سرور پر %@ کی تنصیب شروع ہو گئی ہے — اس میں چند منٹ لگ سکتے ہیں۔";
 "Integrações" = "انضمامات";
 "Irreversível. Cada item apaga uma categoria." = "ناقابل واپسی۔ ہر آئٹم ایک زمرہ حذف کرتا ہے۔";
 "Isso é irreversível. Confirma?" = "یہ ناقابل واپسی ہے۔ تصدیق کریں؟";
@@ -122,6 +133,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "ابھی تک کوئی انضمام نہیں — اوپر «انضمام شامل کریں» استعمال کریں۔";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "نیورل = PocketTTS پرتگالی میں (Core ML/Neural Engine)، مقامی آواز سے بہت زیادہ قدرتی۔ پہلی بار ~550 MB آلے پر ڈاؤن لوڈ کرتا ہے؛ صرف اصلی iPhone پر چلتا ہے (سیمولیٹر پر نہیں)۔";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Odysseus میں، ای میل کھولیں → اکاؤنٹس آئیکن → + پر ٹیپ کریں۔";
 "Nome" = "نام";
 "Notes" = "Notes";
 "Nova conta" = "نیا اکاؤنٹ";
@@ -148,7 +160,9 @@
 "Pesquisa profunda" = "گہری تلاش";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "LLM ایجنٹ کے ساتھ کثیر مرحلہ ویب تحقیق۔";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "بہ طور پہلے سے، ایپ آپ کے آلے کی زبان پر چلتی ہے۔ تبدیل کرنے پر مرکزی اسکرین پر واپس آتی ہے۔";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "پُر کریں: نام، آپ کا ای میل، IMAP سرور اور پورٹ، صارف (آپ کا ای میل) اور ایپ کے لیے مخصوص پاس ورڈ۔";
 "Provedores" = "فراہم کنندگان";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "دو سطحی توثیق والے فراہم کنندگان (iCloud, Gmail, Outlook) کو ایپ کے لیے مخصوص پاس ورڈ درکار ہوتا ہے — آپ کے اکاؤنٹ کا عام پاس ورڈ نہیں۔";
 "prévia" = "پیش نظارہ";
 "Qualquer um pode criar conta pela tela de login." = "کوئی بھی لاگ ان اسکرین سے اکاؤنٹ بنا سکتا ہے۔";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "جب فعال ہو، معاون ماڈل نوٹ کے خام مواد کی بجائے ایک مختصر، گرمجوش یاددہانی (ایک سطر) لکھتا ہے — براؤزر، ای میل، ntfy اور webhook کے لیے۔";
@@ -160,18 +174,22 @@
 "Renomear conversa" = "گفتگو کا نام بدلیں";
 "Renomear usuário" = "صارف کا نام بدلیں";
 "Research" = "Research";
+"Resposta inesperada do servidor: %@" = "سرور سے غیر متوقع جواب: %@";
 "Resumir com IA" = "AI سے خلاصہ کریں";
 "Rodar agora" = "ابھی چلائیں";
 "Sair da conta" = "لاگ آؤٹ کریں";
 "Salvar" = "محفوظ کریں";
 "Salvar servidor" = "سرور محفوظ کریں";
 "Salvo" = "محفوظ ہو گیا";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "اگر “timed out” نظر آئے، تو پاس ورڈ غالباً غلط ہے — ایپ کے لیے نیا مخصوص پاس ورڈ بنائیں۔";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "اگر پہلے سے طے شدہ فراہم کنندہ ناکام ہو تو دوسروں کو ترتیب سے آزماتا ہے: %@۔";
 "Segurança (%@)" = "سیکیورٹی (%@)";
 "Selecione o idioma do aplicativo." = "ایپ کی زبان منتخب کریں۔";
 "Sem memórias ainda" = "ابھی تک کوئی یادداشت نہیں";
 "Sem tarefas" = "کوئی کام نہیں";
+"Semanal %@" = "ہر ہفتے %@";
 "Servidor" = "سرور";
+"Servidores comuns" = "عام سرورز";
 "Servidores MCP" = "MCP سرورز";
 "Sistema" = "سسٹم";
 "SMTP igual ao IMAP" = "SMTP بالکل IMAP جیسا";
@@ -190,11 +208,13 @@
 "Todos" = "سب";
 "Toque em + para conectar uma conta IMAP." = "IMAP اکاؤنٹ جوڑنے کے لیے + ٹیپ کریں۔";
 "Toque em + para criar sua primeira nota." = "اپنا پہلا نوٹ بنانے کے لیے + ٹیپ کریں۔";
+"Toque em Criar. A caixa carrega em alguns segundos." = "بنائیں پر ٹیپ کریں۔ ان باکس چند سیکنڈ میں لوڈ ہو جائے گا۔";
 "Tornar padrão" = "پہلے سے طے شدہ بنائیں";
 "Trabalho" = "کام";
 "Transparência" = "شفافیت";
 "Trocar senha" = "پاس ورڈ بدلیں";
 "Título" = "عنوان";
+"Uma vez %@" = "ایک بار %@";
 "Usuários" = "صارفین";
 "vazio = usa o host da URL" = "خالی = URL کا ہوسٹ استعمال کرتا ہے";
 "vazio = usa o servidor principal" = "خالی = اصل سرور استعمال کرتا ہے";

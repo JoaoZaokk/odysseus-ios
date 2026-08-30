@@ -11,6 +11,7 @@
 "Adicionar usuário" = "新增使用者";
 "ADMIN" = "管理";
 "Admin" = "管理員";
+"Agendado %@" = "已排程 %@";
 "Agent Tools" = "Agent Tools";
 "Agentes agendados" = "已排程的代理程式";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus 的已排程代理程式會顯示在此處。";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "備忘錄與提醒";
 "Apagar" = "刪除";
 "Aparência" = "外觀";
+"apertado" = "勉強放得下";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "現在指向本機 IP；透過 HTTPS 公開後，改為 https://your-domain。";
 "Arquivar" = "封存";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "已完成的研究會顯示在此處。點選「視覺報告」以並排開啟。";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "搜尋";
 "Buscar nos logs…" = "搜尋日誌（log）…";
+"cabe" = "放得下";
 "Cabe na máquina (estimativa, melhor GPU)" = "適合此機器執行（估算，最佳 GPU）";
 "Cadastro aberto" = "開放註冊";
 "Caixa de entrada" = "收件匣";
@@ -43,6 +46,7 @@
 "Cancelar" = "取消";
 "Carregando…" = "載入中…";
 "Categoria" = "類別";
+"Como conectar seu email" = "點樣連接你嘅郵件";
 "Como o fallback funciona" = "備用方案的運作方式";
 "Como posso ajudar?" = "我能幫您什麼？";
 "Comparar" = "比較";
@@ -54,6 +58,7 @@
 "Conta" = "帳戶";
 "Contas de email" = "郵件帳戶";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron：%@";
 "Deep Research" = "Deep Research";
 "Default" = "預設";
 "Desativado" = "已停用";
@@ -61,6 +66,7 @@
 "Desbloquear com %@" = "使用 %@ 解鎖";
 "Detectado: %@ %@" = "已偵測到：%@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus 處理程序的即時診斷。";
+"Diário %@" = "每日 %@";
 "Documentos pessoais (RAG)" = "個人文件（RAG）";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "為此代理程式命名以與其他代理程式區分（例如：\"Claude Agent — laptop\"）。";
 "Email" = "郵件";
@@ -68,9 +74,11 @@
 "Endereço do servidor Odysseus" = "Odysseus 伺服器位址";
 "Envie a mesma pergunta para os dois modelos." = "向兩個模型傳送相同的問題。";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "傳送文件（PDF、txt、md…）供助理透過 RAG 參考。";
+"Erro %d" = "錯誤 %d";
 "Erro no download" = "下載錯誤";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "在上方以自然語言輸入\n或點選 + 建立。";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "按名稱估算（fp8≈1B/param，fp16/bf16≈2B/param）+ 約 3 GB 餘量。無法取代實際測試。";
+"Evento: %@" = "事件：%@";
 "Eventos e agenda" = "事件與行程";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "例：青銅時代崩潰的理論及證據";
 "ex.: assistente direto e objetivo" = "例：直接且簡潔的助理";
@@ -80,6 +88,7 @@
 "Exportar dados" = "匯出資料";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "將記憶、預設集、設定、技能和偏好設定匯出為 JSON。";
 "Falha ao carregar logs: %@" = "載入日誌失敗：%@";
+"Falha ao instalar %@: %@" = "安裝 %1$@ 失敗：%2$@";
 "Fallback automático" = "自動備用";
 "Fechar" = "關閉";
 "Ferramentas integradas" = "內建工具";
@@ -89,6 +98,7 @@
 "Fundo animado" = "動態背景";
 "Galeria" = "圖庫";
 "Geração de imagem" = "影像生成";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "在供應商網站產生 app 專用密碼。iCloud：account.apple.com → 登入與保安 → App 專用密碼 → +。";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "啟用或停用代理程式可使用的工具。";
 "Idioma" = "語言";
 "Igual ao chat" = "與聊天相同";
@@ -97,6 +107,7 @@
 "instalado" = "已安裝";
 "instalando…" = "安裝中…";
 "Instalar" = "安裝";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "已開始在伺服器上安裝 %@，可能需要幾分鐘。";
 "Integrações" = "整合";
 "Irreversível. Cada item apaga uma categoria." = "無法復原。每項操作將刪除一個類別。";
 "Isso é irreversível. Confirma?" = "此操作無法復原。確認嗎？";
@@ -122,6 +133,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "尚無整合——請使用上方的「新增整合」。";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "神經 = 葡萄牙語的 PocketTTS（Core ML/Neural Engine），比原生語音自然得多。首次在裝置上下載約 550 MB；僅在實體 iPhone 上執行（不支援模擬器）。";
 "Neural pt-BR" = "神經 pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "在 Odysseus，打開「郵件」→ 帳戶圖示 → 點一下 +。";
 "Nome" = "名稱";
 "Notes" = "備忘錄";
 "Nova conta" = "新帳戶";
@@ -148,7 +160,9 @@
 "Pesquisa profunda" = "深度搜尋";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "包含 LLM 代理程式的多步驟網絡研究。";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "預設情況下，應用程式跟隨裝置語言。切換後將返回主畫面。";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "填妥：名稱、你嘅郵件、IMAP 伺服器同連接埠、使用者名稱（你嘅郵件）同 app 專用密碼。";
 "Provedores" = "提供者";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "使用雙重認證嘅供應商（iCloud、Gmail、Outlook）需要 app 專用密碼，不是你帳戶嘅一般密碼。";
 "prévia" = "預覽";
 "Qualquer um pode criar conta pela tela de login." = "任何人都可以在登入畫面建立帳戶。";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "開啟後，實用模型將為瀏覽器、郵件、ntfy 和 webhook 生成簡短溫馨的一行提醒，而非原始備忘內容。";
@@ -160,18 +174,22 @@
 "Renomear conversa" = "重新命名對話";
 "Renomear usuário" = "重新命名使用者";
 "Research" = "研究";
+"Resposta inesperada do servidor: %@" = "伺服器意外回應：%@";
 "Resumir com IA" = "使用 AI 摘要";
 "Rodar agora" = "立即執行";
 "Sair da conta" = "登出";
 "Salvar" = "儲存";
 "Salvar servidor" = "儲存伺服器";
 "Salvo" = "已儲存";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "如果出現「timed out」，多半係密碼錯咗，請產生新嘅 app 專用密碼。";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "如果預設提供者失敗，將按以下順序嘗試其他提供者：%@。";
 "Segurança (%@)" = "安全性（%@）";
 "Selecione o idioma do aplicativo." = "選擇應用程式語言。";
 "Sem memórias ainda" = "尚無記憶";
 "Sem tarefas" = "無工作";
+"Semanal %@" = "每星期 %@";
 "Servidor" = "伺服器";
+"Servidores comuns" = "常用伺服器";
 "Servidores MCP" = "MCP 伺服器";
 "Sistema" = "系統";
 "SMTP igual ao IMAP" = "SMTP 與 IMAP 相同";
@@ -189,11 +207,13 @@
 "Todos" = "全部";
 "Toque em + para conectar uma conta IMAP." = "點選 + 連線 IMAP 帳戶。";
 "Toque em + para criar sua primeira nota." = "點選 + 建立您的第一條備忘。";
+"Toque em Criar. A caixa carrega em alguns segundos." = "點一下「建立」。收件匣會在幾秒內載入。";
 "Tornar padrão" = "設為預設";
 "Trabalho" = "工作";
 "Transparência" = "透明度";
 "Trocar senha" = "變更密碼";
 "Título" = "標題";
+"Uma vez %@" = "一次 %@";
 "Usuários" = "使用者";
 "vazio = usa o host da URL" = "空 = 使用 URL 主機";
 "vazio = usa o servidor principal" = "空 = 使用主伺服器";

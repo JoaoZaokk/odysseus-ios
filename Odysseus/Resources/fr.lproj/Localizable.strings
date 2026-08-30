@@ -1,6 +1,24 @@
 /* Odysseus iOS — Localizable.strings (French) */
 /* Generated from pt-BR source keys via the translation council. */
 
+"Agendado %@" = "Planifié %@";
+"apertado" = "tout juste";
+"cabe" = "tient";
+"Como conectar seu email" = "Connecter votre e-mail";
+"Cron: %@" = "Cron : %@";
+"Diário %@" = "Quotidien %@";
+"Erro %d" = "Erreur %d";
+"Evento: %@" = "Événement : %@";
+"Falha ao instalar %@: %@" = "Échec de l’installation de %@ : %@";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Générez un mot de passe pour application sur le site de votre fournisseur. iCloud : account.apple.com → Connexion et sécurité → Mots de passe pour applications → +.";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Installation de %@ lancée sur le serveur — cela peut prendre quelques minutes.";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Dans Odysseus, ouvrez E-mail → l’icône des comptes → touchez +.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Renseignez les champs suivants : Nom, votre e-mail, serveur IMAP et port, nom d’utilisateur (votre e-mail) et mot de passe pour application.";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Les fournisseurs utilisant l’identification à deux facteurs (iCloud, Gmail, Outlook) nécessitent un mot de passe pour application — et non le mot de passe habituel de votre compte.";
+"Resposta inesperada do servidor: %@" = "Réponse inattendue du serveur : %@";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Si « timed out » s’affiche, le mot de passe est probablement incorrect — générez un nouveau mot de passe pour application.";
+"Semanal %@" = "Hebdomadaire %@";
+"Servidores comuns" = "Serveurs courants";
 "Timeout do stream (s)" = "Délai d'expiration du flux (s)";
 "Cookbook" = "Cookbook";
 "Segurança (%@)" = "Sécurité (%@)";
@@ -28,6 +46,7 @@
 "Ativado" = "Activé";
 "Biometria/senha do dispositivo indisponível neste aparelho." = "Biométrie/code de l'appareil indisponible sur cet appareil.";
 "Modelo on-device" = "Modèle sur l'appareil";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Touchez Créer. La boîte de réception se charge en quelques secondes.";
 "Tornar admin" = "Promouvoir admin";
 "Endereço do servidor Odysseus" = "Adresse du serveur Odysseus";
 "Criar token" = "Créer un jeton";
@@ -51,6 +70,7 @@
 "Não consegui carregar o relatório." = "Impossible de charger le rapport.";
 "Modelos usados ao criar uma nova conversa e em tarefas de fundo." = "Modèles utilisés lors de la création d'une nouvelle conversation et dans les tâches en arrière-plan.";
 "Não consegui carregar o email" = "Impossible de charger votre e-mail";
+"Uma vez %@" = "Une fois %@";
 "Usar como conta padrão" = "Utiliser comme compte par défaut";
 "Desarquivar" = "Désarchiver";
 "Desativar" = "Désactiver";

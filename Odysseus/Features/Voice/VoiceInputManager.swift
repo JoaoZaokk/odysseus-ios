@@ -273,8 +273,12 @@ final class VoiceInputManager: ObservableObject {
 
     private func transcribeWithServer() async -> String {
         guard let api else { error = L("Servidor de voz indisponível."); return "" }
+        // Same resolution the custom-endpoint path uses, so the two server-side
+        // engines agree on what the user picked: nil under "detect", otherwise
+        // the pinned language (or the app's, under "follow the app").
+        let language = SpeechLanguage.pinned()?.sttServerCode
         do {
-            return try await transcribeUpload { try await api.transcribeAudio($0) }
+            return try await transcribeUpload { try await api.transcribeAudio($0, language: language) }
         } catch {
             self.error = L("Transcrição (servidor): %@", error.localizedDescription)
             return ""

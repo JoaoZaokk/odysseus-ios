@@ -11,6 +11,7 @@
 "Adicionar usuário" = "ユーザーを追加";
 "ADMIN" = "管理";
 "Admin" = "管理者";
+"Agendado %@" = "スケジュール済み %@";
 "Agent Tools" = "エージェントツール";
 "Agentes agendados" = "スケジュール済みエージェント";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus のスケジュール済みエージェントがここに表示されます。";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "メモとリマインダー";
 "Apagar" = "削除";
 "Aparência" = "外観";
+"apertado" = "ぎりぎり";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "今はローカル IP を指定してください。HTTPS で公開する際は https://seu-dominio に変更してください。";
 "Arquivar" = "アーカイブ";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "完了したリサーチがここに表示されます。「ビジュアルレポート」をタップすると並べて開けます。";
@@ -36,6 +38,7 @@
 "Brain" = "ブレイン";
 "Busca" = "検索";
 "Buscar nos logs…" = "ログを検索…";
+"cabe" = "収まります";
 "Cabe na máquina (estimativa, melhor GPU)" = "このマシンで動作可能（推定、最良の GPU）";
 "Cadastro aberto" = "登録を開放";
 "Caixa de entrada" = "受信トレイ";
@@ -43,6 +46,7 @@
 "Cancelar" = "キャンセル";
 "Carregando…" = "読み込み中…";
 "Categoria" = "カテゴリ";
+"Como conectar seu email" = "メールを接続する";
 "Como o fallback funciona" = "フォールバックの仕組み";
 "Como posso ajudar?" = "何をお手伝いしましょうか？";
 "Comparar" = "比較";
@@ -54,6 +58,7 @@
 "Conta" = "アカウント";
 "Contas de email" = "メールアカウント";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "デフォルト";
 "Desativado" = "無効";
@@ -61,6 +66,7 @@
 "Desbloquear com %@" = "%@ でロック解除";
 "Detectado: %@ %@" = "検出: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus プロセスのライブ診断。";
+"Diário %@" = "毎日 %@";
 "Documentos pessoais (RAG)" = "個人ドキュメント（RAG）";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "このエージェントを他と区別できるよう名前を付けてください（例：「Claude Agent — laptop」）。";
 "Email" = "メール";
@@ -68,9 +74,11 @@
 "Endereço do servidor Odysseus" = "Odysseus サーバーのアドレス";
 "Envie a mesma pergunta para os dois modelos." = "同じ質問を両方のモデルに送信します。";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "ドキュメント（PDF、txt、md…）を送信すると、アシスタントが RAG で参照します。";
+"Erro %d" = "エラー %d";
 "Erro no download" = "ダウンロードエラー";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "上に自然な言葉で入力するか\n＋をタップして作成してください。";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "名前から推定（fp8≈1B/param、fp16/bf16≈2B/param）＋~3 GB の余裕。実際のテストの代わりにはなりません。";
+"Evento: %@" = "イベント: %@";
 "Eventos e agenda" = "イベントと予定";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "例：青銅器時代崩壊の諸説とその証拠";
 "ex.: assistente direto e objetivo" = "例：率直で要点を押さえたアシスタント";
@@ -80,6 +88,7 @@
 "Exportar dados" = "データをエクスポート";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "メモリ、プリセット、設定、スキル、環境設定を JSON としてエクスポートします。";
 "Falha ao carregar logs: %@" = "ログの読み込みに失敗しました：%@";
+"Falha ao instalar %@: %@" = "%1$@ のインストールに失敗しました：%2$@";
 "Fallback automático" = "自動フォールバック";
 "Fechar" = "閉じる";
 "Ferramentas integradas" = "組み込みツール";
@@ -89,6 +98,7 @@
 "Fundo animado" = "アニメーション背景";
 "Galeria" = "ギャラリー";
 "Geração de imagem" = "画像生成";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "プロバイダのサイトでアプリ用パスワードを作成します。iCloud: account.apple.com →「サインインとセキュリティ」→「Appパスワード」→ +。";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "エージェントが利用できるツールを有効／無効にします。";
 "Idioma" = "言語";
 "Igual ao chat" = "チャットと同じ";
@@ -97,6 +107,7 @@
 "instalado" = "インストール済み";
 "instalando…" = "インストール中…";
 "Instalar" = "インストール";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "%@ のインストールをサーバーで開始しました。数分かかることがあります。";
 "Integrações" = "連携";
 "Irreversível. Cada item apaga uma categoria." = "取り消せません。各項目はカテゴリを 1 つ削除します。";
 "Isso é irreversível. Confirma?" = "これは取り消せません。よろしいですか？";
@@ -122,6 +133,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "まだ連携がありません — 上の「連携を追加」を使ってください。";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "ニューラル = ポルトガル語の PocketTTS（Core ML/Neural Engine）で、ネイティブ音声よりはるかに自然です。初回はオンデバイスで ~550 MB をダウンロードします。実機の iPhone のみで動作します（シミュレーターは不可）。";
 "Neural pt-BR" = "ニューラル pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Odysseus で メール → アカウントのアイコン → + をタップします。";
 "Nome" = "名前";
 "Notes" = "メモ";
 "Nova conta" = "新しいアカウント";
@@ -148,7 +160,9 @@
 "Pesquisa profunda" = "ディープサーチ";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "LLM エージェントをループに組み込んだ多段階の Web リサーチ。";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "既定では、アプリはデバイスの言語に従います。切り替えるとホーム画面に戻ります。";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "名前、メールアドレス、IMAPサーバーとポート、ユーザー名（メールアドレス）、アプリ用パスワードを入力します。";
 "Provedores" = "プロバイダー";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "2要素認証のプロバイダ（iCloud、Gmail、Outlook）では、通常のパスワードではなく「アプリ用パスワード」が必要です。";
 "prévia" = "プレビュー";
 "Qualquer um pode criar conta pela tela de login." = "ログイン画面から誰でもアカウントを作成できます。";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "オンにすると、ユーティリティモデルがメモの生の内容の代わりに、短く温かみのある一行のリマインダーを書きます — browser、メール、ntfy、webhook 向け。";
@@ -160,18 +174,22 @@
 "Renomear conversa" = "会話の名前を変更";
 "Renomear usuário" = "ユーザー名を変更";
 "Research" = "リサーチ";
+"Resposta inesperada do servidor: %@" = "サーバーからの予期しない応答: %@";
 "Resumir com IA" = "AI で要約";
 "Rodar agora" = "今すぐ実行";
 "Sair da conta" = "ログアウト";
 "Salvar" = "保存";
 "Salvar servidor" = "サーバーを保存";
 "Salvo" = "保存済み";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "「timed out」になる場合、パスワードが間違っていることが多いです。新しいアプリ用パスワードを作成してください。";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "既定のプロバイダーが失敗した場合、次の順序で試します：%@。";
 "Segurança (%@)" = "セキュリティ（%@）";
 "Selecione o idioma do aplicativo." = "アプリの言語を選択してください。";
 "Sem memórias ainda" = "まだメモリがありません";
 "Sem tarefas" = "タスクがありません";
+"Semanal %@" = "毎週 %@";
 "Servidor" = "サーバー";
+"Servidores comuns" = "よく使うサーバー";
 "Servidores MCP" = "MCP サーバー";
 "Sistema" = "システム";
 "SMTP igual ao IMAP" = "SMTP を IMAP と同じにする";
@@ -189,11 +207,13 @@
 "Todos" = "すべて";
 "Toque em + para conectar uma conta IMAP." = "＋をタップして IMAP アカウントを接続してください。";
 "Toque em + para criar sua primeira nota." = "＋をタップして最初のメモを作成してください。";
+"Toque em Criar. A caixa carrega em alguns segundos." = "「作成」をタップ。数秒で受信箱が読み込まれます。";
 "Tornar padrão" = "デフォルトにする";
 "Trabalho" = "仕事";
 "Transparência" = "透明度";
 "Trocar senha" = "パスワードを変更";
 "Título" = "タイトル";
+"Uma vez %@" = "1回のみ %@";
 "Usuários" = "ユーザー";
 "vazio = usa o host da URL" = "空 = URL のホストを使用";
 "vazio = usa o servidor principal" = "空 = メインサーバーを使用";

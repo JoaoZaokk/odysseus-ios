@@ -11,6 +11,7 @@
 "Adicionar usuário" = "Lägg till användare";
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
+"Agendado %@" = "Schemalagd %@";
 "Agent Tools" = "Agentverktyg";
 "Agentes agendados" = "Schemalagda agenter";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus schemalagda agenter visas här.";
@@ -19,6 +20,7 @@
 "Anotações e lembretes" = "Anteckningar och påminnelser";
 "Apagar" = "Radera";
 "Aparência" = "Utseende";
+"apertado" = "knappt";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Peka på den lokala IP-adressen för nu; när du exponerar den via HTTPS, byt till https://din-domän.";
 "Arquivar" = "Arkivera";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Slutförda undersökningar visas här. Tryck på “Visuell rapport” för att öppna den sida vid sida.";
@@ -36,6 +38,7 @@
 "Brain" = "Brain";
 "Busca" = "Sök";
 "Buscar nos logs…" = "Sök i loggar…";
+"cabe" = "ryms";
 "Cabe na máquina (estimativa, melhor GPU)" = "Får plats på maskinen (uppskattning, bästa GPU)";
 "Cadastro aberto" = "Öppen registrering";
 "Caixa de entrada" = "Inkorg";
@@ -43,6 +46,7 @@
 "Cancelar" = "Avbryt";
 "Carregando…" = "Laddar…";
 "Categoria" = "Kategori";
+"Como conectar seu email" = "Anslut din e-post";
 "Como o fallback funciona" = "Så här fungerar reservlösningen";
 "Como posso ajudar?" = "Hur kan jag hjälpa till?";
 "Comparar" = "Jämför";
@@ -54,6 +58,7 @@
 "Conta" = "Konto";
 "Contas de email" = "E-postkonton";
 "Cookbook" = "Cookbook";
+"Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
 "Default" = "Standard";
 "Desativado" = "Inaktiverad";
@@ -61,6 +66,7 @@
 "Desbloquear com %@" = "Lås upp med %@";
 "Detectado: %@ %@" = "Identifierad: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Realtidsdiagnostik för Odysseus-processen.";
+"Diário %@" = "Dagligen %@";
 "Documentos pessoais (RAG)" = "Personliga dokument (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Ge den här agenten ett namn för att skilja den från de andra (t.ex. \"Claude Agent — laptop\").";
 "Email" = "E-post";
@@ -68,9 +74,11 @@
 "Endereço do servidor Odysseus" = "Odysseus-serveradress";
 "Envie a mesma pergunta para os dois modelos." = "Skicka samma fråga till båda modellerna.";
 "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG." = "Skicka dokument (PDF, txt, md…) som assistenten kan slå upp via RAG.";
+"Erro %d" = "Fel %d";
 "Erro no download" = "Nedladdningsfel";
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Skriv i naturligt språk ovan\neller tryck på + för att skapa.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Uppskattning baserad på namn (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB marginal. Ersätter inte ett riktigt test.";
+"Evento: %@" = "Händelse: %@";
 "Eventos e agenda" = "Händelser och schema";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "t.ex. teorierna om bronsålderskollapsen och bevisen";
 "ex.: assistente direto e objetivo" = "t.ex. en rak och konkret assistent";
@@ -80,6 +88,7 @@
 "Exportar dados" = "Exportera data";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportera minnen, förinställningar, inställningar, skills och preferenser som JSON.";
 "Falha ao carregar logs: %@" = "Det gick inte att läsa in loggar: %@";
+"Falha ao instalar %@: %@" = "Det gick inte att installera %@: %@";
 "Fallback automático" = "Automatisk reservlösning";
 "Fechar" = "Stäng";
 "Ferramentas integradas" = "Inbyggda verktyg";
@@ -89,6 +98,7 @@
 "Fundo animado" = "Animerad bakgrund";
 "Galeria" = "Galleri";
 "Geração de imagem" = "Bildgenerering";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Skapa ett appspecifikt lösenord på leverantörens webbplats. iCloud: account.apple.com → Inloggning och säkerhet → App-specifika lösenord → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktivera eller inaktivera verktygen som är tillgängliga för agenten.";
 "Idioma" = "Språk";
 "Igual ao chat" = "Samma som chatt";
@@ -97,6 +107,7 @@
 "instalado" = "installerad";
 "instalando…" = "installerar…";
 "Instalar" = "Installera";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Installationen av %@ har startats på servern — det kan ta några minuter.";
 "Integrações" = "Integrationer";
 "Irreversível. Cada item apaga uma categoria." = "Oåterkalleligt. Varje objekt raderar en kategori.";
 "Isso é irreversível. Confirma?" = "Det här går inte att ångra. Bekräfta?";
@@ -122,6 +133,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Inga integrationer än — använd “Lägg till integration” ovan.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS på portugisiska (Core ML/Neural Engine), betydligt mer naturlig än den nativa rösten. Laddar ner ~550 MB på enheten första gången; körs endast på en fysisk iPhone (inte simulatorn).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Öppna E-post i Odysseus → kontosymbolen → tryck på +.";
 "Nome" = "Namn";
 "Notes" = "Anteckningar";
 "Nova conta" = "Nytt konto";
@@ -148,7 +160,9 @@
 "Pesquisa profunda" = "Djupsökning";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Webbaserad research i flera steg med en LLM-agent i loopen.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Som standard följer appen enhetens språk. När du byter går den tillbaka till startskärmen.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Fyll i: Namn, din e-postadress, IMAP-server och port, användarnamn (din e-postadress) och det appspecifika lösenordet.";
 "Provedores" = "Leverantörer";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Leverantörer med tvåfaktorsautentisering (iCloud, Gmail, Outlook) kräver ett appspecifikt lösenord – inte det vanliga lösenordet till ditt konto.";
 "prévia" = "förhandsvisning";
 "Qualquer um pode criar conta pela tela de login." = "Vem som helst kan skapa ett konto från inloggningsskärmen.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "När det är på skriver hjälpmodellen en kort, varm påminnelse på en rad i stället för anteckningens råa innehåll — för webbläsare, e-post, ntfy och webhook.";
@@ -160,18 +174,22 @@
 "Renomear conversa" = "Byt namn på konversation";
 "Renomear usuário" = "Byt namn på användare";
 "Research" = "Forskning";
+"Resposta inesperada do servidor: %@" = "Oväntat serversvar: %@";
 "Resumir com IA" = "Sammanfatta med AI";
 "Rodar agora" = "Kör nu";
 "Sair da conta" = "Logga ut";
 "Salvar" = "Spara";
 "Salvar servidor" = "Spara server";
 "Salvo" = "Sparad";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Om ”timed out” visas är lösenordet förmodligen fel – skapa ett nytt appspecifikt lösenord.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Om standardleverantören misslyckas provas de andra i ordning: %@.";
 "Segurança (%@)" = "Säkerhet (%@)";
 "Selecione o idioma do aplicativo." = "Välj appens språk.";
 "Sem memórias ainda" = "Inga minnen än";
 "Sem tarefas" = "Inga uppgifter";
+"Semanal %@" = "Varje vecka %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Vanliga servrar";
 "Servidores MCP" = "MCP-servrar";
 "Sistema" = "System";
 "SMTP igual ao IMAP" = "SMTP samma som IMAP";
@@ -190,11 +208,13 @@
 "Todos" = "Alla";
 "Toque em + para conectar uma conta IMAP." = "Tryck på + för att ansluta ett IMAP-konto.";
 "Toque em + para criar sua primeira nota." = "Tryck på + för att skapa din första anteckning.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tryck på Skapa. Inkorgen läses in på några sekunder.";
 "Tornar padrão" = "Gör till standard";
 "Trabalho" = "Arbete";
 "Transparência" = "Transparens";
 "Trocar senha" = "Byt lösenord";
 "Título" = "Titel";
+"Uma vez %@" = "En gång %@";
 "Usuários" = "Användare";
 "vazio = usa o host da URL" = "tomt = använder URL:ens värdnamn";
 "vazio = usa o servidor principal" = "tomt = använder huvudservern";

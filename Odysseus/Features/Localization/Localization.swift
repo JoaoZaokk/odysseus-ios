@@ -143,6 +143,20 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     /// subtags are dropped: `pt-BR` → `pt`, `zh-Hans` → `zh`, `de-AT` → `de`.
     var iso639: String { String(rawValue.prefix(while: { $0 != "-" })) }
 
+    /// The code to send to a Whisper-family transcription server, or nil when
+    /// the model has never heard of the language and auto-detect is the only
+    /// honest option.
+    ///
+    /// Uyghur is the single gap across the app's 44: it is absent from Whisper's
+    /// `LANGUAGES` table, which every server in this family validates against,
+    /// so naming it does not degrade to a guess — faster-whisper raises and the
+    /// recording is lost. Sending nothing leaves the server detecting, which is
+    /// what a Uyghur speaker got before any of this and is still better than an
+    /// error. `whisperCode` already knew this for the on-device engine; the two
+    /// differ only in that whisper.cpp spells Hebrew `iw` and servers spell it
+    /// `he`, so they cannot simply be the same property.
+    var sttServerCode: String? { self == .ug ? nil : iso639 }
+
     /// ISO-639-1 code whisper.cpp expects. Hebrew is the one mismatch —
     /// SwiftWhisper spells it `iw`. Languages whisper has no pack for
     /// (Uyghur) return nil so the caller can fall back to auto-detect.

@@ -7,6 +7,17 @@
 "%lld de %lld linhas" = "%lld de %lld linhas";
 "%lld linhas" = "%lld linhas";
 "%lld mensagens antigas saíram do contexto para caber no limite." = "%lld mensagens antigas saíram do contexto para caber no limite.";
+"Agendado %@" = "Agendado %@";
+"apertado" = "apertado";
+"cabe" = "cabe";
+"Como conectar seu email" = "Como conectar seu email";
+"Cron: %@" = "Cron: %@";
+"Diário %@" = "Diário %@";
+"Erro %d" = "Erro %d";
+"Evento: %@" = "Evento: %@";
+"Falha ao instalar %@: %@" = "Falha ao instalar %@: %@";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +.";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Instalação de %@ iniciada no servidor — pode levar alguns minutos.";
 "Modelos encontrados: %lld" = "Modelos encontrados: %lld";
 "(sem conteúdo)" = "(sem conteúdo)";
 "(sem nome)" = "(sem nome)";
@@ -140,6 +151,13 @@
 "Exportar dados" = "Exportar dados";
 "Exporte memórias, presets, settings, skills e preferências como JSON." = "Exporte memórias, presets, settings, skills e preferências como JSON.";
 "Extração paralela" = "Extração paralela";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "No Odysseus, abra Email → ícone de contas → toque em +.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app.";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta.";
+"Resposta inesperada do servidor: %@" = "Resposta inesperada do servidor: %@";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app.";
+"Semanal %@" = "Semanal %@";
+"Servidores comuns" = "Servidores comuns";
 "Timeout da extração (s)" = "Timeout da extração (s)";
 "Falha" = "Falha";
 "Falha ao carregar logs: %@" = "Falha ao carregar logs: %@";
@@ -349,6 +367,7 @@
 "Todos" = "Todos";
 "Toque em + para conectar uma conta IMAP." = "Toque em + para conectar uma conta IMAP.";
 "Toque em + para criar sua primeira nota." = "Toque em + para criar sua primeira nota.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Toque em Criar. A caixa carrega em alguns segundos.";
 "Tornar admin" = "Tornar admin";
 "Tornar padrão" = "Tornar padrão";
 "Trabalho" = "Trabalho";
@@ -356,6 +375,7 @@
 "Trocar senha" = "Trocar senha";
 "Tudo" = "Tudo";
 "Título" = "Título";
+"Uma vez %@" = "Uma vez %@";
 "URL (opcional)" = "URL (opcional)";
 "Usada quando nenhuma outra está selecionada." = "Usada quando nenhuma outra está selecionada.";
 "Usar como conta padrão" = "Usar como conta padrão";
