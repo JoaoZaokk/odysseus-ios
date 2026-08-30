@@ -46,6 +46,7 @@
 "Cancelar" = "रद्द करें";
 "Carregando…" = "लोड हो रहा है…";
 "Categoria" = "श्रेणी";
+"Como conectar seu email" = "अपना ईमेल कैसे कनेक्ट करें";
 "Como o fallback funciona" = "फ़ॉलबैक कैसे काम करता है";
 "Como posso ajudar?" = "मैं कैसे मदद कर सकता हूँ?";
 "Comparar" = "तुलना करें";
@@ -97,6 +98,7 @@
 "Fundo animado" = "एनिमेटेड बैकग्राउंड";
 "Galeria" = "गैलरी";
 "Geração de imagem" = "छवि जनरेशन";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "प्रोवाइडर की वेबसाइट पर ऐप-विशिष्ट पासवर्ड जनरेट करें। iCloud: account.apple.com → साइन इन और सुरक्षा → ऐप-विशिष्ट पासवर्ड → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "एजेंट के लिए उपलब्ध टूल्स सक्षम या अक्षम करें।";
 "Idioma" = "भाषा";
 "Igual ao chat" = "चैट जैसा ही";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "अभी तक कोई इंटीग्रेशन नहीं — ऊपर “इंटीग्रेशन जोड़ें” का उपयोग करें।";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "न्यूरल = पुर्तगाली में PocketTTS (Core ML/Neural Engine), नेटिव वॉइस से कहीं ज़्यादा प्राकृतिक। पहली बार ~550 MB ऑन-डिवाइस डाउनलोड करता है; सिर्फ़ फ़िज़िकल iPhone पर चलता है (सिम्युलेटर पर नहीं)।";
 "Neural pt-BR" = "न्यूरल pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Odysseus में, ईमेल खोलें → खाता आइकन → + पर टैप करें।";
 "Nome" = "नाम";
 "Notes" = "नोट्स";
 "Nova conta" = "नया खाता";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "गहरी खोज";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "लूप में LLM एजेंट के साथ मल्टी-स्टेप वेब रिसर्च।";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "डिफ़ॉल्ट रूप से ऐप आपके डिवाइस की भाषा का अनुसरण करता है। बदलने पर यह होम स्क्रीन पर लौट आता है।";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "भरें: नाम, आपका ईमेल, IMAP सर्वर और पोर्ट, यूज़रनेम (आपका ईमेल) और ऐप-विशिष्ट पासवर्ड।";
 "Provedores" = "प्रोवाइडर";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "टू-फ़ैक्टर प्रमाणीकरण वाले प्रोवाइडर (iCloud, Gmail, Outlook) को ऐप-विशिष्ट पासवर्ड की आवश्यकता होती है — आपके खाते के सामान्य पासवर्ड की नहीं।";
 "prévia" = "प्रीव्यू";
 "Qualquer um pode criar conta pela tela de login." = "लॉगिन स्क्रीन से कोई भी खाता बना सकता है।";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "चालू होने पर, यूटिलिटी मॉडल नोट के कच्चे कंटेंट के बजाय एक छोटा, स्नेहपूर्ण एक-लाइन रिमाइंडर लिखता है — browser, ईमेल, ntfy और webhook के लिए।";
@@ -175,6 +180,7 @@
 "Salvar" = "सेव करें";
 "Salvar servidor" = "सर्वर सेव करें";
 "Salvo" = "सेव हो गया";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "अगर “timed out” दिखाई देता है, तो पासवर्ड शायद गलत है — एक नया ऐप-विशिष्ट पासवर्ड जनरेट करें।";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "अगर डिफ़ॉल्ट प्रोवाइडर विफल हो, तो बाकी को इस क्रम में आज़माता है: %@।";
 "Segurança (%@)" = "सुरक्षा (%@)";
 "Selecione o idioma do aplicativo." = "ऐप की भाषा चुनें।";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "कोई टास्क नहीं";
 "Semanal %@" = "हर हफ्ते %@";
 "Servidor" = "सर्वर";
+"Servidores comuns" = "सामान्य सर्वर";
 "Servidores MCP" = "MCP सर्वर";
 "Sistema" = "सिस्टम";
 "SMTP igual ao IMAP" = "SMTP, IMAP जैसा ही";
@@ -199,6 +206,7 @@
 "Todos" = "सभी";
 "Toque em + para conectar uma conta IMAP." = "IMAP खाता कनेक्ट करने के लिए + पर टैप करें।";
 "Toque em + para criar sua primeira nota." = "अपना पहला नोट बनाने के लिए + पर टैप करें।";
+"Toque em Criar. A caixa carrega em alguns segundos." = "बनाएँ पर टैप करें। इनबॉक्स कुछ सेकंड में लोड हो जाएगा।";
 "Tornar padrão" = "डिफ़ॉल्ट बनाएँ";
 "Trabalho" = "काम";
 "Transparência" = "पारदर्शिता";

@@ -46,6 +46,7 @@
 "Cancelar" = "Abbrechen";
 "Carregando…" = "Wird geladen…";
 "Categoria" = "Kategorie";
+"Como conectar seu email" = "E-Mail verbinden";
 "Como o fallback funciona" = "So funktioniert der Fallback";
 "Como posso ajudar?" = "Wie kann ich helfen?";
 "Comparar" = "Vergleichen";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animierter Hintergrund";
 "Galeria" = "Galerie";
 "Geração de imagem" = "Bildgenerierung";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Erstelle ein App-spezifisches Passwort auf der Website deines Anbieters. iCloud: account.apple.com → Anmelden und Sicherheit → App-spezifische Passwörter → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktiviere oder deaktiviere die verfügbaren Werkzeuge für den Agenten.";
 "Idioma" = "Sprache";
 "Igual ao chat" = "Gleich wie Chat";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Noch keine Integrationen — verwende „Integration hinzufügen\" oben.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS auf Portugiesisch (Core ML/Neural Engine), viel natürlicher als die eingebaute Stimme. Lädt beim ersten Mal ~550 MB auf das Gerät herunter; funktioniert nur auf einem physischen iPhone (nicht im Simulator).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Öffne in Odysseus E-Mail → Kontosymbol → tippe auf +.";
 "Nome" = "Name";
 "Notes" = "Notes";
 "Nova conta" = "Neues Konto";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Tiefenrecherche";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Mehrstufige Webrecherche mit einem LLM-Agenten im Regelkreis.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Standardmäßig folgt die App der Sprache deines Geräts. Bei einem Wechsel kehrt sie zum Startbildschirm zurück.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Gib Folgendes ein: Name, deine E-Mail-Adresse, IMAP-Server und Port, Benutzername (deine E-Mail-Adresse) und das App-spezifische Passwort.";
 "Provedores" = "Anbieter";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Anbieter mit Zwei-Faktor-Authentifizierung (iCloud, Gmail, Outlook) benötigen ein App-spezifisches Passwort – nicht das normale Passwort deines Kontos.";
 "prévia" = "Vorschau";
 "Qualquer um pode criar conta pela tela de login." = "Jeder kann ein Konto über den Anmeldebildschirm erstellen.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Wenn aktiviert, schreibt das Hilfsmodell eine kurze, freundliche Erinnerung (eine Zeile) anstelle des rohen Notiztexts — für Browser, E-Mail, ntfy und Webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Speichern";
 "Salvar servidor" = "Server speichern";
 "Salvo" = "Gespeichert";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Wenn „timed out“ angezeigt wird, ist das Passwort wahrscheinlich falsch – erstelle ein neues App-spezifisches Passwort.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Wenn der Standardanbieter fehlschlägt, werden die anderen der Reihe nach versucht: %@.";
 "Segurança (%@)" = "Sicherheit (%@)";
 "Selecione o idioma do aplicativo." = "Wähle die App-Sprache.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Keine Aufgaben";
 "Semanal %@" = "Wöchentlich %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Gängige Server";
 "Servidores MCP" = "MCP-Server";
 "Sistema" = "System";
 "SMTP igual ao IMAP" = "SMTP gleich wie IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Alle";
 "Toque em + para conectar uma conta IMAP." = "Tippe auf +, um ein IMAP-Konto zu verbinden.";
 "Toque em + para criar sua primeira nota." = "Tippe auf +, um deine erste Notiz zu erstellen.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tippe auf Erstellen. Der Posteingang wird in wenigen Sekunden geladen.";
 "Tornar padrão" = "Als Standard festlegen";
 "Trabalho" = "Arbeit";
 "Transparência" = "Transparenz";

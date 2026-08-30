@@ -46,6 +46,7 @@
 "Cancelar" = "Peruuta";
 "Carregando…" = "Ladataan…";
 "Categoria" = "Kategoria";
+"Como conectar seu email" = "Yhdistä sähköpostisi";
 "Como o fallback funciona" = "Miten varajärjestelmä toimii";
 "Como posso ajudar?" = "Miten voin auttaa?";
 "Comparar" = "Vertaile";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animoitu tausta";
 "Galeria" = "Galleria";
 "Geração de imagem" = "Kuvan luonti";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Luo appikohtainen salasana palveluntarjoajan sivustossa. iCloud: account.apple.com → Kirjautuminen ja suojaus → Appikohtaiset salasanat → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Ota käyttöön tai poista käytöstä agentin käytettävissä olevat työkalut.";
 "Idioma" = "Kieli";
 "Igual ao chat" = "Sama kuin keskustelussa";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Ei vielä integraatioita — käytä yllä olevaa “Lisää integraatio” -painiketta.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neuro = PocketTTS portugaliksi (Core ML/Neural Engine), paljon luonnollisempi kuin natiiviääni. Lataa ~550 Mt laitteelle ensimmäisellä kerralla; toimii vain fyysisellä iPhonella (ei simulaattorissa).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Avaa Odysseuksessa Sähköposti → tilien kuvake → napauta +.";
 "Nome" = "Nimi";
 "Notes" = "Muistiinpanot";
 "Nova conta" = "Uusi tili";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Syvähaku";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Monivaiheinen verkkotutkimus LLM-agentin avulla.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Oletuksena sovellus noudattaa laitteesi kieltä. Vaihtaessasi kieltä sovellus palaa aloitusnäyttöön.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Täytä: Nimi, sähköpostiosoitteesi, IMAP-palvelin ja portti, käyttäjätunnus (sähköpostiosoitteesi) ja appikohtainen salasana.";
 "Provedores" = "Palveluntarjoajat";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Kaksiosaista todennusta käyttävät palveluntarjoajat (iCloud, Gmail, Outlook) vaativat appikohtaisen salasanan – eivät tilisi tavallista salasanaa.";
 "prévia" = "esikatselu";
 "Qualquer um pode criar conta pela tela de login." = "Kuka tahansa voi luoda tilin kirjautumisnäytöltä.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Kun käytössä, apumalli kirjoittaa lyhyen, lämpimän yhden rivin muistutuksen muistiinpanon raakasisällön sijaan — selainta, sähköpostia, ntfy:tä ja webhookia varten.";
@@ -175,6 +180,7 @@
 "Salvar" = "Tallenna";
 "Salvar servidor" = "Tallenna palvelin";
 "Salvo" = "Tallennettu";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Jos näytössä näkyy ”timed out”, salasana on todennäköisesti väärä – luo uusi appikohtainen salasana.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Jos oletuspalveluntarjoaja epäonnistuu, kokeillaan muita tässä järjestyksessä: %@.";
 "Segurança (%@)" = "Suojaus (%@)";
 "Selecione o idioma do aplicativo." = "Valitse sovelluksen kieli.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Ei tehtäviä";
 "Semanal %@" = "Viikoittain %@";
 "Servidor" = "Palvelin";
+"Servidores comuns" = "Yleiset palvelimet";
 "Servidores MCP" = "MCP-palvelimet";
 "Sistema" = "Järjestelmä";
 "SMTP igual ao IMAP" = "SMTP sama kuin IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "Kaikki";
 "Toque em + para conectar uma conta IMAP." = "Napauta + yhdistääksesi IMAP-tilin.";
 "Toque em + para criar sua primeira nota." = "Napauta + luodaksesi ensimmäisen muistiinpanosi.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Napauta Luo-painiketta. Saapuneet-kansio latautuu muutamassa sekunnissa.";
 "Tornar padrão" = "Aseta oletukseksi";
 "Trabalho" = "Työ";
 "Transparência" = "Läpinäkyvyys";

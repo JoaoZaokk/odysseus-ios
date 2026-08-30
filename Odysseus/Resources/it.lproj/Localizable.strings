@@ -46,6 +46,7 @@
 "Cancelar" = "Annulla";
 "Carregando…" = "Caricamento…";
 "Categoria" = "Categoria";
+"Como conectar seu email" = "Collega la tua email";
 "Como o fallback funciona" = "Come funziona il fallback";
 "Como posso ajudar?" = "Come posso aiutarti?";
 "Comparar" = "Confronta";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Sfondo animato";
 "Galeria" = "Galleria";
 "Geração de imagem" = "Generazione immagini";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Genera una password specifica per l’app sul sito del provider. iCloud: account.apple.com → Accesso e sicurezza → Password specifiche per le app → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Abilita o disabilita gli strumenti disponibili per l'agente.";
 "Idioma" = "Lingua";
 "Igual ao chat" = "Uguale alla chat";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Nessuna integrazione ancora — usa «Aggiungi integrazione» sopra.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS in portoghese (Core ML/Neural Engine), molto più naturale della voce nativa. Scarica ~550 MB sul dispositivo la prima volta; funziona solo su iPhone fisico (non nel simulatore).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "In Odysseus, apri Email → l’icona degli account → tocca +.";
 "Nome" = "Nome";
 "Notes" = "Notes";
 "Nova conta" = "Nuovo account";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Ricerca approfondita";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Ricerca web multifase con un agente LLM nel ciclo.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Per impostazione predefinita, l'app segue la lingua del tuo dispositivo. Quando cambi, torna alla schermata iniziale.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Inserisci: Nome, la tua email, server IMAP e porta, nome utente (la tua email) e la password specifica per l’app.";
 "Provedores" = "Provider";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "I provider con autenticazione a due fattori (iCloud, Gmail, Outlook) richiedono una password specifica per l’app, non la normale password dell’account.";
 "prévia" = "anteprima";
 "Qualquer um pode criar conta pela tela de login." = "Chiunque può creare un account dalla schermata di accesso.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Quando attivato, il modello utilitario scrive un promemoria breve e cordiale (una riga) al posto del contenuto grezzo della nota — per browser, email, ntfy e webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Salva";
 "Salvar servidor" = "Salva server";
 "Salvo" = "Salvato";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Se compare “timed out”, probabilmente la password è errata: genera una nuova password specifica per l’app.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Se il provider predefinito fallisce, prova gli altri nell'ordine: %@.";
 "Segurança (%@)" = "Sicurezza (%@)";
 "Selecione o idioma do aplicativo." = "Scegli la lingua dell'applicazione.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Nessuna attività";
 "Semanal %@" = "Ogni settimana %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Server comuni";
 "Servidores MCP" = "Server MCP";
 "Sistema" = "Sistema";
 "SMTP igual ao IMAP" = "SMTP uguale a IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Tutti";
 "Toque em + para conectar uma conta IMAP." = "Tocca + per collegare un account IMAP.";
 "Toque em + para criar sua primeira nota." = "Tocca + per creare la tua prima nota.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tocca Crea. La posta in arrivo si carica in pochi secondi.";
 "Tornar padrão" = "Imposta come predefinito";
 "Trabalho" = "Lavoro";
 "Transparência" = "Trasparenza";

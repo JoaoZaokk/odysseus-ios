@@ -46,6 +46,7 @@
 "Cancelar" = "취소";
 "Carregando…" = "로딩 중…";
 "Categoria" = "카테고리";
+"Como conectar seu email" = "이메일 연결";
 "Como o fallback funciona" = "폴백 작동 방식";
 "Como posso ajudar?" = "무엇을 도와드릴까요?";
 "Comparar" = "비교";
@@ -97,6 +98,7 @@
 "Fundo animado" = "애니메이션 배경";
 "Galeria" = "갤러리";
 "Geração de imagem" = "이미지 생성";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "제공업체 웹 사이트에서 앱 암호를 생성하세요. iCloud: account.apple.com → 로그인 및 보안 → 앱 암호 → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "에이전트가 사용할 수 있는 도구를 활성화 또는 비활성화합니다.";
 "Idioma" = "언어";
 "Igual ao chat" = "채팅과 동일";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "아직 통합이 없습니다 — 위의 \"통합 추가\"를 사용하세요.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "신경 = 포르투갈어 PocketTTS(Core ML/Neural Engine)로, 기본 음성보다 훨씬 자연스럽습니다. 첫 번째 실행 시 기기에서 약 550 MB를 다운로드합니다. 실제 iPhone에서만 실행됩니다(시뮬레이터 불가).";
 "Neural pt-BR" = "신경 pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Odysseus에서 이메일 → 계정 아이콘 → +를 탭하세요.";
 "Nome" = "이름";
 "Notes" = "메모";
 "Nova conta" = "새 계정";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "심층 검색";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "LLM 에이전트가 포함된 다단계 웹 리서치.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "기본적으로 앱은 기기 언어를 따릅니다. 전환하면 홈 화면으로 돌아갑니다.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "다음을 입력하세요: 이름, 이메일, IMAP 서버 및 포트, 사용자 이름(이메일), 앱 암호.";
 "Provedores" = "제공자";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "이중 인증을 사용하는 제공업체(iCloud, Gmail, Outlook)에는 앱 암호가 필요합니다. 일반 계정 비밀번호가 아닙니다.";
 "prévia" = "미리보기";
 "Qualquer um pode criar conta pela tela de login." = "누구든지 로그인 화면에서 계정을 만들 수 있습니다.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "켜면 유틸리티 모델이 원시 메모 내용 대신 브라우저, 이메일, ntfy, webhook을 위한 짧고 따뜻한 한 줄 알림을 작성합니다.";
@@ -175,6 +180,7 @@
 "Salvar" = "저장";
 "Salvar servidor" = "서버 저장";
 "Salvo" = "저장됨";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "“timed out”이 표시되면 암호가 잘못되었을 가능성이 높습니다. 새 앱 암호를 생성하세요.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "기본 제공자가 실패하면 다음 순서로 시도합니다: %@.";
 "Segurança (%@)" = "보안(%@)";
 "Selecione o idioma do aplicativo." = "앱 언어를 선택하세요.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "작업 없음";
 "Semanal %@" = "매주 %@";
 "Servidor" = "서버";
+"Servidores comuns" = "일반 서버";
 "Servidores MCP" = "MCP 서버";
 "Sistema" = "시스템";
 "SMTP igual ao IMAP" = "SMTP를 IMAP과 동일하게 사용";
@@ -199,6 +206,7 @@
 "Todos" = "전체";
 "Toque em + para conectar uma conta IMAP." = "+를 눌러 IMAP 계정을 연결하세요.";
 "Toque em + para criar sua primeira nota." = "+를 눌러 첫 번째 메모를 만드세요.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "만들기를 탭하세요. 받은 편지함이 몇 초 안에 로드됩니다.";
 "Tornar padrão" = "기본값으로 설정";
 "Trabalho" = "업무";
 "Transparência" = "투명도";

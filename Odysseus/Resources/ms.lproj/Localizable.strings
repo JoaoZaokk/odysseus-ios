@@ -46,6 +46,7 @@
 "Cancelar" = "Batal";
 "Carregando…" = "Memuatkan…";
 "Categoria" = "Kategori";
+"Como conectar seu email" = "Sambungkan e-mel anda";
 "Como o fallback funciona" = "Cara sandaran berfungsi";
 "Como posso ajudar?" = "Apa yang boleh saya bantu?";
 "Comparar" = "Bandingkan";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Latar belakang animasi";
 "Galeria" = "Galeri";
 "Geração de imagem" = "Penjanaan imej";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Jana kata laluan khusus app di laman web penyedia. iCloud: account.apple.com → Daftar Masuk & Keselamatan → Kata Laluan Khusus App → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktifkan atau nyahaktifkan alat yang tersedia untuk ejen.";
 "Idioma" = "Bahasa";
 "Igual ao chat" = "Sama seperti sembang";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Belum ada integrasi — gunakan \"Tambah integrasi\" di atas.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS dalam bahasa Portugis (Core ML/Neural Engine), jauh lebih semula jadi daripada suara asli. Muat turun ~550 MB pada peranti buat kali pertama; hanya berjalan pada iPhone fizikal (bukan simulator).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Dalam Odysseus, buka E-mel → ikon akaun → ketik +.";
 "Nome" = "Nama";
 "Notes" = "Notes";
 "Nova conta" = "Akaun baru";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Penyelidikan mendalam";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Penyelidikan web berbilang langkah dengan ejen LLM dalam gelung.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Secara lalai, aplikasi mengikut bahasa peranti anda. Apabila ditukar, ia akan kembali ke skrin utama.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Isi: Nama, e-mel anda, pelayan IMAP dan port, nama pengguna (e-mel anda) dan kata laluan khusus app.";
 "Provedores" = "Pembekal";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Penyedia yang menggunakan pengesahan dua faktor (iCloud, Gmail, Outlook) memerlukan kata laluan khusus app — bukan kata laluan biasa akaun anda.";
 "prévia" = "pratonton";
 "Qualquer um pode criar conta pela tela de login." = "Sesiapa sahaja boleh mencipta akaun daripada skrin log masuk.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Apabila dihidupkan, model utiliti menulis peringatan ringkas dan mesra (satu baris) sebagai ganti kandungan nota mentah — untuk pelayar, e-mel, ntfy dan webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Simpan";
 "Salvar servidor" = "Simpan pelayan";
 "Salvo" = "Disimpan";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Jika “timed out” muncul, kata laluan mungkin salah — jana kata laluan khusus app yang baharu.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Jika pembekal lalai gagal, cuba yang lain mengikut urutan: %@.";
 "Segurança (%@)" = "Keselamatan (%@)";
 "Selecione o idioma do aplicativo." = "Pilih bahasa aplikasi.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Tiada tugas";
 "Semanal %@" = "Setiap minggu %@";
 "Servidor" = "Pelayan";
+"Servidores comuns" = "Pelayan biasa";
 "Servidores MCP" = "Pelayan MCP";
 "Sistema" = "Sistem";
 "SMTP igual ao IMAP" = "SMTP sama dengan IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Semua";
 "Toque em + para conectar uma conta IMAP." = "Ketik + untuk menyambungkan akaun IMAP.";
 "Toque em + para criar sua primeira nota." = "Ketik + untuk mencipta nota pertama anda.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Ketik Cipta. Peti masuk dimuatkan dalam beberapa saat.";
 "Tornar padrão" = "Jadikan lalai";
 "Trabalho" = "Kerja";
 "Transparência" = "Ketelusan";

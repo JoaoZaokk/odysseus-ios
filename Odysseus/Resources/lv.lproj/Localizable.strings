@@ -46,6 +46,7 @@
 "Cancelar" = "Atcelt";
 "Carregando…" = "Ielādē…";
 "Categoria" = "Kategorija";
+"Como conectar seu email" = "Kā pieslēgt E-pastu";
 "Como o fallback funciona" = "Kā darbojas rezerves variants";
 "Como posso ajudar?" = "Kā es varu palīdzēt?";
 "Comparar" = "Salīdzināt";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animēts fons";
 "Galeria" = "Galerija";
 "Geração de imagem" = "Attēlu ģenerēšana";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Ģenerējiet lietotnes paroli pakalpojumu sniedzēja vietnē. iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Iespējojiet vai atspējojiet aģentam pieejamos rīkus.";
 "Idioma" = "Valoda";
 "Igual ao chat" = "Tāds pats kā tērzēšanai";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Vēl nav integrāciju — izmantojiet iepriekš esošo “Pievienot integrāciju”.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neironu = PocketTTS portugāļu valodā (Core ML/Neural Engine), daudz dabiskāka nekā vietējā balss. Pirmajā reizē lejupielādē ~550 MB ierīcē; darbojas tikai fiziskā iPhone (ne simulatorā).";
 "Neural pt-BR" = "Neironu pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Lietotnē Odysseus atveriet E-pastu → kontu ikonu → pieskarieties +.";
 "Nome" = "Vārds";
 "Notes" = "Piezīmes";
 "Nova conta" = "Jauns konts";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Padziļināta meklēšana";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Vairāku posmu tīmekļa izpēte ar LLM aģentu ciklā.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Pēc noklusējuma lietotne izmanto jūsu ierīces valodu. Mainot to, lietotne atgriežas sākuma ekrānā.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Aizpildiet: Vārds, jūsu E-pasts, IMAP serveris un ports, lietotājvārds (jūsu E-pasts) un lietotnes parole.";
 "Provedores" = "Pakalpojumu sniedzēji";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Pakalpojumu sniedzēji ar divfaktoru autentifikāciju (iCloud, Gmail, Outlook) pieprasa lietotnes paroli — nevis parasto konta paroli.";
 "prévia" = "priekšskatījums";
 "Qualquer um pode criar conta pela tela de login." = "Ikviens var izveidot kontu pieteikšanās ekrānā.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Kad ieslēgts, palīgmodelis raksta īsu un sirsnīgu vienas rindas atgādinājumu piezīmes neapstrādātā satura vietā — pārlūkam, e-pastam, ntfy un webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Saglabāt";
 "Salvar servidor" = "Saglabāt serveri";
 "Salvo" = "Saglabāts";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Ja parādās “timed out”, parole, visticamāk, ir nepareiza — ģenerējiet jaunu lietotnes paroli.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Ja noklusējuma pakalpojumu sniedzējs neizdodas, tiek mēģināti pārējie šādā secībā: %@.";
 "Segurança (%@)" = "Drošība (%@)";
 "Selecione o idioma do aplicativo." = "Izvēlieties lietotnes valodu.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Nav uzdevumu";
 "Semanal %@" = "Katru nedēļu %@";
 "Servidor" = "Serveris";
+"Servidores comuns" = "Bieži izmantotie serveri";
 "Servidores MCP" = "MCP serveri";
 "Sistema" = "Sistēma";
 "SMTP igual ao IMAP" = "SMTP tāds pats kā IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "Visi";
 "Toque em + para conectar uma conta IMAP." = "Pieskarieties +, lai savienotu IMAP kontu.";
 "Toque em + para criar sua primeira nota." = "Pieskarieties +, lai izveidotu savu pirmo piezīmi.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Pieskarieties Izveidot. Iesūtne tiek ielādēta dažu sekunžu laikā.";
 "Tornar padrão" = "Iestatīt kā noklusējumu";
 "Trabalho" = "Darbs";
 "Transparência" = "Caurspīdīgums";

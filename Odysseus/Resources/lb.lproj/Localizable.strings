@@ -46,6 +46,7 @@
 "Cancelar" = "Ofbriechen";
 "Carregando…" = "Gëtt gelueden…";
 "Categoria" = "Kategorie";
+"Como conectar seu email" = "Är E-Mail verbannen";
 "Como o fallback funciona" = "Wéi de Fallback funktionnéiert";
 "Como posso ajudar?" = "Wéi kann ech hëllefen?";
 "Comparar" = "Vergläichen";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animéierten Hannergrond";
 "Galeria" = "Galerie";
 "Geração de imagem" = "Bildgeneratioun";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Generéier en app-spezifescht Passwuert op der Websäit vun dengem Ubidder. iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktivéier oder deaktivéier d'Tools, déi dem Agent zur Verfügung stinn.";
 "Idioma" = "Sprooch";
 "Igual ao chat" = "Wéi de Chat";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Nach keng Integratiounen — benotz “Integratioun bäifügen” hei uewen.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS op Portugisesch (Core ML/Neural Engine), vill méi natierlech wéi déi native Stëmm. Lued beim éischte Mol ~550 MB on-device erof; leeft nëmmen op engem physesche iPhone (net am Simulator).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Maach an Odysseus E-Mail → d'Kontosymbol op → tipp op +.";
 "Nome" = "Numm";
 "Notes" = "Notizen";
 "Nova conta" = "Neie Konto";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Déif Sich";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Mehrstuff Web-Fuerschung mat engem LLM-Agent am Loop.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Standardmäßeg follegt d'App der Sprooch vun dengem Apparat. Wann s du wiessels, geet et zréck op den Startbildschierm.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Fëll aus: Numm, deng E-Mail-Adress, IMAP-Server a Port, Benotzernumm (deng E-Mail-Adress) an dat app-spezifescht Passwuert.";
 "Provedores" = "Ubidder";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Ubidder mat Zwee-Faktor-Authentifizéierung (iCloud, Gmail, Outlook) verlaangen en app-spezifescht Passwuert – net dat normaalt Passwuert vun dengem Kont.";
 "prévia" = "Virschau";
 "Qualquer um pode criar conta pela tela de login." = "Jiddereen kann iwwer de Login-Bildschierm en Konto uleeën.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Wann aktivéiert, schreift den Hëllefsmodell eng kuerz, frëndlech Erënnerung (eng Zeil) amplaz vum roude Notizinhalt — fir Browser, E-Mail, ntfy a Webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Späicheren";
 "Salvar servidor" = "Server späicheren";
 "Salvo" = "Gespäichert";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Wann „timed out“ ugewise gëtt, ass d'Passwuert warscheinlech falsch – generéier en neit app-spezifescht Passwuert.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Wann de Standard-Ubidder feelt, probéiert et déi aner an dëser Reiefolleg: %@.";
 "Segurança (%@)" = "Sécherheet (%@)";
 "Selecione o idioma do aplicativo." = "Wiel d'Sprooch vun der App.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Keng Aufgaben";
 "Semanal %@" = "Wéchentlech %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Heefeg Serveren";
 "Servidores MCP" = "MCP-Server";
 "Sistema" = "System";
 "SMTP igual ao IMAP" = "SMTP wéi IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "All";
 "Toque em + para conectar uma conta IMAP." = "Tipp op +, fir en IMAP-Konto ze verbannen.";
 "Toque em + para criar sua primeira nota." = "Tipp op +, fir deng éischt Notiz z'erstellen.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tipp op Erstellen. D'Inbox gëtt an e puer Sekonne gelueden.";
 "Tornar padrão" = "Als Standard festleeën";
 "Trabalho" = "Aarbecht";
 "Transparência" = "Transparenz";

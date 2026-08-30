@@ -46,6 +46,7 @@
 "Cancelar" = "キャンセル";
 "Carregando…" = "読み込み中…";
 "Categoria" = "カテゴリ";
+"Como conectar seu email" = "メールを接続する";
 "Como o fallback funciona" = "フォールバックの仕組み";
 "Como posso ajudar?" = "何をお手伝いしましょうか？";
 "Comparar" = "比較";
@@ -97,6 +98,7 @@
 "Fundo animado" = "アニメーション背景";
 "Galeria" = "ギャラリー";
 "Geração de imagem" = "画像生成";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "プロバイダのサイトでアプリ用パスワードを作成します。iCloud: account.apple.com →「サインインとセキュリティ」→「Appパスワード」→ +。";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "エージェントが利用できるツールを有効／無効にします。";
 "Idioma" = "言語";
 "Igual ao chat" = "チャットと同じ";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "まだ連携がありません — 上の「連携を追加」を使ってください。";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "ニューラル = ポルトガル語の PocketTTS（Core ML/Neural Engine）で、ネイティブ音声よりはるかに自然です。初回はオンデバイスで ~550 MB をダウンロードします。実機の iPhone のみで動作します（シミュレーターは不可）。";
 "Neural pt-BR" = "ニューラル pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Odysseus で メール → アカウントのアイコン → + をタップします。";
 "Nome" = "名前";
 "Notes" = "メモ";
 "Nova conta" = "新しいアカウント";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "ディープサーチ";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "LLM エージェントをループに組み込んだ多段階の Web リサーチ。";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "既定では、アプリはデバイスの言語に従います。切り替えるとホーム画面に戻ります。";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "名前、メールアドレス、IMAPサーバーとポート、ユーザー名（メールアドレス）、アプリ用パスワードを入力します。";
 "Provedores" = "プロバイダー";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "2要素認証のプロバイダ（iCloud、Gmail、Outlook）では、通常のパスワードではなく「アプリ用パスワード」が必要です。";
 "prévia" = "プレビュー";
 "Qualquer um pode criar conta pela tela de login." = "ログイン画面から誰でもアカウントを作成できます。";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "オンにすると、ユーティリティモデルがメモの生の内容の代わりに、短く温かみのある一行のリマインダーを書きます — browser、メール、ntfy、webhook 向け。";
@@ -175,6 +180,7 @@
 "Salvar" = "保存";
 "Salvar servidor" = "サーバーを保存";
 "Salvo" = "保存済み";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "「timed out」になる場合、パスワードが間違っていることが多いです。新しいアプリ用パスワードを作成してください。";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "既定のプロバイダーが失敗した場合、次の順序で試します：%@。";
 "Segurança (%@)" = "セキュリティ（%@）";
 "Selecione o idioma do aplicativo." = "アプリの言語を選択してください。";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "タスクがありません";
 "Semanal %@" = "毎週 %@";
 "Servidor" = "サーバー";
+"Servidores comuns" = "よく使うサーバー";
 "Servidores MCP" = "MCP サーバー";
 "Sistema" = "システム";
 "SMTP igual ao IMAP" = "SMTP を IMAP と同じにする";
@@ -199,6 +206,7 @@
 "Todos" = "すべて";
 "Toque em + para conectar uma conta IMAP." = "＋をタップして IMAP アカウントを接続してください。";
 "Toque em + para criar sua primeira nota." = "＋をタップして最初のメモを作成してください。";
+"Toque em Criar. A caixa carrega em alguns segundos." = "「作成」をタップ。数秒で受信箱が読み込まれます。";
 "Tornar padrão" = "デフォルトにする";
 "Trabalho" = "仕事";
 "Transparência" = "透明度";

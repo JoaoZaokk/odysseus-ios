@@ -46,6 +46,7 @@
 "Cancelar" = "لغو";
 "Carregando…" = "در حال بارگذاری…";
 "Categoria" = "دسته‌بندی";
+"Como conectar seu email" = "چگونه ایمیل خود را متصل کنید";
 "Como o fallback funciona" = "نحوه عملکرد جایگزین";
 "Como posso ajudar?" = "چطور می‌توانم کمک کنم؟";
 "Comparar" = "مقایسه";
@@ -97,6 +98,7 @@
 "Fundo animado" = "پس‌زمینه متحرک";
 "Galeria" = "گالری";
 "Geração de imagem" = "تولید تصویر";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "یک رمز عبور برنامه در وب‌سایت ارائه‌دهنده ایجاد کنید. iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "ابزارهای در دسترس عامل را فعال یا غیرفعال کنید.";
 "Idioma" = "زبان";
 "Igual ao chat" = "مانند گفتگو";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "هنوز یکپارچه‌سازی‌ای نیست — از «افزودن یکپارچه‌سازی» در بالا استفاده کنید.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "عصبی = PocketTTS به پرتغالی (Core ML/Neural Engine)، بسیار طبیعی‌تر از صدای بومی. در اولین بار ~550 MB روی دستگاه دانلود می‌کند؛ فقط روی iPhone فیزیکی اجرا می‌شود (نه شبیه‌ساز).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "در Odysseus، ایمیل را باز کنید → نماد حساب‌ها → روی + ضربه بزنید.";
 "Nome" = "نام";
 "Notes" = "Notes";
 "Nova conta" = "حساب جدید";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "جستجوی عمیق";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "جستجوی وب چندمرحله‌ای با یک عامل LLM در حلقه.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "به‌طور پیش‌فرض، برنامه زبان دستگاه شما را دنبال می‌کند. هنگام تغییر، به صفحه اصلی برمی‌گردد.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "پر کنید: نام، ایمیل شما، سرور IMAP و پورت، کاربر (ایمیل شما) و رمز عبور برنامه.";
 "Provedores" = "ارائه‌دهندگان";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "ارائه‌دهندگان دارای تأیید دومرحله‌ای (iCloud، Gmail، Outlook) به رمز عبور برنامه نیاز دارند — نه رمز عبور معمولی حساب شما.";
 "prévia" = "پیش‌نمایش";
 "Qualquer um pode criar conta pela tela de login." = "هر کسی می‌تواند از صفحه ورود حساب ایجاد کند.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "وقتی فعال است، مدل کمکی به‌جای محتوای خام یادداشت، یک یادآوری کوتاه و دوستانه (یک خط) می‌نویسد — برای مرورگر، ایمیل، ntfy و webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "ذخیره";
 "Salvar servidor" = "ذخیره سرور";
 "Salvo" = "ذخیره شد";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "اگر «timed out» ظاهر شد، احتمالاً رمز عبور اشتباه است — یک رمز عبور برنامه جدید ایجاد کنید.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "اگر ارائه‌دهنده پیش‌فرض ناموفق باشد، به ترتیب سایرین را امتحان می‌کند: %@.";
 "Segurança (%@)" = "امنیت (%@)";
 "Selecione o idioma do aplicativo." = "زبان برنامه را انتخاب کنید.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "هیچ وظیفه‌ای نیست";
 "Semanal %@" = "هر هفته %@";
 "Servidor" = "سرور";
+"Servidores comuns" = "سرورهای رایج";
 "Servidores MCP" = "سرورهای MCP";
 "Sistema" = "سیستم";
 "SMTP igual ao IMAP" = "SMTP مانند IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "همه";
 "Toque em + para conectar uma conta IMAP." = "روی + ضربه بزنید تا یک حساب IMAP متصل شود.";
 "Toque em + para criar sua primeira nota." = "روی + ضربه بزنید تا اولین یادداشت خود را ایجاد کنید.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "روی ایجاد ضربه بزنید. صندوق ورودی ظرف چند ثانیه بارگذاری می‌شود.";
 "Tornar padrão" = "تنظیم به‌عنوان پیش‌فرض";
 "Trabalho" = "کار";
 "Transparência" = "شفافیت";

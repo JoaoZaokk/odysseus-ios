@@ -46,6 +46,7 @@
 "Cancelar" = "Адмяніць";
 "Carregando…" = "Загрузка…";
 "Categoria" = "Катэгорыя";
+"Como conectar seu email" = "Як падключыць Email";
 "Como o fallback funciona" = "Як працуе запасны варыянт";
 "Como posso ajudar?" = "Чым магу дапамагчы?";
 "Comparar" = "Параўнаць";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Анімаваны фон";
 "Galeria" = "Галерэя";
 "Geração de imagem" = "Генерацыя выяў";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Стварыце пароль праграмы на сайце правайдэра. iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Уключайце або выключайце інструменты, даступны агенту.";
 "Idioma" = "Мова";
 "Igual ao chat" = "Як у чаце";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Пакуль няма інтэграцый — выкарыстоўвайце «Дадаць інтэграцыю» вышэй.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS на партугальскай (Core ML/Neural Engine), значна больш натуральны за натыўны голас. Пры першым запуску спампоўвае ~550 МБ на прыладу; працуе толькі на фізічным iPhone (не ў сімулятары).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "У Odysseus адкрыйце Email → значок акаўнтаў → націсніце +.";
 "Nome" = "Імя";
 "Notes" = "Notes";
 "Nova conta" = "Новы акаўнт";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Глыбокі пошук";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Шматэтапны вэб-пошук з агентам LLM у цыкле.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Па змаўчанні праграма следуе мове прылады. Пры змене вяртаецца на галоўны экран.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Запоўніце: Імя, ваш Email, сервер IMAP і порт, карыстальнік (ваш Email) і пароль праграмы.";
 "Provedores" = "Пастаўшчыкі";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Правайдэры з двухфактарнай аўтэнтыфікацыяй (iCloud, Gmail, Outlook) патрабуюць пароль праграмы — не звычайны пароль вашага акаўнта.";
 "prévia" = "папярэдні прагляд";
 "Qualquer um pode criar conta pela tela de login." = "Любы можа стварыць акаўнт на экране ўваходу.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Калі ўключана, службовая мадэль піша кароткі прыязны напамін (адзін радок) замест зыходнага змесціва нататкі — для браўзера, email, ntfy і webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Захаваць";
 "Salvar servidor" = "Захаваць сервер";
 "Salvo" = "Захавана";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Калі з'яўляецца «timed out», пароль, верагодна, няправільны — стварыце новы пароль праграмы.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Калі пастаўшчык па змаўчанні не працуе, спрабуе іншых па парадку: %@.";
 "Segurança (%@)" = "Бяспека (%@)";
 "Selecione o idioma do aplicativo." = "Абярыце мову праграмы.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Няма задач";
 "Semanal %@" = "Штотыдзень %@";
 "Servidor" = "Сервер";
+"Servidores comuns" = "Распаўсюджаныя серверы";
 "Servidores MCP" = "Серверы MCP";
 "Sistema" = "Сістэма";
 "SMTP igual ao IMAP" = "SMTP супадае з IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Усе";
 "Toque em + para conectar uma conta IMAP." = "Націсніце +, каб падключыць акаўнт IMAP.";
 "Toque em + para criar sua primeira nota." = "Націсніце +, каб стварыць першую нататку.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Націсніце «Стварыць». Уваходныя загружаюцца за некалькі секунд.";
 "Tornar padrão" = "Зрабіць па змаўчанні";
 "Trabalho" = "Праца";
 "Transparência" = "Празрыстасць";

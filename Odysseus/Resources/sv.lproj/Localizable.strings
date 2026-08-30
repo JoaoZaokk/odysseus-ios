@@ -46,6 +46,7 @@
 "Cancelar" = "Avbryt";
 "Carregando…" = "Laddar…";
 "Categoria" = "Kategori";
+"Como conectar seu email" = "Anslut din e-post";
 "Como o fallback funciona" = "Så här fungerar reservlösningen";
 "Como posso ajudar?" = "Hur kan jag hjälpa till?";
 "Comparar" = "Jämför";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animerad bakgrund";
 "Galeria" = "Galleri";
 "Geração de imagem" = "Bildgenerering";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Skapa ett appspecifikt lösenord på leverantörens webbplats. iCloud: account.apple.com → Inloggning och säkerhet → App-specifika lösenord → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktivera eller inaktivera verktygen som är tillgängliga för agenten.";
 "Idioma" = "Språk";
 "Igual ao chat" = "Samma som chatt";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Inga integrationer än — använd “Lägg till integration” ovan.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS på portugisiska (Core ML/Neural Engine), betydligt mer naturlig än den nativa rösten. Laddar ner ~550 MB på enheten första gången; körs endast på en fysisk iPhone (inte simulatorn).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Öppna E-post i Odysseus → kontosymbolen → tryck på +.";
 "Nome" = "Namn";
 "Notes" = "Anteckningar";
 "Nova conta" = "Nytt konto";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Djupsökning";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Webbaserad research i flera steg med en LLM-agent i loopen.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Som standard följer appen enhetens språk. När du byter går den tillbaka till startskärmen.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Fyll i: Namn, din e-postadress, IMAP-server och port, användarnamn (din e-postadress) och det appspecifika lösenordet.";
 "Provedores" = "Leverantörer";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Leverantörer med tvåfaktorsautentisering (iCloud, Gmail, Outlook) kräver ett appspecifikt lösenord – inte det vanliga lösenordet till ditt konto.";
 "prévia" = "förhandsvisning";
 "Qualquer um pode criar conta pela tela de login." = "Vem som helst kan skapa ett konto från inloggningsskärmen.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "När det är på skriver hjälpmodellen en kort, varm påminnelse på en rad i stället för anteckningens råa innehåll — för webbläsare, e-post, ntfy och webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Spara";
 "Salvar servidor" = "Spara server";
 "Salvo" = "Sparad";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Om ”timed out” visas är lösenordet förmodligen fel – skapa ett nytt appspecifikt lösenord.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Om standardleverantören misslyckas provas de andra i ordning: %@.";
 "Segurança (%@)" = "Säkerhet (%@)";
 "Selecione o idioma do aplicativo." = "Välj appens språk.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Inga uppgifter";
 "Semanal %@" = "Varje vecka %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Vanliga servrar";
 "Servidores MCP" = "MCP-servrar";
 "Sistema" = "System";
 "SMTP igual ao IMAP" = "SMTP samma som IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "Alla";
 "Toque em + para conectar uma conta IMAP." = "Tryck på + för att ansluta ett IMAP-konto.";
 "Toque em + para criar sua primeira nota." = "Tryck på + för att skapa din första anteckning.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tryck på Skapa. Inkorgen läses in på några sekunder.";
 "Tornar padrão" = "Gör till standard";
 "Trabalho" = "Arbete";
 "Transparência" = "Transparens";

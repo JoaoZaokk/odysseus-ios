@@ -46,6 +46,7 @@
 "Cancelar" = "Скасувати";
 "Carregando…" = "Завантаження…";
 "Categoria" = "Категорія";
+"Como conectar seu email" = "Як підключити Email";
 "Como o fallback funciona" = "Як працює запасний варіант";
 "Como posso ajudar?" = "Чим можу допомогти?";
 "Comparar" = "Порівняти";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Анімований фон";
 "Galeria" = "Галерея";
 "Geração de imagem" = "Генерація зображень";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Створіть спеціальний пароль програми на сайті провайдера. iCloud: account.apple.com → Вхід і безпека → Паролі програм → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Вмикайте або вимикайте інструменти, доступні агенту.";
 "Idioma" = "Мова";
 "Igual ao chat" = "Як у чаті";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Поки немає інтеграцій — використовуйте «Додати інтеграцію» вище.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS португальською (Core ML/Neural Engine), набагато природніший за нативний голос. При першому запуску завантажує ~550 МБ на пристрій; працює лише на фізичному iPhone (не в симуляторі).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "В Odysseus відкрийте Email → значок акаунтів → натисніть +.";
 "Nome" = "Ім'я";
 "Notes" = "Notes";
 "Nova conta" = "Новий акаунт";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Глибокий пошук";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Багатоетапний веб-пошук з агентом LLM у циклі.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "За замовчуванням застосунок слідує мові пристрою. При зміні повертається на головний екран.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Заповніть: Ім'я, ваш Email, сервер IMAP і порт, користувач (ваш Email) і спеціальний пароль програми.";
 "Provedores" = "Постачальники";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Провайдери з двофакторною автентифікацією (iCloud, Gmail, Outlook) вимагають спеціальний пароль програми — не звичайний пароль вашого акаунта.";
 "prévia" = "попередній перегляд";
 "Qualquer um pode criar conta pela tela de login." = "Будь-хто може створити акаунт на екрані входу.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Коли увімкнено, службова модель пише коротке дружнє нагадування (один рядок) замість вихідного вмісту нотатки — для браузера, email, ntfy та webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Зберегти";
 "Salvar servidor" = "Зберегти сервер";
 "Salvo" = "Збережено";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Якщо з'являється «timed out», пароль, імовірно, неправильний — створіть новий спеціальний пароль програми.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Якщо постачальник за замовчуванням не працює, пробує інших по черзі: %@.";
 "Segurança (%@)" = "Безпека (%@)";
 "Selecione o idioma do aplicativo." = "Оберіть мову застосунку.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Немає завдань";
 "Semanal %@" = "Щотижня %@";
 "Servidor" = "Сервер";
+"Servidores comuns" = "Поширені сервери";
 "Servidores MCP" = "Сервери MCP";
 "Sistema" = "Система";
 "SMTP igual ao IMAP" = "SMTP збігається з IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Всі";
 "Toque em + para conectar uma conta IMAP." = "Торкніться +, щоб підключити акаунт IMAP.";
 "Toque em + para criar sua primeira nota." = "Торкніться +, щоб створити першу нотатку.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Натисніть Створити. Вхідні завантажуються за кілька секунд.";
 "Tornar padrão" = "Зробити типовим";
 "Trabalho" = "Робота";
 "Transparência" = "Прозорість";

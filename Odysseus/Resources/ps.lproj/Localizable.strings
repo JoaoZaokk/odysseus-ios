@@ -46,6 +46,7 @@
 "Cancelar" = "لغوه کول";
 "Carregando…" = "بارول…";
 "Categoria" = "کټګوري";
+"Como conectar seu email" = "خپل بریښنالیک څنګه وصل کړئ";
 "Como o fallback funciona" = "بدیل څنګه کار کوي";
 "Como posso ajudar?" = "زه څنګه مرسته کولی شم؟";
 "Comparar" = "پرتله کول";
@@ -97,6 +98,7 @@
 "Fundo animado" = "متحرک شالید";
 "Galeria" = "ګالري";
 "Geração de imagem" = "انځور جوړول";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "د چمتو کوونکي په ویب‌پاڼه کې د اپلیکیشن ځانګړی پاسورډ جوړ کړئ۔ iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +۔";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "د اجنټ لپاره شته وسیلې فعال یا غیر فعال کړئ.";
 "Idioma" = "ژبه";
 "Igual ao chat" = "د چت غوندې";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "لا هیڅ یوځای کول نشته — پورته «یوځای کول زیاتول» وکاروئ.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "عصبي = PocketTTS پرتګالي (Core ML/Neural Engine)، د اصلي غږ نه خورا طبیعي. لومړی ځل ~550 MB وسیله کې ډاونلوډ کوي؛ یوازې حقیقي iPhone کې چلیږي (سمولیټر کې نه).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "په Odysseus کې، بریښنالیک خلاص کړئ → د حسابونو آیکون → پر + ټک وکړئ۔";
 "Nome" = "نوم";
 "Notes" = "Notes";
 "Nova conta" = "نوی حساب";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "ژور لټون";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "د LLM اجنټ سره ګڼ مرحله ویب څیړنه.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "ډیفالټ کې، اپ ستاسو د وسیلې ژبه تعقیبوي. بدلولو سره، اصلي سکرین ته راستنیږي.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "ډک کړئ: نوم، ستاسو بریښنالیک، IMAP سرور او پورټ، کارونکی (ستاسو بریښنالیک) او د اپلیکیشن ځانګړی پاسورډ۔";
 "Provedores" = "چمتو کوونکي";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "د دوه پړاوه تایید لرونکي چمتو کوونکي (iCloud, Gmail, Outlook) د اپلیکیشن ځانګړي پاسورډ ته اړتیا لري — ستاسو د حساب عادي پاسورډ ته نه۔";
 "prévia" = "پیش لید";
 "Qualquer um pode criar conta pela tela de login." = "هر چا کولی شي د ننوتلو سکرین نه حساب جوړ کړي.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "چې فعال وي، مرستندوی ماډل د نوت خام مینځپانګې پرځای لنډ، ګرم یادونه (یوه کرښه) لیکي — براوزر، بریښنالیک، ntfy او webhook لپاره.";
@@ -175,6 +180,7 @@
 "Salvar" = "خوندي کول";
 "Salvar servidor" = "سرور خوندي کول";
 "Salvo" = "خوندي شو";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "که “timed out” ښکاره شي، پاسورډ ښايي ناسم وي — د اپلیکیشن نوی ځانګړی پاسورډ جوړ کړئ۔";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "که ډیفالټ چمتو کوونکی ناکام شي، نور یې ترتیب سره آزموي: %@.";
 "Segurança (%@)" = "امنیت (%@)";
 "Selecione o idioma do aplicativo." = "د اپ ژبه غوره کړئ.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "هیڅ دنده نشته";
 "Semanal %@" = "هره اونۍ %@";
 "Servidor" = "سرور";
+"Servidores comuns" = "عام سرورونه";
 "Servidores MCP" = "MCP سرورونه";
 "Sistema" = "سیسټم";
 "SMTP igual ao IMAP" = "SMTP د IMAP غوندې";
@@ -200,6 +207,7 @@
 "Todos" = "ټول";
 "Toque em + para conectar uma conta IMAP." = "د IMAP حساب وصلولو لپاره + لمس وکړئ.";
 "Toque em + para criar sua primeira nota." = "خپل لومړی نوټ جوړولو لپاره + لمس وکړئ.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "پر جوړول ټک وکړئ۔ ان باکس به په څو ثانیو کې پورته شي۔";
 "Tornar padrão" = "ډیفالټ کول";
 "Trabalho" = "کار";
 "Transparência" = "شفافیت";

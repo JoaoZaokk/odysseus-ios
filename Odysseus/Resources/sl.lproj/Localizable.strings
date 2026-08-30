@@ -46,6 +46,7 @@
 "Cancelar" = "Prekliči";
 "Carregando…" = "Nalaganje…";
 "Categoria" = "Kategorija";
+"Como conectar seu email" = "Kako povezati E-pošto";
 "Como o fallback funciona" = "Kako deluje rezervno";
 "Como posso ajudar?" = "Kako ti lahko pomagam?";
 "Comparar" = "Primerjaj";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animirano ozadje";
 "Galeria" = "Galerija";
 "Geração de imagem" = "Ustvarjanje slike";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Ustvarite geslo za določeno aplikacijo na spletnem mestu ponudnika. iCloud: account.apple.com → Vpis in varnost → Določena gesla za aplikacije → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Vklopi ali izklopi orodja, ki so na voljo agentu.";
 "Idioma" = "Jezik";
 "Igual ao chat" = "Enako kot v klepetu";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Še ni integracij — uporabi „Dodaj integracijo” zgoraj.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS v portugalščini (Core ML/Neural Engine), bistveno bolj naraven kot nativni glas. Prvič prenese ~550 MB na napravo; deluje samo na fizičnem iPhonu (ne v simulatorju).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "V Odysseus odprite E-pošto → ikono računov → tapnite +.";
 "Nome" = "Ime";
 "Notes" = "Notes";
 "Nova conta" = "Nov račun";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Globoko iskanje";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Večstopenjsko spletno iskanje z agentom LLM v zanki.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Privzeto aplikacija sledi jeziku naprave. Po spremembi se vrne na domači zaslon.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Izpolnite: Ime, vaša E-pošta, strežnik IMAP in vrata, uporabniško ime (vaša E-pošta) ter geslo za določeno aplikacijo.";
 "Provedores" = "Ponudniki";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Ponudniki z dvofaktorskim preverjanjem pristnosti (iCloud, Gmail, Outlook) zahtevajo geslo za določeno aplikacijo — ne običajnega gesla za vaš račun.";
 "prévia" = "predogled";
 "Qualquer um pode criar conta pela tela de login." = "Kdorkoli lahko ustvari račun na zaslonu za prijavo.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Ko je vklopljeno, pomožni model napiše kratek in prijazen opomnik (ena vrstica) namesto surove vsebine opombe — za brskalnik, e-pošto, ntfy in webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Shrani";
 "Salvar servidor" = "Shrani strežnik";
 "Salvo" = "Shranjeno";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Če se prikaže »timed out«, je geslo verjetno napačno — ustvarite novo geslo za določeno aplikacijo.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Če privzeti ponudnik ne uspe, poskusi ostale po vrsti: %@.";
 "Segurança (%@)" = "Varnost (%@)";
 "Selecione o idioma do aplicativo." = "Izberi jezik aplikacije.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Ni nalog";
 "Semanal %@" = "Tedensko %@";
 "Servidor" = "Strežnik";
+"Servidores comuns" = "Pogosti strežniki";
 "Servidores MCP" = "Strežniki MCP";
 "Sistema" = "Sistem";
 "SMTP igual ao IMAP" = "SMTP enako kot IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Vse";
 "Toque em + para conectar uma conta IMAP." = "Dotakni se + za povezavo računa IMAP.";
 "Toque em + para criar sua primeira nota." = "Dotakni se + za ustvarjanje prve opombe.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tapnite Ustvari. Prejeta pošta se naloži v nekaj sekundah.";
 "Tornar padrão" = "Nastavi kot privzeto";
 "Trabalho" = "Delo";
 "Transparência" = "Prosojnost";

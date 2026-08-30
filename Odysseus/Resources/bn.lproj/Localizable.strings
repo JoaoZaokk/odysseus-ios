@@ -46,6 +46,7 @@
 "Cancelar" = "বাতিল";
 "Carregando…" = "লোড হচ্ছে…";
 "Categoria" = "ক্যাটেগরি";
+"Como conectar seu email" = "আপনার ইমেল কীভাবে সংযুক্ত করবেন";
 "Como o fallback funciona" = "ফলব্যাক কীভাবে কাজ করে";
 "Como posso ajudar?" = "আমি কীভাবে সাহায্য করতে পারি?";
 "Comparar" = "তুলনা করুন";
@@ -97,6 +98,7 @@
 "Fundo animado" = "অ্যানিমেটেড ব্যাকগ্রাউন্ড";
 "Galeria" = "গ্যালারি";
 "Geração de imagem" = "ছবি তৈরি";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "প্রোভাইডারের ওয়েবসাইটে একটি অ্যাপ-নির্দিষ্ট পাসওয়ার্ড তৈরি করুন। iCloud: account.apple.com → সাইন ইন ও সুরক্ষা → অ্যাপ-নির্দিষ্ট পাসওয়ার্ড → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "এজেন্টের জন্য উপলব্ধ টুলগুলো চালু বা বন্ধ করুন।";
 "Idioma" = "ভাষা";
 "Igual ao chat" = "চ্যাটের মতোই";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "এখনও কোনো ইন্টিগ্রেশন নেই — উপরে “ইন্টিগ্রেশন যোগ করুন” ব্যবহার করুন।";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "নিউরাল = পর্তুগিজে PocketTTS (Core ML/Neural Engine), নেটিভ ভয়েসের চেয়ে অনেক স্বাভাবিক। প্রথমবার ~550 MB অন-ডিভাইস ডাউনলোড করে; শুধু ফিজিক্যাল iPhone-এ চলে (সিমুলেটরে নয়)।";
 "Neural pt-BR" = "নিউরাল pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Odysseus-এ, ইমেল খুলুন → অ্যাকাউন্ট আইকন → +-এ ট্যাপ করুন।";
 "Nome" = "নাম";
 "Notes" = "নোট";
 "Nova conta" = "নতুন অ্যাকাউন্ট";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "গভীর সার্চ";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "লুপে LLM এজেন্ট সহ মাল্টি-স্টেপ ওয়েব গবেষণা।";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "ডিফল্টে অ্যাপ আপনার ডিভাইসের ভাষা অনুসরণ করে। বদলালে এটি হোম স্ক্রিনে ফিরে যায়।";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "পূরণ করুন: নাম, আপনার ইমেল, IMAP সার্ভার এবং পোর্ট, ইউজারনেম (আপনার ইমেল) এবং অ্যাপ-নির্দিষ্ট পাসওয়ার্ড।";
 "Provedores" = "প্রোভাইডার";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "টু-ফ্যাক্টর অথেন্টিকেশন ব্যবহারকারী প্রোভাইডারদের (iCloud, Gmail, Outlook) অ্যাপ-নির্দিষ্ট পাসওয়ার্ড প্রয়োজন — আপনার অ্যাকাউন্টের সাধারণ পাসওয়ার্ড নয়।";
 "prévia" = "প্রিভিউ";
 "Qualquer um pode criar conta pela tela de login." = "যে কেউ লগইন স্ক্রিন থেকে অ্যাকাউন্ট তৈরি করতে পারে।";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "চালু থাকলে, ইউটিলিটি মডেল নোটের কাঁচা কন্টেন্টের বদলে একটি সংক্ষিপ্ত, আন্তরিক এক-লাইনের রিমাইন্ডার লেখে — browser, ইমেল, ntfy ও webhook-এর জন্য।";
@@ -175,6 +180,7 @@
 "Salvar" = "সেভ করুন";
 "Salvar servidor" = "সার্ভার সেভ করুন";
 "Salvo" = "সেভ হয়েছে";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "যদি “timed out” দেখা যায়, তবে পাসওয়ার্ড সম্ভবত ভুল — একটি নতুন অ্যাপ-নির্দিষ্ট পাসওয়ার্ড তৈরি করুন।";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "ডিফল্ট প্রোভাইডার ব্যর্থ হলে, ক্রম অনুযায়ী অন্যগুলো চেষ্টা করে: %@।";
 "Segurança (%@)" = "নিরাপত্তা (%@)";
 "Selecione o idioma do aplicativo." = "অ্যাপের ভাষা বেছে নিন।";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "কোনো টাস্ক নেই";
 "Semanal %@" = "প্রতি সপ্তাহে %@";
 "Servidor" = "সার্ভার";
+"Servidores comuns" = "সাধারণ সার্ভার";
 "Servidores MCP" = "MCP সার্ভার";
 "Sistema" = "সিস্টেম";
 "SMTP igual ao IMAP" = "SMTP IMAP-এর মতোই";
@@ -199,6 +206,7 @@
 "Todos" = "সব";
 "Toque em + para conectar uma conta IMAP." = "একটি IMAP অ্যাকাউন্ট সংযুক্ত করতে + চাপুন।";
 "Toque em + para criar sua primeira nota." = "আপনার প্রথম নোট তৈরি করতে + চাপুন।";
+"Toque em Criar. A caixa carrega em alguns segundos." = "তৈরি করুন-এ ট্যাপ করুন। ইনবক্স কয়েক সেকেন্ডের মধ্যে লোড হবে।";
 "Tornar padrão" = "ডিফল্ট করুন";
 "Trabalho" = "কাজ";
 "Transparência" = "স্বচ্ছতা";

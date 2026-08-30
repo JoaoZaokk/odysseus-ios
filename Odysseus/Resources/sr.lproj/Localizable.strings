@@ -46,6 +46,7 @@
 "Cancelar" = "Откажи";
 "Carregando…" = "Учитавање…";
 "Categoria" = "Категорија";
+"Como conectar seu email" = "Како повезати Email";
 "Como o fallback funciona" = "Како функционише резервна опција";
 "Como posso ajudar?" = "Чиме могу да помогнем?";
 "Comparar" = "Упореди";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Анимирана позадина";
 "Galeria" = "Галерија";
 "Geração de imagem" = "Генерисање слика";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Генеришите лозинку специфичну за апликацију на сајту провајдера. iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Укључите или искључите алате доступне агенту.";
 "Idioma" = "Језик";
 "Igual ao chat" = "Исто као у ћаскању";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Нема интеграција — користите «Додај интеграцију» изнад.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS на португалском (Core ML/Neural Engine), знатно природнији од нативног гласа. При првом покретању преузима ~550 МБ на уређај; ради само на физичком iPhone-у (не у симулатору).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "У Odysseus отворите Email → икону налога → додирните +.";
 "Nome" = "Назив";
 "Notes" = "Notes";
 "Nova conta" = "Нови налог";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Дубинска претрага";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Вишефазна веб претрага са LLM агентом у петљи.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Подразумевано апликација прати језик уређаја. При промени враћа се на почетни екран.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Попуните: Назив, ваш Email, сервер IMAP и порт, корисник (ваш Email) и лозинка специфична за апликацију.";
 "Provedores" = "Провајдери";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Провајдери са двоструком потврдом идентитета (iCloud, Gmail, Outlook) захтевају лозинку специфичну за апликацију — не уобичајену лозинку вашег налога.";
 "prévia" = "преглед";
 "Qualquer um pode criar conta pela tela de login." = "Свако може да направи налог на екрану за пријављивање.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Када је укључено, услужни модел пише кратак и пријатан подсетник (један ред) уместо сировог садржаја белешке — за претраживач, email, ntfy и webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Сачувај";
 "Salvar servidor" = "Сачувај сервер";
 "Salvo" = "Сачувано";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Ако се прикаже „timed out“, лозинка је вероватно погрешна — генеришите нову лозинку специфичну за апликацију.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Ако подразумевани провајдер не успе, покушава остале редом: %@.";
 "Segurança (%@)" = "Безбедност (%@)";
 "Selecione o idioma do aplicativo." = "Изаберите језик апликације.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Нема задатака";
 "Semanal %@" = "Недељно %@";
 "Servidor" = "Сервер";
+"Servidores comuns" = "Уобичајени сервери";
 "Servidores MCP" = "MCP сервери";
 "Sistema" = "Систем";
 "SMTP igual ao IMAP" = "SMTP исто као IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "Сви";
 "Toque em + para conectar uma conta IMAP." = "Додирните + да бисте повезали IMAP налог.";
 "Toque em + para criar sua primeira nota." = "Додирните + да бисте направили прву белешку.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Додирните Направи. Пријемно сандуче се учита за неколико секунди.";
 "Tornar padrão" = "Постави као подразумевано";
 "Trabalho" = "Посао";
 "Transparência" = "Прозирност";

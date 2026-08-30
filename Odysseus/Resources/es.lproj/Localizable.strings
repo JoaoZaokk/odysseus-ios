@@ -46,6 +46,7 @@
 "Cancelar" = "Cancelar";
 "Carregando…" = "Cargando…";
 "Categoria" = "Categoría";
+"Como conectar seu email" = "Conecta tu correo";
 "Como o fallback funciona" = "Cómo funciona el fallback";
 "Como posso ajudar?" = "¿En qué puedo ayudarte?";
 "Comparar" = "Comparar";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Fondo animado";
 "Galeria" = "Galería";
 "Geração de imagem" = "Generación de imágenes";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Genera una contraseña de aplicación en el sitio de tu proveedor. iCloud: account.apple.com → Inicio de sesión y seguridad → Contraseñas específicas → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Activa o desactiva las herramientas disponibles para el agente.";
 "Idioma" = "Idioma";
 "Igual ao chat" = "Igual que el chat";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Ninguna integración todavía — usa «Añadir integración» arriba.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS en portugués (Core ML/Neural Engine), mucho más natural que la voz nativa. Descarga ~550 MB en el dispositivo la primera vez; solo funciona en iPhone físico (no en el simulador).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "En Odysseus, abre Email → el icono de cuentas → toca +.";
 "Nome" = "Nombre";
 "Notes" = "Notes";
 "Nova conta" = "Nueva cuenta";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Investigación profunda";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Investigación web en múltiples pasos con un agente LLM en el bucle.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Por defecto, la app sigue el idioma de tu dispositivo. Al cambiar, vuelve a la pantalla de inicio.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Rellena: Nombre, tu correo, servidor IMAP y puerto, usuario (tu correo) y la contraseña de aplicación.";
 "Provedores" = "Proveedores";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Los proveedores con verificación en dos pasos (iCloud, Gmail, Outlook) requieren una contraseña de aplicación — no la contraseña normal de tu cuenta.";
 "prévia" = "vista previa";
 "Qualquer um pode criar conta pela tela de login." = "Cualquiera puede crear una cuenta desde la pantalla de inicio de sesión.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Cuando está activado, el modelo utilitario escribe un recordatorio breve y cordial (una línea) en lugar del contenido sin procesar de la nota — para navegador, email, ntfy y webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Guardar";
 "Salvar servidor" = "Guardar servidor";
 "Salvo" = "Guardado";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Si da “timed out”, la contraseña suele estar mal — genera una nueva contraseña de aplicación.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Si el proveedor predeterminado falla, prueba los demás en orden: %@.";
 "Segurança (%@)" = "Seguridad (%@)";
 "Selecione o idioma do aplicativo." = "Elige el idioma de la aplicación.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Sin tareas";
 "Semanal %@" = "Semanalmente %@";
 "Servidor" = "Servidor";
+"Servidores comuns" = "Servidores comunes";
 "Servidores MCP" = "Servidores MCP";
 "Sistema" = "Sistema";
 "SMTP igual ao IMAP" = "SMTP igual que IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Todos";
 "Toque em + para conectar uma conta IMAP." = "Toca + para conectar una cuenta IMAP.";
 "Toque em + para criar sua primeira nota." = "Toca + para crear tu primera nota.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Toca Crear. La bandeja carga en unos segundos.";
 "Tornar padrão" = "Establecer como predeterminado";
 "Trabalho" = "Trabajo";
 "Transparência" = "Transparencia";

@@ -46,6 +46,7 @@
 "Cancelar" = "取消";
 "Carregando…" = "載入中…";
 "Categoria" = "類別";
+"Como conectar seu email" = "連接你的郵件";
 "Como o fallback funciona" = "備用方案的運作方式";
 "Como posso ajudar?" = "我能幫您什麼？";
 "Comparar" = "比較";
@@ -97,6 +98,7 @@
 "Fundo animado" = "動態背景";
 "Galeria" = "圖庫";
 "Geração de imagem" = "影像生成";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "在供應商網站上產生 App 專用密碼。iCloud：account.apple.com → 登入與安全 → App 專用密碼 → +。";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "啟用或停用代理程式可使用的工具。";
 "Idioma" = "語言";
 "Igual ao chat" = "與聊天相同";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "尚無整合——請使用上方的「新增整合」。";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "神經 = 葡萄牙語的 PocketTTS（Core ML/Neural Engine），比原生語音自然得多。首次在裝置上下載約 550 MB；僅在實體 iPhone 上執行（不支援模擬器）。";
 "Neural pt-BR" = "神經 pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "在 Odysseus 中，開啟「郵件」→ 帳戶圖像 → 點一下 +。";
 "Nome" = "名稱";
 "Notes" = "備忘錄";
 "Nova conta" = "新帳戶";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "深度搜尋";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "包含 LLM 代理程式的多步驟網路研究。";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "預設情況下，應用程式跟隨裝置語言。切換後將返回主畫面。";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "填寫：名稱、你的郵件、IMAP 伺服器與連接埠、使用者名稱（你的郵件），以及 App 專用密碼。";
 "Provedores" = "提供者";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "使用雙重認證的供應商（iCloud、Gmail、Outlook）需要 App 專用密碼，而不是你帳戶的一般密碼。";
 "prévia" = "預覽";
 "Qualquer um pode criar conta pela tela de login." = "任何人都可以在登入畫面建立帳戶。";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "開啟後，實用模型將為瀏覽器、郵件、ntfy 和 webhook 生成簡短溫馨的一行提醒，而非原始備忘內容。";
@@ -175,6 +180,7 @@
 "Salvar" = "儲存";
 "Salvar servidor" = "儲存伺服器";
 "Salvo" = "已儲存";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "如果出現「timed out」，密碼可能不正確，請產生新的 App 專用密碼。";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "如果預設提供者失敗，將按以下順序嘗試其他提供者：%@。";
 "Segurança (%@)" = "安全性（%@）";
 "Selecione o idioma do aplicativo." = "選擇應用程式語言。";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "無工作";
 "Semanal %@" = "每週 %@";
 "Servidor" = "伺服器";
+"Servidores comuns" = "常用伺服器";
 "Servidores MCP" = "MCP 伺服器";
 "Sistema" = "系統";
 "SMTP igual ao IMAP" = "SMTP 與 IMAP 相同";
@@ -199,6 +206,7 @@
 "Todos" = "全部";
 "Toque em + para conectar uma conta IMAP." = "點選 + 連線 IMAP 帳戶。";
 "Toque em + para criar sua primeira nota." = "點選 + 建立您的第一條備忘。";
+"Toque em Criar. A caixa carrega em alguns segundos." = "點一下「建立」。收件匣會在幾秒鐘內載入。";
 "Tornar padrão" = "設為預設";
 "Trabalho" = "工作";
 "Transparência" = "透明度";

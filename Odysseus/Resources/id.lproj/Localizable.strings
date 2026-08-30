@@ -46,6 +46,7 @@
 "Cancelar" = "Batal";
 "Carregando…" = "Memuat…";
 "Categoria" = "Kategori";
+"Como conectar seu email" = "Hubungkan email Anda";
 "Como o fallback funciona" = "Cara kerja cadangan";
 "Como posso ajudar?" = "Ada yang bisa saya bantu?";
 "Comparar" = "Bandingkan";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Latar belakang animasi";
 "Galeria" = "Galeri";
 "Geração de imagem" = "Pembuatan gambar";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Buat kata sandi khusus app di situs penyedia. iCloud: account.apple.com → Masuk dan Keamanan → Kata Sandi Khusus App → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktifkan atau nonaktifkan alat yang tersedia untuk agen.";
 "Idioma" = "Bahasa";
 "Igual ao chat" = "Sama seperti obrolan";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Belum ada integrasi — gunakan \"Tambah integrasi\" di atas.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS dalam bahasa Portugis (Core ML/Neural Engine), jauh lebih natural dari suara bawaan. Mengunduh ~550 MB di perangkat untuk pertama kali; hanya berjalan di iPhone fisik (bukan simulator).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Di Odysseus, buka Email → ikon akun → ketuk +.";
 "Nome" = "Nama";
 "Notes" = "Notes";
 "Nova conta" = "Akun baru";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Riset mendalam";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Riset web multi-langkah dengan agen LLM dalam loop.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Secara default, aplikasi mengikuti bahasa perangkat Anda. Saat diganti, aplikasi akan kembali ke layar utama.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Isi: Nama, email Anda, server IMAP dan port, nama pengguna (email Anda), dan kata sandi khusus app.";
 "Provedores" = "Penyedia";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Penyedia yang menggunakan autentikasi dua faktor (iCloud, Gmail, Outlook) memerlukan kata sandi khusus app — bukan kata sandi biasa akun Anda.";
 "prévia" = "pratinjau";
 "Qualquer um pode criar conta pela tela de login." = "Siapa saja bisa membuat akun dari layar login.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Saat aktif, model utilitas akan menulis pengingat singkat dan ramah (satu baris) sebagai pengganti isi catatan mentah — untuk browser, email, ntfy, dan webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Simpan";
 "Salvar servidor" = "Simpan server";
 "Salvo" = "Tersimpan";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Jika muncul “timed out”, kemungkinan kata sandinya salah — buat kata sandi khusus app yang baru.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Jika penyedia default gagal, akan mencoba yang lain secara berurutan: %@.";
 "Segurança (%@)" = "Keamanan (%@)";
 "Selecione o idioma do aplicativo." = "Pilih bahasa aplikasi.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Tidak ada tugas";
 "Semanal %@" = "Setiap minggu %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Server umum";
 "Servidores MCP" = "Server MCP";
 "Sistema" = "Sistem";
 "SMTP igual ao IMAP" = "SMTP sama dengan IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Semua";
 "Toque em + para conectar uma conta IMAP." = "Ketuk + untuk menghubungkan akun IMAP.";
 "Toque em + para criar sua primeira nota." = "Ketuk + untuk membuat catatan pertama Anda.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Ketuk Buat. Kotak masuk dimuat dalam beberapa detik.";
 "Tornar padrão" = "Jadikan default";
 "Trabalho" = "Pekerjaan";
 "Transparência" = "Transparansi";

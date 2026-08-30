@@ -46,6 +46,7 @@
 "Cancelar" = "Odustani";
 "Carregando…" = "Učitavanje…";
 "Categoria" = "Kategorija";
+"Como conectar seu email" = "Kako povezati E-poštu";
 "Como o fallback funciona" = "Kako radi pričuvno";
 "Como posso ajudar?" = "Kako mogu pomoći?";
 "Comparar" = "Usporedi";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animirana pozadina";
 "Galeria" = "Galerija";
 "Geração de imagem" = "Generiranje slike";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Generirajte lozinku za određenu aplikaciju na web-mjestu pružatelja usluge. iCloud: account.apple.com → Prijava i sigurnost → Lozinke za određene aplikacije → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Uključi ili isključi alate dostupne agentu.";
 "Idioma" = "Jezik";
 "Igual ao chat" = "Isto kao u razgovoru";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Još nema integracija — koristi „Dodaj integraciju” gore.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS na portugalskom (Core ML/Neural Engine), daleko prirodniji od izvornog glasa. Preuzima ~550 MB na uređaj prvi put; radi samo na fizičkom iPhoneu (ne u simulatoru).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "U Odysseus otvorite E-poštu → ikonu računa → dodirnite +.";
 "Nome" = "Naziv";
 "Notes" = "Notes";
 "Nova conta" = "Novi račun";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Duboko pretraživanje";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Višefazno web pretraživanje s agentom LLM u petlji.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Zadano aplikacija prati jezik uređaja. Nakon promjene vraća se na početni zaslon.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Ispunite: Naziv, vaša E-pošta, poslužitelj IMAP i vrata, korisničko ime (vaša E-pošta) i lozinka za određenu aplikaciju.";
 "Provedores" = "Pružatelji";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Pružatelji usluga s dvofaktorskom provjerom autentičnosti (iCloud, Gmail, Outlook) zahtijevaju lozinku za određenu aplikaciju — ne uobičajenu lozinku vašeg računa.";
 "prévia" = "pregled";
 "Qualquer um pode criar conta pela tela de login." = "Svatko može stvoriti račun na zaslonu za prijavu.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Kada je uključeno, pomoćni model piše kratki i prijazni podsjetnik (jedan redak) umjesto sirovog sadržaja bilješke — za preglednik, e-poštu, ntfy i webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Spremi";
 "Salvar servidor" = "Spremi poslužitelj";
 "Salvo" = "Spremljeno";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Ako se prikaže „timed out”, lozinka je vjerojatno pogrešna — generirajte novu lozinku za određenu aplikaciju.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Ako zadani pružatelj ne uspije, pokušava ostale redom: %@.";
 "Segurança (%@)" = "Sigurnost (%@)";
 "Selecione o idioma do aplicativo." = "Odaberi jezik aplikacije.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Nema zadataka";
 "Semanal %@" = "Tjedno %@";
 "Servidor" = "Poslužitelj";
+"Servidores comuns" = "Uobičajeni poslužitelji";
 "Servidores MCP" = "Poslužitelji MCP";
 "Sistema" = "Sustav";
 "SMTP igual ao IMAP" = "SMTP isto kao IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Sve";
 "Toque em + para conectar uma conta IMAP." = "Dotakni + za spajanje računa IMAP.";
 "Toque em + para criar sua primeira nota." = "Dotakni + za stvaranje prve bilješke.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Dodirnite Stvori. Pristigla pošta učita se za nekoliko sekundi.";
 "Tornar padrão" = "Postavi kao zadano";
 "Trabalho" = "Posao";
 "Transparência" = "Prozirnost";

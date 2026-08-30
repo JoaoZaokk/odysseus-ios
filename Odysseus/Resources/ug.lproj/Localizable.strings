@@ -46,6 +46,7 @@
 "Cancelar" = "ۋاز كېچىش";
 "Carregando…" = "يۈكلىنىۋاتىدۇ…";
 "Categoria" = "تۈر";
+"Como conectar seu email" = "ئېلخەتنى قانداق ئۇلاش";
 "Como o fallback funciona" = "زاپاس قانداق ئىشلەيدۇ";
 "Como posso ajudar?" = "قانداق ياردەم بېرەلەيمەن؟";
 "Comparar" = "سالىشتۇرۇش";
@@ -97,6 +98,7 @@
 "Fundo animado" = "جانلاندۇرۇلغان فون";
 "Galeria" = "گالېرېيە";
 "Geração de imagem" = "رەسىم ھاسىل قىلىش";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "تەمىنلىگۈچىنىڭ تور بېكىتىدە ئەپكە خاس پارول ھاسىل قىلىڭ. iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "ئاگېنتقا مۇناسىۋەتلىك قوراللارنى قوزغىتىڭ ياكى چەكلەڭ.";
 "Idioma" = "تىل";
 "Igual ao chat" = "سۆھبەت بىلەن ئوخشاش";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "تېخى باغلىنىش يوق — يۇقىرىدىكى «باغلىنىش قوشۇش» نى ئىشلىتىڭ.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "نېيرون = پورتۇگال تىلىدىكى PocketTTS (Core ML/Neural Engine)، يەرلىك ئاۋازدىن خېلى تەبىئىي. تۇنجى قېتىم ئۈسكۈنىگە ~550 MB چۈشۈرىدۇ؛ پەقەت ئەمەلىي iPhone دا ئىشلەيدۇ (سىمۇلياتوردا ئەمەس).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Odysseus دا ئېلخەتنى ئېچىڭ → ھېسابات سىنبەلگىسى → + نى بېسىڭ.";
 "Nome" = "ئات";
 "Notes" = "خاتىرىلەر";
 "Nova conta" = "يېڭى ھېسابات";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "چوڭقۇر ئىزدەش";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "LLM ئاگېنتى قاتناشقان كۆپ باسقۇچلۇق تور تەتقىقاتى.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "كۆڭۈلدىكىدە، ئەپ ئۈسكۈنىڭىزنىڭ تىلىغا ئەگىشىدۇ. ئالماشتۇرغاندا، باش بەتكە قايتىدۇ.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "تولدۇرۇڭ: ئات، ئېلخەتىڭىز، IMAP مۇلازىمېتىرى ۋە پورتى، ئىشلەتكۈچى (ئېلخەتىڭىز) ۋە ئەپكە خاس پارول.";
 "Provedores" = "تەمىنلىگۈچىلەر";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "ئىككى باسقۇچلۇق دەلىللەشنى ئىشلىتىدىغان تەمىنلىگۈچىلەر (iCloud, Gmail, Outlook) ئەپكە خاس پارول تەلەپ قىلىدۇ — ھېساباتىڭىزنىڭ ئادەتتىكى پارولى ئەمەس.";
 "prévia" = "ئالدىن كۆرۈش";
 "Qualquer um pode criar conta pela tela de login." = "خالىغان كىشى كىرىش بېتىدىن ھېسابات ئاچالايدۇ.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "ئاچقاندا، خىزمەت مودېلى خاتىرىنىڭ خام مەزمۇنى ئورنىغا قىسقا ۋە سامىمىي بىر قۇرلۇق ئەسكەرتىش يازىدۇ — تور كۆرگۈ، ئېلخەت، ntfy ۋە webhook ئۈچۈن.";
@@ -175,6 +180,7 @@
 "Salvar" = "ساقلاش";
 "Salvar servidor" = "مۇلازىمېتىرنى ساقلاش";
 "Salvo" = "ساقلاندى";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "ئەگەر “timed out” كۆرۈلسە، پارول خاتا بولۇشى مۇمكىن — يېڭى ئەپكە خاس پارول ھاسىل قىلىڭ.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "ئەگەر كۆڭۈلدىكى تەمىنلىگۈچى مەغلۇپ بولسا، قالغانلىرىنى تەرتىپ بويىچە سىنايدۇ: %@.";
 "Segurança (%@)" = "بىخەتەرلىك (%@)";
 "Selecione o idioma do aplicativo." = "ئەپ تىلىنى تاللاڭ.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "ۋەزىپە يوق";
 "Semanal %@" = "ھەر ھەپتە %@";
 "Servidor" = "مۇلازىمېتىر";
+"Servidores comuns" = "ئادەتتىكى مۇلازىمېتىرلار";
 "Servidores MCP" = "MCP مۇلازىمېتىرلىرى";
 "Sistema" = "سىستېما";
 "SMTP igual ao IMAP" = "SMTP IMAP بىلەن ئوخشاش";
@@ -200,6 +207,7 @@
 "Todos" = "ھەممىسى";
 "Toque em + para conectar uma conta IMAP." = "IMAP ھېساباتى باغلاش ئۈچۈن + نى چېكىڭ.";
 "Toque em + para criar sua primeira nota." = "تۇنجى خاتىرىڭىزنى قۇرۇش ئۈچۈن + نى چېكىڭ.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "قۇرۇشنى بېسىڭ. قوبۇللاش ساندۇقى بىر نەچچە سېكۇنتتا يۈكلىنىدۇ.";
 "Tornar padrão" = "كۆڭۈلدىكى قىلىش";
 "Trabalho" = "خىزمەت";
 "Transparência" = "شەففاپلىق";

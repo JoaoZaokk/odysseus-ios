@@ -46,6 +46,7 @@
 "Cancelar" = "Hủy";
 "Carregando…" = "Đang tải…";
 "Categoria" = "Danh mục";
+"Como conectar seu email" = "Kết nối email của bạn";
 "Como o fallback funciona" = "Cách hoạt động của dự phòng";
 "Como posso ajudar?" = "Tôi có thể giúp gì cho bạn?";
 "Comparar" = "So sánh";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Nền động";
 "Galeria" = "Thư viện ảnh";
 "Geração de imagem" = "Tạo hình ảnh";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Tạo mật khẩu dành cho ứng dụng trên trang web của nhà cung cấp. iCloud: account.apple.com → Đăng nhập và Bảo mật → Mật khẩu dành cho ứng dụng → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Bật hoặc tắt các công cụ có sẵn cho tác nhân.";
 "Idioma" = "Ngôn ngữ";
 "Igual ao chat" = "Giống như chat";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Chưa có tích hợp nào — hãy dùng \"Thêm tích hợp\" ở trên.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS tiếng Bồ Đào Nha (Core ML/Neural Engine), tự nhiên hơn nhiều so với giọng đọc gốc. Lần đầu tải ~550 MB trên thiết bị; chỉ chạy trên iPhone thật (không phải trình giả lập).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Trong Odysseus, mở Email → biểu tượng tài khoản → chạm vào +.";
 "Nome" = "Tên";
 "Notes" = "Notes";
 "Nova conta" = "Tài khoản mới";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Nghiên cứu sâu";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Nghiên cứu web nhiều bước với tác nhân LLM trong vòng lặp.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Mặc định, ứng dụng theo ngôn ngữ thiết bị của bạn. Khi thay đổi, ứng dụng sẽ quay về màn hình chính.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Điền: Tên, email của bạn, máy chủ IMAP và cổng, tên người dùng (email của bạn) và mật khẩu dành cho ứng dụng.";
 "Provedores" = "Nhà cung cấp";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Các nhà cung cấp sử dụng xác thực hai yếu tố (iCloud, Gmail, Outlook) yêu cầu mật khẩu dành cho ứng dụng — không phải mật khẩu thông thường của tài khoản.";
 "prévia" = "xem trước";
 "Qualquer um pode criar conta pela tela de login." = "Bất kỳ ai cũng có thể tạo tài khoản từ màn hình đăng nhập.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Khi bật, mô hình tiện ích sẽ viết một lời nhắc nhở ngắn gọn, thân thiện (một dòng) thay vì nội dung ghi chú thô — cho trình duyệt, email, ntfy và webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Lưu";
 "Salvar servidor" = "Lưu máy chủ";
 "Salvo" = "Đã lưu";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Nếu xuất hiện “timed out”, mật khẩu có thể không đúng — hãy tạo mật khẩu mới dành cho ứng dụng.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Nếu nhà cung cấp mặc định thất bại, sẽ thử các cái khác theo thứ tự: %@.";
 "Segurança (%@)" = "Bảo mật (%@)";
 "Selecione o idioma do aplicativo." = "Chọn ngôn ngữ ứng dụng.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Không có nhiệm vụ";
 "Semanal %@" = "Hàng tuần %@";
 "Servidor" = "Máy chủ";
+"Servidores comuns" = "Máy chủ phổ biến";
 "Servidores MCP" = "Máy chủ MCP";
 "Sistema" = "Hệ thống";
 "SMTP igual ao IMAP" = "SMTP giống với IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Tất cả";
 "Toque em + para conectar uma conta IMAP." = "Nhấn + để kết nối tài khoản IMAP.";
 "Toque em + para criar sua primeira nota." = "Nhấn + để tạo ghi chú đầu tiên.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Chạm vào Tạo. Hộp thư đến tải trong vài giây.";
 "Tornar padrão" = "Đặt làm mặc định";
 "Trabalho" = "Công việc";
 "Transparência" = "Độ trong suốt";

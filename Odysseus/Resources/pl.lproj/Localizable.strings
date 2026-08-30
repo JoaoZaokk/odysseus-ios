@@ -46,6 +46,7 @@
 "Cancelar" = "Anuluj";
 "Carregando…" = "Ładowanie…";
 "Categoria" = "Kategoria";
+"Como conectar seu email" = "Jak połączyć E-mail";
 "Como o fallback funciona" = "Jak działa zapasowy";
 "Como posso ajudar?" = "Jak mogę pomóc?";
 "Comparar" = "Porównaj";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animowane tło";
 "Galeria" = "Galeria";
 "Geração de imagem" = "Generowanie obrazu";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Wygeneruj hasło aplikacji w witrynie dostawcy. iCloud: account.apple.com → Logowanie i zabezpieczenia → Hasła aplikacji → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Włącz lub wyłącz narzędzia dostępne dla agenta.";
 "Idioma" = "Język";
 "Igual ao chat" = "Tak samo jak w czacie";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Brak integracji — użyj „Dodaj integrację” powyżej.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS po portugalsku (Core ML/Neural Engine), znacznie bardziej naturalny niż głos natywny. Pobiera ~550 MB na urządzeniu za pierwszym razem; działa tylko na fizycznym iPhonie (nie w symulatorze).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "W Odysseus otwórz E-mail → ikonę kont → stuknij +.";
 "Nome" = "Nazwa";
 "Notes" = "Notes";
 "Nova conta" = "Nowe konto";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Głębokie wyszukiwanie";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Wieloetapowe wyszukiwanie w internecie z agentem LLM w pętli.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Domyślnie aplikacja podąża za językiem urządzenia. Po zmianie wraca do ekranu głównego.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Wypełnij: Nazwa, swój E-mail, serwer IMAP i port, nazwa użytkownika (swój E-mail) oraz hasło aplikacji.";
 "Provedores" = "Dostawcy";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Dostawcy korzystający z uwierzytelniania dwupoziomowego (iCloud, Gmail, Outlook) wymagają hasła aplikacji — nie zwykłego hasła do konta.";
 "prévia" = "podgląd";
 "Qualquer um pode criar conta pela tela de login." = "Każdy może utworzyć konto z ekranu logowania.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Gdy włączone, model pomocniczy pisze krótkie, przyjazne przypomnienie (jedna linia) zamiast surowej treści notatki — dla przeglądarki, e-maila, ntfy i webhooka.";
@@ -175,6 +180,7 @@
 "Salvar" = "Zapisz";
 "Salvar servidor" = "Zapisz serwer";
 "Salvo" = "Zapisano";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Jeśli pojawi się „timed out”, hasło jest prawdopodobnie nieprawidłowe — wygeneruj nowe hasło aplikacji.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Jeśli domyślny dostawca zawiedzie, próbuje innych w kolejności: %@.";
 "Segurança (%@)" = "Bezpieczeństwo (%@)";
 "Selecione o idioma do aplicativo." = "Wybierz język aplikacji.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Brak zadań";
 "Semanal %@" = "Co tydzień %@";
 "Servidor" = "Serwer";
+"Servidores comuns" = "Popularne serwery";
 "Servidores MCP" = "Serwery MCP";
 "Sistema" = "System";
 "SMTP igual ao IMAP" = "SMTP tak samo jak IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Wszystkie";
 "Toque em + para conectar uma conta IMAP." = "Stuknij +, aby połączyć konto IMAP.";
 "Toque em + para criar sua primeira nota." = "Stuknij +, aby utworzyć pierwszą notatkę.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Stuknij Utwórz. Skrzynka odbiorcza ładuje się w kilka sekund.";
 "Tornar padrão" = "Ustaw jako domyślny";
 "Trabalho" = "Praca";
 "Transparência" = "Przezroczystość";

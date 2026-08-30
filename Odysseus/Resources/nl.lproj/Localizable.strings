@@ -46,6 +46,7 @@
 "Cancelar" = "Annuleren";
 "Carregando…" = "Laden…";
 "Categoria" = "Categorie";
+"Como conectar seu email" = "Je e-mail verbinden";
 "Como o fallback funciona" = "Hoe fallback werkt";
 "Como posso ajudar?" = "Hoe kan ik je helpen?";
 "Comparar" = "Vergelijken";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Geanimeerde achtergrond";
 "Galeria" = "Galerij";
 "Geração de imagem" = "Afbeeldingsgeneratie";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Maak een app-specifiek wachtwoord aan op de website van je aanbieder. iCloud: account.apple.com → Login en beveiliging → App-specifieke wachtwoorden → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Schakel de beschikbare tools voor de agent in of uit.";
 "Idioma" = "Taal";
 "Igual ao chat" = "Hetzelfde als chat";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Nog geen integraties — gebruik «Integratie toevoegen» hierboven.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neuraal = PocketTTS in het Portugees (Core ML/Neural Engine), veel natuurlijker dan de ingebouwde stem. Downloadt ~550 MB op het apparaat de eerste keer; werkt alleen op een fysieke iPhone (niet in de simulator).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "Open in Odysseus E-mail → het accounticoon → tik op +.";
 "Nome" = "Naam";
 "Notes" = "Notes";
 "Nova conta" = "Nieuw account";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Diepgaand onderzoek";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Meerstaps webonderzoek met een LLM-agent in de lus.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "Standaard volgt de app de taal van je apparaat. Bij wijziging keer je terug naar het startscherm.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Vul in: Naam, je e-mailadres, IMAP-server en poort, gebruikersnaam (je e-mailadres) en het app-specifieke wachtwoord.";
 "Provedores" = "Providers";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Aanbieders met twee-factor-authenticatie (iCloud, Gmail, Outlook) vereisen een app-specifiek wachtwoord – niet het normale wachtwoord van je account.";
 "prévia" = "voorbeeld";
 "Qualquer um pode criar conta pela tela de login." = "Iedereen kan een account aanmaken via het aanmeldscherm.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Wanneer ingeschakeld, schrijft het hulpmodel een korte, vriendelijke herinnering (één regel) in plaats van de ruwe notitie-inhoud — voor browser, e-mail, ntfy en webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Opslaan";
 "Salvar servidor" = "Server opslaan";
 "Salvo" = "Opgeslagen";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Als ‘timed out’ verschijnt, is het wachtwoord waarschijnlijk onjuist – maak een nieuw app-specifiek wachtwoord aan.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Als de standaardprovider mislukt, worden de anderen in volgorde geprobeerd: %@.";
 "Segurança (%@)" = "Beveiliging (%@)";
 "Selecione o idioma do aplicativo." = "Kies de taal van de app.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Geen taken";
 "Semanal %@" = "Wekelijks %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Veelgebruikte servers";
 "Servidores MCP" = "MCP-servers";
 "Sistema" = "Systeem";
 "SMTP igual ao IMAP" = "SMTP gelijk aan IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Alle";
 "Toque em + para conectar uma conta IMAP." = "Tik op + om een IMAP-account te verbinden.";
 "Toque em + para criar sua primeira nota." = "Tik op + om je eerste notitie te maken.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tik op Maken. De inbox wordt binnen enkele seconden geladen.";
 "Tornar padrão" = "Instellen als standaard";
 "Trabalho" = "Werk";
 "Transparência" = "Transparantie";

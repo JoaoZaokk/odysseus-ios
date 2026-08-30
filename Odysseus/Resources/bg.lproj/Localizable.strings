@@ -46,6 +46,7 @@
 "Cancelar" = "Отказ";
 "Carregando…" = "Зареждане…";
 "Categoria" = "Категория";
+"Como conectar seu email" = "Как да свържете Email";
 "Como o fallback funciona" = "Как работи резервната опция";
 "Como posso ajudar?" = "С какво мога да помогна?";
 "Comparar" = "Сравни";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Анимиран фон";
 "Galeria" = "Галерия";
 "Geração de imagem" = "Генериране на изображения";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Генерирайте специфична парола за приложение в сайта на доставчика. iCloud: account.apple.com → Вход и сигурност → Специфични пароли за приложение → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Включвайте или изключвайте инструментите, достъпни за агента.";
 "Idioma" = "Език";
 "Igual ao chat" = "Същото като в чата";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Все още няма интеграции — използвайте «Добави интеграция» по-горе.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS на португалски (Core ML/Neural Engine), много по-естествен от нативния глас. При първо стартиране изтегля ~550 МБ на устройството; работи само на физически iPhone (не в симулатор).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "В Odysseus отворете Email → иконата на акаунтите → докоснете +.";
 "Nome" = "Име";
 "Notes" = "Notes";
 "Nova conta" = "Нов акаунт";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Задълбочено търсене";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Многоетапно уеб търсене с LLM агент в цикъл.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "По подразбиране приложението следва езика на устройството. При промяна се връща на началния екран.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Попълнете: Име, вашия Email, IMAP сървър и порт, потребител (вашия Email) и специфична парола за приложение.";
 "Provedores" = "Доставчици";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Доставчиците с двуфакторна идентификация (iCloud, Gmail, Outlook) изискват специфична парола за приложение — не обикновената парола за вашия акаунт.";
 "prévia" = "преглед";
 "Qualquer um pode criar conta pela tela de login." = "Всеки може да създаде акаунт от екрана за влизане.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "Когато е включено, помощният модел пише кратко и приятелско напомняне (един ред) вместо необработеното съдържание на бележката — за браузър, email, ntfy и webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Запази";
 "Salvar servidor" = "Запази сървъра";
 "Salvo" = "Запазено";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "Ако се появи „timed out“, паролата вероятно е грешна — генерирайте нова специфична парола за приложение.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Ако доставчикът по подразбиране се провали, опитва другите по ред: %@.";
 "Segurança (%@)" = "Сигурност (%@)";
 "Selecione o idioma do aplicativo." = "Изберете езика на приложението.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "Няма задачи";
 "Semanal %@" = "Седмично %@";
 "Servidor" = "Сървър";
+"Servidores comuns" = "Често използвани сървъри";
 "Servidores MCP" = "MCP сървъри";
 "Sistema" = "Система";
 "SMTP igual ao IMAP" = "SMTP съвпада с IMAP";
@@ -199,6 +206,7 @@
 "Todos" = "Всички";
 "Toque em + para conectar uma conta IMAP." = "Натиснете +, за да свържете IMAP акаунт.";
 "Toque em + para criar sua primeira nota." = "Натиснете +, за да създадете първата бележка.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Докоснете „Създай“. Входящата поща се зарежда за няколко секунди.";
 "Tornar padrão" = "Задай по подразбиране";
 "Trabalho" = "Работа";
 "Transparência" = "Прозрачност";

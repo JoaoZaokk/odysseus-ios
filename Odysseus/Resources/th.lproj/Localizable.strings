@@ -46,6 +46,7 @@
 "Cancelar" = "ยกเลิก";
 "Carregando…" = "กำลังโหลด…";
 "Categoria" = "หมวดหมู่";
+"Como conectar seu email" = "เชื่อมต่ออีเมลของคุณ";
 "Como o fallback funciona" = "การทำงานของระบบสำรอง";
 "Como posso ajudar?" = "ให้ช่วยอะไรดี";
 "Comparar" = "เปรียบเทียบ";
@@ -97,6 +98,7 @@
 "Fundo animado" = "พื้นหลังเคลื่อนไหว";
 "Galeria" = "แกลเลอรี";
 "Geração de imagem" = "การสร้างภาพ";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "สร้างรหัสผ่านเฉพาะแอปบนเว็บไซต์ของผู้ให้บริการ iCloud: account.apple.com → ลงชื่อเข้าใช้และความปลอดภัย → รหัสผ่านเฉพาะแอป → +";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "เปิดหรือปิดการใช้งานเครื่องมือที่มีให้เอเจนต์";
 "Idioma" = "ภาษา";
 "Igual ao chat" = "เหมือนกับแชท";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "ยังไม่มีการเชื่อมต่อ — ใช้ “เพิ่มการเชื่อมต่อ” ด้านบน";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "นิวรัล = PocketTTS ภาษาโปรตุเกส (Core ML/Neural Engine) เป็นธรรมชาติกว่าเสียงเนทีฟมาก ดาวน์โหลดประมาณ 550 MB ลงในเครื่องครั้งแรก ใช้งานได้เฉพาะบน iPhone จริงเท่านั้น (ไม่รองรับซิมูเลเตอร์)";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "ใน Odysseus ให้เปิดอีเมล → ไอคอนบัญชี → แตะ +";
 "Nome" = "ชื่อ";
 "Notes" = "โน้ต";
 "Nova conta" = "บัญชีใหม่";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "ค้นหาเชิงลึก";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "การค้นคว้าเว็บแบบหลายขั้นตอนโดยมีเอเจนต์ LLM ร่วมทำงาน";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "ตามค่าเริ่มต้น แอปจะใช้ภาษาตามอุปกรณ์ของคุณ เมื่อเปลี่ยนภาษา แอปจะกลับไปที่หน้าหลัก";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "กรอกข้อมูล: ชื่อ อีเมลของคุณ เซิร์ฟเวอร์ IMAP และพอร์ต ชื่อผู้ใช้ (อีเมลของคุณ) และรหัสผ่านเฉพาะแอป";
 "Provedores" = "ผู้ให้บริการ";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "ผู้ให้บริการที่ใช้การตรวจสอบสิทธิ์สองปัจจัย (iCloud, Gmail, Outlook) ต้องใช้รหัสผ่านเฉพาะแอป ไม่ใช่รหัสผ่านปกติของบัญชีคุณ";
 "prévia" = "ตัวอย่าง";
 "Qualquer um pode criar conta pela tela de login." = "ใครก็สามารถสร้างบัญชีได้จากหน้าจอเข้าสู่ระบบ";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "เมื่อเปิดใช้งาน โมเดลอเนกประสงค์จะเขียนข้อความเตือนสั้น ๆ ที่อบอุ่นใจ (หนึ่งบรรทัด) แทนเนื้อหาดิบของโน้ต — สำหรับเบราว์เซอร์ อีเมล ntfy และเว็บฮุก";
@@ -175,6 +180,7 @@
 "Salvar" = "บันทึก";
 "Salvar servidor" = "บันทึกเซิร์ฟเวอร์";
 "Salvo" = "บันทึกแล้ว";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "หากแสดง “timed out” รหัสผ่านอาจไม่ถูกต้อง ให้สร้างรหัสผ่านเฉพาะแอปใหม่";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "หากผู้ให้บริการเริ่มต้นล้มเหลว จะลองตัวอื่นตามลำดับ: %@";
 "Segurança (%@)" = "ความปลอดภัย (%@)";
 "Selecione o idioma do aplicativo." = "เลือกภาษาของแอป";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "ไม่มีงาน";
 "Semanal %@" = "ทุกสัปดาห์ %@";
 "Servidor" = "เซิร์ฟเวอร์";
+"Servidores comuns" = "เซิร์ฟเวอร์ทั่วไป";
 "Servidores MCP" = "เซิร์ฟเวอร์ MCP";
 "Sistema" = "ระบบ";
 "SMTP igual ao IMAP" = "SMTP เหมือนกับ IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "ทั้งหมด";
 "Toque em + para conectar uma conta IMAP." = "แตะ + เพื่อเชื่อมต่อบัญชี IMAP";
 "Toque em + para criar sua primeira nota." = "แตะ + เพื่อสร้างโน้ตแรกของคุณ";
+"Toque em Criar. A caixa carrega em alguns segundos." = "แตะสร้าง กล่องขาเข้าจะโหลดภายในไม่กี่วินาที";
 "Tornar padrão" = "ตั้งเป็นค่าเริ่มต้น";
 "Trabalho" = "งาน";
 "Transparência" = "ความโปร่งใส";

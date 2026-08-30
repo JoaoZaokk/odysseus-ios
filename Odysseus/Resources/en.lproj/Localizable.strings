@@ -46,6 +46,7 @@
 "Cancelar" = "Cancel";
 "Carregando…" = "Loading…";
 "Categoria" = "Category";
+"Como conectar seu email" = "Connect your email";
 "Como o fallback funciona" = "How fallback works";
 "Como posso ajudar?" = "How can I help?";
 "Comparar" = "Compare";
@@ -97,6 +98,7 @@
 "Fundo animado" = "Animated background";
 "Galeria" = "Gallery";
 "Geração de imagem" = "Image generation";
+"Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Generate an app password on your provider’s site. iCloud: account.apple.com → Sign-In & Security → App-Specific Passwords → +.";
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Enable or disable the tools available to the agent.";
 "Idioma" = "Language";
 "Igual ao chat" = "Same as chat";
@@ -130,6 +132,7 @@
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "No integrations yet — use “Add integration” above.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS in Portuguese (Core ML/Neural Engine), far more natural than the native voice. Downloads ~550 MB on-device the first time; runs only on a physical iPhone (not the simulator).";
 "Neural pt-BR" = "Neural pt-BR";
+"No Odysseus, abra Email → ícone de contas → toque em +." = "In Odysseus, open Email → the accounts icon → tap +.";
 "Nome" = "Name";
 "Notes" = "Notes";
 "Nova conta" = "New account";
@@ -156,7 +159,9 @@
 "Pesquisa profunda" = "Deep search";
 "Pesquisa web multi-etapas com um agente LLM no loop." = "Multi-step web research with an LLM agent in the loop.";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "By default, the app follows your device language. When you switch, it returns to the home screen.";
+"Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "Fill in: Name, your email, IMAP server and port, username (your email), and the app password.";
 "Provedores" = "Providers";
+"Provedores com verificação em duas etapas (iCloud, Gmail, Outlook) exigem uma senha de app — não a senha normal da sua conta." = "Providers with two-factor auth (iCloud, Gmail, Outlook) require an app-specific password — not your normal account password.";
 "prévia" = "preview";
 "Qualquer um pode criar conta pela tela de login." = "Anyone can create an account from the login screen.";
 "Quando ligado, o modelo utilitário escreve um lembrete curto e acolhedor (uma linha) em vez do conteúdo cru da nota — para browser, email, ntfy e webhook." = "When on, the utility model writes a short, warm one-line reminder instead of the raw note content — for browser, email, ntfy and webhook.";
@@ -175,6 +180,7 @@
 "Salvar" = "Save";
 "Salvar servidor" = "Save server";
 "Salvo" = "Saved";
+"Se aparecer “timed out”, a senha provavelmente está errada — gere uma nova senha de app." = "If it times out, the password is usually wrong — generate a fresh app password.";
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "If the default provider fails, it tries the others in order: %@.";
 "Segurança (%@)" = "Security (%@)";
 "Selecione o idioma do aplicativo." = "Choose the app language.";
@@ -182,6 +188,7 @@
 "Sem tarefas" = "No tasks";
 "Semanal %@" = "Weekly %@";
 "Servidor" = "Server";
+"Servidores comuns" = "Common servers";
 "Servidores MCP" = "MCP servers";
 "Sistema" = "System";
 "SMTP igual ao IMAP" = "SMTP same as IMAP";
@@ -200,6 +207,7 @@
 "Todos" = "All";
 "Toque em + para conectar uma conta IMAP." = "Tap + to connect an IMAP account.";
 "Toque em + para criar sua primeira nota." = "Tap + to create your first note.";
+"Toque em Criar. A caixa carrega em alguns segundos." = "Tap Create. The inbox loads in a few seconds.";
 "Tornar padrão" = "Make default";
 "Trabalho" = "Work";
 "Transparência" = "Transparency";
