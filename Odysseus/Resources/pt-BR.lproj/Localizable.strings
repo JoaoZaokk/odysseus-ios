@@ -17,6 +17,7 @@
 "Evento: %@" = "Evento: %@";
 "Falha ao instalar %@: %@" = "Falha ao instalar %@: %@";
 "Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +.";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "Instalação de %@ iniciada no servidor — pode levar alguns minutos.";
 "Modelos encontrados: %lld" = "Modelos encontrados: %lld";
 "(sem conteúdo)" = "(sem conteúdo)";
 "(sem nome)" = "(sem nome)";

@@ -107,6 +107,7 @@
 "instalado" = "已安装";
 "instalando…" = "安装中…";
 "Instalar" = "安装";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "已在服务器上开始安装 %@ — 可能需要几分钟。";
 "Integrações" = "集成";
 "Irreversível. Cada item apaga uma categoria." = "不可撤销。每项操作将删除一个类别。";
 "Isso é irreversível. Confirma?" = "此操作不可撤销。确认吗？";

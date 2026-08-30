@@ -107,6 +107,7 @@
 "instalado" = "インストール済み";
 "instalando…" = "インストール中…";
 "Instalar" = "インストール";
+"Instalação de %@ iniciada no servidor — pode levar alguns minutos." = "%@ のインストールをサーバーで開始しました。数分かかることがあります。";
 "Integrações" = "連携";
 "Irreversível. Cada item apaga uma categoria." = "取り消せません。各項目はカテゴリを 1 つ削除します。";
 "Isso é irreversível. Confirma?" = "これは取り消せません。よろしいですか？";
