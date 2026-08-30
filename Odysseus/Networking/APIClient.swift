@@ -234,10 +234,6 @@ final class APIClient: @unchecked Sendable {
         try decode(AuthStatus.self, try await send(request("/api/auth/status")))
     }
 
-    func features() async throws -> Features {
-        (try? decode(Features.self, try await send(request("/api/auth/features")))) ?? Features()
-    }
-
     /// POST /api/auth/login  — returns true on success, throws with a message on
     /// failure. Sets `.totpRequired` via the thrown sentinel when 2FA is needed.
     @discardableResult

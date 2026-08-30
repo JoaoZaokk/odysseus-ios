@@ -77,38 +77,6 @@ struct LoginResponse: Decodable {
     }
 }
 
-/// GET /api/auth/features
-struct Features: Codable, Sendable, Equatable {
-    var webSearch = false
-    var webFetch = false
-    var deepResearch = false
-    var memory = false
-    var documentEditor = false
-    var rag = false
-    var gallery = false
-
-    enum CodingKeys: String, CodingKey {
-        case webSearch = "web_search"
-        case webFetch = "web_fetch"
-        case deepResearch = "deep_research"
-        case memory
-        case documentEditor = "document_editor"
-        case rag, gallery
-    }
-
-    init() {}
-    init(from decoder: Decoder) throws {
-        let c = try decoder.container(keyedBy: CodingKeys.self)
-        webSearch = (try? c.decode(Bool.self, forKey: .webSearch)) ?? false
-        webFetch = (try? c.decode(Bool.self, forKey: .webFetch)) ?? false
-        deepResearch = (try? c.decode(Bool.self, forKey: .deepResearch)) ?? false
-        memory = (try? c.decode(Bool.self, forKey: .memory)) ?? false
-        documentEditor = (try? c.decode(Bool.self, forKey: .documentEditor)) ?? false
-        rag = (try? c.decode(Bool.self, forKey: .rag)) ?? false
-        gallery = (try? c.decode(Bool.self, forKey: .gallery)) ?? false
-    }
-}
-
 // MARK: - Models (LLMs)
 
 /// GET /api/models — shape is verified against the live server; we decode
