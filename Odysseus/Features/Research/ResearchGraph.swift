@@ -170,6 +170,10 @@ final class ResearchRunner: ObservableObject {
         startTimer()
         task = Task { [weak self] in
             guard let self else { return }
+            // Every exit path stops the clock. Only `cancel()` used to, so a run
+            // that simply finished left the timer ticking `elapsed` once a second
+            // for as long as the pane stayed open.
+            defer { self.stopTimer() }
             do {
                 let id = try await api.startResearch(query: query, maxRounds: maxRounds, category: category,
                                                      searchProvider: searchProvider, endpointID: endpointID,
@@ -190,6 +194,12 @@ final class ResearchRunner: ObservableObject {
                         return
                     }
                 }
+                // The stream ended without ever sending a final frame. That is
+                // still the end of the run: leaving `status` mid-phase left the
+                // graph spinning forever, and DeepResearchView's "past runs" poll
+                // watches this same field — it would have called loadPast() every
+                // three seconds until the pane was closed.
+                markFinishedIfStillRunning()
             } catch let e where e.isCancellation {
                 // user closed the panel
             } catch {
@@ -240,7 +250,16 @@ final class ResearchRunner: ObservableObject {
 
     func close() { cancel(); run = nil }
 
-    private func cancel() { task?.cancel(); task = nil; timer?.cancel(); timer = nil }
+    private func cancel() { task?.cancel(); task = nil; stopTimer() }
+
+    private func stopTimer() { timer?.cancel(); timer = nil }
+
+    /// Applies the terminal rule the final frame would have applied: a run that
+    /// produced no sources is the web's "no results" state, anything else is done.
+    private func markFinishedIfStillRunning() {
+        guard let s = run?.status, s != "complete", s != "error" else { return }
+        run?.status = (run?.sourcesTotal ?? 0) == 0 ? "error" : "complete"
+    }
 
     private func startTimer() {
         timer = Task {

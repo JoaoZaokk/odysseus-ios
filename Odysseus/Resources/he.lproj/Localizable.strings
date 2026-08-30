@@ -629,3 +629,8 @@
 /* Voz — falhas do streaming (1.8 build 16) */
 "A reprodução do áudio foi interrompida." = "השמעת האודיו הופסקה.";
 "O endpoint aceitou o pedido e não enviou áudio." = "נקודת הקצה קיבלה את הבקשה ולא שלחה אודיו.";
+
+/* Voz — barge-in recusado por categoria de sessão (1.9 build 22).
+   NÃO TRADUZIDO: valor idêntico à chave de propósito, aguardando a
+   próxima rodada de tradução. Só pt-BR está correto abaixo. */
+"Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in indisponível: a sessão de áudio está em modo de gravação.";

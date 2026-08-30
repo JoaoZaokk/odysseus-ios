@@ -359,16 +359,27 @@ final class SpeechManager: NSObject, ObservableObject {
         #endif
     }
 
+    /// Configures the session for playback. Failures used to be four `try?`s, so
+    /// a session the OS refused to configure produced silent no-audio and nothing
+    /// else — while `VoiceInputManager` raises a localized error for the very same
+    /// failure on the recording side. It is reported now: `neuralError` is the
+    /// channel the voice UI already renders.
     private func activateTTSSession() {
         #if os(iOS)
         let s = AVAudioSession.sharedInstance()
-        if duplexSession {
-            try? s.setCategory(.playAndRecord, mode: .voiceChat, options: [.duckOthers, .allowBluetoothA2DP])
-            try? s.setActive(true)
-            applyProximityRoute()
-        } else {
-            try? s.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
-            try? s.setActive(true)
+        do {
+            if duplexSession {
+                try s.setCategory(.playAndRecord, mode: .voiceChat,
+                                  options: [.duckOthers, .allowBluetoothA2DP])
+                try s.setActive(true)
+                applyProximityRoute()
+            } else {
+                try s.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+                try s.setActive(true)
+            }
+        } catch {
+            VoiceLog.log("sessão", "activateTTSSession FALHOU: \(error.localizedDescription)")
+            neuralError = L("Áudio indisponível: %@", error.localizedDescription)
         }
         #endif
     }
