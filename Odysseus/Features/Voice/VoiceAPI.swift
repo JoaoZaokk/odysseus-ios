@@ -68,8 +68,21 @@ extension APIClient {
     /// Uploads a recording and returns its transcription (`{"text": "…"}`).
     /// The audio is sent as a WAV file part named `file`, which is what
     /// `UploadFile = File(...)` expects.
-    func transcribeAudio(_ wav: Data) async throws -> String {
-        var form = MultipartForm(fields: [:])
+    ///
+    /// `language` is the ISO-639-1 code the user pinned in Ajustes › Voz, or nil
+    /// under "Detectar automaticamente". Every other engine already sends it;
+    /// this one did not, so Ajustes › Voz › Idioma da fala was silently inert
+    /// whenever the engine was "Servidor" and Whisper guessed instead — which on
+    /// short or noisy audio it does badly, answering in Portuguese or Spanish
+    /// (issue #9).
+    ///
+    /// The current server binds only `file` and reads its language from the
+    /// server-wide `stt_language` setting, so this part rides along unread until
+    /// `routes/stt_routes.py` accepts it. Sending it is what makes that a
+    /// three-line server change instead of a change on both sides at once;
+    /// FastAPI ignores an unbound form field rather than rejecting the upload.
+    func transcribeAudio(_ wav: Data, language: String? = nil) async throws -> String {
+        var form = MultipartForm(fields: language.map { ["language": $0] } ?? [:])
         form.append(file: "file", filename: "audio.wav", mime: "audio/wav", fileData: wav)
         var req = request("/api/stt/transcribe", method: "POST")
         req.setValue(form.contentType, forHTTPHeaderField: "Content-Type")
