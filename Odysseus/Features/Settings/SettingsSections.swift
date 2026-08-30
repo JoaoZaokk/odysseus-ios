@@ -78,7 +78,7 @@ struct AccountSection: View {
                         .buttonStyle(.plain).foregroundStyle(theme.accent)
                         .disabled(cur.isEmpty || nw.count < 4 || nw != confirm)
                     if let m = pwMsg {
-                        Text(m).font(.ody(size: 11)).foregroundStyle(pwOK ? theme.green : theme.accent)
+                        Text(m).font(.ody(size: 11)).foregroundStyle(pwOK ? theme.green : theme.danger)
                     }
                     Spacer()
                 }
@@ -322,12 +322,12 @@ struct EmailSection: View {
                                 .buttonStyle(.plain).foregroundStyle(theme.fg)
                         }
                         Button("Remover", role: .destructive) { Task { await vm.delete(acc) } }
-                            .buttonStyle(.plain).foregroundStyle(theme.accent)
+                            .buttonStyle(.plain).foregroundStyle(theme.danger)
                     }
                     .font(.ody(size: 12))
                 }
             }
-            if let e = vm.error { Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.accent) }
+            if let e = vm.error { Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger) }
         }
         .task { await vm.load() }
         .sheet(isPresented: $showAdd) {

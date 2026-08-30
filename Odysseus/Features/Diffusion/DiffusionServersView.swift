@@ -42,6 +42,9 @@ enum DiffusionConfigKeys {
 
     func test(_ url: String, timeout: TimeInterval) async {
         loading = true; error = nil; stats = nil; models = nil; queue = nil
+        // Recorded up front, not on success: a verdict has to name the address it
+        // was reached on, or the badge keeps describing a server nobody probed.
+        lastTestedURL = url
         defer { loading = false }
         let client = ComfyUIClient(baseURL: url, timeout: timeout)
         do {
@@ -53,7 +56,6 @@ enum DiffusionConfigKeys {
             catch { models = nil; modelsError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription }
             do { queue = try await client.queueCounts(); queueError = nil }
             catch { queue = nil; queueError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription }
-            lastTestedURL = url
         } catch {
             self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
         }
@@ -151,6 +153,10 @@ struct DiffusionServersView: View {
     private var statusBadge: some View {
         Group {
             if vm.loading { Text("testando…").foregroundStyle(theme.secondaryText) }
+            // `lastTestedURL`, not just `stats`: the badge described whatever the
+            // last probe found, so editing the address after a good probe left
+            // "online" standing over a server nobody had reached.
+            else if vm.lastTestedURL != comfyURL { Text("não testado").foregroundStyle(theme.secondaryText) }
             else if vm.stats != nil { Text("online").foregroundStyle(theme.green) }
             else if vm.error != nil { Text("offline").foregroundStyle(theme.danger) }
             else { Text("não testado").foregroundStyle(theme.secondaryText) }

@@ -245,7 +245,10 @@ struct DeepResearchView: View {
             Text(label.uppercased()).font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
             Menu { menu() } label: {
                 HStack {
-                    Text(value).font(.ody(size: 12)).foregroundStyle(theme.fg).lineLimit(1)
+                    // The closed row renders the same word the open menu's Button
+                    // does, so it has to go through the catalogue too — it read
+                    // "Default" in 35 languages while the menu read "Standard".
+                    Text(LocalizedStringKey(value)).font(.ody(size: 12)).foregroundStyle(theme.fg).lineLimit(1)
                     Spacer(minLength: 4)
                     Image(systemName: "chevron.up.chevron.down").font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
                 }

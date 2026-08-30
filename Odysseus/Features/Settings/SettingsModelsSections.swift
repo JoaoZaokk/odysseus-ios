@@ -74,7 +74,7 @@ struct AddedModelsSection: View {
                     else { Text("Modelos encontrados: \(n)") }
                 }
                 .font(.ody(size: 11))
-                .foregroundStyle(n == 0 ? theme.accent : theme.green)
+                .foregroundStyle(n == 0 ? theme.danger : theme.green)
             }
             ForEach(vm.endpoints) { ep in card(ep) }
             if vm.endpoints.isEmpty && !vm.loading {
@@ -398,7 +398,7 @@ struct AddModelsSection: View {
                 HStack(spacing: 8) {
                     if let m = vm.message {
                         Text(m).font(.ody(size: 11))
-                            .foregroundStyle(vm.ok ? theme.green : theme.accent)
+                            .foregroundStyle(vm.ok ? theme.green : theme.danger)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer(minLength: 8)

@@ -949,6 +949,13 @@ enum SettingsUI {
             }
             .textFieldStyle(.plain).font(.ody(.subheadline)).foregroundStyle(theme.fg)
             .autocorrectionDisabled()
+            // `numeric` used to be accepted and ignored — six ports and timeouts
+            // asked for a number pad and got the full keyboard. Both modifiers
+            // are no-ops on macOS via PlatformCompat.
+            .keyboardType(numeric ? .numberPad : .default)
+            // Every field here is an address, a host, a user name or a key. iOS
+            // capitalizing the first character of those is always wrong.
+            .textInputAutocapitalization(.never)
             .padding(9).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
         }

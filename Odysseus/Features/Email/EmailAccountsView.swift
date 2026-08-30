@@ -395,8 +395,16 @@ struct AddEmailAccountView: View {
     @ViewBuilder
     private var statusRow: some View {
         if let error {
+            // The verdict is deliberately not shown alongside: a failed save used
+            // to put a red sentence and a green "Conexão OK" on screen together.
             Text(LocalizedStringKey(error)).font(.ody(size: 11)).foregroundStyle(theme.danger)
+        } else {
+            verdictRow
         }
+    }
+
+    @ViewBuilder
+    private var verdictRow: some View {
         switch currentVerdict {
         case .ok:
             Label("Conexão OK", systemImage: "checkmark.circle.fill")
@@ -421,7 +429,7 @@ struct AddEmailAccountView: View {
                 .font(.ody(.subheadline))
                 .padding(.horizontal, 16).padding(.vertical, 10)
                 .overlay(Capsule().stroke(theme.border, lineWidth: 1)).foregroundStyle(theme.fg)
-            }.buttonStyle(.plain).disabled(!canSave || testing)
+            }.buttonStyle(.plain).disabled(!canSave || testing || saving)
             Spacer()
             Button { save() } label: {
                 HStack(spacing: 6) {
@@ -433,7 +441,7 @@ struct AddEmailAccountView: View {
                 .padding(.horizontal, 18).padding(.vertical, 10)
                 .background(canSave ? theme.accent : theme.border, in: Capsule())
                 .foregroundStyle(.white)
-            }.buttonStyle(.plain).disabled(!canSave || saving)
+            }.buttonStyle(.plain).disabled(!canSave || saving || testing)
         }
     }
 

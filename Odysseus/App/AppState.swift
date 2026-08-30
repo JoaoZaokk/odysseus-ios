@@ -52,6 +52,11 @@ final class AppState: ObservableObject {
     func sessionExpired() {
         guard phase == .main else { return }   // already at login, or still launching
         api.clearCookies()
+        // The archived copy is the same dead cookie. Leaving it there does not
+        // keep anyone signed in — `persistCookies()` guards on a non-empty jar,
+        // so backgrounding after an expiry would not overwrite it either — it
+        // just keeps a known-dead session in the Keychain until the next login.
+        api.clearPersistedCookies()
         username = nil
         loginError = APIError.notAuthenticated.errorDescription
         phase = .login
@@ -145,6 +150,16 @@ final class AppState: ObservableObject {
 
     func logout() async {
         await api.logout()
+        forgetAccount()
+    }
+
+    /// Everything that must go when this device stops being signed in to this
+    /// account: the live jar, the archived cookie, the credentials, and the
+    /// flags that would otherwise auto-login again. Logout and a server switch
+    /// are the only two transitions that need all of it, and they used to spell
+    /// it out separately.
+    private func forgetAccount() {
+        api.clearCookies()
         api.clearPersistedCookies()
         Keychain.delete(Keychain.usernameKey)
         Keychain.delete(Keychain.passwordKey)
@@ -170,16 +185,7 @@ final class AppState: ObservableObject {
         api.updateConfig(cfg)
         // Switching servers must not carry server A's session (cookie) or A's saved
         // credentials to server B — clear both and force a fresh login against B.
-        if changed {
-            api.clearCookies()
-            api.clearPersistedCookies()
-            Keychain.delete(Keychain.usernameKey)
-            Keychain.delete(Keychain.passwordKey)
-            keepSignedIn = false
-            username = nil
-            totpRequired = false
-            phase = .login
-        }
+        if changed { forgetAccount() }
     }
 
     func makeSessionStore() -> SessionStore { SessionStore(api: api) }

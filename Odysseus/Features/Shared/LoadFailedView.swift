@@ -15,7 +15,7 @@ struct LoadFailedView: View {
     var body: some View {
         VStack(spacing: 12) {
             Image(systemName: "exclamationmark.triangle")
-                .font(.ody(size: 44)).foregroundStyle(theme.accent)
+                .font(.ody(size: 44)).foregroundStyle(theme.danger)
             // No generic headline on purpose: the message itself says what went
             // wrong, and it is a pt-BR literal that doubles as a catalogue key —
             // the contract every other error line in the app relies on. Adding a

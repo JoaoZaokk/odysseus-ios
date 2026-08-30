@@ -472,7 +472,7 @@ private struct STTTestRow: View {
                 Text(L("Ouvi: %@", heard)).font(.footnote)
             }
             if let failure {
-                Text(failure).font(.footnote).foregroundStyle(theme.accent)
+                Text(failure).font(.footnote).foregroundStyle(theme.danger)
             }
         }
     }
