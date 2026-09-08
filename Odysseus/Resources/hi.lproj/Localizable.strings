@@ -490,7 +490,9 @@
 "Padrão do servidor" = "सर्वर डिफ़ॉल्ट";
 "Outros modelos" = "अन्य मॉडल";
 "Modelos: %lld · ativo" = "मॉडल: %lld · चालू";
+"Modelos: %lld/%lld · ativo" = "मॉडल: %lld/%lld · चालू";
 "Modelos: %lld · desativado" = "मॉडल: %lld · बंद";
+"Modelos: %lld/%lld · desativado" = "मॉडल: %lld/%lld · बंद";
 "· %lld rodadas" = "· %lld राउंड";
 "Personalizado…" = "कस्टम…";
 "online" = "ऑनलाइन";
@@ -642,3 +644,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "barge-in उपलब्ध नहीं: ऑडियो सत्र रिकॉर्डिंग मोड में है।";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "चैनल";
+"Navegador" = "ब्राउज़र";
+"Só chega ao site aberto no navegador, não ao app." = "केवल ब्राउज़र में खुली साइट तक पहुँचता है, ऐप तक नहीं।";
+"Modelo do payload (JSON)" = "पेलोड टेम्पलेट (JSON)";
+"Conectado: %lld modelos." = "कनेक्टेड: %lld मॉडल।";

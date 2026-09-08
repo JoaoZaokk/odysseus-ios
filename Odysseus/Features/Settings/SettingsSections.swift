@@ -175,6 +175,11 @@ struct AccountSection: View {
     @Published var keys: [String: String] = [:]
     @Published var cx = ""
     @Published var status = ""
+    /// Backup providers, in order, tried when the primary fails. Empty means
+    /// the server's own default (DuckDuckGo) — which is the one thing a
+    /// self-hoster who chose SearXNG for privacy would want to turn off, and
+    /// until now the web was the only place to do it.
+    @Published var fallbackChain: [String] = []
     // Deep Research runtime settings
     @Published var maxTokens = "16384"
     @Published var extractTimeout = "90"
@@ -219,6 +224,7 @@ struct AccountSection: View {
         loaded = true
         keyDirty = false
         provider = s.string("search_provider").isEmpty ? "searxng" : s.string("search_provider")
+        fallbackChain = (s.dict["search_fallback_chain"] as? [String]) ?? []
         count = String(s.int("search_result_count", default: 5))
         url = s.string("search_url")
         cx = s.string("google_pse_cx")
@@ -252,6 +258,32 @@ struct AccountSection: View {
         catch { flash("Falha ao salvar") }
     }
 
+    /// Never the primary, never "disabled", never one already in the chain.
+    var availableFallbacks: [String] {
+        Self.providers.filter { $0 != provider && $0 != "disabled" && !fallbackChain.contains($0) }
+    }
+    func addFallback() {
+        guard let p = availableFallbacks.first else { return }
+        fallbackChain.append(p)
+        Task { await saveChain() }
+    }
+    func replaceFallback(at i: Int, with p: String) {
+        guard fallbackChain.indices.contains(i) else { return }
+        fallbackChain[i] = p
+        Task { await saveChain() }
+    }
+    func removeFallback(at i: Int) {
+        guard fallbackChain.indices.contains(i) else { return }
+        fallbackChain.remove(at: i)
+        Task { await saveChain() }
+    }
+    /// The chain saves itself on every change, as on the web.
+    func saveChain() async {
+        guard loaded else { flash("Falha ao salvar"); return }
+        do { try await api.saveSettings(["search_fallback_chain": fallbackChain]); flash("Salvo") }
+        catch { flash("Falha ao salvar") }
+    }
+
     private func flash(_ s: String) {
         status = s
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) { self.status = "" }
@@ -272,6 +304,24 @@ struct SearchSection: View {
                         Button(LocalizedStringKey(SearchSettingsVM.labels[p] ?? p)) { vm.provider = p; Task { await vm.save() } }
                     }
                 } label: { menuLabel(SearchSettingsVM.labels[vm.provider] ?? vm.provider) }
+
+                if vm.provider != "disabled" {
+                    label("Fallbacks")
+                    ForEach(Array(vm.fallbackChain.enumerated()), id: \.offset) { i, p in
+                        HStack(spacing: 6) {
+                            Menu {
+                                ForEach(vm.availableFallbacks + [p], id: \.self) { q in
+                                    Button(LocalizedStringKey(SearchSettingsVM.labels[q] ?? q)) { vm.replaceFallback(at: i, with: q) }
+                                }
+                            } label: { menuLabel(SearchSettingsVM.labels[p] ?? p) }
+                            Button { vm.removeFallback(at: i) } label: { Image(systemName: "minus.circle") }
+                                .buttonStyle(.plain).foregroundStyle(theme.secondaryText)
+                        }
+                    }
+                    Button { vm.addFallback() } label: { Label("Adicionar fallback", systemImage: "plus") }
+                        .buttonStyle(.plain).font(.ody(size: 11)).foregroundStyle(theme.accent)
+                        .disabled(vm.availableFallbacks.isEmpty)
+                }
 
                 label("Resultados por busca")
                 field($vm.count, numeric: true) { Task { await vm.save() } }

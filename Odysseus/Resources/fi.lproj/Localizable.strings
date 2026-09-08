@@ -480,7 +480,9 @@
 "Padrão do servidor" = "Palvelimen oletus";
 "Outros modelos" = "Muut mallit";
 "Modelos: %lld · ativo" = "Mallit: %lld · käytössä";
+"Modelos: %lld/%lld · ativo" = "Mallit: %lld/%lld · käytössä";
 "Modelos: %lld · desativado" = "Mallit: %lld · pois";
+"Modelos: %lld/%lld · desativado" = "Mallit: %lld/%lld · pois";
 "· %lld rodadas" = "· %lld kierrosta";
 "Personalizado…" = "Mukautettu…";
 "online" = "verkossa";
@@ -632,3 +634,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in ei käytettävissä: äänisessio on tallennustilassa.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kanava";
+"Navegador" = "Selain";
+"Só chega ao site aberto no navegador, não ao app." = "Tavoittaa vain selaimessa avoinna olevan sivuston, ei sovellusta.";
+"Modelo do payload (JSON)" = "Payload-malli (JSON)";
+"Conectado: %lld modelos." = "Yhdistetty: %lld mallia.";

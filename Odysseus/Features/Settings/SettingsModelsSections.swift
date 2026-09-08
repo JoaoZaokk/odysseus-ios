@@ -95,7 +95,7 @@ struct AddedModelsSection: View {
             HStack(spacing: 8) {
                 Circle().fill((ep.online ?? true) ? theme.green : theme.secondaryText).frame(width: 8, height: 8)
                 Text(ep.name).font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg).lineLimit(1)
-                Text(ep.isLocal ? "LOCAL" : "API")
+                Text(ep.isImage ? "IMAGEM" : (ep.isLocal ? "LOCAL" : "API"))
                     .font(.ody(size: 9))
                     .padding(.horizontal, 6).padding(.vertical, 2)
                     .background(theme.accent.opacity(0.2), in: Capsule())
@@ -109,9 +109,11 @@ struct AddedModelsSection: View {
                 // Two whole sentences, not one with an interpolated tail: the
                 // interpolated form produces a key ("%lld modelo(s)%@") no
                 // locale has, so it always rendered in Portuguese.
+                // visible/total: an endpoint whose models are all hidden used
+                // to read "Modelos: 0" and tell the user to re-probe it.
                 Group {
-                    if ep.isEnabled { Text("Modelos: \(ep.models.count) · ativo") }
-                    else { Text("Modelos: \(ep.models.count) · desativado") }
+                    if ep.isEnabled { Text("Modelos: \(ep.models.count)/\(ep.total) · ativo") }
+                    else { Text("Modelos: \(ep.models.count)/\(ep.total) · desativado") }
                 }
                 .font(.ody(size: 11))
                 .foregroundStyle(ep.isEnabled ? theme.green : theme.secondaryText)
@@ -148,7 +150,7 @@ struct AddedModelsSection: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            if ep.models.isEmpty {
+            if ep.total == 0 {
                 Text("Sem modelos em cache. Use Atualizar para sondar o endpoint.")
                     .font(.ody(size: 10))
                     .foregroundStyle(theme.secondaryText)
@@ -162,10 +164,25 @@ struct AddedModelsSection: View {
 struct Fallback: Identifiable { let id = UUID(); var endpointId: String; var model: String }
 
 @MainActor final class AIDefaultsVM: ObservableObject {
+    /// The two fallback chains the server still resolves. The editor 1.8
+    /// shipped pointed at `default_model_fallbacks`, a key the server retired:
+    /// it loaded empty and every edit flashed "Salvo" for a write thrown away.
+    enum Chain: String, CaseIterable {
+        case utility = "utility_model_fallbacks"
+        case vision = "vision_model_fallbacks"
+    }
+    /// The web's `_vlExclude`: not a capability check, a blocklist of model
+    /// ids that are obviously not vision models.
+    static let notVision = ["audio", "realtime", "tts", "dall-e", "embedding", "search", "whisper"]
+    static func isVisionModel(_ id: String) -> Bool {
+        let l = id.lowercased()
+        return !notVision.contains { l.contains($0) }
+    }
+
     @Published var endpoints: [ModelEndpoint] = []
     @Published var chatEp = ""
     @Published var chatModel = ""
-    @Published var fallbacks: [Fallback] = []
+    @Published var chains: [Chain: [Fallback]] = [.utility: [], .vision: []]
     @Published var utilEp = ""
     @Published var utilModel = ""
     @Published var visionEnabled = true
@@ -181,7 +198,9 @@ struct Fallback: Identifiable { let id = UUID(); var endpointId: String; var mod
         if let s = try? await api.getSettings() {
             chatEp = s.string("default_endpoint_id")
             chatModel = s.string("default_model")
-            fallbacks = s.fallbacks("default_model_fallbacks").map { Fallback(endpointId: $0.endpointId, model: $0.model) }
+            for c in Chain.allCases {
+                chains[c] = s.fallbacks(c.rawValue).map { Fallback(endpointId: $0.endpointId, model: $0.model) }
+            }
             utilEp = s.string("utility_endpoint_id")
             utilModel = s.string("utility_model")
             visionEnabled = s.bool("vision_enabled", default: true)
@@ -215,17 +234,18 @@ struct Fallback: Identifiable { let id = UUID(); var endpointId: String; var mod
         do { try await api.saveSettings(["research_endpoint_id": researchEp, "research_model": researchModel]); flash("Salvo") }
         catch { flash("Falha") }
     }
-    func addFallback() {
-        fallbacks.append(Fallback(endpointId: enabledEndpoints.first?.id ?? "", model: ""))
+    func addFallback(to c: Chain) {
+        chains[c, default: []].append(Fallback(endpointId: enabledEndpoints.first?.id ?? "", model: ""))
     }
-    func removeFallback(_ f: Fallback) {
-        fallbacks.removeAll { $0.id == f.id }
-        Task { await saveFallbacks() }
+    func removeFallback(_ f: Fallback, from c: Chain) {
+        chains[c]?.removeAll { $0.id == f.id }
+        Task { await saveFallbacks(c) }
     }
-    func saveFallbacks() async {
-        let clean = fallbacks.filter { !$0.endpointId.isEmpty && !$0.model.isEmpty }
+    /// Each chain saves itself, as on the web — a half-filled row is skipped.
+    func saveFallbacks(_ c: Chain) async {
+        let clean = (chains[c] ?? []).filter { !$0.endpointId.isEmpty && !$0.model.isEmpty }
             .map { ["endpoint_id": $0.endpointId, "model": $0.model] }
-        do { try await api.saveSettings(["default_model_fallbacks": clean]); flash("Salvo") }
+        do { try await api.saveSettings([c.rawValue: clean]); flash("Salvo") }
         catch { flash("Falha") }
     }
     private func flash(_ s: String) { status = s; DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) { self.status = "" } }
@@ -246,20 +266,6 @@ struct AIDefaultsSection: View {
                 }
                 label("Modelo")
                 modelMenu(epId: vm.chatEp, selected: vm.chatModel) { m in vm.chatModel = m; Task { await vm.saveChat() } }
-
-                label("Fallbacks")
-                ForEach($vm.fallbacks) { $fb in
-                    HStack(spacing: 6) {
-                        endpointMenu(selected: fb.endpointId, includeSame: false) { id in
-                            fb.endpointId = id; fb.model = vm.models(id).first ?? ""; Task { await vm.saveFallbacks() }
-                        }
-                        modelMenu(epId: fb.endpointId, selected: fb.model) { m in fb.model = m; Task { await vm.saveFallbacks() } }
-                        Button { vm.removeFallback(fb) } label: { Image(systemName: "minus.circle") }
-                            .buttonStyle(.plain).foregroundStyle(theme.secondaryText)
-                    }
-                }
-                Button { vm.addFallback() } label: { Label("Adicionar fallback", systemImage: "plus") }
-                    .buttonStyle(.plain).font(.ody(size: 11)).foregroundStyle(theme.accent)
             }
 
             SettingsCard {
@@ -274,6 +280,7 @@ struct AIDefaultsSection: View {
                     label("Modelo")
                     modelMenu(epId: vm.utilEp, selected: vm.utilModel) { m in vm.utilModel = m; Task { await vm.saveUtil() } }
                 }
+                fallbackRows(.utility)
             }
 
             SettingsCard {
@@ -289,8 +296,11 @@ struct AIDefaultsSection: View {
                     label("Modelo")
                     Menu {
                         Button("Auto-detectar") { vm.visionModel = ""; Task { await vm.saveVision() } }
-                        ForEach(vm.allModels, id: \.self) { m in Button(m) { vm.visionModel = m; Task { await vm.saveVision() } } }
+                        ForEach(vm.allModels.filter(AIDefaultsVM.isVisionModel), id: \.self) { m in
+                            Button(m) { vm.visionModel = m; Task { await vm.saveVision() } }
+                        }
                     } label: { menuLabel(vm.visionModel.isEmpty ? "Auto-detectar" : vm.visionModel) }
+                    fallbackRows(.vision)
                 }
             }
 
@@ -317,6 +327,39 @@ struct AIDefaultsSection: View {
         Text(LocalizedStringKey(s)).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
     }
 
+    /// One chain: endpoint + model per row, minus to drop, plus to add.
+    /// The vision chain only offers models that pass the vision blocklist.
+    @ViewBuilder
+    private func fallbackRows(_ chain: AIDefaultsVM.Chain) -> some View {
+        label("Fallbacks")
+        ForEach(chainBinding(chain)) { fb in
+            fallbackRow(fb, chain: chain)
+        }
+        Button { vm.addFallback(to: chain) } label: { Label("Adicionar fallback", systemImage: "plus") }
+            .buttonStyle(.plain).font(.ody(size: 11)).foregroundStyle(theme.accent)
+    }
+
+    private func chainBinding(_ chain: AIDefaultsVM.Chain) -> Binding<[Fallback]> {
+        Binding<[Fallback]>(get: { vm.chains[chain] ?? [] }, set: { vm.chains[chain] = $0 })
+    }
+
+    private func fallbackRow(_ fb: Binding<Fallback>, chain: AIDefaultsVM.Chain) -> some View {
+        let filter: ((String) -> Bool)? = chain == .vision ? { AIDefaultsVM.isVisionModel($0) } : nil
+        return HStack(spacing: 6) {
+            endpointMenu(selected: fb.wrappedValue.endpointId, includeSame: false) { id in
+                fb.wrappedValue.endpointId = id
+                fb.wrappedValue.model = vm.models(id).first ?? ""
+                Task { await vm.saveFallbacks(chain) }
+            }
+            modelMenu(epId: fb.wrappedValue.endpointId, selected: fb.wrappedValue.model, filter: filter) { m in
+                fb.wrappedValue.model = m
+                Task { await vm.saveFallbacks(chain) }
+            }
+            Button { vm.removeFallback(fb.wrappedValue, from: chain) } label: { Image(systemName: "minus.circle") }
+                .buttonStyle(.plain).foregroundStyle(theme.secondaryText)
+        }
+    }
+
     private func endpointMenu(selected: String, includeSame: Bool, _ pick: @escaping (String) -> Void) -> some View {
         Menu {
             if includeSame { Button("Igual ao chat") { pick("") } }
@@ -327,9 +370,10 @@ struct AIDefaultsSection: View {
             menuLabel(selected.isEmpty ? (includeSame ? "Igual ao chat" : "Selecionar…") : vm.name(selected))
         }
     }
-    private func modelMenu(epId: String, selected: String, _ pick: @escaping (String) -> Void) -> some View {
+    private func modelMenu(epId: String, selected: String, filter: ((String) -> Bool)? = nil,
+                           _ pick: @escaping (String) -> Void) -> some View {
         Menu {
-            ForEach(vm.models(epId), id: \.self) { m in Button(m) { pick(m) } }
+            ForEach(vm.models(epId).filter { filter?($0) ?? true }, id: \.self) { m in Button(m) { pick(m) } }
         } label: {
             menuLabel(selected.isEmpty ? "Selecionar…" : selected)
         }
@@ -367,11 +411,15 @@ struct AIDefaultsSection: View {
         let url = baseURL.trimmingCharacters(in: .whitespacesAndNewlines)
         let nm = name.trimmingCharacters(in: .whitespaces).isEmpty ? hostName(url) : name
         do {
-            try await api.createEndpoint(name: nm, baseURL: url,
-                                         apiKey: apiKey.isEmpty ? nil : apiKey, kind: kind)
-            ok = true
-            message = "Adicionado. O servidor vai sondar a URL e listar os modelos."
-            name = ""; baseURL = ""; apiKey = ""
+            let probe = try await api.createEndpoint(name: nm, baseURL: url,
+                                                     apiKey: apiKey.isEmpty ? nil : apiKey, kind: kind)
+            // Green only when the host answered. A dead URL used to read
+            // "Adicionado" in green while the row it created was offline.
+            ok = probe.isOnline
+            message = probe.isOnline
+                ? L("Conectado: %lld modelos.", probe.models.count)
+                : L("Falha: %@", probe.pingError ?? "offline")
+            if ok { name = ""; baseURL = ""; apiKey = "" }
         } catch {
             ok = false
             message = L("Falha: %@", SettingsUI.msg(error))
@@ -396,6 +444,7 @@ struct AddModelsSection: View {
                 HStack(spacing: 8) {
                     typeChip("Local", "local")
                     typeChip("API", "api")
+                    typeChip("Imagem", "image")
                     Spacer()
                 }
                 label("Base URL")

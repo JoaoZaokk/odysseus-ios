@@ -490,7 +490,9 @@
 "Padrão do servidor" = "Стандардно од серверот";
 "Outros modelos" = "Други модели";
 "Modelos: %lld · ativo" = "Модели: %lld · активно";
+"Modelos: %lld/%lld · ativo" = "Модели: %lld/%lld · активно";
 "Modelos: %lld · desativado" = "Модели: %lld · исклучено";
+"Modelos: %lld/%lld · desativado" = "Модели: %lld/%lld · исклучено";
 "· %lld rodadas" = "· %lld рунди";
 "Personalizado…" = "Прилагодено…";
 "online" = "на мрежа";
@@ -642,3 +644,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in не е достапен: аудио сесијата е во режим на снимање.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Канал";
+"Navegador" = "Прелистувач";
+"Só chega ao site aberto no navegador, não ao app." = "Стигнува само до сајтот отворен во прелистувачот, не до апликацијата.";
+"Modelo do payload (JSON)" = "Шаблон за payload (JSON)";
+"Conectado: %lld modelos." = "Поврзано: %lld модели.";

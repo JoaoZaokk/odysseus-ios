@@ -480,7 +480,9 @@
 "Padrão do servidor" = "Serverns standard";
 "Outros modelos" = "Andra modeller";
 "Modelos: %lld · ativo" = "Modeller: %lld · på";
+"Modelos: %lld/%lld · ativo" = "Modeller: %lld/%lld · på";
 "Modelos: %lld · desativado" = "Modeller: %lld · av";
+"Modelos: %lld/%lld · desativado" = "Modeller: %lld/%lld · av";
 "· %lld rodadas" = "· %lld rundor";
 "Personalizado…" = "Anpassad…";
 "online" = "online";
@@ -632,3 +634,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in är inte tillgängligt: ljudsessionen är i inspelningsläge.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kanal";
+"Navegador" = "Webbläsare";
+"Só chega ao site aberto no navegador, não ao app." = "Når bara webbplatsen som är öppen i webbläsaren, inte appen.";
+"Modelo do payload (JSON)" = "Payload-mall (JSON)";
+"Conectado: %lld modelos." = "Ansluten: %lld modeller.";

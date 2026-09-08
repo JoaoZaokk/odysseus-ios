@@ -488,7 +488,9 @@
 "Padrão do servidor" = "服务器默认";
 "Outros modelos" = "其他模型";
 "Modelos: %lld · ativo" = "模型：%lld · 已启用";
+"Modelos: %lld/%lld · ativo" = "模型：%lld/%lld · 已启用";
 "Modelos: %lld · desativado" = "模型：%lld · 已停用";
+"Modelos: %lld/%lld · desativado" = "模型：%lld/%lld · 已停用";
 "· %lld rodadas" = "· %lld 轮";
 "Personalizado…" = "自定义…";
 "online" = "在线";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "无法使用 barge-in：音频会话处于录音模式。";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "频道";
+"Navegador" = "浏览器";
+"Só chega ao site aberto no navegador, não ao app." = "只会送达浏览器中打开的网站，不会送达 App。";
+"Modelo do payload (JSON)" = "Payload 模板 (JSON)";
+"Conectado: %lld modelos." = "已连接：%lld 个模型。";

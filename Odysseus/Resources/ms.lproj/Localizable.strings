@@ -488,7 +488,9 @@
 "Padrão do servidor" = "Lalai pelayan";
 "Outros modelos" = "Model lain";
 "Modelos: %lld · ativo" = "Model: %lld · aktif";
+"Modelos: %lld/%lld · ativo" = "Model: %lld/%lld · aktif";
 "Modelos: %lld · desativado" = "Model: %lld · dimatikan";
+"Modelos: %lld/%lld · desativado" = "Model: %lld/%lld · dimatikan";
 "· %lld rodadas" = "· %lld pusingan";
 "Personalizado…" = "Tersuai…";
 "online" = "dalam talian";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in tidak tersedia: sesi audio sedang dalam mod rakaman.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Saluran";
+"Navegador" = "Pelayar";
+"Só chega ao site aberto no navegador, não ao app." = "Hanya sampai ke laman yang dibuka dalam pelayar, bukan ke aplikasi.";
+"Modelo do payload (JSON)" = "Templat payload (JSON)";
+"Conectado: %lld modelos." = "Disambungkan: %lld model.";

@@ -488,7 +488,9 @@
 "Padrão do servidor" = "د سرور تلواله";
 "Outros modelos" = "نور ماډلونه";
 "Modelos: %lld · ativo" = "ماډلونه: %lld · فعال";
+"Modelos: %lld/%lld · ativo" = "ماډلونه: %lld/%lld · فعال";
 "Modelos: %lld · desativado" = "ماډلونه: %lld · ناکاره";
+"Modelos: %lld/%lld · desativado" = "ماډلونه: %lld/%lld · ناکاره";
 "· %lld rodadas" = "· %lld پړاوونه";
 "Personalizado…" = "دودیز…";
 "online" = "آنلاین";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "barge-in شتون نلري: د غږ ناسته د ثبتولو په حالت کې ده.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "چینل";
+"Navegador" = "براوزر";
+"Só chega ao site aberto no navegador, não ao app." = "یوازې هغه سایټ ته رسېږي چې په براوزر کې خلاص وي، اپ ته نه.";
+"Modelo do payload (JSON)" = "د payload بېلګه (JSON)";
+"Conectado: %lld modelos." = "وصل شو: %lld ماډلونه.";

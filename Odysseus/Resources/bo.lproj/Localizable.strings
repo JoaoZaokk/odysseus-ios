@@ -488,7 +488,9 @@
 "Padrão do servidor" = "ཞབས་ཞུ་བའི་སོར་བཞག";
 "Outros modelos" = "དཔེ་དབྱིབས་གཞན།";
 "Modelos: %lld · ativo" = "དཔེ་དབྱིབས། %lld · ཁ་ཕྱེ";
+"Modelos: %lld/%lld · ativo" = "དཔེ་དབྱིབས། %lld/%lld · ཁ་ཕྱེ";
 "Modelos: %lld · desativado" = "དཔེ་དབྱིབས། %lld · ཁ་བརྒྱབ";
+"Modelos: %lld/%lld · desativado" = "དཔེ་དབྱིབས། %lld/%lld · ཁ་བརྒྱབ";
 "· %lld rodadas" = "· སྐོར %lld";
 "Personalizado…" = "རང་སྒྲིག…";
 "online" = "དྲ་ཐོག";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "barge-in བེད་སྤྱོད་བྱེད་མི་ཐུབ། སྒྲ་ཡི་ལས་རིམ་ནི་སྒྲ་འཇུག་སྤྱོད་སྟངས་སུ་ཡོད།";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "ལམ་བུ།";
+"Navegador" = "དྲ་ལྟ་ཆས།";
+"Só chega ao site aberto no navegador, não ao app." = "དྲ་ལྟ་ཆས་ནང་ཁ་ཕྱེ་བའི་དྲ་ཚིགས་ལ་མ་གཏོགས་མཉེན་ཆས་ལ་མི་སླེབས།";
+"Modelo do payload (JSON)" = "payload དཔེ་གཞི (JSON)";
+"Conectado: %lld modelos." = "སྦྲེལ་ཟིན། %lld དཔེ་དབྱིབས།";

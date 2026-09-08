@@ -490,7 +490,9 @@
 "Padrão do servidor" = "По умолчанию с сервера";
 "Outros modelos" = "Другие модели";
 "Modelos: %lld · ativo" = "Модели: %lld · включено";
+"Modelos: %lld/%lld · ativo" = "Модели: %lld/%lld · включено";
 "Modelos: %lld · desativado" = "Модели: %lld · выключено";
+"Modelos: %lld/%lld · desativado" = "Модели: %lld/%lld · выключено";
 "· %lld rodadas" = "· %lld раундов";
 "Personalizado…" = "Свой вариант…";
 "online" = "в сети";
@@ -642,3 +644,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in недоступен: аудиосессия находится в режиме записи.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Канал";
+"Navegador" = "Браузер";
+"Só chega ao site aberto no navegador, não ao app." = "Доходит только до сайта, открытого в браузере, а не до приложения.";
+"Modelo do payload (JSON)" = "Шаблон payload (JSON)";
+"Conectado: %lld modelos." = "Подключено: %lld моделей.";
