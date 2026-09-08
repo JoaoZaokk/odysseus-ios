@@ -8,7 +8,8 @@ zero PRs abertos. Catálogos: **43 × 818** (de-AT saiu; ver rodada 6).
 ## Rodada 6 — "feche esses cinco"
 
 As cinco decisões que a rodada 5 tomou sem perguntar (abaixo, em "Decisões tomadas sem
-perguntar") deixaram de ser decisões e viraram código, num PR só. Nada ficou "fechado por
+perguntar") deixaram de ser decisões e viraram código, num PR só
+([#45](https://github.com/JoaoZaokk/odysseus-ios/pull/45)). Nada ficou "fechado por
 decisão" desta vez.
 
 | Decisão da rodada 5 | Fechamento |
