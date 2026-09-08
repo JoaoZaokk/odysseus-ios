@@ -2,8 +2,8 @@
 
 Estado em 2026-09-08, fim da rodada 5. Tudo abaixo está em `main`, **1.9 / build 23**
 (macOS build 17; o último build subido ao ASC é o **21**, da 1.8 — nada da 1.9 foi
-enviado ainda). **{TESTS} testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
-zero PRs abertos. Catálogos: **44 × {KEYS}**.
+enviado ainda). **265 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
+zero PRs abertos. Catálogos: **44 × 794**.
 
 ## Rodada 5 — "resolva os abertos, todos eles, uma tacada só"
 
@@ -45,7 +45,7 @@ chaves novas.
 
 ### Chaves novas
 
-{NEWKEYS} chaves novas em 44 catálogos, traduzidas por um workflow (tradutor + revisor por
+165 chaves novas em 44 catálogos, traduzidas por um workflow (tradutor + revisor por
 grupo de idiomas, com amostras do próprio catálogo para registro e terminologia) e
 verificadas por script: mesmo `%@`/`%lld`/`%d` da chave, nenhuma vazia. `bo` (tibetano)
 segue marcado para revisão nativa, como sempre.
