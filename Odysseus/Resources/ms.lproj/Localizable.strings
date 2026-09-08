@@ -21,6 +21,7 @@
 "apertado" = "sempit";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Arahkan ke IP tempatan buat masa ini; apabila mendedahkan melalui HTTPS, tukar kepada https://domain-anda.";
 "Arquivar" = "Arkib";
+"Arquivadas" = "Diarkibkan";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Penyelidikan yang selesai muncul di sini. Ketik \"Laporan visual\" untuk membukanya bersebelahan.";
 "Ativado" = "Diaktifkan";
 "Ativar todas" = "Aktifkan semua";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Tiada akaun";
 "Nenhuma conta — adicione uma conta IMAP." = "Tiada akaun — tambahkan akaun IMAP.";
 "Nenhuma conversa ainda." = "Belum ada perbualan.";
+"Nenhuma conversa arquivada." = "Tiada perbualan yang diarkibkan.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Belum ada integrasi — gunakan \"Tambah integrasi\" di atas.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS dalam bahasa Portugis (Core ML/Neural Engine), jauh lebih semula jadi daripada suara asli. Muat turun ~550 MB pada peranti buat kali pertama; hanya berjalan pada iPhone fizikal (bukan simulator).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "Pembekal lalai";
 "Endereço do servidor" = "Alamat pelayan";
 "Versão" = "Versi";
+"Avaliar o Odysseus" = "Nilai Odysseus";
 "não cabe" = "tidak muat";
 "no results" = "tiada keputusan";
 "no results — tente reformular ou trocar o motor de busca." = "tiada keputusan — cuba ubah frasa atau tukar enjin carian.";

@@ -21,6 +21,7 @@
 "apertado" = "sınırda";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Şimdilik yerel IP'ye yönlendirin; HTTPS üzerinden açtığınızda https://alan-adiniz ile değiştirin.";
 "Arquivar" = "Arşivle";
+"Arquivadas" = "Arşivlenenler";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Tamamlanan araştırmalar burada görünür. Yan yana açmak için “Görsel rapor”a dokunun.";
 "Ativado" = "Etkin";
 "Ativar todas" = "Tümünü etkinleştir";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Hesap yok";
 "Nenhuma conta — adicione uma conta IMAP." = "Hesap yok — bir IMAP hesabı ekleyin.";
 "Nenhuma conversa ainda." = "Henüz konuşma yok.";
+"Nenhuma conversa arquivada." = "Arşivlenmiş konuşma yok.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Henüz entegrasyon yok — yukarıdaki “Entegrasyon ekle” seçeneğini kullanın.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Nöral = Portekizce PocketTTS (Core ML/Neural Engine), yerel sesten çok daha doğal. İlk seferde cihazda ~550 MB indirir; yalnızca fiziksel iPhone'da çalışır (simülatörde değil).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "Varsayılan sağlayıcı";
 "Endereço do servidor" = "Sunucu adresi";
 "Versão" = "Sürüm";
+"Avaliar o Odysseus" = "Odysseus'u değerlendir";
 "não cabe" = "sığmıyor";
 "no results" = "sonuç yok";
 "no results — tente reformular ou trocar o motor de busca." = "sonuç yok — sorguyu yeniden yazmayı ya da arama motorunu değiştirmeyi deneyin.";

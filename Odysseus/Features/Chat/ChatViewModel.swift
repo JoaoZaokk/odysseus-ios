@@ -39,6 +39,10 @@ final class ChatViewModel: ObservableObject {
     /// Fired with the new session id the first time a brand-new chat is created,
     /// so the sidebar can refresh.
     var onSessionCreated: ((String) -> Void)?
+    /// Fired once per reply that streamed to the end with text and no error
+    /// frame — the only moment the app may ask for a rating. A Stop is
+    /// neither a success nor a failure and fires nothing.
+    var onReplyCompleted: (() -> Void)?
 
     private let api: APIClient
     private let stream: ChatStreamClient
@@ -135,13 +139,16 @@ final class ChatViewModel: ObservableObject {
     func attachmentURL(_ id: String) -> URL? { api.attachmentURL(id) }
 
     private func runStream(text: String, assistantID: String, attachmentIDs: [String]) async {
+        var sawAnyText = false
+        // A mid-stream `.error` frame finishes the loop normally — it never
+        // throws — so "the do-block completed" is not a success signal.
+        var failed = false
         do {
             let sid = try await ensureSession(firstMessage: text.isEmpty ? L("Imagem") : text)
             let opts = ChatStreamOptions(mode: agentMode ? "agent" : "chat",
                                          webSearch: webSearch, research: research,
                                          attachmentIDs: attachmentIDs,
                                          model: selectedModel)
-            var sawAnyText = false
 
             for try await update in stream.send(message: text, sessionID: sid, options: opts) {
                 switch update {
@@ -161,6 +168,7 @@ final class ChatViewModel: ObservableObject {
                     // Same policy as a thrown failure: an error that arrives
                     // mid-stream must not erase the reply the user just watched
                     // arrive. `setAssistant` overwrites unconditionally.
+                    failed = true
                     handleStreamError(.transport(msg), assistantID: assistantID)
                 case .done:
                     break
@@ -173,12 +181,15 @@ final class ChatViewModel: ObservableObject {
         } catch let e where e.isCancellation {
             // user stopped — keep whatever streamed so far
         } catch let e as APIError {
+            failed = true
             handleStreamError(e, assistantID: assistantID)
         } catch {
+            failed = true
             handleStreamError(.transport(error.localizedDescription), assistantID: assistantID)
         }
         isStreaming = false
         toolStatus = nil
+        if !failed && !Task.isCancelled && sawAnyText { onReplyCompleted?() }
     }
 
     /// Materializes a session if this is a brand-new chat.
@@ -230,6 +241,7 @@ final class ChatViewModel: ObservableObject {
     }
 
     private func handleStreamError(_ e: APIError, assistantID: String) {
+        ReviewGate.launchIsPoisoned = true
         // The bubble goes through MarkdownUI, which does no key lookup — so this
         // one has to resolve here. L returns the key unchanged when there is no
         // entry, so a raw server message passes through untouched.

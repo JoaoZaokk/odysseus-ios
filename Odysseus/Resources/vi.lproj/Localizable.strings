@@ -21,6 +21,7 @@
 "apertado" = "chật";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Hướng đến IP cục bộ hiện tại; khi mở qua HTTPS, hãy đổi thành https://ten-mien-cua-ban.";
 "Arquivar" = "Lưu trữ";
+"Arquivadas" = "Đã lưu trữ";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Các nghiên cứu đã hoàn thành xuất hiện ở đây. Nhấn \"Báo cáo trực quan\" để mở cạnh nhau.";
 "Ativado" = "Đã bật";
 "Ativar todas" = "Bật tất cả";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Không có tài khoản";
 "Nenhuma conta — adicione uma conta IMAP." = "Không có tài khoản — hãy thêm một tài khoản IMAP.";
 "Nenhuma conversa ainda." = "Chưa có cuộc trò chuyện nào.";
+"Nenhuma conversa arquivada." = "Không có cuộc trò chuyện nào được lưu trữ.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Chưa có tích hợp nào — hãy dùng \"Thêm tích hợp\" ở trên.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS tiếng Bồ Đào Nha (Core ML/Neural Engine), tự nhiên hơn nhiều so với giọng đọc gốc. Lần đầu tải ~550 MB trên thiết bị; chỉ chạy trên iPhone thật (không phải trình giả lập).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "Nhà cung cấp mặc định";
 "Endereço do servidor" = "Địa chỉ máy chủ";
 "Versão" = "Phiên bản";
+"Avaliar o Odysseus" = "Đánh giá Odysseus";
 "não cabe" = "không vừa";
 "no results" = "không có kết quả";
 "no results — tente reformular ou trocar o motor de busca." = "không có kết quả — thử diễn đạt lại hoặc đổi công cụ tìm kiếm.";

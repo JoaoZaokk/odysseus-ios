@@ -21,6 +21,7 @@
 "apertado" = "тесно";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "За сада укажите на локални IP; када подесите HTTPS, замените са https://ваш-домен.";
 "Arquivar" = "Архивирај";
+"Arquivadas" = "Архивирани";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Завршена истраживања приказују се овде. Додирните «Визуелни извештај» да отворите поред.";
 "Ativado" = "Укључено";
 "Ativar todas" = "Укључи све";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Нема налога";
 "Nenhuma conta — adicione uma conta IMAP." = "Нема налога — додајте IMAP налог.";
 "Nenhuma conversa ainda." = "Нема разговора.";
+"Nenhuma conversa arquivada." = "Нема архивираних разговора.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Нема интеграција — користите «Додај интеграцију» изнад.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS на португалском (Core ML/Neural Engine), знатно природнији од нативног гласа. При првом покретању преузима ~550 МБ на уређај; ради само на физичком iPhone-у (не у симулатору).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -465,6 +467,7 @@
 "Provedor padrão" = "Подразумевани добављач";
 "Endereço do servidor" = "Адреса сервера";
 "Versão" = "Верзија";
+"Avaliar o Odysseus" = "Оцени Odysseus";
 "não cabe" = "не стаје";
 "no results" = "нема резултата";
 "no results — tente reformular ou trocar o motor de busca." = "нема резултата — покушајте да преформулишете упит или промените претраживач.";

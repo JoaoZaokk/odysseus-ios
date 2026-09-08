@@ -21,6 +21,7 @@
 "apertado" = "דחוק";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "כרגע הפנה ל-IP המקומי; כשתחשוף את השרת דרך HTTPS, עבור ל-https://your-domain.";
 "Arquivar" = "העברה לארכיון";
+"Arquivadas" = "בארכיון";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "מחקרים שהושלמו מופיעים כאן. הקש על “דוח חזותי” כדי לפתוח אותם בצד.";
 "Ativado" = "מופעל";
 "Ativar todas" = "הפעל הכול";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "אין חשבונות";
 "Nenhuma conta — adicione uma conta IMAP." = "אין חשבונות — הוסף חשבון IMAP.";
 "Nenhuma conversa ainda." = "עדיין אין שיחות.";
+"Nenhuma conversa arquivada." = "אין שיחות בארכיון.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "עדיין אין אינטגרציות — השתמש ב“הוספת אינטגרציה” למעלה.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "נוירוני = PocketTTS בפורטוגזית (Core ML/Neural Engine), טבעי בהרבה מהקול המקורי. מוריד כ-550MB במכשיר בפעם הראשונה; פועל רק על iPhone פיזי (לא בסימולטור).";
 "Neural pt-BR" = "נוירוני pt-BR";
@@ -455,6 +457,7 @@
 "Provedor padrão" = "ספק ברירת מחדל";
 "Endereço do servidor" = "כתובת השרת";
 "Versão" = "גרסה";
+"Avaliar o Odysseus" = "דרג את Odysseus";
 "não cabe" = "לא נכנס";
 "no results" = "אין תוצאות";
 "no results — tente reformular ou trocar o motor de busca." = "אין תוצאות — נסה לנסח מחדש או להחליף מנוע חיפוש.";

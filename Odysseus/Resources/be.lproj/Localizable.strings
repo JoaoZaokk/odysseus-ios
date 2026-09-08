@@ -21,6 +21,7 @@
 "apertado" = "упрытык";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Цяпер укажыце лакальны IP; калі падключыце HTTPS, замяніце на https://ваш-дамен.";
 "Arquivar" = "Архіваваць";
+"Arquivadas" = "Архіваваныя";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Завершаныя даследаванні адлюстроўваюцца тут. Націсніце «Візуальная справаздача», каб адкрыць побач.";
 "Ativado" = "Уключана";
 "Ativar todas" = "Уключыць усе";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Няма акаўнтаў";
 "Nenhuma conta — adicione uma conta IMAP." = "Няма акаўнтаў — дадайце акаўнт IMAP.";
 "Nenhuma conversa ainda." = "Пакуль няма размоў.";
+"Nenhuma conversa arquivada." = "Няма архіваваных размоў.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Пакуль няма інтэграцый — выкарыстоўвайце «Дадаць інтэграцыю» вышэй.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS на партугальскай (Core ML/Neural Engine), значна больш натуральны за натыўны голас. Пры першым запуску спампоўвае ~550 МБ на прыладу; працуе толькі на фізічным iPhone (не ў сімулятары).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -465,6 +467,7 @@
 "Provedor padrão" = "Пастаўшчык па змаўчанні";
 "Endereço do servidor" = "Адрас сервера";
 "Versão" = "Версія";
+"Avaliar o Odysseus" = "Ацаніць Odysseus";
 "não cabe" = "не змяшчаецца";
 "no results" = "няма вынікаў";
 "no results — tente reformular ou trocar o motor de busca." = "няма вынікаў — паспрабуйце перафармуляваць запыт або змяніць пошукавік.";

@@ -21,6 +21,7 @@
 "apertado" = "勉强放得下";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "现在指向本地 IP；通过 HTTPS 公开后，改为 https://your-domain。";
 "Arquivar" = "归档";
+"Arquivadas" = "已归档";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "已完成的研究将显示在此处。点击“可视报告”以并排打开。";
 "Ativado" = "已启用";
 "Ativar todas" = "全部启用";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "无账户";
 "Nenhuma conta — adicione uma conta IMAP." = "无账户——请添加 IMAP 账户。";
 "Nenhuma conversa ainda." = "暂无对话。";
+"Nenhuma conversa arquivada." = "没有已归档的对话。";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "暂无集成——请使用上方的“添加集成”。";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "神经 = 葡萄牙语的 PocketTTS（Core ML/Neural Engine），比原生语音自然得多。首次在设备上下载约 550 MB；仅在实体 iPhone 上运行（不支持模拟器）。";
 "Neural pt-BR" = "神经 pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "默认服务商";
 "Endereço do servidor" = "服务器地址";
 "Versão" = "版本";
+"Avaliar o Odysseus" = "为 Odysseus 评分";
 "não cabe" = "放不下";
 "no results" = "无结果";
 "no results — tente reformular ou trocar o motor de busca." = "无结果 — 换个说法或更换搜索引擎试试。";

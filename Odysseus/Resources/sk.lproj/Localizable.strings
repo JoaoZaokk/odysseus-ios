@@ -21,6 +21,7 @@
 "apertado" = "tesne";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Namieriť na lokálnu IP adresu; keď budete vystavení cez HTTPS, zmeňte na https://vasa-domena.";
 "Arquivar" = "Archivovať";
+"Arquivadas" = "Archivované";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Dokončený výskum sa zobrazuje tu. Klepnite na „Vizuálna správa” a otvorte ho vedľa.";
 "Ativado" = "Zapnuté";
 "Ativar todas" = "Zapnúť všetky";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Žiadne účty";
 "Nenhuma conta — adicione uma conta IMAP." = "Žiadne účty — pridajte účet IMAP.";
 "Nenhuma conversa ainda." = "Zatiaľ žiadne konverzácie.";
+"Nenhuma conversa arquivada." = "Žiadne archivované konverzácie.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Zatiaľ žiadne integrácie — použite „Pridať integráciu” vyššie.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS v portugalčine (Core ML/Neural Engine), oveľa prirodzenejší ako natívny hlas. Stiahne ~550 MB do zariadenia pri prvom použití; funguje iba na fyzickom iPhone (nie v simulátore).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "Predvolený poskytovateľ";
 "Endereço do servidor" = "Adresa servera";
 "Versão" = "Verzia";
+"Avaliar o Odysseus" = "Ohodnotiť Odysseus";
 "não cabe" = "nezmestí sa";
 "no results" = "žiadne výsledky";
 "no results — tente reformular ou trocar o motor de busca." = "žiadne výsledky — skúste dopyt preformulovať alebo zmeniť vyhľadávač.";

@@ -21,6 +21,7 @@
 "apertado" = "ぎりぎり";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "今はローカル IP を指定してください。HTTPS で公開する際は https://seu-dominio に変更してください。";
 "Arquivar" = "アーカイブ";
+"Arquivadas" = "アーカイブ済み";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "完了したリサーチがここに表示されます。「ビジュアルレポート」をタップすると並べて開けます。";
 "Ativado" = "有効";
 "Ativar todas" = "すべて有効化";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "アカウントがありません";
 "Nenhuma conta — adicione uma conta IMAP." = "アカウントがありません — IMAP アカウントを追加してください。";
 "Nenhuma conversa ainda." = "まだ会話がありません。";
+"Nenhuma conversa arquivada." = "アーカイブ済みの会話はありません。";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "まだ連携がありません — 上の「連携を追加」を使ってください。";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "ニューラル = ポルトガル語の PocketTTS（Core ML/Neural Engine）で、ネイティブ音声よりはるかに自然です。初回はオンデバイスで ~550 MB をダウンロードします。実機の iPhone のみで動作します（シミュレーターは不可）。";
 "Neural pt-BR" = "ニューラル pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "デフォルトのプロバイダ";
 "Endereço do servidor" = "サーバーのアドレス";
 "Versão" = "バージョン";
+"Avaliar o Odysseus" = "Odysseus を評価";
 "não cabe" = "収まりません";
 "no results" = "結果なし";
 "no results — tente reformular ou trocar o motor de busca." = "結果なし — 表現を変えるか、検索エンジンを切り替えてください。";

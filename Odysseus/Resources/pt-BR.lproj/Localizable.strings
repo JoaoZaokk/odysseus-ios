@@ -44,6 +44,7 @@
 "Aparência" = "Aparência";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio.";
 "Arquivar" = "Arquivar";
+"Arquivadas" = "Arquivadas";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado.";
 "Ativado" = "Ativado";
 "Ativar" = "Ativar";
@@ -223,6 +224,7 @@
 "Nenhuma conta" = "Nenhuma conta";
 "Nenhuma conta — adicione uma conta IMAP." = "Nenhuma conta — adicione uma conta IMAP.";
 "Nenhuma conversa ainda." = "Nenhuma conversa ainda.";
+"Nenhuma conversa arquivada." = "Nenhuma conversa arquivada.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Nenhuma integração ainda — use “Adicionar integração” acima.";
 "Nenhuma linha corresponde ao filtro." = "Nenhuma linha corresponde ao filtro.";
 "Nenhuma mensagem na INBOX." = "Nenhuma mensagem na INBOX.";
@@ -456,6 +458,7 @@
 "Provedor padrão" = "Provedor padrão";
 "Endereço do servidor" = "Endereço do servidor";
 "Versão" = "Versão";
+"Avaliar o Odysseus" = "Avaliar o Odysseus";
 "não cabe" = "não cabe";
 "no results" = "no results";
 "no results — tente reformular ou trocar o motor de busca." = "no results — tente reformular ou trocar o motor de busca.";

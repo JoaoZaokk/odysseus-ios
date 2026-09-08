@@ -82,7 +82,10 @@ struct RootView: View {
                 app.persistSessionIfNeeded()   // keep the latest session for next launch
             }
         }
-        .task { await app.bootstrap() }
+        .task {
+            ReviewGate.seedFirstLaunchIfNeeded()
+            await app.bootstrap()
+        }
     }
 }
 

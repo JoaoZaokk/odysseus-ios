@@ -21,6 +21,7 @@
 "apertado" = "به‌سختی جا می‌شود";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "فعلاً به IP محلی اشاره کنید؛ هنگام انتشار از طریق HTTPS، آن را به https://your-domain تغییر دهید.";
 "Arquivar" = "بایگانی";
+"Arquivadas" = "بایگانی‌شده";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "تحقیقات تکمیل‌شده اینجا نمایش داده می‌شوند. روی «گزارش بصری» ضربه بزنید تا در کنار آن باز شود.";
 "Ativado" = "فعال";
 "Ativar todas" = "فعال‌کردن همه";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "هیچ حسابی وجود ندارد";
 "Nenhuma conta — adicione uma conta IMAP." = "هیچ حسابی نیست — یک حساب IMAP اضافه کنید.";
 "Nenhuma conversa ainda." = "هنوز گفتگویی وجود ندارد.";
+"Nenhuma conversa arquivada." = "گفتگوی بایگانی‌شده‌ای وجود ندارد.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "هنوز یکپارچه‌سازی‌ای نیست — از «افزودن یکپارچه‌سازی» در بالا استفاده کنید.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "عصبی = PocketTTS به پرتغالی (Core ML/Neural Engine)، بسیار طبیعی‌تر از صدای بومی. در اولین بار ~550 MB روی دستگاه دانلود می‌کند؛ فقط روی iPhone فیزیکی اجرا می‌شود (نه شبیه‌ساز).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "ارائه‌دهندهٔ پیش‌فرض";
 "Endereço do servidor" = "نشانی سرور";
 "Versão" = "نسخه";
+"Avaliar o Odysseus" = "به Odysseus امتیاز دهید";
 "não cabe" = "جا نمی‌شود";
 "no results" = "بدون نتیجه";
 "no results — tente reformular ou trocar o motor de busca." = "بدون نتیجه — عبارت را بازنویسی کنید یا موتور جستجو را عوض کنید.";

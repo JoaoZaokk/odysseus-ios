@@ -21,6 +21,7 @@
 "apertado" = "คับ";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "ตอนนี้ให้ชี้ไปที่ IP ในเครือข่ายท้องถิ่นก่อน เมื่อเปิดให้เข้าถึงผ่าน HTTPS แล้วค่อยเปลี่ยนเป็น https://your-domain";
 "Arquivar" = "เก็บเข้าคลัง";
+"Arquivadas" = "เก็บถาวรแล้ว";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "งานวิจัยที่เสร็จสมบูรณ์จะแสดงที่นี่ แตะ “รายงานภาพ” เพื่อเปิดดูแบบเคียงข้างกัน";
 "Ativado" = "เปิดใช้งาน";
 "Ativar todas" = "เปิดใช้งานทั้งหมด";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "ไม่มีบัญชี";
 "Nenhuma conta — adicione uma conta IMAP." = "ไม่มีบัญชี — เพิ่มบัญชี IMAP";
 "Nenhuma conversa ainda." = "ยังไม่มีการสนทนา";
+"Nenhuma conversa arquivada." = "ไม่มีการสนทนาที่เก็บถาวร";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "ยังไม่มีการเชื่อมต่อ — ใช้ “เพิ่มการเชื่อมต่อ” ด้านบน";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "นิวรัล = PocketTTS ภาษาโปรตุเกส (Core ML/Neural Engine) เป็นธรรมชาติกว่าเสียงเนทีฟมาก ดาวน์โหลดประมาณ 550 MB ลงในเครื่องครั้งแรก ใช้งานได้เฉพาะบน iPhone จริงเท่านั้น (ไม่รองรับซิมูเลเตอร์)";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "ผู้ให้บริการเริ่มต้น";
 "Endereço do servidor" = "ที่อยู่เซิร์ฟเวอร์";
 "Versão" = "เวอร์ชัน";
+"Avaliar o Odysseus" = "ให้คะแนน Odysseus";
 "não cabe" = "ไม่พอดี";
 "no results" = "ไม่มีผลลัพธ์";
 "no results — tente reformular ou trocar o motor de busca." = "ไม่มีผลลัพธ์ — ลองเปลี่ยนคำหรือเปลี่ยนเครื่องมือค้นหา";

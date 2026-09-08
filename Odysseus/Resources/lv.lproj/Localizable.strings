@@ -21,6 +21,7 @@
 "apertado" = "tikko";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Pagaidām norādiet uz vietējo IP adresi; kad to padarīsiet pieejamu caur HTTPS, pārslēdzieties uz https://jusu-domens.";
 "Arquivar" = "Arhivēt";
+"Arquivadas" = "Arhivētās";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Pabeigtie pētījumi parādās šeit. Pieskarieties “Vizuālais pārskats”, lai atvērtu tos blakus.";
 "Ativado" = "Iespējots";
 "Ativar todas" = "Iespējot visas";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Nav kontu";
 "Nenhuma conta — adicione uma conta IMAP." = "Nav kontu — pievienojiet IMAP kontu.";
 "Nenhuma conversa ainda." = "Vēl nav sarunu.";
+"Nenhuma conversa arquivada." = "Nav arhivētu sarunu.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Vēl nav integrāciju — izmantojiet iepriekš esošo “Pievienot integrāciju”.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neironu = PocketTTS portugāļu valodā (Core ML/Neural Engine), daudz dabiskāka nekā vietējā balss. Pirmajā reizē lejupielādē ~550 MB ierīcē; darbojas tikai fiziskā iPhone (ne simulatorā).";
 "Neural pt-BR" = "Neironu pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "Noklusējuma pakalpojums";
 "Endereço do servidor" = "Servera adrese";
 "Versão" = "Versija";
+"Avaliar o Odysseus" = "Novērtēt Odysseus";
 "não cabe" = "neietilpst";
 "no results" = "nav rezultātu";
 "no results — tente reformular ou trocar o motor de busca." = "nav rezultātu — mēģiniet pārformulēt vai nomainīt meklētājprogrammu.";

@@ -21,6 +21,8 @@ struct SidebarView: View {
     @State private var search = ""
     @State private var renaming: ChatSession?
     @State private var renameText = ""
+    @State private var deleting: ChatSession?
+    @State private var showArchived = false
     /// nil = never touched: iPhone starts collapsed (the sections would push
     /// the conversations below the fold), iPad and macOS start open.
     @AppStorage("sidebar.spaces.expanded") private var spacesExpandedStored: Bool?
@@ -79,14 +81,30 @@ struct SidebarView: View {
                     Button { workspace.setPrimary(.chat(session)) } label: { chatRow(session) }
                         .buttonStyle(.plain)
                         .listRowBackground(active(.chat(session)) ? theme.accent.opacity(0.14) : theme.bg)
+                        // Delete is final on the server, so it asks; archive
+                        // is the reversible way to get a row off the list.
                         .swipeActions(edge: .trailing) {
-                            Button(role: .destructive) {
-                                Task { await store.delete(session) }
-                            } label: { Label("Apagar", systemImage: "trash") }
+                            Button(role: .destructive) { deleting = session } label: { Label("Apagar", systemImage: "trash") }
+                            Button { Task { await store.archive(session) } } label: { Label("Arquivar", systemImage: "archivebox") }
+                                .tint(theme.warning)
                             Button {
                                 renaming = session; renameText = session.title
                             } label: { Label("Renomear", systemImage: "pencil") }
                             .tint(theme.border)
+                        }
+                        .swipeActions(edge: .leading) {
+                            Button { Task { await store.setPinned(session, !session.pinned) } } label: {
+                                Label(session.pinned ? "Desafixar" : "Fixar", systemImage: session.pinned ? "pin.slash" : "pin")
+                            }
+                            .tint(theme.accent)
+                        }
+                        .contextMenu {
+                            Button { Task { await store.setPinned(session, !session.pinned) } } label: {
+                                Label(session.pinned ? "Desafixar" : "Fixar", systemImage: session.pinned ? "pin.slash" : "pin")
+                            }
+                            Button { Task { await store.archive(session) } } label: { Label("Arquivar", systemImage: "archivebox") }
+                            Button { renaming = session; renameText = session.title } label: { Label("Renomear", systemImage: "pencil") }
+                            Button(role: .destructive) { deleting = session } label: { Label("Apagar", systemImage: "trash") }
                         }
                 }
                 // A failed load is not an empty account: saying "no conversations
@@ -106,7 +124,18 @@ struct SidebarView: View {
                         .listRowBackground(theme.bg)
                 }
             } header: {
-                header("Conversas")
+                HStack {
+                    header("Conversas")
+                    Spacer()
+                    // The archive lives behind the header, not as a tenth
+                    // Espaço row above the list.
+                    Button { showArchived = true } label: {
+                        Label("Arquivadas", systemImage: "archivebox")
+                            .font(.ody(.caption))
+                            .foregroundStyle(theme.secondaryText)
+                    }
+                    .buttonStyle(.plain)
+                }
             }
         }
         .listStyle(.sidebar)
@@ -122,6 +151,10 @@ struct SidebarView: View {
             Button { workspace.setPrimary(.newChat) } label: { Image(systemName: "square.and.pencil") }
         }
         .refreshable { await store.load() }
+        .sheet(isPresented: $showArchived) {
+            ArchivedSessionsView(store: store, workspace: workspace)
+                .environmentObject(themes)
+        }
         .alert("Renomear conversa", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
             TextField("Nome", text: $renameText)
             Button("Salvar") {
@@ -130,6 +163,10 @@ struct SidebarView: View {
             }
             Button("Cancelar", role: .cancel) { renaming = nil }
         }
+        .alert(deleting?.title ?? "", isPresented: Binding(get: { deleting != nil }, set: { if !$0 { deleting = nil } })) {
+            Button("Apagar", role: .destructive) { if let s = deleting { Task { await store.delete(s) } }; deleting = nil }
+            Button("Cancelar", role: .cancel) { deleting = nil }
+        } message: { Text("Isso é irreversível. Confirma?") }
     }
 
     private func header(_ text: String) -> some View {
@@ -181,5 +218,60 @@ struct SidebarView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
+    }
+}
+
+/// The archived conversations: open one, or put it back on the list.
+struct ArchivedSessionsView: View {
+    @ObservedObject var store: SessionStore
+    @ObservedObject var workspace: WorkspaceStore
+    @Environment(\.theme) private var theme
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(store.archived) { session in
+                    Button {
+                        workspace.setPrimary(.chat(session))
+                        dismiss()
+                    } label: {
+                        Text(session.title).font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
+                            .frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .listRowBackground(theme.panel)
+                    .swipeActions(edge: .trailing) {
+                        Button { Task { await store.unarchive(session) } } label: {
+                            Label("Desarquivar", systemImage: "tray.and.arrow.up")
+                        }
+                        .tint(theme.accent)
+                    }
+                    .contextMenu {
+                        Button { Task { await store.unarchive(session) } } label: {
+                            Label("Desarquivar", systemImage: "tray.and.arrow.up")
+                        }
+                    }
+                }
+                if let e = store.error {
+                    Text(LocalizedStringKey(e)).font(.ody(.footnote)).foregroundStyle(theme.danger)
+                        .listRowBackground(theme.bg)
+                } else if store.archived.isEmpty {
+                    Text("Nenhuma conversa arquivada.").font(.ody(.footnote)).foregroundStyle(theme.secondaryText)
+                        .listRowBackground(theme.bg)
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background(theme.bg)
+            .navigationTitle("Arquivadas")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { dismiss() } } }
+            .themedNavBar(theme)
+        }
+        .tint(theme.accent)
+        .task { await store.loadArchived() }
+        #if os(macOS)
+        .frame(minWidth: 420, minHeight: 360)
+        #endif
     }
 }
