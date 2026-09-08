@@ -13,11 +13,9 @@
 "Admin" = "Администратор";
 "Agendado %@" = "Запланировано %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Запланированные агенты";
 "Agentes agendados do Odysseus aparecem aqui." = "Запланированные агенты Odysseus отображаются здесь.";
 "Ajustes" = "Настройки";
 "Analisa imagens com um modelo com visão." = "Анализирует изображения с помощью модели с поддержкой зрения.";
-"Anotações e lembretes" = "Заметки и напоминания";
 "Apagar" = "Удалить";
 "Aparência" = "Внешний вид";
 "apertado" = "впритык";
@@ -41,7 +39,6 @@
 "cabe" = "помещается";
 "Cabe na máquina (estimativa, melhor GPU)" = "Помещается на устройстве (оценка, лучший GPU)";
 "Cadastro aberto" = "Открытая регистрация";
-"Caixa de entrada" = "Входящие";
 "Calendário" = "Календарь";
 "Cancelar" = "Отмена";
 "Carregando…" = "Загрузка…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Как работает запасной вариант";
 "Como posso ajudar?" = "Чем могу помочь?";
 "Comparar" = "Сравнить";
-"Comparar modelos" = "Сравнить модели";
 "Concluído" = "Готово";
 "Conectado a %@" = "Подключено к %@";
 "Conectar conta" = "Подключить аккаунт";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Обнаружено: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Диагностика процесса Odysseus в реальном времени.";
 "Diário %@" = "Ежедневно %@";
-"Documentos pessoais (RAG)" = "Личные документы (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Дайте этому агенту имя, чтобы отличить его от других (напр. «Claude Agent — ноутбук»).";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Напишите на естественном языке выше\nили нажмите +, чтобы создать.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Оценка по имени (fp8≈1B/пар., fp16/bf16≈2B/пар.) + ~3 ГБ запаса. Не заменяет реального теста.";
 "Evento: %@" = "Событие: %@";
-"Eventos e agenda" = "События и расписание";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "напр.: Теории коллапса Бронзового века и доказательства";
 "ex.: assistente direto e objetivo" = "напр.: прямой и чёткий ассистент";
 "Ex: reunião amanhã 14h" = "Напр.: встреча завтра в 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Включайте или отключайте инструменты, доступные агенту.";
 "Idioma" = "Язык";
 "Igual ao chat" = "Как в чате";
-"Imagens e álbuns" = "Изображения и альбомы";
 "Imagens geradas e enviadas aparecem aqui." = "Сгенерированные и загруженные изображения отображаются здесь.";
 "instalado" = "установлено";
 "instalando…" = "установка…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Системные журналы";
 "Manter conectado" = "Оставаться в системе";
-"Memórias do assistente" = "Воспоминания ассистента";
 "Mesma pergunta para os dois…" = "Одинаковый вопрос для обоих…";
 "Modelo de chat padrão" = "Модель чата по умолчанию";
 "Modelo on-device" = "Локальная модель";
 "Modelo utilitário" = "Служебная модель";
 "Modelos conectados" = "Подключённые модели";
-"Modelos e engines" = "Модели и движки";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Нативный = транскрипция в реальном времени во время речи (как Claude/Gemini). «Модель» = Whisper офлайн (транскрибирует в конце). У скачанных моделей ⚡ загружает ускоритель Core ML (Neural Engine) → намного быстрее.";
 "Nativo iOS" = "Нативный iOS";
 "Nenhum endpoint conectado." = "Нет подключённых endpoint.";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Заметки · архивированные";
 "Nova nota" = "Новая заметка";
 "Não consegui carregar o relatório." = "Не удалось загрузить отчёт.";
-"Password" = "Password";
+"Password" = "Пароль";
 "Pausar" = "Пауза";
 "Pensando…" = "Думаю…";
 "Raciocínio" = "Рассуждение";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Пока нет заметок";
 "Tornar admin" = "Сделать администратором";
 "Tudo" = "Всё";
-"Username" = "Username";
+"Username" = "Пользователь";
 "Verificar" = "Проверить";
 "%lld de %lld linhas" = "%lld из %lld строк";
 "(sem nome)" = "(без имени)";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "Удалить нейронный голос";
 "Ativar aceleração Core ML" = "Включить ускорение Core ML";
 "Baixa" = "Низкая";
+"Alta" = "Высокая";
 "Baixar modelo" = "Загрузить модель";
 "Cancelar download" = "Отменить загрузку";
 "Chinês" = "Китайский";

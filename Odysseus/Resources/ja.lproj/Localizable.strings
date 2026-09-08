@@ -13,11 +13,9 @@
 "Admin" = "管理者";
 "Agendado %@" = "スケジュール済み %@";
 "Agent Tools" = "エージェントツール";
-"Agentes agendados" = "スケジュール済みエージェント";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus のスケジュール済みエージェントがここに表示されます。";
 "Ajustes" = "設定";
 "Analisa imagens com um modelo com visão." = "視覚対応モデルで画像を解析します。";
-"Anotações e lembretes" = "メモとリマインダー";
 "Apagar" = "削除";
 "Aparência" = "外観";
 "apertado" = "ぎりぎり";
@@ -41,7 +39,6 @@
 "cabe" = "収まります";
 "Cabe na máquina (estimativa, melhor GPU)" = "このマシンで動作可能（推定、最良の GPU）";
 "Cadastro aberto" = "登録を開放";
-"Caixa de entrada" = "受信トレイ";
 "Calendário" = "カレンダー";
 "Cancelar" = "キャンセル";
 "Carregando…" = "読み込み中…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "フォールバックの仕組み";
 "Como posso ajudar?" = "何をお手伝いしましょうか？";
 "Comparar" = "比較";
-"Comparar modelos" = "モデルを比較";
 "Concluído" = "完了";
 "Conectado a %@" = "%@ に接続済み";
 "Conectar conta" = "アカウントを接続";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "検出: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus プロセスのライブ診断。";
 "Diário %@" = "毎日 %@";
-"Documentos pessoais (RAG)" = "個人ドキュメント（RAG）";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "このエージェントを他と区別できるよう名前を付けてください（例：「Claude Agent — laptop」）。";
 "Email" = "メール";
 "Email (IMAP/SMTP)" = "メール（IMAP/SMTP）";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "上に自然な言葉で入力するか\n＋をタップして作成してください。";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "名前から推定（fp8≈1B/param、fp16/bf16≈2B/param）＋~3 GB の余裕。実際のテストの代わりにはなりません。";
 "Evento: %@" = "イベント: %@";
-"Eventos e agenda" = "イベントと予定";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "例：青銅器時代崩壊の諸説とその証拠";
 "ex.: assistente direto e objetivo" = "例：率直で要点を押さえたアシスタント";
 "Ex: reunião amanhã 14h" = "例：明日14時に会議";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "エージェントが利用できるツールを有効／無効にします。";
 "Idioma" = "言語";
 "Igual ao chat" = "チャットと同じ";
-"Imagens e álbuns" = "画像とアルバム";
 "Imagens geradas e enviadas aparecem aqui." = "生成・アップロードした画像がここに表示されます。";
 "instalado" = "インストール済み";
 "instalando…" = "インストール中…";
@@ -115,13 +108,11 @@
 "Library" = "ライブラリ";
 "Logs do sistema" = "システムログ";
 "Manter conectado" = "ログインを維持";
-"Memórias do assistente" = "アシスタントのメモリ";
 "Mesma pergunta para os dois…" = "両方に同じ質問…";
 "Modelo de chat padrão" = "デフォルトのチャットモデル";
 "Modelo on-device" = "オンデバイスモデル";
 "Modelo utilitário" = "ユーティリティモデル";
 "Modelos conectados" = "接続済みモデル";
-"Modelos e engines" = "モデルとエンジン";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "iOS = 話しながらリアルタイムで文字起こし（Claude/Gemini のような）。「モデル」= オフラインの Whisper（最後に文字起こし）。ダウンロード済みモデルでは、⚡で Core ML アクセラレーター（Neural Engine）をダウンロード → 大幅に高速化。";
 "Nativo iOS" = "iOS";
 "Nenhum endpoint conectado." = "接続されたエンドポイントがありません。";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "ニューラル音声を削除";
 "Ativar aceleração Core ML" = "Core ML アクセラレーションを有効にする";
 "Baixa" = "低";
+"Alta" = "高";
 "Baixar modelo" = "モデルをダウンロード";
 "Cancelar download" = "ダウンロードを中止";
 "Chinês" = "中国語";

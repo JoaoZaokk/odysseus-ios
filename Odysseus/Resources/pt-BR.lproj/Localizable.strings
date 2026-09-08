@@ -36,12 +36,10 @@
 "Admin" = "Admin";
 "Agent Tools" = "Agent Tools";
 "Agente" = "Agente";
-"Agentes agendados" = "Agentes agendados";
 "Agentes agendados do Odysseus aparecem aqui." = "Agentes agendados do Odysseus aparecem aqui.";
 "Ajustes" = "Ajustes";
 "Amanhã" = "Amanhã";
 "Analisa imagens com um modelo com visão." = "Analisa imagens com um modelo com visão.";
-"Anotações e lembretes" = "Anotações e lembretes";
 "Apagar" = "Apagar";
 "Aparência" = "Aparência";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio.";
@@ -69,7 +67,6 @@
 "Buscar nos logs…" = "Buscar nos logs…";
 "Cabe na máquina (estimativa, melhor GPU)" = "Cabe na máquina (estimativa, melhor GPU)";
 "Cadastro aberto" = "Cadastro aberto";
-"Caixa de entrada" = "Caixa de entrada";
 "Caixa vazia" = "Caixa vazia";
 "Calendário" = "Calendário";
 "Calendário & Contatos" = "Calendário & Contatos";
@@ -82,7 +79,6 @@
 "Como o fallback funciona" = "Como o fallback funciona";
 "Como posso ajudar?" = "Como posso ajudar?";
 "Comparar" = "Comparar";
-"Comparar modelos" = "Comparar modelos";
 "Concluído" = "Concluído";
 "Conectado a %@" = "Conectado a %@";
 "Conectar conta" = "Conectar conta";
@@ -121,7 +117,6 @@
 "Dia todo" = "Dia todo";
 "Diagnóstico ao vivo do processo Odysseus." = "Diagnóstico ao vivo do processo Odysseus.";
 "Documentos" = "Documentos";
-"Documentos pessoais (RAG)" = "Documentos pessoais (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\").";
 "E-mail" = "E-mail";
 "Editar nota" = "Editar nota";
@@ -142,7 +137,6 @@
 "Espaços" = "Espaços";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real.";
 "Estrelas" = "Estrelas";
-"Eventos e agenda" = "Eventos e agenda";
 "Ex: reunião amanhã 14h" = "Ex: reunião amanhã 14h";
 "Executando" = "Executando";
 "Execução" = "Execução";
@@ -185,7 +179,6 @@
 "Idioma" = "Idioma";
 "Igual ao chat" = "Igual ao chat";
 "Imagem" = "Imagem";
-"Imagens e álbuns" = "Imagens e álbuns";
 "Imagens geradas e enviadas aparecem aqui." = "Imagens geradas e enviadas aparecem aqui.";
 "Instalar" = "Instalar";
 "Integrações" = "Integrações";
@@ -203,7 +196,6 @@
 "Manual" = "Manual";
 "Max tokens" = "Max tokens";
 "Memorizando" = "Memorizando";
-"Memórias do assistente" = "Memórias do assistente";
 "Memórias já estão organizadas — nada a remover." = "Memórias já estão organizadas — nada a remover.";
 "Mensagem…" = "Mensagem…";
 "Mensagens antigas saíram do contexto para caber no limite." = "Mensagens antigas saíram do contexto para caber no limite.";
@@ -215,7 +207,6 @@
 "Modelo utilitário" = "Modelo utilitário";
 "Modelos & Cookbook" = "Modelos & Cookbook";
 "Modelos conectados" = "Modelos conectados";
-"Modelos e engines" = "Modelos e engines";
 "Modelos usados ao criar uma nova conversa e em tarefas de fundo." = "Modelos usados ao criar uma nova conversa e em tarefas de fundo.";
 "Multi-agente" = "Multi-agente";
 "Máx. de rounds" = "Máx. de rounds";
@@ -280,7 +271,7 @@
 "Padrão" = "Padrão";
 "Padrões de IA" = "Padrões de IA";
 "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA." = "Para a maioria dos provedores, usar as credenciais do IMAP funciona. Use senha de app se tiver 2FA.";
-"Password" = "Password";
+"Password" = "Senha";
 "Pesquisas anteriores" = "Pesquisas anteriores";
 "Pausar" = "Pausar";
 "Pede %@ antes de usar a senha salva." = "Pede %@ antes de usar a senha salva.";
@@ -379,7 +370,7 @@
 "URL (opcional)" = "URL (opcional)";
 "Usada quando nenhuma outra está selecionada." = "Usada quando nenhuma outra está selecionada.";
 "Usar como conta padrão" = "Usar como conta padrão";
-"Username" = "Username";
+"Username" = "Usuário";
 "Usuário" = "Usuário";
 "Usuário SMTP" = "Usuário SMTP";
 "Usuários" = "Usuários";
@@ -502,6 +493,7 @@
 "Apagar voz neural" = "Apagar voz neural";
 "Ativar aceleração Core ML" = "Ativar aceleração Core ML";
 "Baixa" = "Baixa";
+"Alta" = "Alta";
 "Baixar modelo" = "Baixar modelo";
 "Cancelar download" = "Cancelar download";
 "Chinês" = "Chinês";

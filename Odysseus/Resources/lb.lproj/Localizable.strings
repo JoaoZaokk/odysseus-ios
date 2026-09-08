@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Geplangt %@";
 "Agent Tools" = "Agent-Tools";
-"Agentes agendados" = "Geplangten Agenten";
 "Agentes agendados do Odysseus aparecem aqui." = "D'geplangten Agenten vum Odysseus erschéngen hei.";
 "Ajustes" = "Astellungen";
 "Analisa imagens com um modelo com visão." = "Analyséiert Biller mat engem visiounsfäegen Modell.";
-"Anotações e lembretes" = "Notizen an Erënnerungen";
 "Apagar" = "Läschen";
 "Aparência" = "Erscheinung";
 "apertado" = "knapp";
@@ -41,7 +39,6 @@
 "cabe" = "passt";
 "Cabe na máquina (estimativa, melhor GPU)" = "Passt op d'Maschinn (Schätzung, bescht GPU)";
 "Cadastro aberto" = "Offen Umeldung";
-"Caixa de entrada" = "Posteingang";
 "Calendário" = "Kalenner";
 "Cancelar" = "Ofbriechen";
 "Carregando…" = "Gëtt gelueden…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Wéi de Fallback funktionnéiert";
 "Como posso ajudar?" = "Wéi kann ech hëllefen?";
 "Comparar" = "Vergläichen";
-"Comparar modelos" = "Modeller vergläichen";
 "Concluído" = "Fäerdeg";
 "Conectado a %@" = "Mat %@ verbonnen";
 "Conectar conta" = "Konto verbannen";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Erkannt: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Live-Diagnostik vum Odysseus-Prozess.";
 "Diário %@" = "Deeglech %@";
-"Documentos pessoais (RAG)" = "Perséinlech Dokumenter (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Gëff dësem Agent en Numm, fir en vun deenen aneren z'ënnerscheeden (z.B. \"Claude Agent — Laptop\").";
 "Email" = "E-Mail";
 "Email (IMAP/SMTP)" = "E-Mail (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Schreif hei uewen an natierlecher Sprooch\noder tipp op +, fir z'erstellen.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Schätzung no Numm (fp8≈1B/Param, fp16/bf16≈2B/Param) + ~3 GB Loft. Ersetzt kee richtege Test.";
 "Evento: %@" = "Evenement: %@";
-"Eventos e agenda" = "Evenementer a Kalenner";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "z.B. D'Theorië vum Zesummebroch vun der Bronzezäit an d'Beweiser";
 "ex.: assistente direto e objetivo" = "z.B. en direkten, präzisen Assistent";
 "Ex: reunião amanhã 14h" = "Z.B. Reunioun muer ëm 14 Auer";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktivéier oder deaktivéier d'Tools, déi dem Agent zur Verfügung stinn.";
 "Idioma" = "Sprooch";
 "Igual ao chat" = "Wéi de Chat";
-"Imagens e álbuns" = "Biller an Albumen";
 "Imagens geradas e enviadas aparecem aqui." = "Generéiert an eropgeluede Biller erschéngen hei.";
 "instalado" = "installéiert";
 "instalando…" = "gëtt installéiert…";
@@ -115,13 +108,11 @@
 "Library" = "Bibliothéik";
 "Logs do sistema" = "Systemlogs";
 "Manter conectado" = "Ugemellt bleiwen";
-"Memórias do assistente" = "Erënnerunge vum Assistent";
 "Mesma pergunta para os dois…" = "Déiselwecht Fro fir déi zwee…";
 "Modelo de chat padrão" = "Standard-Chatmodell";
 "Modelo on-device" = "On-Device-Modell";
 "Modelo utilitário" = "Hëllefsmodell";
 "Modelos conectados" = "Verbonne Modeller";
-"Modelos e engines" = "Modeller an Engines";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Native = Live-Transkriptioun während s du schwätz (wéi Claude/Gemini). \"Modell\" = offline Whisper (transkribéiert um Enn). Bei erofgeluedene Modeller lued de ⚡ de Core-ML-Accelerator (Neural Engine) → vill méi séier.";
 "Nativo iOS" = "Nativ iOS";
 "Nenhum endpoint conectado." = "Kee Endpoint verbonnen.";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Neural Stëmm läschen";
 "Ativar aceleração Core ML" = "Core ML-Beschleunegung aschalten";
 "Baixa" = "Niddreg";
+"Alta" = "Héich";
 "Baixar modelo" = "Modell eroflueden";
 "Cancelar download" = "Download ofbriechen";
 "Chinês" = "Chinesesch";

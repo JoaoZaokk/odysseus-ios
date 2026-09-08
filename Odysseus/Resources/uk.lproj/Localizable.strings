@@ -13,11 +13,9 @@
 "Admin" = "Адміністратор";
 "Agendado %@" = "Заплановано %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Заплановані агенти";
 "Agentes agendados do Odysseus aparecem aqui." = "Заплановані агенти Odysseus відображаються тут.";
 "Ajustes" = "Налаштування";
 "Analisa imagens com um modelo com visão." = "Аналізує зображення за допомогою моделі з підтримкою зору.";
-"Anotações e lembretes" = "Нотатки та нагадування";
 "Apagar" = "Видалити";
 "Aparência" = "Зовнішній вигляд";
 "apertado" = "впритул";
@@ -41,7 +39,6 @@
 "cabe" = "вміщається";
 "Cabe na máquina (estimativa, melhor GPU)" = "Поміщається на пристрої (оцінка, кращий GPU)";
 "Cadastro aberto" = "Відкрита реєстрація";
-"Caixa de entrada" = "Вхідні";
 "Calendário" = "Календар";
 "Cancelar" = "Скасувати";
 "Carregando…" = "Завантаження…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Як працює запасний варіант";
 "Como posso ajudar?" = "Чим можу допомогти?";
 "Comparar" = "Порівняти";
-"Comparar modelos" = "Порівняти моделі";
 "Concluído" = "Готово";
 "Conectado a %@" = "Підключено до %@";
 "Conectar conta" = "Підключити акаунт";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Виявлено: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Діагностика процесу Odysseus у реальному часі.";
 "Diário %@" = "Щодня %@";
-"Documentos pessoais (RAG)" = "Особисті документи (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Дайте цьому агенту ім'я, щоб відрізнити його від інших (напр. «Claude Agent — ноутбук»).";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Напишіть природною мовою вище\nабо торкніться +, щоб створити.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Оцінка за назвою (fp8≈1B/пар., fp16/bf16≈2B/пар.) + ~3 ГБ запасу. Не замінює реального тесту.";
 "Evento: %@" = "Подія: %@";
-"Eventos e agenda" = "Події та розклад";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "напр.: Теорії колапсу Бронзового віку та докази";
 "ex.: assistente direto e objetivo" = "напр.: прямий і чіткий асистент";
 "Ex: reunião amanhã 14h" = "Напр.: зустріч завтра о 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Вмикайте або вимикайте інструменти, доступні агенту.";
 "Idioma" = "Мова";
 "Igual ao chat" = "Як у чаті";
-"Imagens e álbuns" = "Зображення та альбоми";
 "Imagens geradas e enviadas aparecem aqui." = "Згенеровані та завантажені зображення відображаються тут.";
 "instalado" = "встановлено";
 "instalando…" = "встановлення…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Системні logs";
 "Manter conectado" = "Залишатися в системі";
-"Memórias do assistente" = "Спогади асистента";
 "Mesma pergunta para os dois…" = "Однакове запитання для обох…";
 "Modelo de chat padrão" = "Модель чату за замовчуванням";
 "Modelo on-device" = "Локальна модель";
 "Modelo utilitário" = "Службова модель";
 "Modelos conectados" = "Підключені моделі";
-"Modelos e engines" = "Моделі та рушії";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Нативний = транскрипція в реальному часі під час мовлення (як Claude/Gemini). «Модель» = Whisper офлайн (транскрибує наприкінці). У завантажених моделей ⚡ завантажує прискорювач Core ML (Neural Engine) → набагато швидше.";
 "Nativo iOS" = "Нативний iOS";
 "Nenhum endpoint conectado." = "Немає підключених endpoint.";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Нотатки · архівовані";
 "Nova nota" = "Нова нотатка";
 "Não consegui carregar o relatório." = "Не вдалося завантажити звіт.";
-"Password" = "Password";
+"Password" = "Пароль";
 "Pausar" = "Пауза";
 "Pensando…" = "Думаю…";
 "Raciocínio" = "Міркування";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Поки немає нотаток";
 "Tornar admin" = "Зробити адміністратором";
 "Tudo" = "Все";
-"Username" = "Username";
+"Username" = "Користувач";
 "Verificar" = "Перевірити";
 "%lld de %lld linhas" = "%lld з %lld рядків";
 "(sem nome)" = "(без імені)";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "Видалити нейронний голос";
 "Ativar aceleração Core ML" = "Увімкнути прискорення Core ML";
 "Baixa" = "Низька";
+"Alta" = "Висока";
 "Baixar modelo" = "Завантажити модель";
 "Cancelar download" = "Скасувати завантаження";
 "Chinês" = "Китайська";

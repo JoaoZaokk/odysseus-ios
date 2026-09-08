@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Dijadualkan %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Ejen berjadual";
 "Agentes agendados do Odysseus aparecem aqui." = "Ejen berjadual Odysseus akan muncul di sini.";
 "Ajustes" = "Tetapan";
 "Analisa imagens com um modelo com visão." = "Menganalisis imej dengan model yang mempunyai keupayaan penglihatan.";
-"Anotações e lembretes" = "Nota dan peringatan";
 "Apagar" = "Padam";
 "Aparência" = "Penampilan";
 "apertado" = "sempit";
@@ -41,7 +39,6 @@
 "cabe" = "muat";
 "Cabe na máquina (estimativa, melhor GPU)" = "Muat dalam mesin (anggaran, GPU terbaik)";
 "Cadastro aberto" = "Pendaftaran terbuka";
-"Caixa de entrada" = "Peti masuk";
 "Calendário" = "Kalendar";
 "Cancelar" = "Batal";
 "Carregando…" = "Memuatkan…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Cara sandaran berfungsi";
 "Como posso ajudar?" = "Apa yang boleh saya bantu?";
 "Comparar" = "Bandingkan";
-"Comparar modelos" = "Bandingkan model";
 "Concluído" = "Selesai";
 "Conectado a %@" = "Disambungkan ke %@";
 "Conectar conta" = "Sambungkan akaun";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Dikesan: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Diagnostik langsung proses Odysseus.";
 "Diário %@" = "Setiap hari %@";
-"Documentos pessoais (RAG)" = "Dokumen peribadi (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Berikan nama kepada ejen ini untuk membezakannya daripada yang lain (cth. \"Claude Agent — laptop\").";
 "Email" = "E-mel";
 "Email (IMAP/SMTP)" = "E-mel (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Tulis dalam bahasa semula jadi di atas\natau ketik + untuk mencipta.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Anggaran mengikut nama (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB ruang lapang. Tidak menggantikan ujian sebenar.";
 "Evento: %@" = "Acara: %@";
-"Eventos e agenda" = "Acara dan jadual";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "cth. Teori-teori keruntuhan Zaman Gangsa dan buktinya";
 "ex.: assistente direto e objetivo" = "cth. pembantu yang terus dan ringkas";
 "Ex: reunião amanhã 14h" = "Cth: mesyuarat esok pukul 2 petang";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktifkan atau nyahaktifkan alat yang tersedia untuk ejen.";
 "Idioma" = "Bahasa";
 "Igual ao chat" = "Sama seperti sembang";
-"Imagens e álbuns" = "Imej dan album";
 "Imagens geradas e enviadas aparecem aqui." = "Imej yang dijana dan dimuat naik muncul di sini.";
 "instalado" = "dipasang";
 "instalando…" = "memasang…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Log sistem";
 "Manter conectado" = "Kekalkan log masuk";
-"Memórias do assistente" = "Kenangan pembantu";
 "Mesma pergunta para os dois…" = "Soalan yang sama untuk kedua-duanya…";
 "Modelo de chat padrão" = "Model sembang lalai";
 "Modelo on-device" = "Model pada peranti";
 "Modelo utilitário" = "Model utiliti";
 "Modelos conectados" = "Model yang disambungkan";
-"Modelos e engines" = "Model dan enjin";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Asli = transkripsi langsung semasa anda bercakap (seperti Claude/Gemini). \"Model\" = Whisper luar talian (transkripsi di penghujung). Untuk model yang dimuat turun, ⚡ memuat turun pemecut Core ML (Neural Engine) → jauh lebih pantas.";
 "Nativo iOS" = "iOS asli";
 "Nenhum endpoint conectado." = "Tiada endpoint disambungkan.";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Padam suara neural";
 "Ativar aceleração Core ML" = "Hidupkan pecutan Core ML";
 "Baixa" = "Rendah";
+"Alta" = "Tinggi";
 "Baixar modelo" = "Muat turun model";
 "Cancelar download" = "Batal muat turun";
 "Chinês" = "Cina";

@@ -13,11 +13,9 @@
 "Admin" = "Quản trị viên";
 "Agendado %@" = "Đã lên lịch %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Tác nhân đã lên lịch";
 "Agentes agendados do Odysseus aparecem aqui." = "Các tác nhân đã lên lịch của Odysseus xuất hiện ở đây.";
 "Ajustes" = "Cài đặt";
 "Analisa imagens com um modelo com visão." = "Phân tích hình ảnh bằng mô hình có khả năng nhìn.";
-"Anotações e lembretes" = "Ghi chú và nhắc nhở";
 "Apagar" = "Xóa";
 "Aparência" = "Giao diện";
 "apertado" = "chật";
@@ -41,7 +39,6 @@
 "cabe" = "vừa";
 "Cabe na máquina (estimativa, melhor GPU)" = "Phù hợp với máy (ước tính, GPU tốt nhất)";
 "Cadastro aberto" = "Đăng ký mở";
-"Caixa de entrada" = "Hộp thư đến";
 "Calendário" = "Lịch";
 "Cancelar" = "Hủy";
 "Carregando…" = "Đang tải…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Cách hoạt động của dự phòng";
 "Como posso ajudar?" = "Tôi có thể giúp gì cho bạn?";
 "Comparar" = "So sánh";
-"Comparar modelos" = "So sánh các mô hình";
 "Concluído" = "Hoàn tất";
 "Conectado a %@" = "Đã kết nối với %@";
 "Conectar conta" = "Kết nối tài khoản";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Đã phát hiện: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Chẩn đoán trực tiếp tiến trình Odysseus.";
 "Diário %@" = "Hàng ngày %@";
-"Documentos pessoais (RAG)" = "Tài liệu cá nhân (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Đặt tên cho tác nhân này để phân biệt với các tác nhân khác (ví dụ: \"Claude Agent — laptop\").";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Viết bằng ngôn ngữ tự nhiên phía trên\nhoặc nhấn + để tạo.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Ước tính theo tên (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB dự phòng. Không thay thế kiểm tra thực tế.";
 "Evento: %@" = "Sự kiện: %@";
-"Eventos e agenda" = "Sự kiện và lịch trình";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "ví dụ: Các lý thuyết về sự sụp đổ của Thời đại Đồ đồng và bằng chứng";
 "ex.: assistente direto e objetivo" = "ví dụ: trợ lý trực tiếp và súc tích";
 "Ex: reunião amanhã 14h" = "Ví dụ: họp ngày mai lúc 14 giờ";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Bật hoặc tắt các công cụ có sẵn cho tác nhân.";
 "Idioma" = "Ngôn ngữ";
 "Igual ao chat" = "Giống như chat";
-"Imagens e álbuns" = "Hình ảnh và album";
 "Imagens geradas e enviadas aparecem aqui." = "Hình ảnh đã tạo và tải lên xuất hiện ở đây.";
 "instalado" = "đã cài đặt";
 "instalando…" = "đang cài đặt…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Log hệ thống";
 "Manter conectado" = "Duy trì đăng nhập";
-"Memórias do assistente" = "Ký ức của trợ lý";
 "Mesma pergunta para os dois…" = "Cùng một câu hỏi cho cả hai…";
 "Modelo de chat padrão" = "Mô hình chat mặc định";
 "Modelo on-device" = "Mô hình trên thiết bị";
 "Modelo utilitário" = "Mô hình tiện ích";
 "Modelos conectados" = "Mô hình đã kết nối";
-"Modelos e engines" = "Mô hình và động cơ";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Gốc = phiên âm trực tiếp khi bạn nói (như Claude/Gemini). \"Mô hình\" = Whisper ngoại tuyến (phiên âm ở cuối). Với các mô hình đã tải, ⚡ tải bộ tăng tốc Core ML (Neural Engine) → nhanh hơn nhiều.";
 "Nativo iOS" = "iOS gốc";
 "Nenhum endpoint conectado." = "Chưa kết nối endpoint nào.";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Xoá giọng neural";
 "Ativar aceleração Core ML" = "Bật tăng tốc Core ML";
 "Baixa" = "Thấp";
+"Alta" = "Cao";
 "Baixar modelo" = "Tải mô hình";
 "Cancelar download" = "Hủy tải xuống";
 "Chinês" = "Tiếng Trung";

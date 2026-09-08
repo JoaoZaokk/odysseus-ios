@@ -1,18 +1,29 @@
 import SwiftUI
 
-/// The unified sidebar: feature sections at the top, conversation list below.
+/// The unified sidebar: what the user came for — the conversations — right
+/// under one quick action and one collapsed group of feature sections.
+///
+/// The 1.8 layout stacked three quick actions and nine two-line "Espaços"
+/// rows above the first conversation: on a 6.1" iPhone the list started a
+/// whole screen below the top, and a German review called the result
+/// "sehr unaufgeräumt". The web reference puts Chats right after New chat
+/// and Search, with its tools last, single-line.
 struct SidebarView: View {
     @ObservedObject var store: SessionStore
     @ObservedObject var workspace: WorkspaceStore
     @Binding var showSettings: Bool
     @Environment(\.theme) private var theme
     @EnvironmentObject private var themes: ThemeStore
-    @EnvironmentObject private var loc: LocalizationManager
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    #endif
 
     @State private var search = ""
     @State private var renaming: ChatSession?
     @State private var renameText = ""
-    @State private var showThemes = false
+    /// nil = never touched: iPhone starts collapsed (the sections would push
+    /// the conversations below the fold), iPad and macOS start open.
+    @AppStorage("sidebar.spaces.expanded") private var spacesExpandedStored: Bool?
 
     private var filtered: [ChatSession] {
         guard !search.isEmpty else { return store.sessions }
@@ -23,36 +34,43 @@ struct SidebarView: View {
         workspace.panes.contains { $0.kind == kind }
     }
 
+    private var spacesExpandedDefault: Bool {
+        #if os(macOS)
+        return true
+        #else
+        return sizeClass == .regular
+        #endif
+    }
+
+    private var spacesExpanded: Binding<Bool> {
+        Binding(get: { spacesExpandedStored ?? spacesExpandedDefault },
+                set: { spacesExpandedStored = $0 })
+    }
+
     var body: some View {
         List {
-            // Quick actions
-            Section {
-                navRow(icon: "square.and.pencil", title: "Nova conversa", tint: theme.accent,
-                       active: active(.newChat)) { workspace.setPrimary(.newChat) }
-                navRow(icon: "sparkle.magnifyingglass", title: "Deep Search", tint: theme.green,
-                       active: active(.deepSearch)) { workspace.openDeepSearch() }
-                Button { showThemes = true } label: {
-                    Label {
-                        Text("Tema").font(.ody(.subheadline)).foregroundStyle(theme.fg)
-                    } icon: {
-                        Image(systemName: "paintpalette").foregroundStyle(theme.accent)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .contentShape(Rectangle())
+            // Navigation stays out of the way while a search is typed: the
+            // matches are what the user is looking at, not Deep Search.
+            if search.isEmpty {
+                // "Nova conversa" lives in the chrome (the toolbar pencil) —
+                // a second copy as the first row was the same action twice
+                // on one screen. Theme lives in Settings › Aparência.
+                Section {
+                    navRow(icon: "sparkle.magnifyingglass", title: "Deep Search", tint: theme.green,
+                           active: active(.deepSearch)) { workspace.openDeepSearch() }
                 }
-                .buttonStyle(.plain)
-                .listRowBackground(theme.bg)
-            }
 
-            // Feature sections
-            Section {
-                ForEach(AppSection.allCases) { section in
-                    Button { workspace.setPrimary(.section(section)) } label: { sectionRow(section) }
-                        .buttonStyle(.plain)
-                        .listRowBackground(active(.section(section)) ? theme.accent.opacity(0.14) : theme.bg)
+                // Feature sections: one line each, collapsible, header always
+                // on screen so the nine entry points never scroll away.
+                Section(isExpanded: spacesExpanded) {
+                    ForEach(AppSection.allCases) { section in
+                        Button { workspace.setPrimary(.section(section)) } label: { sectionRow(section) }
+                            .buttonStyle(.plain)
+                            .listRowBackground(active(.section(section)) ? theme.accent.opacity(0.14) : theme.bg)
+                    }
+                } header: {
+                    header("Espaços")
                 }
-            } header: {
-                header("Espaços")
             }
 
             // Conversations
@@ -104,15 +122,6 @@ struct SidebarView: View {
             Button { workspace.setPrimary(.newChat) } label: { Image(systemName: "square.and.pencil") }
         }
         .refreshable { await store.load() }
-        .sheet(isPresented: $showThemes) {
-            ThemePickerView(inSheet: true)
-                .environmentObject(themes)
-                // macOS: `.sheet` opens a separate window that does NOT inherit the
-                // root's `\.locale`, so the picker fell back to the system language
-                // (PT) even when the app language was English. Re-inject it.
-                .environment(\.locale, loc.locale)
-                .environment(\.layoutDirection, loc.layoutDirection)
-        }
         .alert("Renomear conversa", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
             TextField("Nome", text: $renameText)
             Button("Salvar") {
@@ -146,40 +155,30 @@ struct SidebarView: View {
 
     private func sectionRow(_ section: AppSection) -> some View {
         Label {
-            VStack(alignment: .leading, spacing: 1) {
-                Text(LocalizedStringKey(section.title))
-                    .font(.ody(.subheadline))
-                    .foregroundStyle(theme.fg)
-                Text(LocalizedStringKey(section.subtitle))
-                    .font(.ody(size: 10))
-                    .foregroundStyle(theme.secondaryText)
-                    .lineLimit(1)
-            }
+            Text(LocalizedStringKey(section.title))
+                .font(.ody(.subheadline))
+                .foregroundStyle(theme.fg)
+                .lineLimit(1)
         } icon: {
             Image(systemName: section.icon).foregroundStyle(theme.accent)
         }
-        .padding(.vertical, 2)
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
     }
 
+    /// One line: pin glyph and title. The model is already in the chat
+    /// header, and a second line per row was what made the list read as
+    /// twice as long as it is.
     private func chatRow(_ session: ChatSession) -> some View {
         HStack(spacing: 8) {
             if session.pinned {
                 Image(systemName: "pin.fill").font(.caption2).foregroundStyle(theme.accent)
             }
-            VStack(alignment: .leading, spacing: 2) {
-                Text(session.title)
-                    .font(.ody(.subheadline))
-                    .foregroundStyle(theme.fg).lineLimit(1)
-                if let m = session.shortModel {
-                    Text(m).font(.ody(size: 10))
-                        .foregroundStyle(theme.secondaryText).lineLimit(1)
-                }
-            }
+            Text(session.title)
+                .font(.ody(.subheadline))
+                .foregroundStyle(theme.fg).lineLimit(1)
             Spacer()
         }
-        .padding(.vertical, 2)
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
     }

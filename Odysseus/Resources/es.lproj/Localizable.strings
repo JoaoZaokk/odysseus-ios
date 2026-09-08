@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Programado %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Agentes programados";
 "Agentes agendados do Odysseus aparecem aqui." = "Los agentes programados de Odysseus aparecen aquí.";
 "Ajustes" = "Ajustes";
 "Analisa imagens com um modelo com visão." = "Analiza imágenes con un modelo de visión.";
-"Anotações e lembretes" = "Notas y recordatorios";
 "Apagar" = "Eliminar";
 "Aparência" = "Apariencia";
 "apertado" = "justo";
@@ -41,7 +39,6 @@
 "cabe" = "cabe";
 "Cabe na máquina (estimativa, melhor GPU)" = "Cabe en la máquina (estimación, mejor GPU)";
 "Cadastro aberto" = "Registro abierto";
-"Caixa de entrada" = "Bandeja de entrada";
 "Calendário" = "Calendario";
 "Cancelar" = "Cancelar";
 "Carregando…" = "Cargando…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Cómo funciona el fallback";
 "Como posso ajudar?" = "¿En qué puedo ayudarte?";
 "Comparar" = "Comparar";
-"Comparar modelos" = "Comparar modelos";
 "Concluído" = "Hecho";
 "Conectado a %@" = "Conectado a %@";
 "Conectar conta" = "Conectar cuenta";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Detectado: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Diagnóstico en vivo del proceso Odysseus.";
 "Diário %@" = "Diariamente %@";
-"Documentos pessoais (RAG)" = "Documentos personales (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Dale un nombre a este agente para distinguirlo de los demás (p. ej., \"Claude Agent — laptop\").";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Escribe en lenguaje natural arriba\no toca + para crear.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Estimación por nombre (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de margen. No sustituye una prueba real.";
 "Evento: %@" = "Evento: %@";
-"Eventos e agenda" = "Eventos y agenda";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "p. ej. Las teorías del colapso de la Edad del Bronce y las evidencias";
 "ex.: assistente direto e objetivo" = "p. ej. un asistente directo y conciso";
 "Ex: reunião amanhã 14h" = "Ej.: reunión mañana a las 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Activa o desactiva las herramientas disponibles para el agente.";
 "Idioma" = "Idioma";
 "Igual ao chat" = "Igual que el chat";
-"Imagens e álbuns" = "Imágenes y álbumes";
 "Imagens geradas e enviadas aparecem aqui." = "Las imágenes generadas y subidas aparecen aquí.";
 "instalado" = "instalado";
 "instalando…" = "instalando…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Logs del sistema";
 "Manter conectado" = "Mantener sesión iniciada";
-"Memórias do assistente" = "Memorias del asistente";
 "Mesma pergunta para os dois…" = "La misma pregunta para ambos…";
 "Modelo de chat padrão" = "Modelo de chat predeterminado";
 "Modelo on-device" = "Modelo en el dispositivo";
 "Modelo utilitário" = "Modelo utilitario";
 "Modelos conectados" = "Modelos conectados";
-"Modelos e engines" = "Modelos y motores";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativo = transcripción en vivo mientras hablas (como Claude/Gemini). «Modelo» = Whisper sin conexión (transcribe al final). En los modelos descargados, ⚡ descarga el acelerador Core ML (Neural Engine) → mucho más rápido.";
 "Nativo iOS" = "Nativo iOS";
 "Nenhum endpoint conectado." = "Ningún endpoint conectado.";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Notes · archivadas";
 "Nova nota" = "Nueva nota";
 "Não consegui carregar o relatório." = "No se pudo cargar el informe.";
-"Password" = "Password";
+"Password" = "Contraseña";
 "Pausar" = "Pausar";
 "Pensando…" = "Pensando…";
 "Raciocínio" = "Razonamiento";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Sin notas todavía";
 "Tornar admin" = "Hacer admin";
 "Tudo" = "Todo";
-"Username" = "Username";
+"Username" = "Usuario";
 "Verificar" = "Verificar";
 "%lld de %lld linhas" = "%lld de %lld líneas";
 "(sem nome)" = "(sin nombre)";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "Eliminar voz neuronal";
 "Ativar aceleração Core ML" = "Activar aceleración Core ML";
 "Baixa" = "Baja";
+"Alta" = "Alta";
 "Baixar modelo" = "Descargar modelo";
 "Cancelar download" = "Cancelar descarga";
 "Chinês" = "Chino";

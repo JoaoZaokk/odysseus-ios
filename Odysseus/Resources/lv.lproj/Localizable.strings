@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Ieplānots %@";
 "Agent Tools" = "Aģenta rīki";
-"Agentes agendados" = "Ieplānotie aģenti";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus ieplānotie aģenti parādās šeit.";
 "Ajustes" = "Iestatījumi";
 "Analisa imagens com um modelo com visão." = "Analizē attēlus ar redzes spējām apveltītu modeli.";
-"Anotações e lembretes" = "Piezīmes un atgādinājumi";
 "Apagar" = "Dzēst";
 "Aparência" = "Izskats";
 "apertado" = "tikko";
@@ -41,7 +39,6 @@
 "cabe" = "ietilpst";
 "Cabe na máquina (estimativa, melhor GPU)" = "Ietilpst iekārtā (novērtējums, labākais GPU)";
 "Cadastro aberto" = "Atvērta reģistrācija";
-"Caixa de entrada" = "Iesūtne";
 "Calendário" = "Kalendārs";
 "Cancelar" = "Atcelt";
 "Carregando…" = "Ielādē…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Kā darbojas rezerves variants";
 "Como posso ajudar?" = "Kā es varu palīdzēt?";
 "Comparar" = "Salīdzināt";
-"Comparar modelos" = "Salīdzināt modeļus";
 "Concluído" = "Pabeigts";
 "Conectado a %@" = "Savienots ar %@";
 "Conectar conta" = "Savienot kontu";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Konstatēts: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus procesa diagnostika reāllaikā.";
 "Diário %@" = "Katru dienu %@";
-"Documentos pessoais (RAG)" = "Personīgie dokumenti (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Piešķiriet šim aģentam nosaukumu, lai to atšķirtu no citiem (piem., \"Claude Agent — laptop\").";
 "Email" = "E-pasts";
 "Email (IMAP/SMTP)" = "E-pasts (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Rakstiet dabiskā valodā augšā\nvai pieskarieties +, lai izveidotu.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Aprēķins pēc nosaukuma (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB rezerve. Neaizstāj reālu testu.";
 "Evento: %@" = "Notikums: %@";
-"Eventos e agenda" = "Notikumi un grafiks";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "piem., Bronzas laikmeta sabrukuma teorijas un pierādījumi";
 "ex.: assistente direto e objetivo" = "piem., tiešs un konkrēts asistents";
 "Ex: reunião amanhã 14h" = "Piem.: sanāksme rīt plkst. 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Iespējojiet vai atspējojiet aģentam pieejamos rīkus.";
 "Idioma" = "Valoda";
 "Igual ao chat" = "Tāds pats kā tērzēšanai";
-"Imagens e álbuns" = "Attēli un albumi";
 "Imagens geradas e enviadas aparecem aqui." = "Ģenerētie un augšupielādētie attēli parādās šeit.";
 "instalado" = "instalēts";
 "instalando…" = "instalē…";
@@ -115,13 +108,11 @@
 "Library" = "Bibliotēka";
 "Logs do sistema" = "Sistēmas logi";
 "Manter conectado" = "Palikt pieslēgtam";
-"Memórias do assistente" = "Asistenta atmiņas";
 "Mesma pergunta para os dois…" = "Viens un tas pats jautājums abiem…";
 "Modelo de chat padrão" = "Noklusējuma tērzēšanas modelis";
 "Modelo on-device" = "Modelis ierīcē";
 "Modelo utilitário" = "Palīgmodelis";
 "Modelos conectados" = "Savienotie modeļi";
-"Modelos e engines" = "Modeļi un dzinēji";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Vietējais = tiešraides transkripcija runas laikā (kā Claude/Gemini). \"Modelis\" = bezsaistes Whisper (transkribē beigās). Lejupielādētajiem modeļiem ⚡ lejupielādē Core ML paātrinātāju (Neural Engine) → daudz ātrāk.";
 "Nativo iOS" = "Vietējais iOS";
 "Nenhum endpoint conectado." = "Nav pievienota endpoint.";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Dzēst neironu balsi";
 "Ativar aceleração Core ML" = "Ieslēgt Core ML paātrinājumu";
 "Baixa" = "Zema";
+"Alta" = "Augsta";
 "Baixar modelo" = "Lejupielādēt modeli";
 "Cancelar download" = "Atcelt lejupielādi";
 "Chinês" = "Ķīniešu";

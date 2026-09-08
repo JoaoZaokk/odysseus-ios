@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Ütemezve %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Ütemezett ügynökök";
 "Agentes agendados do Odysseus aparecem aqui." = "Az Odysseus ütemezett ügynökei itt jelennek meg.";
 "Ajustes" = "Beállítások";
 "Analisa imagens com um modelo com visão." = "Képeket elemez egy látási modellel.";
-"Anotações e lembretes" = "Jegyzetek és emlékeztetők";
 "Apagar" = "Törlés";
 "Aparência" = "Megjelenés";
 "apertado" = "szűkös";
@@ -41,7 +39,6 @@
 "cabe" = "fér el";
 "Cabe na máquina (estimativa, melhor GPU)" = "Elfér a gépen (becslés, legjobb GPU)";
 "Cadastro aberto" = "Nyílt regisztráció";
-"Caixa de entrada" = "Beérkező levelek";
 "Calendário" = "Naptár";
 "Cancelar" = "Mégse";
 "Carregando…" = "Betöltés…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Hogyan működik a tartalék";
 "Como posso ajudar?" = "Miben segíthetek?";
 "Comparar" = "Összehasonlítás";
-"Comparar modelos" = "Modellek összehasonlítása";
 "Concluído" = "Kész";
 "Conectado a %@" = "Csatlakozva: %@";
 "Conectar conta" = "Fiók csatlakoztatása";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Felismerve: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Az Odysseus folyamat élő diagnosztikája.";
 "Diário %@" = "Naponta %@";
-"Documentos pessoais (RAG)" = "Személyes dokumentumok (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Adjon nevet ennek az ügynöknek, hogy megkülönböztesse a többitől (pl. \"Claude Agent — laptop\").";
 "Email" = "E-mail";
 "Email (IMAP/SMTP)" = "E-mail (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Írjon természetes nyelven fent\nvagy koppintson a + gombra a létrehozáshoz.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Névből becsülve (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB tartalék. Nem helyettesíti a valós tesztet.";
 "Evento: %@" = "Esemény: %@";
-"Eventos e agenda" = "Események és menetrend";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "pl. A bronzkori összeomlás elméletei és bizonyítékai";
 "ex.: assistente direto e objetivo" = "pl. egyenes és tömör asszisztens";
 "Ex: reunião amanhã 14h" = "Pl: holnapi értekezlet 14:00-kor";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Engedélyezze vagy tiltsa le az ügynök számára elérhető eszközöket.";
 "Idioma" = "Nyelv";
 "Igual ao chat" = "Ugyanaz, mint a csevegés";
-"Imagens e álbuns" = "Képek és albumok";
 "Imagens geradas e enviadas aparecem aqui." = "A generált és feltöltött képek itt jelennek meg.";
 "instalado" = "telepítve";
 "instalando…" = "telepítés…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Rendszer logok";
 "Manter conectado" = "Maradjak bejelentkezve";
-"Memórias do assistente" = "Asszisztens emlékei";
 "Mesma pergunta para os dois…" = "Ugyanaz a kérdés mindkettőnek…";
 "Modelo de chat padrão" = "Alapértelmezett csevegési modell";
 "Modelo on-device" = "Eszközön futó modell";
 "Modelo utilitário" = "Segédmodell";
 "Modelos conectados" = "Csatlakoztatott modellek";
-"Modelos e engines" = "Modellek és motorok";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Natív = élő átírás beszéd közben (mint Claude/Gemini). \"Modell\" = offline Whisper (a végén ír át). A letöltött modelleknél a ⚡ letölti a Core ML gyorsítót (Neural Engine) → sokkal gyorsabb.";
 "Nativo iOS" = "Natív iOS";
 "Nenhum endpoint conectado." = "Nincs csatlakoztatott endpoint.";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Neurális hang törlése";
 "Ativar aceleração Core ML" = "Core ML gyorsítás bekapcsolása";
 "Baixa" = "Alacsony";
+"Alta" = "Magas";
 "Baixar modelo" = "Modell letöltése";
 "Cancelar download" = "Letöltés megszakítása";
 "Chinês" = "Kínai";

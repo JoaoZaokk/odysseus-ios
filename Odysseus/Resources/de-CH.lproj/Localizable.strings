@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Geplant %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Geplante Agenten";
 "Agentes agendados do Odysseus aparecem aqui." = "Geplante Odysseus-Agenten werden hier angezeigt.";
 "Ajustes" = "Einstellungen";
 "Analisa imagens com um modelo com visão." = "Analysiert Bilder mit einem Vision-Modell.";
-"Anotações e lembretes" = "Notizen und Erinnerungen";
 "Apagar" = "Löschen";
 "Aparência" = "Erscheinungsbild";
 "apertado" = "knapp";
@@ -41,7 +39,6 @@
 "cabe" = "passt";
 "Cabe na máquina (estimativa, melhor GPU)" = "Passt auf die Maschine (Schätzung, beste GPU)";
 "Cadastro aberto" = "Offene Registrierung";
-"Caixa de entrada" = "Posteingang";
 "Calendário" = "Kalender";
 "Cancelar" = "Abbrechen";
 "Carregando…" = "Wird geladen…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "So funktioniert der Fallback";
 "Como posso ajudar?" = "Wie kann ich helfen?";
 "Comparar" = "Vergleichen";
-"Comparar modelos" = "Modelle vergleichen";
 "Concluído" = "Fertig";
 "Conectado a %@" = "Verbunden mit %@";
 "Conectar conta" = "Konto verbinden";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Erkannt: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Live-Diagnose des Odysseus-Prozesses.";
 "Diário %@" = "Täglich %@";
-"Documentos pessoais (RAG)" = "Persönliche Dokumente (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Gib diesem Agenten einen Namen, um ihn von den anderen zu unterscheiden (z. B. \"Claude Agent — laptop\").";
 "Email" = "E-Mail";
 "Email (IMAP/SMTP)" = "E-Mail (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Schreibe oben in natürlicher Sprache\noder tippe auf +, um zu erstellen.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Schätzung nach Name (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB Reserve. Ersetzt keinen echten Test.";
 "Evento: %@" = "Ereignis: %@";
-"Eventos e agenda" = "Termine und Kalender";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "z. B. Die Theorien zum Untergang der Bronzezeit und die Belege";
 "ex.: assistente direto e objetivo" = "z. B. ein direkter, sachlicher Assistent";
 "Ex: reunião amanhã 14h" = "Z. B.: Besprechung morgen um 14:00 Uhr";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Aktiviere oder deaktiviere die verfügbaren Werkzeuge für den Agenten.";
 "Idioma" = "Sprache";
 "Igual ao chat" = "Gleich wie Chat";
-"Imagens e álbuns" = "Bilder und Alben";
 "Imagens geradas e enviadas aparecem aqui." = "Generierte und hochgeladene Bilder werden hier angezeigt.";
 "instalado" = "installiert";
 "instalando…" = "wird installiert…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "System-Logs";
 "Manter conectado" = "Angemeldet bleiben";
-"Memórias do assistente" = "Erinnerungen des Assistenten";
 "Mesma pergunta para os dois…" = "Dieselbe Frage für beide…";
 "Modelo de chat padrão" = "Standard-Chat-Modell";
 "Modelo on-device" = "Geräteeigenes Modell";
 "Modelo utilitário" = "Hilfsmodell";
 "Modelos conectados" = "Verbundene Modelle";
-"Modelos e engines" = "Modelle und Engines";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativ = Live-Transkription während du sprichst (wie Claude/Gemini). „Modell\" = Whisper offline (transkribiert am Ende). Bei heruntergeladenen Modellen lädt ⚡ den Core ML-Beschleuniger (Neural Engine) herunter → deutlich schneller.";
 "Nativo iOS" = "Nativ iOS";
 "Nenhum endpoint conectado." = "Kein Endpunkt verbunden.";
@@ -202,7 +193,7 @@
 "testando…" = "wird getestet…";
 "Testar" = "Testen";
 "Testar lembrete" = "Erinnerung testen";
-"Texto → Voz" = "Text → Sprache";
+"Texto → Voz" = "Text → Sprachausgabe";
 "Timeout" = "Timeout";
 "Todos" = "Alle";
 "Toque em + para conectar uma conta IMAP." = "Tippe auf +, um ein IMAP-Konto zu verbinden.";
@@ -218,9 +209,9 @@
 "vazio = usa o host da URL" = "leer = verwendet den URL-Host";
 "vazio = usa o servidor principal" = "leer = verwendet den Hauptserver";
 "Visão" = "Vision";
-"Voz e modelos" = "Sprache und Modelle";
+"Voz e modelos" = "Stimme und Modelle";
 "Voz neural pronta" = "Neuronale Stimme bereit";
-"Voz → Texto" = "Sprache → Text";
+"Voz → Texto" = "Spracheingabe → Text";
 "⚠️ Zona de perigo" = "⚠️ Gefahrenzone";
 "(sem conteúdo)" = "(kein Inhalt)";
 "Ativar" = "Aktivieren";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Notes · archiviert";
 "Nova nota" = "Neue Notiz";
 "Não consegui carregar o relatório." = "Der Bericht konnte nicht geladen werden.";
-"Password" = "Password";
+"Password" = "Passwort";
 "Pausar" = "Pausieren";
 "Pensando…" = "Wird gedacht…";
 "Raciocínio" = "Reasoning";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Noch keine Notizen";
 "Tornar admin" = "Zum Admin machen";
 "Tudo" = "Alles";
-"Username" = "Username";
+"Username" = "Benutzername";
 "Verificar" = "Überprüfen";
 "%lld de %lld linhas" = "%lld von %lld Zeilen";
 "(sem nome)" = "(kein Name)";
@@ -280,7 +271,7 @@
 "Endpoints que você conectou. Ative, desative ou remova." = "Verbundene Endpunkte. Aktivieren, deaktivieren oder entfernen.";
 "Erro ao gerar resposta" = "Fehler beim Erstellen der Antwort";
 "Escrevendo" = "Schreiben";
-"Espaços" = "Leerzeichen";
+"Espaços" = "Bereiche";
 "Executando" = "Wird ausgeführt";
 "Extração paralela" = "Parallele Extraktion";
 "Timeout da extração (s)" = "Timeout der Extraktion (s)";
@@ -446,7 +437,7 @@
 "Apagar TUDO" = "ALLES löschen";
 "Todas as 8 categorias acima, de uma vez." = "Alle 8 Kategorien oben, auf einmal.";
 "Microfone só funciona no iPhone (não no simulador)." = "Das Mikrofon funktioniert nur auf einem echten iPhone (nicht im Simulator).";
-"Nenhum modelo Whisper baixado/selecionado. Baixe um em Ajustes › Voz e modelos (ou use o motor Nativo)." = "Kein Whisper-Modell geladen/ausgewählt. Lade eines unter Einstellungen › Sprache und Modelle (oder nutze die native Engine).";
+"Nenhum modelo Whisper baixado/selecionado. Baixe um em Ajustes › Voz e modelos (ou use o motor Nativo)." = "Kein Whisper-Modell geladen/ausgewählt. Lade eines unter Einstellungen › Stimme und Modelle (oder nutze die native Engine).";
 "Nenhum modelo Whisper selecionado." = "Kein Whisper-Modell ausgewählt.";
 "Permissão de microfone/voz negada (Ajustes do iPhone)." = "Mikrofon-/Sprachberechtigung verweigert (iPhone-Einstellungen).";
 "Microfone indisponível." = "Mikrofon nicht verfügbar.";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Neuronale Stimme löschen";
 "Ativar aceleração Core ML" = "Core ML-Beschleunigung aktivieren";
 "Baixa" = "Niedrig";
+"Alta" = "Hoch";
 "Baixar modelo" = "Modell laden";
 "Cancelar download" = "Download abbrechen";
 "Chinês" = "Chinesisch";
@@ -540,7 +532,7 @@
 "Remover aceleração Core ML" = "Core ML-Beschleunigung entfernen";
 "Selecionar modelo" = "Modell auswählen";
 "Sensibilidade" = "Empfindlichkeit";
-"Servidor de voz indisponível." = "Sprachserver nicht verfügbar.";
+"Servidor de voz indisponível." = "Sprachdienst nicht verfügbar.";
 "Sintetizando…" = "Wird synthetisiert…";
 "TTS do servidor falhou: %@" = "Server-TTS fehlgeschlagen: %@";
 "Testar voz" = "Stimme testen";
