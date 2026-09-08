@@ -806,7 +806,6 @@
 "Token criado" = "トークンを作成しました";
 "Tokens de API" = "API トークン";
 "URL do servidor" = "サーバーの URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "チャットのスコープを持つ API トークン。作成後に一度だけ表示されます。";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "サーバーごとに CardDAV アカウントは 1 つ — 保存すると現在のものが置き換わります。";
 "Uma vez enquanto estiver ativa" = "有効な間に 1 回だけ";
 "Usado quando a IA escreve respostas para você." = "AI があなたの代わりに返信を書くときに使われます。";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "クリーンアップに失敗しました：%@";
 "Notificações" = "通知";
 "Notificações de tarefas e lembretes" = "タスクとリマインダーの通知";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "アプリを開いている間に、リマインダーやタスクの完了をこのデバイスで通知します。";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "一部の項目が非表示になっています。";
+"Anexar fotos" = "写真を添付";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "リマインダーやタスクの完了を通知します — アプリを開いている間と、ときどきバックグラウンドでも。";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "アプリを開いている間、リマインダーやタスクの完了を通知します。";
+"Barra lateral" = "サイドバー";
+"Botão Agente" = "エージェントボタン";
+"Botão Deep" = "Deep ボタン";
+"Botão Web" = "Web ボタン";
+"Campo de mensagem" = "メッセージ入力欄";
+"Conversa" = "会話";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "作成後、名前とスコープは「API トークン」で編集できます。";
+"Desligado: coluna de leitura no iPad e no Mac." = "オフ：iPad と Mac では読みやすい幅の段組みになります。";
+"Editar token" = "トークンを編集";
+"Falha ao editar: %@" = "編集に失敗しました：%@";
+"Largura total" = "全幅";
+"Microfone" = "マイク";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "サイドバー、メッセージ入力欄、会話の一部を表示または非表示にします。";
+"Nome do modelo nas respostas" = "回答にモデル名を表示";
+"O token em si não muda — só o nome e o que ele pode fazer." = "トークン自体は変わりません — 変わるのは名前とできることだけです。";
+"Personalizar interface" = "画面のカスタマイズ";
+"Raciocínio do modelo" = "モデルの推論";
+"Restaurar padrão" = "デフォルトに戻す";
+"Texto de boas-vindas" = "ウェルカムメッセージ";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "エージェント用の API トークン。作成後に一度だけ表示されます。";
+"Vale só para este aparelho, como na versão web." = "この端末にのみ適用されます（Web 版と同じ）。";
+"ex.: Claude Agent — laptop" = "例：Claude Agent — laptop";

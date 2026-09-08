@@ -1,8 +1,8 @@
 import SwiftUI
 
 /// Settings › Tokens de API (admin). List, create with the server's scope
-/// list, reveal once, revoke. There is no expiry and no deactivate route —
-/// delete is the only revoke.
+/// list, reveal once, edit name and scopes, revoke. There is no expiry and
+/// no deactivate route — delete is the only revoke.
 @MainActor final class TokensVM: ObservableObject {
     @Published var items: [APITokenRow] = []
     @Published var allowedScopes: [String] = []
@@ -39,6 +39,29 @@ import SwiftUI
         } catch { note = SettingsUI.failure(error, "Falha ao criar: %@", admin: "Só um administrador pode criar tokens de API.") }
     }
 
+    /// Only what changed goes on the wire: a rename without a `scopes` key,
+    /// so the server keeps the scopes; nothing changed, nothing sent.
+    func update(_ t: APITokenRow, name: String, scopes: Set<String>) async -> Bool {
+        note = nil
+        let n = name.trimmingCharacters(in: .whitespaces)
+        guard !n.isEmpty else { note = "Nome do token é obrigatório."; return false }
+        let wanted = scopes.isEmpty ? ["chat"] : Array(scopes).sorted()
+        let newName: String? = n == t.name ? nil : n
+        let newScopes: [String]? = Set(wanted) == Set(t.scopes) ? nil : wanted
+        guard newName != nil || newScopes != nil else { return true }
+        do {
+            let echo = try await api.updateApiToken(t.id, name: newName, scopes: newScopes)
+            if let i = items.firstIndex(where: { $0.id == t.id }) {
+                items[i].name = echo.name.isEmpty ? n : echo.name
+                items[i].scopes = echo.scopes.isEmpty ? wanted : echo.scopes
+            }
+            return true
+        } catch {
+            note = SettingsUI.failure(error, "Falha ao editar: %@", admin: "Este token pertence a outra conta.")
+            return false
+        }
+    }
+
     func revoke(_ t: APITokenRow) async {
         note = nil
         do { try await api.deleteApiToken(t.id); items.removeAll { $0.id == t.id } }
@@ -50,6 +73,7 @@ struct TokensSection: View {
     @StateObject private var vm: TokensVM
     @Environment(\.theme) private var theme
     @State private var revoking: APITokenRow?
+    @State private var editing: APITokenRow?
     @State private var copied = false
     init(app: AppState) { _vm = StateObject(wrappedValue: TokensVM(api: app.api)) }
 
@@ -86,13 +110,21 @@ struct TokensSection: View {
                             Text("Nunca usado").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                         }
                         Spacer()
+                        Button("Editar") { editing = t }
+                            .buttonStyle(.plain).foregroundStyle(theme.accent).font(.ody(size: 12))
                         Button("Revogar", role: .destructive) { revoking = t }
                             .buttonStyle(.plain).foregroundStyle(theme.danger).font(.ody(size: 12))
+                            .padding(.leading, 10)
                     }
                 }
             }
         }
         .task { await vm.load() }
+        .sheet(item: $editing) { t in
+            TokenEditSheet(token: t, allowedScopes: vm.allowedScopes) { name, scopes in
+                await vm.update(t, name: name, scopes: scopes)
+            }
+        }
         .alert(revoking?.name ?? "", isPresented: Binding(get: { revoking != nil }, set: { if !$0 { revoking = nil } })) {
             Button("Revogar", role: .destructive) { if let t = revoking { Task { await vm.revoke(t) } }; revoking = nil }
             Button("Cancelar", role: .cancel) { revoking = nil }
@@ -118,6 +150,60 @@ struct TokensSection: View {
                     .buttonStyle(.plain).font(.ody(size: 12)).foregroundStyle(theme.fg)
             }
         }
+    }
+}
+
+/// Name and scopes of an existing token. The secret itself never changes —
+/// there is no rotate route; that is revoke + create.
+struct TokenEditSheet: View {
+    let token: APITokenRow
+    let allowedScopes: [String]
+    var onSave: (String, Set<String>) async -> Bool
+
+    @Environment(\.theme) private var theme
+    @Environment(\.dismiss) private var dismiss
+    @State private var name: String
+    @State private var scopes: Set<String>
+    @State private var saving = false
+
+    init(token: APITokenRow, allowedScopes: [String], onSave: @escaping (String, Set<String>) async -> Bool) {
+        self.token = token; self.allowedScopes = allowedScopes; self.onSave = onSave
+        _name = State(initialValue: token.name)
+        _scopes = State(initialValue: Set(token.scopes))
+    }
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    SettingsCard {
+                        SettingsUI.field("Nome", $name, placeholder: "ex.: Claude Agent — laptop", theme: theme)
+                        Text("Escopos").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                        FlowChips(items: allowedScopes, selected: $scopes, theme: theme)
+                        Text("O token em si não muda — só o nome e o que ele pode fazer.")
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                .padding(16)
+            }
+            .scrollContentBackground(.hidden)
+            .background(theme.bg)
+            .navigationTitle("Editar token")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) {
+                    if saving { ProgressView().controlSize(.small) }
+                    else { Button("Salvar") { Task { saving = true; if await onSave(name, scopes) { dismiss() }; saving = false } } }
+                }
+            }
+            .themedNavBar(theme)
+        }
+        .tint(theme.accent)
+        #if os(macOS)
+        .frame(minWidth: 460, minHeight: 380)
+        #endif
     }
 }
 

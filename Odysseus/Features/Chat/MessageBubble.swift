@@ -12,6 +12,9 @@ struct MessageBubble: View {
     /// while streaming; a tap reveals until the next hide.
     @AppStorage("chat.sensitiveBlur") private var sensitiveBlur = false
     @State private var revealed = false
+    /// Settings › Aparência › Personalizar interface.
+    @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
+    private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
 
     private var isUser: Bool { message.role == .user }
     private var blurred: Bool {
@@ -24,7 +27,7 @@ struct MessageBubble: View {
             VStack(alignment: isUser ? .trailing : .leading, spacing: 6) {
                 if !isUser { header }
                 if !message.attachments.isEmpty { attachmentsView }
-                if let thinking = message.thinking, !thinking.isEmpty {
+                if ui.isOn(.thinking), let thinking = message.thinking, !thinking.isEmpty {
                     thinkingBlock(thinking)
                 }
                 if !message.content.isEmpty || message.attachments.isEmpty { bubble }
@@ -55,9 +58,12 @@ struct MessageBubble: View {
     private var header: some View {
         HStack(spacing: 6) {
             BrandMark(size: 16)
-            Text(message.model?.split(separator: "/").last.map(String.init) ?? "Odysseus")
-                .font(.ody(size: 11))
-                .foregroundStyle(theme.secondaryText)
+            // The web's chat-meta: the name can go, the speaker stays.
+            if ui.isOn(.modelName) {
+                Text(message.model?.split(separator: "/").last.map(String.init) ?? "Odysseus")
+                    .font(.ody(size: 11))
+                    .foregroundStyle(theme.secondaryText)
+            }
             if !message.content.isEmpty {
                 Button {
                     speech.toggle(message.content, id: message.id)

@@ -808,7 +808,6 @@
 "Token criado" = "Token बन गया";
 "Tokens de API" = "API token";
 "URL do servidor" = "सर्वर URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "चैट स्कोप वाला एक API token। बनने के बाद यह सिर्फ़ एक बार दिखता है।";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "हर सर्वर पर एक ही CardDAV खाता — सेव करने पर मौजूदा बदल जाएगा।";
 "Uma vez enquanto estiver ativa" = "सक्रिय रहते हुए एक बार";
 "Usado quando a IA escreve respostas para você." = "जब AI आपके लिए जवाब लिखता है तब उपयोग होता है।";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "सफ़ाई विफल: %@";
 "Notificações" = "सूचनाएँ";
 "Notificações de tarefas e lembretes" = "कार्य और रिमाइंडर सूचनाएँ";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "ऐप खुला होने पर रिमाइंडर या कार्य पूरा होने पर इस डिवाइस पर सूचित करता है।";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "कुछ आइटम छिपे हुए हैं।";
+"Anexar fotos" = "फ़ोटो अटैच करें";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "रिमाइंडर या कार्य पूरा होने पर सूचित करता है — ऐप खुला होने पर, और कभी-कभी बैकग्राउंड में भी।";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "ऐप खुला होने पर रिमाइंडर या कार्य पूरा होने पर सूचित करता है।";
+"Barra lateral" = "साइडबार";
+"Botão Agente" = "एजेंट बटन";
+"Botão Deep" = "Deep बटन";
+"Botão Web" = "Web बटन";
+"Campo de mensagem" = "संदेश फ़ील्ड";
+"Conversa" = "बातचीत";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "बाद में, नाम और स्कोप को API token में संपादित किया जा सकता है।";
+"Desligado: coluna de leitura no iPad e no Mac." = "बंद: iPad और Mac पर पढ़ने लायक कॉलम।";
+"Editar token" = "token संपादित करें";
+"Falha ao editar: %@" = "संपादित करना विफल: %@";
+"Largura total" = "पूरी चौड़ाई";
+"Microfone" = "माइक्रोफ़ोन";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "साइडबार, संदेश फ़ील्ड और बातचीत के हिस्सों को दिखाएँ या छिपाएँ।";
+"Nome do modelo nas respostas" = "जवाबों में मॉडल का नाम";
+"O token em si não muda — só o nome e o que ele pode fazer." = "token खुद नहीं बदलता — सिर्फ़ नाम और वह क्या कर सकता है, वही बदलता है।";
+"Personalizar interface" = "इंटरफ़ेस कस्टमाइज़ करें";
+"Raciocínio do modelo" = "मॉडल का तर्क";
+"Restaurar padrão" = "डिफ़ॉल्ट पर लौटाएँ";
+"Texto de boas-vindas" = "स्वागत संदेश";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "एजेंट के लिए एक API token। बनने के बाद यह सिर्फ़ एक बार दिखता है।";
+"Vale só para este aparelho, como na versão web." = "यह सिर्फ़ इस डिवाइस पर लागू होता है, जैसे वेब वर्शन में।";
+"ex.: Claude Agent — laptop" = "जैसे: Claude Agent — laptop";

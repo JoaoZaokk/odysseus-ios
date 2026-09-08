@@ -294,6 +294,20 @@ extension APIClient {
         return t
     }
     func deleteApiToken(_ id: String) async throws { _ = try await send(request("/api/tokens/\(encPath(id))", method: "DELETE")) }
+    /// `PATCH /api/tokens/{id}` is JSON and partial: a body without a
+    /// `scopes` key leaves the scopes alone (the server's own regression —
+    /// a rename used to reset them to `chat`), so nil here means "not sent".
+    /// The reply echoes the merged name and scopes.
+    func updateApiToken(_ id: String, name: String?, scopes: [String]?) async throws -> (name: String, scopes: [String]) {
+        var body: [String: Any] = [:]
+        if let name { body["name"] = name }
+        if let scopes { body["scopes"] = scopes }
+        var req = request("/api/tokens/\(encPath(id))", method: "PATCH")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONSerialization.data(withJSONObject: body)
+        let d = (try? JSONSerialization.jsonObject(with: try await send(req))) as? [String: Any] ?? [:]
+        return ((d["name"] as? String) ?? name ?? "", (d["scopes"] as? [String]) ?? scopes ?? [])
+    }
     /// The settings-screen test. The route needs a `test-` note id (admin
     /// only) and the current form as overrides; it answers 200 with the
     /// per-channel error in the body, so a delivery failure is read out of

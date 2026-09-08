@@ -59,6 +59,10 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
     /// The one-time reveal of an agent token. The sheet must not dismiss
     /// while this is on screen — it is the only copy there will ever be.
     @Published var createdToken: String?
+    /// Agent tokens: what the agent may do, from the server's scope list.
+    /// `chat` alone was the 1.9 default; now it is only the starting point.
+    @Published var scopes: Set<String> = ["chat"]
+    @Published var allowedScopes: [String] = []
 
     /// ids the server honours (`src/integrations.py` executor) with labels
     /// the catalogue can translate — the raw ids never reach the screen.
@@ -75,8 +79,16 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
     }
 
     func loadPresets() async {
-        guard kind == .api, presets.isEmpty else { return }
-        presets = (try? await api.integrationPresets()) ?? []
+        switch kind {
+        case .api:
+            guard presets.isEmpty else { return }
+            presets = (try? await api.integrationPresets()) ?? []
+        case .claude, .codex:
+            guard allowedScopes.isEmpty else { return }
+            let s = (try? await api.apiTokenScopes()) ?? []
+            allowedScopes = s.isEmpty ? TokensVM.fallbackScopes : s
+        default: break
+        }
     }
 
     func applyPreset(_ key: String) {
@@ -116,7 +128,7 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
                 let base = kind == .claude ? "Claude Agent" : "Codex Agent"
                 let n = name.trimmingCharacters(in: .whitespaces)
                 let full = n.isEmpty || n.lowercased().hasPrefix(base.lowercased()) ? (n.isEmpty ? base : n) : "\(base) — \(n)"
-                createdToken = try await api.createApiToken(name: full, scopes: ["chat"])
+                createdToken = try await api.createApiToken(name: full, scopes: scopes.isEmpty ? ["chat"] : Array(scopes).sorted())
                 return false   // stays open: the token is shown once
             case .mcp:
                 // The server json.loads these strings (silently defaulting to []/{});
@@ -238,10 +250,15 @@ struct AddIntegrationView: View {
                 }
             }
         case .claude, .codex:
-            Text("Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado.")
+            Text("Um token de API para o agente. Ele aparece uma única vez, depois de criado.")
                 .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
             f("Nome", $vm.name, vm.kind == .claude ? "Claude Agent — laptop" : "Codex Agent — laptop")
+            Text("Escopos").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+            FlowChips(items: vm.allowedScopes, selected: $vm.scopes, theme: theme)
+            Text("Depois, nome e escopos podem ser editados em Tokens de API.")
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                .fixedSize(horizontal: false, vertical: true)
         case .mcp:
             f("Nome", $vm.name, "Server name")
             f("Command", $vm.command, "npx")

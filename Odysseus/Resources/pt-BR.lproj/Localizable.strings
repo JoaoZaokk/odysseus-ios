@@ -799,7 +799,6 @@
 "Token criado" = "Token criado";
 "Tokens de API" = "Tokens de API";
 "URL do servidor" = "URL do servidor";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Uma conta CardDAV por servidor — salvar substitui a atual.";
 "Uma vez enquanto estiver ativa" = "Uma vez enquanto estiver ativa";
 "Usado quando a IA escreve respostas para você." = "Usado quando a IA escreve respostas para você.";
@@ -819,4 +818,31 @@
 "Falha na limpeza: %@" = "Falha na limpeza: %@";
 "Notificações" = "Notificações";
 "Notificações de tarefas e lembretes" = "Notificações de tarefas e lembretes";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Alguns itens estão escondidos.";
+"Anexar fotos" = "Anexar fotos";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto.";
+"Barra lateral" = "Barra lateral";
+"Botão Agente" = "Botão Agente";
+"Botão Deep" = "Botão Deep";
+"Botão Web" = "Botão Web";
+"Campo de mensagem" = "Campo de mensagem";
+"Conversa" = "Conversa";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Depois, nome e escopos podem ser editados em Tokens de API.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Desligado: coluna de leitura no iPad e no Mac.";
+"Editar token" = "Editar token";
+"Falha ao editar: %@" = "Falha ao editar: %@";
+"Largura total" = "Largura total";
+"Microfone" = "Microfone";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa.";
+"Nome do modelo nas respostas" = "Nome do modelo nas respostas";
+"O token em si não muda — só o nome e o que ele pode fazer." = "O token em si não muda — só o nome e o que ele pode fazer.";
+"Personalizar interface" = "Personalizar interface";
+"Raciocínio do modelo" = "Raciocínio do modelo";
+"Restaurar padrão" = "Restaurar padrão";
+"Texto de boas-vindas" = "Texto de boas-vindas";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Um token de API para o agente. Ele aparece uma única vez, depois de criado.";
+"Vale só para este aparelho, como na versão web." = "Vale só para este aparelho, como na versão web.";
+"ex.: Claude Agent — laptop" = "ex.: Claude Agent — laptop";

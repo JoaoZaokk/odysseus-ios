@@ -167,7 +167,7 @@ final class VoicePipelineTests: XCTestCase {
         XCTAssertEqual(AppLanguage.ptBR.iso639, "pt")
         XCTAssertEqual(AppLanguage.zhHans.iso639, "zh")
         XCTAssertEqual(AppLanguage.zhHant.iso639, "zh")
-        XCTAssertEqual(AppLanguage.deAT.iso639, "de")
+        XCTAssertEqual(AppLanguage.deCH.iso639, "de")
     }
 
     func testISO639LeavesBareCodesAlone() {

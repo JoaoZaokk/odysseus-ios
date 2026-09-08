@@ -17,6 +17,12 @@ struct ChatScreen: View {
     @State private var pasteMonitor: Any?   // macOS ⌘V image-paste event monitor
     @State private var didAutoSend = false
     @State private var showVoice = false
+    /// Settings › Aparência › Personalizar interface.
+    @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
+    private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
+    /// Off = a reading column; the web's `chat-fullwidth`. Only iPad and
+    /// Mac are wide enough for the difference to show.
+    private var columnWidth: CGFloat? { ui.isOn(.fullWidth) ? nil : 720 }
     private let autoSend: String?
 
     init(app: AppState, session: ChatSession?, deepSearch: Bool = false,
@@ -101,7 +107,7 @@ struct ChatScreen: View {
             ScrollView {
                 if vm.isLoadingHistory && vm.messages.isEmpty {
                     ProgressView().tint(theme.accent).padding(.top, 80)
-                } else if vm.messages.isEmpty {
+                } else if vm.messages.isEmpty && ui.isOn(.welcome) {
                     welcome.padding(.top, 60)
                 }
                 LazyVStack(spacing: 16) {
@@ -127,6 +133,8 @@ struct ChatScreen: View {
                 }
                 .padding(.horizontal, 14)
                 .padding(.vertical, 16)
+                .frame(maxWidth: columnWidth ?? .infinity)
+                .frame(maxWidth: .infinity)
                 Color.clear.frame(height: 1).id("bottom")
             }
             .scrollDismissesKeyboard(.interactively)
@@ -161,9 +169,9 @@ struct ChatScreen: View {
         VStack(spacing: 8) {
             if vm.isStreaming { Divider().overlay(theme.border) }
             HStack(spacing: 8) {
-                toggleChip(system: "globe", label: "Web", on: $vm.webSearch)
-                toggleChip(system: "sparkle.magnifyingglass", label: "Deep", on: $vm.research)
-                toggleChip(system: "wrench.and.screwdriver", label: "Agente", on: $vm.agentMode)
+                if ui.isOn(.webChip) { toggleChip(system: "globe", label: "Web", on: $vm.webSearch) }
+                if ui.isOn(.deepChip) { toggleChip(system: "sparkle.magnifyingglass", label: "Deep", on: $vm.research) }
+                if ui.isOn(.agentChip) { toggleChip(system: "wrench.and.screwdriver", label: "Agente", on: $vm.agentMode) }
                 Spacer(minLength: 4)
                 if !vm.models.isEmpty { modelChip }
             }
@@ -183,15 +191,17 @@ struct ChatScreen: View {
             if !vm.pendingAttachments.isEmpty || vm.uploading { pendingStrip }
 
             HStack(alignment: .bottom, spacing: 8) {
-                PhotosPicker(selection: $photoItems, maxSelectionCount: 4, matching: .images) {
-                    Image(systemName: "photo.badge.plus")
-                        .font(.ody(size: 20))
-                        .foregroundStyle(theme.accent)
-                        .frame(width: 34, height: 42)
+                if ui.isOn(.attach) {
+                    PhotosPicker(selection: $photoItems, maxSelectionCount: 4, matching: .images) {
+                        Image(systemName: "photo.badge.plus")
+                            .font(.ody(size: 20))
+                            .foregroundStyle(theme.accent)
+                            .frame(width: 34, height: 42)
+                    }
+                    .onChange(of: photoItems) { _, items in loadPhotos(items) }
                 }
-                .onChange(of: photoItems) { _, items in loadPhotos(items) }
 
-                micButton
+                if ui.isOn(.mic) { micButton }
 
                 TextField(LocalizedStringKey(voice.isRecording ? "Ouvindo…" : "Mensagem…"),
                           text: voice.isRecording ? .constant(voice.partialText) : $vm.input, axis: .vertical)
@@ -225,6 +235,8 @@ struct ChatScreen: View {
             .padding(.horizontal, 12)
             .padding(.bottom, 8)
         }
+        .frame(maxWidth: columnWidth ?? .infinity)
+        .frame(maxWidth: .infinity)
         .background(theme.bg)
     }
 

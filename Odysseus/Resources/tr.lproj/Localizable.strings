@@ -806,7 +806,6 @@
 "Token criado" = "Token oluşturuldu";
 "Tokens de API" = "API token'ları";
 "URL do servidor" = "Sunucu URL'si";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Sohbet kapsamlı bir API token'ı. Oluşturulduktan sonra yalnızca bir kez görünür.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Sunucu başına bir CardDAV hesabı — kaydetmek mevcut olanı değiştirir.";
 "Uma vez enquanto estiver ativa" = "Etkinken bir kez";
 "Usado quando a IA escreve respostas para você." = "Yapay zekâ sizin için yanıt yazarken kullanılır.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Temizleme başarısız: %@";
 "Notificações" = "Bildirimler";
 "Notificações de tarefas e lembretes" = "Görev ve hatırlatıcı bildirimleri";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Uygulama açıkken bir hatırlatıcı veya görev bittiğinde bu cihazda uyarır.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Bazı öğeler gizli.";
+"Anexar fotos" = "Fotoğraf ekle";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Bir hatırlatıcı veya görev bittiğinde uyarır — uygulama açıkken ve arada bir, arka planda.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Uygulama açıkken bir hatırlatıcı veya görev bittiğinde uyarır.";
+"Barra lateral" = "Kenar çubuğu";
+"Botão Agente" = "Ajan düğmesi";
+"Botão Deep" = "Derin düğmesi";
+"Botão Web" = "Web düğmesi";
+"Campo de mensagem" = "Mesaj alanı";
+"Conversa" = "Konuşma";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Sonrasında ad ve kapsamlar “API token'ları” bölümünden düzenlenebilir.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Kapalı: iPad ve Mac'te okuma sütunu.";
+"Editar token" = "Token'ı düzenle";
+"Falha ao editar: %@" = "Düzenleme başarısız: %@";
+"Largura total" = "Tam genişlik";
+"Microfone" = "Mikrofon";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Kenar çubuğunun, mesaj alanının ve konuşmanın bölümlerini gösterin veya gizleyin.";
+"Nome do modelo nas respostas" = "Yanıtlarda model adı";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Token'ın kendisi değişmez — yalnızca adı ve yapabilecekleri.";
+"Personalizar interface" = "Arayüzü özelleştir";
+"Raciocínio do modelo" = "Modelin muhakemesi";
+"Restaurar padrão" = "Varsayılana dön";
+"Texto de boas-vindas" = "Karşılama metni";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Ajan için bir API token'ı. Oluşturulduktan sonra yalnızca bir kez görünür.";
+"Vale só para este aparelho, como na versão web." = "Yalnızca bu cihaz için geçerlidir, web sürümündeki gibi.";
+"ex.: Claude Agent — laptop" = "örn.: Claude Agent — laptop";

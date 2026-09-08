@@ -216,10 +216,17 @@ final class AppState: ObservableObject {
     /// review gate's conditions. Not published: nothing renders it.
     var sessionCount = 0
 
-    /// Foreground poller for the server's reminder/task queue.
+    /// Poller for the server's reminder/task queue (opt-in in Conta).
     private lazy var notifications = TaskNotificationPoller(api: api)
     func startTaskNotifications() { guard phase == .main else { return }; notifications.start() }
     func stopTaskNotifications() { notifications.stop() }
+    #if os(iOS)
+    /// The iOS background refresh: one read, then ask for the next one.
+    func backgroundRefreshTaskNotifications() async {
+        if phase == .main { await notifications.backgroundRefresh() }
+        TaskNotificationPoller.scheduleBackgroundRefresh()
+    }
+    #endif
 
     func makeSessionStore() -> SessionStore {
         SessionStore(api: api) { [weak self] n in self?.sessionCount = n }

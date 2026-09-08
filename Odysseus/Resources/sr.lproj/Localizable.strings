@@ -808,7 +808,6 @@
 "Token criado" = "Токен је направљен";
 "Tokens de API" = "API токени";
 "URL do servidor" = "URL сервера";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "API токен са опсегом „ћаскање”. Приказује се само једном, одмах након прављења.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Један CardDAV налог по серверу — чување замењује тренутни.";
 "Uma vez enquanto estiver ativa" = "Једном, док је укључено";
 "Usado quando a IA escreve respostas para você." = "Користи се када AI пише одговоре уместо вас.";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "Чишћење није успело: %@";
 "Notificações" = "Обавештења";
 "Notificações de tarefas e lembretes" = "Обавештења о задацима и подсетницима";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Обавештава на овом уређају када се подсетник или задатак заврши, уз отворену апликацију.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Неке ставке су сакривене.";
+"Anexar fotos" = "Приложи фотографије";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Обавештава када се подсетник или задатак заврши — уз отворену апликацију и, повремено, у позадини.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Обавештава када се подсетник или задатак заврши, док је апликација отворена.";
+"Barra lateral" = "Бочна трака";
+"Botão Agente" = "Дугме Агент";
+"Botão Deep" = "Дугме Deep";
+"Botão Web" = "Дугме Web";
+"Campo de mensagem" = "Поље за поруку";
+"Conversa" = "Разговор";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Касније се назив и опсези могу уређивати у одељку „API токени”.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Искључено: колона за читање на iPad и Mac.";
+"Editar token" = "Уреди токен";
+"Falha ao editar: %@" = "Уређивање није успело: %@";
+"Largura total" = "Пуна ширина";
+"Microfone" = "Микрофон";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Прикажите или сакријте делове бочне траке, поља за поруку и разговора.";
+"Nome do modelo nas respostas" = "Назив модела у одговорима";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Сам токен се не мења — само назив и оно што може да ради.";
+"Personalizar interface" = "Прилагоди интерфејс";
+"Raciocínio do modelo" = "Резоновање модела";
+"Restaurar padrão" = "Врати подразумевано";
+"Texto de boas-vindas" = "Текст добродошлице";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API токен за агента. Приказује се само једном, одмах након прављења.";
+"Vale só para este aparelho, como na versão web." = "Важи само за овај уређај, као и у веб верзији.";
+"ex.: Claude Agent — laptop" = "нпр.: Claude Agent — laptop";

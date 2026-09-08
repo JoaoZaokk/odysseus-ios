@@ -806,7 +806,6 @@
 "Token criado" = "Token létrehozva";
 "Tokens de API" = "API-tokenek";
 "URL do servidor" = "Szerver URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Csevegés hatókörű API-token. Létrehozás után csak egyszer jelenik meg.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Szerverenként egy CardDAV-fiók — a mentés felülírja a jelenlegit.";
 "Uma vez enquanto estiver ativa" = "Egyszer, amíg aktív";
 "Usado quando a IA escreve respostas para você." = "Akkor használatos, amikor az MI válaszokat ír Ön helyett.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Tisztítás nem sikerült: %@";
 "Notificações" = "Értesítések";
 "Notificações de tarefas e lembretes" = "Feladat- és emlékeztető-értesítések";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Ezen az eszközön jelez, amikor egy emlékeztető vagy feladat befejeződik, nyitott app mellett.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Néhány elem rejtve van.";
+"Anexar fotos" = "Fotók csatolása";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Jelez, amikor egy emlékeztető vagy feladat befejeződik — nyitott app mellett, és időnként a háttérben is.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Jelez, amikor egy emlékeztető vagy feladat befejeződik, amíg az app nyitva van.";
+"Barra lateral" = "Oldalsáv";
+"Botão Agente" = "Ügynök gomb";
+"Botão Deep" = "Mély gomb";
+"Botão Web" = "Web gomb";
+"Campo de mensagem" = "Üzenetmező";
+"Conversa" = "Csevegés";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Utána a név és a hatókörök az API-tokenek részben szerkeszthetők.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Kikapcsolva: olvasási oszlop iPaden és Macen.";
+"Editar token" = "Token szerkesztése";
+"Falha ao editar: %@" = "Szerkesztés nem sikerült: %@";
+"Largura total" = "Teljes szélesség";
+"Microfone" = "Mikrofon";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Megjelenítheti vagy elrejtheti az oldalsáv, az üzenetmező és a csevegés részeit.";
+"Nome do modelo nas respostas" = "A modell neve a válaszokban";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Maga a token nem változik — csak a neve és az, hogy mit tehet.";
+"Personalizar interface" = "Felület testreszabása";
+"Raciocínio do modelo" = "A modell gondolkodása";
+"Restaurar padrão" = "Alapértelmezett visszaállítása";
+"Texto de boas-vindas" = "Üdvözlő szöveg";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API-token az ügynökhöz. Létrehozás után csak egyszer jelenik meg.";
+"Vale só para este aparelho, como na versão web." = "Csak erre az eszközre vonatkozik, mint a webes verzióban.";
+"ex.: Claude Agent — laptop" = "pl. Claude Agent — laptop";

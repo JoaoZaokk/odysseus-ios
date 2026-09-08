@@ -806,7 +806,6 @@
 "Token criado" = "token ساخته شد";
 "Tokens de API" = "API tokenها";
 "URL do servidor" = "نشانی سرور";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "یک token API با دامنه گفتگو. فقط یک بار پس از ساخت نمایش داده می‌شود.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "برای هر سرور یک حساب CardDAV — ذخیره جایگزین حساب فعلی می‌شود.";
 "Uma vez enquanto estiver ativa" = "یک بار تا وقتی فعال است";
 "Usado quando a IA escreve respostas para você." = "وقتی هوش مصنوعی برای شما پاسخ می‌نویسد استفاده می‌شود.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "پاک‌سازی ناموفق بود: %@";
 "Notificações" = "اعلان‌ها";
 "Notificações de tarefas e lembretes" = "اعلان کارها و یادآوری‌ها";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "وقتی برنامه باز است، با پایان یادآوری یا کار در این دستگاه هشدار می‌دهد.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "برخی موارد پنهان هستند.";
+"Anexar fotos" = "پیوست تصاویر";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "با پایان یادآوری یا کار هشدار می‌دهد — وقتی برنامه باز است و گاهی هم در پس‌زمینه.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "تا وقتی برنامه باز است، با پایان یادآوری یا کار هشدار می‌دهد.";
+"Barra lateral" = "نوار کناری";
+"Botão Agente" = "دکمهٔ عامل";
+"Botão Deep" = "دکمهٔ Deep";
+"Botão Web" = "دکمهٔ وب";
+"Campo de mensagem" = "کادر پیام";
+"Conversa" = "گفتگو";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "بعداً می‌توانید نام و دامنه‌های دسترسی را در API tokenها ویرایش کنید.";
+"Desligado: coluna de leitura no iPad e no Mac." = "غیرفعال: ستون مطالعه در iPad و Mac.";
+"Editar token" = "ویرایش token";
+"Falha ao editar: %@" = "ویرایش ناموفق بود: %@";
+"Largura total" = "عرض کامل";
+"Microfone" = "میکروفون";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "بخش‌هایی از نوار کناری، کادر پیام و گفتگو را نشان دهید یا پنهان کنید.";
+"Nome do modelo nas respostas" = "نام مدل در پاسخ‌ها";
+"O token em si não muda — só o nome e o que ele pode fazer." = "خود token تغییر نمی‌کند — فقط نام و کارهایی که می‌تواند انجام دهد.";
+"Personalizar interface" = "شخصی‌سازی رابط";
+"Raciocínio do modelo" = "استدلال مدل";
+"Restaurar padrão" = "بازگرداندن به پیش‌فرض";
+"Texto de boas-vindas" = "متن خوش‌آمدگویی";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "یک token API برای عامل. فقط یک بار پس از ساخت نمایش داده می‌شود.";
+"Vale só para este aparelho, como na versão web." = "فقط برای همین دستگاه است، مثل نسخهٔ وب.";
+"ex.: Claude Agent — laptop" = "مثال: Claude Agent — laptop";

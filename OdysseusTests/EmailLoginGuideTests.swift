@@ -2,8 +2,8 @@ import XCTest
 @testable import Odysseus
 
 /// The guide's copy is not free text: each pt-BR literal doubles as the lookup
-/// key in all 44 `.strings` catalogues. Rewording one in Swift silently drops
-/// 43 languages back to Portuguese, with nothing failing to say so — these tests
+/// key in all 43 `.strings` catalogues. Rewording one in Swift silently drops
+/// 42 languages back to Portuguese, with nothing failing to say so — these tests
 /// are what makes that noisy.
 final class EmailLoginGuideTests: XCTestCase {
 

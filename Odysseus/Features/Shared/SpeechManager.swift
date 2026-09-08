@@ -517,7 +517,7 @@ final class SpeechManager: NSObject, ObservableObject {
         case .en:               return .english
         case .es:               return .spanish
         case .fr:               return .french24L   // upstream ships only the 24-layer French pack
-        case .de, .deAT, .deCH: return .german
+        case .de, .deCH: return .german
         case .it:               return .italian
         default:                return nil
         }

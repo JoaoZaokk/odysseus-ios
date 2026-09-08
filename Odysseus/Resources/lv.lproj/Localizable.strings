@@ -806,7 +806,6 @@
 "Token criado" = "Token izveidots";
 "Tokens de API" = "API tokeni";
 "URL do servidor" = "Servera URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "API token ar tērzēšanas tvērumu. Pēc izveides tas tiek parādīts tikai vienu reizi.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Viens CardDAV konts katram serverim — saglabāšana aizstāj pašreizējo.";
 "Uma vez enquanto estiver ativa" = "Vienu reizi, kamēr tā ir aktīva";
 "Usado quando a IA escreve respostas para você." = "Izmanto, kad MI raksta atbildes jūsu vietā.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Tīrīšana neizdevās: %@";
 "Notificações" = "Paziņojumi";
 "Notificações de tarefas e lembretes" = "Uzdevumu un atgādinājumu paziņojumi";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Paziņo šajā ierīcē, kad atgādinājums vai uzdevums ir pabeigts, kamēr lietotne ir atvērta.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Daži vienumi ir paslēpti.";
+"Anexar fotos" = "Pievienot fotoattēlus";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Paziņo, kad atgādinājums vai uzdevums ir pabeigts — kamēr lietotne ir atvērta un reizēm arī fonā.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Paziņo, kad atgādinājums vai uzdevums ir pabeigts, kamēr lietotne ir atvērta.";
+"Barra lateral" = "Sānjosla";
+"Botão Agente" = "Poga “Aģents”";
+"Botão Deep" = "Poga “Padziļināti”";
+"Botão Web" = "Poga “Tīmeklis”";
+"Campo de mensagem" = "Ziņojuma lauks";
+"Conversa" = "Saruna";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Pēc tam nosaukumu un tvērumus var rediģēt sadaļā “API tokeni”.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Izslēgts: lasīšanas kolonna iPad un Mac ierīcēs.";
+"Editar token" = "Rediģēt token";
+"Falha ao editar: %@" = "Rediģēšana neizdevās: %@";
+"Largura total" = "Pilns platums";
+"Microfone" = "Mikrofons";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Rādiet vai slēpiet sānjoslas, ziņojuma lauka un sarunas daļas.";
+"Nome do modelo nas respostas" = "Modeļa nosaukums atbildēs";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Pats token nemainās — tikai nosaukums un tas, ko tas drīkst darīt.";
+"Personalizar interface" = "Pielāgot saskarni";
+"Raciocínio do modelo" = "Modeļa spriešana";
+"Restaurar padrão" = "Atjaunot noklusējumu";
+"Texto de boas-vindas" = "Sveiciena teksts";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API token aģentam. Pēc izveides tas tiek parādīts tikai vienu reizi.";
+"Vale só para este aparelho, como na versão web." = "Attiecas tikai uz šo ierīci, tāpat kā tīmekļa versijā.";
+"ex.: Claude Agent — laptop" = "piem., Claude Agent — laptop";

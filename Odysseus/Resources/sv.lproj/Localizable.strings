@@ -798,7 +798,6 @@
 "Token criado" = "Token skapad";
 "Tokens de API" = "API-tokens";
 "URL do servidor" = "Serverns URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "En API-token med behörighet för chatt. Den visas bara en gång, direkt efter att den skapats.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Ett CardDAV-konto per server — att spara ersätter det nuvarande.";
 "Uma vez enquanto estiver ativa" = "En gång medan den är aktiv";
 "Usado quando a IA escreve respostas para você." = "Används när AI:n skriver svar åt dig.";
@@ -818,4 +817,31 @@
 "Falha na limpeza: %@" = "Rensningen misslyckades: %@";
 "Notificações" = "Notiser";
 "Notificações de tarefas e lembretes" = "Notiser för uppgifter och påminnelser";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Meddelar på den här enheten när en påminnelse eller uppgift är klar, medan appen är öppen.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Vissa objekt är dolda.";
+"Anexar fotos" = "Bifoga foton";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Meddelar när en påminnelse eller uppgift är klar — medan appen är öppen och då och då även i bakgrunden.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Meddelar när en påminnelse eller uppgift är klar, medan appen är öppen.";
+"Barra lateral" = "Sidofält";
+"Botão Agente" = "Agentknapp";
+"Botão Deep" = "Djupknapp";
+"Botão Web" = "Webbknapp";
+"Campo de mensagem" = "Meddelandefält";
+"Conversa" = "Konversation";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Namn och behörigheter kan sedan redigeras under API-tokens.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Av: läskolumn på iPad och Mac.";
+"Editar token" = "Redigera token";
+"Falha ao editar: %@" = "Kunde inte redigera: %@";
+"Largura total" = "Full bredd";
+"Microfone" = "Mikrofon";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Visa eller dölj delar av sidofältet, meddelandefältet och konversationen.";
+"Nome do modelo nas respostas" = "Modellnamn vid svaren";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Själva token ändras inte — bara namnet och vad den får göra.";
+"Personalizar interface" = "Anpassa gränssnittet";
+"Raciocínio do modelo" = "Modellens resonemang";
+"Restaurar padrão" = "Återställ standard";
+"Texto de boas-vindas" = "Välkomsttext";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "En API-token för agenten. Den visas bara en gång, direkt efter att den skapats.";
+"Vale só para este aparelho, como na versão web." = "Gäller bara den här enheten, precis som i webbversionen.";
+"ex.: Claude Agent — laptop" = "t.ex. Claude Agent — laptop";

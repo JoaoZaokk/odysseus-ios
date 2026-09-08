@@ -808,7 +808,6 @@
 "Token criado" = "Token creato";
 "Tokens de API" = "Token API";
 "URL do servidor" = "URL del server";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Un token API con ambito chat. Viene mostrato una sola volta, subito dopo la creazione.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Un solo account CardDAV per server — salvando si sostituisce quello attuale.";
 "Uma vez enquanto estiver ativa" = "Una sola volta mentre è attiva";
 "Usado quando a IA escreve respostas para você." = "Usato quando l'IA scrive le risposte al posto tuo.";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "Pulizia non riuscita: %@";
 "Notificações" = "Notifiche";
 "Notificações de tarefas e lembretes" = "Notifiche di attività e promemoria";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Avvisa su questo dispositivo quando un promemoria o un’attività finisce, con l’app aperta.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Alcuni elementi sono nascosti.";
+"Anexar fotos" = "Allega foto";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Avvisa quando un promemoria o un'attività finisce: con l'app aperta e, ogni tanto, in background.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Avvisa quando un promemoria o un'attività finisce, mentre l'app è aperta.";
+"Barra lateral" = "Barra laterale";
+"Botão Agente" = "Pulsante Agente";
+"Botão Deep" = "Pulsante Deep";
+"Botão Web" = "Pulsante Web";
+"Campo de mensagem" = "Campo del messaggio";
+"Conversa" = "Conversazione";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "In seguito puoi modificare nome e ambiti in Token API.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Disattivato: colonna di lettura su iPad e su Mac.";
+"Editar token" = "Modifica token";
+"Falha ao editar: %@" = "Modifica non riuscita: %@";
+"Largura total" = "Larghezza piena";
+"Microfone" = "Microfono";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Mostra o nascondi parti della barra laterale, del campo del messaggio e della conversazione.";
+"Nome do modelo nas respostas" = "Nome del modello nelle risposte";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Il token in sé non cambia: solo il nome e ciò che può fare.";
+"Personalizar interface" = "Personalizza l'interfaccia";
+"Raciocínio do modelo" = "Ragionamento del modello";
+"Restaurar padrão" = "Ripristina i valori predefiniti";
+"Texto de boas-vindas" = "Testo di benvenuto";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Un token API per l'agente. Viene mostrato una sola volta, subito dopo la creazione.";
+"Vale só para este aparelho, como na versão web." = "Vale solo per questo dispositivo, come nella versione web.";
+"ex.: Claude Agent — laptop" = "es.: Claude Agent — laptop";

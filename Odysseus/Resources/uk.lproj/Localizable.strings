@@ -808,7 +808,6 @@
 "Token criado" = "Токен створено";
 "Tokens de API" = "API-токени";
 "URL do servidor" = "URL сервера";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "API-токен з областю дії «чат». Показується один раз, одразу після створення.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Один акаунт CardDAV на сервер — збереження замінить поточний.";
 "Uma vez enquanto estiver ativa" = "Один раз, поки увімкнено";
 "Usado quando a IA escreve respostas para você." = "Використовується, коли ШІ пише відповіді за вас.";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "Помилка очищення: %@";
 "Notificações" = "Сповіщення";
 "Notificações de tarefas e lembretes" = "Сповіщення про завдання та нагадування";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Сповіщає на цьому пристрої, коли нагадування або завдання завершиться, при відкритому застосунку.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Деякі елементи приховано.";
+"Anexar fotos" = "Прикріпити фото";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Сповіщає, коли нагадування або завдання завершиться — при відкритому застосунку і, час від часу, у фоновому режимі.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Сповіщає, коли нагадування або завдання завершиться, поки застосунок відкритий.";
+"Barra lateral" = "Бічна панель";
+"Botão Agente" = "Кнопка Агент";
+"Botão Deep" = "Кнопка Deep";
+"Botão Web" = "Кнопка Web";
+"Campo de mensagem" = "Поле повідомлення";
+"Conversa" = "Розмова";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Пізніше назву та області дії можна змінити в розділі «API-токени».";
+"Desligado: coluna de leitura no iPad e no Mac." = "Вимкнено: колонка для читання на iPad і Mac.";
+"Editar token" = "Редагувати токен";
+"Falha ao editar: %@" = "Помилка редагування: %@";
+"Largura total" = "На всю ширину";
+"Microfone" = "Мікрофон";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Показуйте або приховуйте частини бічної панелі, поля повідомлення та розмови.";
+"Nome do modelo nas respostas" = "Назва моделі у відповідях";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Сам токен не змінюється — лише назва та те, що він може робити.";
+"Personalizar interface" = "Налаштувати інтерфейс";
+"Raciocínio do modelo" = "Міркування моделі";
+"Restaurar padrão" = "Відновити за замовчуванням";
+"Texto de boas-vindas" = "Вітальний текст";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API-токен для агента. Показується один раз, одразу після створення.";
+"Vale só para este aparelho, como na versão web." = "Діє лише на цьому пристрої, як і у веб-версії.";
+"ex.: Claude Agent — laptop" = "напр.: Claude Agent — laptop";
