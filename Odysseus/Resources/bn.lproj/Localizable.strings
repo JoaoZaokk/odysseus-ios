@@ -651,3 +651,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "শুধু ব্রাউজারে খোলা সাইটে পৌঁছায়, অ্যাপে নয়।";
 "Modelo do payload (JSON)" = "পেলোড টেমপ্লেট (JSON)";
 "Conectado: %lld modelos." = "সংযুক্ত: %lld মডেল।";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA চালু করুন";
+"Desativar 2FA" = "2FA বন্ধ করুন";
+"Confirmar" = "নিশ্চিত করুন";
+"Copiar" = "কপি";
+"Copiado" = "কপি হয়েছে";
+"Códigos de backup" = "ব্যাকআপ কোড";
+"Código de 6 dígitos" = "৬ অঙ্কের কোড";
+"Escaneie o QR no app autenticador ou digite o segredo." = "অথেনটিকেটর অ্যাপে QR স্ক্যান করুন বা সিক্রেট লিখুন।";
+"Guarde estes códigos — cada um funciona uma vez." = "এই কোডগুলো সংরক্ষণ করুন — প্রতিটি একবারই কাজ করে।";

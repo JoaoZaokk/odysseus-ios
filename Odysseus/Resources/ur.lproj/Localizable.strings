@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "صرف براؤزر میں کھلی سائٹ تک پہنچتا ہے، ایپ تک نہیں۔";
 "Modelo do payload (JSON)" = "پے لوڈ ٹیمپلیٹ (JSON)";
 "Conectado: %lld modelos." = "منسلک: %lld ماڈل۔";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA فعال کریں";
+"Desativar 2FA" = "2FA غیر فعال کریں";
+"Confirmar" = "تصدیق کریں";
+"Copiar" = "کاپی کریں";
+"Copiado" = "کاپی ہو گیا";
+"Códigos de backup" = "بیک اپ کوڈز";
+"Código de 6 dígitos" = "6 ہندسوں کا کوڈ";
+"Escaneie o QR no app autenticador ou digite o segredo." = "تصدیقی ایپ میں QR اسکین کریں یا سیکرٹ ٹائپ کریں۔";
+"Guarde estes códigos — cada um funciona uma vez." = "یہ کوڈز سنبھال کر رکھیں — ہر ایک صرف ایک بار کام کرتا ہے۔";

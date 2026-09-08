@@ -641,3 +641,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "מגיע רק לאתר הפתוח בדפדפן, לא לאפליקציה.";
 "Modelo do payload (JSON)" = "תבנית payload (JSON)";
 "Conectado: %lld modelos." = "מחובר: %lld מודלים.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "הפעלת 2FA";
+"Desativar 2FA" = "ביטול 2FA";
+"Confirmar" = "אישור";
+"Copiar" = "העתקה";
+"Copiado" = "הועתק";
+"Códigos de backup" = "קודי גיבוי";
+"Código de 6 dígitos" = "קוד בן 6 ספרות";
+"Escaneie o QR no app autenticador ou digite o segredo." = "סרוק את ה-QR באפליקציית האימות או הקלד את הסוד.";
+"Guarde estes códigos — cada um funciona uma vez." = "שמור את הקודים האלה — כל אחד עובד פעם אחת.";

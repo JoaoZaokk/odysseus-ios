@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Chỉ tới trang web đang mở trong trình duyệt, không tới ứng dụng.";
 "Modelo do payload (JSON)" = "Mẫu payload (JSON)";
 "Conectado: %lld modelos." = "Đã kết nối: %lld mô hình.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Bật 2FA";
+"Desativar 2FA" = "Tắt 2FA";
+"Confirmar" = "Xác nhận";
+"Copiar" = "Sao chép";
+"Copiado" = "Đã sao chép";
+"Códigos de backup" = "Mã dự phòng";
+"Código de 6 dígitos" = "Mã 6 chữ số";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Quét QR trong ứng dụng xác thực hoặc nhập mã bí mật.";
+"Guarde estes códigos — cada um funciona uma vez." = "Hãy giữ các mã này — mỗi mã chỉ dùng được một lần.";

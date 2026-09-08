@@ -651,3 +651,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Стигнува само до сајтот отворен во прелистувачот, не до апликацијата.";
 "Modelo do payload (JSON)" = "Шаблон за payload (JSON)";
 "Conectado: %lld modelos." = "Поврзано: %lld модели.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Вклучи 2FA";
+"Desativar 2FA" = "Исклучи 2FA";
+"Confirmar" = "Потврди";
+"Copiar" = "Копирај";
+"Copiado" = "Копирано";
+"Códigos de backup" = "Резервни кодови";
+"Código de 6 dígitos" = "6-цифрен код";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Скенирајте го QR во апликацијата за автентикација или внесете ја тајната.";
+"Guarde estes códigos — cada um funciona uma vez." = "Чувајте ги овие кодови — секој работи само еднаш.";

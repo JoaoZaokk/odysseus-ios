@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Yalnızca tarayıcıda açık olan siteye ulaşır, uygulamaya değil.";
 "Modelo do payload (JSON)" = "Payload şablonu (JSON)";
 "Conectado: %lld modelos." = "Bağlandı: %lld model.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA’yı etkinleştir";
+"Desativar 2FA" = "2FA’yı devre dışı bırak";
+"Confirmar" = "Onayla";
+"Copiar" = "Kopyala";
+"Copiado" = "Kopyalandı";
+"Códigos de backup" = "Yedek kodlar";
+"Código de 6 dígitos" = "6 haneli kod";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Kimlik doğrulama uygulamanızda QR’ı tarayın veya gizli anahtarı yazın.";
+"Guarde estes códigos — cada um funciona uma vez." = "Bu kodları saklayın — her biri yalnızca bir kez çalışır.";

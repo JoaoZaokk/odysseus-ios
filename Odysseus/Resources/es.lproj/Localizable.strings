@@ -651,3 +651,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Solo llega al sitio abierto en el navegador, no a la app.";
 "Modelo do payload (JSON)" = "Plantilla del payload (JSON)";
 "Conectado: %lld modelos." = "Conectado: %lld modelos.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Activar 2FA";
+"Desativar 2FA" = "Desactivar 2FA";
+"Confirmar" = "Confirmar";
+"Copiar" = "Copiar";
+"Copiado" = "Copiado";
+"Códigos de backup" = "Códigos de respaldo";
+"Código de 6 dígitos" = "Código de 6 dígitos";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Escanea el QR en tu app de autenticación o escribe el secreto.";
+"Guarde estes códigos — cada um funciona uma vez." = "Guarda estos códigos — cada uno funciona una sola vez.";

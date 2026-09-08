@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Erreecht nëmmen de Site, deen am Browser op ass, net d’App.";
 "Modelo do payload (JSON)" = "Payload-Virlag (JSON)";
 "Conectado: %lld modelos." = "Verbonnen: %lld Modeller.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA aktivéieren";
+"Desativar 2FA" = "2FA desaktivéieren";
+"Confirmar" = "Bestätegen";
+"Copiar" = "Kopéieren";
+"Copiado" = "Kopéiert";
+"Códigos de backup" = "Backup-Coden";
+"Código de 6 dígitos" = "6-stellege Code";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Scan de QR-Code an denger Authenticator-App oder gëff de Schlëssel an.";
+"Guarde estes códigos — cada um funciona uma vez." = "Bewar dës Coden op — jidderee funktionéiert nëmmen eemol.";

@@ -651,3 +651,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Доходит только до сайта, открытого в браузере, а не до приложения.";
 "Modelo do payload (JSON)" = "Шаблон payload (JSON)";
 "Conectado: %lld modelos." = "Подключено: %lld моделей.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Включить 2FA";
+"Desativar 2FA" = "Отключить 2FA";
+"Confirmar" = "Подтвердить";
+"Copiar" = "Копировать";
+"Copiado" = "Скопировано";
+"Códigos de backup" = "Резервные коды";
+"Código de 6 dígitos" = "6-значный код";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Отсканируйте QR в приложении-аутентификаторе или введите секрет.";
+"Guarde estes códigos — cada um funciona uma vez." = "Сохраните эти коды — каждый работает один раз.";

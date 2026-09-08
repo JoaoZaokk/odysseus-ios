@@ -1,4 +1,4 @@
-/* Odysseus iOS — Localizable.strings (English) */
+/* Odysseus iOS — Localizable.strings (de-AT) */
 /* Generated from pt-BR source keys via the translation council. */
 
 "%lld linhas" = "%lld Zeilen";
@@ -12,7 +12,7 @@
 "ADMIN" = "ADMIN";
 "Admin" = "Admin";
 "Agendado %@" = "Geplant %@";
-"Agent Tools" = "Agent Tools";
+"Agent Tools" = "Agent-Werkzeuge";
 "Agentes agendados do Odysseus aparecem aqui." = "Geplante Odysseus-Agenten werden hier angezeigt.";
 "Ajustes" = "Einstellungen";
 "Analisa imagens com um modelo com visão." = "Analysiert Bilder mit einem Vision-Modell.";
@@ -22,7 +22,7 @@
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Verweise zunächst auf die lokale IP; wenn du es über HTTPS erreichbar machst, ersetze durch https://deine-domain.";
 "Arquivar" = "Archivieren";
 "Arquivadas" = "Archiviert";
-"As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Abgeschlossene Recherchen werden hier angezeigt. Tippe auf „Visueller Bericht\", um sie nebeneinander zu öffnen.";
+"As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Abgeschlossene Recherchen werden hier angezeigt. Tippe auf „Visueller Bericht“, um sie nebeneinander zu öffnen.";
 "Ativado" = "Aktiviert";
 "Ativar todas" = "Alle aktivieren";
 "Atualizar senha" = "Passwort aktualisieren";
@@ -36,7 +36,7 @@
 "Bloquear o app" = "App sperren";
 "Brain" = "Brain";
 "Busca" = "Suche";
-"Buscar nos logs…" = "In Logs suchen…";
+"Buscar nos logs…" = "In Protokollen suchen…";
 "cabe" = "passt";
 "Cabe na máquina (estimativa, melhor GPU)" = "Passt auf die Maschine (Schätzung, beste GPU)";
 "Cadastro aberto" = "Offene Registrierung";
@@ -57,7 +57,7 @@
 "Cookbook" = "Cookbook";
 "Cron: %@" = "Cron: %@";
 "Deep Research" = "Deep Research";
-"Default" = "Default";
+"Default" = "Standard";
 "Desativado" = "Deaktiviert";
 "Desativar todas" = "Alle deaktivieren";
 "Desbloquear com %@" = "Mit %@ entsperren";
@@ -81,7 +81,7 @@
 "Execução" = "Ausführung";
 "Exigir no login automático" = "Bei automatischer Anmeldung verlangen";
 "Exportar dados" = "Daten exportieren";
-"Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportiere Erinnerungen, Voreinstellungen, Einstellungen, Fähigkeiten und Präferenzen als JSON.";
+"Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportiere Gedächtnis, Voreinstellungen, Einstellungen, Fähigkeiten und Präferenzen als JSON.";
 "Falha ao carregar logs: %@" = "Protokolle konnten nicht geladen werden: %@";
 "Falha ao instalar %@: %@" = "Installation von %@ fehlgeschlagen: %@";
 "Fallback automático" = "Automatischer Fallback";
@@ -107,14 +107,14 @@
 "Isso é irreversível. Confirma?" = "Dies ist unwiderruflich. Bestätigen?";
 "Lembretes" = "Erinnerungen";
 "Library" = "Library";
-"Logs do sistema" = "System-Logs";
+"Logs do sistema" = "Systemprotokolle";
 "Manter conectado" = "Angemeldet bleiben";
 "Mesma pergunta para os dois…" = "Dieselbe Frage für beide…";
 "Modelo de chat padrão" = "Standard-Chat-Modell";
 "Modelo on-device" = "Geräteeigenes Modell";
 "Modelo utilitário" = "Hilfsmodell";
 "Modelos conectados" = "Verbundene Modelle";
-"Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativ = Live-Transkription während du sprichst (wie Claude/Gemini). „Modell\" = Whisper offline (transkribiert am Ende). Bei heruntergeladenen Modellen lädt ⚡ den Core ML-Beschleuniger (Neural Engine) herunter → deutlich schneller.";
+"Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativ = Live-Transkription während du sprichst (wie Claude/Gemini). „Modell“ = Whisper offline (transkribiert am Ende). Bei heruntergeladenen Modellen lädt ⚡ den Core ML-Beschleuniger (Neural Engine) herunter → deutlich schneller.";
 "Nativo iOS" = "Nativ iOS";
 "Nenhum endpoint conectado." = "Kein Endpunkt verbunden.";
 "Nenhum evento" = "Keine Termine";
@@ -123,24 +123,24 @@
 "Nenhuma conta — adicione uma conta IMAP." = "Keine Konten — füge ein IMAP-Konto hinzu.";
 "Nenhuma conversa ainda." = "Noch keine Gespräche.";
 "Nenhuma conversa arquivada." = "Keine archivierten Gespräche.";
-"Nenhuma integração ainda — use “Adicionar integração” acima." = "Noch keine Integrationen — verwende „Integration hinzufügen\" oben.";
+"Nenhuma integração ainda — use “Adicionar integração” acima." = "Noch keine Integrationen — verwende „Integration hinzufügen“ oben.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS auf Portugiesisch (Core ML/Neural Engine), viel natürlicher als die eingebaute Stimme. Lädt beim ersten Mal ~550 MB auf das Gerät herunter; funktioniert nur auf einem physischen iPhone (nicht im Simulator).";
 "Neural pt-BR" = "Neural pt-BR";
 "No Odysseus, abra Email → ícone de contas → toque em +." = "Öffne in Odysseus E-Mail → Kontosymbol → tippe auf +.";
 "Nome" = "Name";
 "Notes" = "Notes";
 "Nova conta" = "Neues Konto";
-"Nova memória" = "Neue Erinnerung";
+"Nova memória" = "Neuer Gedächtniseintrag";
 "Novo evento" = "Neuer Termin";
 "Novo nome" = "Neuer Name";
 "não testado" = "nicht getestet";
 "O que o assistente deve lembrar?" = "Was soll der Assistent sich merken?";
 "O que o assistente lembrar de você aparece aqui." = "Was der Assistent über dich weiß, wird hier angezeigt.";
-"O servidor sonda a Base URL e descobre os modelos sozinho. Depois, ative/desative em “Modelos conectados”." = "Der Server sondiert die Basis-URL und erkennt die Modelle selbstständig. Aktiviere oder deaktiviere sie anschließend unter „Verbundene Modelle\".";
+"O servidor sonda a Base URL e descobre os modelos sozinho. Depois, ative/desative em “Modelos conectados”." = "Der Server sondiert die Basis-URL und erkennt die Modelle selbstständig. Aktiviere oder deaktiviere sie anschließend unter „Verbundene Modelle“.";
 "Odysseus bloqueado" = "Odysseus gesperrt";
 "Opcional — desligado por padrão." = "Optional — standardmäßig deaktiviert.";
 "OpenWebUI Gen usa a sessão do servidor principal por padrão. A Diffusion API genérica é um endpoint compatível para fallback." = "OpenWebUI Gen verwendet standardmäßig die Sitzung des Hauptservers. Die generische Diffusion API ist ein kompatibler Endpunkt für den Fallback.";
-"Organizar memórias" = "Erinnerungen organisieren";
+"Organizar memórias" = "Gedächtnis aufräumen";
 "Outros provedores" = "Andere Anbieter";
 "Pacotes e engines para servir modelos." = "Pakete und Engines zum Bereitstellen von Modellen.";
 "Padrão" = "Standard";
@@ -178,7 +178,7 @@
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Wenn der Standardanbieter fehlschlägt, werden die anderen der Reihe nach versucht: %@.";
 "Segurança (%@)" = "Sicherheit (%@)";
 "Selecione o idioma do aplicativo." = "Wähle die App-Sprache.";
-"Sem memórias ainda" = "Noch keine Erinnerungen";
+"Sem memórias ainda" = "Gedächtnis noch leer";
 "Sem tarefas" = "Keine Aufgaben";
 "Semanal %@" = "Wöchentlich %@";
 "Servidor" = "Server";
@@ -187,7 +187,7 @@
 "Sistema" = "System";
 "SMTP igual ao IMAP" = "SMTP gleich wie IMAP";
 "Start" = "Start";
-"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Hintergrundaufgaben (Komprimierung, Gespräche benennen, Erinnerungen). Leer = verwendet das Chat-Modell.";
+"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Hintergrundaufgaben (Komprimierung, Gespräche benennen, Gedächtnis). Leer = verwendet das Chat-Modell.";
 "Tasks" = "Tasks";
 "Tema" = "Design";
 "Temas" = "Designs";
@@ -196,7 +196,7 @@
 "Testar" = "Testen";
 "Testar lembrete" = "Erinnerung testen";
 "Texto → Voz" = "Text → Sprachausgabe";
-"Timeout" = "Timeout";
+"Timeout" = "Zeitlimit";
 "Todos" = "Alle";
 "Toque em + para conectar uma conta IMAP." = "Tippe auf +, um ein IMAP-Konto zu verbinden.";
 "Toque em + para criar sua primeira nota." = "Tippe auf +, um deine erste Notiz zu erstellen.";
@@ -236,14 +236,14 @@
 "Não consegui carregar o relatório." = "Der Bericht konnte nicht geladen werden.";
 "Password" = "Passwort";
 "Pausar" = "Pausieren";
-"Pensando…" = "Wird gedacht…";
-"Raciocínio" = "Reasoning";
+"Pensando…" = "Wird nachgedacht…";
+"Raciocínio" = "Gedankengang";
 "Relatório vazio." = "Bericht ist leer.";
 "Retomar" = "Fortsetzen";
 "Revogar admin" = "Admin-Rechte entziehen";
 "Selecionar…" = "Auswählen…";
 "Sem favoritos" = "Keine Favoriten";
-"Sem logs." = "Keine Logs.";
+"Sem logs." = "Keine Protokolle.";
 "Sem notas ainda" = "Noch keine Notizen";
 "Tornar admin" = "Zum Admin machen";
 "Tudo" = "Alles";
@@ -254,10 +254,10 @@
 "Adicionado. O servidor vai sondar a URL e listar os modelos." = "Hinzugefügt. Der Server wird die URL sondieren und die Modelle auflisten.";
 "Agente" = "Agent";
 "Amanhã" = "Morgen";
-"API key" = "API key";
-"API key (opcional)" = "API key (optional)";
+"API key" = "API-Schlüssel";
+"API key (opcional)" = "API-Schlüssel (optional)";
 "Buscar conversas" = "Gespräche suchen";
-"Buscar memórias" = "Erinnerungen suchen";
+"Buscar memórias" = "Gedächtnis durchsuchen";
 "Caixa vazia" = "Leerer Posteingang";
 "Conecte contas IMAP/SMTP para ler e enviar." = "Verbinde IMAP/SMTP-Konten zum Lesen und Senden.";
 "Conecte uma conta IMAP para ver sua caixa aqui." = "Verbinde ein IMAP-Konto, um deinen Posteingang hier zu sehen.";
@@ -272,7 +272,7 @@
 "Endereço do servidor Odysseus." = "Odysseus-Serveradresse.";
 "Endpoints que você conectou. Ative, desative ou remova." = "Verbundene Endpunkte. Aktivieren, deaktivieren oder entfernen.";
 "Erro ao gerar resposta" = "Fehler beim Erstellen der Antwort";
-"Escrevendo" = "Schreiben";
+"Escrevendo" = "Wird geschrieben";
 "Espaços" = "Bereiche";
 "Executando" = "Wird ausgeführt";
 "Extração paralela" = "Parallele Extraktion";
@@ -286,12 +286,12 @@
 "IMAP (entrada)" = "IMAP (Eingang)";
 "Imagem" = "Bild";
 "Início" = "Beginn";
-"Lembrando" = "Erinnern";
-"Lendo" = "Lesen";
+"Lembrando" = "Wird im Gedächtnis gesucht";
+"Lendo" = "Wird gelesen";
 "Manual" = "Manuell";
-"Max tokens" = "Max tokens";
-"Memorizando" = "Wird gespeichert";
-"Memórias já estão organizadas — nada a remover." = "Erinnerungen sind bereits organisiert — nichts zu entfernen.";
+"Max tokens" = "Max. Tokens";
+"Memorizando" = "Wird gemerkt";
+"Memórias já estão organizadas — nada a remover." = "Das Gedächtnis ist bereits aufgeräumt — nichts zu entfernen.";
 "Mensagem…" = "Nachricht…";
 "Modelo" = "Modell";
 "Modelos usados ao criar uma nova conversa e em tarefas de fundo." = "Modelle, die beim Erstellen neuer Gespräche und bei Hintergrundaufgaben verwendet werden.";
@@ -303,9 +303,9 @@
 "Não consegui interpretar esse texto. Tente o botão +." = "Dieser Text konnte nicht verarbeitet werden. Versuche die +-Schaltfläche.";
 "Não consegui salvar. Verifique servidor, usuário e senha." = "Speichern fehlgeschlagen. Überprüfe Server, Benutzername und Passwort.";
 "Ouvindo…" = "Zuhören…";
-"Pensando" = "Wird gedacht";
+"Pensando" = "Wird nachgedacht";
 "Pesquisando a fundo" = "Gründliche Recherche";
-"Pesquisando na web" = "Im Web suchen";
+"Pesquisando na web" = "Wird im Web gesucht";
 "Porta" = "Port";
 "Porta SMTP" = "SMTP-Port";
 "Provedor usado para busca na web e pesquisa profunda." = "Anbieter für die Websuche und Tiefenrecherche.";
@@ -361,7 +361,7 @@
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "TLS/Port-Fehlanpassung. Verwende für IMAP Port 993 mit deaktiviertem STARTTLS (SSL); für SMTP Port 465 mit SSL oder 587 mit STARTTLS. Kombiniere keinen Port mit der falschen Sicherheitsstufe.";
 
 /* PT-leak fix (Themes + Agent Tools) */
-"Nenhum" = "Keiner";
+"Nenhum" = "Keine";
 "Estrelas" = "Sterne";
 "Chuva" = "Regen";
 "Brasas" = "Glut";
@@ -422,7 +422,7 @@
 "integração" = "Integration";
 "Apagar todos os chats" = "Alle Chats löschen";
 "Sessões, mensagens e histórico. Documentos/notas ficam." = "Sitzungen, Nachrichten und Verlauf. Dokumente/Notizen bleiben.";
-"Apagar toda a memória" = "Gesamten Speicher löschen";
+"Apagar toda a memória" = "Gesamtes Gedächtnis löschen";
 "Limpa memory.json, tabela Memory e vetores. Skills não afetadas." = "Leert memory.json, die Memory-Tabelle und die Vektoren. Skills bleiben unberührt.";
 "Apagar todas as skills" = "Alle Skills löschen";
 "Remove data/skills/ (todos os SKILL.md)." = "Entfernt data/skills/ (alle SKILL.md).";
@@ -591,14 +591,14 @@
 "Barge-in indisponível: cancelamento de eco não pôde ser ativado." = "Barge-in nicht verfügbar: Echounterdrückung konnte nicht aktiviert werden.";
 "Buscar modelos do servidor" = "Modelle vom Server holen";
 "Buscar voz" = "Stimme suchen";
-"Chave da API" = "API key";
+"Chave da API" = "API-Schlüssel";
 "Compatível com OpenAI" = "OpenAI-kompatibel";
 "Consultando…" = "Abfrage läuft…";
-"Endpoint de voz não configurado (falta a URL)." = "Sprach-Endpoint nicht konfiguriert (URL fehlt).";
-"Endpoint não devolveu texto. Resposta: %@" = "Endpoint hat keinen Text geliefert. Antwort: %@";
-"Endpoint próprio" = "Eigener Endpoint";
-"Endpoint respondeu %d." = "Endpoint antwortete %d.";
-"Endpoint respondeu %d: %@" = "Endpoint antwortete %d: %@";
+"Endpoint de voz não configurado (falta a URL)." = "Sprach-Endpunkt nicht konfiguriert (URL fehlt).";
+"Endpoint não devolveu texto. Resposta: %@" = "Der Endpunkt hat keinen Text geliefert. Antwort: %@";
+"Endpoint próprio" = "Eigener Endpunkt";
+"Endpoint respondeu %d." = "Der Endpunkt antwortete %d.";
+"Endpoint respondeu %d: %@" = "Der Endpunkt antwortete %d: %@";
 "Escolher voz" = "Stimme wählen";
 "Escolher…" = "Wählen…";
 "Formato" = "Format";
@@ -612,11 +612,11 @@
 "Outro…" = "Andere…";
 "Só minhas vozes" = "Nur meine Stimmen";
 "URL base" = "Basis-URL";
-"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "\"Eigener Endpoint\" = jeder Dienst, der mit der Audio-API von OpenAI kompatibel ist (POST /audio/transcriptions). Es wird nichts auf das Gerät geladen.";
+"\"Endpoint próprio\" = qualquer serviço compatível com a API de áudio da OpenAI (POST /audio/transcriptions). Nada é baixado no aparelho." = "„Eigener Endpunkt“ = jeder Dienst, der mit der Audio-API von OpenAI kompatibel ist (POST /audio/transcriptions). Es wird nichts auf das Gerät geladen.";
 "Barge-in indisponível: o detector de voz não pôde ser carregado." = "Barge-in nicht verfügbar: Der Sprachdetektor konnte nicht geladen werden.";
 "Barge-in indisponível: o microfone não pôde ser aberto." = "Barge-in nicht verfügbar: Das Mikrofon konnte nicht geöffnet werden.";
 "O modelo guardado (%@) não está na lista do servidor." = "Das gespeicherte Modell (%@) steht nicht in der Liste des Servers.";
-"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Ohne HTTPS wird der API key im Klartext über das Netzwerk gesendet.";
+"Sem HTTPS a chave da API viaja em texto puro pela rede." = "Ohne HTTPS wird der API-Schlüssel im Klartext über das Netzwerk gesendet.";
 "Gravando… toque para parar" = "Aufnahme… zum Stoppen tippen";
 "Ouvi: %@" = "Gehört: %@";
 "Testar reconhecimento" = "Erkennung testen";
@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Erreicht nur die im Browser geöffnete Website, nicht die App.";
 "Modelo do payload (JSON)" = "Payload-Vorlage (JSON)";
 "Conectado: %lld modelos." = "Verbunden: %lld Modelle.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA aktivieren";
+"Desativar 2FA" = "2FA deaktivieren";
+"Confirmar" = "Bestätigen";
+"Copiar" = "Kopieren";
+"Copiado" = "Kopiert";
+"Códigos de backup" = "Backup-Codes";
+"Código de 6 dígitos" = "6-stelliger Code";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Scanne den QR-Code in deiner Authenticator-App oder gib den Schlüssel ein.";
+"Guarde estes códigos — cada um funciona uma vez." = "Bewahre diese Codes auf — jeder funktioniert nur einmal.";

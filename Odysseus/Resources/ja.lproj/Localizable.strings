@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "ブラウザで開いているサイトにのみ届き、アプリには届きません。";
 "Modelo do payload (JSON)" = "ペイロードのテンプレート (JSON)";
 "Conectado: %lld modelos." = "接続済み：%lld モデル";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA を有効にする";
+"Desativar 2FA" = "2FA を無効にする";
+"Confirmar" = "確認";
+"Copiar" = "コピー";
+"Copiado" = "コピーしました";
+"Códigos de backup" = "バックアップコード";
+"Código de 6 dígitos" = "6 桁のコード";
+"Escaneie o QR no app autenticador ou digite o segredo." = "認証アプリで QR をスキャンするか、シークレットを入力してください。";
+"Guarde estes códigos — cada um funciona uma vez." = "これらのコードを保管してください。各コードは 1 回だけ使えます。";

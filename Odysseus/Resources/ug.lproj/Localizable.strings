@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "پەقەت تور كۆرگۈدە ئېچىلغان تور بېكەتكىلا يېتىدۇ، ئەپكە ئەمەس.";
 "Modelo do payload (JSON)" = "payload قېلىپى (JSON)";
 "Conectado: %lld modelos." = "ئۇلاندى: %lld مودېل.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA نى قوزغىتىش";
+"Desativar 2FA" = "2FA نى تاقاش";
+"Confirmar" = "جەزملەش";
+"Copiar" = "كۆچۈرۈش";
+"Copiado" = "كۆچۈرۈلدى";
+"Códigos de backup" = "زاپاس كودلار";
+"Código de 6 dígitos" = "6 خانىلىق كود";
+"Escaneie o QR no app autenticador ou digite o segredo." = "دەلىللەش ئەپىدە QR نى تارايتىڭ ياكى مەخپىي ئاچقۇچنى كىرگۈزۈڭ.";
+"Guarde estes códigos — cada um funciona uma vez." = "بۇ كودلارنى ساقلاڭ — ھەر بىرى پەقەت بىر قېتىم ئىشلەيدۇ.";

@@ -651,3 +651,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Даходзіць толькі да сайта, адкрытага ў браўзеры, а не да праграмы.";
 "Modelo do payload (JSON)" = "Шаблон карыснай нагрузкі (JSON)";
 "Conectado: %lld modelos." = "Падключана: %lld мадэляў.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Уключыць 2FA";
+"Desativar 2FA" = "Выключыць 2FA";
+"Confirmar" = "Пацвердзіць";
+"Copiar" = "Скапіяваць";
+"Copiado" = "Скапіявана";
+"Códigos de backup" = "Рэзервовыя коды";
+"Código de 6 dígitos" = "6-значны код";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Адскануйце QR у праграме-аўтэнтыфікатары або ўвядзіце сакрэт.";
+"Guarde estes códigos — cada um funciona uma vez." = "Захавайце гэтыя коды — кожны працуе адзін раз.";

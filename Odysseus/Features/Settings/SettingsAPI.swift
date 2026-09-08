@@ -98,6 +98,33 @@ extension APIClient {
         _ = try await send(req)
     }
 
+    struct TwoFASetup { let secret: String; let uri: String; let qrPNG: Data? }
+
+    /// `{secret, uri, qr_code: "data:image/png;base64,…"}`.
+    func twoFASetup() async throws -> TwoFASetup {
+        let data = try await send(request("/api/auth/2fa/setup", method: "POST"))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        guard let secret = d["secret"] as? String, !secret.isEmpty else { throw APIError.decoding("2fa secret ausente") }
+        var png: Data?
+        if let dataURL = d["qr_code"] as? String, let comma = dataURL.firstIndex(of: ",") {
+            png = Data(base64Encoded: String(dataURL[dataURL.index(after: comma)...]))
+        }
+        return TwoFASetup(secret: secret, uri: (d["uri"] as? String) ?? "", qrPNG: png)
+    }
+
+    /// Returns the backup codes; a wrong code is a 400 the caller shows.
+    func twoFAConfirm(code: String) async throws -> [String] {
+        struct B: Encodable { let code: String }
+        let data = try await send(try jsonRequest("/api/auth/2fa/confirm", method: "POST", body: B(code: code)))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        return (d["backup_codes"] as? [String]) ?? []
+    }
+
+    func twoFADisable(password: String) async throws {
+        struct B: Encodable { let password: String }
+        _ = try await send(try jsonRequest("/api/auth/2fa/disable", method: "POST", body: B(password: password)))
+    }
+
     func twoFAEnabled() async throws -> Bool {
         let data = try await send(request("/api/auth/2fa/status"))
         let dict = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
