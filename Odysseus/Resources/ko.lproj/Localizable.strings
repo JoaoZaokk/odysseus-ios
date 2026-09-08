@@ -13,11 +13,9 @@
 "Admin" = "관리자";
 "Agendado %@" = "예약됨 %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "예약된 에이전트";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus의 예약된 에이전트가 여기에 표시됩니다.";
 "Ajustes" = "설정";
 "Analisa imagens com um modelo com visão." = "비전 모델로 이미지를 분석합니다.";
-"Anotações e lembretes" = "메모 및 알림";
 "Apagar" = "삭제";
 "Aparência" = "외관";
 "apertado" = "빠듯함";
@@ -41,7 +39,6 @@
 "cabe" = "들어감";
 "Cabe na máquina (estimativa, melhor GPU)" = "이 머신에서 실행 가능(추정, 최적 GPU)";
 "Cadastro aberto" = "회원가입 개방";
-"Caixa de entrada" = "받은 편지함";
 "Calendário" = "캘린더";
 "Cancelar" = "취소";
 "Carregando…" = "로딩 중…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "폴백 작동 방식";
 "Como posso ajudar?" = "무엇을 도와드릴까요?";
 "Comparar" = "비교";
-"Comparar modelos" = "모델 비교";
 "Concluído" = "완료";
 "Conectado a %@" = "%@에 연결됨";
 "Conectar conta" = "계정 연결";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "감지됨: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus 프로세스의 실시간 진단.";
 "Diário %@" = "매일 %@";
-"Documentos pessoais (RAG)" = "개인 문서(RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "이 에이전트를 다른 에이전트와 구별하기 위해 이름을 지정하세요(예: \"Claude Agent — laptop\").";
 "Email" = "이메일";
 "Email (IMAP/SMTP)" = "이메일(IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "위에 자연어로 입력하거나\n+를 눌러 만드세요.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "이름 기반 추정(fp8≈1B/param, fp16/bf16≈2B/param) + 약 3 GB 여유. 실제 테스트를 대체하지 않습니다.";
 "Evento: %@" = "이벤트: %@";
-"Eventos e agenda" = "이벤트 및 일정";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "예: 청동기 시대 붕괴 이론과 증거";
 "ex.: assistente direto e objetivo" = "예: 직접적이고 간결한 어시스턴트";
 "Ex: reunião amanhã 14h" = "예: 내일 오후 2시 회의";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "에이전트가 사용할 수 있는 도구를 활성화 또는 비활성화합니다.";
 "Idioma" = "언어";
 "Igual ao chat" = "채팅과 동일";
-"Imagens e álbuns" = "이미지 및 앨범";
 "Imagens geradas e enviadas aparecem aqui." = "생성 및 업로드된 이미지가 여기에 표시됩니다.";
 "instalado" = "설치됨";
 "instalando…" = "설치 중…";
@@ -115,13 +108,11 @@
 "Library" = "라이브러리";
 "Logs do sistema" = "시스템 로그";
 "Manter conectado" = "로그인 유지";
-"Memórias do assistente" = "어시스턴트 메모리";
 "Mesma pergunta para os dois…" = "두 모델에 동일한 질문…";
 "Modelo de chat padrão" = "기본 채팅 모델";
 "Modelo on-device" = "온디바이스 모델";
 "Modelo utilitário" = "유틸리티 모델";
 "Modelos conectados" = "연결된 모델";
-"Modelos e engines" = "모델 및 엔진";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "네이티브 = 말하는 동안 실시간 전사(Claude/Gemini 방식). \"모델\" = 오프라인 Whisper(종료 후 전사). 다운로드한 모델의 경우 ⚡로 Core ML 가속기(Neural Engine)를 다운로드 → 훨씬 빠름.";
 "Nativo iOS" = "네이티브 iOS";
 "Nenhum endpoint conectado." = "연결된 엔드포인트가 없습니다.";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "뉴럴 음성 삭제";
 "Ativar aceleração Core ML" = "Core ML 가속 켜기";
 "Baixa" = "낮음";
+"Alta" = "높음";
 "Baixar modelo" = "모델 다운로드";
 "Cancelar download" = "다운로드 취소";
 "Chinês" = "중국어";

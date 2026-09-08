@@ -13,11 +13,9 @@
 "Admin" = "অ্যাডমিন";
 "Agendado %@" = "নির্ধারিত %@";
 "Agent Tools" = "এজেন্ট টুল";
-"Agentes agendados" = "নির্ধারিত এজেন্ট";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus-এর নির্ধারিত এজেন্ট এখানে দেখা যাবে।";
 "Ajustes" = "সেটিংস";
 "Analisa imagens com um modelo com visão." = "ভিশন-সক্ষম মডেল দিয়ে ছবি বিশ্লেষণ করে।";
-"Anotações e lembretes" = "নোট ও রিমাইন্ডার";
 "Apagar" = "মুছুন";
 "Aparência" = "অ্যাপিয়ারেন্স";
 "apertado" = "কষ্টে আঁটে";
@@ -41,7 +39,6 @@
 "cabe" = "আঁটে";
 "Cabe na máquina (estimativa, melhor GPU)" = "মেশিনে এঁটে যায় (আনুমানিক, সেরা GPU)";
 "Cadastro aberto" = "ওপেন সাইন-আপ";
-"Caixa de entrada" = "ইনবক্স";
 "Calendário" = "ক্যালেন্ডার";
 "Cancelar" = "বাতিল";
 "Carregando…" = "লোড হচ্ছে…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "ফলব্যাক কীভাবে কাজ করে";
 "Como posso ajudar?" = "আমি কীভাবে সাহায্য করতে পারি?";
 "Comparar" = "তুলনা করুন";
-"Comparar modelos" = "মডেল তুলনা করুন";
 "Concluído" = "সম্পন্ন";
 "Conectado a %@" = "%@ এ সংযুক্ত";
 "Conectar conta" = "অ্যাকাউন্ট সংযুক্ত করুন";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "শনাক্ত হয়েছে: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus প্রসেসের লাইভ ডায়াগনস্টিক্স।";
 "Diário %@" = "প্রতিদিন %@";
-"Documentos pessoais (RAG)" = "ব্যক্তিগত ডকুমেন্ট (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "অন্যগুলো থেকে আলাদা করতে এই এজেন্টকে একটি নাম দিন (যেমন \"Claude Agent — laptop\")।";
 "Email" = "ইমেল";
 "Email (IMAP/SMTP)" = "ইমেল (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "উপরে স্বাভাবিক ভাষায় লিখুন\nঅথবা তৈরি করতে + চাপুন।";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "নাম অনুযায়ী আনুমানিক (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB ফাঁকা। আসল টেস্টের বিকল্প নয়।";
 "Evento: %@" = "ইভেন্ট: %@";
-"Eventos e agenda" = "ইভেন্ট ও সূচি";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "যেমন: ব্রোঞ্জ যুগের পতনের তত্ত্ব ও প্রমাণ";
 "ex.: assistente direto e objetivo" = "যেমন: সরাসরি ও লক্ষ্যকেন্দ্রিক অ্যাসিস্ট্যান্ট";
 "Ex: reunião amanhã 14h" = "যেমন: আগামীকাল দুপুর ২টায় মিটিং";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "এজেন্টের জন্য উপলব্ধ টুলগুলো চালু বা বন্ধ করুন।";
 "Idioma" = "ভাষা";
 "Igual ao chat" = "চ্যাটের মতোই";
-"Imagens e álbuns" = "ছবি ও অ্যালবাম";
 "Imagens geradas e enviadas aparecem aqui." = "তৈরি ও আপলোড করা ছবি এখানে দেখা যাবে।";
 "instalado" = "ইনস্টল করা";
 "instalando…" = "ইনস্টল হচ্ছে…";
@@ -115,13 +108,11 @@
 "Library" = "লাইব্রেরি";
 "Logs do sistema" = "সিস্টেম log";
 "Manter conectado" = "লগইন রাখুন";
-"Memórias do assistente" = "অ্যাসিস্ট্যান্ট মেমরি";
 "Mesma pergunta para os dois…" = "দুটোতেই একই প্রশ্ন…";
 "Modelo de chat padrão" = "ডিফল্ট চ্যাট মডেল";
 "Modelo on-device" = "অন-ডিভাইস মডেল";
 "Modelo utilitário" = "ইউটিলিটি মডেল";
 "Modelos conectados" = "সংযুক্ত মডেল";
-"Modelos e engines" = "মডেল ও ইঞ্জিন";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "নেটিভ = আপনি বলার সাথে সাথে লাইভ ট্রান্সক্রিপশন (Claude/Gemini-এর মতো)। \"মডেল\" = অফলাইন Whisper (শেষে ট্রান্সক্রাইব করে)। ডাউনলোড করা মডেলে ⚡ Core ML অ্যাক্সিলারেটর (Neural Engine) ডাউনলোড করে → অনেক দ্রুত।";
 "Nativo iOS" = "নেটিভ iOS";
 "Nenhum endpoint conectado." = "কোনো endpoint সংযুক্ত নেই।";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "নিউরাল কণ্ঠ মুছুন";
 "Ativar aceleração Core ML" = "Core ML ত্বরণ চালু করুন";
 "Baixa" = "কম";
+"Alta" = "উচ্চ";
 "Baixar modelo" = "মডেল ডাউনলোড করুন";
 "Cancelar download" = "ডাউনলোড বাতিল করুন";
 "Chinês" = "চীনা";

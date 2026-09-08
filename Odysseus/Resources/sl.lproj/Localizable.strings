@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Načrtovano %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Načrtovani agenti";
 "Agentes agendados do Odysseus aparecem aqui." = "Načrtovani agenti Odysseus se prikažejo tukaj.";
 "Ajustes" = "Nastavitve";
 "Analisa imagens com um modelo com visão." = "Analizira slike z modelom z vidom.";
-"Anotações e lembretes" = "Opombe in opomniki";
 "Apagar" = "Izbriši";
 "Aparência" = "Videz";
 "apertado" = "na tesno";
@@ -41,7 +39,6 @@
 "cabe" = "gre noter";
 "Cabe na máquina (estimativa, melhor GPU)" = "Se prilega stroju (ocena, najboljša GPU)";
 "Cadastro aberto" = "Odprta registracija";
-"Caixa de entrada" = "Prejeta pošta";
 "Calendário" = "Koledar";
 "Cancelar" = "Prekliči";
 "Carregando…" = "Nalaganje…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Kako deluje rezervno";
 "Como posso ajudar?" = "Kako ti lahko pomagam?";
 "Comparar" = "Primerjaj";
-"Comparar modelos" = "Primerjaj modele";
 "Concluído" = "Končano";
 "Conectado a %@" = "Povezano z %@";
 "Conectar conta" = "Poveži račun";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Zaznano: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Sprotna diagnostika procesa Odysseus.";
 "Diário %@" = "Dnevno %@";
-"Documentos pessoais (RAG)" = "Osebni dokumenti (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Poimenuj tega agenta, da ga ločiš od ostalih (npr. \"Claude Agent — laptop\").";
 "Email" = "E-pošta";
 "Email (IMAP/SMTP)" = "E-pošta (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Piši v naravnem jeziku zgoraj\nali se dotakni + za ustvarjanje.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Ocena po imenu (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB rezerve. Ne nadomešča pravega testa.";
 "Evento: %@" = "Dogodek: %@";
-"Eventos e agenda" = "Dogodki in urnik";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "npr. Teorije o propadu bronaste dobe in dokazi";
 "ex.: assistente direto e objetivo" = "npr. neposreden in stvaren pomočnik";
 "Ex: reunião amanhã 14h" = "Npr. sestanek jutri ob 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Vklopi ali izklopi orodja, ki so na voljo agentu.";
 "Idioma" = "Jezik";
 "Igual ao chat" = "Enako kot v klepetu";
-"Imagens e álbuns" = "Slike in albumi";
 "Imagens geradas e enviadas aparecem aqui." = "Ustvarjene in naložene slike se prikažejo tukaj.";
 "instalado" = "nameščeno";
 "instalando…" = "nameščanje…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Sistemski logi";
 "Manter conectado" = "Ostani prijavljen";
-"Memórias do assistente" = "Spomini pomočnika";
 "Mesma pergunta para os dois…" = "Isto vprašanje za oba…";
 "Modelo de chat padrão" = "Privzeti model klepeta";
 "Modelo on-device" = "Model na napravi";
 "Modelo utilitário" = "Pomožni model";
 "Modelos conectados" = "Povezani modeli";
-"Modelos e engines" = "Modeli in pogoni";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativno = sprotni prepis med govorom (kot Claude/Gemini). \"Model\" = offline Whisper (prepiše na koncu). Pri prenesenih modelih ⚡ prenese pospeševalnik Core ML (Neural Engine) → bistveno hitreje.";
 "Nativo iOS" = "Nativni iOS";
 "Nenhum endpoint conectado." = "Noben endpoint ni povezan.";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Notes · arhivirane";
 "Nova nota" = "Nova opomba";
 "Não consegui carregar o relatório." = "Poročila ni bilo mogoče naložiti.";
-"Password" = "Password";
+"Password" = "Geslo";
 "Pausar" = "Začasno ustavi";
 "Pensando…" = "Razmišljanje…";
 "Raciocínio" = "Sklepanje";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Še ni opomb";
 "Tornar admin" = "Nastavi kot admina";
 "Tudo" = "Vse";
-"Username" = "Username";
+"Username" = "Uporabniško ime";
 "Verificar" = "Preveri";
 "%lld de %lld linhas" = "%lld od %lld vrstic";
 "(sem nome)" = "(brez imena)";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Izbriši nevronski glas";
 "Ativar aceleração Core ML" = "Vklopi pospeševanje Core ML";
 "Baixa" = "Nizka";
+"Alta" = "Visoka";
 "Baixar modelo" = "Prenesi model";
 "Cancelar download" = "Prekliči prenos";
 "Chinês" = "Kitajščina";

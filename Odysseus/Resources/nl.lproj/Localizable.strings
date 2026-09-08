@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Gepland %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Geplande agenten";
 "Agentes agendados do Odysseus aparecem aqui." = "Geplande Odysseus-agenten verschijnen hier.";
 "Ajustes" = "Instellingen";
 "Analisa imagens com um modelo com visão." = "Analyseert afbeeldingen met een vision-model.";
-"Anotações e lembretes" = "Notities en herinneringen";
 "Apagar" = "Verwijderen";
 "Aparência" = "Weergave";
 "apertado" = "krap";
@@ -41,7 +39,6 @@
 "cabe" = "past";
 "Cabe na máquina (estimativa, melhor GPU)" = "Past op de machine (schatting, beste GPU)";
 "Cadastro aberto" = "Open registratie";
-"Caixa de entrada" = "Inbox";
 "Calendário" = "Agenda";
 "Cancelar" = "Annuleren";
 "Carregando…" = "Laden…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Hoe fallback werkt";
 "Como posso ajudar?" = "Hoe kan ik je helpen?";
 "Comparar" = "Vergelijken";
-"Comparar modelos" = "Modellen vergelijken";
 "Concluído" = "Klaar";
 "Conectado a %@" = "Verbonden met %@";
 "Conectar conta" = "Account verbinden";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Gedetecteerd: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Live diagnose van het Odysseus-proces.";
 "Diário %@" = "Dagelijks %@";
-"Documentos pessoais (RAG)" = "Persoonlijke documenten (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Geef deze agent een naam om hem van de anderen te onderscheiden (bijv. \"Claude Agent — laptop\").";
 "Email" = "E-mail";
 "Email (IMAP/SMTP)" = "E-mail (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Schrijf bovenaan in natuurlijke taal\nof tik op + om te maken.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Schatting op naam (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB ruimte. Vervangt geen echte test.";
 "Evento: %@" = "Gebeurtenis: %@";
-"Eventos e agenda" = "Evenementen en agenda";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "bijv. De theorieën over de ondergang van de Bronstijd en het bewijs";
 "ex.: assistente direto e objetivo" = "bijv. een directe, bondige assistent";
 "Ex: reunião amanhã 14h" = "Bijv.: vergadering morgen om 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Schakel de beschikbare tools voor de agent in of uit.";
 "Idioma" = "Taal";
 "Igual ao chat" = "Hetzelfde als chat";
-"Imagens e álbuns" = "Afbeeldingen en albums";
 "Imagens geradas e enviadas aparecem aqui." = "Gegenereerde en geüploade afbeeldingen verschijnen hier.";
 "instalado" = "geïnstalleerd";
 "instalando…" = "installeren…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Systeemlogboeken";
 "Manter conectado" = "Aangemeld blijven";
-"Memórias do assistente" = "Geheugen van de assistent";
 "Mesma pergunta para os dois…" = "Dezelfde vraag voor beiden…";
 "Modelo de chat padrão" = "Standaard chatmodel";
 "Modelo on-device" = "Model op apparaat";
 "Modelo utilitário" = "Hulpmodel";
 "Modelos conectados" = "Verbonden modellen";
-"Modelos e engines" = "Modellen en engines";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Nativo = live transcriptie terwijl je spreekt (zoals Claude/Gemini). «Model» = offline Whisper (transcribeert aan het einde). Bij gedownloade modellen downloadt ⚡ de Core ML-versneller (Neural Engine) → veel sneller.";
 "Nativo iOS" = "Nativo iOS";
 "Nenhum endpoint conectado." = "Geen endpoint verbonden.";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Notes · gearchiveerd";
 "Nova nota" = "Nieuwe notitie";
 "Não consegui carregar o relatório." = "Kon het rapport niet laden.";
-"Password" = "Password";
+"Password" = "Wachtwoord";
 "Pausar" = "Pauzeren";
 "Pensando…" = "Nadenken…";
 "Raciocínio" = "Redeneren";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Nog geen notities";
 "Tornar admin" = "Beheerder maken";
 "Tudo" = "Alles";
-"Username" = "Username";
+"Username" = "Gebruikersnaam";
 "Verificar" = "Verifiëren";
 "%lld de %lld linhas" = "%lld van %lld regels";
 "(sem nome)" = "(geen naam)";
@@ -280,7 +271,7 @@
 "Endpoints que você conectou. Ative, desative ou remova." = "Verbonden endpoints. Schakel in, uit of verwijder.";
 "Erro ao gerar resposta" = "Fout bij het genereren van een antwoord";
 "Escrevendo" = "Schrijven";
-"Espaços" = "Spaties";
+"Espaços" = "Werkruimtes";
 "Executando" = "Bezig";
 "Extração paralela" = "Parallelle extractie";
 "Timeout da extração (s)" = "Timeout van de extractie (s)";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "Neurale stem verwijderen";
 "Ativar aceleração Core ML" = "Core ML-versnelling inschakelen";
 "Baixa" = "Laag";
+"Alta" = "Hoog";
 "Baixar modelo" = "Model downloaden";
 "Cancelar download" = "Download annuleren";
 "Chinês" = "Chinees";

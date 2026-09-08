@@ -13,11 +13,9 @@
 "Admin" = "एडमिन";
 "Agendado %@" = "निर्धारित %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "शेड्यूल्ड एजेंट";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus के शेड्यूल्ड एजेंट यहाँ दिखेंगे।";
 "Ajustes" = "सेटिंग्स";
 "Analisa imagens com um modelo com visão." = "विज़न-सक्षम मॉडल से छवियों का विश्लेषण करता है।";
-"Anotações e lembretes" = "नोट्स और रिमाइंडर";
 "Apagar" = "हटाएँ";
 "Aparência" = "दिखावट";
 "apertado" = "मुश्किल से समाता है";
@@ -41,7 +39,6 @@
 "cabe" = "समाता है";
 "Cabe na máquina (estimativa, melhor GPU)" = "मशीन पर फ़िट होता है (अनुमान, बेस्ट GPU)";
 "Cadastro aberto" = "साइन-अप खुला";
-"Caixa de entrada" = "इनबॉक्स";
 "Calendário" = "कैलेंडर";
 "Cancelar" = "रद्द करें";
 "Carregando…" = "लोड हो रहा है…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "फ़ॉलबैक कैसे काम करता है";
 "Como posso ajudar?" = "मैं कैसे मदद कर सकता हूँ?";
 "Comparar" = "तुलना करें";
-"Comparar modelos" = "मॉडल की तुलना करें";
 "Concluído" = "पूर्ण";
 "Conectado a %@" = "%@ से कनेक्टेड";
 "Conectar conta" = "खाता कनेक्ट करें";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "पता चला: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus प्रोसेस का लाइव डायग्नोस्टिक्स।";
 "Diário %@" = "प्रतिदिन %@";
-"Documentos pessoais (RAG)" = "व्यक्तिगत दस्तावेज़ (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "इस एजेंट को बाकियों से अलग पहचानने के लिए इसे एक नाम दें (जैसे \"Claude Agent — laptop\")।";
 "Email" = "ईमेल";
 "Email (IMAP/SMTP)" = "ईमेल (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "ऊपर सामान्य भाषा में लिखें\nया बनाने के लिए + पर टैप करें।";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "नाम से अनुमान (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB की गुंजाइश। असली टेस्ट का विकल्प नहीं।";
 "Evento: %@" = "इवेंट: %@";
-"Eventos e agenda" = "इवेंट और शेड्यूल";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "जैसे: कांस्य युग के पतन के सिद्धांत और प्रमाण";
 "ex.: assistente direto e objetivo" = "जैसे: सीधा और सटीक असिस्टेंट";
 "Ex: reunião amanhã 14h" = "जैसे: कल 2 बजे मीटिंग";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "एजेंट के लिए उपलब्ध टूल्स सक्षम या अक्षम करें।";
 "Idioma" = "भाषा";
 "Igual ao chat" = "चैट जैसा ही";
-"Imagens e álbuns" = "छवियाँ और एल्बम";
 "Imagens geradas e enviadas aparecem aqui." = "जनरेट और अपलोड की गई छवियाँ यहाँ दिखती हैं।";
 "instalado" = "इंस्टॉल हो गया";
 "instalando…" = "इंस्टॉल हो रहा है…";
@@ -115,13 +108,11 @@
 "Library" = "लाइब्रेरी";
 "Logs do sistema" = "सिस्टम log";
 "Manter conectado" = "साइन इन रखें";
-"Memórias do assistente" = "असिस्टेंट की मेमोरी";
 "Mesma pergunta para os dois…" = "दोनों के लिए एक ही सवाल…";
 "Modelo de chat padrão" = "डिफ़ॉल्ट चैट मॉडल";
 "Modelo on-device" = "ऑन-डिवाइस मॉडल";
 "Modelo utilitário" = "यूटिलिटी मॉडल";
 "Modelos conectados" = "कनेक्टेड मॉडल";
-"Modelos e engines" = "मॉडल और इंजन";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "नेटिव = बोलते समय लाइव ट्रांसक्रिप्शन (Claude/Gemini की तरह)। \"मॉडल\" = ऑफ़लाइन Whisper (अंत में ट्रांसक्राइब करता है)। डाउनलोड किए गए मॉडल में ⚡ Core ML एक्सेलेरेटर (Neural Engine) डाउनलोड करता है → बहुत तेज़।";
 "Nativo iOS" = "नेटिव iOS";
 "Nenhum endpoint conectado." = "कोई endpoint जुड़ा नहीं है।";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "न्यूरल आवाज़ हटाएँ";
 "Ativar aceleração Core ML" = "Core ML त्वरण चालू करें";
 "Baixa" = "कम";
+"Alta" = "उच्च";
 "Baixar modelo" = "मॉडल डाउनलोड करें";
 "Cancelar download" = "डाउनलोड रद्द करें";
 "Chinês" = "चीनी";

@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Naplánované %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Naplánovaní agenti";
 "Agentes agendados do Odysseus aparecem aqui." = "Naplánovaní agenti Odysseus sa zobrazujú tu.";
 "Ajustes" = "Nastavenia";
 "Analisa imagens com um modelo com visão." = "Analyzuje obrázky pomocou modelu s víziou.";
-"Anotações e lembretes" = "Poznámky a pripomienky";
 "Apagar" = "Vymazať";
 "Aparência" = "Vzhľad";
 "apertado" = "tesne";
@@ -41,7 +39,6 @@
 "cabe" = "zmestí sa";
 "Cabe na máquina (estimativa, melhor GPU)" = "Zmestí sa do počítača (odhad, najlepšia GPU)";
 "Cadastro aberto" = "Otvorená registrácia";
-"Caixa de entrada" = "Doručená pošta";
 "Calendário" = "Kalendár";
 "Cancelar" = "Zrušiť";
 "Carregando…" = "Načítanie…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Ako funguje záložný";
 "Como posso ajudar?" = "Ako môžem pomôcť?";
 "Comparar" = "Porovnať";
-"Comparar modelos" = "Porovnať modely";
 "Concluído" = "Hotovo";
 "Conectado a %@" = "Pripojené k %@";
 "Conectar conta" = "Pripojiť účet";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Zistené: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Živá diagnostika procesu Odysseus.";
 "Diário %@" = "Denne %@";
-"Documentos pessoais (RAG)" = "Osobné dokumenty (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Pomenujte tohto agenta, aby ste ho odlíšili od ostatných (napr. \"Claude Agent — laptop\").";
 "Email" = "E-mail";
 "Email (IMAP/SMTP)" = "E-mail (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Píšte prirodzeným jazykom vyššie\nalebo klepnite na + pre vytvorenie.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Odhad podľa názvu (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB rezervy. Nenahrádza skutočný test.";
 "Evento: %@" = "Udalosť: %@";
-"Eventos e agenda" = "Udalosti a program";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "napr. Teórie kolapsu doby bronzovej a dôkazy";
 "ex.: assistente direto e objetivo" = "napr. priamy a vecný asistent";
 "Ex: reunião amanhã 14h" = "Napr. stretnutie zajtra o 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Zapnite alebo vypnite nástroje dostupné agentovi.";
 "Idioma" = "Jazyk";
 "Igual ao chat" = "Rovnaké ako v chate";
-"Imagens e álbuns" = "Obrázky a albumy";
 "Imagens geradas e enviadas aparecem aqui." = "Vygenerované a nahrané obrázky sa zobrazujú tu.";
 "instalado" = "nainštalované";
 "instalando…" = "inštalácia…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Systémové logy";
 "Manter conectado" = "Zostať prihlásený";
-"Memórias do assistente" = "Spomienky asistenta";
 "Mesma pergunta para os dois…" = "Tá istá otázka pre oboch…";
 "Modelo de chat padrão" = "Predvolený model chatu";
 "Modelo on-device" = "Model v zariadení";
 "Modelo utilitário" = "Pomocný model";
 "Modelos conectados" = "Pripojené modely";
-"Modelos e engines" = "Modely a enginy";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Natívny = živý prepis počas rozprávania (ako Claude/Gemini). \"Model\" = offline Whisper (prepíše na konci). V stiahnutých modeloch ⚡ stiahne akcelerátor Core ML (Neural Engine) → oveľa rýchlejšie.";
 "Nativo iOS" = "Natívny iOS";
 "Nenhum endpoint conectado." = "Žiadny endpoint nie je pripojený.";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Notes · archivované";
 "Nova nota" = "Nová poznámka";
 "Não consegui carregar o relatório." = "Nepodarilo sa načítať správu.";
-"Password" = "Password";
+"Password" = "Heslo";
 "Pausar" = "Pozastaviť";
 "Pensando…" = "Premýšľanie…";
 "Raciocínio" = "Uvažovanie";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Zatiaľ žiadne poznámky";
 "Tornar admin" = "Nastaviť ako admina";
 "Tudo" = "Všetko";
-"Username" = "Username";
+"Username" = "Používateľské meno";
 "Verificar" = "Overiť";
 "%lld de %lld linhas" = "%lld z %lld riadkov";
 "(sem nome)" = "(bez názvu)";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "Zmazať neurónový hlas";
 "Ativar aceleração Core ML" = "Zapnúť akceleráciu Core ML";
 "Baixa" = "Nízka";
+"Alta" = "Vysoká";
 "Baixar modelo" = "Stiahnuť model";
 "Cancelar download" = "Zrušiť sťahovanie";
 "Chinês" = "Čínčina";

@@ -13,11 +13,9 @@
 "Admin" = "Ylläpitäjä";
 "Agendado %@" = "Ajastettu %@";
 "Agent Tools" = "Agentin työkalut";
-"Agentes agendados" = "Ajastetut agentit";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseuksen ajastetut agentit näkyvät täällä.";
 "Ajustes" = "Asetukset";
 "Analisa imagens com um modelo com visão." = "Analysoi kuvia näkökykyisellä mallilla.";
-"Anotações e lembretes" = "Muistiinpanot ja muistutukset";
 "Apagar" = "Poista";
 "Aparência" = "Ulkoasu";
 "apertado" = "niukasti";
@@ -41,7 +39,6 @@
 "cabe" = "mahtuu";
 "Cabe na máquina (estimativa, melhor GPU)" = "Mahtuu koneelle (arvio, paras GPU)";
 "Cadastro aberto" = "Avoin rekisteröityminen";
-"Caixa de entrada" = "Saapuneet";
 "Calendário" = "Kalenteri";
 "Cancelar" = "Peruuta";
 "Carregando…" = "Ladataan…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Miten varajärjestelmä toimii";
 "Como posso ajudar?" = "Miten voin auttaa?";
 "Comparar" = "Vertaile";
-"Comparar modelos" = "Vertaile malleja";
 "Concluído" = "Valmis";
 "Conectado a %@" = "Yhdistetty: %@";
 "Conectar conta" = "Yhdistä tili";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Tunnistettu: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus-prosessin reaaliaikainen diagnostiikka.";
 "Diário %@" = "Päivittäin %@";
-"Documentos pessoais (RAG)" = "Henkilökohtaiset asiakirjat (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Anna tälle agentille nimi, jotta erotat sen muista (esim. \"Claude Agent — kannettava\").";
 "Email" = "Sähköposti";
 "Email (IMAP/SMTP)" = "Sähköposti (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Kirjoita luonnollisella kielellä yllä\ntai napauta + luodaksesi.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Arvio nimen perusteella (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 Gt liikkumavaraa. Ei korvaa oikeaa testiä.";
 "Evento: %@" = "Tapahtuma: %@";
-"Eventos e agenda" = "Tapahtumat ja aikataulu";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "esim. Pronssikauden romahduksen teoriat ja todisteet";
 "ex.: assistente direto e objetivo" = "esim. suora ja asiapitoinen avustaja";
 "Ex: reunião amanhã 14h" = "Esim. kokous huomenna klo 14";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Ota käyttöön tai poista käytöstä agentin käytettävissä olevat työkalut.";
 "Idioma" = "Kieli";
 "Igual ao chat" = "Sama kuin keskustelussa";
-"Imagens e álbuns" = "Kuvat ja albumit";
 "Imagens geradas e enviadas aparecem aqui." = "Luodut ja ladatut kuvat näkyvät täällä.";
 "instalado" = "asennettu";
 "instalando…" = "asennetaan…";
@@ -115,13 +108,11 @@
 "Library" = "Kirjasto";
 "Logs do sistema" = "Järjestelmän logit";
 "Manter conectado" = "Pidä minut kirjautuneena";
-"Memórias do assistente" = "Avustajan muistot";
 "Mesma pergunta para os dois…" = "Sama kysymys molemmille…";
 "Modelo de chat padrão" = "Oletuskeskustelumalli";
 "Modelo on-device" = "Laitteessa suoritettava malli";
 "Modelo utilitário" = "Apumalli";
 "Modelos conectados" = "Yhdistetyt mallit";
-"Modelos e engines" = "Mallit ja moottorit";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Natiivi = reaaliaikainen litterointi puhuessasi (kuten Claude/Gemini). \"Malli\" = offline-Whisper (litteroi lopuksi). Ladattujen mallien kohdalla ⚡ lataa Core ML -kiihdyttimen (Neural Engine) → paljon nopeampi.";
 "Nativo iOS" = "Natiivi iOS";
 "Nenhum endpoint conectado." = "Ei yhdistettyä endpointia.";
@@ -501,6 +492,7 @@
 "Apagar voz neural" = "Poista neuroääni";
 "Ativar aceleração Core ML" = "Ota Core ML -kiihdytys käyttöön";
 "Baixa" = "Matala";
+"Alta" = "Korkea";
 "Baixar modelo" = "Lataa malli";
 "Cancelar download" = "Peruuta lataus";
 "Chinês" = "Kiina";

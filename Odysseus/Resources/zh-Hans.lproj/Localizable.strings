@@ -13,11 +13,9 @@
 "Admin" = "管理员";
 "Agendado %@" = "已计划 %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "已计划的代理";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus 的已计划代理将显示在此处。";
 "Ajustes" = "设置";
 "Analisa imagens com um modelo com visão." = "使用视觉模型分析图像。";
-"Anotações e lembretes" = "备忘与提醒";
 "Apagar" = "删除";
 "Aparência" = "外观";
 "apertado" = "勉强放得下";
@@ -41,7 +39,6 @@
 "cabe" = "放得下";
 "Cabe na máquina (estimativa, melhor GPU)" = "适合本机运行（估算，最佳 GPU）";
 "Cadastro aberto" = "开放注册";
-"Caixa de entrada" = "收件箱";
 "Calendário" = "日历";
 "Cancelar" = "取消";
 "Carregando…" = "加载中…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "后备方案的工作原理";
 "Como posso ajudar?" = "我能帮您做什么？";
 "Comparar" = "比较";
-"Comparar modelos" = "比较模型";
 "Concluído" = "完成";
 "Conectado a %@" = "已连接到 %@";
 "Conectar conta" = "连接账户";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "已检测到：%@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus 进程的实时诊断。";
 "Diário %@" = "每天 %@";
-"Documentos pessoais (RAG)" = "个人文档（RAG）";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "为此代理命名以与其他代理区分（例如：\"Claude Agent — laptop\"）。";
 "Email" = "邮件";
 "Email (IMAP/SMTP)" = "邮件（IMAP/SMTP）";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "在上方用自然语言输入\n或点击 + 创建。";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "按名称估算（fp8≈1B/param，fp16/bf16≈2B/param）+ 约 3 GB 余量。不能替代实际测试。";
 "Evento: %@" = "事件：%@";
-"Eventos e agenda" = "事件与日程";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "例：青铜时代崩溃的理论及证据";
 "ex.: assistente direto e objetivo" = "例：直接且简洁的助手";
 "Ex: reunião amanhã 14h" = "例：明天下午 2 点开会";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "启用或禁用代理可用的工具。";
 "Idioma" = "语言";
 "Igual ao chat" = "与聊天相同";
-"Imagens e álbuns" = "图像与相册";
 "Imagens geradas e enviadas aparecem aqui." = "生成和上传的图像将显示在此处。";
 "instalado" = "已安装";
 "instalando…" = "安装中…";
@@ -115,13 +108,11 @@
 "Library" = "资料库";
 "Logs do sistema" = "系统日志（log）";
 "Manter conectado" = "保持登录";
-"Memórias do assistente" = "助手记忆";
 "Mesma pergunta para os dois…" = "向两者发送相同问题…";
 "Modelo de chat padrão" = "默认聊天模型";
 "Modelo on-device" = "本地模型";
 "Modelo utilitário" = "实用模型";
 "Modelos conectados" = "已连接的模型";
-"Modelos e engines" = "模型与引擎";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "原生 = 边说边实时转录（类似 Claude/Gemini）。\"模型\" = 离线 Whisper（结束时转录）。对于已下载的模型，⚡ 可下载 Core ML 加速器（Neural Engine）→ 速度大幅提升。";
 "Nativo iOS" = "原生 iOS";
 "Nenhum endpoint conectado." = "没有已连接的端点（endpoint）。";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "删除神经语音";
 "Ativar aceleração Core ML" = "启用 Core ML 加速";
 "Baixa" = "低";
+"Alta" = "高";
 "Baixar modelo" = "下载模型";
 "Cancelar download" = "取消下载";
 "Chinês" = "中文";

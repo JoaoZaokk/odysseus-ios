@@ -3,51 +3,24 @@ import SwiftUI
 /// Theme gallery — mirrors the web app's "Theme" panel. A grid of live-preview
 /// swatches; tapping one switches the whole app instantly (and persists it).
 ///
-/// Used two ways: as a **sheet** (sidebar "Tema" → `inSheet: true`, draws its own
-/// header with a Done button that works on iOS *and* macOS) and **pushed** inside
-/// Settings (`inSheet: false`, relies on the navigation bar back button).
+/// Reached from Settings › Aparência only (pushed on iOS, a pane in the macOS
+/// drawer). The sidebar "Tema" shortcut that also presented it as a sheet was
+/// removed in 1.9 — it was the third row above the conversation list.
 struct ThemePickerView: View {
-    var inSheet: Bool = false
 
     @EnvironmentObject private var themes: ThemeStore
     @Environment(\.theme) private var theme
-    @Environment(\.dismiss) private var dismiss
 
     private let columns = [GridItem(.adaptive(minimum: 150), spacing: 14)]
 
     var body: some View {
-        Group {
-            if inSheet {
-                VStack(spacing: 0) {
-                    header
-                    Divider().overlay(theme.border)
-                    grid
-                }
-            } else {
-                grid
-                    .navigationTitle("Tema")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-        }
-        .background(theme.bg)
+        grid
+            .navigationTitle("Tema")
+            .navigationBarTitleDisplayMode(.inline)
+            .background(theme.bg)
         #if os(macOS)
         .frame(minWidth: 540, minHeight: 460)
         #endif
-    }
-
-    private var header: some View {
-        HStack {
-            Text("Tema")
-                .font(.ody(.headline))
-                .foregroundStyle(theme.fg)
-            Spacer()
-            Button("Concluído") { dismiss() }
-                .font(.ody(.body))
-                .foregroundStyle(theme.accent)
-                .buttonStyle(.plain)
-        }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
     }
 
     private var grid: some View {

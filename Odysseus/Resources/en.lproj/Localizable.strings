@@ -13,11 +13,9 @@
 "Admin" = "Admin";
 "Agendado %@" = "Scheduled %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Scheduled agents";
 "Agentes agendados do Odysseus aparecem aqui." = "Odysseus scheduled agents show up here.";
 "Ajustes" = "Settings";
 "Analisa imagens com um modelo com visão." = "Analyzes images with a vision-capable model.";
-"Anotações e lembretes" = "Notes and reminders";
 "Apagar" = "Delete";
 "Aparência" = "Appearance";
 "apertado" = "tight";
@@ -41,7 +39,6 @@
 "cabe" = "fits";
 "Cabe na máquina (estimativa, melhor GPU)" = "Fits on the machine (estimate, best GPU)";
 "Cadastro aberto" = "Open sign-up";
-"Caixa de entrada" = "Inbox";
 "Calendário" = "Calendar";
 "Cancelar" = "Cancel";
 "Carregando…" = "Loading…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "How fallback works";
 "Como posso ajudar?" = "How can I help?";
 "Comparar" = "Compare";
-"Comparar modelos" = "Compare models";
 "Concluído" = "Done";
 "Conectado a %@" = "Connected to %@";
 "Conectar conta" = "Connect account";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Detected: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Live diagnostics of the Odysseus process.";
 "Diário %@" = "Daily %@";
-"Documentos pessoais (RAG)" = "Personal documents (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Give this agent a name to tell it apart from the others (e.g. \"Claude Agent — laptop\").";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Write in natural language above\nor tap + to create.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Estimate by name (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB of headroom. No substitute for a real test.";
 "Evento: %@" = "Event: %@";
-"Eventos e agenda" = "Events and schedule";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "e.g. The Bronze Age collapse theories and the evidence";
 "ex.: assistente direto e objetivo" = "e.g. a direct, to-the-point assistant";
 "Ex: reunião amanhã 14h" = "E.g. meeting tomorrow 2pm";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Enable or disable the tools available to the agent.";
 "Idioma" = "Language";
 "Igual ao chat" = "Same as chat";
-"Imagens e álbuns" = "Images and albums";
 "Imagens geradas e enviadas aparecem aqui." = "Generated and uploaded images show up here.";
 "instalado" = "installed";
 "instalando…" = "installing…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "System logs";
 "Manter conectado" = "Keep me signed in";
-"Memórias do assistente" = "Assistant memories";
 "Mesma pergunta para os dois…" = "Same question for both…";
 "Modelo de chat padrão" = "Default chat model";
 "Modelo on-device" = "On-device model";
 "Modelo utilitário" = "Utility model";
 "Modelos conectados" = "Connected models";
-"Modelos e engines" = "Models and engines";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Native = live transcription as you speak (like Claude/Gemini). \"Model\" = offline Whisper (transcribes at the end). For downloaded models, ⚡ downloads the Core ML accelerator (Neural Engine) → much faster.";
 "Nativo iOS" = "Native iOS";
 "Nenhum endpoint conectado." = "No endpoint connected.";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "Delete neural voice";
 "Ativar aceleração Core ML" = "Enable Core ML acceleration";
 "Baixa" = "Low";
+"Alta" = "High";
 "Baixar modelo" = "Download model";
 "Cancelar download" = "Cancel download";
 "Chinês" = "Chinese";

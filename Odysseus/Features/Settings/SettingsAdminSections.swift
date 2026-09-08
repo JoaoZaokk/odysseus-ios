@@ -426,7 +426,7 @@ struct BuiltinToolsCard: View {
             }
             HStack {
                 Spacer()
-                if let n = vm.toolsNote { Text(n).font(.ody(size: 11)).foregroundStyle(theme.green) }
+                if let n = vm.toolsNote { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
                 if vm.savingTools { ProgressView().controlSize(.small) }
                 else { SettingsUI.saveButton(theme: theme) { Task { await vm.saveTools() } } }
             }
@@ -596,8 +596,8 @@ struct SistemaSection: View {
                     Rectangle().fill(theme.border).frame(height: 1)
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(d.label).font(.ody(size: 12)).foregroundStyle(theme.fg)
-                            Text(d.desc).font(.ody(size: 9)).foregroundStyle(theme.secondaryText).lineLimit(2)
+                            Text(LocalizedStringKey(d.label)).font(.ody(size: 12)).foregroundStyle(theme.fg)
+                            Text(LocalizedStringKey(d.desc)).font(.ody(size: 9)).foregroundStyle(theme.secondaryText).lineLimit(2)
                         }
                         Spacer()
                         Button("Apagar", role: .destructive) { confirming = (d.cat, d.label) }
@@ -607,7 +607,7 @@ struct SistemaSection: View {
             }
         }
         .task { await vm.load() }
-        .alert(confirming?.label ?? "", isPresented: Binding(get: { confirming != nil }, set: { if !$0 { confirming = nil } })) {
+        .alert(LocalizedStringKey(confirming?.label ?? ""), isPresented: Binding(get: { confirming != nil }, set: { if !$0 { confirming = nil } })) {
             Button("Apagar", role: .destructive) { if let c = confirming { Task { await vm.wipe(c.cat) } }; confirming = nil }
             Button("Cancelar", role: .cancel) { confirming = nil }
         } message: { Text("Isso é irreversível. Confirma?") }

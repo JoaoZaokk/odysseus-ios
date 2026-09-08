@@ -94,7 +94,6 @@
 "Modelo %@" = "Modèle %@";
 "Descompasso de TLS/porta. No IMAP use a porta 993 com STARTTLS desligado (SSL); no SMTP use 465 com SSL, ou 587 com STARTTLS. Não cruze porta com segurança." = "Incohérence TLS/port. Pour l'IMAP, utilisez le port 993 avec STARTTLS désactivé (SSL) ; pour le SMTP, utilisez 465 avec SSL, ou 587 avec STARTTLS. N'associez pas un port à la mauvaise sécurité.";
 "Irreversível. Cada item apaga uma categoria." = "Irréversible. Chaque élément supprime une catégorie.";
-"Anotações e lembretes" = "Notes et rappels";
 "Relatório vazio." = "Rapport vide.";
 "Não consegui interpretar esse texto. Tente o botão +." = "Impossible d'interpréter ce texte. Essayez le bouton +.";
 "Ferramentas integradas" = "Outils intégrés";
@@ -107,14 +106,12 @@
 "Dia inteiro" = "Toute la journée";
 "Baixando voz neural…" = "Téléchargement de la voix neuronale…";
 "(sem nome)" = "(sans nom)";
-"Memórias do assistente" = "Mémoires de l'assistant";
 "Cadastro aberto" = "Inscription ouverte";
 "Agentes agendados do Odysseus aparecem aqui." = "Les agents planifiés d'Odysseus apparaissent ici.";
 "Nome" = "Nom";
 "Max tokens" = "Tokens max";
 "Memórias já estão organizadas — nada a remover." = "Les mémoires sont déjà organisées — rien à supprimer.";
 "Nova memória" = "Nouvelle mémoire";
-"Caixa de entrada" = "Boîte de réception";
 "Analisa imagens com um modelo com visão." = "Analyse les images avec un modèle doté de vision.";
 "Username" = "Nom d'utilisateur";
 "Sair da conta" = "Se déconnecter";
@@ -154,7 +151,6 @@
 "Contas de email" = "Comptes e-mail";
 "Imagem" = "Image";
 "Gerar senha de app" = "Générer un mot de passe d'application";
-"Imagens e álbuns" = "Images et albums";
 "A Microsoft desativa o login por senha no IMAP/SMTP na maioria das contas Outlook/Microsoft 365. O Odysseus ainda não suporta OAuth da Microsoft, então este preset é só um espaço reservado." = "Microsoft désactive la connexion par mot de passe en IMAP/SMTP sur la plupart des comptes Outlook / Microsoft 365. Odysseus ne prend pas encore en charge OAuth de Microsoft, donc ce préréglage n'est qu'un espace réservé.";
 "Apagar" = "Supprimer";
 "Password" = "Mot de passe";
@@ -219,7 +215,6 @@
 "Exigir no login automático" = "Exiger lors de la connexion automatique";
 "Fechar painel" = "Fermer le panneau";
 "prévia" = "aperçu";
-"Modelos e engines" = "Modèles et moteurs";
 "Sem memórias ainda" = "Aucune mémoire pour le moment";
 "ID do mecanismo de busca (CX)" = "ID du moteur de recherche (CX)";
 "Remover conta" = "Supprimer le compte";
@@ -241,7 +236,6 @@
 "Galeria vazia" = "Galerie vide";
 "OpenWebUI Gen usa a sessão do servidor principal por padrão. A Diffusion API genérica é um endpoint compatível para fallback." = "OpenWebUI Gen utilise la session du serveur principal par défaut. La Diffusion API générique est un point de terminaison compatible pour le repli.";
 "Tasks" = "Tâches";
-"Documentos pessoais (RAG)" = "Documents personnels (RAG)";
 "Manter conectado" = "Rester connecté";
 "Pede %@ antes de usar a senha salva." = "Demande %@ avant d'utiliser le mot de passe enregistré.";
 "Caixa vazia" = "Boîte vide";
@@ -280,7 +274,6 @@
 "O Gmail precisa de uma senha de app" = "Gmail nécessite un mot de passe d'application";
 "Nome para exibição" = "Nom affiché";
 "Ativar" = "Activer";
-"Eventos e agenda" = "Événements et agenda";
 "Library" = "Bibliothèque";
 "Tema" = "Thème";
 "Adicionar conta" = "Ajouter un compte";
@@ -354,13 +347,11 @@
 "Teto duro de tokens" = "Plafond strict de tokens";
 "Configure seu servidor" = "Configurez votre serveur";
 "Usuário SMTP" = "Nom d'utilisateur SMTP";
-"Comparar modelos" = "Comparer les modèles";
 "Entrar" = "Se connecter";
 "Endereço do servidor Odysseus." = "Adresse du serveur Odysseus.";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "Demande d'image → fournisseur par défaut → en cas d'échec et si le repli est activé, il essaie les suivants → si tous échouent, une erreur claire. Les journaux ne contiennent aucune donnée sensible. La génération avancée (txt2img, upscale, inpaint, outpaint, multi-GPU) est documentée dans DIFFUSION_COMFYUI_PLAN.md pour la prochaine phase.";
 "Pausar" = "Suspendre";
 "Detectado: %@ %@" = "Détecté : %@ %@";
-"Agentes agendados" = "Agents planifiés";
 "Notes · arquivadas" = "Notes · archivées";
 "Nova nota" = "Nouvelle note";
 "Lembretes" = "Rappels";
@@ -503,6 +494,7 @@
 "Apagar voz neural" = "Supprimer la voix neuronale";
 "Ativar aceleração Core ML" = "Activer l'accélération Core ML";
 "Baixa" = "Faible";
+"Alta" = "Élevée";
 "Baixar modelo" = "Télécharger le modèle";
 "Cancelar download" = "Annuler le téléchargement";
 "Chinês" = "Chinois";

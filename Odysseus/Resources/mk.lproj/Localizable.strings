@@ -13,11 +13,9 @@
 "Admin" = "Администратор";
 "Agendado %@" = "Закажано %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados" = "Закажани агенти";
 "Agentes agendados do Odysseus aparecem aqui." = "Закажаните агенти на Odysseus се прикажуваат тука.";
 "Ajustes" = "Поставки";
 "Analisa imagens com um modelo com visão." = "Анализира слики со модел со поддршка за вид.";
-"Anotações e lembretes" = "Белешки и потсетници";
 "Apagar" = "Избриши";
 "Aparência" = "Изглед";
 "apertado" = "тесно";
@@ -41,7 +39,6 @@
 "cabe" = "собира";
 "Cabe na máquina (estimativa, melhor GPU)" = "Собира на уредот (проценка, најдобар GPU)";
 "Cadastro aberto" = "Отворена регистрација";
-"Caixa de entrada" = "Дојдовна пошта";
 "Calendário" = "Календар";
 "Cancelar" = "Откажи";
 "Carregando…" = "Вчитување…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "Како функционира резервната опција";
 "Como posso ajudar?" = "Со што можам да помогнам?";
 "Comparar" = "Спореди";
-"Comparar modelos" = "Спореди модели";
 "Concluído" = "Готово";
 "Conectado a %@" = "Поврзано со %@";
 "Conectar conta" = "Поврзи сметка";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "Откриено: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Дијагностика на процесот Odysseus во реално време.";
 "Diário %@" = "Дневно %@";
-"Documentos pessoais (RAG)" = "Лични документи (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "Дајте на овој агент ime за да го разликувате од другите (напр. „Claude Agent — лаптоп”).";
 "Email" = "Email";
 "Email (IMAP/SMTP)" = "Email (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "Напишете на природен јазик погоре\nили допрете + за да создадете.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "Проценка по ime (fp8≈1B/пар., fp16/bf16≈2B/пар.) + ~3 ГБ резерва. Не замени вистински тест.";
 "Evento: %@" = "Настан: %@";
-"Eventos e agenda" = "Настани и распоред";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "напр.: Теориите за колапсот на Бронзеното доба и доказите";
 "ex.: assistente direto e objetivo" = "напр.: директен и прецизен асистент";
 "Ex: reunião amanhã 14h" = "Напр.: состанок утре во 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "Вклучувајте или исклучувајте алатки достапни на агентот.";
 "Idioma" = "Јазик";
 "Igual ao chat" = "Исто како во разговорот";
-"Imagens e álbuns" = "Слики и албуми";
 "Imagens geradas e enviadas aparecem aqui." = "Генерираните и прикачените слики се прикажуваат тука.";
 "instalado" = "инсталирано";
 "instalando…" = "инсталирање…";
@@ -115,13 +108,11 @@
 "Library" = "Library";
 "Logs do sistema" = "Системски logs";
 "Manter conectado" = "Остани најавен";
-"Memórias do assistente" = "Сеќавања на асистентот";
 "Mesma pergunta para os dois…" = "Исто прашање за двата…";
 "Modelo de chat padrão" = "Стандарден модел за разговор";
 "Modelo on-device" = "Локален модел";
 "Modelo utilitário" = "Помошен модел";
 "Modelos conectados" = "Поврзани модели";
-"Modelos e engines" = "Модели и мотори";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Нативно = транскрипција во живо за време на говорот (како Claude/Gemini). \"Модел\" = Whisper офлајн (транскрибира на крај). Кај преземените модели ⚡ го преземa Core ML акцелераторот (Neural Engine) → многу побрзо.";
 "Nativo iOS" = "Нативен iOS";
 "Nenhum endpoint conectado." = "Нема поврзан endpoint.";
@@ -241,7 +232,7 @@
 "Notes · arquivadas" = "Белешки · архивирани";
 "Nova nota" = "Нова белешка";
 "Não consegui carregar o relatório." = "Неуспешно вчитување на извештајот.";
-"Password" = "Password";
+"Password" = "Лозинка";
 "Pausar" = "Пауза";
 "Pensando…" = "Размислувам…";
 "Raciocínio" = "Расудување";
@@ -254,7 +245,7 @@
 "Sem notas ainda" = "Сè уште нема белешки";
 "Tornar admin" = "Направи администратор";
 "Tudo" = "Сè";
-"Username" = "Username";
+"Username" = "Корисник";
 "Verificar" = "Провери";
 "%lld de %lld linhas" = "%lld од %lld редови";
 "(sem nome)" = "(без ime)";
@@ -511,6 +502,7 @@
 "Apagar voz neural" = "Избриши невронски глас";
 "Ativar aceleração Core ML" = "Вклучи Core ML забрзување";
 "Baixa" = "Ниска";
+"Alta" = "Висока";
 "Baixar modelo" = "Преземи модел";
 "Cancelar download" = "Откажи преземање";
 "Chinês" = "Кинески";

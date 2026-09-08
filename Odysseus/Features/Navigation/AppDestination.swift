@@ -33,18 +33,4 @@ enum AppSection: String, CaseIterable, Hashable, Identifiable {
         case .cookbook: "fork.knife"
         }
     }
-
-    var subtitle: String {
-        switch self {
-        case .brain: "Memórias do assistente"
-        case .notes: "Anotações e lembretes"
-        case .calendar: "Eventos e agenda"
-        case .gallery: "Imagens e álbuns"
-        case .email: "Caixa de entrada"
-        case .tasks: "Agentes agendados"
-        case .library: "Documentos pessoais (RAG)"
-        case .compare: "Comparar modelos"
-        case .cookbook: "Modelos e engines"
-        }
-    }
 }

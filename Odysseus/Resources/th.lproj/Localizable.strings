@@ -13,11 +13,9 @@
 "Admin" = "แอดมิน";
 "Agendado %@" = "กำหนดเวลาแล้ว %@";
 "Agent Tools" = "เครื่องมือเอเจนต์";
-"Agentes agendados" = "เอเจนต์ที่ตั้งเวลาไว้";
 "Agentes agendados do Odysseus aparecem aqui." = "เอเจนต์ที่ตั้งเวลาไว้ของ Odysseus จะแสดงที่นี่";
 "Ajustes" = "การตั้งค่า";
 "Analisa imagens com um modelo com visão." = "วิเคราะห์ภาพด้วยโมเดลที่รองรับการมองเห็น";
-"Anotações e lembretes" = "บันทึกและการเตือนความจำ";
 "Apagar" = "ลบ";
 "Aparência" = "รูปลักษณ์";
 "apertado" = "คับ";
@@ -41,7 +39,6 @@
 "cabe" = "พอดี";
 "Cabe na máquina (estimativa, melhor GPU)" = "รองรับได้บนเครื่อง (ประมาณการ, GPU ที่ดีที่สุด)";
 "Cadastro aberto" = "เปิดให้สมัครสมาชิก";
-"Caixa de entrada" = "กล่องขาเข้า";
 "Calendário" = "ปฏิทิน";
 "Cancelar" = "ยกเลิก";
 "Carregando…" = "กำลังโหลด…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "การทำงานของระบบสำรอง";
 "Como posso ajudar?" = "ให้ช่วยอะไรดี";
 "Comparar" = "เปรียบเทียบ";
-"Comparar modelos" = "เปรียบเทียบโมเดล";
 "Concluído" = "เสร็จสิ้น";
 "Conectado a %@" = "เชื่อมต่อกับ %@ แล้ว";
 "Conectar conta" = "เชื่อมต่อบัญชี";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "ตรวจพบ: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "การวินิจฉัยแบบสดของกระบวนการ Odysseus";
 "Diário %@" = "ทุกวัน %@";
-"Documentos pessoais (RAG)" = "เอกสารส่วนตัว (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "ตั้งชื่อให้เอเจนต์นี้เพื่อแยกจากตัวอื่น (เช่น \"Claude Agent — laptop\")";
 "Email" = "อีเมล";
 "Email (IMAP/SMTP)" = "อีเมล (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "พิมพ์ด้วยภาษาธรรมชาติด้านบน\nหรือแตะ + เพื่อสร้าง";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "ประมาณการจากชื่อรุ่น (fp8≈1B/พารามิเตอร์, fp16/bf16≈2B/พารามิเตอร์) บวกพื้นที่เผื่ออีก ~3 GB ไม่สามารถใช้แทนการทดสอบจริงได้";
 "Evento: %@" = "เหตุการณ์: %@";
-"Eventos e agenda" = "กิจกรรมและตารางเวลา";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "เช่น ทฤษฎีการล่มสลายของยุคสำริดและหลักฐาน";
 "ex.: assistente direto e objetivo" = "เช่น ผู้ช่วยที่ตรงประเด็นและกระชับ";
 "Ex: reunião amanhã 14h" = "เช่น ประชุมพรุ่งนี้บ่ายสองโมง";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "เปิดหรือปิดการใช้งานเครื่องมือที่มีให้เอเจนต์";
 "Idioma" = "ภาษา";
 "Igual ao chat" = "เหมือนกับแชท";
-"Imagens e álbuns" = "รูปภาพและอัลบั้ม";
 "Imagens geradas e enviadas aparecem aqui." = "รูปภาพที่สร้างและอัปโหลดจะแสดงที่นี่";
 "instalado" = "ติดตั้งแล้ว";
 "instalando…" = "กำลังติดตั้ง…";
@@ -115,13 +108,11 @@
 "Library" = "คลัง";
 "Logs do sistema" = "log ของระบบ";
 "Manter conectado" = "ให้ฉันอยู่ในระบบต่อไป";
-"Memórias do assistente" = "ความทรงจำของผู้ช่วย";
 "Mesma pergunta para os dois…" = "คำถามเดียวกันสำหรับทั้งสอง…";
 "Modelo de chat padrão" = "โมเดลแชทเริ่มต้น";
 "Modelo on-device" = "โมเดลบนอุปกรณ์";
 "Modelo utilitário" = "โมเดลอเนกประสงค์";
 "Modelos conectados" = "โมเดลที่เชื่อมต่อ";
-"Modelos e engines" = "โมเดลและเอนจิน";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "เนทีฟ = ถอดเสียงสดขณะที่คุณพูด (เหมือน Claude/Gemini) \"โมเดล\" = Whisper แบบออฟไลน์ (ถอดเสียงเมื่อพูดจบ) สำหรับโมเดลที่ดาวน์โหลดแล้ว ⚡ จะดาวน์โหลดตัวเร่งความเร็ว Core ML (Neural Engine) → เร็วขึ้นมาก";
 "Nativo iOS" = "เนทีฟ iOS";
 "Nenhum endpoint conectado." = "ยังไม่ได้เชื่อมต่อ endpoint";
@@ -509,6 +500,7 @@
 "Apagar voz neural" = "ลบเสียงนิวรัล";
 "Ativar aceleração Core ML" = "เปิดการเร่ง Core ML";
 "Baixa" = "ต่ำ";
+"Alta" = "สูง";
 "Baixar modelo" = "ดาวน์โหลดโมเดล";
 "Cancelar download" = "ยกเลิกการดาวน์โหลด";
 "Chinês" = "จีน";

@@ -177,7 +177,7 @@ struct SettingsView: View {
         case .addedModels: AddedModelsSection(app: app)
         case .search: SearchSection(app: app)
         case .voice: VoiceSettingsView()
-        case .appearance: ThemePickerView(inSheet: false).environmentObject(themes)
+        case .appearance: ThemePickerView().environmentObject(themes)
         case .language: LanguageSection()
         case .account: AccountSection()
         case .server: ServerSection()

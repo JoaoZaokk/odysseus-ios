@@ -13,11 +13,9 @@
 "Admin" = "מנהל";
 "Agendado %@" = "מתוזמן %@";
 "Agent Tools" = "כלי הסוכן";
-"Agentes agendados" = "סוכנים מתוזמנים";
 "Agentes agendados do Odysseus aparecem aqui." = "סוכנים מתוזמנים של Odysseus מופיעים כאן.";
 "Ajustes" = "הגדרות";
 "Analisa imagens com um modelo com visão." = "מנתח תמונות באמצעות מודל בעל יכולת ראייה.";
-"Anotações e lembretes" = "פתקים ותזכורות";
 "Apagar" = "מחיקה";
 "Aparência" = "מראה";
 "apertado" = "דחוק";
@@ -41,7 +39,6 @@
 "cabe" = "נכנס";
 "Cabe na máquina (estimativa, melhor GPU)" = "מתאים למכונה (הערכה, GPU הטוב ביותר)";
 "Cadastro aberto" = "הרשמה פתוחה";
-"Caixa de entrada" = "תיבת דואר נכנס";
 "Calendário" = "יומן";
 "Cancelar" = "ביטול";
 "Carregando…" = "טוען…";
@@ -50,7 +47,6 @@
 "Como o fallback funciona" = "איך הגיבוי עובד";
 "Como posso ajudar?" = "איך אפשר לעזור?";
 "Comparar" = "השוואה";
-"Comparar modelos" = "השוואת מודלים";
 "Concluído" = "בוצע";
 "Conectado a %@" = "מחובר אל %@";
 "Conectar conta" = "חיבור חשבון";
@@ -67,7 +63,6 @@
 "Detectado: %@ %@" = "זוהה: %@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "אבחון חי של תהליך Odysseus.";
 "Diário %@" = "מדי יום %@";
-"Documentos pessoais (RAG)" = "מסמכים אישיים (RAG)";
 "Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "תן שם לסוכן הזה כדי להבדיל אותו מהאחרים (למשל: \"Claude Agent — laptop\").";
 "Email" = "אימייל";
 "Email (IMAP/SMTP)" = "אימייל (IMAP/SMTP)";
@@ -79,7 +74,6 @@
 "Escreva em linguagem natural acima\nou toque em + para criar." = "כתוב בשפה טבעית למעלה\nאו הקש על + כדי ליצור.";
 "Estimativa por nome (fp8≈1B/param, fp16/bf16≈2B/param) + ~3 GB de folga. Não substitui um teste real." = "הערכה לפי שם (fp8≈1B/פרמטר, fp16/bf16≈2B/פרמטר) + כ-3GB רזרבה. לא מחליף בדיקה אמיתית.";
 "Evento: %@" = "אירוע: %@";
-"Eventos e agenda" = "אירועים ולוח זמנים";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "למשל: תיאוריות קריסת תקופת הברונזה והראיות התומכות בהן";
 "ex.: assistente direto e objetivo" = "למשל: עוזר ישיר וממוקד";
 "Ex: reunião amanhã 14h" = "למשל: פגישה מחר בשעה 14:00";
@@ -102,7 +96,6 @@
 "Habilite ou desabilite as ferramentas disponíveis ao agente." = "הפעל או השבת את הכלים הזמינים לסוכן.";
 "Idioma" = "שפה";
 "Igual ao chat" = "זהה לצ'אט";
-"Imagens e álbuns" = "תמונות ואלבומים";
 "Imagens geradas e enviadas aparecem aqui." = "תמונות שנוצרו והועלו מופיעות כאן.";
 "instalado" = "מותקן";
 "instalando…" = "מתקין…";
@@ -115,13 +108,11 @@
 "Library" = "ספרייה";
 "Logs do sistema" = "logים של המערכת";
 "Manter conectado" = "השאר אותי מחובר";
-"Memórias do assistente" = "זיכרונות העוזר";
 "Mesma pergunta para os dois…" = "אותה שאלה לשניהם…";
 "Modelo de chat padrão" = "מודל צ'אט ברירת מחדל";
 "Modelo on-device" = "מודל במכשיר";
 "Modelo utilitário" = "מודל שירות";
 "Modelos conectados" = "מודלים מחוברים";
-"Modelos e engines" = "מודלים ומנועים";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "מקומי = תמלול חי תוך כדי דיבור (כמו Claude/Gemini). \"מודל\" = Whisper במצב לא מקוון (מתמלל בסוף). במודלים שהורדת, ⚡ מוריד את מאיץ Core ML (Neural Engine) → הרבה יותר מהיר.";
 "Nativo iOS" = "iOS מקורי";
 "Nenhum endpoint conectado." = "אין endpoint מחובר.";
@@ -501,6 +492,7 @@
 "Apagar voz neural" = "מחיקת קול נוירלי";
 "Ativar aceleração Core ML" = "הפעל האצת Core ML";
 "Baixa" = "נמוכה";
+"Alta" = "גבוהה";
 "Baixar modelo" = "הורד מודל";
 "Cancelar download" = "בטל הורדה";
 "Chinês" = "סינית";
