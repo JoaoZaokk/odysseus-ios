@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "สร้างไม่สำเร็จ: %@";
 "Falha ao remover: %@" = "ลบไม่สำเร็จ: %@";
 "Apagado: %@." = "ลบแล้ว: %@";
+"Apagado: %lld / %lld categorias." = "ลบแล้ว: %lld / %lld หมวดหมู่";
 "Teste enviado para %@." = "ส่งการทดสอบถึง %@ แล้ว";
 "Fila" = "คิว";
 "Modelos" = "โมเดล";

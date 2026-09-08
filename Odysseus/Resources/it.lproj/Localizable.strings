@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "Creazione non riuscita: %@";
 "Falha ao remover: %@" = "Rimozione non riuscita: %@";
 "Apagado: %@." = "Eliminato: %@.";
+"Apagado: %lld / %lld categorias." = "Eliminato: %lld / %lld categorie.";
 "Teste enviado para %@." = "Test inviato a %@.";
 "Fila" = "Coda";
 "Modelos" = "Modelli";

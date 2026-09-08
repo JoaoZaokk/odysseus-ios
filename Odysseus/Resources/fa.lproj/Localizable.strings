@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "ایجاد ناموفق بود: %@";
 "Falha ao remover: %@" = "حذف ناموفق بود: %@";
 "Apagado: %@." = "حذف شد: %@.";
+"Apagado: %lld / %lld categorias." = "حذف شد: %lld / %lld دسته.";
 "Teste enviado para %@." = "آزمایش برای %@ ارسال شد.";
 "Fila" = "صف";
 "Modelos" = "مدل‌ها";

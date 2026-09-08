@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Oluşturma başarısız: %@";
 "Falha ao remover: %@" = "Kaldırma başarısız: %@";
 "Apagado: %@." = "Silindi: %@.";
+"Apagado: %lld / %lld categorias." = "Silindi: %lld / %lld kategori.";
 "Teste enviado para %@." = "Test gönderildi: %@";
 "Fila" = "Kuyruk";
 "Modelos" = "Modeller";

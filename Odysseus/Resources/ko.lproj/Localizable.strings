@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "생성 실패: %@";
 "Falha ao remover: %@" = "삭제 실패: %@";
 "Apagado: %@." = "삭제됨: %@.";
+"Apagado: %lld / %lld categorias." = "삭제됨: %lld / %lld 카테고리.";
 "Teste enviado para %@." = "테스트를 보냈습니다: %@";
 "Fila" = "대기열";
 "Modelos" = "모델";

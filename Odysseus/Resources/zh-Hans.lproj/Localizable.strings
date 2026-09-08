@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "创建失败：%@";
 "Falha ao remover: %@" = "删除失败：%@";
 "Apagado: %@." = "已删除：%@。";
+"Apagado: %lld / %lld categorias." = "已删除：%lld / %lld 个类别。";
 "Teste enviado para %@." = "测试已发送至 %@。";
 "Fila" = "队列";
 "Modelos" = "模型";

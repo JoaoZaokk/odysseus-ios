@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Izveide neizdevās: %@";
 "Falha ao remover: %@" = "Noņemšana neizdevās: %@";
 "Apagado: %@." = "Dzēsts: %@.";
+"Apagado: %lld / %lld categorias." = "Dzēsts: %lld / %lld kategorijas.";
 "Teste enviado para %@." = "Pārbaude nosūtīta uz %@.";
 "Fila" = "Rinda";
 "Modelos" = "Modeļi";

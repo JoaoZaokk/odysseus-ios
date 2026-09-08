@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "Aanmaken mislukt: %@";
 "Falha ao remover: %@" = "Verwijderen mislukt: %@";
 "Apagado: %@." = "Verwijderd: %@.";
+"Apagado: %lld / %lld categorias." = "Verwijderd: %lld / %lld categorieën.";
 "Teste enviado para %@." = "Test verzonden naar %@.";
 "Fila" = "Wachtrij";
 "Modelos" = "Modellen";

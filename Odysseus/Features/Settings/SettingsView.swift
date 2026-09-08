@@ -55,12 +55,18 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         }
     }
 
-    static let groups: [(String?, [SettingsSection])] = [
-        (nil, [.addModels, .addedModels, .aiDefaults, .search]),
-        (nil, [.integrations, .email, .reminders, .imageGen]),
-        (nil, [.voice, .appearance, .language, .account, .server]),
-        ("ADMIN", [.agentTools, .users, .system]),
-    ]
+    /// The ADMIN group only exists for admins — same rule as the web's
+    /// `syncAdminVisibility()`. 1.8 showed it to everyone: Agent Tools loaded
+    /// and then 403'd on save, Usuários and Sistema came up empty.
+    static func groups(admin: Bool) -> [(String?, [SettingsSection])] {
+        var g: [(String?, [SettingsSection])] = [
+            (nil, [.addModels, .addedModels, .aiDefaults, .search]),
+            (nil, [.integrations, .email, .reminders, .imageGen]),
+            (nil, [.voice, .appearance, .language, .account, .server]),
+        ]
+        if admin { g.append(("ADMIN", [.agentTools, .users, .system])) }
+        return g
+    }
 }
 
 struct SettingsView: View {
@@ -90,7 +96,7 @@ struct SettingsView: View {
         #else
         NavigationStack {
             List {
-                ForEach(Array(SettingsSection.groups.enumerated()), id: \.offset) { _, group in
+                ForEach(Array(SettingsSection.groups(admin: app.isAdmin).enumerated()), id: \.offset) { _, group in
                     Section {
                         ForEach(group.1) { s in
                             NavigationLink { content(s).navigationTitle(LocalizedStringKey(s.title)) } label: { row(s) }
@@ -134,7 +140,7 @@ struct SettingsView: View {
     private var sidebar: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 4) {
-                ForEach(Array(SettingsSection.groups.enumerated()), id: \.offset) { idx, group in
+                ForEach(Array(SettingsSection.groups(admin: app.isAdmin).enumerated()), id: \.offset) { idx, group in
                     if let label = group.0 {
                         Text(LocalizedStringKey(label)).font(.ody(size: 10))
                             .foregroundStyle(theme.secondaryText)

@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Gagal membuat: %@";
 "Falha ao remover: %@" = "Gagal menghapus: %@";
 "Apagado: %@." = "Dihapus: %@.";
+"Apagado: %lld / %lld categorias." = "Dihapus: %lld / %lld kategori.";
 "Teste enviado para %@." = "Tes dikirim ke %@.";
 "Fila" = "Antrean";
 "Modelos" = "Model";

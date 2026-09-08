@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "作成に失敗しました：%@";
 "Falha ao remover: %@" = "削除に失敗しました：%@";
 "Apagado: %@." = "削除しました：%@";
+"Apagado: %lld / %lld categorias." = "削除しました：%lld / %lld カテゴリ";
 "Teste enviado para %@." = "テストを送信しました：%@";
 "Fila" = "キュー";
 "Modelos" = "モデル";

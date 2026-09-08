@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "فشل الإنشاء: %@";
 "Falha ao remover: %@" = "فشل الإزالة: %@";
 "Apagado: %@." = "تم الحذف: %@.";
+"Apagado: %lld / %lld categorias." = "تم الحذف: %lld / %lld فئات.";
 "Teste enviado para %@." = "تم إرسال الاختبار إلى %@.";
 "Fila" = "قائمة الانتظار";
 "Modelos" = "النماذج";

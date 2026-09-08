@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Stvaranje nije uspjelo: %@";
 "Falha ao remover: %@" = "Uklanjanje nije uspjelo: %@";
 "Apagado: %@." = "Izbrisano: %@.";
+"Apagado: %lld / %lld categorias." = "Izbrisano: %lld / %lld kategorija.";
 "Teste enviado para %@." = "Test poslano korisniku %@.";
 "Fila" = "Red čekanja";
 "Modelos" = "Modeli";

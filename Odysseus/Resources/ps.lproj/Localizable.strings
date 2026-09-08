@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "جوړول ناکام شو: %@";
 "Falha ao remover: %@" = "لرې کول ناکام شو: %@";
 "Apagado: %@." = "ړنګ شو: %@.";
+"Apagado: %lld / %lld categorias." = "ړنګ شو: %lld / %lld کټګورۍ.";
 "Teste enviado para %@." = "ازموینه %@ ته ولېږل شوه.";
 "Fila" = "کتار";
 "Modelos" = "ماډلونه";

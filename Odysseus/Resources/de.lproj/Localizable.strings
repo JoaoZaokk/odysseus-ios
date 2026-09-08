@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Erstellen fehlgeschlagen: %@";
 "Falha ao remover: %@" = "Entfernen fehlgeschlagen: %@";
 "Apagado: %@." = "Gelöscht: %@.";
+"Apagado: %lld / %lld categorias." = "Gelöscht: %lld / %lld Kategorien.";
 "Teste enviado para %@." = "Test gesendet an %@.";
 "Fila" = "Warteschlange";
 "Modelos" = "Modelle";

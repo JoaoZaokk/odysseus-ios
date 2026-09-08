@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Vytvoření se nezdařilo: %@";
 "Falha ao remover: %@" = "Odstranění se nezdařilo: %@";
 "Apagado: %@." = "Smazáno: %@.";
+"Apagado: %lld / %lld categorias." = "Smazáno: %lld / %lld kategorií.";
 "Teste enviado para %@." = "Test odeslán uživateli %@.";
 "Fila" = "Fronta";
 "Modelos" = "Modely";

@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Gagal mencipta: %@";
 "Falha ao remover: %@" = "Gagal membuang: %@";
 "Apagado: %@." = "Dibuang: %@.";
+"Apagado: %lld / %lld categorias." = "Dibuang: %lld / %lld kategori.";
 "Teste enviado para %@." = "Ujian dihantar kepada %@.";
 "Fila" = "Baris giliran";
 "Modelos" = "Model";

@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Erstellen feelgeschloen: %@";
 "Falha ao remover: %@" = "Läschen feelgeschloen: %@";
 "Apagado: %@." = "Geläscht: %@.";
+"Apagado: %lld / %lld categorias." = "Geläscht: %lld / %lld Kategorien.";
 "Teste enviado para %@." = "Test geschickt un %@.";
 "Fila" = "Waardeschlange";
 "Modelos" = "Modeller";

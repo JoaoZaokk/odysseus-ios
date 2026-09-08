@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "Памылка стварэння: %@";
 "Falha ao remover: %@" = "Памылка выдалення: %@";
 "Apagado: %@." = "Выдалена: %@.";
+"Apagado: %lld / %lld categorias." = "Выдалена: %lld / %lld катэгорый.";
 "Teste enviado para %@." = "Тэст адпраўлена да %@.";
 "Fila" = "Чарга";
 "Modelos" = "Мадэлі";

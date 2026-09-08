@@ -567,6 +567,7 @@
 "Falha ao criar: %@" = "Échec de la création : %@";
 "Falha ao remover: %@" = "Échec de la suppression : %@";
 "Apagado: %@." = "Supprimé : %@.";
+"Apagado: %lld / %lld categorias." = "Supprimé : %lld / %lld catégories.";
 "Teste enviado para %@." = "Test envoyé à %@.";
 "Fila" = "File";
 "Modelos" = "Modèles";

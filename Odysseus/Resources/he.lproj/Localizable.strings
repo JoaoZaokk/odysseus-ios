@@ -565,6 +565,7 @@
 "Falha ao criar: %@" = "היצירה נכשלה: %@";
 "Falha ao remover: %@" = "ההסרה נכשלה: %@";
 "Apagado: %@." = "נמחק: %@.";
+"Apagado: %lld / %lld categorias." = "נמחק: %lld / %lld קטגוריות.";
 "Teste enviado para %@." = "הבדיקה נשלחה אל %@.";
 "Fila" = "תור";
 "Modelos" = "מודלים";

@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "Failed to create: %@";
 "Falha ao remover: %@" = "Failed to remove: %@";
 "Apagado: %@." = "Deleted: %@.";
+"Apagado: %lld / %lld categorias." = "Deleted: %lld / %lld categories.";
 "Teste enviado para %@." = "Test sent to %@.";
 "Fila" = "Queue";
 "Modelos" = "Models";
