@@ -40,7 +40,7 @@ final class ServerSTTLanguageTests: XCTestCase {
     /// Uyghur is absent from Whisper's `LANGUAGES` table, which every server in
     /// this family validates against. Naming it does not degrade to a guess —
     /// faster-whisper raises and the recording is lost — so it has to travel as
-    /// no language at all. Every other one of the 44 is a code Whisper knows.
+    /// no language at all. Every other one of the 43 is a code Whisper knows.
     func testUyghurTravelsAsDetectRatherThanAnUnknownCode() {
         XCTAssertNil(AppLanguage.ug.sttServerCode)
         for lang in AppLanguage.allCases where lang != .ug {

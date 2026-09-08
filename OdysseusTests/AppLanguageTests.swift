@@ -19,7 +19,9 @@ final class AppLanguageTests: XCTestCase {
     }
 
     func testGermanRegionalVariants() {
-        XCTAssertEqual(AppLanguage.match(systemCode: "de-AT"), .deAT)
+        // de-AT shipped as a byte-for-byte copy of de until 1.9; Austria now
+        // reads de directly instead of a duplicate catalogue and picker row.
+        XCTAssertEqual(AppLanguage.match(systemCode: "de-AT"), .de)
         XCTAssertEqual(AppLanguage.match(systemCode: "de-CH"), .deCH)
         XCTAssertEqual(AppLanguage.match(systemCode: "de-DE"), .de)
         XCTAssertEqual(AppLanguage.match(systemCode: "de"), .de)
@@ -80,11 +82,11 @@ final class AppLanguageTests: XCTestCase {
     }
     /// `match` used to carry a hand-written 39-entry table of codes the enum
     /// already knew. It resolves through `AppLanguage(rawValue:)` now, so this
-    /// replaces the table: every language that is not one of the six
+    /// replaces the table: every language that is not one of the five
     /// region/script variants handled by the prefix branches must round-trip
     /// from its own raw value, with or without a region suffix.
     func testEveryPlainLanguageResolvesFromItsOwnCode() {
-        let handledByPrefix: Set<AppLanguage> = [.ptBR, .de, .deAT, .deCH, .zhHans, .zhHant, .zhHK]
+        let handledByPrefix: Set<AppLanguage> = [.ptBR, .de, .deCH, .zhHans, .zhHant, .zhHK]
         for lang in AppLanguage.allCases where !handledByPrefix.contains(lang) {
             XCTAssertEqual(AppLanguage.match(systemCode: lang.rawValue), lang,
                            "\(lang.rawValue) does not resolve from its own code")

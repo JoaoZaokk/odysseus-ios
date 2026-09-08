@@ -798,7 +798,6 @@
 "Token criado" = "Token luotu";
 "Tokens de API" = "API-tokenit";
 "URL do servidor" = "Palvelimen URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "API-token, jonka käyttöalue on chat. Se näytetään vain kerran luonnin jälkeen.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Yksi CardDAV-tili palvelinta kohti — tallennus korvaa nykyisen.";
 "Uma vez enquanto estiver ativa" = "Kerran, kun tämä on käytössä";
 "Usado quando a IA escreve respostas para você." = "Käytetään, kun tekoäly kirjoittaa vastauksia puolestasi.";
@@ -818,4 +817,31 @@
 "Falha na limpeza: %@" = "Siivous epäonnistui: %@";
 "Notificações" = "Ilmoitukset";
 "Notificações de tarefas e lembretes" = "Tehtävä- ja muistutusilmoitukset";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Ilmoittaa tällä laitteella, kun muistutus tai tehtävä valmistuu sovelluksen ollessa auki.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Osa kohteista on piilotettu.";
+"Anexar fotos" = "Liitä kuvia";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Ilmoittaa, kun muistutus tai tehtävä valmistuu — sovelluksen ollessa auki ja silloin tällöin myös taustalla.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Ilmoittaa, kun muistutus tai tehtävä valmistuu, sovelluksen ollessa auki.";
+"Barra lateral" = "Sivupalkki";
+"Botão Agente" = "Agentti-painike";
+"Botão Deep" = "Syvä-painike";
+"Botão Web" = "Verkko-painike";
+"Campo de mensagem" = "Viestikenttä";
+"Conversa" = "Keskustelu";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Nimeä ja käyttöalueita voi muokata myöhemmin kohdassa API-tokenit.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Pois: lukusarake iPadissa ja Macissa.";
+"Editar token" = "Muokkaa tokenia";
+"Falha ao editar: %@" = "Muokkaus epäonnistui: %@";
+"Largura total" = "Täysi leveys";
+"Microfone" = "Mikrofoni";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Näytä tai piilota sivupalkin, viestikentän ja keskustelun osia.";
+"Nome do modelo nas respostas" = "Mallin nimi vastauksissa";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Itse token ei muutu — vain nimi ja se, mitä sillä voi tehdä.";
+"Personalizar interface" = "Mukauta käyttöliittymää";
+"Raciocínio do modelo" = "Mallin päättely";
+"Restaurar padrão" = "Palauta oletukset";
+"Texto de boas-vindas" = "Tervetuloteksti";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API-token agentille. Se näytetään vain kerran luonnin jälkeen.";
+"Vale só para este aparelho, como na versão web." = "Koskee vain tätä laitetta, kuten verkkoversiossa.";
+"ex.: Claude Agent — laptop" = "esim. Claude Agent — laptop";

@@ -362,7 +362,7 @@ final class VoiceInputManager: ObservableObject {
         case .es:             return .spanish
         case .fr:             return .french
         case .it:             return .italian
-        case .de, .deAT, .deCH: return .german
+        case .de, .deCH: return .german
         case .nl:             return .dutch
         case .pl:             return .polish
         case .cs:             return .czech

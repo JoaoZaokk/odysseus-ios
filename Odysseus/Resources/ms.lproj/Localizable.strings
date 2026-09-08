@@ -806,7 +806,6 @@
 "Token criado" = "Token dicipta";
 "Tokens de API" = "API token";
 "URL do servidor" = "URL pelayan";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "API token dengan skop sembang. Ia dipaparkan sekali sahaja selepas dicipta.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Satu akaun CardDAV bagi setiap pelayan — menyimpan akan menggantikan yang sedia ada.";
 "Uma vez enquanto estiver ativa" = "Sekali semasa aktif";
 "Usado quando a IA escreve respostas para você." = "Digunakan apabila AI menulis jawapan untuk anda.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Pembersihan gagal: %@";
 "Notificações" = "Pemberitahuan";
 "Notificações de tarefas e lembretes" = "Pemberitahuan tugas dan peringatan";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Memberitahu pada peranti ini apabila peringatan atau tugas selesai, semasa aplikasi dibuka.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Sesetengah item disembunyikan.";
+"Anexar fotos" = "Lampirkan foto";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Memberitahu apabila peringatan atau tugas selesai — semasa aplikasi dibuka dan, sesekali, di latar belakang.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Memberitahu apabila peringatan atau tugas selesai, semasa aplikasi dibuka.";
+"Barra lateral" = "Bar sisi";
+"Botão Agente" = "Butang Ejen";
+"Botão Deep" = "Butang Mendalam";
+"Botão Web" = "Butang Web";
+"Campo de mensagem" = "Medan mesej";
+"Conversa" = "Perbualan";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Selepas itu, nama dan skop boleh diedit dalam bahagian API token.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Tutup: lajur bacaan pada iPad dan Mac.";
+"Editar token" = "Edit token";
+"Falha ao editar: %@" = "Gagal mengedit: %@";
+"Largura total" = "Lebar penuh";
+"Microfone" = "Mikrofon";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Tunjuk atau sembunyikan bahagian bar sisi, medan mesej dan perbualan.";
+"Nome do modelo nas respostas" = "Nama model dalam jawapan";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Token itu sendiri tidak berubah — hanya namanya dan apa yang boleh dilakukannya.";
+"Personalizar interface" = "Sesuaikan antara muka";
+"Raciocínio do modelo" = "Penaakulan model";
+"Restaurar padrão" = "Pulihkan lalai";
+"Texto de boas-vindas" = "Teks aluan";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API token untuk ejen. Ia dipaparkan sekali sahaja selepas dicipta.";
+"Vale só para este aparelho, como na versão web." = "Hanya terpakai pada peranti ini, seperti dalam versi web.";
+"ex.: Claude Agent — laptop" = "cth. Claude Agent — laptop";

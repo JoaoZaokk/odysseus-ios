@@ -808,7 +808,6 @@
 "Token criado" = "Токенот е создаден";
 "Tokens de API" = "API токени";
 "URL do servidor" = "URL на серверот";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "API токен со опсег „разговор“. Се прикажува само еднаш, веднаш по создавањето.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Една CardDAV сметка по сервер — зачувувањето ја заменува тековната.";
 "Uma vez enquanto estiver ativa" = "Еднаш, додека е активно";
 "Usado quando a IA escreve respostas para você." = "Се користи кога AI пишува одговори наместо вас.";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "Чистењето не успеа: %@";
 "Notificações" = "Известувања";
 "Notificações de tarefas e lembretes" = "Известувања за задачи и потсетници";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Известува на овој уред кога потсетник или задача ќе заврши, со отворена апликација.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Некои ставки се скриени.";
+"Anexar fotos" = "Прикачи фотографии";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Известува кога потсетник или задача ќе заврши — со отворена апликација и, повремено, во позадина.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Известува кога потсетник или задача ќе заврши, додека апликацијата е отворена.";
+"Barra lateral" = "Странична лента";
+"Botão Agente" = "Копче Агент";
+"Botão Deep" = "Копче Deep";
+"Botão Web" = "Копче Web";
+"Campo de mensagem" = "Поле за порака";
+"Conversa" = "Разговор";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Потоа името и опсезите може да се уредуваат во делот „API токени“.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Исклучено: колона за читање на iPad и Mac.";
+"Editar token" = "Уреди токен";
+"Falha ao editar: %@" = "Уредувањето не успеа: %@";
+"Largura total" = "Целосна широчина";
+"Microfone" = "Микрофон";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Прикажувајте или сокривајте делови од страничната лента, полето за порака и разговорот.";
+"Nome do modelo nas respostas" = "Име на моделот во одговорите";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Самиот токен не се менува — само името и тоа што може да прави.";
+"Personalizar interface" = "Прилагоди го интерфејсот";
+"Raciocínio do modelo" = "Расудување на моделот";
+"Restaurar padrão" = "Врати стандардно";
+"Texto de boas-vindas" = "Текст за добредојде";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API токен за агентот. Се прикажува само еднаш, веднаш по создавањето.";
+"Vale só para este aparelho, como na versão web." = "Важи само за овој уред, како и во веб-верзијата.";
+"ex.: Claude Agent — laptop" = "напр.: Claude Agent — laptop";

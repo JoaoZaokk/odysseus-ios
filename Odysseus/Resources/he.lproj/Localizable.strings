@@ -798,7 +798,6 @@
 "Token criado" = "ה-token נוצר";
 "Tokens de API" = "API tokens";
 "URL do servidor" = "כתובת השרת";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "token של API עם היקף צ'אט. הוא מוצג פעם אחת בלבד לאחר היצירה.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "חשבון CardDAV אחד לכל שרת — שמירה מחליפה את הנוכחי.";
 "Uma vez enquanto estiver ativa" = "פעם אחת בזמן שהיא פעילה";
 "Usado quando a IA escreve respostas para você." = "משמש כשהבינה המלאכותית כותבת תשובות עבורך.";
@@ -818,4 +817,31 @@
 "Falha na limpeza: %@" = "הניקוי נכשל: %@";
 "Notificações" = "התראות";
 "Notificações de tarefas e lembretes" = "התראות על משימות ותזכורות";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "מתריע במכשיר זה כשתזכורת או משימה מסתיימת, כשהאפליקציה פתוחה.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "חלק מהפריטים מוסתרים.";
+"Anexar fotos" = "צירוף תמונות";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "מתריע כשתזכורת או משימה מסתיימת — כשהאפליקציה פתוחה, ומדי פעם גם ברקע.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "מתריע כשתזכורת או משימה מסתיימת, כל עוד האפליקציה פתוחה.";
+"Barra lateral" = "סרגל הצד";
+"Botão Agente" = "כפתור “סוכן”";
+"Botão Deep" = "כפתור “מעמיק”";
+"Botão Web" = "כפתור “רשת”";
+"Campo de mensagem" = "שדה ההודעה";
+"Conversa" = "שיחה";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "לאחר מכן אפשר לערוך את השם ואת היקפי ההרשאה בקטע API tokens.";
+"Desligado: coluna de leitura no iPad e no Mac." = "כבוי: עמודת קריאה ב-iPad וב-Mac.";
+"Editar token" = "עריכת token";
+"Falha ao editar: %@" = "העריכה נכשלה: %@";
+"Largura total" = "רוחב מלא";
+"Microfone" = "מיקרופון";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "הצג או הסתר חלקים מסרגל הצד, משדה ההודעה ומהשיחה.";
+"Nome do modelo nas respostas" = "שם המודל בתשובות";
+"O token em si não muda — só o nome e o que ele pode fazer." = "ה-token עצמו לא משתנה — רק השם ומה שהוא יכול לעשות.";
+"Personalizar interface" = "התאמת הממשק";
+"Raciocínio do modelo" = "חשיבת המודל";
+"Restaurar padrão" = "שחזור ברירת המחדל";
+"Texto de boas-vindas" = "טקסט פתיחה";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "token של API עבור הסוכן. הוא מוצג פעם אחת בלבד לאחר היצירה.";
+"Vale só para este aparelho, como na versão web." = "חל רק על המכשיר הזה, כמו בגרסת הווב.";
+"ex.: Claude Agent — laptop" = "למשל: Claude Agent — laptop";

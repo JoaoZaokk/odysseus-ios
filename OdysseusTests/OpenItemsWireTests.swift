@@ -163,19 +163,8 @@ final class OpenItemsWireTests: XCTestCase {
         XCTAssertFalse(a); XCTAssertTrue(b)
     }
 
-    // MARK: - Notification poller
-
-    func testThePollerDeliversEachEntryWithABody() async {
-        StubTransport.route("/api/tasks/notifications",
-                            .json(#"{"notifications": [{"task_name": "Lembrete", "status": "success", "task_id": "reminder-1", "body": "Dentista 15h"}, {"task_name": "silent", "status": "success", "body": ""}]}"#))
-        var delivered: [String] = []
-        // Authorization is a system dialog; the wire is what this checks.
-        let p = TaskNotificationPoller(api: client()) { try await $0.taskNotifications() }
-        p.deliver = { delivered.append($0.body ?? "") }
-        let items = try? await client().taskNotifications()
-        for n in items ?? [] where !(n.body ?? "").isEmpty { p.deliver(n) }
-        XCTAssertEqual(delivered, ["Dentista 15h"])
-    }
+    // The notification poller's wire moved to ClosingItemsTests (round 6),
+    // where `refreshOnce()` is the seam both paths share.
 
     // MARK: - Shortcuts and the sensitive-text detector
 

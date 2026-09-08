@@ -800,7 +800,6 @@
 "Token criado" = "Jeton créé";
 "Tokens de API" = "Jetons d'API";
 "URL do servidor" = "URL du serveur";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Un jeton d'API limité au chat. Il ne s'affiche qu'une seule fois, juste après sa création.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Un seul compte CardDAV par serveur — l'enregistrement remplace l'actuel.";
 "Uma vez enquanto estiver ativa" = "Une seule fois tant qu'elle est active";
 "Usado quando a IA escreve respostas para você." = "Utilisé lorsque l'IA rédige des réponses à votre place.";
@@ -820,4 +819,31 @@
 "Falha na limpeza: %@" = "Échec du nettoyage : %@";
 "Notificações" = "Notifications";
 "Notificações de tarefas e lembretes" = "Notifications des tâches et rappels";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Vous prévient sur cet appareil quand un rappel ou une tâche se termine, l’app étant ouverte.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Certains éléments sont masqués.";
+"Anexar fotos" = "Joindre des photos";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Vous prévient quand un rappel ou une tâche se termine — l'app étant ouverte et, de temps en temps, en arrière-plan.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Vous prévient quand un rappel ou une tâche se termine, tant que l'app est ouverte.";
+"Barra lateral" = "Barre latérale";
+"Botão Agente" = "Bouton Agent";
+"Botão Deep" = "Bouton Deep";
+"Botão Web" = "Bouton Web";
+"Campo de mensagem" = "Champ de message";
+"Conversa" = "Conversation";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Ensuite, vous pourrez modifier le nom et les portées dans Jetons d'API.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Désactivé : colonne de lecture sur iPad et sur Mac.";
+"Editar token" = "Modifier le jeton";
+"Falha ao editar: %@" = "Échec de la modification : %@";
+"Largura total" = "Pleine largeur";
+"Microfone" = "Micro";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Affichez ou masquez des parties de la barre latérale, du champ de message et de la conversation.";
+"Nome do modelo nas respostas" = "Nom du modèle dans les réponses";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Le jeton lui-même ne change pas — seulement son nom et ce qu'il peut faire.";
+"Personalizar interface" = "Personnaliser l'interface";
+"Raciocínio do modelo" = "Raisonnement du modèle";
+"Restaurar padrão" = "Rétablir les valeurs par défaut";
+"Texto de boas-vindas" = "Texte de bienvenue";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Un jeton d'API pour l'agent. Il ne s'affiche qu'une seule fois, juste après sa création.";
+"Vale só para este aparelho, como na versão web." = "Ne s'applique qu'à cet appareil, comme dans la version web.";
+"ex.: Claude Agent — laptop" = "ex. : Claude Agent — laptop";

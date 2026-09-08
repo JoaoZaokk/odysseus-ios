@@ -806,7 +806,6 @@
 "Token criado" = "Token vytvorený";
 "Tokens de API" = "API tokeny";
 "URL do servidor" = "URL servera";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "API token s rozsahom chatu. Po vytvorení sa zobrazí len raz.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Jeden účet CardDAV na server — uloženie nahradí aktuálny.";
 "Uma vez enquanto estiver ativa" = "Raz, kým je aktívna";
 "Usado quando a IA escreve respostas para você." = "Používa sa, keď AI píše odpovede za vás.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Vyčistenie zlyhalo: %@";
 "Notificações" = "Upozornenia";
 "Notificações de tarefas e lembretes" = "Upozornenia na úlohy a pripomienky";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Upozorní na tomto zariadení, keď sa skončí pripomienka alebo úloha, pri otvorenej aplikácii.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Niektoré položky sú skryté.";
+"Anexar fotos" = "Priložiť fotky";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Upozorní, keď sa skončí pripomienka alebo úloha — pri otvorenej aplikácii a občas aj na pozadí.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Upozorní, keď sa skončí pripomienka alebo úloha, kým je aplikácia otvorená.";
+"Barra lateral" = "Bočný panel";
+"Botão Agente" = "Tlačidlo Agent";
+"Botão Deep" = "Tlačidlo Deep";
+"Botão Web" = "Tlačidlo Web";
+"Campo de mensagem" = "Pole správy";
+"Conversa" = "Konverzácia";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Názov a rozsahy sa potom dajú upraviť v sekcii API tokeny.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Vypnuté: čítací stĺpec na iPade a Macu.";
+"Editar token" = "Upraviť token";
+"Falha ao editar: %@" = "Úprava zlyhala: %@";
+"Largura total" = "Plná šírka";
+"Microfone" = "Mikrofón";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Zobrazte alebo skryte časti bočného panela, poľa správy a konverzácie.";
+"Nome do modelo nas respostas" = "Názov modelu pri odpovediach";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Samotný token sa nemení — len názov a to, čo smie robiť.";
+"Personalizar interface" = "Prispôsobiť rozhranie";
+"Raciocínio do modelo" = "Uvažovanie modelu";
+"Restaurar padrão" = "Obnoviť predvolené";
+"Texto de boas-vindas" = "Uvítací text";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API token pre agenta. Po vytvorení sa zobrazí len raz.";
+"Vale só para este aparelho, como na versão web." = "Platí len pre toto zariadenie, rovnako ako vo webovej verzii.";
+"ex.: Claude Agent — laptop" = "napr. Claude Agent — laptop";

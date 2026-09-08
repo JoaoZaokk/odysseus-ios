@@ -808,7 +808,6 @@
 "Token criado" = "Token created";
 "Tokens de API" = "API tokens";
 "URL do servidor" = "Server URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "An API token scoped to chat. It's shown only once, right after it's created.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "One CardDAV account per server — saving replaces the current one.";
 "Uma vez enquanto estiver ativa" = "Once while it's on";
 "Usado quando a IA escreve respostas para você." = "Used when the AI writes replies for you.";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "Cleanup failed: %@";
 "Notificações" = "Notifications";
 "Notificações de tarefas e lembretes" = "Task and reminder notifications";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Alerts on this device when a reminder or task finishes, while the app is open.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Some items are hidden.";
+"Anexar fotos" = "Attach photos";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Alerts you when a reminder or task finishes — while the app is open and, now and then, in the background.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Alerts you when a reminder or task finishes, while the app is open.";
+"Barra lateral" = "Sidebar";
+"Botão Agente" = "Agent button";
+"Botão Deep" = "Deep button";
+"Botão Web" = "Web button";
+"Campo de mensagem" = "Message field";
+"Conversa" = "Conversation";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Afterwards, the name and scopes can be edited in API tokens.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Off: a reading column on iPad and Mac.";
+"Editar token" = "Edit token";
+"Falha ao editar: %@" = "Failed to edit: %@";
+"Largura total" = "Full width";
+"Microfone" = "Microphone";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Show or hide parts of the sidebar, the message field and the conversation.";
+"Nome do modelo nas respostas" = "Model name on replies";
+"O token em si não muda — só o nome e o que ele pode fazer." = "The token itself doesn't change — only its name and what it can do.";
+"Personalizar interface" = "Customize interface";
+"Raciocínio do modelo" = "Model reasoning";
+"Restaurar padrão" = "Restore defaults";
+"Texto de boas-vindas" = "Welcome text";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "An API token for the agent. It's shown only once, right after it's created.";
+"Vale só para este aparelho, como na versão web." = "Applies to this device only, just like on the web.";
+"ex.: Claude Agent — laptop" = "e.g. Claude Agent — laptop";

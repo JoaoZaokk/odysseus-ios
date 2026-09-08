@@ -806,7 +806,6 @@
 "Token criado" = "Token ustvarjen";
 "Tokens de API" = "Tokeni API";
 "URL do servidor" = "URL strežnika";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Token API z obsegom klepeta. Po ustvarjanju se prikaže samo enkrat.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "En račun CardDAV na strežnik — shranjevanje zamenja trenutnega.";
 "Uma vez enquanto estiver ativa" = "Enkrat, dokler je aktivna";
 "Usado quando a IA escreve respostas para você." = "Uporablja se, ko AI piše odgovore zate.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Čiščenje ni uspelo: %@";
 "Notificações" = "Obvestila";
 "Notificações de tarefas e lembretes" = "Obvestila o opravilih in opomnikih";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Obvesti na tej napravi, ko se opomnik ali opravilo konča, ob odprti aplikaciji.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Nekateri elementi so skriti.";
+"Anexar fotos" = "Priloži fotografije";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Obvesti, ko se opomnik ali opravilo konča — ob odprti aplikaciji in občasno v ozadju.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Obvesti, ko se opomnik ali opravilo konča, dokler je aplikacija odprta.";
+"Barra lateral" = "Stranska vrstica";
+"Botão Agente" = "Gumb Agent";
+"Botão Deep" = "Gumb Deep";
+"Botão Web" = "Gumb Splet";
+"Campo de mensagem" = "Polje sporočila";
+"Conversa" = "Pogovor";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Ime in obsege lahko pozneje uredite v razdelku Tokeni API.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Izklopljeno: bralni stolpec na iPadu in Macu.";
+"Editar token" = "Uredi token";
+"Falha ao editar: %@" = "Urejanje ni uspelo: %@";
+"Largura total" = "Polna širina";
+"Microfone" = "Mikrofon";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Pokažite ali skrijte dele stranske vrstice, polja sporočila in pogovora.";
+"Nome do modelo nas respostas" = "Ime modela pri odgovorih";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Sam token se ne spremeni — le ime in to, kaj lahko počne.";
+"Personalizar interface" = "Prilagodi vmesnik";
+"Raciocínio do modelo" = "Sklepanje modela";
+"Restaurar padrão" = "Obnovi privzeto";
+"Texto de boas-vindas" = "Pozdravno besedilo";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Token API za agenta. Po ustvarjanju se prikaže samo enkrat.";
+"Vale só para este aparelho, como na versão web." = "Velja samo za to napravo, tako kot v spletni različici.";
+"ex.: Claude Agent — laptop" = "npr. Claude Agent — laptop";

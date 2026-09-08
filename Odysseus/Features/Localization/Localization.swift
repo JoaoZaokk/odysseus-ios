@@ -16,8 +16,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     case fr   = "fr"
     case it   = "it"
     case de   = "de"
-    case deAT = "de-AT"
-    case deCH = "de-CH"
+    case deCH = "de-CH"   // Swiss German is real (no ß); Austrian was a copy of `de` and went in 1.9
     case nl   = "nl"
     case pl   = "pl"
     case cs   = "cs"
@@ -66,7 +65,6 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         case .fr:     return ("Français", "French", "🇫🇷")
         case .it:     return ("Italiano", "Italian", "🇮🇹")
         case .de:     return ("Deutsch", "German", "🇩🇪")
-        case .deAT:   return ("Deutsch (Österreich)", "German (Austria)", "🇦🇹")
         case .deCH:   return ("Deutsch (Schweiz)", "German (Switzerland)", "🇨🇭")
         case .nl:     return ("Nederlands", "Dutch", "🇳🇱")
         case .pl:     return ("Polski", "Polish", "🇵🇱")
@@ -144,14 +142,14 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
 
     /// ISO-639-1 code, which is what transcription APIs take (OpenAI's
     /// `/audio/transcriptions` documents exactly that). Region and script
-    /// subtags are dropped: `pt-BR` → `pt`, `zh-Hans` → `zh`, `de-AT` → `de`.
+    /// subtags are dropped: `pt-BR` → `pt`, `zh-Hans` → `zh`, `de-CH` → `de`.
     var iso639: String { String(rawValue.prefix(while: { $0 != "-" })) }
 
     /// The code to send to a Whisper-family transcription server, or nil when
     /// the model has never heard of the language and auto-detect is the only
     /// honest option.
     ///
-    /// Uyghur is the single gap across the app's 44: it is absent from Whisper's
+    /// Uyghur is the single gap across the app's 43: it is absent from Whisper's
     /// `LANGUAGES` table, which every server in this family validates against,
     /// so naming it does not degrade to a guess — faster-whisper raises and the
     /// recording is lost. Sending nothing leaves the server detecting, which is
@@ -172,14 +170,15 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
             return .zhHans
         }
         if c.hasPrefix("de") {
-            if c.contains("-at") { return .deAT }
+            // Austria reads `de`: the app shipped a de-AT that was a copy of
+            // it, so nothing is lost by folding the region in.
             if c.contains("-ch") { return .deCH }
             return .de
         }
         // Every remaining language's raw value IS its two-letter code, so the
         // enum answers this. The 39-entry table that used to sit here restated
         // exactly that plus the two legacy codes below — and the six raw values
-        // that are not two letters (pt-BR, de-AT, de-CH and the three Chinese)
+        // that are not two letters (pt-BR, de-CH and the three Chinese)
         // are all resolved by the prefix branches above.
         let two = String(c.prefix(2))
         // Codes some systems still emit for Indonesian and Hebrew.

@@ -806,7 +806,6 @@
 "Token criado" = "已建立 token";
 "Tokens de API" = "API token";
 "URL do servidor" = "伺服器 URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "範圍為聊天的 API token。建立後只會顯示一次。";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "每部伺服器只能有一個 CardDAV 帳戶 — 儲存將取代目前的帳戶。";
 "Uma vez enquanto estiver ativa" = "啟用期間僅一次";
 "Usado quando a IA escreve respostas para você." = "當 AI 替你撰寫回覆時使用。";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "清理失敗：%@";
 "Notificações" = "通知";
 "Notificações de tarefas e lembretes" = "任務與提醒通知";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "App 開啟時，提醒或任務完成會在此裝置通知。";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "部分項目已隱藏。";
+"Anexar fotos" = "附加照片";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "提醒或任務完成時通知你 — App 開啟時，偶爾也會在背景通知。";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "App 開啟時，提醒或任務完成會通知你。";
+"Barra lateral" = "側邊欄";
+"Botão Agente" = "智能體按鈕";
+"Botão Deep" = "Deep 按鈕";
+"Botão Web" = "Web 按鈕";
+"Campo de mensagem" = "訊息輸入欄";
+"Conversa" = "對話";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "建立後，名稱和範圍可在「API token」中編輯。";
+"Desligado: coluna de leitura no iPad e no Mac." = "關閉：在 iPad 和 Mac 上顯示為閱讀欄寬度。";
+"Editar token" = "編輯 token";
+"Falha ao editar: %@" = "編輯失敗：%@";
+"Largura total" = "全寬";
+"Microfone" = "麥克風";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "顯示或隱藏側邊欄、訊息輸入欄和對話中的部分內容。";
+"Nome do modelo nas respostas" = "在回覆中顯示模型名稱";
+"O token em si não muda — só o nome e o que ele pode fazer." = "token 本身不會改變 — 只改變名稱和它能做的事。";
+"Personalizar interface" = "自訂介面";
+"Raciocínio do modelo" = "模型推理";
+"Restaurar padrão" = "恢復預設";
+"Texto de boas-vindas" = "歡迎語";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "供智能體使用的 API token。建立後只會顯示一次。";
+"Vale só para este aparelho, como na versão web." = "僅對此裝置生效，和網頁版一樣。";
+"ex.: Claude Agent — laptop" = "例：Claude Agent — laptop";

@@ -806,7 +806,6 @@
 "Token criado" = "Đã tạo token";
 "Tokens de API" = "API token";
 "URL do servidor" = "URL máy chủ";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Một API token có phạm vi chat. Nó chỉ hiện một lần sau khi tạo.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Mỗi máy chủ một tài khoản CardDAV — lưu sẽ thay thế tài khoản hiện tại.";
 "Uma vez enquanto estiver ativa" = "Một lần khi đang bật";
 "Usado quando a IA escreve respostas para você." = "Dùng khi AI viết câu trả lời cho bạn.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Dọn dẹp thất bại: %@";
 "Notificações" = "Thông báo";
 "Notificações de tarefas e lembretes" = "Thông báo tác vụ và lời nhắc";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Báo trên thiết bị này khi một lời nhắc hoặc tác vụ hoàn tất, trong lúc ứng dụng đang mở.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Một số mục đang bị ẩn.";
+"Anexar fotos" = "Đính kèm ảnh";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Báo khi một lời nhắc hoặc tác vụ hoàn tất — trong lúc ứng dụng đang mở và thỉnh thoảng cả khi chạy nền.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Báo khi một lời nhắc hoặc tác vụ hoàn tất, trong lúc ứng dụng đang mở.";
+"Barra lateral" = "Thanh bên";
+"Botão Agente" = "Nút Tác nhân";
+"Botão Deep" = "Nút Sâu";
+"Botão Web" = "Nút Web";
+"Campo de mensagem" = "Ô nhập tin nhắn";
+"Conversa" = "Cuộc trò chuyện";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Sau đó, tên và phạm vi có thể được chỉnh sửa trong mục API token.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Tắt: cột đọc trên iPad và Mac.";
+"Editar token" = "Chỉnh sửa token";
+"Falha ao editar: %@" = "Chỉnh sửa thất bại: %@";
+"Largura total" = "Toàn chiều rộng";
+"Microfone" = "Micrô";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Hiện hoặc ẩn các phần của thanh bên, ô nhập tin nhắn và cuộc trò chuyện.";
+"Nome do modelo nas respostas" = "Tên mô hình trong câu trả lời";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Bản thân token không đổi — chỉ tên và những gì nó được phép làm.";
+"Personalizar interface" = "Tùy chỉnh giao diện";
+"Raciocínio do modelo" = "Lý luận của mô hình";
+"Restaurar padrão" = "Khôi phục mặc định";
+"Texto de boas-vindas" = "Văn bản chào mừng";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Một API token cho tác nhân. Nó chỉ hiện một lần sau khi tạo.";
+"Vale só para este aparelho, como na versão web." = "Chỉ áp dụng cho thiết bị này, như ở bản web.";
+"ex.: Claude Agent — laptop" = "ví dụ: Claude Agent — laptop";

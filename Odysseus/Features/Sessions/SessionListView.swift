@@ -34,6 +34,10 @@ struct SidebarView: View {
     /// nil = never touched: iPhone starts collapsed (the sections would push
     /// the conversations below the fold), iPad and macOS start open.
     @AppStorage("sidebar.spaces.expanded") private var spacesExpandedStored: Bool?
+    /// Settings › Aparência › Personalizar interface: rows the user hid.
+    @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
+    private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
+    private var visibleSections: [AppSection] { AppSection.allCases.filter { ui.shows($0) } }
 
     private var filtered: [ChatSession] {
         guard !search.isEmpty else { return store.sessions }
@@ -65,21 +69,27 @@ struct SidebarView: View {
                 // "Nova conversa" lives in the chrome (the toolbar pencil) —
                 // a second copy as the first row was the same action twice
                 // on one screen. Theme lives in Settings › Aparência.
-                Section {
-                    navRow(icon: "sparkle.magnifyingglass", title: "Deep Search", tint: theme.green,
-                           active: active(.deepSearch)) { workspace.openDeepSearch() }
+                if ui.isOn(.deepSearch) {
+                    Section {
+                        navRow(icon: "sparkle.magnifyingglass", title: "Deep Search", tint: theme.green,
+                               active: active(.deepSearch)) { workspace.openDeepSearch() }
+                    }
                 }
 
                 // Feature sections: one line each, collapsible, header always
                 // on screen so the nine entry points never scroll away.
-                Section(isExpanded: spacesExpanded) {
-                    ForEach(AppSection.allCases) { section in
-                        Button { workspace.setPrimary(.section(section)) } label: { sectionRow(section) }
-                            .buttonStyle(.plain)
-                            .listRowBackground(active(.section(section)) ? theme.accent.opacity(0.14) : theme.bg)
+                // Rows hidden in Aparência are gone, and so is the group
+                // once nothing is left in it.
+                if !visibleSections.isEmpty {
+                    Section(isExpanded: spacesExpanded) {
+                        ForEach(visibleSections) { section in
+                            Button { workspace.setPrimary(.section(section)) } label: { sectionRow(section) }
+                                .buttonStyle(.plain)
+                                .listRowBackground(active(.section(section)) ? theme.accent.opacity(0.14) : theme.bg)
+                        }
+                    } header: {
+                        header("Espaços")
                     }
-                } header: {
-                    header("Espaços")
                 }
             }
 

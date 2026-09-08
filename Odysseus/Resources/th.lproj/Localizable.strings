@@ -806,7 +806,6 @@
 "Token criado" = "สร้าง token แล้ว";
 "Tokens de API" = "token API";
 "URL do servidor" = "URL ของเซิร์ฟเวอร์";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "token API ที่มีขอบเขตสำหรับแชท จะแสดงเพียงครั้งเดียวหลังสร้าง";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "หนึ่งบัญชี CardDAV ต่อหนึ่งเซิร์ฟเวอร์ — การบันทึกจะแทนที่บัญชีปัจจุบัน";
 "Uma vez enquanto estiver ativa" = "ครั้งเดียวระหว่างที่เปิดใช้งาน";
 "Usado quando a IA escreve respostas para você." = "ใช้เมื่อ AI เขียนคำตอบให้คุณ";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "ล้างข้อมูลไม่สำเร็จ: %@";
 "Notificações" = "การแจ้งเตือน";
 "Notificações de tarefas e lembretes" = "การแจ้งเตือนงานและการเตือนความจำ";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "แจ้งบนอุปกรณ์นี้เมื่อการเตือนหรืองานเสร็จสิ้น ขณะที่แอปเปิดอยู่";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "บางรายการถูกซ่อนอยู่";
+"Anexar fotos" = "แนบรูปภาพ";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "แจ้งเมื่อการเตือนหรืองานเสร็จสิ้น — ขณะที่แอปเปิดอยู่ และบางครั้งขณะทำงานเบื้องหลัง";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "แจ้งเมื่อการเตือนหรืองานเสร็จสิ้น ขณะที่แอปเปิดอยู่";
+"Barra lateral" = "แถบด้านข้าง";
+"Botão Agente" = "ปุ่มเอเจนต์";
+"Botão Deep" = "ปุ่มเชิงลึก";
+"Botão Web" = "ปุ่มเว็บ";
+"Campo de mensagem" = "ช่องข้อความ";
+"Conversa" = "การสนทนา";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "หลังจากนั้น สามารถแก้ไขชื่อและขอบเขตสิทธิ์ได้ใน token API";
+"Desligado: coluna de leitura no iPad e no Mac." = "ปิด: แสดงเป็นคอลัมน์สำหรับอ่านบน iPad และ Mac";
+"Editar token" = "แก้ไข token";
+"Falha ao editar: %@" = "แก้ไขไม่สำเร็จ: %@";
+"Largura total" = "เต็มความกว้าง";
+"Microfone" = "ไมโครโฟน";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "แสดงหรือซ่อนบางส่วนของแถบด้านข้าง ช่องข้อความ และการสนทนา";
+"Nome do modelo nas respostas" = "ชื่อโมเดลในคำตอบ";
+"O token em si não muda — só o nome e o que ele pode fazer." = "ตัว token เองไม่เปลี่ยน — เปลี่ยนแค่ชื่อและสิ่งที่มันทำได้";
+"Personalizar interface" = "ปรับแต่งอินเทอร์เฟซ";
+"Raciocínio do modelo" = "การให้เหตุผลของโมเดล";
+"Restaurar padrão" = "คืนค่าเริ่มต้น";
+"Texto de boas-vindas" = "ข้อความต้อนรับ";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "token API สำหรับเอเจนต์ จะแสดงเพียงครั้งเดียวหลังสร้าง";
+"Vale só para este aparelho, como na versão web." = "มีผลเฉพาะอุปกรณ์นี้ เช่นเดียวกับเวอร์ชันเว็บ";
+"ex.: Claude Agent — laptop" = "เช่น Claude Agent — laptop";

@@ -806,7 +806,6 @@
 "Token criado" = "토큰 생성됨";
 "Tokens de API" = "API 토큰";
 "URL do servidor" = "서버 URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "채팅 범위의 API 토큰입니다. 생성 직후 한 번만 표시됩니다.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "서버당 CardDAV 계정은 하나입니다 — 저장하면 현재 계정을 대체합니다.";
 "Uma vez enquanto estiver ativa" = "활성화된 동안 한 번만";
 "Usado quando a IA escreve respostas para você." = "AI가 답장을 대신 쓸 때 사용됩니다.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "정리 작업 실패: %@";
 "Notificações" = "알림";
 "Notificações de tarefas e lembretes" = "작업 및 미리 알림 알림";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "앱이 열려 있을 때 미리 알림이나 작업이 끝나면 이 기기에서 알립니다.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "일부 항목이 숨겨져 있습니다.";
+"Anexar fotos" = "사진 첨부";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "미리 알림이나 작업이 끝나면 알립니다 — 앱이 열려 있을 때, 그리고 가끔 백그라운드에서도.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "앱이 열려 있을 때 미리 알림이나 작업이 끝나면 알립니다.";
+"Barra lateral" = "사이드바";
+"Botão Agente" = "에이전트 버튼";
+"Botão Deep" = "Deep 버튼";
+"Botão Web" = "Web 버튼";
+"Campo de mensagem" = "메시지 입력란";
+"Conversa" = "대화";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "생성 후 이름과 범위는 API 토큰에서 편집할 수 있습니다.";
+"Desligado: coluna de leitura no iPad e no Mac." = "꺼짐: iPad와 Mac에서 읽기 좋은 폭의 열로 표시됩니다.";
+"Editar token" = "토큰 편집";
+"Falha ao editar: %@" = "편집 실패: %@";
+"Largura total" = "전체 너비";
+"Microfone" = "마이크";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "사이드바, 메시지 입력란, 대화의 일부를 표시하거나 숨깁니다.";
+"Nome do modelo nas respostas" = "답변에 모델 이름 표시";
+"O token em si não muda — só o nome e o que ele pode fazer." = "토큰 자체는 바뀌지 않습니다 — 이름과 할 수 있는 일만 바뀝니다.";
+"Personalizar interface" = "인터페이스 맞춤 설정";
+"Raciocínio do modelo" = "모델 추론";
+"Restaurar padrão" = "기본값으로 되돌리기";
+"Texto de boas-vindas" = "환영 문구";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "에이전트용 API 토큰입니다. 생성 직후 한 번만 표시됩니다.";
+"Vale só para este aparelho, como na versão web." = "이 기기에만 적용됩니다. 웹 버전과 같습니다.";
+"ex.: Claude Agent — laptop" = "예: Claude Agent — laptop";

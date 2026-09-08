@@ -10,6 +10,8 @@ struct ThemePickerView: View {
 
     @EnvironmentObject private var themes: ThemeStore
     @Environment(\.theme) private var theme
+    @State private var customizing = false
+    @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
 
     private let columns = [GridItem(.adaptive(minimum: 150), spacing: 14)]
 
@@ -18,6 +20,7 @@ struct ThemePickerView: View {
             .navigationTitle("Tema")
             .navigationBarTitleDisplayMode(.inline)
             .background(theme.bg)
+            .sheet(isPresented: $customizing) { InterfaceSettingsView().environmentObject(themes) }
         #if os(macOS)
         .frame(minWidth: 540, minHeight: 460)
         #endif
@@ -71,6 +74,24 @@ struct ThemePickerView: View {
                     .foregroundStyle(theme.fg)
             }
             .tint(theme.accent)
+            // The web's "Customize UI" checkboxes, for the parts this app has.
+            Button { customizing = true } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "slider.horizontal.3").foregroundStyle(theme.accent)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Personalizar interface").font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                        Text(UIVisibility(raw: uiRaw).isDefault
+                             ? "Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa."
+                             : "Alguns itens estão escondidos.")
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
             // Animated background
             VStack(alignment: .leading, spacing: 7) {
                 sectionLabel("Fundo animado")

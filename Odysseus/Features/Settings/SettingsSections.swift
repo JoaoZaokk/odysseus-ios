@@ -142,8 +142,13 @@ struct AccountSection: View {
                 })) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Notificações de tarefas e lembretes").font(.ody(.subheadline)).foregroundStyle(theme.fg)
-                        Text("Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto.")
+                        #if os(iOS)
+                        Text("Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano.")
                             .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                        #else
+                        Text("Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto.")
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                        #endif
                     }
                 }.tint(theme.accent)
             }

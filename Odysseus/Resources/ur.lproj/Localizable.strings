@@ -806,7 +806,6 @@
 "Token criado" = "token بن گیا";
 "Tokens de API" = "API tokens";
 "URL do servidor" = "سرور URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "چیٹ اسکوپ والا ایک API token۔ بننے کے بعد یہ صرف ایک بار دکھایا جاتا ہے۔";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "فی سرور ایک CardDAV اکاؤنٹ — محفوظ کرنا موجودہ کو بدل دیتا ہے۔";
 "Uma vez enquanto estiver ativa" = "فعال ہونے کے دوران ایک بار";
 "Usado quando a IA escreve respostas para você." = "جب مصنوعی ذہانت آپ کے لیے جوابات لکھتی ہے تب استعمال ہوتا ہے۔";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "کلین اپ ناکام: %@";
 "Notificações" = "اطلاعات";
 "Notificações de tarefas e lembretes" = "کاموں اور یاد دہانیوں کی اطلاعات";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "ایپ کھلی ہونے پر یاد دہانی یا کام مکمل ہونے پر اس ڈیوائس پر مطلع کرتا ہے۔";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "کچھ آئٹمز چھپے ہوئے ہیں۔";
+"Anexar fotos" = "تصاویر منسلک کریں";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "یاد دہانی یا کام مکمل ہونے پر مطلع کرتا ہے — ایپ کھلی ہو تب، اور کبھی کبھار پس منظر میں بھی۔";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "ایپ کھلی ہونے کے دوران یاد دہانی یا کام مکمل ہونے پر مطلع کرتا ہے۔";
+"Barra lateral" = "سائیڈبار";
+"Botão Agente" = "ایجنٹ بٹن";
+"Botão Deep" = "Deep بٹن";
+"Botão Web" = "ویب بٹن";
+"Campo de mensagem" = "پیغام کا خانہ";
+"Conversa" = "گفتگو";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "بعد میں نام اور اسکوپس کو API tokens میں ترمیم کیا جا سکتا ہے۔";
+"Desligado: coluna de leitura no iPad e no Mac." = "غیر فعال: iPad اور Mac پر پڑھنے کا کالم۔";
+"Editar token" = "token میں ترمیم کریں";
+"Falha ao editar: %@" = "ترمیم کرنے میں ناکام: %@";
+"Largura total" = "پوری چوڑائی";
+"Microfone" = "مائیکروفون";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "سائیڈبار، پیغام کے خانے اور گفتگو کے حصے دکھائیں یا چھپائیں۔";
+"Nome do modelo nas respostas" = "جوابات میں ماڈل کا نام";
+"O token em si não muda — só o nome e o que ele pode fazer." = "token خود تبدیل نہیں ہوتا — صرف نام اور اس کے اختیارات۔";
+"Personalizar interface" = "انٹرفیس کی تخصیص";
+"Raciocínio do modelo" = "ماڈل کا استدلال";
+"Restaurar padrão" = "ڈیفالٹ بحال کریں";
+"Texto de boas-vindas" = "خوش آمدید متن";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "ایجنٹ کے لیے ایک API token۔ بننے کے بعد یہ صرف ایک بار دکھایا جاتا ہے۔";
+"Vale só para este aparelho, como na versão web." = "یہ صرف اس ڈیوائس پر لاگو ہوتا ہے، ویب ورژن کی طرح۔";
+"ex.: Claude Agent — laptop" = "مثال: Claude Agent — laptop";

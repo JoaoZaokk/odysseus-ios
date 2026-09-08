@@ -36,7 +36,6 @@ Manteve o termo: **71%** das ocorrências (122 de 172). Chaves: `Endpoint própr
 | `bn` | কোনো এন্ডপয়েন্ট সংযুক্ত নেই। |
 | `bo` | མཐའ་མཚམས་གང་ཡང་མཐུད་མེད། |
 | `de` | Kein Endpunkt verbunden. |
-| `de-AT` | Kein Endpunkt verbunden. |
 | `de-CH` | Kein Endpunkt verbunden. |
 | `fa` | هیچ نقطه اتصالی متصل نیست. |
 | `fi` | Ei yhdistettyä päätepistettä. |
@@ -286,7 +285,6 @@ Manteve o termo: **12%** das ocorrências (10 de 86). Chaves: `Backup de dados`,
 | `bo` | གནས་ཚུལ་ཚབ་ཉར |
 | `cs` | Záloha dat |
 | `de` | Datensicherung |
-| `de-AT` | Datensicherung |
 | `de-CH` | Datensicherung |
 | `es` | Copia de seguridad |
 | `fa` | پشتیبان‌گیری از داده‌ها |
@@ -379,7 +377,6 @@ Manteve o termo: **23%** das ocorrências (30 de 129). Chaves: `Logs do sistema`
 | `bn` | সিস্টেম লগ |
 | `bo` | མ་ལག་ཟིན་ཐོ |
 | `de` | Systemprotokolle |
-| `de-AT` | Systemprotokolle |
 | `de-CH` | Systemprotokolle |
 | `es` | Registros del sistema |
 | `fa` | گزارش‌های سیستم |

@@ -35,6 +35,10 @@ struct OdysseusApp: App {
         #if os(macOS)
         .defaultSize(width: 1180, height: 760)
         .windowResizability(.contentMinSize)
+        #else
+        .backgroundTask(.appRefresh(TaskNotificationPoller.refreshTaskID)) {
+            await app.backgroundRefreshTaskNotifications()
+        }
         #endif
     }
 }
@@ -82,8 +86,17 @@ struct RootView: View {
                 app.persistSessionIfNeeded()   // keep the latest session for next launch
             }
             // The reminder queue is drained on read and the server has no
-            // push, so it is only polled while the app is on screen.
-            if newPhase == .active { app.startTaskNotifications() } else { app.stopTaskNotifications() }
+            // push. On iOS the loop runs while the app is on screen and the
+            // system's background refresh covers the rest; on macOS the
+            // process keeps running behind other windows, so the loop does
+            // too — it stops with the session, not with the scene.
+            #if os(iOS)
+            if newPhase == .active { app.startTaskNotifications() }
+            else {
+                app.stopTaskNotifications()
+                if newPhase == .background { TaskNotificationPoller.scheduleBackgroundRefresh() }
+            }
+            #endif
         }
         .onChange(of: app.phase) { _, p in if p == .main { app.startTaskNotifications() } else { app.stopTaskNotifications() } }
         .task {

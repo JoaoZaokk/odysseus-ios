@@ -808,7 +808,6 @@
 "Token criado" = "Token তৈরি হয়েছে";
 "Tokens de API" = "API token";
 "URL do servidor" = "সার্ভার URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "চ্যাট স্কোপসহ একটি API token। তৈরি হওয়ার পর এটি একবারই দেখা যায়।";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "প্রতি সার্ভারে একটি CardDAV অ্যাকাউন্ট — সেভ করলে বর্তমানটি বদলে যাবে।";
 "Uma vez enquanto estiver ativa" = "সক্রিয় থাকা অবস্থায় একবার";
 "Usado quando a IA escreve respostas para você." = "AI যখন আপনার হয়ে উত্তর লেখে তখন ব্যবহৃত হয়।";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "পরিচ্ছন্নকরণ ব্যর্থ: %@";
 "Notificações" = "বিজ্ঞপ্তি";
 "Notificações de tarefas e lembretes" = "কাজ ও রিমাইন্ডারের বিজ্ঞপ্তি";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "অ্যাপ খোলা থাকলে রিমাইন্ডার বা কাজ শেষ হলে এই ডিভাইসে জানায়।";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "কিছু আইটেম লুকানো আছে।";
+"Anexar fotos" = "ছবি সংযুক্ত করুন";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "রিমাইন্ডার বা কাজ শেষ হলে জানায় — অ্যাপ খোলা থাকলে, আর মাঝেমধ্যে ব্যাকগ্রাউন্ডেও।";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "অ্যাপ খোলা থাকা অবস্থায় রিমাইন্ডার বা কাজ শেষ হলে জানায়।";
+"Barra lateral" = "সাইডবার";
+"Botão Agente" = "এজেন্ট বোতাম";
+"Botão Deep" = "Deep বোতাম";
+"Botão Web" = "Web বোতাম";
+"Campo de mensagem" = "বার্তা লেখার ঘর";
+"Conversa" = "কথোপকথন";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "পরে API token-এ নাম ও স্কোপ সম্পাদনা করা যাবে।";
+"Desligado: coluna de leitura no iPad e no Mac." = "বন্ধ: iPad ও Mac-এ পড়ার কলাম।";
+"Editar token" = "token সম্পাদনা করুন";
+"Falha ao editar: %@" = "সম্পাদনা ব্যর্থ: %@";
+"Largura total" = "পূর্ণ প্রস্থ";
+"Microfone" = "মাইক্রোফোন";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "সাইডবার, বার্তা লেখার ঘর ও কথোপকথনের অংশগুলো দেখান বা লুকান।";
+"Nome do modelo nas respostas" = "উত্তরে মডেলের নাম";
+"O token em si não muda — só o nome e o que ele pode fazer." = "token নিজে বদলায় না — শুধু নাম আর সে কী করতে পারে তা বদলায়।";
+"Personalizar interface" = "ইন্টারফেস কাস্টমাইজ করুন";
+"Raciocínio do modelo" = "মডেলের যুক্তি";
+"Restaurar padrão" = "ডিফল্টে ফিরে যান";
+"Texto de boas-vindas" = "স্বাগত বার্তা";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "এজেন্টের জন্য একটি API token। তৈরি হওয়ার পর এটি একবারই দেখা যায়।";
+"Vale só para este aparelho, como na versão web." = "ওয়েব সংস্করণের মতোই, এটি শুধু এই ডিভাইসের জন্য প্রযোজ্য।";
+"ex.: Claude Agent — laptop" = "যেমন: Claude Agent — laptop";

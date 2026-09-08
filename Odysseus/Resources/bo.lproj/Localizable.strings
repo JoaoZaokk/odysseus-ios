@@ -806,7 +806,6 @@
 "Token criado" = "ཊོ་ཀེན་གསར་བཟོ་ཟིན";
 "Tokens de API" = "API ཊོ་ཀེན";
 "URL do servidor" = "ཞབས་ཞུའི་འཕྲུལ་ཆས་ཀྱི URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "གླེང་མོལ་གྱི་ཁྱབ་ཁོངས་ཅན་གྱི API ཊོ་ཀེན་ཞིག གསར་བཟོ་བྱས་རྗེས་ཐེངས་གཅིག་ཁོ་ན་སྟོན།";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "ཞབས་ཞུའི་འཕྲུལ་ཆས་རེར CardDAV རྩིས་ཐོ་གཅིག—ཉར་ཚགས་བྱས་ན་ད་ལྟ་བ་ཚབ་བརྗེ་བྱེད།";
 "Uma vez enquanto estiver ativa" = "ལག་བསྟར་བྱེད་བཞིན་པའི་སྐབས་ཐེངས་གཅིག";
 "Usado quando a IA escreve respostas para você." = "AI ཡིས་ཁྱེད་ཀྱི་ཚབ་ཏུ་ལན་འབྲི་སྐབས་བེད་སྤྱོད་བྱེད།";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "གཙང་བཤེར་མ་ཐུབ། %@";
 "Notificações" = "བརྡ་ཁྱབ།";
 "Notificações de tarefas e lembretes" = "ལས་འགན་དང་དྲན་སྐུལ་གྱི་བརྡ་ཁྱབ།";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "མཉེན་ཆས་ཁ་ཕྱེ་ཡོད་སྐབས་དྲན་སྐུལ་ལམ་ལས་འགན་མཇུག་བསྒྲིལ་ན་ཡོ་ཆས་འདིར་བརྡ་གཏོང་།";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "རྣམ་གྲངས་འགའ་ཞིག་སྦས་ཡོད།";
+"Anexar fotos" = "པར་རིས་མཉམ་སྦྱར";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "དྲན་སྐུལ་ལམ་ལས་འགན་མཇུག་བསྒྲིལ་ན་བརྡ་གཏོང་—མཉེན་ཆས་ཁ་ཕྱེ་ཡོད་སྐབས་དང་། སྐབས་རེར་རྒྱབ་ལྗོངས་སུའང་།";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "མཉེན་ཆས་ཁ་ཕྱེ་ཡོད་རིང་དྲན་སྐུལ་ལམ་ལས་འགན་མཇུག་བསྒྲིལ་ན་བརྡ་གཏོང་།";
+"Barra lateral" = "ཟུར་ཕྲེང";
+"Botão Agente" = "ལས་བྱེད་མཁན་མཐེབ";
+"Botão Deep" = "ཟབ་མོའི་མཐེབ";
+"Botão Web" = "དྲྭ་ཐོག་མཐེབ";
+"Campo de mensagem" = "འཕྲིན་ཡིག་སྒམ";
+"Conversa" = "གླེང་མོལ";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "རྗེས་སུ་མིང་དང་ཁྱབ་ཁོངས་རྣམས་ API ཊོ་ཀེན་ནང་ཞུས་དག་བྱེད་ཆོག";
+"Desligado: coluna de leitura no iPad e no Mac." = "བཀག་ཡོད། iPad དང་ Mac སྟེང་ཀློག་པའི་ཀེར་ཐིག";
+"Editar token" = "ཊོ་ཀེན་ཞུས་དག";
+"Falha ao editar: %@" = "ཞུས་དག་མ་ཐུབ། %@";
+"Largura total" = "ཞེང་ཚད་ཡོངས";
+"Microfone" = "སྒྲ་འཛིན";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "ཟུར་ཕྲེང་དང་འཕྲིན་ཡིག་སྒམ། གླེང་མོལ་གྱི་ཆ་ཤས་རྣམས་སྟོན་པའམ་སྦས།";
+"Nome do modelo nas respostas" = "ལན་ནང་གི་དཔེ་གཞིའི་མིང";
+"O token em si não muda — só o nome e o que ele pode fazer." = "ཊོ་ཀེན་རང་ཉིད་མི་འགྱུར—མིང་དང་དེས་གང་བྱེད་ཐུབ་པ་ཙམ་འགྱུར།";
+"Personalizar interface" = "མཐུད་ངོས་རང་སྒྲིག";
+"Raciocínio do modelo" = "དཔེ་གཞིའི་རིགས་དཔྱོད";
+"Restaurar padrão" = "སྔོན་སྒྲིག་ལ་ཕྱིར་སློག";
+"Texto de boas-vindas" = "ཕེབས་བསུའི་ཡི་གེ";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "ལས་བྱེད་མཁན་གྱི་ཆེད་དུ API ཊོ་ཀེན་ཞིག གསར་བཟོ་བྱས་རྗེས་ཐེངས་གཅིག་ཁོ་ན་སྟོན།";
+"Vale só para este aparelho, como na versão web." = "དྲྭ་ཐོག་པར་གཞི་ནང་བཞིན། ཡོ་ཆས་འདིར་ཁོ་ན་འཇུག";
+"ex.: Claude Agent — laptop" = "དཔེར་ན: Claude Agent — laptop";

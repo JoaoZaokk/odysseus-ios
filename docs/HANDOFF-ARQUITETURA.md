@@ -1,9 +1,33 @@
-# Handoff — fase de arquitetura, encerrada; rodadas 4 e 5 fechadas
+# Handoff — fase de arquitetura, encerrada; rodadas 4, 5 e 6 fechadas
 
-Estado em 2026-09-08, fim da rodada 5. Tudo abaixo está em `main`, **1.9 / build 23**
-(macOS build 17; o último build subido ao ASC é o **21**, da 1.8 — nada da 1.9 foi
-enviado ainda). **265 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
-zero PRs abertos. Catálogos: **44 × 794**.
+Estado em 2026-09-08, fim da rodada 6. Tudo abaixo está em `main`, **1.9 / build 24**
+(macOS build 18; o último build subido ao ASC é o **21**, da 1.8 — nada da 1.9 foi
+enviado ainda). **278 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
+zero PRs abertos. Catálogos: **43 × 818** (de-AT saiu; ver rodada 6).
+
+## Rodada 6 — "feche esses cinco"
+
+As cinco decisões que a rodada 5 tomou sem perguntar (abaixo, em "Decisões tomadas sem
+perguntar") deixaram de ser decisões e viraram código, num PR só
+([#45](https://github.com/JoaoZaokk/odysseus-ios/pull/45)). Nada ficou "fechado por
+decisão" desta vez.
+
+| Decisão da rodada 5 | Fechamento |
+|---|---|
+| **Aparência: os 33 interruptores da web "não existem no app nativo"** | Existem os que têm superfície nativa. `UIVisibility` (um `UserDefaults`, `ui.hidden`, conjunto de ids escondidos — o espelho do `odysseus-ui-visibility` do localStorage da web) e a folha **Aparência › Personalizar interface**: barra lateral (Deep Search, "Espaços" como chave-mestra, os nove espaços), campo de mensagem (Web, Deep, Agente, Anexar fotos, Microfone) e conversa (raciocínio, nome do modelo, boas-vindas, largura total — desligada vira coluna de leitura de 720 pt no iPad/Mac). "Restaurar padrão" por cartão. O que a web tem e o app não (rail, incógnito, RAG, presets, emojis) não ganhou interruptor: não há o que esconder. |
+| **Tokens de agente só com escopo `chat`; "editar escopos fica na web"** | Ao criar Claude/Codex Agent o formulário mostra os escopos do servidor (`/api/tokens/profiles`, fallback na lista fixa) com `chat` pré-marcado. Em Tokens de API cada linha ganhou **Editar**: nome e escopos por `PATCH /api/tokens/{id}` (JSON). Só o que mudou vai no corpo — um rename sem a chave `scopes`, que é a regressão que o próprio servidor testa (mandar `scopes` num rename resetava para `chat`); nada mudou, nada é enviado. |
+| **Notificações opt-in, só com o app aberto** | Continua opt-in (isso era a parte certa). O que mudou: `TaskNotificationPoller.refreshOnce()` é a única leitura da fila, compartilhada pelo laço de 30 s e pelo **background refresh do iOS** (`BGAppRefreshTask`, id `com.zao.odysseus.tasks.refresh`, `UIBackgroundModes: fetch`; pedido a cada ida ao fundo e depois de cada refresh; o sistema decide quando, nunca antes de 15 min). No **macOS o laço não para mais ao trocar de app**: o `scenePhase` só manda no iOS; no Mac o poller vive com a sessão. O texto de Conta diz cada coisa em cada plataforma. |
+| **Sem APNs** | Fechado de vez: o servidor não tem push, e o cliente agora faz o máximo que um cliente faz sozinho (acima). Não é pendência; é limite do servidor. |
+| **de-AT fica** | Saiu. Era cópia byte a byte de `de` com um item duplicado no seletor; iOS resolve "Deutsch (Österreich)" para `de` (`AppLanguage.match("de-AT") == .de`, testado). de-CH fica — suíço é real (sem ß). Catálogos: 43. |
+
+Chaves novas: **26**, traduzidas por workflow (tradutor + revisor por grupo, todos Opus,
+lendo o catálogo-irmão antes de escrever), verificadas por script (`%@`, vazio,
+não-traduzido); duas chaves órfãs removidas dos 43 (o texto antigo do agente e o antigo
+aviso de Conta). Testes novos em `ClosingItemsTests` (13): visibilidade pura, escopos
+no form, PATCH parcial, `refreshOnce` desligado/sem permissão.
+
+Nada ficou aberto desta rodada. As duas ações do dono continuam as mesmas: subir a 1.9
+(build 24) e responder a review alemã depois que a 1.9 estiver no ar.
 
 ## Rodada 5 — "resolva os abertos, todos eles, uma tacada só"
 

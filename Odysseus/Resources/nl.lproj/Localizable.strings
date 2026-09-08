@@ -808,7 +808,6 @@
 "Token criado" = "Token gemaakt";
 "Tokens de API" = "API-tokens";
 "URL do servidor" = "Server-URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "Een API-token met chat-scope. Het wordt na het maken maar één keer getoond.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Eén CardDAV-account per server — opslaan vervangt het huidige.";
 "Uma vez enquanto estiver ativa" = "Eén keer zolang dit actief is";
 "Usado quando a IA escreve respostas para você." = "Wordt gebruikt wanneer de AI antwoorden voor je schrijft.";
@@ -828,4 +827,31 @@
 "Falha na limpeza: %@" = "Opschonen mislukt: %@";
 "Notificações" = "Meldingen";
 "Notificações de tarefas e lembretes" = "Meldingen voor taken en herinneringen";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Waarschuwt op dit apparaat wanneer een herinnering of taak klaar is, met de app open.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "Sommige onderdelen zijn verborgen.";
+"Anexar fotos" = "Foto's bijvoegen";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Waarschuwt wanneer een herinnering of taak klaar is — met de app open en af en toe ook op de achtergrond.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Waarschuwt wanneer een herinnering of taak klaar is, zolang de app open is.";
+"Barra lateral" = "Zijbalk";
+"Botão Agente" = "Agent-knop";
+"Botão Deep" = "Deep-knop";
+"Botão Web" = "Web-knop";
+"Campo de mensagem" = "Berichtveld";
+"Conversa" = "Gesprek";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Naam en scopes kun je daarna bewerken bij API-tokens.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Uit: leeskolom op iPad en Mac.";
+"Editar token" = "Token bewerken";
+"Falha ao editar: %@" = "Bewerken mislukt: %@";
+"Largura total" = "Volledige breedte";
+"Microfone" = "Microfoon";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Toon of verberg onderdelen van de zijbalk, het berichtveld en het gesprek.";
+"Nome do modelo nas respostas" = "Modelnaam bij antwoorden";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Het token zelf verandert niet — alleen de naam en wat het mag doen.";
+"Personalizar interface" = "Interface aanpassen";
+"Raciocínio do modelo" = "Redeneren van het model";
+"Restaurar padrão" = "Standaard herstellen";
+"Texto de boas-vindas" = "Welkomsttekst";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Een API-token voor de agent. Het wordt na het maken maar één keer getoond.";
+"Vale só para este aparelho, como na versão web." = "Geldt alleen voor dit apparaat, net als in de webversie.";
+"ex.: Claude Agent — laptop" = "bijv. Claude Agent — laptop";

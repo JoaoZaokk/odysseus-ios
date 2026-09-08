@@ -806,7 +806,6 @@
 "Token criado" = "Token erstallt";
 "Tokens de API" = "API-Tokens";
 "URL do servidor" = "Server-URL";
-"Um token de API com escopo de chat. Ele aparece uma única vez, depois de criado." = "En API-Token mam Chat-Scope. Hie gëtt no der Erstellung just eng eenzeg Kéier ugewisen.";
 "Uma conta CardDAV por servidor — salvar substitui a atual." = "Ee CardDAV-Konto pro Server — Späicheren ersetzt dat aktuellt.";
 "Uma vez enquanto estiver ativa" = "Eng Kéier, soulaang aktiv";
 "Usado quando a IA escreve respostas para você." = "Gëtt benotzt, wann d'KI Äntwerte fir dech schreift.";
@@ -826,4 +825,31 @@
 "Falha na limpeza: %@" = "Botzen feelgeschloen: %@";
 "Notificações" = "Notifikatiounen";
 "Notificações de tarefas e lembretes" = "Notifikatiounen zu Aufgaben an Erënnerungen";
-"Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto." = "Mellt sech op dësem Apparat, wann eng Erënnerung oder Aufgab fäerdeg ass – bei oppener App.";
+
+/* Rodada 6 — os cinco fechados (1.9) */
+"Alguns itens estão escondidos." = "E puer Elementer si verstoppt.";
+"Anexar fotos" = "Fotoen bäifügen";
+"Avisa quando um lembrete ou tarefa terminar — com o app aberto e, de vez em quando, em segundo plano." = "Mellt sech, wann eng Erënnerung oder Aufgab fäerdeg ass – bei oppener App an ab an zu och am Hannergrond.";
+"Avisa quando um lembrete ou tarefa terminar, enquanto o app estiver aberto." = "Mellt sech, wann eng Erënnerung oder Aufgab fäerdeg ass, soulaang d'App op ass.";
+"Barra lateral" = "Säiteleescht";
+"Botão Agente" = "Agent-Knäppchen";
+"Botão Deep" = "Déif-Knäppchen";
+"Botão Web" = "Web-Knäppchen";
+"Campo de mensagem" = "Noriichtefeld";
+"Conversa" = "Gespréich";
+"Depois, nome e escopos podem ser editados em Tokens de API." = "Numm a Scopes kënne duerno ënner API-Tokens geännert ginn.";
+"Desligado: coluna de leitura no iPad e no Mac." = "Aus: Liesspalt um iPad an um Mac.";
+"Editar token" = "Token änneren";
+"Falha ao editar: %@" = "Änneren feelgeschloen: %@";
+"Largura total" = "Voll Breet";
+"Microfone" = "Mikro";
+"Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa." = "Weis oder verstopp Deeler vun der Säiteleescht, vum Noriichtefeld a vum Gespréich.";
+"Nome do modelo nas respostas" = "Modellnumm bei den Äntwerten";
+"O token em si não muda — só o nome e o que ele pode fazer." = "Den Token selwer ännert sech net — just den Numm an dat, wat hie maache kann.";
+"Personalizar interface" = "Interface upassen";
+"Raciocínio do modelo" = "Iwwerleeung vum Modell";
+"Restaurar padrão" = "Op Standard zrécksetzen";
+"Texto de boas-vindas" = "Wëllkommstext";
+"Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "En API-Token fir den Agent. Hie gëtt no der Erstellung just eng eenzeg Kéier ugewisen.";
+"Vale só para este aparelho, como na versão web." = "Gëlt nëmme fir dësen Apparat, wéi an der Web-Versioun.";
+"ex.: Claude Agent — laptop" = "z.B. Claude Agent — laptop";
