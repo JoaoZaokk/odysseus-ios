@@ -157,13 +157,32 @@ struct AccountSection: View {
     @Published var extractTimeout = "90"
     @Published var extractParallel = "3"
     @Published var runTimeout = "1800"
+    /// False until `load()` has succeeded. Saving before that would post the
+    /// app's placeholder values over the server's real ones.
+    @Published private(set) var loaded = false
+    /// Set the moment the user edits the key field. Only then is the key
+    /// posted — the server blanks every key in GET for non-admins, so posting
+    /// the (empty) field unedited would wipe the admin's key.
+    private(set) var keyDirty = false
     private let api: APIClient
     init(api: APIClient) { self.api = api }
 
     /// The credential field edits whichever provider is selected right now.
     var keyBinding: Binding<String> {
         Binding(get: { self.keys[self.provider] ?? "" },
-                set: { self.keys[self.provider] = $0 })
+                set: { self.keys[self.provider] = $0; self.keyDirty = true })
+    }
+
+    /// The web's ranges (settings.js). `research_max_tokens` is the one the
+    /// server never clamps: 0 or a negative reaches the model provider and
+    /// breaks every Deep Research run until an admin fixes it by hand.
+    static func clampedTokens(_ v: String) -> Int { max(1024, Int(v) ?? 16384) }
+    static func clampedExtractTimeout(_ v: String) -> Int { min(3600, max(15, Int(v) ?? 90)) }
+    static func clampedParallel(_ v: String) -> Int { min(12, max(1, Int(v) ?? 3)) }
+    /// 0 means "no cap"; anything else is a minute to a day.
+    static func clampedRunTimeout(_ v: String) -> Int {
+        let n = Int(v) ?? 1800
+        return n == 0 ? 0 : min(86400, max(60, n))
     }
 
     static let providers = ["searxng", "duckduckgo", "brave", "google_pse", "tavily", "serper", "disabled"]
@@ -174,6 +193,8 @@ struct AccountSection: View {
 
     func load() async {
         guard let s = try? await api.getSettings() else { return }
+        loaded = true
+        keyDirty = false
         provider = s.string("search_provider").isEmpty ? "searxng" : s.string("search_provider")
         count = String(s.int("search_result_count", default: 5))
         url = s.string("search_url")
@@ -186,16 +207,30 @@ struct AccountSection: View {
     }
 
     func save() async {
-        var body: [String: Any] = ["search_provider": provider, "search_result_count": Int(count) ?? 5]
+        if !loaded { await load() }
+        guard loaded else { flash("Falha ao salvar"); return }
+        // Show the value that will actually apply, not the one that was typed.
+        let tokens = Self.clampedTokens(maxTokens), extract = Self.clampedExtractTimeout(extractTimeout)
+        let parallel = Self.clampedParallel(extractParallel), run = Self.clampedRunTimeout(runTimeout)
+        maxTokens = String(tokens); extractTimeout = String(extract)
+        extractParallel = String(parallel); runTimeout = String(run)
+        let results = min(50, max(1, Int(count) ?? 5))
+        count = String(results)
+
+        var body: [String: Any] = ["search_provider": provider, "search_result_count": results,
+                                   "research_max_tokens": tokens, "research_extraction_timeout_seconds": extract,
+                                   "research_extraction_concurrency": parallel, "research_run_timeout_seconds": run]
         if provider == "searxng" { body["search_url"] = url }
         if provider == "google_pse" { body["google_pse_cx"] = cx }
-        if let kf = Self.keyField[provider], let k = keys[provider], !k.isEmpty { body[kf] = k }
-        for (k, v) in [("research_max_tokens", maxTokens), ("research_extraction_timeout_seconds", extractTimeout),
-                       ("research_extraction_concurrency", extractParallel), ("research_run_timeout_seconds", runTimeout)] {
-            if let n = Int(v) { body[k] = n }
-        }
-        do { try await api.saveSettings(body); status = "Salvo" }
-        catch { status = "Falha ao salvar" }
+        // An emptied field is a deliberate "clear the key" — 1.8 dropped it,
+        // which made a stored key impossible to remove from the app.
+        if keyDirty, let kf = Self.keyField[provider] { body[kf] = keys[provider] ?? "" }
+        do { try await api.saveSettings(body); keyDirty = false; flash("Salvo") }
+        catch { flash("Falha ao salvar") }
+    }
+
+    private func flash(_ s: String) {
+        status = s
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) { self.status = "" }
     }
 }
@@ -216,7 +251,7 @@ struct SearchSection: View {
                 } label: { menuLabel(SearchSettingsVM.labels[vm.provider] ?? vm.provider) }
 
                 label("Resultados por busca")
-                field($vm.count) { Task { await vm.save() } }
+                field($vm.count, numeric: true) { Task { await vm.save() } }
 
                 if vm.provider == "searxng" {
                     label("URL (opcional)")
@@ -239,16 +274,20 @@ struct SearchSection: View {
                 Text("Tempos de execução da pesquisa profunda. O modelo é escolhido em Padrões de IA.")
                     .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 HStack(spacing: 10) {
-                    VStack(alignment: .leading, spacing: 3) { label("Max tokens"); field($vm.maxTokens) { Task { await vm.save() } } }
-                    VStack(alignment: .leading, spacing: 3) { label("Extração paralela"); field($vm.extractParallel) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Max tokens"); field($vm.maxTokens, numeric: true) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Extração paralela"); field($vm.extractParallel, numeric: true) { Task { await vm.save() } } }
                 }
                 HStack(spacing: 10) {
-                    VStack(alignment: .leading, spacing: 3) { label("Timeout da extração (s)"); field($vm.extractTimeout) { Task { await vm.save() } } }
-                    VStack(alignment: .leading, spacing: 3) { label("Timeout de execução (s)"); field($vm.runTimeout) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Timeout da extração (s)"); field($vm.extractTimeout, numeric: true) { Task { await vm.save() } } }
+                    VStack(alignment: .leading, spacing: 3) { label("Timeout de execução (s)"); field($vm.runTimeout, numeric: true) { Task { await vm.save() } } }
                 }
             }
         }
         .task { await vm.load() }
+        // Leaving the screen — "Concluído", another section — used to discard
+        // everything typed without a Return. The guard inside `save()` keeps a
+        // failed load from turning this into a post of placeholder values.
+        .onDisappear { if vm.loaded { Task { await vm.save() } } }
     }
 
     private func label(_ s: String) -> some View {
@@ -259,13 +298,33 @@ struct SearchSection: View {
             .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
     }
-    @ViewBuilder private func field(_ bind: Binding<String>, secure: Bool = false, onCommit: @escaping () -> Void) -> some View {
+    private func field(_ bind: Binding<String>, secure: Bool = false, numeric: Bool = false,
+                       onCommit: @escaping () -> Void) -> some View {
+        CommitField(text: bind, secure: secure, numeric: numeric, onCommit: onCommit)
+    }
+}
+
+/// A settings text field that commits on Return **and** on losing focus.
+/// Eight fields in Busca committed only on Return; tapping the next field
+/// and leaving silently dropped the edit.
+private struct CommitField: View {
+    @Binding var text: String
+    var secure = false
+    var numeric = false
+    var onCommit: () -> Void
+    @Environment(\.theme) private var theme
+    @FocusState private var focused: Bool
+
+    var body: some View {
         Group {
-            if secure { SecureField("", text: bind) } else { TextField("", text: bind) }
+            if secure { SecureField("", text: $text) } else { TextField("", text: $text) }
         }
         .textFieldStyle(.plain).font(.ody(.subheadline)).foregroundStyle(theme.fg)
         .autocorrectionDisabled().textInputAutocapitalization(.never)
+        .keyboardType(numeric ? .numberPad : .default)
+        .focused($focused)
         .onSubmit(onCommit)
+        .onChange(of: focused) { _, now in if !now { onCommit() } }
         .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
     }
