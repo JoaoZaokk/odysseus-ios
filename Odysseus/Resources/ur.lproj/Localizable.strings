@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "بنانے میں ناکام: %@";
 "Falha ao remover: %@" = "ہٹانے میں ناکام: %@";
 "Apagado: %@." = "حذف ہو گیا: %@۔";
+"Apagado: %lld / %lld categorias." = "حذف ہو گیا: %lld / %lld زمرے۔";
 "Teste enviado para %@." = "ٹیسٹ %@ کو بھیجا گیا۔";
 "Fila" = "قطار";
 "Modelos" = "ماڈلز";

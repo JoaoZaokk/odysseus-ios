@@ -51,6 +51,7 @@ struct AddedModelsSection: View {
     /// Kept so the per-model sheet can build its own view model.
     private let app: AppState
     @State private var picking: ModelEndpoint?
+    @State private var removing: ModelEndpoint?
     init(app: AppState) {
         self.app = app
         _vm = StateObject(wrappedValue: AddedModelsVM(api: app.api))
@@ -83,6 +84,10 @@ struct AddedModelsSection: View {
         .sheet(item: $picking) { ep in
             EndpointModelsView(app: app, endpoint: ep)
         }
+        .alert(removing?.name ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
+            Button("Remover", role: .destructive) { if let ep = removing { Task { await vm.delete(ep) } }; removing = nil }
+            Button("Cancelar", role: .cancel) { removing = nil }
+        } message: { Text("Isso é irreversível. Confirma?") }
     }
 
     private func card(_ ep: ModelEndpoint) -> some View {
@@ -119,8 +124,14 @@ struct AddedModelsSection: View {
                 }
                 Button(ep.isEnabled ? "Desativar" : "Ativar") { Task { await vm.toggle(ep) } }
                     .buttonStyle(.plain).foregroundStyle(theme.fg)
-                Button("Remover", role: .destructive) { Task { await vm.delete(ep) } }
-                    .buttonStyle(.plain).foregroundStyle(theme.accent)
+                // Deleting an endpoint also resets every default that pointed
+                // at it (chat, utility, vision, research models, fallbacks),
+                // so ask first — except for one that is already offline, where
+                // the web skips the question too.
+                Button("Remover", role: .destructive) {
+                    if ep.online == false { Task { await vm.delete(ep) } } else { removing = ep }
+                }
+                .buttonStyle(.plain).foregroundStyle(theme.danger)
             }
             .font(.ody(size: 12))
             .disabled(vm.refreshing != nil)

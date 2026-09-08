@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "Error al crear: %@";
 "Falha ao remover: %@" = "Error al eliminar: %@";
 "Apagado: %@." = "Eliminado: %@.";
+"Apagado: %lld / %lld categorias." = "Eliminado: %lld / %lld categorías.";
 "Teste enviado para %@." = "Prueba enviada a %@.";
 "Fila" = "Cola";
 "Modelos" = "Modelos";

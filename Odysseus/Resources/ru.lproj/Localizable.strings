@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "Ошибка создания: %@";
 "Falha ao remover: %@" = "Ошибка удаления: %@";
 "Apagado: %@." = "Удалено: %@.";
+"Apagado: %lld / %lld categorias." = "Удалено: %lld / %lld категорий.";
 "Teste enviado para %@." = "Тест отправлен для %@.";
 "Fila" = "Очередь";
 "Modelos" = "Модели";

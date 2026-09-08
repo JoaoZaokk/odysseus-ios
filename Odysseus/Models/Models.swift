@@ -28,7 +28,10 @@ struct AuthStatus: Codable, Sendable {
     var configured: Bool
     var authenticated: Bool
     var username: String?
-    var isAdmin: Bool
+    /// nil = the server did not say (older builds). The app fails open on
+    /// nil: hiding the admin sections from an admin costs more than showing
+    /// them to a non-admin, who only meets a 403.
+    var isAdmin: Bool?
 
     enum CodingKeys: String, CodingKey {
         case configured, authenticated, username
@@ -40,7 +43,7 @@ struct AuthStatus: Codable, Sendable {
         configured = (try? c.decode(Bool.self, forKey: .configured)) ?? false
         authenticated = (try? c.decode(Bool.self, forKey: .authenticated)) ?? false
         username = try? c.decodeIfPresent(String.self, forKey: .username)
-        isAdmin = (try? c.decode(Bool.self, forKey: .isAdmin)) ?? false
+        isAdmin = try? c.decodeIfPresent(Bool.self, forKey: .isAdmin)
     }
 }
 

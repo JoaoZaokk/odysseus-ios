@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "Създаването се провали: %@";
 "Falha ao remover: %@" = "Премахването се провали: %@";
 "Apagado: %@." = "Изтрито: %@.";
+"Apagado: %lld / %lld categorias." = "Изтрито: %lld / %lld категории.";
 "Teste enviado para %@." = "Тестът е изпратен до %@.";
 "Fila" = "Опашка";
 "Modelos" = "Модели";

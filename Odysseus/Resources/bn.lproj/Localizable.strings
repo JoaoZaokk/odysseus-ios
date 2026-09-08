@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "তৈরি ব্যর্থ: %@";
 "Falha ao remover: %@" = "সরাতে ব্যর্থ: %@";
 "Apagado: %@." = "মুছে ফেলা হয়েছে: %@।";
+"Apagado: %lld / %lld categorias." = "মুছে ফেলা হয়েছে: %lld / %lld বিভাগ।";
 "Teste enviado para %@." = "পরীক্ষা পাঠানো হয়েছে: %@";
 "Fila" = "সারি";
 "Modelos" = "মডেল";

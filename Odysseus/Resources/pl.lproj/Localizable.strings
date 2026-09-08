@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Tworzenie nie powiodło się: %@";
 "Falha ao remover: %@" = "Usuwanie nie powiodło się: %@";
 "Apagado: %@." = "Usunięto: %@.";
+"Apagado: %lld / %lld categorias." = "Usunięto: %lld / %lld kategorii.";
 "Teste enviado para %@." = "Test wysłano do %@.";
 "Fila" = "Kolejka";
 "Modelos" = "Modele";

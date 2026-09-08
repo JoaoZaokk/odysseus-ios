@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "གསར་བཟོ་མ་ཐུབ། %@";
 "Falha ao remover: %@" = "བསུབ་པ་མ་ཐུབ། %@";
 "Apagado: %@." = "བསུབ་ཟིན། %@";
+"Apagado: %lld / %lld categorias." = "བསུབ་ཟིན། %lld / %lld སྡེ་ཚན།";
 "Teste enviado para %@." = "ཚོད་ལྟ་ %@ ལ་བསྐུར་ཟིན།";
 "Fila" = "གྲལ་རིམ";
 "Modelos" = "དཔེ་དབྱིབས";

@@ -7,6 +7,10 @@ final class AppState: ObservableObject {
     @Published var phase: Phase = .launching
     @Published var serverConfig: ServerConfig
     @Published var username: String?
+    /// Drives the ADMIN group in Settings. True until the server says
+    /// otherwise: with auth off the server has no roles, and an old server
+    /// omits the field — both read as "show everything".
+    @Published var isAdmin = true
 
     /// False on first launch until the user saves a server address. While false,
     /// RootView shows a mandatory, non-dismissible server-setup gate.
@@ -84,6 +88,7 @@ final class AppState: ObservableObject {
             let status = try await api.status()
             if status.authenticated {
                 username = status.username
+                isAdmin = Self.role(of: status)
                 keepSignedIn = true        // a restored cookie got us in → keep it fresh
                 phase = .main
             } else {
@@ -113,12 +118,22 @@ final class AppState: ObservableObject {
             let resp = try await api.login(username: u, password: p, remember: true)
             if resp.totpRequired == true { phase = .login; totpRequired = true; return }
             username = u
+            await refreshRole()
             api.persistCookies()           // refresh the persisted session cookie
             keepSignedIn = true
             phase = .main
         } catch {
             phase = .login
         }
+    }
+
+    static func role(of status: AuthStatus) -> Bool {
+        !status.configured || (status.isAdmin ?? true)
+    }
+
+    /// The login reply carries no role; `/api/auth/status` does.
+    private func refreshRole() async {
+        if let status = try? await api.status() { isAdmin = Self.role(of: status) }
     }
 
     func login(username u: String, password p: String, remember: Bool, totp: String?) async {
@@ -146,6 +161,7 @@ final class AppState: ObservableObject {
                 keepSignedIn = false
             }
             username = u
+            await refreshRole()
             totpRequired = false
             phase = .main
         } catch {

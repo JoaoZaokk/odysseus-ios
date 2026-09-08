@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "قۇرۇش مەغلۇپ بولدى: %@";
 "Falha ao remover: %@" = "ئۆچۈرۈش مەغلۇپ بولدى: %@";
 "Apagado: %@." = "ئۆچۈرۈلدى: %@.";
+"Apagado: %lld / %lld categorias." = "ئۆچۈرۈلدى: %lld / %lld تۈر.";
 "Teste enviado para %@." = "سىناق %@ غا ئەۋەتىلدى.";
 "Fila" = "ئۆچرەت";
 "Modelos" = "مودېل";

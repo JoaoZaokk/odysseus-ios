@@ -565,6 +565,7 @@
 "Falha ao criar: %@" = "Kunde inte skapa: %@";
 "Falha ao remover: %@" = "Kunde inte ta bort: %@";
 "Apagado: %@." = "Borttaget: %@.";
+"Apagado: %lld / %lld categorias." = "Borttaget: %lld / %lld kategorier.";
 "Teste enviado para %@." = "Test skickat till %@.";
 "Fila" = "Kö";
 "Modelos" = "Modeller";

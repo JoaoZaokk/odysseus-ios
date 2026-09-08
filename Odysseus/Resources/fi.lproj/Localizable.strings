@@ -565,6 +565,7 @@
 "Falha ao criar: %@" = "Luonti epäonnistui: %@";
 "Falha ao remover: %@" = "Poisto epäonnistui: %@";
 "Apagado: %@." = "Poistettu: %@.";
+"Apagado: %lld / %lld categorias." = "Poistettu: %lld / %lld kategoriaa.";
 "Teste enviado para %@." = "Testi lähetetty: %@";
 "Fila" = "Jono";
 "Modelos" = "Mallit";

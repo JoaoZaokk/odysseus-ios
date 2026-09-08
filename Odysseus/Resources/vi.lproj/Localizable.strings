@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Tạo thất bại: %@";
 "Falha ao remover: %@" = "Xóa thất bại: %@";
 "Apagado: %@." = "Đã xóa: %@.";
+"Apagado: %lld / %lld categorias." = "Đã xóa: %lld / %lld danh mục.";
 "Teste enviado para %@." = "Đã gửi kiểm tra đến %@.";
 "Fila" = "Hàng đợi";
 "Modelos" = "Mô hình";

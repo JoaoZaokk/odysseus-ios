@@ -111,15 +111,21 @@ extension APIClient {
         _ = try await send(try jsonRequest("/api/auth/users", method: "POST",
                                            body: B(username: username, password: password, is_admin: isAdmin)))
     }
+    // The server has no bare `/users/{username}` write: promote and rename
+    // are sub-paths, and delete takes the name in the body. 1.8 hit the bare
+    // path for all three and every one 404'd behind a generic "Falha".
     func setUserAdmin(_ username: String, _ isAdmin: Bool) async throws {
         struct B: Encodable { let is_admin: Bool }
-        _ = try await send(try jsonRequest(userPath(username), method: "PUT", body: B(is_admin: isAdmin)))
+        _ = try await send(try jsonRequest(userPath(username) + "/admin", method: "PUT", body: B(is_admin: isAdmin)))
     }
     func renameUser(_ username: String, to newName: String) async throws {
         struct B: Encodable { let username: String }
-        _ = try await send(try jsonRequest(userPath(username), method: "PUT", body: B(username: newName)))
+        _ = try await send(try jsonRequest(userPath(username) + "/rename", method: "PUT", body: B(username: newName)))
     }
-    func deleteUser(_ username: String) async throws { _ = try await send(request(userPath(username), method: "DELETE")) }
+    func deleteUser(_ username: String) async throws {
+        struct B: Encodable { let username: String }
+        _ = try await send(try jsonRequest("/api/auth/users", method: "DELETE", body: B(username: username)))
+    }
     func signupEnabled() async throws -> Bool {
         let data = try await send(request("/api/auth/policy"))
         let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
@@ -540,10 +546,30 @@ struct BuiltinToolsCard: View {
             }
         } catch { note = SettingsUI.failure(error, "Falha ao exportar: %@") }
     }
+    /// The eight kinds the server's `DELETE /api/admin/wipe/{kind}` accepts.
+    /// "all" is a client-side loop, as on the web — sending it to the server
+    /// is a 400 ("Unknown wipe kind: 'all'"), which is what 1.8 did.
+    static let wipeKinds = ["chats", "memory", "skills", "notes", "tasks", "documents", "gallery", "calendar"]
+
     func wipe(_ cat: String) async {
         note = nil
-        do { try await api.wipeCategory(cat); note = L("Apagado: %@.", cat) }
-        catch { note = SettingsUI.failure(error, "Falha: %@") }
+        guard cat == "all" else {
+            do { try await api.wipeCategory(cat); note = L("Apagado: %@.", cat) }
+            catch { note = SettingsUI.failure(error, "Falha: %@") }
+            return
+        }
+        var failed: [String] = []
+        for kind in Self.wipeKinds {
+            do { try await api.wipeCategory(kind) }
+            catch {
+                if error.isCancellation { return }
+                failed.append(kind)
+            }
+        }
+        let ok = Self.wipeKinds.count - failed.count
+        note = failed.isEmpty
+            ? L("Apagado: %lld / %lld categorias.", ok, Self.wipeKinds.count)
+            : L("Falha: %@", failed.joined(separator: ", "))
     }
 }
 
@@ -749,6 +775,8 @@ struct UsuariosSection: View {
     @Environment(\.theme) private var theme
     @State private var renaming: AdminUser?
     @State private var renameText = ""
+    @State private var removing: AdminUser?
+    @State private var toggling: AdminUser?
     init(app: AppState) { _vm = StateObject(wrappedValue: UsuariosVM(api: app.api)) }
 
     var body: some View {
@@ -775,13 +803,17 @@ struct UsuariosSection: View {
                         Spacer()
                     }
                     HStack(spacing: 14) {
-                        Button(u.isAdmin ? "Revogar admin" : "Tornar admin") { Task { await vm.setAdmin(u, !u.isAdmin) } }
+                        Button(u.isAdmin ? "Revogar admin" : "Tornar admin") { toggling = u }
                             .buttonStyle(.plain).foregroundStyle(theme.fg)
                         Button("Renomear") { renaming = u; renameText = u.username }
                             .buttonStyle(.plain).foregroundStyle(theme.fg)
                         Spacer()
-                        Button("Remover", role: .destructive) { Task { await vm.remove(u) } }
-                            .buttonStyle(.plain).foregroundStyle(theme.accent)
+                        // An admin is demoted first, then removed — the web
+                        // draws no delete button on admin rows either.
+                        if !u.isAdmin {
+                            Button("Remover", role: .destructive) { removing = u }
+                                .buttonStyle(.plain).foregroundStyle(theme.danger)
+                        }
                     }
                     .font(.ody(size: 12))
                 }
@@ -804,6 +836,17 @@ struct UsuariosSection: View {
             TextField("Novo nome", text: $renameText)
             Button("Salvar") { if let u = renaming { Task { await vm.rename(u, to: renameText) } }; renaming = nil }
             Button("Cancelar", role: .cancel) { renaming = nil }
+        }
+        .alert(removing?.username ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
+            Button("Remover", role: .destructive) { if let u = removing { Task { await vm.remove(u) } }; removing = nil }
+            Button("Cancelar", role: .cancel) { removing = nil }
+        } message: { Text("Isso é irreversível. Confirma?") }
+        .alert(toggling?.username ?? "", isPresented: Binding(get: { toggling != nil }, set: { if !$0 { toggling = nil } })) {
+            Button(toggling?.isAdmin == true ? "Revogar admin" : "Tornar admin") {
+                if let u = toggling { Task { await vm.setAdmin(u, !u.isAdmin) } }
+                toggling = nil
+            }
+            Button("Cancelar", role: .cancel) { toggling = nil }
         }
     }
 }

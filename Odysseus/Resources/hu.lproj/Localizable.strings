@@ -573,6 +573,7 @@
 "Falha ao criar: %@" = "Létrehozás nem sikerült: %@";
 "Falha ao remover: %@" = "Eltávolítás nem sikerült: %@";
 "Apagado: %@." = "Törölve: %@.";
+"Apagado: %lld / %lld categorias." = "Törölve: %lld / %lld kategória.";
 "Teste enviado para %@." = "Teszt elküldve ide: %@";
 "Fila" = "Sor";
 "Modelos" = "Modellek";

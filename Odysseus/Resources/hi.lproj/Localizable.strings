@@ -575,6 +575,7 @@
 "Falha ao criar: %@" = "बनाना विफल: %@";
 "Falha ao remover: %@" = "हटाना विफल: %@";
 "Apagado: %@." = "हटाया गया: %@।";
+"Apagado: %lld / %lld categorias." = "हटाया गया: %lld / %lld श्रेणियाँ।";
 "Teste enviado para %@." = "परीक्षण भेजा गया: %@";
 "Fila" = "कतार";
 "Modelos" = "मॉडल";
