@@ -21,6 +21,7 @@
 "apertado" = "knappt";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Peka på den lokala IP-adressen för nu; när du exponerar den via HTTPS, byt till https://din-domän.";
 "Arquivar" = "Arkivera";
+"Arquivadas" = "Arkiverade";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Slutförda undersökningar visas här. Tryck på “Visuell rapport” för att öppna den sida vid sida.";
 "Ativado" = "Aktiverad";
 "Ativar todas" = "Aktivera alla";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Inga konton";
 "Nenhuma conta — adicione uma conta IMAP." = "Inga konton — lägg till ett IMAP-konto.";
 "Nenhuma conversa ainda." = "Inga konversationer än.";
+"Nenhuma conversa arquivada." = "Inga arkiverade konversationer.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Inga integrationer än — använd “Lägg till integration” ovan.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS på portugisiska (Core ML/Neural Engine), betydligt mer naturlig än den nativa rösten. Laddar ner ~550 MB på enheten första gången; körs endast på en fysisk iPhone (inte simulatorn).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -455,6 +457,7 @@
 "Provedor padrão" = "Standardleverantör";
 "Endereço do servidor" = "Serveradress";
 "Versão" = "Version";
+"Avaliar o Odysseus" = "Betygsätt Odysseus";
 "não cabe" = "får inte plats";
 "no results" = "inga resultat";
 "no results — tente reformular ou trocar o motor de busca." = "inga resultat — prova att formulera om eller byta sökmotor.";

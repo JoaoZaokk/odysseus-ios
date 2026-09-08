@@ -21,6 +21,7 @@
 "apertado" = "빠듯함";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "지금은 로컬 IP를 입력하세요. HTTPS로 공개할 때 https://your-domain으로 변경하세요.";
 "Arquivar" = "보관";
+"Arquivadas" = "보관됨";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "완료된 연구가 여기에 표시됩니다. \"시각적 보고서\"를 눌러 나란히 열어보세요.";
 "Ativado" = "활성화됨";
 "Ativar todas" = "모두 활성화";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "계정 없음";
 "Nenhuma conta — adicione uma conta IMAP." = "계정 없음 — IMAP 계정을 추가하세요.";
 "Nenhuma conversa ainda." = "아직 대화가 없습니다.";
+"Nenhuma conversa arquivada." = "보관된 대화가 없습니다.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "아직 통합이 없습니다 — 위의 \"통합 추가\"를 사용하세요.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "신경 = 포르투갈어 PocketTTS(Core ML/Neural Engine)로, 기본 음성보다 훨씬 자연스럽습니다. 첫 번째 실행 시 기기에서 약 550 MB를 다운로드합니다. 실제 iPhone에서만 실행됩니다(시뮬레이터 불가).";
 "Neural pt-BR" = "신경 pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "기본 제공자";
 "Endereço do servidor" = "서버 주소";
 "Versão" = "버전";
+"Avaliar o Odysseus" = "Odysseus 평가하기";
 "não cabe" = "들어가지 않음";
 "no results" = "결과 없음";
 "no results — tente reformular ou trocar o motor de busca." = "결과 없음 — 표현을 바꾸거나 검색 엔진을 바꿔 보세요.";

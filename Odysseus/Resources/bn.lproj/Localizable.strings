@@ -21,6 +21,7 @@
 "apertado" = "কষ্টে আঁটে";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "আপাতত লোকাল IP-তে পয়েন্ট করুন; HTTPS দিয়ে এক্সপোজ করলে https://seu-dominio দিয়ে বদলে নিন।";
 "Arquivar" = "আর্কাইভ";
+"Arquivadas" = "আর্কাইভ করা";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "সম্পন্ন গবেষণা এখানে দেখা যাবে। পাশাপাশি খুলতে “ভিজ্যুয়াল রিপোর্ট”-এ ট্যাপ করুন।";
 "Ativado" = "চালু";
 "Ativar todas" = "সব চালু করুন";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "কোনো অ্যাকাউন্ট নেই";
 "Nenhuma conta — adicione uma conta IMAP." = "কোনো অ্যাকাউন্ট নেই — একটি IMAP অ্যাকাউন্ট যোগ করুন।";
 "Nenhuma conversa ainda." = "এখনও কোনো কথোপকথন নেই।";
+"Nenhuma conversa arquivada." = "কোনো আর্কাইভ করা কথোপকথন নেই।";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "এখনও কোনো ইন্টিগ্রেশন নেই — উপরে “ইন্টিগ্রেশন যোগ করুন” ব্যবহার করুন।";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "নিউরাল = পর্তুগিজে PocketTTS (Core ML/Neural Engine), নেটিভ ভয়েসের চেয়ে অনেক স্বাভাবিক। প্রথমবার ~550 MB অন-ডিভাইস ডাউনলোড করে; শুধু ফিজিক্যাল iPhone-এ চলে (সিমুলেটরে নয়)।";
 "Neural pt-BR" = "নিউরাল pt-BR";
@@ -465,6 +467,7 @@
 "Provedor padrão" = "ডিফল্ট সরবরাহকারী";
 "Endereço do servidor" = "সার্ভারের ঠিকানা";
 "Versão" = "সংস্করণ";
+"Avaliar o Odysseus" = "Odysseus-কে রেট দিন";
 "não cabe" = "আঁটে না";
 "no results" = "কোনো ফলাফল নেই";
 "no results — tente reformular ou trocar o motor de busca." = "কোনো ফলাফল নেই — অন্যভাবে লিখুন বা সার্চ ইঞ্জিন বদলান।";

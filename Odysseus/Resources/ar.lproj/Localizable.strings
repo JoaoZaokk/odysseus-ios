@@ -21,6 +21,7 @@
 "apertado" = "بالكاد يتّسع";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "أشر إلى عنوان IP المحلي الآن؛ عند النشر عبر HTTPS، غيّره إلى https://your-domain.";
 "Arquivar" = "أرشفة";
+"Arquivadas" = "المؤرشفة";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "تظهر هنا الأبحاث المكتملة. اضغط على \"التقرير المرئي\" لفتحه جانبياً.";
 "Ativado" = "مُفعَّل";
 "Ativar todas" = "تفعيل الكل";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "لا توجد حسابات";
 "Nenhuma conta — adicione uma conta IMAP." = "لا توجد حسابات — أضف حساب IMAP.";
 "Nenhuma conversa ainda." = "لا توجد محادثات بعد.";
+"Nenhuma conversa arquivada." = "لا توجد محادثات مؤرشفة.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "لا توجد تكاملات بعد — استخدم \"إضافة تكامل\" أعلاه.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "عصبي = PocketTTS بالبرتغالية (Core ML/Neural Engine)، أكثر طبيعية بكثير من الصوت الأصلي. يُنزِّل ~550 MB على الجهاز في المرة الأولى؛ يعمل فقط على iPhone الفعلي (ليس المحاكي).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "المزوّد الافتراضي";
 "Endereço do servidor" = "عنوان الخادم";
 "Versão" = "الإصدار";
+"Avaliar o Odysseus" = "قيّم Odysseus";
 "não cabe" = "لا يتّسع";
 "no results" = "لا نتائج";
 "no results — tente reformular ou trocar o motor de busca." = "لا نتائج — جرّب إعادة الصياغة أو تغيير محرّك البحث.";

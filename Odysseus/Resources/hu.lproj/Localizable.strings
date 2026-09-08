@@ -21,6 +21,7 @@
 "apertado" = "szűkös";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Egyelőre mutasson a helyi IP-re; ha HTTPS-en teszi elérhetővé, váltson a https://az-on-domain.com-ra.";
 "Arquivar" = "Archiválás";
+"Arquivadas" = "Archivált";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "A befejezett kutatások itt jelennek meg. A \"Vizuális jelentés\" gombra koppintva nyissa meg egymás mellett.";
 "Ativado" = "Engedélyezve";
 "Ativar todas" = "Összes engedélyezése";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Nincs fiók";
 "Nenhuma conta — adicione uma conta IMAP." = "Nincs fiók — adjon hozzá egy IMAP fiókot.";
 "Nenhuma conversa ainda." = "Még nincs csevegés.";
+"Nenhuma conversa arquivada." = "Nincs archivált csevegés.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Még nincs integráció — használja a fenti \"Integráció hozzáadása\" lehetőséget.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neurális = PocketTTS portugálul (Core ML/Neural Engine), sokkal természetesebb a natív hangnál. Első alkalommal ~550 MB-ot tölt le az eszközre; csak fizikai iPhone-on fut (szimulátorban nem).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "Alapértelmezett szolgáltató";
 "Endereço do servidor" = "Kiszolgáló címe";
 "Versão" = "Verzió";
+"Avaliar o Odysseus" = "Odysseus értékelése";
 "não cabe" = "nem fér el";
 "no results" = "nincs találat";
 "no results — tente reformular ou trocar o motor de busca." = "nincs találat — próbáld átfogalmazni, vagy válts keresőmotort.";

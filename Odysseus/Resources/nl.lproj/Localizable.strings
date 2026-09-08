@@ -21,6 +21,7 @@
 "apertado" = "krap";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Verwijs nu naar het lokale IP; wanneer je het via HTTPS blootstelt, vervang je dit door https://jouw-domein.";
 "Arquivar" = "Archiveren";
+"Arquivadas" = "Gearchiveerd";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Voltooide onderzoeken verschijnen hier. Tik op «Visueel rapport» om ze naast elkaar te openen.";
 "Ativado" = "Ingeschakeld";
 "Ativar todas" = "Alles inschakelen";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Geen accounts";
 "Nenhuma conta — adicione uma conta IMAP." = "Geen accounts — voeg een IMAP-account toe.";
 "Nenhuma conversa ainda." = "Nog geen gesprekken.";
+"Nenhuma conversa arquivada." = "Geen gearchiveerde gesprekken.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Nog geen integraties — gebruik «Integratie toevoegen» hierboven.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neuraal = PocketTTS in het Portugees (Core ML/Neural Engine), veel natuurlijker dan de ingebouwde stem. Downloadt ~550 MB op het apparaat de eerste keer; werkt alleen op een fysieke iPhone (niet in de simulator).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -465,6 +467,7 @@
 "Provedor padrão" = "Standaardprovider";
 "Endereço do servidor" = "Serveradres";
 "Versão" = "Versie";
+"Avaliar o Odysseus" = "Odysseus beoordelen";
 "não cabe" = "past niet";
 "no results" = "geen resultaten";
 "no results — tente reformular ou trocar o motor de busca." = "geen resultaten — probeer te herformuleren of een andere zoekmachine.";

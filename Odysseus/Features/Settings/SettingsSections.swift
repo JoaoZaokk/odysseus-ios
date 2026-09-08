@@ -43,6 +43,7 @@ struct AccountSection: View {
     @EnvironmentObject private var app: AppState
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
     @State private var twoFA: Bool?
     @State private var cur = ""; @State private var nw = ""; @State private var confirm = ""
     @State private var pwMsg: String?
@@ -110,14 +111,36 @@ struct AccountSection: View {
                 }
             }
 
+            // The permanent door for someone who wants to rate the app on
+            // their own terms — the system prompt is rare and not summonable.
+            SettingsCard {
+                row("Versão", value: Self.versionString)
+                #if os(iOS)
+                Rectangle().fill(theme.border).frame(height: 1)
+                Button {
+                    openURL(URL(string: "https://apps.apple.com/app/id6783977350?action=write-review")!)
+                } label: {
+                    Label("Avaliar o Odysseus", systemImage: "star")
+                }
+                .buttonStyle(.plain).foregroundStyle(theme.accent).font(.ody(.subheadline))
+                #endif
+            }
+
             SettingsCard {
                 Button(role: .destructive) { Task { await app.logout(); dismiss() } } label: {
                     Label("Sair da conta", systemImage: "rectangle.portrait.and.arrow.right")
                 }
-                .buttonStyle(.plain).foregroundStyle(theme.accent)
+                .buttonStyle(.plain).foregroundStyle(theme.danger)
             }
         }
         .task { twoFA = try? await app.api.twoFAEnabled() }
+    }
+
+    static var versionString: String {
+        let info = Bundle.main.infoDictionary ?? [:]
+        let short = info["CFBundleShortVersionString"] as? String ?? "?"
+        let build = info["CFBundleVersion"] as? String ?? "?"
+        return "\(short) (\(build))"
     }
 
     private func changePassword() async {

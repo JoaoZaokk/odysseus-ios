@@ -66,6 +66,7 @@
 "Diagnóstico ao vivo do processo Odysseus." = "Diagnostic en direct du processus Odysseus.";
 "Manual" = "Manuel";
 "Arquivar" = "Archiver";
+"Arquivadas" = "Archivées";
 "Fallback automático" = "Repli automatique";
 "Não consegui carregar o relatório." = "Impossible de charger le rapport.";
 "Modelos usados ao criar uma nova conversa e em tarefas de fundo." = "Modèles utilisés lors de la création d'une nouvelle conversation et dans les tâches en arrière-plan.";
@@ -159,6 +160,7 @@
 "Desativado" = "Désactivé";
 "Título" = "Titre";
 "Nenhuma conversa ainda." = "Aucune conversation pour le moment.";
+"Nenhuma conversa arquivada." = "Aucune conversation archivée.";
 "Sem notas ainda" = "Aucune note pour le moment";
 "Espaços" = "Espaces";
 "Resumir com IA" = "Résumer avec l'IA";
@@ -457,6 +459,7 @@
 "Provedor padrão" = "Fournisseur par défaut";
 "Endereço do servidor" = "Adresse du serveur";
 "Versão" = "Version";
+"Avaliar o Odysseus" = "Évaluer Odysseus";
 "não cabe" = "ne rentre pas";
 "no results" = "aucun résultat";
 "no results — tente reformular ou trocar o motor de busca." = "aucun résultat — essayez de reformuler ou de changer de moteur de recherche.";

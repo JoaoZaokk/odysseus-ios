@@ -21,6 +21,7 @@
 "apertado" = "justo";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Apunta a la IP local por ahora; cuando lo expongas por HTTPS, cámbialo a https://tu-dominio.";
 "Arquivar" = "Archivar";
+"Arquivadas" = "Archivadas";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Las investigaciones completadas aparecen aquí. Toca «Informe visual» para abrirlas al lado.";
 "Ativado" = "Activado";
 "Ativar todas" = "Activar todas";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Ninguna cuenta";
 "Nenhuma conta — adicione uma conta IMAP." = "Ninguna cuenta — añade una cuenta IMAP.";
 "Nenhuma conversa ainda." = "Ninguna conversación todavía.";
+"Nenhuma conversa arquivada." = "Ninguna conversación archivada.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Ninguna integración todavía — usa «Añadir integración» arriba.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS en portugués (Core ML/Neural Engine), mucho más natural que la voz nativa. Descarga ~550 MB en el dispositivo la primera vez; solo funciona en iPhone físico (no en el simulador).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -465,6 +467,7 @@
 "Provedor padrão" = "Proveedor predeterminado";
 "Endereço do servidor" = "Dirección del servidor";
 "Versão" = "Versión";
+"Avaliar o Odysseus" = "Valorar Odysseus";
 "não cabe" = "no cabe";
 "no results" = "sin resultados";
 "no results — tente reformular ou trocar o motor de busca." = "sin resultados — prueba a reformular o cambiar el motor de búsqueda.";

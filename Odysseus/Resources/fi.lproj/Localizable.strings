@@ -21,6 +21,7 @@
 "apertado" = "niukasti";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Käytä toistaiseksi paikallista IP-osoitetta; kun julkaiset palvelun HTTPS:n kautta, vaihda osoitteeksi https://oma-verkkotunnus.";
 "Arquivar" = "Arkistoi";
+"Arquivadas" = "Arkistoidut";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Valmiit tutkimukset näkyvät täällä. Napauta “Visuaalinen raportti” avataksesi sen viereen.";
 "Ativado" = "Käytössä";
 "Ativar todas" = "Ota kaikki käyttöön";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Ei tilejä";
 "Nenhuma conta — adicione uma conta IMAP." = "Ei tilejä — lisää IMAP-tili.";
 "Nenhuma conversa ainda." = "Ei vielä keskusteluja.";
+"Nenhuma conversa arquivada." = "Ei arkistoituja keskusteluja.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Ei vielä integraatioita — käytä yllä olevaa “Lisää integraatio” -painiketta.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neuro = PocketTTS portugaliksi (Core ML/Neural Engine), paljon luonnollisempi kuin natiiviääni. Lataa ~550 Mt laitteelle ensimmäisellä kerralla; toimii vain fyysisellä iPhonella (ei simulaattorissa).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -455,6 +457,7 @@
 "Provedor padrão" = "Oletustarjoaja";
 "Endereço do servidor" = "Palvelimen osoite";
 "Versão" = "Versio";
+"Avaliar o Odysseus" = "Arvioi Odysseus";
 "não cabe" = "ei mahdu";
 "no results" = "ei tuloksia";
 "no results — tente reformular ou trocar o motor de busca." = "ei tuloksia — kokeile muotoilla uudelleen tai vaihtaa hakukonetta.";

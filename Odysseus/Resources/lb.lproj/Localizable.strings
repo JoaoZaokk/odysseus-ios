@@ -21,6 +21,7 @@
 "apertado" = "knapp";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "Weis fir de Moment op déi lokal IP; wann s du se iwwer HTTPS fräigëss, wiessel op https://deng-domain.";
 "Arquivar" = "Archivéieren";
+"Arquivadas" = "Archivéiert";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "Ofgeschlossen Fuerschungen erschéngen hei. Tipp op “Visuellen Rapport”, fir se niewenteneen opzemaachen.";
 "Ativado" = "Aktivéiert";
 "Ativar todas" = "All aktivéieren";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "Keng Konten";
 "Nenhuma conta — adicione uma conta IMAP." = "Keng Konten — füg en IMAP-Konto derbäi.";
 "Nenhuma conversa ainda." = "Nach keng Gespréicher.";
+"Nenhuma conversa arquivada." = "Keng archivéiert Gespréicher.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "Nach keng Integratiounen — benotz “Integratioun bäifügen” hei uewen.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "Neural = PocketTTS op Portugisesch (Core ML/Neural Engine), vill méi natierlech wéi déi native Stëmm. Lued beim éischte Mol ~550 MB on-device erof; leeft nëmmen op engem physesche iPhone (net am Simulator).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "Standardubidder";
 "Endereço do servidor" = "Serveradress";
 "Versão" = "Versioun";
+"Avaliar o Odysseus" = "Odysseus bewäerten";
 "não cabe" = "passt net";
 "no results" = "keng Resultater";
 "no results — tente reformular ou trocar o motor de busca." = "keng Resultater — formuléier d'Ufro ëm oder wiessel d'Sichmaschinn.";

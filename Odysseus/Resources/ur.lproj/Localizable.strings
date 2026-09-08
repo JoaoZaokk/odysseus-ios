@@ -21,6 +21,7 @@
 "apertado" = "مشکل سے سماتا ہے";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "ابھی مقامی IP کی طرف اشارہ کریں؛ جب HTTPS پر شائع کریں تو https://your-domain میں بدل لیں۔";
 "Arquivar" = "آرکائیو کریں";
+"Arquivadas" = "محفوظ شدہ";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "مکمل تحقیقات یہاں دکھائی دیتی ہیں۔ ساتھ کھولنے کے لیے «بصری رپورٹ» کو ٹیپ کریں۔";
 "Ativado" = "فعال";
 "Ativar todas" = "سب کو فعال کریں";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "کوئی اکاؤنٹ نہیں";
 "Nenhuma conta — adicione uma conta IMAP." = "کوئی اکاؤنٹ نہیں — IMAP اکاؤنٹ شامل کریں۔";
 "Nenhuma conversa ainda." = "ابھی تک کوئی گفتگو نہیں۔";
+"Nenhuma conversa arquivada." = "کوئی محفوظ شدہ گفتگو نہیں۔";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "ابھی تک کوئی انضمام نہیں — اوپر «انضمام شامل کریں» استعمال کریں۔";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "نیورل = PocketTTS پرتگالی میں (Core ML/Neural Engine)، مقامی آواز سے بہت زیادہ قدرتی۔ پہلی بار ~550 MB آلے پر ڈاؤن لوڈ کرتا ہے؛ صرف اصلی iPhone پر چلتا ہے (سیمولیٹر پر نہیں)۔";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "طے شدہ فراہم کنندہ";
 "Endereço do servidor" = "سرور کا پتہ";
 "Versão" = "ورژن";
+"Avaliar o Odysseus" = "Odysseus کی درجہ بندی کریں";
 "não cabe" = "سماتا نہیں";
 "no results" = "کوئی نتیجہ نہیں";
 "no results — tente reformular ou trocar o motor de busca." = "کوئی نتیجہ نہیں — الفاظ بدل کر دیکھیں یا سرچ انجن تبدیل کریں۔";

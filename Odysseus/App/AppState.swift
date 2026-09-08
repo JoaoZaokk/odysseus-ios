@@ -59,6 +59,9 @@ final class AppState: ObservableObject {
     /// `loginError` carries the reason, otherwise being thrown back to the login
     /// screen mid-task reads as a crash.
     func sessionExpired() {
+        // Not the launch to ask for a rating on, even if the re-login below
+        // repairs it invisibly.
+        ReviewGate.launchIsPoisoned = true
         guard phase == .main else { return }   // already at login, or still launching
         api.clearCookies()
         // The archived copy is the same dead cookie. Leaving it there does not
@@ -209,7 +212,13 @@ final class AppState: ObservableObject {
         if changed { forgetAccount() }
     }
 
-    func makeSessionStore() -> SessionStore { SessionStore(api: api) }
+    /// How many live conversations the sidebar last loaded — one of the
+    /// review gate's conditions. Not published: nothing renders it.
+    var sessionCount = 0
+
+    func makeSessionStore() -> SessionStore {
+        SessionStore(api: api) { [weak self] n in self?.sessionCount = n }
+    }
     func makeChatViewModel(session: ChatSession?) -> ChatViewModel {
         ChatViewModel(api: api, stream: stream, session: session)
     }

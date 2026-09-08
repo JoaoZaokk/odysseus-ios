@@ -21,6 +21,7 @@
 "apertado" = "ئاران پاتىدۇ";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "ھازىرچە يەرلىك IP نى كۆرسىتىڭ؛ HTTPS ئارقىلىق ئاشكارىلىغاندا، ئۇنى https://your-domain گە ئالماشتۇرۇڭ.";
 "Arquivar" = "ئارخىپلاش";
+"Arquivadas" = "ئارخىپلانغان";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "تاماملانغان تەتقىقاتلار بۇ يەردە كۆرۈنىدۇ. يېنىدىن ئېچىش ئۈچۈن «كۆرۈنمە دوكلات» نى چېكىڭ.";
 "Ativado" = "قوزغىتىلغان";
 "Ativar todas" = "ھەممىنى قوزغىتىش";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "ھېسابات يوق";
 "Nenhuma conta — adicione uma conta IMAP." = "ھېسابات يوق — بىر IMAP ھېساباتى قوشۇڭ.";
 "Nenhuma conversa ainda." = "تېخى ھېچقانداق سۆھبەت يوق.";
+"Nenhuma conversa arquivada." = "ئارخىپلانغان سۆھبەت يوق.";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "تېخى باغلىنىش يوق — يۇقىرىدىكى «باغلىنىش قوشۇش» نى ئىشلىتىڭ.";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "نېيرون = پورتۇگال تىلىدىكى PocketTTS (Core ML/Neural Engine)، يەرلىك ئاۋازدىن خېلى تەبىئىي. تۇنجى قېتىم ئۈسكۈنىگە ~550 MB چۈشۈرىدۇ؛ پەقەت ئەمەلىي iPhone دا ئىشلەيدۇ (سىمۇلياتوردا ئەمەس).";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "كۆڭۈلدىكى تەمىنلىگۈچى";
 "Endereço do servidor" = "مۇلازىمېتىر ئادرېسى";
 "Versão" = "نەشرى";
+"Avaliar o Odysseus" = "Odysseus نى باھالاش";
 "não cabe" = "پاتمايدۇ";
 "no results" = "نەتىجە يوق";
 "no results — tente reformular ou trocar o motor de busca." = "نەتىجە يوق — سۆزنى ئۆزگەرتىپ ياكى ئىزدەش ماتورىنى ئالماشتۇرۇپ سىناڭ.";

@@ -21,6 +21,7 @@
 "apertado" = "དོག་པོ།";
 "Aponte para o IP local hoje; quando expor por HTTPS, troque por https://seu-dominio." = "ད་ལྟ་ས་གནས་ IP ལ་སྟོན་ཤིག། HTTPS བརྒྱུད་སྤྱི་སྤྱོད་དུ་བཏང་བའི་སྐབས་ https://your-domain. ལ་བརྗེས་ཤིག";
 "Arquivar" = "ཡིག་ཚགས་སུ་ཉར";
+"Arquivadas" = "ཡིག་མཛོད།";
 "As pesquisas concluídas aparecem aqui. Toque em “Relatório visual” para abri-las ao lado." = "ཟིན་པའི་ཞིབ་འཇུག་རྣམས་འདིར་སྟོན་གྱི་རེད། “མཐོང་སྣང་སྙན་ཞུ” ལ་རེག་ནས་ཟུར་དུ་ཁ་ཕྱེ་ཤིག";
 "Ativado" = "ལག་བསྟར་ཡོད";
 "Ativar todas" = "ཡོངས་རྫོགས་ལག་བསྟར";
@@ -121,6 +122,7 @@
 "Nenhuma conta" = "རྩིས་ཐོ་གང་ཡང་མེད།";
 "Nenhuma conta — adicione uma conta IMAP." = "རྩིས་ཐོ་གང་ཡང་མེད—IMAP རྩིས་ཐོ་ཞིག་ཁ་སྣོན་གྱིས།";
 "Nenhuma conversa ainda." = "ད་དུང་གླེང་མོལ་གང་ཡང་མེད།";
+"Nenhuma conversa arquivada." = "ཡིག་མཛོད་དུ་བཞག་པའི་གླེང་མོལ་མེད།";
 "Nenhuma integração ainda — use “Adicionar integração” acima." = "ད་དུང་མཐུན་སྦྱོར་གང་ཡང་མེད—ཡར་སྟེང་གི “མཐུན་སྦྱོར་ཁ་སྣོན” བེད་སྤྱོད་གྱིས།";
 "Neural = PocketTTS em português (CoreML/Neural Engine), bem mais natural que a voz nativa. Baixa ~550 MB on-device na primeira vez; roda só no iPhone físico (não no simulador)." = "རྩ་ཁམས = པོར་ཏུ་གིསི་སྐད་ཐོག་གི PocketTTS (Core ML/Neural Engine), རང་བྱུང་སྐད་ལས་ཧ་ཅང་རང་བཞིན་ཡོད། ཐོག་མའི་ལན་ལ་སྒྲིག་ཆས་ནང་ ~550 MB ཕབ་ལེན་བྱེད། iPhone དངོས་ཡོད་ཐོག་ཁོ་ནར་ལས་ཀ་བྱེད (simulator ནང་མིན)།";
 "Neural pt-BR" = "Neural pt-BR";
@@ -463,6 +465,7 @@
 "Provedor padrão" = "སྔོན་སྒྲིག་མཁོ་སྤྲོད་པ།";
 "Endereço do servidor" = "ཞབས་ཞུ་བའི་ཁ་བྱང་།";
 "Versão" = "པར་གཞི།";
+"Avaliar o Odysseus" = "Odysseus ལ་དཔྱད་ཞིབ།";
 "não cabe" = "ཤོང་མི་ཐུབ།";
 "no results" = "འབྲས་བུ་མེད།";
 "no results — tente reformular ou trocar o motor de busca." = "འབྲས་བུ་མེད། — ཚིག་བརྗོད་བསྒྱུར་ནས་ཡང་ན་འཚོལ་བྱེད་བརྗེས་ནས་ལྟོས།";

@@ -1,5 +1,6 @@
 import SwiftUI
 import PhotosUI
+import StoreKit
 import UniformTypeIdentifiers
 #if os(macOS)
 import AppKit
@@ -8,6 +9,7 @@ import AppKit
 struct ChatScreen: View {
     @EnvironmentObject private var app: AppState
     @Environment(\.theme) private var theme
+    @Environment(\.requestReview) private var requestReview
     @StateObject private var vm: ChatViewModel
     @StateObject private var voice = VoiceInputManager()
     @FocusState private var inputFocused: Bool
@@ -67,6 +69,13 @@ struct ChatScreen: View {
         }
         .onAppear {
             vm.loadHistoryIfNeeded()
+            // The one moment the app asks for a rating: a reply that just
+            // streamed cleanly, gated by ReviewGate. A beat later, never over
+            // the last streaming frame.
+            vm.onReplyCompleted = { [weak app] in
+                guard let app, ReviewGate().recordSuccessfulReply(sessionCount: app.sessionCount) else { return }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { requestReview() }
+            }
             if let p = autoSend, !didAutoSend, !p.isEmpty {
                 didAutoSend = true
                 vm.input = p

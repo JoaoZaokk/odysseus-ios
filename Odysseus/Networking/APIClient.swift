@@ -399,6 +399,31 @@ final class APIClient: @unchecked Sendable {
         _ = try await send(request("/api/session/\(encPath(id))", method: "DELETE"))
     }
 
+    /// `is_important`, the flag the sidebar draws as a pin. On the server it
+    /// is also the only exemption from automatic archiving and deletion.
+    func setImportant(_ id: String, _ value: Bool) async throws {
+        var req = request("/api/session/\(encPath(id))/important", method: "POST")
+        let body = MultipartForm(fields: ["important": value ? "true" : "false"])
+        req.setValue(body.contentType, forHTTPHeaderField: "Content-Type")
+        req.httpBody = body.finalizedData
+        _ = try await send(req)
+    }
+
+    func archiveSession(_ id: String) async throws {
+        _ = try await send(request("/api/session/\(encPath(id))/archive", method: "POST"))
+    }
+
+    func unarchiveSession(_ id: String) async throws {
+        _ = try await send(request("/api/session/\(encPath(id))/unarchive", method: "POST"))
+    }
+
+    /// `{sessions: [...], total}` — the same row shape as `/api/sessions`
+    /// minus the `archived` flag, which is implied.
+    func archivedSessions() async throws -> [ChatSession] {
+        struct Wrap: Decodable { let sessions: [ChatSession] }
+        return try decode(Wrap.self, try await send(request("/api/sessions/archived?limit=200"))).sessions
+    }
+
     func renameSession(_ id: String, to name: String) async throws {
         var req = request("/api/session/\(encPath(id))", method: "PATCH")
         let body = MultipartForm(fields: ["name": name])
