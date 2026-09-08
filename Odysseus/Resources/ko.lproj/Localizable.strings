@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "브라우저에서 열린 사이트에만 도달하며 앱에는 도달하지 않습니다.";
 "Modelo do payload (JSON)" = "페이로드 템플릿 (JSON)";
 "Conectado: %lld modelos." = "연결됨: 모델 %lld개.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA 켜기";
+"Desativar 2FA" = "2FA 끄기";
+"Confirmar" = "확인";
+"Copiar" = "복사";
+"Copiado" = "복사됨";
+"Códigos de backup" = "백업 코드";
+"Código de 6 dígitos" = "6자리 코드";
+"Escaneie o QR no app autenticador ou digite o segredo." = "인증 앱에서 QR을 스캔하거나 비밀 키를 입력하세요.";
+"Guarde estes códigos — cada um funciona uma vez." = "이 코드를 보관하세요. 각 코드는 한 번만 사용할 수 있습니다.";

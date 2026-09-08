@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Dorazí jen na web otevřený v prohlížeči, ne do aplikace.";
 "Modelo do payload (JSON)" = "Šablona payloadu (JSON)";
 "Conectado: %lld modelos." = "Připojeno: %lld modelů.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Zapnout 2FA";
+"Desativar 2FA" = "Vypnout 2FA";
+"Confirmar" = "Potvrdit";
+"Copiar" = "Kopírovat";
+"Copiado" = "Zkopírováno";
+"Códigos de backup" = "Záložní kódy";
+"Código de 6 dígitos" = "6místný kód";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Naskenujte QR v autentizační aplikaci nebo zadejte tajný klíč.";
+"Guarde estes códigos — cada um funciona uma vez." = "Uschovejte tyto kódy — každý funguje jen jednou.";

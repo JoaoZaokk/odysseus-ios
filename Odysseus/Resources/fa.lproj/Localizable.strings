@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "فقط به سایت باز در مرورگر می‌رسد، نه به برنامه.";
 "Modelo do payload (JSON)" = "قالب payload (JSON)";
 "Conectado: %lld modelos." = "متصل شد: %lld مدل.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "فعال‌سازی 2FA";
+"Desativar 2FA" = "غیرفعال‌سازی 2FA";
+"Confirmar" = "تأیید";
+"Copiar" = "کپی";
+"Copiado" = "کپی شد";
+"Códigos de backup" = "کدهای پشتیبان";
+"Código de 6 dígitos" = "کد ۶ رقمی";
+"Escaneie o QR no app autenticador ou digite o segredo." = "QR را در برنامه احراز هویت اسکن کنید یا کلید مخفی را وارد کنید.";
+"Guarde estes códigos — cada um funciona uma vez." = "این کدها را نگه دارید — هر کدام فقط یک بار کار می‌کند.";

@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "只會送達瀏覽器中開啟的網站，不會送達 App。";
 "Modelo do payload (JSON)" = "Payload 範本 (JSON)";
 "Conectado: %lld modelos." = "已連接：%lld 個模型。";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "啟用 2FA";
+"Desativar 2FA" = "停用 2FA";
+"Confirmar" = "確認";
+"Copiar" = "複製";
+"Copiado" = "已複製";
+"Códigos de backup" = "備用代碼";
+"Código de 6 dígitos" = "6 位數代碼";
+"Escaneie o QR no app autenticador ou digite o segredo." = "用驗證器 App 掃描 QR 或輸入密鑰。";
+"Guarde estes códigos — cada um funciona uma vez." = "請保存這些代碼——每個只能使用一次。";

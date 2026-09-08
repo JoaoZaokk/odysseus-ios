@@ -45,6 +45,7 @@ struct AccountSection: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
     @State private var twoFA: Bool?
+    @State private var showTwoFA = false
     @State private var cur = ""; @State private var nw = ""; @State private var confirm = ""
     @State private var pwMsg: String?
     @State private var pwOK = false
@@ -57,16 +58,22 @@ struct AccountSection: View {
             SettingsCard {
                 row("Usuário", value: app.username ?? "—")
                 Rectangle().fill(theme.border).frame(height: 1)
-                HStack {
-                    Text("2FA").font(.ody(.subheadline)).foregroundStyle(theme.fg)
-                    Spacer()
-                    switch twoFA {
-                    case .some(true): Label("Ativado", systemImage: "checkmark.shield.fill").foregroundStyle(theme.green)
-                    case .some(false): Text("Desativado").foregroundStyle(theme.secondaryText)
-                    case .none: ProgressView().controlSize(.small)
+                // Tappable: 1.8 showed the state here and could change it nowhere.
+                Button { showTwoFA = true } label: {
+                    HStack {
+                        Text("2FA").font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                        Spacer()
+                        switch twoFA {
+                        case .some(true): Label("Ativado", systemImage: "checkmark.shield.fill").foregroundStyle(theme.green)
+                        case .some(false): Text("Desativado").foregroundStyle(theme.secondaryText)
+                        case .none: ProgressView().controlSize(.small)
+                        }
+                        Image(systemName: "chevron.right").foregroundStyle(theme.secondaryText)
                     }
+                    .font(.ody(size: 12))
+                    .contentShape(Rectangle())
                 }
-                .font(.ody(size: 12))
+                .buttonStyle(.plain)
             }
 
             SettingsCard {
@@ -79,7 +86,7 @@ struct AccountSection: View {
                         .buttonStyle(.plain).foregroundStyle(theme.accent)
                         .disabled(cur.isEmpty || nw.count < 4 || nw != confirm)
                     if let m = pwMsg {
-                        Text(m).font(.ody(size: 11)).foregroundStyle(pwOK ? theme.green : theme.danger)
+                        Text(LocalizedStringKey(m)).font(.ody(size: 11)).foregroundStyle(pwOK ? theme.green : theme.danger)
                     }
                     Spacer()
                 }
@@ -134,6 +141,9 @@ struct AccountSection: View {
             }
         }
         .task { twoFA = try? await app.api.twoFAEnabled() }
+        .sheet(isPresented: $showTwoFA) {
+            TwoFactorView(app: app) { twoFA = $0 }
+        }
     }
 
     static var versionString: String {
@@ -156,7 +166,7 @@ struct AccountSection: View {
         }
     }
     private func secure(_ ph: String, _ bind: Binding<String>) -> some View {
-        SecureField(ph, text: bind)
+        SecureField(LocalizedStringKey(ph), text: bind)
             .textFieldStyle(.plain).font(.ody(.subheadline)).foregroundStyle(theme.fg)
             .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))

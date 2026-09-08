@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "只会送达浏览器中打开的网站，不会送达 App。";
 "Modelo do payload (JSON)" = "Payload 模板 (JSON)";
 "Conectado: %lld modelos." = "已连接：%lld 个模型。";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "启用 2FA";
+"Desativar 2FA" = "停用 2FA";
+"Confirmar" = "确认";
+"Copiar" = "复制";
+"Copiado" = "已复制";
+"Códigos de backup" = "备用代码";
+"Código de 6 dígitos" = "6 位数代码";
+"Escaneie o QR no app autenticador ou digite o segredo." = "用验证器 App 扫描二维码或输入密钥。";
+"Guarde estes códigos — cada um funciona uma vez." = "请保存这些代码——每个只能使用一次。";

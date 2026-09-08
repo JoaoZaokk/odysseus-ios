@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Prispe le na spletno mesto, odprto v brskalniku, ne v aplikacijo.";
 "Modelo do payload (JSON)" = "Predloga payloada (JSON)";
 "Conectado: %lld modelos." = "Povezano: %lld modelov.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Vklopi 2FA";
+"Desativar 2FA" = "Izklopi 2FA";
+"Confirmar" = "Potrdi";
+"Copiar" = "Kopiraj";
+"Copiado" = "Kopirano";
+"Códigos de backup" = "Rezervne kode";
+"Código de 6 dígitos" = "6-mestna koda";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Skenirajte QR v aplikaciji za preverjanje ali vnesite skrivnost.";
+"Guarde estes códigos — cada um funciona uma vez." = "Shranite te kode — vsaka deluje samo enkrat.";

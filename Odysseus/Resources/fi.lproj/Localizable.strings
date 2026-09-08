@@ -641,3 +641,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Tavoittaa vain selaimessa avoinna olevan sivuston, ei sovellusta.";
 "Modelo do payload (JSON)" = "Payload-malli (JSON)";
 "Conectado: %lld modelos." = "Yhdistetty: %lld mallia.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Ota 2FA käyttöön";
+"Desativar 2FA" = "Poista 2FA käytöstä";
+"Confirmar" = "Vahvista";
+"Copiar" = "Kopioi";
+"Copiado" = "Kopioitu";
+"Códigos de backup" = "Varakoodit";
+"Código de 6 dígitos" = "6-numeroinen koodi";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Skannaa QR-koodi todennussovelluksella tai kirjoita salaisuus.";
+"Guarde estes códigos — cada um funciona uma vez." = "Säilytä nämä koodit — jokainen toimii vain kerran.";

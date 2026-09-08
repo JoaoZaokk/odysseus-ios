@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "ส่งถึงเฉพาะเว็บไซต์ที่เปิดอยู่ในเบราว์เซอร์ ไม่ถึงแอป";
 "Modelo do payload (JSON)" = "เทมเพลต payload (JSON)";
 "Conectado: %lld modelos." = "เชื่อมต่อแล้ว: %lld โมเดล";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "เปิดใช้ 2FA";
+"Desativar 2FA" = "ปิดใช้ 2FA";
+"Confirmar" = "ยืนยัน";
+"Copiar" = "คัดลอก";
+"Copiado" = "คัดลอกแล้ว";
+"Códigos de backup" = "รหัสสำรอง";
+"Código de 6 dígitos" = "รหัส 6 หลัก";
+"Escaneie o QR no app autenticador ou digite o segredo." = "สแกน QR ในแอปยืนยันตัวตน หรือพิมพ์รหัสลับ";
+"Guarde estes códigos — cada um funciona uma vez." = "เก็บรหัสเหล่านี้ไว้ — แต่ละรหัสใช้ได้ครั้งเดียว";

@@ -551,7 +551,6 @@ struct BuiltinToolsCard: View {
 
 @MainActor final class SistemaVM: ObservableObject {
     @Published var publicURL = ""
-    @Published var twoFA = false
     @Published var note: String?
     // Terminal logs
     @Published var logs: [String] = []
@@ -566,7 +565,6 @@ struct BuiltinToolsCard: View {
     func load() async {
         let bag = (try? await api.getSettings()) ?? SettingsBag(dict: [:])
         publicURL = bag.string("app_public_url")
-        twoFA = (try? await api.twoFAEnabled()) ?? false
         await loadLogs()
     }
     func loadLogs() async {
@@ -659,11 +657,9 @@ struct SistemaSection: View {
             if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
             SettingsCard {
                 SettingsUI.field("URL pública do app", $vm.publicURL, placeholder: "https://odysseus.exemplo.com", theme: theme)
+                // 2FA is the account's business — Conta has the live control.
                 HStack {
-                    Text("2FA").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                     Spacer()
-                    Text(vm.twoFA ? "ativo" : "inativo")
-                        .font(.ody(size: 11)).foregroundStyle(vm.twoFA ? theme.green : theme.secondaryText)
                     SettingsUI.saveButton(theme: theme) { Task { await vm.save() } }
                 }
             }

@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Csak a böngészőben megnyitott oldalra érkezik, az appba nem.";
 "Modelo do payload (JSON)" = "Payload-sablon (JSON)";
 "Conectado: %lld modelos." = "Csatlakozva: %lld modell.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA bekapcsolása";
+"Desativar 2FA" = "2FA kikapcsolása";
+"Confirmar" = "Megerősítés";
+"Copiar" = "Másolás";
+"Copiado" = "Másolva";
+"Códigos de backup" = "Tartalék kódok";
+"Código de 6 dígitos" = "6 jegyű kód";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Olvasd be a QR-kódot a hitelesítő appban, vagy írd be a titkos kulcsot.";
+"Guarde estes códigos — cada um funciona uma vez." = "Őrizd meg ezeket a kódokat — mindegyik csak egyszer használható.";

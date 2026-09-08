@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "དྲ་ལྟ་ཆས་ནང་ཁ་ཕྱེ་བའི་དྲ་ཚིགས་ལ་མ་གཏོགས་མཉེན་ཆས་ལ་མི་སླེབས།";
 "Modelo do payload (JSON)" = "payload དཔེ་གཞི (JSON)";
 "Conectado: %lld modelos." = "སྦྲེལ་ཟིན། %lld དཔེ་དབྱིབས།";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA སྒོ་འབྱེད།";
+"Desativar 2FA" = "2FA སྒོ་རྒྱག";
+"Confirmar" = "གཏན་འཁེལ།";
+"Copiar" = "འདྲ་བཤུས།";
+"Copiado" = "འདྲ་བཤུས་ཟིན།";
+"Códigos de backup" = "རྒྱབ་སྐྱོར་ཨང་གྲངས།";
+"Código de 6 dígitos" = "ཨང་ཀི་6 ཅན་གྱི་ཨང་གྲངས།";
+"Escaneie o QR no app autenticador ou digite o segredo." = "བདེན་དཔང་མཉེན་ཆས་ནང་ QR བཤེར་འབེབས་གནང་བའམ་གསང་གྲངས་འཇུག";
+"Guarde estes códigos — cada um funciona uma vez." = "ཨང་གྲངས་འདི་དག་ཉར་ཚགས་གནང་རོགས། རེ་རེ་ཐེངས་གཅིག་ལས་བེད་སྤྱོད་མི་ཐུབ།";

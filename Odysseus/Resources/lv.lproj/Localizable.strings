@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Sasniedz tikai pārlūkā atvērto vietni, ne lietotni.";
 "Modelo do payload (JSON)" = "Payload veidne (JSON)";
 "Conectado: %lld modelos." = "Savienots: %lld modeļi.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Ieslēgt 2FA";
+"Desativar 2FA" = "Izslēgt 2FA";
+"Confirmar" = "Apstiprināt";
+"Copiar" = "Kopēt";
+"Copiado" = "Nokopēts";
+"Códigos de backup" = "Rezerves kodi";
+"Código de 6 dígitos" = "6 ciparu kods";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Noskenējiet QR autentifikatora lietotnē vai ievadiet noslēpumu.";
+"Guarde estes códigos — cada um funciona uma vez." = "Saglabājiet šos kodus — katrs darbojas tikai vienreiz.";

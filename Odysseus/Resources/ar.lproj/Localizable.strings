@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "يصل فقط إلى الموقع المفتوح في المتصفح، وليس إلى التطبيق.";
 "Modelo do payload (JSON)" = "قالب الحمولة (JSON)";
 "Conectado: %lld modelos." = "متصل: %lld نماذج.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "تفعيل المصادقة الثنائية";
+"Desativar 2FA" = "تعطيل المصادقة الثنائية";
+"Confirmar" = "تأكيد";
+"Copiar" = "نسخ";
+"Copiado" = "تم النسخ";
+"Códigos de backup" = "رموز الاحتياط";
+"Código de 6 dígitos" = "رمز من 6 أرقام";
+"Escaneie o QR no app autenticador ou digite o segredo." = "امسح رمز QR في تطبيق المصادقة أو أدخل السر.";
+"Guarde estes códigos — cada um funciona uma vez." = "احتفظ بهذه الرموز — كل رمز يعمل مرة واحدة.";

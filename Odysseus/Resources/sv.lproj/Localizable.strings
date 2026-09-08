@@ -641,3 +641,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Når bara webbplatsen som är öppen i webbläsaren, inte appen.";
 "Modelo do payload (JSON)" = "Payload-mall (JSON)";
 "Conectado: %lld modelos." = "Ansluten: %lld modeller.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Aktivera 2FA";
+"Desativar 2FA" = "Inaktivera 2FA";
+"Confirmar" = "Bekräfta";
+"Copiar" = "Kopiera";
+"Copiado" = "Kopierat";
+"Códigos de backup" = "Reservkoder";
+"Código de 6 dígitos" = "6-siffrig kod";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Skanna QR-koden i din autentiseringsapp eller skriv in hemligheten.";
+"Guarde estes códigos — cada um funciona uma vez." = "Spara dessa koder — varje kod fungerar bara en gång.";

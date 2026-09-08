@@ -651,3 +651,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "केवल ब्राउज़र में खुली साइट तक पहुँचता है, ऐप तक नहीं।";
 "Modelo do payload (JSON)" = "पेलोड टेम्पलेट (JSON)";
 "Conectado: %lld modelos." = "कनेक्टेड: %lld मॉडल।";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA चालू करें";
+"Desativar 2FA" = "2FA बंद करें";
+"Confirmar" = "पुष्टि करें";
+"Copiar" = "कॉपी करें";
+"Copiado" = "कॉपी हो गया";
+"Códigos de backup" = "बैकअप कोड";
+"Código de 6 dígitos" = "6 अंकों का कोड";
+"Escaneie o QR no app autenticador ou digite o segredo." = "ऑथेंटिकेटर ऐप में QR स्कैन करें या सीक्रेट टाइप करें।";
+"Guarde estes códigos — cada um funciona uma vez." = "ये कोड संभालकर रखें — हर कोड एक बार ही काम करता है।";

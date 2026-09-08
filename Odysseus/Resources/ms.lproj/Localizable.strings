@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "Hanya sampai ke laman yang dibuka dalam pelayar, bukan ke aplikasi.";
 "Modelo do payload (JSON)" = "Templat payload (JSON)";
 "Conectado: %lld modelos." = "Disambungkan: %lld model.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "Aktifkan 2FA";
+"Desativar 2FA" = "Nyahaktifkan 2FA";
+"Confirmar" = "Sahkan";
+"Copiar" = "Salin";
+"Copiado" = "Disalin";
+"Códigos de backup" = "Kod sandaran";
+"Código de 6 dígitos" = "Kod 6 digit";
+"Escaneie o QR no app autenticador ou digite o segredo." = "Imbas QR dalam aplikasi pengesah atau taip rahsia.";
+"Guarde estes códigos — cada um funciona uma vez." = "Simpan kod ini — setiap satu hanya berfungsi sekali.";

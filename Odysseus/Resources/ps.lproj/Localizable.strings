@@ -649,3 +649,14 @@
 "Só chega ao site aberto no navegador, não ao app." = "یوازې هغه سایټ ته رسېږي چې په براوزر کې خلاص وي، اپ ته نه.";
 "Modelo do payload (JSON)" = "د payload بېلګه (JSON)";
 "Conectado: %lld modelos." = "وصل شو: %lld ماډلونه.";
+
+/* 2FA (1.9) */
+"Ativar 2FA" = "2FA فعال کړئ";
+"Desativar 2FA" = "2FA غیرفعال کړئ";
+"Confirmar" = "تایید";
+"Copiar" = "کاپي";
+"Copiado" = "کاپي شو";
+"Códigos de backup" = "بیک اپ کوډونه";
+"Código de 6 dígitos" = "۶ عددي کوډ";
+"Escaneie o QR no app autenticador ou digite o segredo." = "QR د تصدیق اپ کې سکین کړئ یا راز ولیکئ.";
+"Guarde estes códigos — cada um funciona uma vez." = "دا کوډونه وساتئ — هر یو یوازې یو ځل کار کوي.";
