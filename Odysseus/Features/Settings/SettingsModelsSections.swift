@@ -432,10 +432,157 @@ struct AIDefaultsSection: View {
     }
 }
 
+/// The two subscription providers the server connects through a device
+/// flow. There is no status route: "connected" is an endpoint row whose
+/// host matches, and "disconnect" is deleting that row.
+enum DeviceProvider: String, CaseIterable, Identifiable {
+    case copilot = "copilot"
+    case chatgpt = "chatgpt-subscription"
+    var id: String { rawValue }
+    var title: String { self == .copilot ? "GitHub Copilot" : "ChatGPT Subscription" }
+    var hostMatch: String { self == .copilot ? "githubcopilot.com" : "backend-api/codex" }
+}
+
+@MainActor final class DeviceFlowVM: ObservableObject {
+    let provider: DeviceProvider
+    @Published var start: DeviceFlowStart?
+    @Published var connectedId: String?
+    @Published var models = 0
+    @Published var busy = false
+    @Published var error: String?
+    @Published var ok: String?
+    private let api: APIClient
+    private var task: Task<Void, Never>?
+    init(api: APIClient, provider: DeviceProvider) { self.api = api; self.provider = provider }
+
+    func loadStatus(_ endpoints: [ModelEndpoint]) {
+        let ep = endpoints.first { ($0.url ?? "").contains(provider.hostMatch) }
+        connectedId = ep?.id
+        models = ep?.total ?? 0
+    }
+
+    func connect() {
+        task?.cancel(); error = nil; ok = nil
+        task = Task { [weak self] in
+            guard let self else { return }
+            do {
+                let s = try await api.deviceFlowStart(provider.rawValue)
+                start = s
+                while !Task.isCancelled {
+                    try await Task.sleep(nanoseconds: UInt64(s.step * 1_000_000_000))
+                    let p = try await api.deviceFlowPoll(provider.rawValue, pollId: s.pollId)
+                    switch p.status {
+                    case "authorized":
+                        connectedId = p.endpoint?.id
+                        models = p.endpoint?.models.count ?? 0
+                        start = nil
+                        ok = L("Conectado: %lld modelos.", models)
+                        return
+                    case "failed":
+                        start = nil
+                        error = p.error == "expired_token" ? L("A sessão de login expirou. Tente de novo.")
+                                                            : L("Autorização recusada: %@", p.error ?? "")
+                        return
+                    default: continue
+                    }
+                }
+            } catch is CancellationError {
+            } catch {
+                start = nil
+                self.error = SettingsUI.failure(error, "Falha: %@", admin: "Só um administrador pode conectar provedores.")
+            }
+        }
+    }
+
+    func cancel() {
+        task?.cancel(); task = nil
+        if let s = start { Task { await api.deviceFlowCancel(provider.rawValue, pollId: s.pollId) } }
+        start = nil
+    }
+
+    func disconnect() async {
+        guard let id = connectedId else { return }
+        busy = true; defer { busy = false }
+        do { try await api.deleteEndpoint(id); connectedId = nil; models = 0; ok = nil }
+        catch { self.error = SettingsUI.failure(error, "Falha: %@") }
+    }
+}
+
+struct ProviderConnectCard: View {
+    @StateObject private var vm: DeviceFlowVM
+    @Environment(\.theme) private var theme
+    @Environment(\.openURL) private var openURL
+    let endpoints: [ModelEndpoint]
+    @State private var copied = false
+    init(app: AppState, provider: DeviceProvider, endpoints: [ModelEndpoint]) {
+        _vm = StateObject(wrappedValue: DeviceFlowVM(api: app.api, provider: provider))
+        self.endpoints = endpoints
+    }
+
+    var body: some View {
+        SettingsCard {
+            HStack(spacing: 8) {
+                Image(systemName: "person.badge.key").foregroundStyle(theme.accent)
+                Text(verbatim: vm.provider.title).font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
+                Spacer()
+                if vm.connectedId != nil {
+                    Text("Conectado").font(.ody(size: 10)).foregroundStyle(theme.green)
+                } else {
+                    Text("Não conectado").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                }
+            }
+            if let s = vm.start {
+                Text("Entre na sua conta para liberar os modelos deste provedor.")
+                    .font(.ody(size: 11)).foregroundStyle(theme.secondaryText).fixedSize(horizontal: false, vertical: true)
+                HStack(spacing: 10) {
+                    Text(L("Código: %@", s.userCode)).font(.ody(size: 14).monospaced()).foregroundStyle(theme.fg).textSelection(.enabled)
+                    Button {
+                        Clipboard.copy(s.userCode); copied = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { copied = false }
+                    } label: { Label(copied ? "Código copiado" : "Copiar código", systemImage: copied ? "checkmark" : "doc.on.doc") }
+                    .buttonStyle(.plain).font(.ody(size: 11)).foregroundStyle(theme.accent)
+                }
+                if let u = s.authURL {
+                    Button { openURL(u) } label: { Label("Abrir página de autorização", systemImage: "safari") }
+                        .buttonStyle(.plain).font(.ody(size: 12)).foregroundStyle(theme.accent)
+                }
+                HStack {
+                    ProgressView().controlSize(.small).tint(theme.accent)
+                    Text("Aguardando autorização…").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                    Spacer()
+                    Button("Cancelar") { vm.cancel() }.buttonStyle(.plain).font(.ody(size: 12)).foregroundStyle(theme.secondaryText)
+                }
+            } else {
+                if vm.connectedId != nil {
+                    Text(L("Modelos: %lld", vm.models)).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                }
+                if let e = vm.error { Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger) }
+                if let o = vm.ok { Text(LocalizedStringKey(o)).font(.ody(size: 11)).foregroundStyle(theme.green) }
+                HStack {
+                    if vm.connectedId != nil {
+                        Button("Desconectar", role: .destructive) { Task { await vm.disconnect() } }
+                            .buttonStyle(.plain).font(.ody(size: 12)).foregroundStyle(theme.danger).disabled(vm.busy)
+                    } else {
+                        Button("Conectar") { vm.connect() }
+                            .buttonStyle(.plain).font(.ody(size: 12)).foregroundStyle(theme.accent)
+                    }
+                    Spacer()
+                }
+            }
+        }
+        .onAppear { vm.loadStatus(endpoints) }
+        .onChange(of: endpoints.map(\.id)) { _, _ in vm.loadStatus(endpoints) }
+        .onDisappear { vm.cancel() }
+    }
+}
+
 struct AddModelsSection: View {
     @StateObject private var vm: AddModelsVM
     @Environment(\.theme) private var theme
-    init(app: AppState) { _vm = StateObject(wrappedValue: AddModelsVM(api: app.api)) }
+    @EnvironmentObject private var app: AppState
+    private let host: AppState
+    @State private var endpoints: [ModelEndpoint] = []
+    init(app: AppState) { self.host = app; _vm = StateObject(wrappedValue: AddModelsVM(api: app.api)) }
 
     var body: some View {
         SettingsScroll("Adicionar modelos",
@@ -475,7 +622,14 @@ struct AddModelsSection: View {
             }
             Text("O servidor sonda a Base URL e descobre os modelos sozinho. Depois, ative/desative em “Modelos conectados”.")
                 .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+            if app.isAdmin {
+                Text("Contas conectadas").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
+                ForEach(DeviceProvider.allCases) { p in
+                    ProviderConnectCard(app: host, provider: p, endpoints: endpoints)
+                }
+            }
         }
+        .task { endpoints = (try? await host.api.modelEndpoints()) ?? [] }
     }
 
     private func typeChip(_ title: String, _ value: String) -> some View {

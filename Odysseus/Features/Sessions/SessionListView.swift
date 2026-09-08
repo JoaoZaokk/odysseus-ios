@@ -23,6 +23,14 @@ struct SidebarView: View {
     @State private var renameText = ""
     @State private var deleting: ChatSession?
     @State private var showArchived = false
+    /// Collapsed date groups, comma-joined (the web keeps the same set).
+    @AppStorage("sidebar.dates.collapsed") private var collapsedRaw = ""
+    private var collapsed: Set<String> { Set(collapsedRaw.split(separator: ",").map(String.init)) }
+    private func toggleGroup(_ label: String) {
+        var c = collapsed
+        if c.contains(label) { c.remove(label) } else { c.insert(label) }
+        collapsedRaw = c.sorted().joined(separator: ",")
+    }
     /// nil = never touched: iPhone starts collapsed (the sections would push
     /// the conversations below the fold), iPad and macOS start open.
     @AppStorage("sidebar.spaces.expanded") private var spacesExpandedStored: Bool?
@@ -75,9 +83,37 @@ struct SidebarView: View {
                 }
             }
 
-            // Conversations
-            Section {
-                ForEach(filtered) { session in
+            // Message-content hits, from the server's FTS index.
+            if !search.isEmpty {
+                Section {
+                    if let e = store.hitsError {
+                        Text(LocalizedStringKey(e)).font(.ody(.footnote)).foregroundStyle(theme.danger).listRowBackground(theme.bg)
+                    } else if store.hits.isEmpty {
+                        Text("Nenhum resultado nas mensagens.").font(.ody(.footnote)).foregroundStyle(theme.secondaryText).listRowBackground(theme.bg)
+                    }
+                    ForEach(store.hits) { hit in
+                        Button {
+                            let s = store.sessions.first { $0.id == hit.sessionID } ?? ChatSession(id: hit.sessionID, title: hit.sessionName)
+                            workspace.setPrimary(.chat(s))
+                        } label: {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(hit.sessionName).font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
+                                Text((hit.role == "user" ? L("Você") : L("IA")) + ": " + hit.snippet)
+                                    .font(.ody(.caption)).foregroundStyle(theme.secondaryText).lineLimit(2)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .listRowBackground(theme.bg)
+                    }
+                } header: { header("Nas mensagens") }
+            }
+
+            // Conversations, in date groups; each group folds.
+            ForEach(SessionStore.groups(filtered), id: \.label) { group in
+              Section {
+                if !collapsed.contains(group.label) {
+                ForEach(group.sessions) { session in
                     Button { workspace.setPrimary(.chat(session)) } label: { chatRow(session) }
                         .buttonStyle(.plain)
                         .listRowBackground(active(.chat(session)) ? theme.accent.opacity(0.14) : theme.bg)
@@ -107,6 +143,21 @@ struct SidebarView: View {
                             Button(role: .destructive) { deleting = session } label: { Label("Apagar", systemImage: "trash") }
                         }
                 }
+                }
+              } header: {
+                Button { toggleGroup(group.label) } label: {
+                    HStack {
+                        header(group.label)
+                        Image(systemName: collapsed.contains(group.label) ? "chevron.right" : "chevron.down")
+                            .font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
+                        Spacer()
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+              }
+            }
+            Section {
                 // A failed load is not an empty account: saying "no conversations
                 // yet" to someone whose sessions merely failed to fetch tells them
                 // their history is gone. The error also needs a home when the list
@@ -145,6 +196,7 @@ struct SidebarView: View {
         // sidebar tone consistent with the rest of the UI.
         .background(themes.theme.bg)
         .odySearchable(text: $search, prompt: "Buscar conversas")
+        .onChange(of: search) { _, q in store.search(q) }
         .screenChrome(title: "Odysseus") {
             Button { showSettings = true } label: { Image(systemName: "gearshape") }
         } trailing: {
@@ -215,6 +267,10 @@ struct SidebarView: View {
                 .font(.ody(.subheadline))
                 .foregroundStyle(theme.fg).lineLimit(1)
             Spacer()
+            if store.streaming.contains(session.id) {
+                ProgressView().controlSize(.mini).tint(theme.accent)
+                    .accessibilityLabel(Text("Gerando resposta…"))
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())

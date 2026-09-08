@@ -1,9 +1,55 @@
-# Handoff — fase de arquitetura, encerrada; rodada 4 (o review alemão) fechada
+# Handoff — fase de arquitetura, encerrada; rodadas 4 e 5 fechadas
 
-Estado em 2026-09-07, fim da rodada 4. Tudo abaixo está em `main`, **1.9 / build 23**
+Estado em 2026-09-08, fim da rodada 5. Tudo abaixo está em `main`, **1.9 / build 23**
 (macOS build 17; o último build subido ao ASC é o **21**, da 1.8 — nada da 1.9 foi
-enviado ainda). **234 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
-zero PRs abertos. Catálogos: **44 × 629**.
+enviado ainda). **265 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
+zero PRs abertos. Catálogos: **44 × 794**.
+
+## Rodada 5 — "resolva os abertos, todos eles, uma tacada só"
+
+Tudo que a rodada 4 tinha deixado de fora, fechado num PR (#44). Método: um workflow de
+oito leitores (Opus) extraiu o contrato exato de cada rota no fonte do servidor e o ponto
+de inserção no app; depois implementação sequencial, testes pelo `StubTransport`, build
+dos dois alvos, e um workflow de tradutores + revisores por grupo de idiomas para as
+chaves novas.
+
+### O que entrou
+
+| Item | O quê |
+|---|---|
+| Lote 13 | CalDAV vai para `/api/calendar/config/accounts` **depois de um PROPFIND real** (`/api/calendar/test`); CardDAV é uma conta global em `PUT /api/contacts/config` com chaves `carddav_*`; "Claude/Codex Agent" viram **tokens de API** (form em `/api/tokens`, revelados uma vez); API Service ganha presets, Basic auth, edição (PUT sem reenviar a chave mascarada) e confirmação de remoção; o teste lê `{ok,message}` do 200; a lista funde os quatro stores |
+| Tokens | Seção **Tokens de API** (ADMIN): lista, criar com escopos do servidor, revelar uma vez, revogar |
+| Privilégios | Folha por usuário: 7 recursos, limite diário, modelos permitidos (todos / nenhum / lista); um `PUT` com as 11 chaves; eco autoritativo |
+| Device flow | GitHub Copilot e ChatGPT Subscription em **Adicionar modelos**: código + link, poll no intervalo do servidor, conectado = linha de endpoint pelo host, desconectar = `DELETE` |
+| E-mail | **Automação de email** por conta: resposta automática (cooldown `period/1d/3d/7d`), limpeza de newsletters (scan → descadastrar → spam/excluir), estilo de escrita com extração dos enviados; "Enviar de" nos lembretes |
+| Lote 14 | `agent_max_tool_calls` (0…1000), `share_defaults_with_users`, **Importar dados** (com confirmação; `ok:false` no 200 é falha), logs com DEBUG, 1000 linhas e atualização automática de 3 s, **Testar** provedor de busca, card de **geração de imagem no servidor** |
+| Sidebar | Grupos por data (Favoritos, Hoje, Ontem, dia da semana, "N dias atrás"…) recolhíveis; busca **no conteúdo das mensagens** (FTS5, `/api/search`); indicador de resposta em andamento na linha |
+| Notificações | O canal "browser" do servidor vira notificação local, **opt-in em Conta** (poll de 30 s com o app aberto; a leitura drena a fila) |
+| macOS | Atalhos fixos (⌘N, ⌘F, ⌘,, ⇧⌘D, ⌥⌘↑/↓, ⌥⌘S, ⌘/, ⌘↩, ⌘. / Esc) e seção **Atalhos** somente-leitura |
+| Privacidade | **Borrar dados sensíveis** (regexes do `censor.js` da web) nas respostas, opt-in em Conta |
+| i18n | es/fr/it "memórias" (memoirs) → recuerdos/souvenirs/ricordi; nl geheugen ≠ herinneringen; zh 代理 → 智能体/智能體 (zh-Hant e zh-HK estavam errados nas 13 strings) |
+
+### Decisões tomadas sem perguntar (registradas aqui para poder ser desfeitas)
+
+- **Notificações são opt-in.** O primeiro build pedia permissão no primeiro lançamento —
+  exatamente o que a App Review e o usuário detestam. Toggle em Conta, padrão desligado.
+- **CardDAV** é uma conta só; o item do menu diz que salvar substitui a atual.
+- **Integrações** continua visível para todo mundo, mas só CalDAV (rota por usuário) aparece
+  para não-admin; API/CardDAV/tokens são rotas admin e ficam atrás de `AppState.isAdmin`.
+- **Tokens de agente**: criar com escopo `chat`, revelar, revogar. Editar escopos fica na web.
+- **de-AT** fica. Hoje é cópia de `de`; o custo é zero porque os scripts editam os 44 de uma vez.
+- **Aparência com os 33 interruptores da web**: não existe no app nativo — a metade que o
+  review via (sidebar) foi resolvida pelo padrão; o resto é cromo do DOM da web. Fechado por
+  decisão, não por código.
+- **Push de verdade** (APNs) continua fora: o servidor não tem.
+
+### Chaves novas
+
+165 chaves novas em 44 catálogos, traduzidas por um workflow (tradutor + revisor por
+grupo de idiomas, com amostras do próprio catálogo para registro e terminologia) e
+verificadas por script: mesmo `%@`/`%lld`/`%d` da chave, nenhuma vazia. `bo` (tibetano)
+segue marcado para revisão nativa, como sempre.
+
 
 ## Rodada 4 — o review alemão
 
@@ -48,9 +94,9 @@ suíte inteira verde antes do merge.
 | [#42](https://github.com/JoaoZaokk/odysseus-ios/pull/42) | 10, 11 | Alemão: Gedächtnis ≠ Erinnerungen, chip de status num registro só, Endpunkt, API-Schlüssel, aspas „…“, du nos alertas do sistema (de ×3 + nl), de-AT/de-CH de volta a Protokolle. 2FA de verdade em Conta (QR, código, códigos de backup, desativar por senha) |
 | [#43](https://github.com/JoaoZaokk/odysseus-ios/pull/43) | — | Este handoff |
 
-### O que ficou de fora, de propósito
+### O que ficou de fora na rodada 4 (tudo fechado na rodada 5, acima)
 
-Registrado no ranking do workflow e mantido aqui para não ser redescoberto:
+Mantido como registro do ranking da época:
 
 - **Aparência com os 33 interruptores de visibilidade da web** (L). A metade que o review
   vê — a sidebar — foi resolvida mudando o **padrão**; um opt-in que ninguém descobre não

@@ -8,8 +8,15 @@ struct MessageBubble: View {
     @Environment(\.theme) private var theme
     @ObservedObject private var speech = SpeechManager.shared
     @State private var showThinking = false
+    /// Off by default, like the web's censor. Assistant text only, never
+    /// while streaming; a tap reveals until the next hide.
+    @AppStorage("chat.sensitiveBlur") private var sensitiveBlur = false
+    @State private var revealed = false
 
     private var isUser: Bool { message.role == .user }
+    private var blurred: Bool {
+        sensitiveBlur && !revealed && !isUser && !isStreaming && SensitiveRedactor.hasSensitive(message.content)
+    }
 
     var body: some View {
         HStack(alignment: .top) {
@@ -86,6 +93,23 @@ struct MessageBubble: View {
                         BackgroundColor(theme.panel)
                     }
                     .textSelection(.enabled)
+            }
+        }
+        .blur(radius: blurred ? 7 : 0)
+        .overlay {
+            if blurred {
+                Button { revealed = true } label: {
+                    Label("Conteúdo sensível — toque para mostrar", systemImage: "eye.slash")
+                        .font(.ody(size: 11)).foregroundStyle(theme.fg)
+                        .padding(.horizontal, 10).padding(.vertical, 6)
+                        .background(theme.panel, in: Capsule())
+                }
+                .buttonStyle(.plain)
+            } else if sensitiveBlur && revealed && !isUser {
+                VStack { Spacer(); HStack { Spacer()
+                    Button { revealed = false } label: { Image(systemName: "eye.slash").font(.ody(size: 10)).foregroundStyle(theme.secondaryText) }
+                        .buttonStyle(.plain).padding(6)
+                } }
             }
         }
         .padding(.horizontal, 14)

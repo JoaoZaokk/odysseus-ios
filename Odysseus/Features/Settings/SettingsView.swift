@@ -8,8 +8,8 @@ enum SettingsSection: String, CaseIterable, Identifiable {
     case addModels, addedModels, aiDefaults, search
     case integrations, email, reminders, imageGen
     case voice
-    case appearance, language, account, server
-    case agentTools, users, system
+    case appearance, shortcuts, language, account, server
+    case agentTools, tokens, users, system
 
     var id: String { rawValue }
 
@@ -25,10 +25,12 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .imageGen: return "Geração de imagem"
         case .voice: return "Voz e modelos"
         case .appearance: return "Aparência"
+        case .shortcuts: return "Atalhos"
         case .language: return "Idioma"
         case .account: return "Conta"
         case .server: return "Servidor"
         case .agentTools: return "Agent Tools"
+        case .tokens: return "Tokens de API"
         case .users: return "Usuários"
         case .system: return "Sistema"
         }
@@ -46,10 +48,12 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .imageGen: return "photo.on.rectangle.angled"
         case .voice: return "waveform"
         case .appearance: return "paintpalette"
+        case .shortcuts: return "keyboard"
         case .language: return "globe"
         case .account: return "person.crop.circle"
         case .server: return "server.rack"
         case .agentTools: return "wrench.and.screwdriver"
+        case .tokens: return "key"
         case .users: return "person.2"
         case .system: return "gearshape.2"
         }
@@ -64,7 +68,10 @@ enum SettingsSection: String, CaseIterable, Identifiable {
             (nil, [.integrations, .email, .reminders, .imageGen]),
             (nil, [.voice, .appearance, .language, .account, .server]),
         ]
-        if admin { g.append(("ADMIN", [.agentTools, .users, .system])) }
+        #if os(macOS)
+        g[2].1.insert(.shortcuts, at: 2)
+        #endif
+        if admin { g.append(("ADMIN", [.agentTools, .tokens, .users, .system])) }
         return g
     }
 }
@@ -184,6 +191,12 @@ struct SettingsView: View {
         case .search: SearchSection(app: app)
         case .voice: VoiceSettingsView()
         case .appearance: ThemePickerView().environmentObject(themes)
+        case .shortcuts:
+            #if os(macOS)
+            ShortcutsSection()
+            #else
+            EmptyView()
+            #endif
         case .language: LanguageSection()
         case .account: AccountSection()
         case .server: ServerSection()
@@ -192,6 +205,7 @@ struct SettingsView: View {
         case .imageGen: DiffusionServersView()
         case .integrations: IntegracoesSection(app: app)
         case .agentTools: AgentToolsSection(app: app)
+        case .tokens: TokensSection(app: app)
         case .users: UsuariosSection(app: app)
         case .system: SistemaSection(app: app)
         }

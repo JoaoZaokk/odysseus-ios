@@ -9,14 +9,71 @@ import AppKit
 struct AdminUser: Decodable, Identifiable {
     var username: String
     var isAdmin: Bool
+    /// The merged dict the row carries (`core/auth.py` list_users → get_privileges).
+    var privileges: UserPrivileges
     var id: String { username }
-    enum CodingKeys: String, CodingKey { case username, name, email, is_admin, admin }
+    enum CodingKeys: String, CodingKey { case username, name, email, is_admin, admin, privileges }
     init(from d: Decoder) throws {
         let c = try d.container(keyedBy: CodingKeys.self)
         username = (try? c.decode(String.self, forKey: .username))
             ?? (try? c.decode(String.self, forKey: .name))
             ?? (try? c.decode(String.self, forKey: .email)) ?? "user"
         isAdmin = (try? c.decode(Bool.self, forKey: .is_admin)) ?? (try? c.decode(Bool.self, forKey: .admin)) ?? false
+        privileges = (try? c.decode(UserPrivileges.self, forKey: .privileges)) ?? UserPrivileges()
+    }
+}
+
+/// `DEFAULT_PRIVILEGES` in the server's core/auth.py, 1:1. Sent whole on Salvar
+/// via `PUT /api/auth/users/{u}/privileges`; the reply echoes the merged dict.
+struct UserPrivileges: Decodable, Equatable {
+    var canUseAgent = true
+    var canUseBrowser = true
+    var canUseBash = false
+    var canUseDocuments = true
+    var canUseResearch = true
+    var canGenerateImages = true
+    var canManageMemory = true
+    var maxMessagesPerDay = 0
+    var allowedModels: [String] = []
+    var allowedModelsRestricted = false
+    var blockAllModels = false
+
+    init() {}
+
+    enum CodingKeys: String, CodingKey {
+        case canUseAgent = "can_use_agent", canUseBrowser = "can_use_browser", canUseBash = "can_use_bash"
+        case canUseDocuments = "can_use_documents", canUseResearch = "can_use_research"
+        case canGenerateImages = "can_generate_images", canManageMemory = "can_manage_memory"
+        case maxMessagesPerDay = "max_messages_per_day", allowedModels = "allowed_models"
+        case allowedModelsRestricted = "allowed_models_restricted", blockAllModels = "block_all_models"
+    }
+
+    init(from d: Decoder) throws {
+        let c = try d.container(keyedBy: CodingKeys.self)
+        canUseAgent = (try? c.decode(Bool.self, forKey: .canUseAgent)) ?? true
+        canUseBrowser = (try? c.decode(Bool.self, forKey: .canUseBrowser)) ?? true
+        canUseBash = (try? c.decode(Bool.self, forKey: .canUseBash)) ?? false
+        canUseDocuments = (try? c.decode(Bool.self, forKey: .canUseDocuments)) ?? true
+        canUseResearch = (try? c.decode(Bool.self, forKey: .canUseResearch)) ?? true
+        canGenerateImages = (try? c.decode(Bool.self, forKey: .canGenerateImages)) ?? true
+        canManageMemory = (try? c.decode(Bool.self, forKey: .canManageMemory)) ?? true
+        maxMessagesPerDay = (try? c.decode(Int.self, forKey: .maxMessagesPerDay)) ?? 0
+        allowedModels = (try? c.decode([String].self, forKey: .allowedModels)) ?? []
+        allowedModelsRestricted = (try? c.decode(Bool.self, forKey: .allowedModelsRestricted)) ?? false
+        blockAllModels = (try? c.decode(Bool.self, forKey: .blockAllModels)) ?? false
+    }
+
+    init(dict: [String: Any]) {
+        if let d = try? JSONSerialization.data(withJSONObject: dict),
+           let p = try? JSONDecoder().decode(UserPrivileges.self, from: d) { self = p }
+    }
+
+    var payload: [String: Any] {
+        ["can_use_agent": canUseAgent, "can_use_browser": canUseBrowser, "can_use_bash": canUseBash,
+         "can_use_documents": canUseDocuments, "can_use_research": canUseResearch,
+         "can_generate_images": canGenerateImages, "can_manage_memory": canManageMemory,
+         "max_messages_per_day": maxMessagesPerDay, "allowed_models": allowedModels,
+         "allowed_models_restricted": allowedModelsRestricted, "block_all_models": blockAllModels]
     }
 }
 
@@ -25,8 +82,10 @@ struct Integration: Decodable, Identifiable {
     var name: String
     var baseURL: String?
     var authType: String?
+    var authHeader: String?
+    var preset: String?
     var enabled: Bool
-    enum CodingKeys: String, CodingKey { case id, name, base_url, url, auth_type, enabled, is_enabled }
+    enum CodingKeys: String, CodingKey { case id, name, base_url, url, auth_type, auth_header, preset, enabled, is_enabled }
     init(from d: Decoder) throws {
         let c = try d.container(keyedBy: CodingKeys.self)
         // A numeric id decodes too — the sibling models (Note, GalleryImage,
@@ -38,8 +97,69 @@ struct Integration: Decodable, Identifiable {
         name = (try? c.decode(String.self, forKey: .name)) ?? "integração"
         baseURL = (try? c.decodeIfPresent(String.self, forKey: .base_url)) ?? (try? c.decodeIfPresent(String.self, forKey: .url))
         authType = try? c.decodeIfPresent(String.self, forKey: .auth_type)
+        authHeader = try? c.decodeIfPresent(String.self, forKey: .auth_header)
+        preset = try? c.decodeIfPresent(String.self, forKey: .preset)
         enabled = (try? c.decode(Bool.self, forKey: .enabled)) ?? (try? c.decode(Bool.self, forKey: .is_enabled)) ?? true
     }
+}
+
+/// `GET /api/auth/integrations/presets` → `{presets: {key: {name, auth_type, auth_header, description}}}`.
+struct IntegrationPreset: Identifiable, Equatable {
+    var id: String          // the preset key the POST body carries
+    var name: String
+    var authType: String
+    var authHeader: String
+    var description: String
+}
+
+/// One per-user CalDAV account: `GET /api/calendar/config/accounts`.
+struct CalDAVAccount: Decodable, Identifiable, Equatable {
+    var id: String
+    var label: String
+    var url: String
+    var username: String
+    enum CodingKeys: String, CodingKey { case id, label, url, username }
+    init(id: String, label: String, url: String, username: String) {
+        self.id = id; self.label = label; self.url = url; self.username = username
+    }
+    init(from d: Decoder) throws {
+        let c = try d.container(keyedBy: CodingKeys.self)
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) }
+        else { id = UUID().uuidString }
+        label = (try? c.decode(String.self, forKey: .label)) ?? "CalDAV"
+        url = (try? c.decode(String.self, forKey: .url)) ?? ""
+        username = (try? c.decode(String.self, forKey: .username)) ?? ""
+    }
+}
+
+/// One row of `GET /api/tokens`. The raw secret is never in this payload —
+/// `POST /api/tokens` is its one and only reveal.
+struct APITokenRow: Decodable, Identifiable {
+    var id: String
+    var name: String
+    var owner: String?
+    var tokenPrefix: String
+    var scopes: [String]
+    var isActive: Bool
+    var lastUsedAt: String?
+    var createdAt: String?
+    enum CodingKeys: String, CodingKey { case id, name, owner, token_prefix, scopes, is_active, last_used_at, created_at }
+    init(from d: Decoder) throws {
+        let c = try d.container(keyedBy: CodingKeys.self)
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) }
+        else { id = UUID().uuidString }
+        name = (try? c.decode(String.self, forKey: .name)) ?? "token"
+        owner = try? c.decodeIfPresent(String.self, forKey: .owner)
+        tokenPrefix = (try? c.decode(String.self, forKey: .token_prefix)) ?? ""
+        scopes = (try? c.decode([String].self, forKey: .scopes)) ?? []
+        isActive = (try? c.decode(Bool.self, forKey: .is_active)) ?? true
+        lastUsedAt = try? c.decodeIfPresent(String.self, forKey: .last_used_at)
+        createdAt = try? c.decodeIfPresent(String.self, forKey: .created_at)
+    }
+    /// The web classifies agent tokens by this name prefix and nothing else.
+    var isAgent: Bool { let n = name.lowercased(); return n.hasPrefix("claude agent") || n.hasPrefix("codex agent") }
 }
 
 struct MCPServer: Decodable, Identifiable {
@@ -99,7 +219,81 @@ extension APIClient {
     func reconnectMCP(_ id: String) async throws { _ = try await send(request("/api/mcp/servers/\(encPath(id))/reconnect", method: "POST")) }
     func integrations() async throws -> [Integration] { decodeList(Integration.self, try await send(request("/api/auth/integrations"))) }
     func deleteIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(encPath(id))", method: "DELETE")) }
-    func testIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(encPath(id))/test", method: "POST")) }
+    /// Always HTTP 200 on a reachable server: the verdict is in the body.
+    /// 1.8 discarded it and reported every failed test as sent.
+    func testIntegration(_ id: String) async throws -> (ok: Bool, message: String) {
+        let data = try await send(request("/api/auth/integrations/\(encPath(id))/test", method: "POST"))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        return ((d["ok"] as? Bool) ?? false, (d["message"] as? String) ?? "")
+    }
+    /// Merge-patch: only the keys sent are written. Never resend `api_key`
+    /// unless the user typed one — a blank keeps the stored secret.
+    func updateIntegration(_ id: String, _ body: [String: Any]) async throws {
+        var req = request("/api/auth/integrations/\(encPath(id))", method: "PUT")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONSerialization.data(withJSONObject: body)
+        _ = try await send(req)
+    }
+    func integrationPresets() async throws -> [IntegrationPreset] {
+        let data = try await send(request("/api/auth/integrations/presets"))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        let presets = (d["presets"] as? [String: [String: Any]]) ?? [:]
+        return presets.map { key, v in
+            IntegrationPreset(id: key, name: (v["name"] as? String) ?? key, authType: (v["auth_type"] as? String) ?? "none",
+                              authHeader: (v["auth_header"] as? String) ?? "", description: (v["description"] as? String) ?? "")
+        }.sorted { $0.name.lowercased() < $1.name.lowercased() }
+    }
+
+    // CalDAV — per-user accounts under /api/calendar/config, NOT generic
+    // integrations. 1.8 posted them to /api/auth/integrations: the calendar
+    // sync never saw them and the password sat in plaintext.
+    func calDAVAccounts() async throws -> [CalDAVAccount] {
+        decodeList(CalDAVAccount.self, try await send(request("/api/calendar/config/accounts")))
+    }
+    /// Real PROPFIND before anything is saved. HTTP 200 either way; `ok` decides.
+    func testCalDAV(url: String, username: String, password: String) async throws -> (ok: Bool, error: String) {
+        struct B: Encodable { let url: String, username: String, password: String }
+        let data = try await send(try jsonRequest("/api/calendar/test", method: "POST", body: B(url: url, username: username, password: password)))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        return ((d["ok"] as? Bool) ?? false, (d["error"] as? String) ?? "")
+    }
+    func createCalDAVAccount(label: String, url: String, username: String, password: String) async throws {
+        struct B: Encodable { let label: String, url: String, username: String, password: String }
+        _ = try await send(try jsonRequest("/api/calendar/config/accounts", method: "POST",
+                                           body: B(label: label, url: url, username: username, password: password)))
+    }
+    func deleteCalDAVAccount(_ id: String) async throws {
+        _ = try await send(request("/api/calendar/config/accounts/\(encPath(id))", method: "DELETE"))
+    }
+
+    // CardDAV — ONE global admin-owned account behind /api/contacts/config.
+    // The PUT takes the prefixed keys; a blank password writes blank.
+    func cardDAVConfig() async throws -> (url: String, username: String, hasPassword: Bool) {
+        let data = try await send(request("/api/contacts/config"))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        return ((d["url"] as? String) ?? "", (d["username"] as? String) ?? "", !((d["password"] as? String) ?? "").isEmpty)
+    }
+    func saveCardDAV(url: String, username: String, password: String) async throws {
+        struct B: Encodable { let carddav_url: String, carddav_username: String, carddav_password: String }
+        _ = try await send(try jsonRequest("/api/contacts/config", method: "PUT",
+                                           body: B(carddav_url: url, carddav_username: username, carddav_password: password)))
+    }
+
+    // API tokens — admin only; the raw secret is returned by the POST and never again.
+    func apiTokens() async throws -> [APITokenRow] { decodeList(APITokenRow.self, try await send(request("/api/tokens"))) }
+    func apiTokenScopes() async throws -> [String] {
+        let data = try await send(request("/api/tokens/profiles"))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        return (d["allowed_scopes"] as? [String]) ?? []
+    }
+    /// The route reads `Form(...)` — a JSON body is a 422.
+    func createApiToken(name: String, scopes: [String]) async throws -> String {
+        let data = try await send(formRequest("/api/tokens", fields: ["name": name, "scopes": scopes.joined(separator: ",")]))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        guard let t = d["token"] as? String, !t.isEmpty else { throw APIError.decoding("token ausente") }
+        return t
+    }
+    func deleteApiToken(_ id: String) async throws { _ = try await send(request("/api/tokens/\(encPath(id))", method: "DELETE")) }
     /// The settings-screen test. The route needs a `test-` note id (admin
     /// only) and the current form as overrides; it answers 200 with the
     /// per-channel error in the body, so a delivery failure is read out of
@@ -144,6 +338,16 @@ extension APIClient {
         struct B: Encodable { let username: String }
         _ = try await send(try jsonRequest("/api/auth/users", method: "DELETE", body: B(username: username)))
     }
+    /// The reply echoes the merged dict — authoritative, so the row is
+    /// replaced from it instead of reloading the list.
+    @discardableResult
+    func setUserPrivileges(_ username: String, _ p: UserPrivileges) async throws -> UserPrivileges {
+        var req = request(userPath(username) + "/privileges", method: "PUT")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONSerialization.data(withJSONObject: p.payload)
+        let d = (try? JSONSerialization.jsonObject(with: try await send(req))) as? [String: Any] ?? [:]
+        return UserPrivileges(dict: (d["privileges"] as? [String: Any]) ?? p.payload)
+    }
     func signupEnabled() async throws -> Bool {
         let data = try await send(request("/api/auth/policy"))
         let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
@@ -155,6 +359,17 @@ extension APIClient {
     // streamSession: the default session's 30s resource cap would kill a slow
     // full-backup download mid-transfer (same class of bug as chat uploads).
     func exportData() async throws -> Data { try await send(request("/api/export"), via: streamSession) }
+    /// The export file, verbatim. "Nothing recognized" comes back as a 200
+    /// with ok:false — read out of the body, like the reminder test.
+    func importData(_ json: Data) async throws -> String {
+        var req = request("/api/import", method: "POST")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = json
+        let data = try await send(req, via: streamSession)
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        guard d["ok"] as? Bool == true else { throw APIError.transport((d["message"] as? String) ?? "import") }
+        return (d["message"] as? String) ?? ""
+    }
     func wipeCategory(_ category: String) async throws { _ = try await send(request("/api/admin/wipe/\(encPath(category))", method: "DELETE")) }
 
     // Integration creation (JSON body)
@@ -185,6 +400,9 @@ extension APIClient {
     /// Without it the server refuses to deliver a webhook reminder for any
     /// integration but the Discord preset ("No payload template configured").
     @Published var webhookTemplate = ""
+    /// Which connected account sends the reminder; empty = the default one.
+    @Published var emailAccountId = ""
+    @Published var emailAccounts: [EmailAccount] = []
     @Published var synthesis = false
     @Published var persona = ""
     @Published var loading = false
@@ -213,6 +431,9 @@ extension APIClient {
         ntfyTopic = bag.string("reminder_ntfy_topic")
         webhookId = bag.string("reminder_webhook_integration_id")
         webhookTemplate = bag.string("reminder_webhook_payload_template")
+        emailAccountId = bag.string("reminder_email_account_id")
+        emailAccounts = (try? await api.emailAccounts()) ?? []
+        if !emailAccounts.contains(where: { $0.id == emailAccountId }) { emailAccountId = emailAccounts.first { $0.isDefault }?.id ?? "" }
         synthesis = bag.bool("reminder_llm_synthesis")
         persona = bag.string("reminder_llm_persona")
         integrations = (try? await api.integrations()) ?? []
@@ -226,6 +447,7 @@ extension APIClient {
                 "reminder_ntfy_topic": ntfyTopic,
                 "reminder_webhook_integration_id": webhookId,
                 "reminder_webhook_payload_template": webhookTemplate,
+                "reminder_email_account_id": emailAccountId,
                 "reminder_llm_synthesis": synthesis,
                 "reminder_llm_persona": persona,
             ])
@@ -257,6 +479,9 @@ struct RemindersSection: View {
     private func label(_ options: [(id: String, label: String)], _ id: String) -> String {
         options.first { $0.id == id }?.label ?? id
     }
+    private var sendFromName: String {
+        vm.emailAccounts.first { $0.id == vm.emailAccountId }.map { $0.name.isEmpty ? $0.fromAddress : $0.name } ?? "—"
+    }
 
     var body: some View {
         SettingsScroll("Lembretes", subtitle: "Como o assistente te avisa de lembretes e tarefas.") {
@@ -267,7 +492,13 @@ struct RemindersSection: View {
                 case "browser":
                     Text("Só chega ao site aberto no navegador, não ao app.")
                         .font(.ody(size: 10)).foregroundStyle(theme.warning)
-                case "email": SettingsUI.field("Email de destino", $vm.emailTo, placeholder: "voce@exemplo.com", theme: theme)
+                case "email":
+                    if vm.emailAccounts.count > 1 {
+                        SettingsUI.menuRow("Enviar de", value: sendFromName,
+                                           options: vm.emailAccounts.map { (id: $0.id, label: $0.name.isEmpty ? $0.fromAddress : $0.name) },
+                                           theme: theme) { vm.emailAccountId = $0 }
+                    }
+                    SettingsUI.field("Email de destino", $vm.emailTo, placeholder: "voce@exemplo.com", theme: theme)
                 case "ntfy":  SettingsUI.field("Tópico ntfy", $vm.ntfyTopic, placeholder: "meu-topico", theme: theme)
                 case "webhook":
                     SettingsUI.menuRow("Integração (webhook)", value: webhookName,
@@ -314,6 +545,8 @@ struct RemindersSection: View {
 
 @MainActor final class AgentToolsVM: ObservableObject {
     @Published var maxRounds = ""
+    /// The only limit that stops a runaway agent; the server clamps 0…1000.
+    @Published var maxToolCalls = ""
     @Published var tokenBudget = ""
     @Published var tokenHardMax = ""
     @Published var streamTimeout = ""
@@ -331,6 +564,7 @@ struct RemindersSection: View {
         loading = true; defer { loading = false }
         let bag = (try? await api.getSettings()) ?? SettingsBag(dict: [:])
         maxRounds = bag.intText("agent_max_rounds")
+        maxToolCalls = bag.intText("agent_max_tool_calls")
         tokenBudget = bag.intText("agent_input_token_budget")
         tokenHardMax = bag.intText("agent_input_token_hard_max")
         streamTimeout = bag.intText("agent_stream_timeout_seconds")
@@ -358,6 +592,10 @@ struct RemindersSection: View {
                        ("agent_input_token_hard_max", tokenHardMax), ("agent_stream_timeout_seconds", streamTimeout)] {
             if let n = Int(v) { p[k] = n }
         }
+        if let n = Int(maxToolCalls) {
+            let c = min(1000, max(0, n))
+            p["agent_max_tool_calls"] = c; maxToolCalls = String(c)
+        }
         do { try await api.saveSettings(p); note = "Salvo." }
         catch { note = SettingsUI.failure(error, "Falha: %@") }
     }
@@ -377,6 +615,7 @@ struct AgentToolsSection: View {
             SettingsCard {
                 Text("Execução").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
                 SettingsUI.field("Máx. de rounds", $vm.maxRounds, placeholder: "ex.: 8", theme: theme, numeric: true)
+                SettingsUI.field("Máx. de chamadas de ferramenta", $vm.maxToolCalls, placeholder: "0 = ilimitado", theme: theme, numeric: true)
                 SettingsUI.field("Orçamento de tokens (entrada)", $vm.tokenBudget, placeholder: "ex.: 120000", theme: theme, numeric: true)
                 SettingsUI.field("Teto duro de tokens", $vm.tokenHardMax, placeholder: "ex.: 200000", theme: theme, numeric: true)
                 SettingsUI.field("Timeout do stream (s)", $vm.streamTimeout, placeholder: "ex.: 300", theme: theme, numeric: true)
@@ -559,9 +798,36 @@ struct BuiltinToolsCard: View {
     @Published var logLimit = 100
     @Published var loadingLogs = false
     @Published var logsError: String?
-    let logLevels = ["Todos", "INFO", "WARNING", "ERROR"]
+    let logLevels = ["Todos", "INFO", "WARNING", "ERROR", "DEBUG"]
+    @Published var autoRefresh = false
+    private var pollTask: Task<Void, Never>?
     private let api: APIClient
     init(api: APIClient) { self.api = api }
+
+    /// 3 s, the web's interval. Stopped when the section disappears.
+    func setAutoRefresh(_ on: Bool) {
+        autoRefresh = on
+        pollTask?.cancel()
+        pollTask = on ? Task { [weak self] in
+            while !Task.isCancelled {
+                try? await Task.sleep(nanoseconds: 3_000_000_000)
+                if Task.isCancelled { return }
+                await self?.loadLogs()
+            }
+        } : nil
+    }
+    func stopPolling() { pollTask?.cancel(); pollTask = nil; autoRefresh = false }
+
+    func importData(_ url: URL) async {
+        note = nil
+        let scoped = url.startAccessingSecurityScopedResource()
+        defer { if scoped { url.stopAccessingSecurityScopedResource() } }
+        guard let data = try? Data(contentsOf: url), (try? JSONSerialization.jsonObject(with: data)) is [String: Any] else {
+            note = "Arquivo de backup inválido."; return
+        }
+        do { let msg = try await api.importData(data); note = L("Importado: %@", msg) }
+        catch { note = SettingsUI.failure(error, "Falha ao importar: %@") }
+    }
     func load() async {
         let bag = (try? await api.getSettings()) ?? SettingsBag(dict: [:])
         publicURL = bag.string("app_public_url")
@@ -638,6 +904,8 @@ struct SistemaSection: View {
     @StateObject private var vm: SistemaVM
     @Environment(\.theme) private var theme
     @State private var confirming: (cat: String, label: String)?
+    @State private var picking = false
+    @State private var importURL: URL?
     init(app: AppState) { _vm = StateObject(wrappedValue: SistemaVM(api: app.api)) }
 
     private let dangers: [(cat: String, label: String, desc: String)] = [
@@ -671,6 +939,12 @@ struct SistemaSection: View {
                     Label("Exportar dados", systemImage: "square.and.arrow.up")
                         .font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 }.buttonStyle(.plain)
+                // The import overwrites settings, features and preferences
+                // server-side, so it asks before it posts.
+                Button { picking = true } label: {
+                    Label("Importar dados", systemImage: "square.and.arrow.down")
+                        .font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                }.buttonStyle(.plain)
             }
             TerminalLogsCard(vm: vm)
             SettingsCard {
@@ -692,6 +966,14 @@ struct SistemaSection: View {
             }
         }
         .task { await vm.load() }
+        .onDisappear { vm.stopPolling() }
+        .fileImporter(isPresented: $picking, allowedContentTypes: [.json], allowsMultipleSelection: false) { r in
+            if case .success(let urls) = r, let u = urls.first { importURL = u }
+        }
+        .alert("Importar backup", isPresented: Binding(get: { importURL != nil }, set: { if !$0 { importURL = nil } })) {
+            Button("Importar dados") { if let u = importURL { Task { await vm.importData(u) } }; importURL = nil }
+            Button("Cancelar", role: .cancel) { importURL = nil }
+        } message: { Text("Substitui memórias, presets, skills, ajustes e preferências do servidor. Confirma?") }
         .alert(LocalizedStringKey(confirming?.label ?? ""), isPresented: Binding(get: { confirming != nil }, set: { if !$0 { confirming = nil } })) {
             Button("Apagar", role: .destructive) { if let c = confirming { Task { await vm.wipe(c.cat) } }; confirming = nil }
             Button("Cancelar", role: .cancel) { confirming = nil }
@@ -722,6 +1004,10 @@ struct TerminalLogsCard: View {
                         .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                 }
                 Spacer()
+                Toggle(isOn: Binding(get: { vm.autoRefresh }, set: { vm.setAutoRefresh($0) })) {
+                    Text("Atualização automática").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                }
+                .toggleStyle(.switch).controlSize(.mini).tint(theme.accent).fixedSize()
                 Button { Task { await vm.loadLogs() } } label: {
                     if vm.loadingLogs { ProgressView().controlSize(.small) }
                     else { Image(systemName: "arrow.clockwise").font(.ody(size: 12)).foregroundStyle(theme.accent) }
@@ -741,7 +1027,7 @@ struct TerminalLogsCard: View {
                     ForEach(vm.logLevels, id: \.self) { lv in Button(LocalizedStringKey(lv)) { vm.logLevel = lv } }
                 } label: { menuChip(vm.logLevel) }
                 Menu {
-                    ForEach([50, 100, 200, 500], id: \.self) { n in
+                    ForEach([100, 200, 500, 1000], id: \.self) { n in
                         Button(L("%lld linhas", n)) { vm.logLimit = n; Task { await vm.loadLogs() } }
                     }
                 } label: { menuChip(L("%lld linhas", vm.logLimit)) }
@@ -796,6 +1082,9 @@ struct TerminalLogsCard: View {
     @Published var newUser = ""
     @Published var newPass = ""
     @Published var newAdmin = false
+    /// Every visible model of every online endpoint — the allowed-models list.
+    @Published var catalog: [(id: String, endpoint: String)] = []
+    @Published var shareDefaults = false
     private let api: APIClient
     init(api: APIClient) { self.api = api }
 
@@ -803,6 +1092,21 @@ struct TerminalLogsCard: View {
         loading = true; defer { loading = false }
         users = (try? await api.adminUsers()) ?? []
         signupOn = (try? await api.signupEnabled()) ?? false
+        shareDefaults = ((try? await api.getSettings()) ?? SettingsBag(dict: [:])).bool("share_defaults_with_users")
+        catalog = ((try? await api.modelEndpoints()) ?? []).filter { $0.online != false }
+            .flatMap { ep in ep.models.map { (id: $0, endpoint: ep.name) } }
+    }
+    func setShareDefaults(_ v: Bool) async {
+        let old = shareDefaults; shareDefaults = v
+        do { try await api.saveSettings(["share_defaults_with_users": v]) }
+        catch { shareDefaults = old; note = SettingsUI.failure(error, "Falha: %@") }
+    }
+    func savePrivileges(_ u: AdminUser, _ p: UserPrivileges) async {
+        do {
+            let echoed = try await api.setUserPrivileges(u.username, p)
+            if let i = users.firstIndex(where: { $0.username == u.username }) { users[i].privileges = echoed }
+            note = "Privilégios salvos."
+        } catch { note = SettingsUI.failure(error, "Falha ao salvar privilégios: %@", admin: "Só um administrador pode alterar privilégios.") }
     }
     func toggleSignup() async {
         do { try await api.toggleSignup(); signupOn = (try? await api.signupEnabled()) ?? signupOn }
@@ -836,6 +1140,7 @@ struct UsuariosSection: View {
     @State private var renameText = ""
     @State private var removing: AdminUser?
     @State private var toggling: AdminUser?
+    @State private var editingPrivs: AdminUser?
     init(app: AppState) { _vm = StateObject(wrappedValue: UsuariosVM(api: app.api)) }
 
     var body: some View {
@@ -846,6 +1151,14 @@ struct UsuariosSection: View {
                     VStack(alignment: .leading, spacing: 1) {
                         Text("Cadastro aberto").font(.ody(.subheadline)).foregroundStyle(theme.fg)
                         Text("Qualquer um pode criar conta pela tela de login.")
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                    }
+                }.tint(theme.accent)
+                Rectangle().fill(theme.border).frame(height: 1)
+                Toggle(isOn: Binding(get: { vm.shareDefaults }, set: { v in Task { await vm.setShareDefaults(v) } })) {
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text("Compartilhar padrões com usuários").font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                        Text("Usuários sem padrão próprio herdam o modelo padrão global.")
                             .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                     }
                 }.tint(theme.accent)
@@ -870,6 +1183,9 @@ struct UsuariosSection: View {
                         // An admin is demoted first, then removed — the web
                         // draws no delete button on admin rows either.
                         if !u.isAdmin {
+                            // Admins already hold every privilege; the server 404s on them.
+                            Button("Privilégios") { editingPrivs = u }
+                                .buttonStyle(.plain).foregroundStyle(theme.fg)
                             Button("Remover", role: .destructive) { removing = u }
                                 .buttonStyle(.plain).foregroundStyle(theme.danger)
                         }
@@ -907,45 +1223,117 @@ struct UsuariosSection: View {
             }
             Button("Cancelar", role: .cancel) { toggling = nil }
         }
+        .sheet(item: $editingPrivs) { u in
+            UserPrivilegesSheet(user: u, catalog: vm.catalog) { p in await vm.savePrivileges(u, p) }
+                .environment(\.theme, theme)
+        }
     }
 }
 
 // MARK: - Integrações
 
+/// One row of the merged list: the four stores the web's fetchAll reads.
+enum IntegrationRow: Identifiable {
+    case api(Integration)
+    case caldav(CalDAVAccount)
+    case carddav(url: String, username: String)
+    case token(APITokenRow)
+
+    var id: String {
+        switch self {
+        case .api(let i): return "api:" + i.id
+        case .caldav(let a): return "caldav:" + a.id
+        case .carddav: return "carddav"
+        case .token(let t): return "token:" + t.id
+        }
+    }
+    var name: String {
+        switch self {
+        case .api(let i): return i.name
+        case .caldav(let a): return a.label
+        case .carddav: return L("Contatos (CardDAV)")
+        case .token(let t): return t.name
+        }
+    }
+    var detail: String {
+        switch self {
+        case .api(let i): return i.baseURL ?? ""
+        case .caldav(let a): return a.username.isEmpty ? a.url : "\(a.username) · \(a.url)"
+        case .carddav(let url, let user): return user.isEmpty ? url : "\(user) · \(url)"
+        case .token(let t): return t.tokenPrefix + "… · " + t.scopes.joined(separator: " ")
+        }
+    }
+    var icon: String {
+        switch self {
+        case .api: return "link"
+        case .caldav: return "calendar"
+        case .carddav: return "person.crop.circle"
+        case .token: return "cpu"
+        }
+    }
+}
+
 @MainActor final class IntegracoesVM: ObservableObject {
-    @Published var items: [Integration] = []
+    @Published var rows: [IntegrationRow] = []
     @Published var loading = false
     @Published var note: String?
+    @Published var noteIsFailure = false
     private let api: APIClient
     init(api: APIClient) { self.api = api }
-    func load() async { loading = true; defer { loading = false }; items = (try? await api.integrations()) ?? [] }
-    func test(_ i: Integration) async {
-        do { try await api.testIntegration(i.id); note = L("Teste enviado para %@.", i.name) }
-        catch { note = SettingsUI.failure(error, "Falha no teste: %@") }
+
+    /// CalDAV is per user; the other three are admin routes that 403 for
+    /// anyone else, so they are only asked for when the caller is admin.
+    func load(admin: Bool) async {
+        loading = true; defer { loading = false }
+        var out: [IntegrationRow] = []
+        if admin { out += ((try? await api.integrations()) ?? []).map { .api($0) } }
+        out += ((try? await api.calDAVAccounts()) ?? []).map { .caldav($0) }
+        if admin, let c = try? await api.cardDAVConfig(), !c.url.isEmpty { out.append(.carddav(url: c.url, username: c.username)) }
+        if admin { out += ((try? await api.apiTokens()) ?? []).filter(\.isAgent).map { .token($0) } }
+        rows = out
     }
-    func remove(_ i: Integration) async {
-        do { try await api.deleteIntegration(i.id); await load() }
-        catch { note = SettingsUI.failure(error, "Falha ao remover: %@") }
+    func test(_ i: Integration) async {
+        do {
+            let r = try await api.testIntegration(i.id)
+            noteIsFailure = !r.ok
+            note = r.ok ? L("Teste enviado para %@.", i.name) : L("Falha no teste: %@", r.message.isEmpty ? i.name : r.message)
+        } catch { noteIsFailure = true; note = SettingsUI.failure(error, "Falha no teste: %@") }
+    }
+    func remove(_ row: IntegrationRow, admin: Bool) async {
+        do {
+            switch row {
+            case .api(let i): try await api.deleteIntegration(i.id)
+            case .caldav(let a): try await api.deleteCalDAVAccount(a.id)
+            case .carddav: try await api.saveCardDAV(url: "", username: "", password: "")   // the web's delete
+            case .token(let t): try await api.deleteApiToken(t.id)
+            }
+            await load(admin: admin)
+        } catch { noteIsFailure = true; note = SettingsUI.failure(error, "Falha ao remover: %@") }
     }
 }
 
 struct IntegracoesSection: View {
     @StateObject private var vm: IntegracoesVM
     @Environment(\.theme) private var theme
-    let app: AppState
+    @EnvironmentObject private var app: AppState
+    let host: AppState
     @State private var addKind: IntegrationKind?
+    @State private var editing: Integration?
+    @State private var removing: IntegrationRow?
     @State private var showEmail = false
     @State private var emailVM: EmailAccountsViewModel
     init(app: AppState) {
-        self.app = app
+        self.host = app
         _vm = StateObject(wrappedValue: IntegracoesVM(api: app.api))
         _emailVM = State(initialValue: EmailAccountsViewModel(api: app.api))
     }
+    private var kinds: [IntegrationKind] { IntegrationKind.allCases.filter { app.isAdmin || !$0.adminOnly } }
+
     var body: some View {
         SettingsScroll("Integrações", subtitle: "Conexões com serviços externos em um só lugar.") {
             Menu {
-                Button { showEmail = true } label: { Label("Email (IMAP/SMTP)", systemImage: "envelope") }
-                ForEach(IntegrationKind.allCases) { k in
+                if app.isAdmin { Button { showEmail = true } label: { Label("Email (IMAP/SMTP)", systemImage: "envelope") } }
+                ForEach(kinds) { k in
                     Button { addKind = k } label: { Label(k.label, systemImage: k.icon) }
                 }
             } label: {
@@ -954,36 +1342,46 @@ struct IntegracoesSection: View {
             }
             .menuStyle(.borderlessButton)
 
-            if vm.loading && vm.items.isEmpty { ProgressView().tint(theme.accent) }
-            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
-            if vm.items.isEmpty && !vm.loading {
+            if vm.loading && vm.rows.isEmpty { ProgressView().tint(theme.accent) }
+            if let n = vm.note {
+                Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(vm.noteIsFailure ? theme.danger : theme.green)
+            }
+            if vm.rows.isEmpty && !vm.loading {
                 Text("Nenhuma integração ainda — use “Adicionar integração” acima.")
                     .font(.ody(size: 12)).foregroundStyle(theme.secondaryText)
             }
-            ForEach(vm.items) { i in
+            ForEach(vm.rows) { row in
                 SettingsCard {
                     HStack(spacing: 8) {
-                        Circle().fill(i.enabled ? theme.green : theme.secondaryText).frame(width: 7, height: 7)
-                        Text(i.name).font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
+                        Image(systemName: row.icon).foregroundStyle(theme.accent)
+                        Text(row.name).font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg).lineLimit(1)
                         Spacer()
-                        if let t = i.authType { Text(t).font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
+                        if case .api(let i) = row, let t = i.authType { Text(t).font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
+                        if case .token = row { Text("Agente").font(.ody(size: 9)).foregroundStyle(theme.secondaryText) }
                     }
-                    if let u = i.baseURL, !u.isEmpty {
-                        Text(u).font(.ody(size: 10)).foregroundStyle(theme.secondaryText).lineLimit(1)
+                    if !row.detail.isEmpty {
+                        Text(row.detail).font(.ody(size: 10)).foregroundStyle(theme.secondaryText).lineLimit(1)
                     }
                     HStack {
-                        Button("Testar") { Task { await vm.test(i) } }.buttonStyle(.plain).foregroundStyle(theme.fg)
+                        if case .api(let i) = row {
+                            Button("Testar") { Task { await vm.test(i) } }.buttonStyle(.plain).foregroundStyle(theme.fg)
+                            Button("Editar") { editing = i }.buttonStyle(.plain).foregroundStyle(theme.fg)
+                        }
                         Spacer()
-                        Button("Remover", role: .destructive) { Task { await vm.remove(i) } }
-                            .buttonStyle(.plain).foregroundStyle(theme.accent)
+                        Button("Remover", role: .destructive) { removing = row }
+                            .buttonStyle(.plain).foregroundStyle(theme.danger)
                     }
                     .font(.ody(size: 12))
                 }
             }
         }
-        .task { await vm.load() }
+        .task { await vm.load(admin: app.isAdmin) }
         .sheet(item: $addKind) { kind in
-            AddIntegrationView(app: app, kind: kind) { Task { await vm.load() } }
+            AddIntegrationView(app: host, kind: kind) { Task { await vm.load(admin: app.isAdmin) } }
+                .environment(\.theme, theme)
+        }
+        .sheet(item: $editing) { i in
+            AddIntegrationView(app: host, kind: .api, editing: i) { Task { await vm.load(admin: app.isAdmin) } }
                 .environment(\.theme, theme)
         }
         .sheet(isPresented: $showEmail) {
@@ -993,6 +1391,10 @@ struct IntegracoesSection: View {
                                 onTest: { payload in await emailVM.test(payload) })
                 .environment(\.theme, theme)
         }
+        .alert(removing?.name ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
+            Button("Remover", role: .destructive) { if let r = removing { Task { await vm.remove(r, admin: app.isAdmin) } }; removing = nil }
+            Button("Cancelar", role: .cancel) { removing = nil }
+        } message: { Text("Isso é irreversível. Confirma?") }
     }
 }
 

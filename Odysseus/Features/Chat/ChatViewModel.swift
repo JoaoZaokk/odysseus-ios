@@ -43,6 +43,8 @@ final class ChatViewModel: ObservableObject {
     /// frame — the only moment the app may ask for a rating. A Stop is
     /// neither a success nor a failure and fires nothing.
     var onReplyCompleted: (() -> Void)?
+    /// (session id, streaming?) — lights the sidebar row while a reply runs.
+    var onActivity: ((String, Bool) -> Void)?
 
     private let api: APIClient
     private let stream: ChatStreamClient
@@ -143,8 +145,12 @@ final class ChatViewModel: ObservableObject {
         // A mid-stream `.error` frame finishes the loop normally — it never
         // throws — so "the do-block completed" is not a success signal.
         var failed = false
+        var activeSID: String?
+        defer { if let s = activeSID { onActivity?(s, false) } }
         do {
             let sid = try await ensureSession(firstMessage: text.isEmpty ? L("Imagem") : text)
+            activeSID = sid
+            onActivity?(sid, true)
             let opts = ChatStreamOptions(mode: agentMode ? "agent" : "chat",
                                          webSearch: webSearch, research: research,
                                          attachmentIDs: attachmentIDs,

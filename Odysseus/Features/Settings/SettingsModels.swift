@@ -70,6 +70,43 @@ struct ModelEndpoint: Decodable, Identifiable, Hashable {
     private struct ModelRef: Decodable { var id: String?; var name: String? }
 }
 
+/// `POST /api/{copilot|chatgpt-subscription}/device/start`.
+struct DeviceFlowStart: Decodable {
+    let pollId: String
+    let userCode: String
+    let verificationURI: String?
+    let verificationURIComplete: String?
+    let interval: Int?
+    let expiresIn: Int?
+    enum CodingKeys: String, CodingKey {
+        case pollId = "poll_id", userCode = "user_code", verificationURI = "verification_uri"
+        case verificationURIComplete = "verification_uri_complete", interval, expiresIn = "expires_in"
+    }
+    var authURL: URL? { URL(string: verificationURIComplete ?? verificationURI ?? "") }
+    var step: TimeInterval { max(Double(interval ?? 5), 2) }
+}
+
+/// `POST …/device/poll`: pending | authorized (+endpoint) | failed (+error).
+struct DeviceFlowPoll: Decodable {
+    struct Endpoint: Decodable {
+        let id: String
+        let name: String?
+        let models: [String]
+        enum CodingKeys: String, CodingKey { case id, name, models }
+        init(from d: Decoder) throws {
+            let c = try d.container(keyedBy: CodingKeys.self)
+            if let s = try? c.decode(String.self, forKey: .id) { id = s }
+            else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) } else { id = "" }
+            name = try? c.decodeIfPresent(String.self, forKey: .name)
+            models = (try? c.decode([String].self, forKey: .models)) ?? []
+        }
+    }
+    let status: String
+    let error: String?
+    let detail: String?
+    let endpoint: Endpoint?
+}
+
 /// What `POST /api/model-endpoints` answers: the probe of the host just added.
 struct EndpointProbe: Decodable {
     var status: String?

@@ -71,6 +71,7 @@ enum DiffusionConfigKeys {
 }
 
 struct DiffusionServersView: View {
+    @EnvironmentObject private var app: AppState
     @Environment(\.theme) private var theme
     @StateObject private var vm = DiffusionProbeVM()
 
@@ -83,6 +84,7 @@ struct DiffusionServersView: View {
 
     var body: some View {
         SettingsScroll("Geração de imagem", subtitle: "Provedores de imagem, fallback e capacidade do servidor.") {
+            if app.isAdmin { ServerImageGenCard(app: app) }
             providersCard
             comfyCard
             otherProvidersCard
@@ -252,5 +254,62 @@ struct DiffusionServersView: View {
             Text(v).font(.ody(size: 11)).foregroundStyle(theme.fg)
                 .frame(maxWidth: .infinity, alignment: .leading).fixedSize(horizontal: false, vertical: true)
         }
+    }
+}
+
+
+/// The server's own image generation (`image_gen_enabled` / `image_model` /
+/// `image_quality`) — what the chat uses. The providers below it are this
+/// device's. POST /api/auth/settings is admin-only, hence the gate.
+@MainActor final class ServerImageGenVM: ObservableObject {
+    @Published var enabled = false
+    @Published var model = ""
+    @Published var quality = "medium"
+    @Published var models: [String] = []
+    @Published var note: String?
+    private let api: APIClient
+    init(api: APIClient) { self.api = api }
+    static let qualities: [(id: String, label: String)] = [("low", "Baixa (mais rápida)"), ("medium", "Média (padrão)"), ("high", "Alta (melhor qualidade)")]
+
+    func load() async {
+        let bag = (try? await api.getSettings()) ?? SettingsBag(dict: [:])
+        enabled = bag.bool("image_gen_enabled")
+        model = bag.string("image_model")
+        quality = bag.string("image_quality").isEmpty ? "medium" : bag.string("image_quality")
+        let eps = (try? await api.modelEndpoints()) ?? []
+        let image = eps.filter(\.isImage).flatMap(\.models)
+        models = image.isEmpty ? eps.flatMap(\.models) : image
+    }
+    func save() async {
+        do { try await api.saveSettings(["image_gen_enabled": enabled, "image_model": model, "image_quality": quality]); note = "Salvo." }
+        catch { note = SettingsUI.failure(error, "Falha: %@") }
+    }
+}
+
+struct ServerImageGenCard: View {
+    @StateObject private var vm: ServerImageGenVM
+    @Environment(\.theme) private var theme
+    init(app: AppState) { _vm = StateObject(wrappedValue: ServerImageGenVM(api: app.api)) }
+
+    var body: some View {
+        SettingsCard {
+            HStack {
+                Text("Geração no servidor").font(.ody(.subheadline, weight: .semibold)).foregroundStyle(theme.fg)
+                Spacer()
+                Toggle("", isOn: Binding(get: { vm.enabled }, set: { vm.enabled = $0; Task { await vm.save() } }))
+                    .labelsHidden().tint(theme.accent)
+            }
+            Text("Gera imagens nas conversas usando o próprio servidor.")
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+            SettingsUI.menuRow("Modelo de imagem", value: vm.model.isEmpty ? L("Detecção automática") : vm.model,
+                               options: [(id: "", label: "Detecção automática")] + vm.models.map { (id: $0, label: $0) },
+                               theme: theme) { vm.model = $0; Task { await vm.save() } }
+            SettingsUI.menuRow("Qualidade", value: ServerImageGenVM.qualities.first { $0.id == vm.quality }?.label ?? vm.quality,
+                               options: ServerImageGenVM.qualities, theme: theme) { vm.quality = $0; Task { await vm.save() } }
+            Text("Estes ajustes valem para o servidor. Os provedores abaixo são deste dispositivo.")
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText).fixedSize(horizontal: false, vertical: true)
+            if let n = vm.note { Text(LocalizedStringKey(n)).font(.ody(size: 11)).foregroundStyle(theme.green) }
+        }
+        .task { await vm.load() }
     }
 }

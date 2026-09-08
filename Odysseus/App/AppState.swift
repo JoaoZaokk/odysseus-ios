@@ -216,6 +216,11 @@ final class AppState: ObservableObject {
     /// review gate's conditions. Not published: nothing renders it.
     var sessionCount = 0
 
+    /// Foreground poller for the server's reminder/task queue.
+    private lazy var notifications = TaskNotificationPoller(api: api)
+    func startTaskNotifications() { guard phase == .main else { return }; notifications.start() }
+    func stopTaskNotifications() { notifications.stop() }
+
     func makeSessionStore() -> SessionStore {
         SessionStore(api: api) { [weak self] n in self?.sessionCount = n }
     }

@@ -124,6 +124,30 @@ struct ChatModel: Decodable, Identifiable, Hashable, Sendable {
 
 // MARK: - Sessions
 
+/// One hit of `GET /api/search?q=` — the server's FTS5 over message content.
+struct MessageSearchHit: Decodable, Identifiable, Hashable, Sendable {
+    let id: String
+    let sessionID: String
+    let sessionName: String
+    let role: String
+    let snippet: String
+    let timestamp: String?
+    enum CodingKeys: String, CodingKey {
+        case id = "message_id", sessionID = "session_id", sessionName = "session_name", role, snippet = "content_snippet", timestamp
+    }
+    init(from d: Decoder) throws {
+        let c = try d.container(keyedBy: CodingKeys.self)
+        if let s = try? c.decode(String.self, forKey: .id) { id = s }
+        else if let i = try? c.decode(Int.self, forKey: .id) { id = String(i) } else { id = UUID().uuidString }
+        if let s = try? c.decode(String.self, forKey: .sessionID) { sessionID = s }
+        else if let i = try? c.decode(Int.self, forKey: .sessionID) { sessionID = String(i) } else { sessionID = "" }
+        sessionName = (try? c.decode(String.self, forKey: .sessionName)) ?? "Untitled"
+        role = (try? c.decode(String.self, forKey: .role)) ?? "assistant"
+        snippet = (try? c.decode(String.self, forKey: .snippet)) ?? ""
+        timestamp = try? c.decodeIfPresent(String.self, forKey: .timestamp)
+    }
+}
+
 /// One row in GET /api/sessions. Decoded leniently because the server may
 /// return id as a string or number and timestamps in a few formats.
 struct ChatSession: Decodable, Identifiable, Hashable, Sendable {
