@@ -488,7 +488,9 @@
 "Padrão do servidor" = "مۇلازىمېتىر كۆڭۈلدىكى";
 "Outros modelos" = "باشقا مودېللار";
 "Modelos: %lld · ativo" = "مودېللار: %lld · ئوچۇق";
+"Modelos: %lld/%lld · ativo" = "مودېللار: %lld/%lld · ئوچۇق";
 "Modelos: %lld · desativado" = "مودېللار: %lld · تاقاق";
+"Modelos: %lld/%lld · desativado" = "مودېللار: %lld/%lld · تاقاق";
 "· %lld rodadas" = "· %lld قېتىم";
 "Personalizado…" = "ئىختىيارىي…";
 "online" = "توردا";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "barge-in ئىشلەتكىلى بولمايدۇ: ئۈن سۆزلىشىشى خاتىرىلەش ھالىتىدە.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "قانال";
+"Navegador" = "تور كۆرگۈ";
+"Só chega ao site aberto no navegador, não ao app." = "پەقەت تور كۆرگۈدە ئېچىلغان تور بېكەتكىلا يېتىدۇ، ئەپكە ئەمەس.";
+"Modelo do payload (JSON)" = "payload قېلىپى (JSON)";
+"Conectado: %lld modelos." = "ئۇلاندى: %lld مودېل.";

@@ -488,7 +488,9 @@
 "Padrão do servidor" = "Kiszolgáló alapértelmezése";
 "Outros modelos" = "További modellek";
 "Modelos: %lld · ativo" = "Modellek: %lld · aktív";
+"Modelos: %lld/%lld · ativo" = "Modellek: %lld/%lld · aktív";
 "Modelos: %lld · desativado" = "Modellek: %lld · kikapcsolva";
+"Modelos: %lld/%lld · desativado" = "Modellek: %lld/%lld · kikapcsolva";
 "· %lld rodadas" = "· %lld kör";
 "Personalizado…" = "Egyéni…";
 "online" = "online";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "A barge-in nem érhető el: a hangmunkamenet felvételi módban van.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Csatorna";
+"Navegador" = "Böngésző";
+"Só chega ao site aberto no navegador, não ao app." = "Csak a böngészőben megnyitott oldalra érkezik, az appba nem.";
+"Modelo do payload (JSON)" = "Payload-sablon (JSON)";
+"Conectado: %lld modelos." = "Csatlakozva: %lld modell.";

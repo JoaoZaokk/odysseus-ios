@@ -100,7 +100,25 @@ extension APIClient {
     func integrations() async throws -> [Integration] { decodeList(Integration.self, try await send(request("/api/auth/integrations"))) }
     func deleteIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(encPath(id))", method: "DELETE")) }
     func testIntegration(_ id: String) async throws { _ = try await send(request("/api/auth/integrations/\(encPath(id))/test", method: "POST")) }
-    func fireReminder() async throws { _ = try await send(request("/api/notes/fire-reminder", method: "POST")) }
+    /// The settings-screen test. The route needs a `test-` note id (admin
+    /// only) and the current form as overrides; it answers 200 with the
+    /// per-channel error in the body, so a delivery failure is read out of
+    /// the reply, not the status.
+    func fireTestReminder(channel: String, webhookId: String, template: String,
+                          synthesis: Bool, persona: String) async throws {
+        struct B: Encodable {
+            let note_id: String, title: String, body: String, channel: String
+            let webhook_integration_id: String, webhook_payload_template: String
+            let llm_synthesis: Bool, llm_persona: String
+        }
+        let b = B(note_id: "test-" + UUID().uuidString.lowercased(), title: "Odysseus",
+                  body: L("Lembrete de teste disparado."), channel: channel,
+                  webhook_integration_id: webhookId, webhook_payload_template: template,
+                  llm_synthesis: synthesis, llm_persona: persona)
+        let data = try await send(try jsonRequest("/api/notes/fire-reminder", method: "POST", body: b))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        if let err = d["\(channel)_error"] as? String, !err.isEmpty { throw APIError.transport(err) }
+    }
 
     // Users
     private func userPath(_ username: String) -> String {
@@ -164,6 +182,9 @@ extension APIClient {
     @Published var emailTo = ""
     @Published var ntfyTopic = ""
     @Published var webhookId = ""
+    /// Without it the server refuses to deliver a webhook reminder for any
+    /// integration but the Discord preset ("No payload template configured").
+    @Published var webhookTemplate = ""
     @Published var synthesis = false
     @Published var persona = ""
     @Published var loading = false
@@ -172,6 +193,18 @@ extension APIClient {
     private let api: APIClient
     init(api: APIClient) { self.api = api }
 
+    /// The channels the app can honour. "browser" is the server default and
+    /// only reaches an open browser tab — it stays selectable when it is what
+    /// the server has, so the user can see it and move away from it.
+    static let channels: [(id: String, label: String)] = [("email", "Email"), ("ntfy", "ntfy"), ("webhook", "Webhook")]
+    /// The five persona ids `src/reminder_personas.py` resolves; anything
+    /// else falls back to the neutral tone, which is what 1.8's free-text
+    /// field produced every time.
+    static let personas: [(id: String, label: String)] = [
+        ("", "Padrão"), ("socrates", "Socrates"), ("razor", "Razor"),
+        ("nietzsche", "Nietzsche"), ("spark", "Spark"), ("odysseus", "Odysseus"),
+    ]
+
     func load() async {
         loading = true; defer { loading = false }
         let bag = (try? await api.getSettings()) ?? SettingsBag(dict: [:])
@@ -179,6 +212,7 @@ extension APIClient {
         emailTo = bag.string("reminder_email_to")
         ntfyTopic = bag.string("reminder_ntfy_topic")
         webhookId = bag.string("reminder_webhook_integration_id")
+        webhookTemplate = bag.string("reminder_webhook_payload_template")
         synthesis = bag.bool("reminder_llm_synthesis")
         persona = bag.string("reminder_llm_persona")
         integrations = (try? await api.integrations()) ?? []
@@ -191,6 +225,7 @@ extension APIClient {
                 "reminder_email_to": emailTo,
                 "reminder_ntfy_topic": ntfyTopic,
                 "reminder_webhook_integration_id": webhookId,
+                "reminder_webhook_payload_template": webhookTemplate,
                 "reminder_llm_synthesis": synthesis,
                 "reminder_llm_persona": persona,
             ])
@@ -199,8 +234,11 @@ extension APIClient {
     }
     func test() async {
         note = nil
-        do { try await api.fireReminder(); note = "Lembrete de teste disparado." }
-        catch { note = SettingsUI.failure(error, "Falha no teste: %@") }
+        do {
+            try await api.fireTestReminder(channel: channel, webhookId: webhookId, template: webhookTemplate,
+                                           synthesis: synthesis, persona: persona)
+            note = "Lembrete de teste disparado."
+        } catch { note = SettingsUI.failure(error, "Falha no teste: %@") }
     }
 }
 
@@ -208,19 +246,43 @@ struct RemindersSection: View {
     @StateObject private var vm: RemindersVM
     @Environment(\.theme) private var theme
     init(app: AppState) { _vm = StateObject(wrappedValue: RemindersVM(api: app.api)) }
-    private let channels = ["browser", "email", "ntfy", "webhook", "none"]
+
+    private var channelOptions: [(id: String, label: String)] {
+        (vm.channel == "browser" ? [("browser", "Navegador")] : []) + RemindersVM.channels
+    }
+    private var personaOptions: [(id: String, label: String)] {
+        let known = RemindersVM.personas
+        return known.contains { $0.id == vm.persona } ? known : known + [(vm.persona, vm.persona)]
+    }
+    private func label(_ options: [(id: String, label: String)], _ id: String) -> String {
+        options.first { $0.id == id }?.label ?? id
+    }
 
     var body: some View {
         SettingsScroll("Lembretes", subtitle: "Como o assistente te avisa de lembretes e tarefas.") {
             SettingsCard {
-                SettingsUI.menuRow("Canal", value: vm.channel, options: channels, theme: theme) { vm.channel = $0 }
+                SettingsUI.menuRow("Canal", value: label(channelOptions, vm.channel), options: channelOptions,
+                                   theme: theme) { vm.channel = $0 }
                 switch vm.channel {
+                case "browser":
+                    Text("Só chega ao site aberto no navegador, não ao app.")
+                        .font(.ody(size: 10)).foregroundStyle(theme.warning)
                 case "email": SettingsUI.field("Email de destino", $vm.emailTo, placeholder: "voce@exemplo.com", theme: theme)
                 case "ntfy":  SettingsUI.field("Tópico ntfy", $vm.ntfyTopic, placeholder: "meu-topico", theme: theme)
                 case "webhook":
                     SettingsUI.menuRow("Integração (webhook)", value: webhookName,
                                        options: [(id: "", label: "—")] + vm.integrations.map { (id: $0.id, label: $0.name) },
                                        theme: theme) { vm.webhookId = $0 }
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("Modelo do payload (JSON)").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                        TextEditor(text: $vm.webhookTemplate)
+                            .font(.ody(size: 12).monospaced()).foregroundStyle(theme.fg)
+                            .scrollContentBackground(.hidden)
+                            .frame(minHeight: 72)
+                            .padding(6).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
+                        Text("{{title}} · {{message}}").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                    }
                 default: EmptyView()
                 }
                 Toggle(isOn: $vm.synthesis) {
@@ -230,7 +292,8 @@ struct RemindersSection: View {
                     .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
                     .fixedSize(horizontal: false, vertical: true)
                 if vm.synthesis {
-                    SettingsUI.field("Persona da IA", $vm.persona, placeholder: "ex.: assistente direto e objetivo", theme: theme)
+                    SettingsUI.menuRow("Persona da IA", value: label(personaOptions, vm.persona), options: personaOptions,
+                                       theme: theme) { vm.persona = $0 }
                 }
             }
             HStack {

@@ -488,7 +488,9 @@
 "Padrão do servidor" = "서버 기본값";
 "Outros modelos" = "기타 모델";
 "Modelos: %lld · ativo" = "모델: %lld · 켜짐";
+"Modelos: %lld/%lld · ativo" = "모델: %lld/%lld · 켜짐";
 "Modelos: %lld · desativado" = "모델: %lld · 꺼짐";
+"Modelos: %lld/%lld · desativado" = "모델: %lld/%lld · 꺼짐";
 "· %lld rodadas" = "· %lld 라운드";
 "Personalizado…" = "사용자 지정…";
 "online" = "온라인";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "barge-in을 사용할 수 없음: 오디오 세션이 녹음 모드입니다.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "채널";
+"Navegador" = "브라우저";
+"Só chega ao site aberto no navegador, não ao app." = "브라우저에서 열린 사이트에만 도달하며 앱에는 도달하지 않습니다.";
+"Modelo do payload (JSON)" = "페이로드 템플릿 (JSON)";
+"Conectado: %lld modelos." = "연결됨: 모델 %lld개.";

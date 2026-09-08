@@ -480,7 +480,9 @@
 "Padrão do servidor" = "ברירת המחדל של השרת";
 "Outros modelos" = "מודלים אחרים";
 "Modelos: %lld · ativo" = "מודלים: %lld · פעיל";
+"Modelos: %lld/%lld · ativo" = "מודלים: %lld/%lld · פעיל";
 "Modelos: %lld · desativado" = "מודלים: %lld · כבוי";
+"Modelos: %lld/%lld · desativado" = "מודלים: %lld/%lld · כבוי";
 "· %lld rodadas" = "· %lld סבבים";
 "Personalizado…" = "מותאם אישית…";
 "online" = "מקוון";
@@ -632,3 +634,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "barge-in לא זמין: הפעלת האודיו נמצאת במצב הקלטה.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "ערוץ";
+"Navegador" = "דפדפן";
+"Só chega ao site aberto no navegador, não ao app." = "מגיע רק לאתר הפתוח בדפדפן, לא לאפליקציה.";
+"Modelo do payload (JSON)" = "תבנית payload (JSON)";
+"Conectado: %lld modelos." = "מחובר: %lld מודלים.";

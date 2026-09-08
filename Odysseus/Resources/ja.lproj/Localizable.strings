@@ -488,7 +488,9 @@
 "Padrão do servidor" = "サーバーの既定";
 "Outros modelos" = "その他のモデル";
 "Modelos: %lld · ativo" = "モデル: %lld · 有効";
+"Modelos: %lld/%lld · ativo" = "モデル: %lld/%lld · 有効";
 "Modelos: %lld · desativado" = "モデル: %lld · 無効";
+"Modelos: %lld/%lld · desativado" = "モデル: %lld/%lld · 無効";
 "· %lld rodadas" = "· %lld ラウンド";
 "Personalizado…" = "カスタム…";
 "online" = "オンライン";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "バージインを利用できません：オーディオセッションが録音モードです。";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "チャンネル";
+"Navegador" = "ブラウザ";
+"Só chega ao site aberto no navegador, não ao app." = "ブラウザで開いているサイトにのみ届き、アプリには届きません。";
+"Modelo do payload (JSON)" = "ペイロードのテンプレート (JSON)";
+"Conectado: %lld modelos." = "接続済み：%lld モデル";

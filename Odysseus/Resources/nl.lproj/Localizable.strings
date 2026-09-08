@@ -490,7 +490,9 @@
 "Padrão do servidor" = "Serverstandaard";
 "Outros modelos" = "Andere modellen";
 "Modelos: %lld · ativo" = "Modellen: %lld · actief";
+"Modelos: %lld/%lld · ativo" = "Modellen: %lld/%lld · actief";
 "Modelos: %lld · desativado" = "Modellen: %lld · uit";
+"Modelos: %lld/%lld · desativado" = "Modellen: %lld/%lld · uit";
 "· %lld rodadas" = "· %lld rondes";
 "Personalizado…" = "Aangepast…";
 "online" = "online";
@@ -642,3 +644,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in niet beschikbaar: de audiosessie staat in de opnamemodus.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kanaal";
+"Navegador" = "Browser";
+"Só chega ao site aberto no navegador, não ao app." = "Bereikt alleen de site die in de browser openstaat, niet de app.";
+"Modelo do payload (JSON)" = "Payload-sjabloon (JSON)";
+"Conectado: %lld modelos." = "Verbonden: %lld modellen.";

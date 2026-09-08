@@ -488,7 +488,9 @@
 "Padrão do servidor" = "Domyślny serwera";
 "Outros modelos" = "Inne modele";
 "Modelos: %lld · ativo" = "Modele: %lld · aktywny";
+"Modelos: %lld/%lld · ativo" = "Modele: %lld/%lld · aktywny";
 "Modelos: %lld · desativado" = "Modele: %lld · wyłączony";
+"Modelos: %lld/%lld · desativado" = "Modele: %lld/%lld · wyłączony";
 "· %lld rodadas" = "· %lld rund";
 "Personalizado…" = "Niestandardowe…";
 "online" = "online";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in niedostępny: sesja audio jest w trybie nagrywania.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kanał";
+"Navegador" = "Przeglądarka";
+"Só chega ao site aberto no navegador, não ao app." = "Dociera tylko do strony otwartej w przeglądarce, nie do aplikacji.";
+"Modelo do payload (JSON)" = "Szablon payloadu (JSON)";
+"Conectado: %lld modelos." = "Połączono: %lld modeli.";

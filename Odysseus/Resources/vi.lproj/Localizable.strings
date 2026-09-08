@@ -488,7 +488,9 @@
 "Padrão do servidor" = "Mặc định của máy chủ";
 "Outros modelos" = "Mô hình khác";
 "Modelos: %lld · ativo" = "Mô hình: %lld · bật";
+"Modelos: %lld/%lld · ativo" = "Mô hình: %lld/%lld · bật";
 "Modelos: %lld · desativado" = "Mô hình: %lld · tắt";
+"Modelos: %lld/%lld · desativado" = "Mô hình: %lld/%lld · tắt";
 "· %lld rodadas" = "· %lld vòng";
 "Personalizado…" = "Tùy chỉnh…";
 "online" = "trực tuyến";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Không dùng được barge-in: phiên âm thanh đang ở chế độ ghi âm.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kênh";
+"Navegador" = "Trình duyệt";
+"Só chega ao site aberto no navegador, não ao app." = "Chỉ tới trang web đang mở trong trình duyệt, không tới ứng dụng.";
+"Modelo do payload (JSON)" = "Mẫu payload (JSON)";
+"Conectado: %lld modelos." = "Đã kết nối: %lld mô hình.";

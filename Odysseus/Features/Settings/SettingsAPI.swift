@@ -59,19 +59,24 @@ extension APIClient {
         _ = try await send(req)
     }
 
-    /// Creates a model endpoint. `kind` is "local" or "api". The server probes
-    /// the `base_url` and auto-discovers the model list (`model_refresh_mode`).
-    func createEndpoint(name: String, baseURL: String, apiKey: String?, kind: String) async throws {
+    /// Creates a model endpoint. `kind` is "local", "api" or "image". The
+    /// server probes `base_url` and answers with the probe — `status`,
+    /// `models`, `ping_error` — which 1.8 threw away and reported as
+    /// "Adicionado" whether the host answered or not.
+    ///
+    /// `model_type` is always sent: the server overwrites an existing row's
+    /// type with the incoming value (default "llm"), so re-adding an image
+    /// endpoint without saying so demoted it.
+    func createEndpoint(name: String, baseURL: String, apiKey: String?, kind: String) async throws -> EndpointProbe {
         // The endpoint reads `Form(...)` fields, not JSON — send form-urlencoded.
         var fields = [
             "name": name,
             "base_url": baseURL,
-            "model_type": "llm",
-            "endpoint_kind": kind,
-            "category": kind,
+            "model_type": kind == "image" ? "image" : "llm",
+            "endpoint_kind": kind == "image" ? "auto" : kind,
         ]
         if let apiKey, !apiKey.isEmpty { fields["api_key"] = apiKey }
-        _ = try await send(formRequest("/api/model-endpoints", fields: fields))
+        return try decode(EndpointProbe.self, try await send(formRequest("/api/model-endpoints", fields: fields)))
     }
 
     /// Enable/disable an endpoint (best-effort: PATCH the endpoint's is_enabled).

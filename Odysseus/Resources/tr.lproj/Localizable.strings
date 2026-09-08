@@ -488,7 +488,9 @@
 "Padrão do servidor" = "Sunucu varsayılanı";
 "Outros modelos" = "Diğer modeller";
 "Modelos: %lld · ativo" = "Modeller: %lld · etkin";
+"Modelos: %lld/%lld · ativo" = "Modeller: %lld/%lld · etkin";
 "Modelos: %lld · desativado" = "Modeller: %lld · devre dışı";
+"Modelos: %lld/%lld · desativado" = "Modeller: %lld/%lld · devre dışı";
 "· %lld rodadas" = "· %lld tur";
 "Personalizado…" = "Özel…";
 "online" = "çevrimiçi";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in kullanılamıyor: ses oturumu kayıt modunda.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kanal";
+"Navegador" = "Tarayıcı";
+"Só chega ao site aberto no navegador, não ao app." = "Yalnızca tarayıcıda açık olan siteye ulaşır, uygulamaya değil.";
+"Modelo do payload (JSON)" = "Payload şablonu (JSON)";
+"Conectado: %lld modelos." = "Bağlandı: %lld model.";

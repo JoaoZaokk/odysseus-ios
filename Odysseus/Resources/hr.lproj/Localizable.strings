@@ -488,7 +488,9 @@
 "Padrão do servidor" = "Zadano na poslužitelju";
 "Outros modelos" = "Ostali modeli";
 "Modelos: %lld · ativo" = "Modeli: %lld · aktivno";
+"Modelos: %lld/%lld · ativo" = "Modeli: %lld/%lld · aktivno";
 "Modelos: %lld · desativado" = "Modeli: %lld · isključeno";
+"Modelos: %lld/%lld · desativado" = "Modeli: %lld/%lld · isključeno";
 "· %lld rodadas" = "· %lld rundi";
 "Personalizado…" = "Prilagođeno…";
 "online" = "na mreži";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in nije dostupan: audio sesija je u načinu snimanja.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kanal";
+"Navegador" = "Preglednik";
+"Só chega ao site aberto no navegador, não ao app." = "Stiže samo na web-stranicu otvorenu u pregledniku, ne u aplikaciju.";
+"Modelo do payload (JSON)" = "Predložak payloada (JSON)";
+"Conectado: %lld modelos." = "Povezano: %lld modela.";

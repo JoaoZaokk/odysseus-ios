@@ -488,7 +488,9 @@
 "Padrão do servidor" = "Servera noklusējums";
 "Outros modelos" = "Citi modeļi";
 "Modelos: %lld · ativo" = "Modeļi: %lld · ieslēgts";
+"Modelos: %lld/%lld · ativo" = "Modeļi: %lld/%lld · ieslēgts";
 "Modelos: %lld · desativado" = "Modeļi: %lld · izslēgts";
+"Modelos: %lld/%lld · desativado" = "Modeļi: %lld/%lld · izslēgts";
 "· %lld rodadas" = "· %lld kārtas";
 "Personalizado…" = "Pielāgots…";
 "online" = "tiešsaistē";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "Barge-in nav pieejams: audio sesija ir ierakstīšanas režīmā.";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "Kanāls";
+"Navegador" = "Pārlūks";
+"Só chega ao site aberto no navegador, não ao app." = "Sasniedz tikai pārlūkā atvērto vietni, ne lietotni.";
+"Modelo do payload (JSON)" = "Payload veidne (JSON)";
+"Conectado: %lld modelos." = "Savienots: %lld modeļi.";

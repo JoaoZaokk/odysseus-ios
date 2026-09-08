@@ -488,7 +488,9 @@
 "Padrão do servidor" = "ค่าเริ่มต้นของเซิร์ฟเวอร์";
 "Outros modelos" = "โมเดลอื่น ๆ";
 "Modelos: %lld · ativo" = "โมเดล: %lld · เปิด";
+"Modelos: %lld/%lld · ativo" = "โมเดล: %lld/%lld · เปิด";
 "Modelos: %lld · desativado" = "โมเดล: %lld · ปิด";
+"Modelos: %lld/%lld · desativado" = "โมเดล: %lld/%lld · ปิด";
 "· %lld rodadas" = "· %lld รอบ";
 "Personalizado…" = "กำหนดเอง…";
 "online" = "ออนไลน์";
@@ -640,3 +642,10 @@
    oração depois dos dois-pontos é nova. `bo` continua marcado para revisão
    nativa, como a rodada do tibetano decidiu. */
 "Barge-in indisponível: a sessão de áudio está em modo de gravação." = "ใช้ barge-in ไม่ได้: เซสชันเสียงอยู่ในโหมดบันทึกเสียง";
+
+/* Lembretes, endpoints e fallbacks (1.9) */
+"Canal" = "ช่องทาง";
+"Navegador" = "เบราว์เซอร์";
+"Só chega ao site aberto no navegador, não ao app." = "ส่งถึงเฉพาะเว็บไซต์ที่เปิดอยู่ในเบราว์เซอร์ ไม่ถึงแอป";
+"Modelo do payload (JSON)" = "เทมเพลต payload (JSON)";
+"Conectado: %lld modelos." = "เชื่อมต่อแล้ว: %lld โมเดล";

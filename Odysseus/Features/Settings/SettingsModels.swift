@@ -9,13 +9,23 @@ struct ModelEndpoint: Decodable, Identifiable, Hashable {
     var online: Bool?
     var url: String?
     var isLocal: Bool
+    /// The *visible* models — hidden and unpinned ones are not here.
     var models: [String]
+    /// The server's inventory total, hidden ones included. nil on an older
+    /// server; the row then falls back to `models.count`.
+    var modelCount: Int?
+    var modelType: String?
+
+    var total: Int { modelCount ?? models.count }
+    var isImage: Bool { modelType == "image" }
 
     enum CodingKeys: String, CodingKey {
         case id, name, url, models, online
         case isEnabled = "is_enabled"
         case kind, type, is_local
         case base_url, endpoint_url
+        case modelCount = "model_count"
+        case modelType = "model_type"
     }
 
     init(from decoder: Decoder) throws {
@@ -29,6 +39,8 @@ struct ModelEndpoint: Decodable, Identifiable, Hashable {
         name = (try? c.decode(String.self, forKey: .name)) ?? "—"
         isEnabled = (try? c.decode(Bool.self, forKey: .isEnabled)) ?? true
         online = try? c.decodeIfPresent(Bool.self, forKey: .online)
+        modelCount = try? c.decodeIfPresent(Int.self, forKey: .modelCount)
+        modelType = try? c.decodeIfPresent(String.self, forKey: .modelType)
         let u = (try? c.decodeIfPresent(String.self, forKey: .url))
             ?? (try? c.decodeIfPresent(String.self, forKey: .base_url))
             ?? (try? c.decodeIfPresent(String.self, forKey: .endpoint_url)) ?? nil
@@ -56,6 +68,28 @@ struct ModelEndpoint: Decodable, Identifiable, Hashable {
     }
 
     private struct ModelRef: Decodable { var id: String?; var name: String? }
+}
+
+/// What `POST /api/model-endpoints` answers: the probe of the host just added.
+struct EndpointProbe: Decodable {
+    var status: String?
+    var online: Bool?
+    var models: [String]
+    var pingError: String?
+
+    var isOnline: Bool { status == "online" || (status == nil && online == true) }
+
+    enum CodingKeys: String, CodingKey { case status, online, models, pingError = "ping_error" }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        status = try? c.decodeIfPresent(String.self, forKey: .status)
+        online = try? c.decodeIfPresent(Bool.self, forKey: .online)
+        pingError = try? c.decodeIfPresent(String.self, forKey: .pingError)
+        if let s = try? c.decode([String].self, forKey: .models) { models = s }
+        else if let objs = try? c.decode([[String: String]].self, forKey: .models) { models = objs.compactMap { $0["id"] ?? $0["name"] } }
+        else { models = [] }
+    }
 }
 
 /// One model discovered on an endpoint, from `GET /api/model-endpoints/{id}/models`.
