@@ -22,9 +22,13 @@ struct MainView: View {
                 // resizable via the HSplitView in WorkspaceView.
                 .navigationSplitViewColumnWidth(280)
         } detail: {
-            WorkspaceView(workspace: workspace, app: app, onNewSession: { Task { await store.load() } })
+            WorkspaceView(workspace: workspace, app: app, onNewSession: { Task { await store.load() } },
+                          onActivity: { id, on in store.markStreaming(id, on) })
         }
         .navigationSplitViewStyle(.balanced)
+        #if os(macOS)
+        .background { shortcutKeys }
+        #endif
         .tint(theme.accent)
         .task { await store.load() }
         // On iPhone (compact) the split view shows ONE column at a time. A sidebar
@@ -72,4 +76,30 @@ struct MainView: View {
     }
 
     private func close() { showSettings = false }
+
+    #if os(macOS)
+    /// The fixed Mac shortcuts (see OdyShortcut.swift): zero-size buttons,
+    /// one key equivalent each. Chat-level ones live in ChatScreen.
+    private var currentChat: ChatSession? {
+        for p in workspace.panes { if case .chat(let s) = p.kind { return s } }
+        return nil
+    }
+    private func step(_ delta: Int) {
+        guard !store.sessions.isEmpty else { return }
+        let i = currentChat.flatMap { c in store.sessions.firstIndex { $0.id == c.id } } ?? -1
+        let next = min(max(i + delta, 0), store.sessions.count - 1)
+        workspace.setPrimary(.chat(store.sessions[next]))
+    }
+    @ViewBuilder private var shortcutKeys: some View {
+        Group {
+            Button("") { workspace.setPrimary(.newChat) }.keyboardShortcut(OdyShortcuts.newChat)
+            Button("") { showSettings.toggle() }.keyboardShortcut(OdyShortcuts.settings)
+            Button("") { workspace.openDeepSearch() }.keyboardShortcut(OdyShortcuts.deepSearch)
+            Button("") { step(1) }.keyboardShortcut(OdyShortcuts.nextChat)
+            Button("") { step(-1) }.keyboardShortcut(OdyShortcuts.prevChat)
+            Button("") { if let c = currentChat { Task { await store.setPinned(c, !c.pinned) } } }.keyboardShortcut(OdyShortcuts.pinChat)
+        }
+        .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
+    }
+    #endif
 }

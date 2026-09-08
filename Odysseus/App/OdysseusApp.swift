@@ -81,7 +81,11 @@ struct RootView: View {
                 app.relockIfNeeded()
                 app.persistSessionIfNeeded()   // keep the latest session for next launch
             }
+            // The reminder queue is drained on read and the server has no
+            // push, so it is only polled while the app is on screen.
+            if newPhase == .active { app.startTaskNotifications() } else { app.stopTaskNotifications() }
         }
+        .onChange(of: app.phase) { _, p in if p == .main { app.startTaskNotifications() } else { app.stopTaskNotifications() } }
         .task {
             ReviewGate.seedFirstLaunchIfNeeded()
             await app.bootstrap()

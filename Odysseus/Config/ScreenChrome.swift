@@ -70,13 +70,17 @@ struct MacSearchField: View {
     @Binding var text: String
     let prompt: String
     @Environment(\.theme) private var theme
+    @FocusState private var focused: Bool
 
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(theme.secondaryText)
                 .font(.ody(size: 12))
+            Button("") { focused = true }.keyboardShortcut(OdyShortcuts.search)
+                .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
             TextField(LocalizedStringKey(prompt), text: $text)
+                .focused($focused)
                 .textFieldStyle(.plain)
                 .font(.ody(.subheadline))
                 .foregroundStyle(theme.fg)

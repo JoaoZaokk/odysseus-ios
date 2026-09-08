@@ -6,6 +6,7 @@ struct WorkspaceView: View {
     @ObservedObject var workspace: WorkspaceStore
     let app: AppState
     var onNewSession: () -> Void
+    var onActivity: (String, Bool) -> Void = { _, _ in }
     @Environment(\.theme) private var theme
 
     var body: some View {
@@ -39,13 +40,13 @@ struct WorkspaceView: View {
     private func paneContent(_ pane: WorkspacePane) -> some View {
         switch pane.kind {
         case .newChat:
-            ChatScreen(app: app, session: nil, deepSearch: false) { _ in onNewSession() }
+            ChatScreen(app: app, session: nil, deepSearch: false, onActivity: onActivity) { _ in onNewSession() }
                 .id(pane.id)
         case .chat(let s):
-            ChatScreen(app: app, session: s, deepSearch: false) { _ in onNewSession() }
+            ChatScreen(app: app, session: s, deepSearch: false, onActivity: onActivity) { _ in onNewSession() }
                 .id(s.id)
         case .researchChat(let prompt):
-            ChatScreen(app: app, session: nil, deepSearch: true, autoSend: prompt) { _ in onNewSession() }
+            ChatScreen(app: app, session: nil, deepSearch: true, autoSend: prompt, onActivity: onActivity) { _ in onNewSession() }
                 .id(pane.id)
         case .deepSearch:
             DeepResearchView(app: app, workspace: workspace)

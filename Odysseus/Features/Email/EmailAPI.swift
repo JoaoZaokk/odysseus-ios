@@ -92,6 +92,59 @@ extension APIClient {
         _ = try await send(request("/api/email/accounts/\(encPath(id))", method: "DELETE"))
     }
 
+    // Automation — per account (`?account_id=`), plain user routes.
+    private func acct(_ id: String) -> String { id.isEmpty ? "" : "?account_id=\(encQuery(id))" }
+
+    func emailAutomationConfig(accountId: String) async throws -> EmailAutomationConfig {
+        try decode(EmailAutomationConfig.self, try await send(request("/api/email/config" + acct(accountId))))
+    }
+    func saveEmailAutomationConfig(_ c: EmailAutomationConfig, accountId: String) async throws {
+        var req = request("/api/email/config" + acct(accountId), method: "PUT")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONSerialization.data(withJSONObject: c.payload(accountId: accountId))
+        _ = try await send(req)
+    }
+    func emailWritingStyle(accountId: String) async throws -> String {
+        let d = (try? JSONSerialization.jsonObject(with: try await send(request("/api/email/style" + acct(accountId))))) as? [String: Any] ?? [:]
+        return (d["style"] as? String) ?? ""
+    }
+    func saveEmailWritingStyle(_ style: String, accountId: String) async throws {
+        struct B: Encodable { let style: String }
+        _ = try await send(try jsonRequest("/api/email/style" + acct(accountId), method: "PUT", body: B(style: style)))
+    }
+    /// Reads the Sent folder through the utility model; failures are a 200
+    /// with success:false, so they are read out of the body.
+    func extractEmailWritingStyle(sampleCount: Int = 15, accountId: String) async throws -> String {
+        struct B: Encodable { let sample_count: Int }
+        let data = try await send(try jsonRequest("/api/email/extract-style" + acct(accountId), method: "POST", body: B(sample_count: sampleCount)), via: streamSession)
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        guard d["success"] as? Bool == true else { throw APIError.transport((d["error"] as? String) ?? "extract-style") }
+        return (d["style"] as? String) ?? ""
+    }
+    func unsubscribeScan(accountId: String, folder: String = "INBOX", limit: Int = 25) async throws -> UnsubscribeScan {
+        var path = "/api/email/unsubscribe/scan?folder=\(encQuery(folder))&limit=\(limit)"
+        if !accountId.isEmpty { path += "&account_id=\(encQuery(accountId))" }
+        let r = try decode(UnsubscribeScan.self, try await send(request(path), via: streamSession))
+        guard r.success else { throw APIError.transport(r.error ?? "scan") }
+        return r
+    }
+    func unsubscribeExecute(uid: String, folder: String, accountId: String, moveToSpam: Bool = false) async throws {
+        struct B: Encodable { let uid: String, folder: String, account_id: String?, method_index: Int, move_to_spam: Bool }
+        let data = try await send(try jsonRequest("/api/email/unsubscribe/execute", method: "POST",
+                                                  body: B(uid: uid, folder: folder, account_id: accountId.isEmpty ? nil : accountId,
+                                                          method_index: 0, move_to_spam: moveToSpam)), via: streamSession)
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        guard d["success"] as? Bool == true else { throw APIError.transport((d["error"] as? String) ?? "unsubscribe") }
+    }
+    func unsubscribeCleanup(uids: [String], action: String, accountId: String, folder: String = "INBOX") async throws -> (changed: Int, failed: Int) {
+        struct B: Encodable { let folder: String, account_id: String?, action: String, uids: [String] }
+        let data = try await send(try jsonRequest("/api/email/unsubscribe/cleanup", method: "POST",
+                                                  body: B(folder: folder, account_id: accountId.isEmpty ? nil : accountId, action: action, uids: uids)), via: streamSession)
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        guard d["success"] as? Bool == true else { throw APIError.transport((d["error"] as? String) ?? "cleanup") }
+        return ((d["changed"] as? Int) ?? 0, (d["failed"] as? Int) ?? 0)
+    }
+
     func setDefaultEmailAccount(_ id: String) async throws {
         _ = try await send(request("/api/email/accounts/\(encPath(id))/set-default", method: "POST"))
     }

@@ -52,6 +52,8 @@ struct AccountSection: View {
     // Opt-in biometric security (default OFF — see BiometricLock).
     @AppStorage(BiometricLock.appLockKey) private var appLock = false
     @AppStorage(BiometricLock.autoLoginKey) private var bioAutoLogin = false
+    @AppStorage("chat.sensitiveBlur") private var sensitiveBlur = false
+    @AppStorage(TaskNotificationPoller.enabledKey) private var taskNotifications = false
 
     var body: some View {
         SettingsScroll("Conta", subtitle: "Sua sessão e segurança.") {
@@ -116,6 +118,34 @@ struct AccountSection: View {
                     Text("Biometria/senha do dispositivo indisponível neste aparelho.")
                         .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                 }
+            }
+
+            SettingsCard {
+                Text("Privacidade").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
+                Toggle(isOn: $sensitiveBlur) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Borrar dados sensíveis").font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                        Text("Esconde emails, chaves de API, tokens e senhas nas respostas até você tocar.")
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                    }
+                }.tint(theme.accent)
+                Text("Opcional — desligado por padrão.")
+                    .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+            }
+
+            SettingsCard {
+                Text("Notificações").font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
+                Toggle(isOn: Binding(get: { taskNotifications }, set: { on in
+                    taskNotifications = on
+                    if on { Task { _ = await TaskNotificationPoller.authorized(); app.startTaskNotifications() } }
+                    else { app.stopTaskNotifications() }
+                })) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Notificações de tarefas e lembretes").font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                        Text("Avisa neste aparelho quando um lembrete ou tarefa terminar, com o app aberto.")
+                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                    }
+                }.tint(theme.accent)
             }
 
             // The permanent door for someone who wants to rate the app on
@@ -185,6 +215,8 @@ struct AccountSection: View {
     @Published var keys: [String: String] = [:]
     @Published var cx = ""
     @Published var status = ""
+    @Published var statusIsFailure = false
+    @Published var testing = false
     /// Backup providers, in order, tried when the primary fails. Empty means
     /// the server's own default (DuckDuckGo) — which is the one thing a
     /// self-hoster who chose SearXNG for privacy would want to turn off, and
@@ -294,8 +326,23 @@ struct AccountSection: View {
         catch { flash("Falha ao salvar") }
     }
 
+    /// Saves first so the test uses the key on screen, as the web does.
+    func test() async {
+        guard provider != "disabled" else { status = "Escolha um provedor primeiro."; statusIsFailure = true; return }
+        await save()
+        testing = true; defer { testing = false }
+        do {
+            let r = try await api.searchTest(provider: provider)
+            statusIsFailure = false
+            status = L("%lld resultados · %lldms", r.count, r.ms)
+        } catch {
+            statusIsFailure = true
+            status = SettingsUI.failure(error, "Falha no teste: %@") ?? ""
+        }
+    }
+
     private func flash(_ s: String) {
-        status = s
+        status = s; statusIsFailure = s != "Salvo"
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) { self.status = "" }
     }
 }
@@ -348,8 +395,15 @@ struct SearchSection: View {
                     label("ID do mecanismo de busca (CX)")
                     field($vm.cx) { Task { await vm.save() } }
                 }
+                HStack {
+                    Button(vm.testing ? "Testando…" : "Testar") { Task { await vm.test() } }
+                        .buttonStyle(.plain).foregroundStyle(theme.accent).font(.ody(size: 12))
+                        .disabled(vm.testing || vm.provider == "disabled")
+                    Spacer()
+                }
                 if !vm.status.isEmpty {
-                    Text(LocalizedStringKey(vm.status)).font(.ody(size: 11)).foregroundStyle(theme.green)
+                    Text(LocalizedStringKey(vm.status)).font(.ody(size: 11))
+                        .foregroundStyle(vm.statusIsFailure ? theme.danger : theme.green)
                 }
             }
             SettingsCard {
@@ -419,15 +473,24 @@ struct EmailSection: View {
     @StateObject private var vm: EmailAccountsViewModel
     @Environment(\.theme) private var theme
     @State private var showAdd = false
-    init(app: AppState) { _vm = StateObject(wrappedValue: EmailAccountsViewModel(api: app.api)) }
+    @State private var showAutomation = false
+    private let app: AppState
+    init(app: AppState) { self.app = app; _vm = StateObject(wrappedValue: EmailAccountsViewModel(api: app.api)) }
 
     var body: some View {
         SettingsScroll("Contas de email", subtitle: "Conecte contas IMAP/SMTP para ler e enviar.") {
-            Button { showAdd = true } label: {
-                Label("Adicionar conta", systemImage: "plus")
-                    .font(.ody(.subheadline))
+            HStack(spacing: 18) {
+                Button { showAdd = true } label: {
+                    Label("Adicionar conta", systemImage: "plus")
+                        .font(.ody(.subheadline))
+                }
+                .buttonStyle(.plain).foregroundStyle(theme.accent)
+                Button { showAutomation = true } label: {
+                    Label("Automação de email", systemImage: "wand.and.stars")
+                        .font(.ody(.subheadline))
+                }
+                .buttonStyle(.plain).foregroundStyle(theme.accent)
             }
-            .buttonStyle(.plain).foregroundStyle(theme.accent)
 
             if vm.accounts.isEmpty && vm.loading {
                 ProgressView().tint(theme.accent)
@@ -472,6 +535,7 @@ struct EmailSection: View {
             if let e = vm.error { Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger) }
         }
         .task { await vm.load() }
+        .sheet(isPresented: $showAutomation) { EmailAutomationView(app: app).environment(\.theme, theme) }
         .sheet(isPresented: $showAdd) {
             // onTest must be passed explicitly: its default is `{ _ in nil }` and
             // nil means success — without this, "Testar conexão" reported

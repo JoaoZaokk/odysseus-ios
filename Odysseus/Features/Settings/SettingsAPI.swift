@@ -125,6 +125,30 @@ extension APIClient {
         _ = try await send(try jsonRequest("/api/auth/2fa/disable", method: "POST", body: B(password: password)))
     }
 
+    // Device flow (GitHub Copilot / ChatGPT Subscription). All form posts;
+    // `provider` is an enum raw value, never user input.
+    func deviceFlowStart(_ provider: String) async throws -> DeviceFlowStart {
+        try decode(DeviceFlowStart.self, try await send(formRequest("/api/\(provider)/device/start", fields: [:])))
+    }
+    func deviceFlowPoll(_ provider: String, pollId: String) async throws -> DeviceFlowPoll {
+        try decode(DeviceFlowPoll.self, try await send(formRequest("/api/\(provider)/device/poll", fields: ["poll_id": pollId])))
+    }
+    func deviceFlowCancel(_ provider: String, pollId: String) async {
+        _ = try? await send(formRequest("/api/\(provider)/device/cancel", fields: ["poll_id": pollId]))
+    }
+
+    struct SearchTestResult { let count: Int; let ms: Int; let top: String }
+    /// `POST /api/search/query` reports failures inside a 200.
+    func searchTest(provider: String, query: String = "hello world", count: Int = 3) async throws -> SearchTestResult {
+        let t0 = Date()
+        let data = try await send(formRequest("/api/search/query", fields: ["query": query, "provider": provider, "count": String(count)]))
+        let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+        if let e = d["error"] as? String, !e.isEmpty { throw APIError.transport(e) }
+        let results = (d["results"] as? [[String: Any]]) ?? []
+        let top = (results.first?["title"] as? String) ?? (results.first?["url"] as? String) ?? ""
+        return SearchTestResult(count: results.count, ms: Int(Date().timeIntervalSince(t0) * 1000), top: top)
+    }
+
     func twoFAEnabled() async throws -> Bool {
         let data = try await send(request("/api/auth/2fa/status"))
         let dict = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]

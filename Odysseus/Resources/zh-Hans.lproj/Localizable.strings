@@ -13,7 +13,7 @@
 "Admin" = "管理员";
 "Agendado %@" = "已计划 %@";
 "Agent Tools" = "Agent Tools";
-"Agentes agendados do Odysseus aparecem aqui." = "Odysseus 的已计划代理将显示在此处。";
+"Agentes agendados do Odysseus aparecem aqui." = "Odysseus 的已计划智能体将显示在此处。";
 "Ajustes" = "设置";
 "Analisa imagens com um modelo com visão." = "使用视觉模型分析图像。";
 "Apagar" = "删除";
@@ -64,7 +64,7 @@
 "Detectado: %@ %@" = "已检测到：%@ %@";
 "Diagnóstico ao vivo do processo Odysseus." = "Odysseus 进程的实时诊断。";
 "Diário %@" = "每天 %@";
-"Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "为此代理命名以与其他代理区分（例如：\"Claude Agent — laptop\"）。";
+"Dê um nome a este agente para diferenciá-lo dos outros (ex.: \"Claude Agent — laptop\")." = "为此智能体命名以与其他智能体区分（例如：\"Claude Agent — laptop\"）。";
 "Email" = "邮件";
 "Email (IMAP/SMTP)" = "邮件（IMAP/SMTP）";
 "Endereço do servidor Odysseus" = "Odysseus 服务器地址";
@@ -94,7 +94,7 @@
 "Galeria" = "图库";
 "Geração de imagem" = "图像生成";
 "Gere uma senha de app no site do provedor. iCloud: account.apple.com → Iniciar Sessão e Segurança → Senhas de App → +." = "在服务商网站生成应用专用密码。iCloud：account.apple.com →“登录与安全”→“App 专用密码”→ +。";
-"Habilite ou desabilite as ferramentas disponíveis ao agente." = "启用或禁用代理可用的工具。";
+"Habilite ou desabilite as ferramentas disponíveis ao agente." = "启用或禁用智能体可用的工具。";
 "Idioma" = "语言";
 "Igual ao chat" = "与聊天相同";
 "Imagens geradas e enviadas aparecem aqui." = "生成和上传的图像将显示在此处。";
@@ -151,7 +151,7 @@
 "Pede %@ ao abrir e ao voltar pro app." = "打开应用和返回应用时请求 %@。";
 "Pedido de imagem → provedor padrão → se falhar e o fallback estiver ligado, tenta os próximos → se todos falharem, erro claro. Logs sem dados sensíveis. Geração profunda (txt2img, upscale, inpaint, outpaint, multi-GPU) está documentada em DIFFUSION_COMFYUI_PLAN.md para a próxima fase." = "图像请求 → 默认提供商 → 如果失败且后备已启用，依次尝试下一个 → 如果全部失败，显示明确错误。日志不含敏感数据。深度生成（txt2img、upscale、inpaint、outpaint、multi-GPU）已在 DIFFUSION_COMFYUI_PLAN.md 中记录，留待下一阶段。";
 "Pesquisa profunda" = "深度搜索";
-"Pesquisa web multi-etapas com um agente LLM no loop." = "包含 LLM 代理的多步骤网络研究。";
+"Pesquisa web multi-etapas com um agente LLM no loop." = "包含 LLM 智能体的多步骤网络研究。";
 "Por padrão, o app segue o idioma do seu aparelho. Ao trocar, ele volta para a tela inicial." = "默认情况下，应用跟随设备语言。切换后将返回主屏幕。";
 "Preencha: Nome, seu email, servidor IMAP e porta, usuário (seu email) e a senha de app." = "填写：名称、你的邮箱、IMAP 服务器和端口、用户名（你的邮箱）以及应用专用密码。";
 "Provedores" = "提供商";
@@ -252,7 +252,7 @@
 "%lld de %lld linhas" = "%lld / %lld 行";
 "(sem nome)" = "（无名称）";
 "Adicionado. O servidor vai sondar a URL e listar os modelos." = "已添加。服务器将探测 URL 并列出模型。";
-"Agente" = "代理";
+"Agente" = "智能体";
 "Amanhã" = "明天";
 "API key" = "API key";
 "API key (opcional)" = "API key（可选）";

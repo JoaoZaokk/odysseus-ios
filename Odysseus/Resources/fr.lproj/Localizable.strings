@@ -37,7 +37,7 @@
 "Isso é irreversível. Confirma?" = "Cette action est irréversible. Confirmer ?";
 "O iCloud precisa de uma senha de app" = "iCloud nécessite un mot de passe d'application";
 "Escrevendo" = "Écriture";
-"Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportez les mémoires, préréglages, réglages, compétences et préférences au format JSON.";
+"Exporte memórias, presets, settings, skills e preferências como JSON." = "Exportez les souvenirs, préréglages, réglages, compétences et préférences au format JSON.";
 "Imagens geradas e enviadas aparecem aqui." = "Les images générées et importées apparaissent ici.";
 "Limites de execução do agente e servidores MCP." = "Limites d'exécution de l'agent et serveurs MCP.";
 "Multi-agente" = "Multi-agent";
@@ -81,7 +81,7 @@
 "Confirmar envio de email" = "Confirmer l'envoi de l'e-mail";
 "Salvar servidor" = "Enregistrer le serveur";
 "Editar nota" = "Modifier la note";
-"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Tâches en arrière-plan (compactage, nommage des conversations, mémoires). Vide = utilise le modèle de chat.";
+"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Tâches en arrière-plan (compactage, nommage des conversations, souvenirs). Vide = utilise le modèle de chat.";
 "Fontes (%lld)" = "Sources (%lld)";
 "Nativo = transcrição ao vivo enquanto você fala (tipo Claude/Gemini). \"Modelo\" = Whisper offline (transcreve no fim). Nos modelos baixados, o ⚡ baixa o acelerador Core ML (Neural Engine) → bem mais rápido." = "Natif = transcription en direct pendant que vous parlez (comme Claude/Gemini). « Modèle » = Whisper hors ligne (transcrit à la fin). Pour les modèles téléchargés, ⚡ télécharge l'accélérateur Core ML (Neural Engine) → bien plus rapide.";
 "Toque em + para criar sua primeira nota." = "Touchez + pour créer votre première note.";
@@ -111,8 +111,8 @@
 "Agentes agendados do Odysseus aparecem aqui." = "Les agents planifiés d'Odysseus apparaissent ici.";
 "Nome" = "Nom";
 "Max tokens" = "Tokens max";
-"Memórias já estão organizadas — nada a remover." = "Les mémoires sont déjà organisées — rien à supprimer.";
-"Nova memória" = "Nouvelle mémoire";
+"Memórias já estão organizadas — nada a remover." = "Les souvenirs sont déjà organisés — rien à supprimer.";
+"Nova memória" = "Nouveau souvenir";
 "Analisa imagens com um modelo com visão." = "Analyse les images avec un modèle doté de vision.";
 "Username" = "Nom d'utilisateur";
 "Sair da conta" = "Se déconnecter";
@@ -123,8 +123,8 @@
 "Pesquisando na web" = "Recherche sur le web";
 "Busca" = "Recherche";
 "De hora em hora" = "Toutes les heures";
-"Organizar memórias" = "Organiser les mémoires";
-"Buscar memórias" = "Rechercher des mémoires";
+"Organizar memórias" = "Organiser les souvenirs";
+"Buscar memórias" = "Rechercher des souvenirs";
 "Definir como padrão" = "Définir par défaut";
 "Usuários" = "Utilisateurs";
 "Voz e modelos" = "Voix et modèles";
@@ -217,7 +217,7 @@
 "Exigir no login automático" = "Exiger lors de la connexion automatique";
 "Fechar painel" = "Fermer le panneau";
 "prévia" = "aperçu";
-"Sem memórias ainda" = "Aucune mémoire pour le moment";
+"Sem memórias ainda" = "Aucun souvenir pour le moment";
 "ID do mecanismo de busca (CX)" = "ID du moteur de recherche (CX)";
 "Remover conta" = "Supprimer le compte";
 "Remover conta?" = "Supprimer le compte ?";

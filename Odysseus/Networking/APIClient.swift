@@ -314,6 +314,20 @@ final class APIClient: @unchecked Sendable {
         return []
     }
 
+    /// Message-content search (FTS5). Empty query → nothing, server-side too.
+    func searchMessages(_ q: String, limit: Int = 20) async throws -> [MessageSearchHit] {
+        decodeList(MessageSearchHit.self, try await send(request("/api/search?q=\(encQuery(q))&limit=\(limit)")))
+    }
+
+    /// True only for a live stream; a 404 is "not streaming", not a failure.
+    func isStreaming(_ sessionID: String) async -> Bool {
+        do {
+            let data = try await send(request("/api/chat/stream_status/\(encPath(sessionID))"))
+            let d = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+            return (d["status"] as? String) == "streaming"
+        } catch { return false }
+    }
+
     func history(_ sessionID: String) async throws -> SessionDetail {
         try decode(SessionDetail.self, try await send(request("/api/history/\(encPath(sessionID))")))
     }

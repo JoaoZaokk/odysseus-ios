@@ -20,9 +20,11 @@ struct ChatScreen: View {
     private let autoSend: String?
 
     init(app: AppState, session: ChatSession?, deepSearch: Bool = false,
-         autoSend: String? = nil, onSessionCreated: @escaping (String) -> Void) {
+         autoSend: String? = nil, onActivity: ((String, Bool) -> Void)? = nil,
+         onSessionCreated: @escaping (String) -> Void) {
         let model = app.makeChatViewModel(session: session)
         model.onSessionCreated = onSessionCreated
+        model.onActivity = onActivity
         model.research = deepSearch
         _vm = StateObject(wrappedValue: model)
         self.autoSend = autoSend
@@ -211,6 +213,14 @@ struct ChatScreen: View {
                     .overlay(RoundedRectangle(cornerRadius: 18).stroke(theme.border, lineWidth: 1))
 
                 sendButton
+                // Key equivalents ride on zero-size buttons: one binding per
+                // button, so Esc cannot also send.
+                Group {
+                    Button("") { if vm.isStreaming { vm.stop() } }.keyboardShortcut(OdyShortcuts.stop).disabled(!vm.isStreaming)
+                    Button("") { if vm.isStreaming { vm.stop() } }.keyboardShortcut(.escape, modifiers: []).disabled(!vm.isStreaming)
+                    Button("") { inputFocused = true }.keyboardShortcut(OdyShortcuts.focusInput)
+                }
+                .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
             }
             .padding(.horizontal, 12)
             .padding(.bottom, 8)
@@ -333,6 +343,7 @@ struct ChatScreen: View {
                             in: Circle())
         }
         .disabled(!canSend && !vm.isStreaming)
+        .keyboardShortcut(OdyShortcuts.send)
     }
 
     private var canSend: Bool {

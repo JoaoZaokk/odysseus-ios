@@ -81,7 +81,7 @@
 "Execução" = "Uitvoering";
 "Exigir no login automático" = "Vereisen bij automatische aanmelding";
 "Exportar dados" = "Gegevens exporteren";
-"Exporte memórias, presets, settings, skills e preferências como JSON." = "Exporteer herinneringen, voorinstellingen, instellingen, vaardigheden en voorkeuren als JSON.";
+"Exporte memórias, presets, settings, skills e preferências como JSON." = "Exporteer geheugenitems, voorinstellingen, instellingen, vaardigheden en voorkeuren als JSON.";
 "Falha ao carregar logs: %@" = "Logboeken laden mislukt: %@";
 "Falha ao instalar %@: %@" = "Installatie van %@ mislukt: %@";
 "Fallback automático" = "Automatische fallback";
@@ -130,7 +130,7 @@
 "Nome" = "Naam";
 "Notes" = "Notes";
 "Nova conta" = "Nieuw account";
-"Nova memória" = "Nieuwe herinnering";
+"Nova memória" = "Nieuw geheugenitem";
 "Novo evento" = "Nieuw evenement";
 "Novo nome" = "Nieuwe naam";
 "não testado" = "niet getest";
@@ -140,7 +140,7 @@
 "Odysseus bloqueado" = "Odysseus vergrendeld";
 "Opcional — desligado por padrão." = "Optioneel — standaard uitgeschakeld.";
 "OpenWebUI Gen usa a sessão do servidor principal por padrão. A Diffusion API genérica é um endpoint compatível para fallback." = "OpenWebUI Gen gebruikt standaard de sessie van de hoofdserver. De generieke Diffusion API is een compatibel endpoint voor fallback.";
-"Organizar memórias" = "Herinneringen ordenen";
+"Organizar memórias" = "Geheugenitems ordenen";
 "Outros provedores" = "Andere providers";
 "Pacotes e engines para servir modelos." = "Pakketten en engines voor het serveren van modellen.";
 "Padrão" = "Standaard";
@@ -178,7 +178,7 @@
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Als de standaardprovider mislukt, worden de anderen in volgorde geprobeerd: %@.";
 "Segurança (%@)" = "Beveiliging (%@)";
 "Selecione o idioma do aplicativo." = "Kies de taal van de app.";
-"Sem memórias ainda" = "Nog geen herinneringen";
+"Sem memórias ainda" = "Nog geen geheugenitems";
 "Sem tarefas" = "Geen taken";
 "Semanal %@" = "Wekelijks %@";
 "Servidor" = "Server";
@@ -187,7 +187,7 @@
 "Sistema" = "Systeem";
 "SMTP igual ao IMAP" = "SMTP gelijk aan IMAP";
 "Start" = "Start";
-"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Achtergrondtaken (comprimeren, gesprekken benoemen, herinneringen). Leeg = gebruikt het chatmodel.";
+"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Achtergrondtaken (comprimeren, gesprekken benoemen, geheugenitems). Leeg = gebruikt het chatmodel.";
 "Tasks" = "Tasks";
 "Tema" = "Thema";
 "Temas" = "Thema's";
@@ -257,7 +257,7 @@
 "API key" = "API key";
 "API key (opcional)" = "API key (optioneel)";
 "Buscar conversas" = "Gesprekken zoeken";
-"Buscar memórias" = "Herinneringen zoeken";
+"Buscar memórias" = "Geheugenitems zoeken";
 "Caixa vazia" = "Lege inbox";
 "Conecte contas IMAP/SMTP para ler e enviar." = "Verbind IMAP/SMTP-accounts om te lezen en te verzenden.";
 "Conecte uma conta IMAP para ver sua caixa aqui." = "Verbind een IMAP-account om je inbox hier te zien.";
@@ -291,7 +291,7 @@
 "Manual" = "Handmatig";
 "Max tokens" = "Max tokens";
 "Memorizando" = "Memoriseren";
-"Memórias já estão organizadas — nada a remover." = "Herinneringen zijn al geordend — niets te verwijderen.";
+"Memórias já estão organizadas — nada a remover." = "Geheugenitems zijn al geordend — niets te verwijderen.";
 "Mensagem…" = "Bericht…";
 "Modelo" = "Model";
 "Modelos usados ao criar uma nova conversa e em tarefas de fundo." = "Modellen die worden gebruikt bij het starten van een nieuw gesprek en bij achtergrondtaken.";

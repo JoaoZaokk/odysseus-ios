@@ -81,7 +81,7 @@
 "Execução" = "Esecuzione";
 "Exigir no login automático" = "Richiedi all'accesso automatico";
 "Exportar dados" = "Esporta dati";
-"Exporte memórias, presets, settings, skills e preferências como JSON." = "Esporta memorie, preset, impostazioni, skill e preferenze come JSON.";
+"Exporte memórias, presets, settings, skills e preferências como JSON." = "Esporta ricordi, preset, impostazioni, skill e preferenze come JSON.";
 "Falha ao carregar logs: %@" = "Impossibile caricare i log: %@";
 "Falha ao instalar %@: %@" = "Installazione di %@ non riuscita: %@";
 "Fallback automático" = "Fallback automatico";
@@ -130,7 +130,7 @@
 "Nome" = "Nome";
 "Notes" = "Notes";
 "Nova conta" = "Nuovo account";
-"Nova memória" = "Nuova memoria";
+"Nova memória" = "Nuovo ricordo";
 "Novo evento" = "Nuovo evento";
 "Novo nome" = "Nuovo nome";
 "não testado" = "non testato";
@@ -140,7 +140,7 @@
 "Odysseus bloqueado" = "Odysseus bloccato";
 "Opcional — desligado por padrão." = "Opzionale — disattivato per impostazione predefinita.";
 "OpenWebUI Gen usa a sessão do servidor principal por padrão. A Diffusion API genérica é um endpoint compatível para fallback." = "OpenWebUI Gen utilizza la sessione del server principale per impostazione predefinita. La Diffusion API generica è un endpoint compatibile per il fallback.";
-"Organizar memórias" = "Organizza memorie";
+"Organizar memórias" = "Organizza ricordi";
 "Outros provedores" = "Altri provider";
 "Pacotes e engines para servir modelos." = "Pacchetti e motori per servire i modelli.";
 "Padrão" = "Predefinito";
@@ -178,7 +178,7 @@
 "Se o provedor padrão falhar, tenta os outros na ordem: %@." = "Se il provider predefinito fallisce, prova gli altri nell'ordine: %@.";
 "Segurança (%@)" = "Sicurezza (%@)";
 "Selecione o idioma do aplicativo." = "Scegli la lingua dell'applicazione.";
-"Sem memórias ainda" = "Nessuna memoria ancora";
+"Sem memórias ainda" = "Nessun ricordo ancora";
 "Sem tarefas" = "Nessuna attività";
 "Semanal %@" = "Ogni settimana %@";
 "Servidor" = "Server";
@@ -187,7 +187,7 @@
 "Sistema" = "Sistema";
 "SMTP igual ao IMAP" = "SMTP uguale a IMAP";
 "Start" = "Start";
-"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Attività in background (compattazione, denominazione conversazioni, memorie). Vuoto = usa il modello di chat.";
+"Tarefas de fundo (compactação, nomear conversas, memórias). Vazio = usa o modelo de chat." = "Attività in background (compattazione, denominazione conversazioni, ricordi). Vuoto = usa il modello di chat.";
 "Tasks" = "Tasks";
 "Tema" = "Tema";
 "Temas" = "Temi";
@@ -257,7 +257,7 @@
 "API key" = "API key";
 "API key (opcional)" = "API key (opzionale)";
 "Buscar conversas" = "Cerca conversazioni";
-"Buscar memórias" = "Cerca memorie";
+"Buscar memórias" = "Cerca ricordi";
 "Caixa vazia" = "Posta in arrivo vuota";
 "Conecte contas IMAP/SMTP para ler e enviar." = "Collega account IMAP/SMTP per leggere e inviare.";
 "Conecte uma conta IMAP para ver sua caixa aqui." = "Collega un account IMAP per vedere la tua posta qui.";
@@ -291,7 +291,7 @@
 "Manual" = "Manuale";
 "Max tokens" = "Max tokens";
 "Memorizando" = "Memorizzazione";
-"Memórias já estão organizadas — nada a remover." = "Le memorie sono già organizzate — niente da rimuovere.";
+"Memórias já estão organizadas — nada a remover." = "I ricordi sono già organizzati — niente da rimuovere.";
 "Mensagem…" = "Messaggio…";
 "Modelo" = "Modello";
 "Modelos usados ao criar uma nova conversa e em tarefas de fundo." = "Modelli usati quando si crea una nuova conversazione e nelle attività in background.";
