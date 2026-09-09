@@ -39,6 +39,13 @@ struct StreamEvent: Decodable {
     var trim: TrimData?
     var contextLength: Int?
 
+    // ask_user (payload nested under `data`, same key as the trim above —
+    // only one of the two ever decodes for a given frame).
+    var ask: AskUser?
+
+    // tool_approval_resolved
+    var decision: String?
+
     // agent guards
     var limit: Int?        // budget_exceeded
     var used: Int?         // budget_exceeded
@@ -65,7 +72,7 @@ struct StreamEvent: Decodable {
     enum CodingKeys: String, CodingKey {
         case delta, thinking, type, name, tool, model, requested, actual
         case tokens, tps, status, text, error, detail
-        case data, limit, used, rounds
+        case data, limit, used, rounds, decision
         case contextLength = "context_length"
     }
 
@@ -86,6 +93,8 @@ struct StreamEvent: Decodable {
         error    = try? c.decodeIfPresent(ErrorBody.self, forKey: .error)
         detail   = try? c.decodeIfPresent(String.self, forKey: .detail)
         trim     = try? c.decodeIfPresent(TrimData.self, forKey: .data)
+        ask      = try? c.decodeIfPresent(AskUser.self, forKey: .data)
+        decision = try? c.decodeIfPresent(String.self, forKey: .decision)
         contextLength = try? c.decodeIfPresent(Int.self, forKey: .contextLength)
         limit    = try? c.decodeIfPresent(Int.self, forKey: .limit)
         used     = try? c.decodeIfPresent(Int.self, forKey: .used)
@@ -141,6 +150,9 @@ struct ChatNotice: Identifiable, Hashable {
         case budgetExceeded(limit: Int, used: Int)
         case loopBreaker
         case intentNudgeExhausted
+        /// The user denied a tool approval — the run stops there and the server
+        /// sends no reply text, so without this the turn looks like a failure.
+        case approvalDenied
     }
 
     let id = UUID()
@@ -154,7 +166,96 @@ struct ChatNotice: Identifiable, Hashable {
         case .contextTrimmed, .compacted: return "scissors"
         case .roundsExhausted, .budgetExceeded: return "gauge.with.dots.needle.33percent"
         case .loopBreaker, .intentNudgeExhausted: return "exclamationmark.arrow.circlepath"
+        case .approvalDenied: return "hand.raised"
         }
+    }
+}
+
+/// The assistant's question back to the user: `{"type":"ask_user","data":{…}}`.
+///
+/// Two different things ride this one event. A plain multiple-choice question
+/// (the `ask_user` tool) ENDS the agent's turn — the answer is simply the next
+/// user message, so a client that ignores the frame leaves the user staring at
+/// a reply that never came. A tool approval (`kind == "tool_approval"`) also
+/// ends the turn, but its answer is not a message at all: the decision rides
+/// the control-plane fields of the next stream, keyed by `approval_id`.
+///
+/// The same payload is persisted on the assistant message
+/// (`metadata.tool_events[].ask_user`), which is how a reopened chat gets its
+/// card back.
+struct AskUser: Decodable, Hashable, Identifiable {
+    struct Option: Decodable, Hashable, Identifiable {
+        var label: String
+        var description: String?
+        /// Approvals only: "approve" | "approve_task" | "deny".
+        var value: String?
+        var id: String { label }
+    }
+
+    /// What a tool approval is asking permission for. Rendered verbatim — the
+    /// user is authorizing this exact action, so it must not be paraphrased.
+    struct Action: Decodable, Hashable {
+        var tool: String?
+        var content: String?
+        var effects: [String]?
+        var workspace: String?
+        var documentID: String?
+        enum CodingKeys: String, CodingKey {
+            case tool, content, effects, workspace
+            case documentID = "document_id"
+        }
+    }
+
+    var question: String
+    var description: String?
+    var options: [Option]
+    var multi: Bool
+    var kind: String?
+    var approvalID: String?
+    var action: Action?
+    /// Set by the server once an approval has been consumed. A resolved card is
+    /// history, not a prompt — it never comes back on screen.
+    var resolved: String?
+
+    /// Identity is the payload, not a fresh UUID: the same card can arrive live
+    /// and then again from history, and the two must not stack.
+    var id: String { approvalID ?? question }
+
+    var isApproval: Bool { kind == "tool_approval" && approvalID?.isEmpty == false }
+    /// The server caps this at 6; a card with fewer than 2 is malformed and the
+    /// web drops it, so we do too.
+    var isRenderable: Bool { !question.isEmpty && options.count >= 2 && resolved == nil }
+
+    enum CodingKeys: String, CodingKey {
+        case question, description, options, multi, kind, action, resolved
+        case approvalID = "approval_id"
+    }
+
+    init(question: String, description: String? = nil, options: [Option],
+         multi: Bool = false, kind: String? = nil, approvalID: String? = nil,
+         action: Action? = nil, resolved: String? = nil) {
+        self.question = question; self.description = description
+        self.options = options; self.multi = multi; self.kind = kind
+        self.approvalID = approvalID; self.action = action; self.resolved = resolved
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        question = (try? c.decode(String.self, forKey: .question)) ?? ""
+        description = try? c.decodeIfPresent(String.self, forKey: .description)
+        // Options are objects, but the tool also accepts bare strings.
+        if let objs = try? c.decode([Option].self, forKey: .options) {
+            options = objs
+        } else if let strs = try? c.decode([String].self, forKey: .options) {
+            options = strs.map { Option(label: $0) }
+        } else {
+            options = []
+        }
+        multi = (try? c.decode(Bool.self, forKey: .multi)) ?? false
+        kind = try? c.decodeIfPresent(String.self, forKey: .kind)
+        approvalID = try? c.decodeIfPresent(String.self, forKey: .approvalID)
+        action = try? c.decodeIfPresent(Action.self, forKey: .action)
+        resolved = try? c.decodeIfPresent(String.self, forKey: .resolved)
     }
 }
 
@@ -165,6 +266,8 @@ enum ChatStreamUpdate {
     case toolStart(String)
     case modelResolved(String)
     case notice(ChatNotice)
+    /// The turn ended on a question — the reply is the card, not more text.
+    case askUser(AskUser)
     case error(String)
     case done
 }

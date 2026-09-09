@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "ལས་བྱེད་མཁན་གྱི་ཆེད་དུ API ཊོ་ཀེན་ཞིག གསར་བཟོ་བྱས་རྗེས་ཐེངས་གཅིག་ཁོ་ན་སྟོན།";
 "Vale só para este aparelho, como na versão web." = "དྲྭ་ཐོག་པར་གཞི་ནང་བཞིན། ཡོ་ཆས་འདིར་ཁོ་ན་འཇུག";
 "ex.: Claude Agent — laptop" = "དཔེར་ན: Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "ལན་གཞན་ཞིག…";
+"Você recusou a ação, e o agente parou aqui." = "ཁྱེད་ཀྱིས་བྱ་བ་དེར་མི་མཐུན་པ་བྱས་པས། ལས་བྱེད་མཁན་འདིར་མཚམས་བཞག།";

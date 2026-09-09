@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Ein API-Token für den Agenten. Es wird nach dem Erstellen nur einmal angezeigt.";
 "Vale só para este aparelho, como na versão web." = "Gilt nur für dieses Gerät, wie in der Web-Version.";
 "ex.: Claude Agent — laptop" = "z. B. Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "Andere Antwort…";
+"Você recusou a ação, e o agente parou aqui." = "Du hast die Aktion abgelehnt, und der Agent hat hier angehalten.";

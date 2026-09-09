@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "供智能体使用的 API token。创建后只显示一次。";
 "Vale só para este aparelho, como na versão web." = "仅对此设备生效，和网页版一样。";
 "ex.: Claude Agent — laptop" = "例：Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "其他回答…";
+"Você recusou a ação, e o agente parou aqui." = "你拒绝了该操作，智能体已在此停止。";

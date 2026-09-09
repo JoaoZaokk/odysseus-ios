@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API token pro agenta. Po vytvoření se zobrazí jen jednou.";
 "Vale só para este aparelho, como na versão web." = "Platí jen pro toto zařízení, stejně jako ve webové verzi.";
 "ex.: Claude Agent — laptop" = "např. Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "Jiná odpověď…";
+"Você recusou a ação, e o agente parou aqui." = "Odmítli jste akci a agent se zde zastavil.";

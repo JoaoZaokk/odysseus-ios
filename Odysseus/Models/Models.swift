@@ -238,6 +238,10 @@ struct Message: Decodable, Identifiable, Hashable, Sendable {
     var timestamp: Double?
     /// Attachment ids (served at /api/upload/{id}).
     var attachments: [String] = []
+    /// The question this reply ended on, if it ended on one. Saved by the
+    /// server under `metadata.tool_events[].ask_user`, which is the only reason
+    /// a reopened chat can still show the card.
+    var askUser: AskUser?
 
     enum CodingKeys: String, CodingKey {
         case id, mid
@@ -260,10 +264,15 @@ struct Message: Decodable, Identifiable, Hashable, Sendable {
         /// (it goes in with the rest of the metrics when the stream finishes),
         /// so a reopened chat only finds it here — never at the top level.
         var thinking: String?
+        /// One entry per tool the agent ran. We only read `ask_user` off it —
+        /// the durable half of a question card.
+        var toolEvents: [ToolEvent]?
         enum CodingKeys: String, CodingKey {
             case model, timestamp, thinking
             case dbID = "_db_id"
+            case toolEvents = "tool_events"
         }
+        struct ToolEvent: Decodable { var ask_user: AskUser? }
     }
 
     init(id: String = UUID().uuidString,
@@ -272,10 +281,11 @@ struct Message: Decodable, Identifiable, Hashable, Sendable {
          model: String? = nil,
          thinking: String? = nil,
          timestamp: Double? = nil,
-         attachments: [String] = []) {
+         attachments: [String] = [],
+         askUser: AskUser? = nil) {
         self.id = id; self.role = role; self.content = content
         self.model = model; self.thinking = thinking; self.timestamp = timestamp
-        self.attachments = attachments
+        self.attachments = attachments; self.askUser = askUser
     }
 
     init(from decoder: Decoder) throws {
@@ -313,6 +323,9 @@ struct Message: Decodable, Identifiable, Hashable, Sendable {
         } else {
             attachments = []
         }
+        // The agent can ask more than once in a turn; the live stream shows the
+        // last card, so history has to agree.
+        askUser = meta?.toolEvents?.compactMap(\.ask_user).last { $0.isRenderable }
     }
 
     private struct AttachmentRef: Decodable { var id: String? }

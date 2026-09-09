@@ -11,6 +11,10 @@ struct ChatStreamOptions {
     /// trusts a route it can resolve to a registered endpoint, so the id/URL
     /// travel with the model — sending the model alone is a no-op.
     var model: ChatModel?
+    /// Answer to a `kind: "tool_approval"` card. The server replays the sealed
+    /// action it had held back, so this turn carries no user message at all —
+    /// it is a control-plane continuation, not a new question.
+    var approval: (id: String, decision: String)?
 }
 
 /// Streams a reply from POST /api/chat_stream. The endpoint returns Server-Sent
@@ -77,6 +81,12 @@ final class ChatStreamClient: @unchecked Sendable {
                             if let m = evt.modelName { continuation.yield(.modelResolved(m)) }
                         case "research_progress":
                             continuation.yield(.toolStart(evt.text ?? "deep_research"))
+                        case "ask_user":
+                            if let ask = evt.ask, ask.isRenderable { continuation.yield(.askUser(ask)) }
+                        case "tool_approval_resolved":
+                            // Only ever sent for a denial — an approval just
+                            // continues into the reply stream.
+                            if evt.decision == "deny" { continuation.yield(.notice(ChatNotice(kind: .approvalDenied))) }
                         default:
                             // Context trims and agent guards explain why the reply
                             // looks amnesiac or cut short — surface them.
@@ -117,6 +127,10 @@ final class ChatStreamClient: @unchecked Sendable {
         } else if options.webSearch {
             fields["allow_web_search"] = "true"
             fields["use_web"] = "true"
+        }
+        if let a = options.approval {
+            fields["tool_approval_id"] = a.id
+            fields["tool_approval_decision"] = a.decision
         }
         if let m = options.model {
             fields["selected_model"] = m.id

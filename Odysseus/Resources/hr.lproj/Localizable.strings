@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API token za agenta. Nakon stvaranja prikazuje se samo jednom.";
 "Vale só para este aparelho, como na versão web." = "Vrijedi samo za ovaj uređaj, kao i u web verziji.";
 "ex.: Claude Agent — laptop" = "npr. Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "Drugi odgovor…";
+"Você recusou a ação, e o agente parou aqui." = "Radnja je odbijena i agent se ovdje zaustavio.";

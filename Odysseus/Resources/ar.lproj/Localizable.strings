@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "token API للوكيل. يظهر مرة واحدة فقط بعد إنشائه.";
 "Vale só para este aparelho, como na versão web." = "ينطبق على هذا الجهاز فقط، كما في نسخة الويب.";
 "ex.: Claude Agent — laptop" = "مثال: Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "إجابة أخرى…";
+"Você recusou a ação, e o agente parou aqui." = "تم رفض الإجراء، فتوقف الوكيل هنا.";

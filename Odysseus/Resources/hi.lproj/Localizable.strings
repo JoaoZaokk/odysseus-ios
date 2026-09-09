@@ -855,3 +855,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "एजेंट के लिए एक API token। बनने के बाद यह सिर्फ़ एक बार दिखता है।";
 "Vale só para este aparelho, como na versão web." = "यह सिर्फ़ इस डिवाइस पर लागू होता है, जैसे वेब वर्शन में।";
 "ex.: Claude Agent — laptop" = "जैसे: Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "दूसरा उत्तर…";
+"Você recusou a ação, e o agente parou aqui." = "आपने कार्रवाई अस्वीकार कर दी, और एजेंट यहीं रुक गया।";

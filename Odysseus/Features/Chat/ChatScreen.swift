@@ -120,6 +120,13 @@ struct ChatScreen: View {
                         .id(msg.id)
                     }
                     ForEach(vm.notices) { ChatNoticeBanner(notice: $0) }
+                    if let ask = vm.pendingAsk {
+                        AskUserCard(ask: ask,
+                                    onAnswer: { vm.answer(ask, with: $0) },
+                                    onDecide: { vm.decide(ask, option: $0) },
+                                    onDismiss: { vm.dismissAsk() })
+                            .id(ask.id)
+                    }
                     if let tool = vm.toolStatus {
                         HStack(spacing: 8) {
                             ProgressView().controlSize(.small).tint(theme.accent)
@@ -143,6 +150,7 @@ struct ChatScreen: View {
             .onChange(of: vm.messages.count) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.toolStatus) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.notices.count) { _, _ in scrollToBottom(proxy) }
+            .onChange(of: vm.pendingAsk) { _, _ in scrollToBottom(proxy) }
         }
     }
 
