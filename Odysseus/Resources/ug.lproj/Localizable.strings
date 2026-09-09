@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "ئاگېنت ئۈچۈن API token. قۇرۇلغاندىن كېيىن پەقەت بىر قېتىملا كۆرۈنىدۇ.";
 "Vale só para este aparelho, como na versão web." = "تور نەشرىدىكىگە ئوخشاش، پەقەت مۇشۇ ئۈسكۈنىگىلا ئىناۋەتلىك.";
 "ex.: Claude Agent — laptop" = "مەسىلەن: Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "باشقا جاۋاب…";
+"Você recusou a ação, e o agente parou aqui." = "سىز بۇ مەشغۇلاتنى رەت قىلدىڭىز، ئاگېنت مۇشۇ يەردە توختىدى.";

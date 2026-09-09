@@ -13,6 +13,10 @@ final class ChatViewModel: ObservableObject {
     /// `toolStatus` these survive the end of the stream — they explain the reply
     /// the user is left looking at.
     @Published var notices: [ChatNotice] = []
+    /// The question the assistant ended its turn on. It is the reply — the
+    /// server sends no text with it and waits for the answer — so it has to
+    /// outlive the stream, exactly like `notices`.
+    @Published var pendingAsk: AskUser?
 
     // Composer toggles
     @Published var agentMode = false
@@ -97,6 +101,10 @@ final class ChatViewModel: ObservableObject {
             do {
                 let detail = try await self.api.history(id)
                 self.messages = detail.messages
+                // A card is live only while it is still the end of the thread:
+                // anything sent after it — a click or a typed reply — already
+                // answered it. Same rule the web restores by.
+                self.pendingAsk = detail.messages.last?.askUser
                 if let m = detail.model { self.resolvedModel = m.split(separator: "/").last.map(String.init) }
                 self.historyLoaded = true
             } catch let e where e.isCancellation {
@@ -114,6 +122,8 @@ final class ChatViewModel: ObservableObject {
         error = nil
         toolStatus = nil
         notices = []
+        // Typing instead of clicking is a valid answer, so any open card goes.
+        pendingAsk = nil
 
         messages.append(Message(role: .user, content: text,
                                 timestamp: Date().timeIntervalSince1970,
@@ -126,6 +136,38 @@ final class ChatViewModel: ObservableObject {
 
         streamTask = Task { await runStream(text: text, assistantID: assistant.id, attachmentIDs: attachmentIDs) }
     }
+
+    // MARK: - Answering a question card
+
+    /// The user tapped an option. A plain question is answered by sending the
+    /// label as the next message — that is literally what the server waits for.
+    /// An approval is not a message: it rides `tool_approval_*` on a turn that
+    /// carries no text, and the server replays the action it had sealed.
+    func answer(_ ask: AskUser, with labels: [String]) {
+        guard !labels.isEmpty else { return }
+        pendingAsk = nil
+        input = labels.joined(separator: ", ")
+        send()
+    }
+
+    func decide(_ ask: AskUser, option: AskUser.Option) {
+        guard let id = ask.approvalID, let decision = option.value, !isStreaming else { return }
+        pendingAsk = nil
+        error = nil
+        notices = []
+        let assistant = Message(role: .assistant, content: "")
+        messages.append(assistant)
+        isStreaming = true
+        streamTask = Task {
+            await runStream(text: "", assistantID: assistant.id, attachmentIDs: [],
+                            approval: (id: id, decision: decision))
+        }
+    }
+
+    /// Closing the card without answering. The turn is already over server-side;
+    /// a plain question just goes away, and a pending approval stays pending
+    /// until the user answers it in a later turn.
+    func dismissAsk() { pendingAsk = nil }
 
     func addImages(_ files: [(data: Data, filename: String, mime: String)]) async {
         guard !files.isEmpty else { return }
@@ -140,8 +182,10 @@ final class ChatViewModel: ObservableObject {
 
     func attachmentURL(_ id: String) -> URL? { api.attachmentURL(id) }
 
-    private func runStream(text: String, assistantID: String, attachmentIDs: [String]) async {
+    private func runStream(text: String, assistantID: String, attachmentIDs: [String],
+                           approval: (id: String, decision: String)? = nil) async {
         var sawAnyText = false
+        var askedBack = false
         // A mid-stream `.error` frame finishes the loop normally — it never
         // throws — so "the do-block completed" is not a success signal.
         var failed = false
@@ -154,7 +198,8 @@ final class ChatViewModel: ObservableObject {
             let opts = ChatStreamOptions(mode: agentMode ? "agent" : "chat",
                                          webSearch: webSearch, research: research,
                                          attachmentIDs: attachmentIDs,
-                                         model: selectedModel)
+                                         model: selectedModel,
+                                         approval: approval)
 
             for try await update in stream.send(message: text, sessionID: sid, options: opts) {
                 switch update {
@@ -169,7 +214,15 @@ final class ChatViewModel: ObservableObject {
                 case .modelResolved(let m):
                     resolvedModel = m.split(separator: "/").last.map(String.init)
                 case .notice(let n):
+                    if n.kind == .approvalDenied { askedBack = true }
                     if !notices.contains(n) { notices.append(n) }
+                case .askUser(let ask):
+                    askedBack = true
+                    toolStatus = nil
+                    pendingAsk = ask
+                    // Keep it on the message too, so a reload before the answer
+                    // finds the card even if the server has yet to persist it.
+                    if let i = index(of: assistantID) { messages[i].askUser = ask }
                 case .error(let msg):
                     // Same policy as a thrown failure: an error that arrives
                     // mid-stream must not erase the reply the user just watched
@@ -181,8 +234,15 @@ final class ChatViewModel: ObservableObject {
                 }
             }
             if !sawAnyText, let i = index(of: assistantID), messages[i].content.isEmpty {
-                // Rendered as markdown, so it can't go through Text's key lookup.
-        messages[i].content = "_\(L("(sem resposta)"))_"
+                if askedBack {
+                    // The turn ended on a question (or on a refused action), not
+                    // on silence — an empty bubble under the card would read as
+                    // the failure the card is there to prevent.
+                    messages.remove(at: i)
+                } else {
+                    // Rendered as markdown, so it can't go through Text's key lookup.
+                    messages[i].content = "_\(L("(sem resposta)"))_"
+                }
             }
         } catch let e where e.isCancellation {
             // user stopped — keep whatever streamed so far

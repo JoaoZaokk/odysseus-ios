@@ -847,3 +847,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "Un jeton d'API pour l'agent. Il ne s'affiche qu'une seule fois, juste après sa création.";
 "Vale só para este aparelho, como na versão web." = "Ne s'applique qu'à cet appareil, comme dans la version web.";
 "ex.: Claude Agent — laptop" = "ex. : Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "Autre réponse…";
+"Você recusou a ação, e o agente parou aqui." = "Vous avez refusé l'action, et l'agent s'est arrêté ici.";

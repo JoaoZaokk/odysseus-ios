@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API token aģentam. Pēc izveides tas tiek parādīts tikai vienu reizi.";
 "Vale só para este aparelho, como na versão web." = "Attiecas tikai uz šo ierīci, tāpat kā tīmekļa versijā.";
 "ex.: Claude Agent — laptop" = "piem., Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "Cita atbilde…";
+"Você recusou a ação, e o agente parou aqui." = "Darbība tika noraidīta, un aģents apstājās šeit.";

@@ -845,3 +845,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API-token agentille. Se näytetään vain kerran luonnin jälkeen.";
 "Vale só para este aparelho, como na versão web." = "Koskee vain tätä laitetta, kuten verkkoversiossa.";
 "ex.: Claude Agent — laptop" = "esim. Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "Muu vastaus…";
+"Você recusou a ação, e o agente parou aqui." = "Hylkäsit toiminnon, ja agentti pysähtyi tähän.";

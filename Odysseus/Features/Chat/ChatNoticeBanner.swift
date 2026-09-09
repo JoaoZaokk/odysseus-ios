@@ -53,6 +53,8 @@ struct ChatNoticeBanner: View {
             Text("O agente repetia as mesmas ferramentas sem avançar, então foi interrompido para responder com o que já tinha.")
         case .intentNudgeExhausted:
             Text("O agente não conseguiu executar a ação pedida e parou.")
+        case .approvalDenied:
+            Text("Você recusou a ação, e o agente parou aqui.")
         }
     }
 }

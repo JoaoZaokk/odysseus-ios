@@ -845,3 +845,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "token של API עבור הסוכן. הוא מוצג פעם אחת בלבד לאחר היצירה.";
 "Vale só para este aparelho, como na versão web." = "חל רק על המכשיר הזה, כמו בגרסת הווב.";
 "ex.: Claude Agent — laptop" = "למשל: Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "תשובה אחרת…";
+"Você recusou a ação, e o agente parou aqui." = "הפעולה נדחתה, והסוכן עצר כאן.";

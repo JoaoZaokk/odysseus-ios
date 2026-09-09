@@ -855,3 +855,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "API-токен для агента. Показується один раз, одразу після створення.";
 "Vale só para este aparelho, como na versão web." = "Діє лише на цьому пристрої, як і у веб-версії.";
 "ex.: Claude Agent — laptop" = "напр.: Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "Інша відповідь…";
+"Você recusou a ação, e o agente parou aqui." = "Ви відхилили дію, і агент зупинився тут.";

@@ -1,9 +1,43 @@
-# Handoff — fase de arquitetura, encerrada; rodadas 4, 5 e 6 fechadas
+# Handoff — fase de arquitetura, encerrada; rodadas 4 a 7 fechadas
 
-Estado em 2026-09-08, fim da rodada 6. Tudo abaixo está em `main`, **1.9 / build 24**
-(macOS build 18; o último build subido ao ASC é o **21**, da 1.8 — nada da 1.9 foi
-enviado ainda). **278 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
-zero PRs abertos. Catálogos: **43 × 818** (de-AT saiu; ver rodada 6).
+Estado em 2026-09-09, fim da rodada 7. Tudo abaixo está em `main`, **1.9 / build 25**
+(macOS build 19; o último build subido ao ASC é o **21**, da 1.8 — nada da 1.9 foi
+enviado ainda). **294 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
+zero PRs abertos. Catálogos: **43 × 820**.
+
+## Rodada 7 — a Rückfrage que não aparecia
+
+Review alemã de 8/9 (4★, "Guter Start"): *"Nach ein paar Stunden testen ist mir
+aufgefallen, dass die **Rückfragen** im Chat nicht angezeigt werden."*
+
+Não era mensagem sumindo. Testado no simulador contra o servidor real: conversa nova,
+resposta, pergunta de seguimento — tudo aparece, e o histórico volta inteiro. O que
+sumia era a pergunta **do agente**.
+
+O servidor tem a ferramenta `ask_user` (`src/agent_tools/interaction_tools.py`): o
+agente faz uma pergunta de múltipla escolha, o loop emite
+`data: {"type":"ask_user","data":{…}}` e **encerra o turno** — a resposta do usuário
+chega como a próxima mensagem. O mesmo evento carrega o **pedido de aprovação de
+ferramenta** (`kind: "tool_approval"` + `approval_id`, de `src/tool_approvals.py`), que
+espera uma decisão pelo canal de controle. O `ChatStreamClient` não conhecia nenhum dos
+dois: os quadros caíam no `default` do `switch` e o turno terminava sem texto — bolha
+vazia, ou `_(sem resposta)_`. Vale para o modo Agente **e** para o chat comum, porque o
+servidor promove `chat → agent` sozinho por intenção (`_classify_tool_intent`), então
+quem nunca tocou no chip Agente também batia nisso.
+
+| Peça | O que passou a existir |
+|---|---|
+| `AskUser` (em `Networking/StreamEvent.swift`) | Decodifica o payload: `question`, `options[{label, description, value}]`, `multi`, `kind`, `approval_id`, `action`, `resolved`. `isRenderable` derruba cartão malformado (< 2 opções) e cartão já resolvido, como a web. |
+| `AskUserCard` (`Features/Chat/AskUserCard.swift`) | O cartão: pergunta, opções com descrição, seleção múltipla com caixas, campo "Outra resposta…". Na aprovação mostra a ação exata (ferramenta, comando, efeitos) em monoespaçada e **sem** campo livre — resposta digitada não é autorização. |
+| `ChatViewModel.pendingAsk` | Sobrevive ao fim do stream, como os `notices`. Escolher manda o rótulo como próxima mensagem (é o que o servidor espera); digitar qualquer coisa também fecha o cartão. |
+| `ChatViewModel.decide` | Aprovação vai por `tool_approval_id` + `tool_approval_decision` num turno **sem mensagem** (`routes/chat_routes.py` aceita corpo vazio quando há approval). Recusa devolve só `tool_approval_resolved`, que virou o aviso "Você recusou a ação, e o agente parou aqui." |
+| `Message.askUser` | Lê `metadata.tool_events[].ask_user` do histórico: reabrir a conversa traz o cartão de volta se ele ainda for o fim do fio. |
+| Bolha vazia | Um turno que termina em pergunta (ou em recusa) não vira mais `_(sem resposta)_` — a bolha placeholder é removida. |
+
+17 testes novos (`OdysseusTests/AskUserTests.swift`), com os quadros copiados dos
+`json.dumps` do servidor. Duas chaves novas nos 43 catálogos ("Outra resposta…" e o
+aviso de recusa); o botão fechar e o de enviar reaproveitam "Fechar" e "Enviar
+mensagem", que já existiam. Verificado na tela em pt-BR e em alemão.
 
 ## Rodada 6 — "feche esses cinco"
 

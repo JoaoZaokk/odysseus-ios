@@ -853,3 +853,7 @@
 "Um token de API para o agente. Ele aparece uma única vez, depois de criado." = "에이전트용 API 토큰입니다. 생성 직후 한 번만 표시됩니다.";
 "Vale só para este aparelho, como na versão web." = "이 기기에만 적용됩니다. 웹 버전과 같습니다.";
 "ex.: Claude Agent — laptop" = "예: Claude Agent — laptop";
+
+/* Rodada 7 — a pergunta do agente (ask_user) */
+"Outra resposta…" = "다른 답변…";
+"Você recusou a ação, e o agente parou aqui." = "작업을 거부하여 에이전트가 여기서 중지되었습니다.";
