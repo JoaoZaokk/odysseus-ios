@@ -1,9 +1,10 @@
-# Handoff — fase de arquitetura, encerrada; rodadas 4 a 7 fechadas
+# Handoff — fase de arquitetura, encerrada; rodadas 4 a 7 fechadas, 1.9 em revisão
 
-Estado em 2026-09-09, fim da rodada 7. Tudo abaixo está em `main`, **1.9 / build 25**
-(macOS build 19; o último build subido ao ASC é o **21**, da 1.8 — nada da 1.9 foi
-enviado ainda). **294 testes**, iOS e macOS compilando sem aviso. Zero issues abertas,
-zero PRs abertos. Catálogos: **43 × 820**.
+Estado em 2026-09-10. Tudo abaixo está em `main` (`93611c5`), **1.9 — iOS build 25,
+macOS build 19**, as duas subidas ao App Store Connect e prontas: **iOS em
+WAITING_FOR_REVIEW** (o dono submeteu), **macOS em READY_FOR_REVIEW**. **294 testes**,
+iOS e macOS compilando sem aviso. Zero issues abertas, zero PRs abertos. Catálogos:
+**43 × 820**.
 
 ## Rodada 7 — a Rückfrage que não aparecia
 
@@ -38,6 +39,49 @@ quem nunca tocou no chip Agente também batia nisso.
 `json.dumps` do servidor. Duas chaves novas nos 43 catálogos ("Outra resposta…" e o
 aviso de recusa); o botão fechar e o de enviar reaproveitam "Fechar" e "Enviar
 mensagem", que já existiam. Verificado na tela em pt-BR e em alemão.
+
+### Publicação da 1.9 (10/09)
+
+Subida pelas duas plataformas com `xcodebuild archive` → `-exportArchive`
+(`method: app-store-connect`, assinatura automática, team FZ5A72S5DT) →
+`xcrun altool --upload-app`, com a chave de API do App Store Connect que já vive na
+máquina do dono (o caminho e o issuer estão no `CLAUDE.md` local, que é gitignored).
+iOS sai `.ipa` (`-t ios`), macOS sai
+`.pkg` (`-t macos`); as duas validaram e subiram sem erro e ficaram **VALID**.
+
+O macOS é build nativo, não port do iOS: alvo `Odysseus-macOS` (`platform: macOS`),
+`LC_BUILD_VERSION platform MACOS`, universal `x86_64 + arm64`, bundle `Contents/MacOS`,
+sandbox. Fonte SwiftUI compartilhada com **49 blocos `#if os(macOS)` em 25 arquivos**,
+mais `PlatformCompat.swift` e `ScreenChrome.swift`, que só existem para o Mac.
+
+**Pular 1.7 → 1.9 no Mac é permitido**: a Apple exige versão maior que a última
+publicada naquela plataforma, não sequência.
+
+| O que estava faltando | Fechado |
+|---|---|
+| Não existia registro de versão 1.9 no ASC | Criados os dois (`MANUAL`), build anexado em cada |
+| es-MX e pt-PT sem capturas (desde a 1.7, caíam no fallback do idioma principal, que é pt-BR — o mexicano via a ficha com print em português) | es-MX copiou de es-ES, pt-PT de pt-BR: 5 iPhone 6,7" + 5 iPad 12,9" cada |
+| `ipad_4_4-themes.png` duplicada em `cs` desde a 1.8 | Removida |
+| `promotionalText` **vazio nas 55 localizações** (30 iOS + 25 macOS) | Preenchido em todas, ≤170 chars |
+| O 4º item das novidades citava "GitHub Copilot e assinatura do ChatGPT" em 52 locales | Trocado pela frase neutra que o chinês já usava. **A descrição aprovada da 1.8 não nomeia serviço de IA de terceiros em locale nenhum — a regra vale para a ficha inteira, não só para a China.** |
+| Notas de revisão do Mac: em português, bloco "preencha a URL" repetido 3× e o passo 1 dizendo o CONTRÁRIO ("já vem preenchido"), além de afirmar transcrição 100% no aparelho, que a 1.8 deixou de ser verdade absoluta | Reescritas em inglês espelhando as do iOS; a repetição do aviso ficou de propósito (3× no topo, 1× no HOW TO TEST) e o iOS ganhou a mesma repetição. Bloco de credenciais copiado byte a byte do texto antigo |
+
+Varredura final das 55 localizações: **zero campo obrigatório vazio**, **zero menção a
+OpenAI/ChatGPT/GPT/Copilot/Whisper** em nome, subtítulo, descrição, palavras-chave,
+promocional, novidades ou URLs. O chinês já estava limpo antes — o problema estava nos
+outros.
+
+O Mac tem **25 locales** contra 30 do iPhone (faltam fr-FR, fi, he, sv, th). Vem de
+antes da 1.9; não foi mexido.
+
+### Versão pt-PT do app: decidido não fazer
+
+Zero avaliações de Portugal (as duas do app são alemãs) e a chave de API é *App Manager*,
+que leva 403 no endpoint de analytics — não dá para ler download por território por
+script. Contra isso, o custo é um 44º catálogo de 820 chaves e toda rodada futura
+traduzindo ×44 para sempre, em troca de uma dúzia de palavras (Ajustes/Definições,
+tela/ecrã, usuário/utilizador). A ficha pt-PT da loja já existe e o texto que escrevi
+está em português europeu. Revisitar só se o Analytics mostrar instalação real lá.
 
 ## Rodada 6 — "feche esses cinco"
 
