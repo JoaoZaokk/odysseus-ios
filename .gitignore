@@ -21,6 +21,8 @@ Local.xcconfig
 # Internal dev notes — kept locally, not published to the public repo.
 BUILD_MACOS.md
 CLAUDE.md
+# Same notes under the name other agents read; keeps the private host out of the public mirror.
+AGENTS.md
 COUNCIL_REPORT.md
 DIFFUSION_COMFYUI_PLAN.md
 ENDPOINTS.md
