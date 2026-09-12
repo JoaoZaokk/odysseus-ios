@@ -2,7 +2,7 @@ import XCTest
 @testable import Odysseus
 
 /// Contracts the 1.9 client got wrong against the *live* server (upstream
-/// d8a2059, 2026-07-23 — the state odysseus.macrozao.online runs). Each route
+/// d8a2059, 2026-07-23 — the state the owner's server runs). Each route
 /// and shape below was read from the server source, not from ENDPOINTS.md,
 /// which is how three of these survived two release rounds.
 @MainActor
@@ -227,13 +227,13 @@ final class UpstreamContractTests: XCTestCase {
         StubTransport.route("/api/mcp/servers", .json(#"{"id": "m1", "name": "fs", "connected": false, "status": "error", "tool_count": 0, "error": "npx: command not found"}"#))
         let api = makeClient()
         let r = try await api.createMCPServer(name: "fs", transport: "stdio", command: "npx", args: "[]", env: "{}")
-        XCTAssertFalse(r.connected)
+        XCTAssertEqual(r.connected, false)
         XCTAssertEqual(r.error, "npx: command not found")
         let ok = try await api.createMCPServer(name: "fs", transport: "stdio", command: "npx", args: "[]", env: "{}")
-        XCTAssertFalse(ok.connected)
+        XCTAssertEqual(ok.connected, false)
         StubTransport.route("/api/mcp/servers", .json(#"{"id": "m1", "name": "fs", "connected": true, "status": "connected", "tool_count": 4}"#))
         let good = try await api.createMCPServer(name: "fs", transport: "stdio", command: "npx", args: "[]", env: "{}")
-        XCTAssertTrue(good.connected)
+        XCTAssertEqual(good.connected, true)
         XCTAssertEqual(good.toolCount, 4)
     }
 

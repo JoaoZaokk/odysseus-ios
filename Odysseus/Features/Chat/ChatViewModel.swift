@@ -89,6 +89,10 @@ final class ChatViewModel: ObservableObject {
 
     /// Force a reload (pull-to-refresh).
     func reloadHistory() async {
+        // A reload replaces `messages` wholesale; mid-stream that drops the
+        // assistant bubble the stream is still appending to, and the rest of
+        // the reply vanishes in silence. ⌘R on macOS made this one keystroke.
+        guard !isStreaming else { return }
         historyTask?.cancel()
         historyLoaded = false
         runHistoryLoad()
@@ -186,6 +190,7 @@ final class ChatViewModel: ObservableObject {
 
     private func runStream(text: String, assistantID: String, attachmentIDs: [String],
                            approval: (id: String, decision: String)? = nil) async {
+        runID = nil   // the id is per run; a stale one would stop the wrong run on HEAD
         var sawAnyText = false
         var askedBack = false
         // A mid-stream `.error` frame finishes the loop normally — it never

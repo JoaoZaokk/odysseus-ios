@@ -234,9 +234,6 @@ final class APIClient: @unchecked Sendable {
         catch { throw APIError.decoding(String(describing: error)) }
     }
 
-    /// Decodes either a bare `[T]` array or a single-key wrapper object whose
-    /// value is the array (e.g. `{ "memories": [...] }`). Many Odysseus list
-    /// endpoints use one or the other.
     /// Several routes report failure as HTTP 200 with `{"ok": false, "error": …}`
     /// or `{"success": false, …}` (email mark-read/archive/delete, accounts,
     /// cookbook install). `send(_:)` only throws on the status, so callers that
@@ -251,6 +248,9 @@ final class APIClient: @unchecked Sendable {
         return obj
     }
 
+    /// Decodes either a bare `[T]` array or a single-key wrapper object whose
+    /// value is the array (e.g. `{ "memories": [...] }`). Many Odysseus list
+    /// endpoints use one or the other.
     func decodeList<T: Decodable>(_ type: T.Type, _ data: Data) -> [T] {
         if let arr = try? JSONDecoder().decode([T].self, from: data) { return arr }
         if let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {

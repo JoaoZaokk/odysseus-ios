@@ -58,9 +58,13 @@ extension APIClient {
         struct Body: Encodable { let repo_id: String; let cmd: String }
         let quoted = tokens.map { "'" + $0.replacingOccurrences(of: "'", with: "'\\''") + "'" }
         let cmd = "python3 -m pip install --user --break-system-packages " + quoted.joined(separator: " ")
-        let taskID = pkg.name.map { $0.isLetter || $0.isNumber || $0 == "." || $0 == "-" ? $0 : "_" }
+        // The server's check is ASCII (`[A-Za-z0-9][A-Za-z0-9._\-…]*`): "ç" or "中"
+        // would be a 400 again, and the first character may not be `_`.
+        var taskID = String(pkg.name.map { ($0.isASCII && ($0.isLetter || $0.isNumber)) || $0 == "." || $0 == "-" ? $0 : "_" })
+        while let f = taskID.first, !(f.isASCII && (f.isLetter || f.isNumber)) { taskID.removeFirst() }
+        if taskID.isEmpty { taskID = "package" }
         let req = try jsonRequest("/api/model/serve", method: "POST",
-                                  body: Body(repo_id: String(taskID), cmd: cmd))
+                                  body: Body(repo_id: taskID, cmd: cmd))
         try expectOK(try await send(req), fallback: L("O servidor recusou a operação."))
     }
 

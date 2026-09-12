@@ -80,9 +80,10 @@ struct ChatScreen: View {
             // The one moment the app asks for a rating: a reply that just
             // streamed cleanly, gated by ReviewGate. A beat later, never over
             // the last streaming frame.
-            // `app` is the app-lifetime AppState and `vm` does not own it, so a
-            // strong capture cannot cycle; `[weak app]` here only earned the SDK 27
-            // "differs from implicitly-captured strong reference" warning.
+            // The closure already captures `self` (the view struct) strongly for
+            // `requestReview`, and with it `app`; the `[weak app]` only earned the
+            // SDK 27 "differs from implicitly-captured strong reference" warning.
+            // No cycle either way: `vm` does not own the app-lifetime AppState.
             vm.onReplyCompleted = {
                 guard ReviewGate().recordSuccessfulReply(sessionCount: app.sessionCount) else { return }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { requestReview() }

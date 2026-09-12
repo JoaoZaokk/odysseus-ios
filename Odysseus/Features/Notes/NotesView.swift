@@ -14,9 +14,10 @@ final class NotesViewModel: ObservableObject {
     private let api: APIClient
     init(api: APIClient) { self.api = api }
 
+    /// The server already returned the right list (`?archived=`); filtering
+    /// again locally could only hide rows whose `archived` field is absent.
     var visible: [Note] {
-        notes.filter { showArchived ? $0.archived : !$0.archived }
-            .sorted { ($0.pinned ? 1 : 0) > ($1.pinned ? 1 : 0) }
+        notes.sorted { ($0.pinned ? 1 : 0) > ($1.pinned ? 1 : 0) }
     }
 
     func load() async {

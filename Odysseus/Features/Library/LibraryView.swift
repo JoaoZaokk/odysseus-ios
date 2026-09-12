@@ -67,7 +67,7 @@ extension APIClient {
     func deletePersonal(_ filepath: String) async throws {
         // `.urlQueryAllowed` permits `&`, so a name containing one splits into extra
         // query parameters and the server deletes nothing while answering 200.
-        _ = try await send(request("/api/personal/file?filepath=\(encQuery(filepath))", method: "DELETE"), via: streamSession)
+        _ = try await send(request("/api/personal/file?filepath=\(encQuery(filepath))", method: "DELETE"))
     }
 }
 

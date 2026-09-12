@@ -410,7 +410,8 @@ extension APIClient {
 }
 
 struct MCPCreateResult: Decodable {
-    var connected: Bool = false
+    /// nil = the server did not say (older builds); only an explicit false is a failure.
+    var connected: Bool?
     var status: String?
     var toolCount: Int?
     var error: String?
@@ -428,7 +429,7 @@ struct MCPCreateResult: Decodable {
     }
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        connected = (try? c.decodeIfPresent(Bool.self, forKey: .connected)) ?? false
+        connected = try? c.decodeIfPresent(Bool.self, forKey: .connected)
         status = try? c.decodeIfPresent(String.self, forKey: .status)
         toolCount = try? c.decodeIfPresent(Int.self, forKey: .toolCount)
         error = try? c.decodeIfPresent(String.self, forKey: .error)

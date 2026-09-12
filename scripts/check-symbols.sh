@@ -26,7 +26,9 @@ for f in sorted(glob.glob(f'{src}/**/*.swift', recursive=True)):
         name = m.group(1); line = text.count('\n', 0, m.start()) + 1
         year = symbols.get(name)
         if year is None:
-            print(f'{f}:{line}: error: SF Symbol "{name}" is not in the availability table (typo?)'); bad += 1; continue
+            # The table is this Mac's, not the SDK's: a symbol newer than the host
+            # OS is unknown here, not wrong. Warn, do not fail.
+            print(f'{f}:{line}: warning: SF Symbol "{name}" is not in this Mac\'s availability table (typo, or newer than the host OS?)'); continue
         need_ios, need_mac = years[year]['iOS'], years[year]['macOS']
         if v(need_ios) > v(floor_ios) or v(need_mac) > v(floor_mac):
             print(f'{f}:{line}: error: SF Symbol "{name}" needs iOS {need_ios} / macOS {need_mac}; floor is iOS {floor_ios} / macOS {floor_mac}'); bad += 1

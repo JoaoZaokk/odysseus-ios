@@ -11,8 +11,8 @@ aviso. Catálogos: **43 × 833**.
 Pedido: "procura melhorias e atualizações; olha o servidor principal e o repositório
 original; testa no iOS 27 e no iOS 17". Só agentes opus/sonnet (fable proibido).
 
-**Primeiro fato, e o que muda tudo:** o servidor do dono (`odysseus.macrozao.online`,
-`/api/version` = 1.0.3, público) roda a árvore upstream entre **d8a2059 (23/07) e
+**Primeiro fato, e o que muda tudo:** o servidor do dono (`/api/version` = 1.0.3,
+público) roda a árvore upstream entre **d8a2059 (23/07) e
 28c333e (30/07)** — provado por md5 dos JS estáticos (também públicos) contra
 `git show <h>:static/js/<f>`. Está **132 commits atrás** do HEAD `9d5c031` (11/09). Todo
 achado foi classificado em *quebra contra o vivo* × *quebra quando o dono atualizar*.

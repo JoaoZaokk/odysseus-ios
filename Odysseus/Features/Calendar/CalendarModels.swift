@@ -54,7 +54,9 @@ struct CalendarEvent: Decodable, Identifiable, Hashable, Sendable {
         description = (try? c.decode(String.self, forKey: .description)) ?? ""
         calendarHref = try? c.decodeIfPresent(String.self, forKey: .calendarHref)
         color = try? c.decodeIfPresent(String.self, forKey: .color)
-        isRecurrence = (try? c.decodeIfPresent(Bool.self, forKey: .isRecurrence)) ?? false
+        // The compound uid is the safety net: without the flag, a `::` uid still
+        // means "one occurrence", and deleting it without `scope` kills the series.
+        isRecurrence = ((try? c.decodeIfPresent(Bool.self, forKey: .isRecurrence)) ?? false) || uid.contains("::")
         seriesUID = try? c.decodeIfPresent(String.self, forKey: .seriesUID)
     }
 

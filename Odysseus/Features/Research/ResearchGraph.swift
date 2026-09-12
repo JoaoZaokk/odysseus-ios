@@ -181,6 +181,9 @@ final class ResearchRunner: ObservableObject {
             // that simply finished left the timer ticking `elapsed` once a second
             // for as long as the pane stayed open.
             defer { self.stopTimer() }
+            // Once the stream is over the job is over: closing the card must not
+            // POST a cancel for a run that already finished.
+            defer { self.sessionID = nil }
             do {
                 let id = try await api.startResearch(query: query, maxRounds: maxRounds, category: category,
                                                      searchProvider: searchProvider, endpointID: endpointID,

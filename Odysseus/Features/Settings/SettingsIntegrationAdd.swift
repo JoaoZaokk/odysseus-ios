@@ -152,7 +152,7 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
                     mcpOutcome = L("Servidor adicionado. Ele precisa de autorização: %@", r.authURL ?? (r.status ?? ""))
                     return false
                 }
-                if !r.connected {
+                if r.connected == false {
                     mcpOutcome = L("Servidor adicionado, mas não conectou: %@", r.error ?? (r.status ?? "?"))
                     return false
                 }

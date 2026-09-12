@@ -60,13 +60,13 @@ extension APIClient {
     /// ("Email not found", "Mail operation failed") — read the body, or the row
     /// vanishes from the list while the message stays on the server.
     func emailArchive(_ uid: String) async throws {
-        try expectOK(try await send(request("/api/email/archive/\(encPath(uid))", method: "POST")), fallback: "Mail operation failed")
+        try expectOK(try await send(request("/api/email/archive/\(encPath(uid))", method: "POST")), fallback: L("O servidor recusou a operação."))
     }
 
     func emailDelete(_ uid: String) async throws {
         // The server declares this route as DELETE (unlike mark-read/archive, which are
         // POST) — sending POST here returned 405 and swipe-to-delete always failed.
-        try expectOK(try await send(request("/api/email/delete/\(encPath(uid))", method: "DELETE")), fallback: "Mail operation failed")
+        try expectOK(try await send(request("/api/email/delete/\(encPath(uid))", method: "DELETE")), fallback: L("O servidor recusou a operação."))
     }
 
     // MARK: - Accounts
