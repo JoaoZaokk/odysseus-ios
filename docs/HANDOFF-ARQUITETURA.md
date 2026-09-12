@@ -1,9 +1,11 @@
-# Handoff — fase de arquitetura, encerrada; rodadas 4 a 8 fechadas, 1.9 em revisão, 1.10 em main
+# Handoff — fase de arquitetura, encerrada; rodadas 4 a 8 fechadas, 1.9 no ar, 1.10 no App Store Connect
 
-Estado em 2026-09-11. **1.9 — iOS build 25, macOS build 19** no App Store Connect
-(iOS WAITING_FOR_REVIEW, macOS READY_FOR_REVIEW). **1.10 — iOS build 26, macOS build
-20** em `main` (`dd132f4`, PR #47 mergeado em 12/09, após revisão adversarial
-pré-merge): **324 testes** passando no
+Estado em 2026-09-12. **1.9 — iOS build 25, macOS build 19** aprovada e no ar nas duas
+plataformas (READY_FOR_DISTRIBUTION desde 10/09). **1.10 — iOS build 26, macOS build 20**
+em `main` (`dd132f4`, PR #47 mergeado em 12/09, após revisão adversarial pré-merge, mais
+`366e8c9`) e **no App Store Connect**: versão 1.10 criada nas duas plataformas
+(PREPARE_FOR_SUBMISSION), build anexado, "Novidades" e texto promocional nas 55
+localizações. **Falta só o Submit for Review, que é do dono.** **324 testes** passando no
 simulador **iOS 27** (Xcode 27) e no **iOS 17** (piso), iOS e macOS compilando sem
 aviso. Catálogos: **43 × 833**.
 
@@ -89,6 +91,41 @@ do SDK 27, não bug; `toolbarBackground` (#53) não tem aviso hoje. Lista comple
 Calendário (3), MCP (3), fallback genérico "O servidor recusou a operação.", Biblioteca
 (1), pesquisa (4: sem resultados, rodada, linha de status, "aviso"), `biometria/senha`.
 Sempre por script com assert de ausência + `plutil -lint` — `add_keys_110.py` é o molde.
+
+### Publicação da 1.10 (12/09)
+
+Mesmo caminho da 1.9, desta mesma máquina (macOS 27.0 `26A428`, Xcode 27.0 `27A266a` —
+build de RC, não beta; a Apple recusa builds de Xcode *beta*, não de macOS beta, e a 1.9
+já tinha subido daqui dois dias antes): `xcodebuild archive` (Release, assinatura
+automática pela chave de API via `-authenticationKeyPath/-authenticationKeyID/
+-authenticationKeyIssuerID`) → `-exportArchive` (`method: app-store-connect`,
+`destination: export`) → `xcrun altool --validate-app` → `--upload-app`. iOS `.ipa`
+(`-t ios`), macOS `.pkg` (`-t macos`); os dois **VALID** em minutos. Os `.xcarchive`
+ficaram em `~/Library/Developer/Xcode/Archives/2026-09-12/` para o Organizer.
+
+**O archive falhou na primeira tentativa, nas duas plataformas**, no script "Check SF
+Symbol floor": `sh: .../scripts/check-symbols.sh: Operation not permitted`. Causa:
+`ENABLE_USER_SCRIPT_SANDBOXING: YES` (no `project.yml` desde junho) gera um perfil que
+**nega toda leitura sob `SRCROOT`** que não seja input declarado — e um lint que varre
+todas as fontes não tem como declarar os inputs um a um. Correção em `366e8c9`:
+sandbox desligado no projeto (não existe outra script phase). Lição: testar o **archive
+Release**, não só build/test Debug, antes de declarar uma rodada pronta para subir.
+
+No App Store Connect, por API (chave e scripts locais, ver `CLAUDE.md`): versão 1.10
+criada nas duas plataformas com `releaseType: AFTER_APPROVAL` (igual ao que a 1.9 tinha
+de fato). A criação copia as localizações da versão anterior, **mas com `whatsNew` e
+`promotionalText` vazios** — o promocional foi copiado de volta da 1.9 (55/55) e o
+"Novidades" da 1.10 foi escrito em pt-BR/en-US e traduzido para os outros 28 locales por
+dois workflows (tradutor + revisor opus por locale, terminologia conferida contra o
+catálogo do app e contra o texto da 1.9 do mesmo locale). Varredura final: 13 itens em
+todos, zero campo obrigatório vazio, zero menção a serviço de IA de terceiros.
+
+Dois pontos que ficaram para depois: (1) o Mac continua com 25 locales contra 30 do
+iPhone (faltam fr-FR, fi, he, sv, th — vem de antes da 1.9); (2) os títulos de seção
+**"Notes" e "Library" são chaves em inglês e ficam sem tradução em 28 e 27 dos 43
+catálogos** (pt-BR incluído — o brasileiro vê "Notes" na barra lateral). O "Novidades"
+usa a palavra traduzida na maioria dos locales e o rótulo em inglês no árabe; alinhar
+isso é trabalho de catálogo, não de ficha.
 
 ## Rodada 7 — a Rückfrage que não aparecia
 
