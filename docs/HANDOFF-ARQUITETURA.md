@@ -117,8 +117,14 @@ de fato). A criação copia as localizações da versão anterior, **mas com `wh
 `promotionalText` vazios** — o promocional foi copiado de volta da 1.9 (55/55) e o
 "Novidades" da 1.10 foi escrito em pt-BR/en-US e traduzido para os outros 28 locales por
 dois workflows (tradutor + revisor opus por locale, terminologia conferida contra o
-catálogo do app e contra o texto da 1.9 do mesmo locale). Varredura final: 13 itens em
-todos, zero campo obrigatório vazio, zero menção a serviço de IA de terceiros.
+catálogo do app e contra o texto da 1.9 do mesmo locale). **A primeira versão foi
+rejeitada pelo dono**: tinha a linha do Mac (⌘N/⌘R) na ficha do iPhone e frases
+genéricas. Reescrita com "agora X; antes Y" concreto em cada item, e o texto agora é
+**por plataforma**: 12 itens comuns + 1 só iOS (botão de auditoria da Memória no iOS 17)
+na ficha do iPhone; 12 comuns + 2 só Mac (⌘N/⌘R; clique direito e folha "Nova conta")
+na do Mac. Varredura final: 13 linhas em todos os 30 locales iOS, 14 nos 25 do Mac,
+nenhum ⌘ no iOS, nenhum "iOS 17" no Mac, zero campo obrigatório vazio, zero menção a
+serviço de IA de terceiros.
 
 Dois pontos que ficaram para depois: (1) o Mac continua com 25 locales contra 30 do
 iPhone (faltam fr-FR, fi, he, sv, th — vem de antes da 1.9); (2) os títulos de seção
