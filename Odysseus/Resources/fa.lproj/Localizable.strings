@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "پاسخ دیگر…";
 "Você recusou a ação, e o agente parou aqui." = "شما این کار را رد کردید و عامل همین‌جا متوقف شد.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "این رویداد تکرار می‌شود.";
+"Apagar só esta ocorrência" = "فقط همین مورد حذف شود";
+"Apagar a série inteira" = "کل مجموعه حذف شود";
+"Servidor adicionado, mas não conectou: %@" = "سرور اضافه شد، اما متصل نشد: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "سرور اضافه شد. به مجوز نیاز دارد: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "دستور و آرگومان‌ها را در فهرست سرورهای MCP بررسی کنید؛ سرور قبلاً ذخیره شده است.";
+"O servidor recusou a operação." = "سرور عملیات را رد کرد.";
+"biometria/senha" = "بیومتریک/رمز";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "سرور فایل را رد کرد (متن قابل استخراج ندارد یا از حد مجاز بزرگ‌تر است).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "نتیجه‌ای نیست — عبارت را تغییر دهید یا موتور جستجو را عوض کنید.";
+"Rodada %d: %@ (%d fontes)" = "دور %d: %@ (%d منبع)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  دور %d  ·  %d منبع  ·  %@";
+"aviso" = "هشدار";

@@ -30,6 +30,7 @@ struct MainView: View {
         .background { shortcutKeys }
         #endif
         .tint(theme.accent)
+        .onReceive(NotificationCenter.default.publisher(for: .odysseusNewChat)) { _ in workspace.setPrimary(.newChat) }
         .task { await store.load() }
         // On iPhone (compact) the split view shows ONE column at a time. A sidebar
         // tap changes the workspace, so move the visible compact column to the
@@ -92,7 +93,10 @@ struct MainView: View {
     }
     @ViewBuilder private var shortcutKeys: some View {
         Group {
+            #if !os(macOS)
+            // On macOS ⌘N is the File › Nova conversa menu command (AppCommands.swift).
             Button("") { workspace.setPrimary(.newChat) }.keyboardShortcut(OdyShortcuts.newChat)
+            #endif
             Button("") { showSettings.toggle() }.keyboardShortcut(OdyShortcuts.settings)
             Button("") { workspace.openDeepSearch() }.keyboardShortcut(OdyShortcuts.deepSearch)
             Button("") { step(1) }.keyboardShortcut(OdyShortcuts.nextChat)

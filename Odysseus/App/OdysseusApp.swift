@@ -35,6 +35,18 @@ struct OdysseusApp: App {
         #if os(macOS)
         .defaultSize(width: 1180, height: 760)
         .windowResizability(.contentMinSize)
+        .commands {
+            // The app is one window; WindowGroup's default "New Window" took ⌘N
+            // away from "new conversation" and opened a second, empty window.
+            CommandGroup(replacing: .newItem) {
+                Button("Nova conversa") { NotificationCenter.default.post(name: .odysseusNewChat, object: nil) }
+                    .keyboardShortcut("n", modifiers: .command)
+            }
+            CommandGroup(after: .toolbar) {
+                Button("Atualizar") { NotificationCenter.default.post(name: .odysseusRefresh, object: nil) }
+                    .keyboardShortcut("r", modifiers: .command)
+            }
+        }
         #else
         .backgroundTask(.appRefresh(TaskNotificationPoller.refreshTaskID)) {
             await app.backgroundRefreshTaskNotifications()

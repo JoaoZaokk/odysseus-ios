@@ -859,3 +859,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Altra risposta…";
 "Você recusou a ação, e o agente parou aqui." = "Hai rifiutato l'azione e l'agente si è fermato qui.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Questo evento si ripete.";
+"Apagar só esta ocorrência" = "Elimina solo questa occorrenza";
+"Apagar a série inteira" = "Elimina l'intera serie";
+"Servidor adicionado, mas não conectou: %@" = "Server aggiunto, ma non si è connesso: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Server aggiunto. Richiede un'autorizzazione: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Controlla il comando e gli argomenti nell'elenco dei server MCP; il server è già stato salvato.";
+"O servidor recusou a operação." = "Il server ha rifiutato l'operazione.";
+"biometria/senha" = "biometria/codice";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Il server ha rifiutato il file (nessun testo estraibile o oltre il limite).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Nessun risultato — prova a riformulare o a cambiare motore di ricerca.";
+"Rodada %d: %@ (%d fontes)" = "Round %d: %@ (%d fonti)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  round %d  ·  %d fonti  ·  %@";
+"aviso" = "avviso";

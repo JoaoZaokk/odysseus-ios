@@ -95,14 +95,14 @@ final class RequestStackTests: XCTestCase {
     func testA401CallsBackAndThrowsNotAuthenticated() async {
         StubTransport.route("/api/memory", .json(#"{"detail": "no session"}"#, status: 401))
         let api = makeClient()
-        var loggedOut = false
-        api.onUnauthenticated = { loggedOut = true }
+        let loggedOut = Flag()
+        api.onUnauthenticated = { loggedOut.set() }
 
         do {
             _ = try await api.memories()
             XCTFail("401 must throw")
         } catch APIError.notAuthenticated {
-            XCTAssertTrue(loggedOut, "AppState is the only owner of session state — it must be told")
+            XCTAssertTrue(loggedOut.value, "AppState is the only owner of session state — it must be told")
         } catch {
             XCTFail("expected .notAuthenticated, got \(error)")
         }
@@ -112,8 +112,8 @@ final class RequestStackTests: XCTestCase {
         // Folding 403 into the 401 branch would log a non-admin out of the app.
         StubTransport.route("/api/memory", .json(#"{"detail": "admin only"}"#, status: 403))
         let api = makeClient()
-        var loggedOut = false
-        api.onUnauthenticated = { loggedOut = true }
+        let loggedOut = Flag()
+        api.onUnauthenticated = { loggedOut.set() }
 
         do {
             _ = try await api.memories()
@@ -121,7 +121,7 @@ final class RequestStackTests: XCTestCase {
         } catch APIError.http(let code, let detail) {
             XCTAssertEqual(code, 403)
             XCTAssertEqual(detail, "admin only")
-            XCTAssertFalse(loggedOut, "403 is 'you may not', not 'you are not'")
+            XCTAssertFalse(loggedOut.value, "403 is 'you may not', not 'you are not'")
         } catch {
             XCTFail("expected .http(403, _), got \(error)")
         }
@@ -199,4 +199,13 @@ final class RequestStackTests: XCTestCase {
         XCTAssertEqual(obj["text"] as? String, "lembrar disso")
         XCTAssertEqual(obj["category"] as? String, "fact")
     }
+}
+
+/// A settable bool a `@Sendable` closure may flip — a captured `var` is a
+/// Swift 6 error and already a warning under the SDK 27 toolchain.
+final class Flag: @unchecked Sendable {
+    private let lock = NSLock()
+    private var raw = false
+    var value: Bool { lock.lock(); defer { lock.unlock() }; return raw }
+    func set() { lock.lock(); raw = true; lock.unlock() }
 }

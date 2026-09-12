@@ -22,6 +22,11 @@ struct ResearchEvent: Decodable {
     var final: Bool?
     var detail: String?
     var message: String?
+    /// The closing frame of a failed run: `{status: "error", final: true, error: "…"}`
+    /// (routes/research/research_routes.py) — the only place the reason travels.
+    var error: String?
+
+    var failureReason: String? { error ?? message ?? detail }
 }
 
 /// An entry from `GET /api/research/active` and `…/library`.
@@ -84,6 +89,11 @@ extension APIClient {
         req.httpBody = try JSONSerialization.data(withJSONObject: body)
         let data = try await send(req)
         return try decode(ResearchStart.self, data).session_id
+    }
+
+    /// `POST /api/research/cancel/{id}` → `{cancelled: Bool}`. Best-effort.
+    func cancelResearch(_ id: String) async {
+        _ = try? await send(request("/api/research/cancel/\(encPath(id))", method: "POST"))
     }
 
     /// Running jobs. `GET /api/research/active`.

@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "باشقا جاۋاب…";
 "Você recusou a ação, e o agente parou aqui." = "سىز بۇ مەشغۇلاتنى رەت قىلدىڭىز، ئاگېنت مۇشۇ يەردە توختىدى.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "بۇ ھادىسە تەكرارلىنىدۇ.";
+"Apagar só esta ocorrência" = "پەقەت مۇشۇ قېتىمنى ئۆچۈرۈش";
+"Apagar a série inteira" = "پۈتۈن يۈرۈشلۈكنى ئۆچۈرۈش";
+"Servidor adicionado, mas não conectou: %@" = "مۇلازىمېتىر قوشۇلدى، ئەمما ئۇلانمىدى: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "مۇلازىمېتىر قوشۇلدى. ھوقۇق بېرىش كېرەك: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "MCP مۇلازىمېتىر تىزىملىكىدە بۇيرۇق ۋە پارامېتىرلارنى تەكشۈرۈڭ؛ مۇلازىمېتىر ساقلاندى.";
+"O servidor recusou a operação." = "مۇلازىمېتىر مەشغۇلاتنى رەت قىلدى.";
+"biometria/senha" = "بىئومېترىك/پارول";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "مۇلازىمېتىر ھۆججەتنى رەت قىلدى (ئاجرىتىلىدىغان تېكىست يوق ياكى چەكتىن ئېشىپ كەتكەن).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "نەتىجە يوق — قايتا ئىپادىلەڭ ياكى ئىزدەش ماتورىنى ئالماشتۇرۇڭ.";
+"Rodada %d: %@ (%d fontes)" = "%d-ئايلانما: %@ (%d مەنبە)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  %d-ئايلانما  ·  %d مەنبە  ·  %@";
+"aviso" = "ئاگاھلاندۇرۇش";

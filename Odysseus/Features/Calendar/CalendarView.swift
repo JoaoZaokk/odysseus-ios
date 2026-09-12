@@ -51,8 +51,16 @@ final class CalendarViewModel: ObservableObject {
         let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !t.isEmpty else { return }
         parsing = true; error = nil; defer { parsing = false }
-        do { try await api.quickParseEvent(t); await load() }
-        catch { self.error = msg(error) }
+        guard let href = defaultCalendarHref else { error = "Nenhum calendário disponível"; return }
+        do {
+            let ev = try await api.quickParseEvent(t)
+            let payload = EventPayload(summary: ev.summary.isEmpty ? t : ev.summary,
+                                       dtstart: ev.dtstart, dtend: ev.dtend ?? ev.dtstart,
+                                       all_day: ev.allDay, calendar_href: href,
+                                       location: ev.location, description: ev.description)
+            try await api.createEvent(payload)
+            await load()
+        } catch { self.error = msg(error) }
     }
 
     func create(summary: String, start: Date, end: Date, allDay: Bool) async {
@@ -70,9 +78,14 @@ final class CalendarViewModel: ObservableObject {
         catch { self.error = msg(error) }
     }
 
-    func delete(_ ev: CalendarEvent) async {
-        do { try await api.deleteEvent(ev.uid); events.removeAll { $0.uid == ev.uid } }
-        catch { self.error = msg(error) }
+    /// A recurring occurrence is deleted alone only when asked; deleting the
+    /// series drops every expanded row, so the list is reloaded in that case.
+    func delete(_ ev: CalendarEvent, occurrenceOnly: Bool = false) async {
+        do {
+            try await api.deleteEvent(ev.uid, occurrenceOnly: occurrenceOnly)
+            if ev.isRecurrence && !occurrenceOnly { await load() }
+            else { events.removeAll { $0.uid == ev.uid } }
+        } catch { self.error = msg(error) }
     }
 
     private func msg(_ e: Error) -> String {
@@ -85,6 +98,7 @@ struct CalendarView: View {
     @Environment(\.theme) private var theme
     @State private var quickText = ""
     @State private var showCreate = false
+    @State private var recurringDelete: CalendarEvent?
     @FocusState private var quickFocused: Bool
 
     init(app: AppState) { _vm = StateObject(wrappedValue: CalendarViewModel(api: app.api)) }
@@ -102,7 +116,7 @@ struct CalendarView: View {
             Button { showCreate = true } label: { Image(systemName: "plus") }
         }
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
         .sheet(isPresented: $showCreate) {
             EventEditor { summary, start, end, allDay in
                 Task { await vm.create(summary: summary, start: start, end: end, allDay: allDay) }
@@ -197,9 +211,24 @@ struct CalendarView: View {
         }
         .padding(.vertical, 4)
         .swipeActions(edge: .trailing) {
-            Button(role: .destructive) { Task { await vm.delete(ev) } } label: {
+            Button(role: .destructive) {
+                if ev.isRecurrence { recurringDelete = ev } else { Task { await vm.delete(ev) } }
+            } label: {
                 Label("Apagar", systemImage: "trash")
             }
+        }
+        .contextMenu {
+            Button(role: .destructive) {
+                if ev.isRecurrence { recurringDelete = ev } else { Task { await vm.delete(ev) } }
+            } label: { Label("Apagar", systemImage: "trash") }
+        }
+        .confirmationDialog("Este evento se repete.",
+                            isPresented: Binding(get: { recurringDelete?.uid == ev.uid },
+                                                 set: { if !$0 { recurringDelete = nil } }),
+                            titleVisibility: .visible) {
+            Button("Apagar só esta ocorrência", role: .destructive) { Task { await vm.delete(ev, occurrenceOnly: true) } }
+            Button("Apagar a série inteira", role: .destructive) { Task { await vm.delete(ev) } }
+            Button("Cancelar", role: .cancel) {}
         }
     }
 

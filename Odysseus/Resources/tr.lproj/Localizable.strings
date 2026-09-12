@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Başka bir yanıt…";
 "Você recusou a ação, e o agente parou aqui." = "İşlemi reddettiniz ve ajan burada durdu.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Bu etkinlik tekrarlanıyor.";
+"Apagar só esta ocorrência" = "Yalnızca bu tekrarı sil";
+"Apagar a série inteira" = "Tüm seriyi sil";
+"Servidor adicionado, mas não conectou: %@" = "Sunucu eklendi ama bağlanamadı: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Sunucu eklendi. Yetkilendirme gerekiyor: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "MCP sunucu listesinde komutu ve argümanları kontrol edin; sunucu zaten kaydedildi.";
+"O servidor recusou a operação." = "Sunucu işlemi reddetti.";
+"biometria/senha" = "biyometri/kod";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Sunucu dosyayı reddetti (çıkarılabilir metin yok veya sınırın üzerinde).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Sonuç yok — yeniden ifade edin veya arama motorunu değiştirin.";
+"Rodada %d: %@ (%d fontes)" = "Tur %d: %@ (%d kaynak)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  tur %d  ·  %d kaynak  ·  %@";
+"aviso" = "uyarı";

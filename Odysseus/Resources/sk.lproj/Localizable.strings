@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Iná odpoveď…";
 "Você recusou a ação, e o agente parou aqui." = "Odmietli ste akciu a agent sa tu zastavil.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Táto udalosť sa opakuje.";
+"Apagar só esta ocorrência" = "Odstrániť len tento výskyt";
+"Apagar a série inteira" = "Odstrániť celú sériu";
+"Servidor adicionado, mas não conectou: %@" = "Server pridaný, ale nepripojil sa: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Server pridaný. Vyžaduje autorizáciu: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Skontrolujte príkaz a argumenty v zozname MCP serverov; server už bol uložený.";
+"O servidor recusou a operação." = "Server operáciu odmietol.";
+"biometria/senha" = "biometria/kód";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Server súbor odmietol (žiadny extrahovateľný text alebo nad limitom).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Žiadne výsledky — preformulujte dopyt alebo zmeňte vyhľadávač.";
+"Rodada %d: %@ (%d fontes)" = "Kolo %d: %@ (%d zdrojov)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  kolo %d  ·  %d zdrojov  ·  %@";
+"aviso" = "varovanie";

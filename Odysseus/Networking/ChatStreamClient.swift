@@ -41,6 +41,11 @@ final class ChatStreamClient: @unchecked Sendable {
                         throw APIError.http(http.statusCode, Self.extractError(body) ?? "Falha ao iniciar o stream")
                     }
 
+                    if let http = resp as? HTTPURLResponse,
+                       let rid = http.value(forHTTPHeaderField: "X-Odysseus-Run-Id"), !rid.isEmpty {
+                        continuation.yield(.runStarted(rid))
+                    }
+
                     var sawError = false
                     for try await rawLine in bytes.lines {
                         if Task.isCancelled { break }
@@ -148,18 +153,27 @@ final class ChatStreamClient: @unchecked Sendable {
         return req
     }
 
-    /// Pulls `message` out of an error body. `range(of:options:.regularExpression)`
-    /// has no capture groups — it returns the whole match — so this needs a real
-    /// `NSRegularExpression` to avoid showing the user raw JSON.
+    /// Pulls the human message out of an HTTP error body. FastAPI's own errors
+    /// are `{"detail": "…"}` (a string, or the 422 array of `{loc, msg}`); the
+    /// server's four custom exceptions are `{"error": …, "message": "…"}`; a
+    /// stream error frame is `{"error": "…"}`. 1.9 only looked for `message`,
+    /// so the most common live error — "No model selected for this chat…" —
+    /// reached the user as raw JSON.
     static func extractError(_ body: String) -> String? {
-        // `(?:[^"\\]|\\.)*` so an escaped quote inside the message does not end the
-        // match — `[^"]+` stopped at the backslash, which is why the unescaping
-        // below never had anything to do.
-        guard let re = try? NSRegularExpression(pattern: "\"message\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)\""),
-              let m = re.firstMatch(in: body, range: NSRange(body.startIndex..., in: body)),
-              let r = Range(m.range(at: 1), in: body) else {
-            return body.count < 200 ? body : nil
+        if let data = body.data(using: .utf8),
+           let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            if let d = obj["detail"] as? String, !d.isEmpty { return d }
+            if let arr = obj["detail"] as? [[String: Any]] {
+                let msgs = arr.compactMap { $0["msg"] as? String }
+                if !msgs.isEmpty { return msgs.joined(separator: "; ") }
+            }
+            if let m = obj["message"] as? String, !m.isEmpty { return m }
+            if let e = obj["error"] as? String, !e.isEmpty { return e }
+            if let e = obj["error"] as? [String: Any], let m = e["message"] as? String, !m.isEmpty { return m }
         }
-        return String(body[r]).replacingOccurrences(of: "\\\"", with: "\"")
+        // Not JSON (a proxy's HTML, a truncated body): show it only if it is short
+        // enough to be a sentence rather than a page.
+        let trimmed = body.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.count < 200 && !trimmed.hasPrefix("{") && !trimmed.hasPrefix("<") ? trimmed : nil
     }
 }

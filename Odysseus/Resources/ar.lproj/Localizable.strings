@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "إجابة أخرى…";
 "Você recusou a ação, e o agente parou aqui." = "تم رفض الإجراء، فتوقف الوكيل هنا.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "هذا الحدث يتكرر.";
+"Apagar só esta ocorrência" = "حذف هذا التكرار فقط";
+"Apagar a série inteira" = "حذف السلسلة كاملة";
+"Servidor adicionado, mas não conectou: %@" = "تمت إضافة الخادم لكنه لم يتصل: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "تمت إضافة الخادم. يحتاج إلى تفويض: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "راجع الأمر والوسائط في قائمة خوادم MCP؛ تم حفظ الخادم بالفعل.";
+"O servidor recusou a operação." = "رفض الخادم العملية.";
+"biometria/senha" = "البصمة/رمز الدخول";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "رفض الخادم الملف (لا يوجد نص قابل للاستخراج أو تجاوز الحد).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "لا نتائج — أعد الصياغة أو غيّر محرك البحث.";
+"Rodada %d: %@ (%d fontes)" = "الجولة %d: %@ (%d مصادر)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  الجولة %d  ·  %d مصادر  ·  %@";
+"aviso" = "تحذير";

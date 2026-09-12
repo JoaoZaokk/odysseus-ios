@@ -59,6 +59,9 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
     /// The one-time reveal of an agent token. The sheet must not dismiss
     /// while this is on screen — it is the only copy there will ever be.
     @Published var createdToken: String?
+    /// Set when an MCP server was saved but did not connect (or needs OAuth):
+    /// the sheet stays open showing this instead of closing as a success.
+    @Published var mcpOutcome: String?
     /// Agent tokens: what the agent may do, from the server's scope list.
     /// `chat` alone was the 1.9 default; now it is only the starting point.
     @Published var scopes: Set<String> = ["chat"]
@@ -143,8 +146,16 @@ enum IntegrationKind: String, CaseIterable, Identifiable {
                     self.error = "Env precisa ser um objeto JSON válido, ex.: {\"KEY\": \"value\"}"
                     return false
                 }
-                try await api.createMCPServer(name: name, transport: "stdio",
-                                              command: command, args: argsText, env: envText)
+                let r = try await api.createMCPServer(name: name, transport: "stdio",
+                                                      command: command, args: argsText, env: envText)
+                if r.needsOAuth || r.needsAuth {
+                    mcpOutcome = L("Servidor adicionado. Ele precisa de autorização: %@", r.authURL ?? (r.status ?? ""))
+                    return false
+                }
+                if !r.connected {
+                    mcpOutcome = L("Servidor adicionado, mas não conectou: %@", r.error ?? (r.status ?? "?"))
+                    return false
+                }
             }
             return true
         } catch {
@@ -174,6 +185,12 @@ struct AddIntegrationView: View {
                 VStack(alignment: .leading, spacing: 14) {
                     if let token = vm.createdToken {
                         tokenReveal(token)
+                    } else if let outcome = vm.mcpOutcome {
+                        Text(outcome).font(.ody(size: 12)).foregroundStyle(theme.danger)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Text("Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo.")
+                            .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                            .fixedSize(horizontal: false, vertical: true)
                     } else {
                         if !isEditing {
                             SettingsUI.menuRow("Tipo", value: vm.kind.label,
@@ -195,12 +212,12 @@ struct AddIntegrationView: View {
             .navigationTitle(isEditing ? "Editar integração" : "Adicionar integração")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                if vm.createdToken == nil {
+                if vm.createdToken == nil && vm.mcpOutcome == nil {
                     ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     if vm.saving { ProgressView().controlSize(.small) }
-                    else if vm.createdToken != nil { Button("Concluído") { onDone(); dismiss() } }
+                    else if vm.createdToken != nil || vm.mcpOutcome != nil { Button("Concluído") { onDone(); dismiss() } }
                     else {
                         Button(isAgent ? "Criar token" : "Salvar") {
                             Task { if await vm.save() { onDone(); dismiss() } }

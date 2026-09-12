@@ -5,7 +5,11 @@ final class NotesViewModel: ObservableObject {
     @Published var notes: [Note] = []
     @Published var loading = false
     @Published var error: String?
-    @Published var showArchived = false
+    /// Two server-side lists, not one filtered locally: `GET /api/notes` never
+    /// contains an archived note, so flipping the switch has to reload.
+    @Published var showArchived = false {
+        didSet { if oldValue != showArchived { Task { await load() } } }
+    }
 
     private let api: APIClient
     init(api: APIClient) { self.api = api }
@@ -17,7 +21,7 @@ final class NotesViewModel: ObservableObject {
 
     func load() async {
         loading = true; defer { loading = false }
-        do { notes = try await api.notes(); error = nil }
+        do { notes = try await api.notes(archived: showArchived); error = nil }
         catch let e where e.isCancellation {}
         catch { self.error = msg(error) }
     }
@@ -70,7 +74,7 @@ struct NotesView: View {
             Button { editing = Note() } label: { Image(systemName: "plus") }
         }
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
         .sheet(item: $editing) { note in
             NoteEditor(note: note) { title, content in
                 Task { await vm.save(id: note.id.isEmpty ? nil : note.id, title: title, content: content) }

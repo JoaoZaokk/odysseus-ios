@@ -126,7 +126,7 @@ struct TasksView: View {
         }
         .screenChrome(title: "Tasks")
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
     }
 
     @ViewBuilder

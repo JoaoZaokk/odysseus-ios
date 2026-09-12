@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Cita atbilde…";
 "Você recusou a ação, e o agente parou aqui." = "Darbība tika noraidīta, un aģents apstājās šeit.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Šis notikums atkārtojas.";
+"Apagar só esta ocorrência" = "Dzēst tikai šo reizi";
+"Apagar a série inteira" = "Dzēst visu sēriju";
+"Servidor adicionado, mas não conectou: %@" = "Serveris pievienots, bet nesavienojās: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Serveris pievienots. Nepieciešama autorizācija: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Pārbaudiet komandu un argumentus MCP serveru sarakstā; serveris jau ir saglabāts.";
+"O servidor recusou a operação." = "Serveris noraidīja darbību.";
+"biometria/senha" = "biometrija/kods";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Serveris noraidīja failu (nav izgūstama teksta vai pārsniegts limits).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Nav rezultātu — pārformulējiet vai mainiet meklētājprogrammu.";
+"Rodada %d: %@ (%d fontes)" = "%d. kārta: %@ (%d avoti)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  %d. kārta  ·  %d avoti  ·  %@";
+"aviso" = "brīdinājums";

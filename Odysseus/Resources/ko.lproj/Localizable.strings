@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "다른 답변…";
 "Você recusou a ação, e o agente parou aqui." = "작업을 거부하여 에이전트가 여기서 중지되었습니다.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "이 이벤트는 반복됩니다.";
+"Apagar só esta ocorrência" = "이번 항목만 삭제";
+"Apagar a série inteira" = "전체 시리즈 삭제";
+"Servidor adicionado, mas não conectou: %@" = "서버를 추가했지만 연결되지 않았습니다: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "서버를 추가했습니다. 인증이 필요합니다: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "MCP 서버 목록에서 명령과 인수를 확인하세요. 서버는 이미 저장되었습니다.";
+"O servidor recusou a operação." = "서버가 작업을 거부했습니다.";
+"biometria/senha" = "생체 인증/암호";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "서버가 파일을 거부했습니다(추출할 텍스트가 없거나 제한을 초과함).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "결과 없음 — 다시 표현하거나 검색 엔진을 바꿔 보세요.";
+"Rodada %d: %@ (%d fontes)" = "라운드 %d: %@ (출처 %d개)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  라운드 %d  ·  출처 %d개  ·  %@";
+"aviso" = "경고";

@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Aner Äntwert…";
 "Você recusou a ação, e o agente parou aqui." = "Du hues d'Aktioun refuséiert, an den Agent huet hei ugehalen.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Dësen Termin widderhëlt sech.";
+"Apagar só esta ocorrência" = "Nëmmen dës Kéier läschen";
+"Apagar a série inteira" = "Ganz Serie läschen";
+"Servidor adicionado, mas não conectou: %@" = "Server dobäigesat, awer keng Verbindung: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Server dobäigesat. Hie brauch eng Autorisatioun: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Kontrolléier de Befeel an d'Argumenter an der Lëscht vun den MCP-Serveren; de Server ass scho gespäichert.";
+"O servidor recusou a operação." = "De Server huet d'Operatioun refuséiert.";
+"biometria/senha" = "Biometrie/Code";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "De Server huet d'Datei refuséiert (keen extrahéierbaren Text oder iwwer der Limit).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Keng Resultater — anescht formuléieren oder de Sichmotor wiesselen.";
+"Rodada %d: %@ (%d fontes)" = "Ronn %d: %@ (%d Quellen)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  Ronn %d  ·  %d Quellen  ·  %@";
+"aviso" = "Warnung";

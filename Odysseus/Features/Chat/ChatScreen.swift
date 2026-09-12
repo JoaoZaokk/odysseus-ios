@@ -80,8 +80,11 @@ struct ChatScreen: View {
             // The one moment the app asks for a rating: a reply that just
             // streamed cleanly, gated by ReviewGate. A beat later, never over
             // the last streaming frame.
-            vm.onReplyCompleted = { [weak app] in
-                guard let app, ReviewGate().recordSuccessfulReply(sessionCount: app.sessionCount) else { return }
+            // `app` is the app-lifetime AppState and `vm` does not own it, so a
+            // strong capture cannot cycle; `[weak app]` here only earned the SDK 27
+            // "differs from implicitly-captured strong reference" warning.
+            vm.onReplyCompleted = {
+                guard ReviewGate().recordSuccessfulReply(sessionCount: app.sessionCount) else { return }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { requestReview() }
             }
             if let p = autoSend, !didAutoSend, !p.isEmpty {
@@ -145,7 +148,7 @@ struct ChatScreen: View {
                 Color.clear.frame(height: 1).id("bottom")
             }
             .scrollDismissesKeyboard(.interactively)
-            .refreshable { await vm.reloadHistory() }
+            .odyRefreshable { await vm.reloadHistory() }
             .onChange(of: vm.messages.last?.content) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.messages.count) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.toolStatus) { _, _ in scrollToBottom(proxy) }

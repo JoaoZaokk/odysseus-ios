@@ -12,6 +12,9 @@ struct ResearchRun: Equatable {
     var query: String
     var rounds: [ResearchRound] = []
     var status: String = "planning strategy"   // planning / searching / comparison / warning
+    /// Why a failed run failed — the closing frame's `error` — shown instead
+    /// of the generic "no results" line when the server said something.
+    var failureReason: String?
 
     /// Derived, not stored. It used to be a second `Bool` next to `status`, which
     /// let the struct hold "error but not failed" and "failed but not error" —
@@ -130,7 +133,7 @@ struct ResearchActiveCard: View {
                                    center: .bottom, startRadius: 2, endRadius: 260)
                 )
 
-            Text("\(run.error ? "warning" : run.status)  ·  round \(run.roundCount)  ·  \(run.sourcesTotal) sources  ·  \(elapsed)")
+            Text(L("%@  ·  rodada %d  ·  %d fontes  ·  %@", run.error ? L("aviso") : run.status, run.roundCount, run.sourcesTotal, elapsed))
                 .font(.ody(size: 11))
                 .foregroundStyle(run.error ? theme.danger : theme.accent)
         }
@@ -143,9 +146,9 @@ struct ResearchActiveCard: View {
     }
 
     private var statusTitle: String {
-        if run.error { return "no results — tente reformular ou trocar o motor de busca." }
-        if run.rounds.isEmpty { return "Planejando estratégia…" }
-        return "Round \(run.roundCount): \(run.status.capitalized) (\(run.sourcesTotal) sources)"
+        if run.error { return run.failureReason ?? L("Sem resultados — tente reformular ou trocar o motor de busca.") }
+        if run.rounds.isEmpty { return L("Planejando estratégia…") }
+        return L("Rodada %d: %@ (%d fontes)", run.roundCount, run.status.capitalized, run.sourcesTotal)
     }
 }
 
@@ -158,6 +161,9 @@ final class ResearchRunner: ObservableObject {
     private var task: Task<Void, Never>?
     private var timer: Task<Void, Never>?
     private var start = Date()
+    private var api: APIClient?
+    /// The server job id, kept so closing the pane can cancel it.
+    private var sessionID: String?
 
     // MARK: - Live run (real /api/research/* stream)
 
@@ -165,6 +171,7 @@ final class ResearchRunner: ObservableObject {
     func start(api: APIClient, query: String, maxRounds: Int?, category: String?,
                searchProvider: String? = nil, endpointID: String? = nil, model: String? = nil) {
         cancel()
+        self.api = api
         start = Date()
         run = ResearchRun(query: query, status: "planning strategy")
         startTimer()
@@ -178,6 +185,7 @@ final class ResearchRunner: ObservableObject {
                 let id = try await api.startResearch(query: query, maxRounds: maxRounds, category: category,
                                                      searchProvider: searchProvider, endpointID: endpointID,
                                                      model: model)
+                self.sessionID = id
                 var lastPhase = "planning"
                 var lastTotalSources = 0
                 for try await evt in api.researchStream(id) {
@@ -212,7 +220,9 @@ final class ResearchRunner: ObservableObject {
     private func apply(_ evt: ResearchEvent, lastPhase: inout String, lastTotalSources: inout Int) {
         guard run != nil else { return }
         if evt.status == "error" || evt.phase == "error" || evt.status == "cancelled" || evt.status == "not_found" {
-            run?.status = "error"; return
+            run?.status = "error"
+            if let why = evt.failureReason, !why.isEmpty { run?.failureReason = why }
+            return
         }
         if let raw = evt.phase {
             run?.status = Self.label(raw)
@@ -250,7 +260,13 @@ final class ResearchRunner: ObservableObject {
 
     func close() { cancel(); run = nil }
 
-    private func cancel() { task?.cancel(); task = nil; stopTimer() }
+    /// Closing the pane cancels the server job as well: the run kept going
+    /// (and kept the search engine busy) after the graph was gone.
+    private func cancel() {
+        task?.cancel(); task = nil; stopTimer()
+        if let api, let id = sessionID { Task { await api.cancelResearch(id) } }
+        sessionID = nil
+    }
 
     private func stopTimer() { timer?.cancel(); timer = nil }
 

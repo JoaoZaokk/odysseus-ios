@@ -25,6 +25,11 @@ struct CalendarEvent: Decodable, Identifiable, Hashable, Sendable {
     var description: String
     var calendarHref: String?
     var color: String?
+    /// True for one expanded occurrence of a recurring series. Its `uid` is the
+    /// compound `{series}::{start}`; `seriesUID` is the base. Deleting it
+    /// without `scope=occurrence` deletes the whole series on the server.
+    var isRecurrence: Bool
+    var seriesUID: String?
 
     var id: String { uid }
 
@@ -34,6 +39,8 @@ struct CalendarEvent: Decodable, Identifiable, Hashable, Sendable {
         case location, description
         case calendarHref = "calendar_href"
         case color
+        case isRecurrence = "is_recurrence"
+        case seriesUID = "series_uid"
     }
 
     init(from decoder: Decoder) throws {
@@ -47,6 +54,8 @@ struct CalendarEvent: Decodable, Identifiable, Hashable, Sendable {
         description = (try? c.decode(String.self, forKey: .description)) ?? ""
         calendarHref = try? c.decodeIfPresent(String.self, forKey: .calendarHref)
         color = try? c.decodeIfPresent(String.self, forKey: .color)
+        isRecurrence = (try? c.decodeIfPresent(Bool.self, forKey: .isRecurrence)) ?? false
+        seriesUID = try? c.decodeIfPresent(String.self, forKey: .seriesUID)
     }
 
     var startDate: Date? { CalendarEvent.parse(dtstart) }
@@ -93,6 +102,32 @@ struct CalendarEvent: Decodable, Identifiable, Hashable, Sendable {
 }
 
 /// Body for creating an event (POST /api/calendar/events).
+/// What `POST /api/calendar/quick-parse` extracts. It only *parses*: nothing is
+/// stored until the client posts this to `/api/calendar/events`.
+struct ParsedEvent: Decodable {
+    var summary: String
+    var dtstart: String
+    var dtend: String?
+    var allDay: Bool
+    var location: String?
+    var description: String?
+
+    enum CodingKeys: String, CodingKey {
+        case summary, dtstart, dtend, location, description
+        case allDay = "all_day"
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        summary = (try? c.decode(String.self, forKey: .summary)) ?? ""
+        dtstart = (try? c.decode(String.self, forKey: .dtstart)) ?? ""
+        dtend = try? c.decodeIfPresent(String.self, forKey: .dtend)
+        allDay = (try? c.decode(Bool.self, forKey: .allDay)) ?? false
+        location = try? c.decodeIfPresent(String.self, forKey: .location)
+        description = try? c.decodeIfPresent(String.self, forKey: .description)
+    }
+}
+
 struct EventPayload: Encodable {
     var summary: String
     var dtstart: String

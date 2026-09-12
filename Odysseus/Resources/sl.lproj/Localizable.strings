@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Drug odgovor…";
 "Você recusou a ação, e o agente parou aqui." = "Dejanje je bilo zavrnjeno in agent se je tu ustavil.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Ta dogodek se ponavlja.";
+"Apagar só esta ocorrência" = "Izbriši samo to ponovitev";
+"Apagar a série inteira" = "Izbriši celotno serijo";
+"Servidor adicionado, mas não conectou: %@" = "Strežnik je dodan, a se ni povezal: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Strežnik je dodan. Potrebuje pooblastilo: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Preverite ukaz in argumente na seznamu strežnikov MCP; strežnik je že shranjen.";
+"O servidor recusou a operação." = "Strežnik je zavrnil operacijo.";
+"biometria/senha" = "biometrija/koda";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Strežnik je zavrnil datoteko (ni besedila za izvleček ali presega omejitev).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Ni rezultatov — preoblikujte poizvedbo ali zamenjajte iskalnik.";
+"Rodada %d: %@ (%d fontes)" = "Krog %d: %@ (%d virov)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  krog %d  ·  %d virov  ·  %@";
+"aviso" = "opozorilo";

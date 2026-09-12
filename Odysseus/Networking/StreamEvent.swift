@@ -51,7 +51,21 @@ struct StreamEvent: Decodable {
     var used: Int?         // budget_exceeded
     var rounds: Int?       // rounds_exhausted
 
-    struct ErrorBody: Decodable { var message: String? }
+    /// `error` is a plain string in most of the server's error frames
+    /// (`{"error": "Read timeout", "status": 504}`, llm_core.py) and an object
+    /// (`{"error": {"message": …}}`) in the rest. 1.9 only decoded the object,
+    /// so 21 of the live server's 25 error frames reached the user as the
+    /// generic "Erro no stream".
+    struct ErrorBody: Decodable {
+        var message: String?
+        init(from decoder: Decoder) throws {
+            if let single = try? decoder.singleValueContainer(),
+               let s = try? single.decode(String.self) { message = s; return }
+            let c = try decoder.container(keyedBy: CodingKeys.self)
+            message = try c.decodeIfPresent(String.self, forKey: .message)
+        }
+        private enum CodingKeys: String, CodingKey { case message }
+    }
 
     struct TrimData: Decodable {
         var messagesBefore: Int?
@@ -104,10 +118,12 @@ struct StreamEvent: Decodable {
     var toolName: String? { name ?? tool }
     var modelName: String? { actual ?? model ?? requested }
 
+    /// Only consulted on an error frame (`event: error` or `status >= 400`), so
+    /// `text` is the message whatever the status — some frames carry no status.
     var errorMessage: String? {
-        if let t = text, status ?? 0 >= 400 { return t }
-        if let m = error?.message { return m }
-        if let d = detail { return d }
+        if let m = error?.message, !m.isEmpty { return m }
+        if let d = detail, !d.isEmpty { return d }
+        if let t = text, !t.isEmpty { return t }
         return nil
     }
 
@@ -268,6 +284,9 @@ enum ChatStreamUpdate {
     case notice(ChatNotice)
     /// The turn ended on a question — the reply is the card, not more text.
     case askUser(AskUser)
+    /// `X-Odysseus-Run-Id` from the chat_stream response headers: upstream ≥
+    /// c436930 only honours `/api/chat/stop` when it carries this id back.
+    case runStarted(String)
     case error(String)
     case done
 }

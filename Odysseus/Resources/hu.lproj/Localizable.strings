@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Másik válasz…";
 "Você recusou a ação, e o agente parou aqui." = "Elutasította a műveletet, és az ügynök itt leállt.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Ez az esemény ismétlődik.";
+"Apagar só esta ocorrência" = "Csak ez az előfordulás törlése";
+"Apagar a série inteira" = "A teljes sorozat törlése";
+"Servidor adicionado, mas não conectou: %@" = "A kiszolgáló hozzáadva, de nem csatlakozott: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "A kiszolgáló hozzáadva. Engedélyezés szükséges: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Ellenőrizd a parancsot és az argumentumokat az MCP-kiszolgálók listájában; a kiszolgáló már mentve van.";
+"O servidor recusou a operação." = "A kiszolgáló elutasította a műveletet.";
+"biometria/senha" = "biometria/kód";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "A kiszolgáló elutasította a fájlt (nincs kinyerhető szöveg, vagy túllépi a korlátot).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Nincs találat — fogalmazd át, vagy válts keresőmotort.";
+"Rodada %d: %@ (%d fontes)" = "%d. kör: %@ (%d forrás)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  %d. kör  ·  %d forrás  ·  %@";
+"aviso" = "figyelmeztetés";
