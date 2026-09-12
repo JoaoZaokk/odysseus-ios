@@ -1,7 +1,6 @@
 import Foundation
 @preconcurrency import AVFoundation
 import Speech
-import SwiftWhisper
 
 /// Records the mic and transcribes to text using the engine chosen in Settings:
 /// **native** (`SFSpeechRecognizer`) or **model** (a downloaded Whisper GGUF via
@@ -41,7 +40,7 @@ final class VoiceInputManager: ObservableObject {
 
     // Keep the loaded Whisper model in memory so repeated transcriptions don't
     // reload it from disk each time.
-    private var cachedWhisper: Whisper?
+    private var cachedEngine: OnDeviceTranscriber?
     private var cachedModelID = ""
 
     private var activeModelID: String { UserDefaults.standard.string(forKey: "voice.stt.model") ?? "" }
@@ -203,7 +202,8 @@ final class VoiceInputManager: ObservableObject {
     // MARK: - Whisper
 
     private func transcribeWithWhisper() async -> String {
-        guard let url = installedModelURL() else { error = L("Nenhum modelo Whisper selecionado."); return "" }
+        guard let model = VoiceCatalog.all.first(where: { $0.id == activeModelID }),
+              let url = installedModelURL() else { error = L("Nenhum modelo Whisper selecionado."); return "" }
         let raw = lock.withLock { rawSamples }
         guard raw.count > Int(hwRate * 0.3) else {   // < ~0.3 s
             error = L("Áudio muito curto — toque, fale e toque de novo pra parar.")
@@ -218,28 +218,24 @@ final class VoiceInputManager: ObservableObject {
         // audio), so the setting defaults to one. Language-tuned models pin
         // their own language regardless — a pt-tuned checkpoint cannot honour a
         // request for German — and only the universal ones read the setting.
-        let lang: WhisperLanguage
-        switch VoiceCatalog.all.first(where: { $0.id == activeModelID })?.lang {
-        case .english:    lang = .english
-        case .chinese:    lang = .chinese
-        case .japanese:   lang = .japanese
-        case .french:     lang = .french
-        case .portuguese: lang = .portuguese
-        default:          lang = Self.chosenWhisperLanguage()
-        }
+        // Parakeet detects the language itself and ignores the code.
+        let lang = model.lang.whisperCode ?? Self.chosenWhisperCode()
 
         do {
-            let whisper: Whisper
-            if let cached = cachedWhisper, cachedModelID == activeModelID {
-                whisper = cached                       // reuse — skips the disk reload
+            let engine: OnDeviceTranscriber
+            if let cached = cachedEngine, cachedModelID == activeModelID {
+                engine = cached                        // reuse — skips the disk reload
             } else {
-                whisper = Whisper(fromFileURL: url)
-                cachedWhisper = whisper
+                cachedEngine = nil                     // free the old context before loading
+                engine = try OnDeviceSTT.load(model, at: url)
+                cachedEngine = engine
                 cachedModelID = activeModelID
             }
-            whisper.params.language = lang
-            let segments = try await whisper.transcribe(audioFrames: frames)
-            let text = segments.map(\.text).joined()
+            // whisper_full blocks for the whole decode; keep it off the main actor.
+            let samples = frames
+            let text = try await Task.detached(priority: .userInitiated) {
+                try engine.transcribe(samples, language: lang)
+            }.value
                 .replacingOccurrences(of: "[BLANK_AUDIO]", with: "")
                 .replacingOccurrences(of: "[ Silence ]", with: "")
                 .trimmingCharacters(in: .whitespacesAndNewlines)
@@ -354,51 +350,13 @@ final class VoiceInputManager: ObservableObject {
 
     /// Maps the chosen speech language to a Whisper language for the universal
     /// models. "Detect", and languages whisper has no model for, → .auto.
-    private static func chosenWhisperLanguage() -> WhisperLanguage {
-        guard let chosen = SpeechLanguage.pinned() else { return .auto }
-        switch chosen {
-        case .ptBR:           return .portuguese
-        case .en:             return .english
-        case .es:             return .spanish
-        case .fr:             return .french
-        case .it:             return .italian
-        case .de, .deCH: return .german
-        case .nl:             return .dutch
-        case .pl:             return .polish
-        case .cs:             return .czech
-        case .sk:             return .slovak
-        case .sl:             return .slovenian
-        case .hr:             return .croatian
-        case .bg:             return .bulgarian
-        case .mk:             return .macedonian
-        case .sr:             return .serbian
-        case .uk:             return .ukrainian
-        case .be:             return .belarusian
-        case .ru:             return .russian
-        case .tr:             return .turkish
-        case .hu:             return .hungarian
-        case .vi:             return .vietnamese
-        case .ind:            return .indonesian
-        case .ms:             return .malay
-        case .ja:             return .japanese
-        case .ko:             return .korean
-        // Whisper has one Chinese ("zh") and no Cantonese, so zh-HK rides along.
-        case .zhHans, .zhHant, .zhHK: return .chinese
-        case .hi:             return .hindi
-        case .bn:             return .bengali
-        case .ar:             return .arabic
-        case .fa:             return .persian
-        case .ur:             return .urdu
-        case .ps:             return .pashto
-        case .lb:             return .luxembourgish
-        case .lv:             return .latvian
-        case .fi:             return .finnish
-        case .sv:             return .swedish
-        case .he:             return .hebrew
-        case .th:             return .thai
-        case .bo:             return .tibetan
-        case .ug:             return .auto   // Whisper has no Uyghur model
-        }
+    /// Whisper language code for the universal models: the pinned speech
+    /// language, or "auto" when the user asked the engine to guess. Every
+    /// app language has a Whisper code except Uyghur (`sttServerCode` is nil
+    /// there), which falls back to detection.
+    static func chosenWhisperCode() -> String {
+        guard let chosen = SpeechLanguage.pinned() else { return "auto" }
+        return chosen.sttServerCode ?? "auto"
     }
 
     private func installedModelURL() -> URL? {

@@ -11,9 +11,9 @@ packages:
   MarkdownUI:
     url: https://github.com/gonzalezreal/swift-markdown-ui
     from: "2.4.1"
-  SwiftWhisper:
-    url: https://github.com/exPHAT/SwiftWhisper
-    branch: master
+  WhisperCPP:
+    # Official whisper.cpp xcframework (whisper + parakeet + ggml/Metal), see Vendor/WhisperCPP/Package.swift.
+    path: Vendor/WhisperCPP
   ZIPFoundation:
     url: https://github.com/weichsel/ZIPFoundation
     from: "0.9.0"
@@ -78,7 +78,7 @@ targets:
           - "Resources/Odysseus-macOS.entitlements"
     dependencies:
       - package: MarkdownUI
-      - package: SwiftWhisper
+      - package: WhisperCPP
       - package: ZIPFoundation
       - package: FluidAudio
     settings:
@@ -88,8 +88,8 @@ targets:
         # 1.10 (iOS build 26, macOS build 20): the live-server contract sync
         # (docs/AUDIT-1.10.md). 1.9 — iOS build 25, macOS build 19 — is the
         # version in App Review; this bump is deliberate and must survive merges.
-        MARKETING_VERSION: "1.10"
-        CURRENT_PROJECT_VERSION: "26"
+        MARKETING_VERSION: "1.11"
+        CURRENT_PROJECT_VERSION: "27"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -159,7 +159,7 @@ targets:
           - "Resources/Odysseus-macOS.entitlements"
     dependencies:
       - package: MarkdownUI
-      - package: SwiftWhisper
+      - package: WhisperCPP
       - package: ZIPFoundation
       - package: FluidAudio
     settings:
@@ -169,8 +169,8 @@ targets:
         # 1.10 (iOS build 26, macOS build 20): the live-server contract sync
         # (docs/AUDIT-1.10.md). 1.9 — iOS build 25, macOS build 19 — is the
         # version in App Review; this bump is deliberate and must survive merges.
-        MARKETING_VERSION: "1.10"
-        CURRENT_PROJECT_VERSION: "20"
+        MARKETING_VERSION: "1.11"
+        CURRENT_PROJECT_VERSION: "21"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus-macOS.entitlements

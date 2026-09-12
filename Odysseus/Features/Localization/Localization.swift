@@ -154,10 +154,9 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     /// so naming it does not degrade to a guess — faster-whisper raises and the
     /// recording is lost. Sending nothing leaves the server detecting, which is
     /// what a Uyghur speaker got before any of this and is still better than an
-    /// error. The on-device engine answers the same question separately, in
-    /// `VoiceInputManager.chosenWhisperLanguage()`, because SwiftWhisper takes a
-    /// `WhisperLanguage` case rather than a code — and spells Hebrew `iw` where
-    /// servers spell it `he`.
+    /// error. The on-device engine (`VoiceInputManager.chosenWhisperCode()`)
+    /// uses this same code: whisper.cpp's language table spells Hebrew `he`
+    /// like the servers do, and lists every other app language.
     var sttServerCode: String? { self == .ug ? nil : iso639 }
 
     /// Best shipped match for a device/system BCP-47 code (e.g. "ja-JP", "zh-Hant-TW", "de-CH").

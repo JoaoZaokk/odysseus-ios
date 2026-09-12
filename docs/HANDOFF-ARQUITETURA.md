@@ -1,4 +1,4 @@
-# Handoff — fase de arquitetura, encerrada; rodadas 4 a 8 fechadas, 1.9 no ar, 1.10 em revisão
+# Handoff — fase de arquitetura, encerrada; rodadas 4 a 8 fechadas, 1.9 no ar, 1.10 em revisão, 1.11 em andamento
 
 Estado em 2026-09-12. **1.9 — iOS build 25, macOS build 19** aprovada e no ar nas duas
 plataformas (READY_FOR_DISTRIBUTION desde 10/09). **1.10 — iOS build 26, macOS build 20**
@@ -8,6 +8,73 @@ em `main` (`dd132f4`, PR #47 mergeado em 12/09, após revisão adversarial pré-
 localizações. **Submetida para revisão pelo dono em 12/09 (WAITING_FOR_REVIEW nas duas plataformas).** **324 testes** passando no
 simulador **iOS 27** (Xcode 27) e no **iOS 17** (piso), iOS e macOS compilando sem
 aviso. Catálogos: **43 × 833**.
+
+## Rodada 9 — motor whisper.cpp 1.9.4, Parakeet e o catálogo por idioma (1.11, em andamento)
+
+Pedido do dono (12/09): "baixar os modelos famosos de STT (Parakeet, Nemotron, Kyutai…),
+converter para GGML em cada quantização, subir na minha conta do Hugging Face e linkar na
+nova versão do app". O app vende o acesso ao app, não ao modelo; o catálogo é uma coleção
+de links que precisa continuar apontando para arquivos que existam — por isso os espelhos
+ficam em `huggingface.co/JoaoZaokk/*`, um repositório por modelo, com o card dizendo a
+fonte e mantendo a licença de origem.
+
+**O que mudou no app (1.11 — iOS build 27, macOS build 21):**
+
+- `SwiftWhisper` (whisper.cpp de 2023, sem Parakeet) saiu. Entrou o xcframework oficial
+  do ggml-org via `Vendor/WhisperCPP/Package.swift` (binaryTarget `whisper-b5130`, que é
+  o corte nightly da tag v1.9.4 de 11/09; o release v1.9.4 não anexou o zip). O framework
+  traz `libwhisper` **e** `libparakeet` num único ggml com Metal.
+- `Features/Voice/OnDeviceSTT.swift`: `WhisperEngine` e `ParakeetEngine` atrás de
+  `OnDeviceTranscriber`; `OnDeviceSTT.load(model, at:)` escolhe pelo `VoiceModel.engine`,
+  que vem do prefixo do id (`p-` = Parakeet; `w-`/`u-` = Whisper, então ids antigos e
+  URLs customizadas não mudam). `whisper_full` roda num `Task.detached`; o contexto fica
+  em cache enquanto o modelo selecionado é o mesmo. `suppress_nst` ligado: clipe mudo
+  devolve "" em vez de `[BLANK_AUDIO]`.
+- Idioma: `chosenWhisperLanguage() -> WhisperLanguage` virou `chosenWhisperCode() -> String`
+  em cima de `AppLanguage.sttServerCode` (whisper.cpp escreve hebraico como `he`, igual
+  aos servidores; uigur cai em "auto"). Modelos afinados pinam `VoiceLang.whisperCode`;
+  o Parakeet detecta sozinho e ignora o código.
+- `VoiceLang` ganhou 16 casos (es, de, it, ko, ru, ar, hi, tr, th, sv, fi, vi, he, hu, hr
+  + os 6 antigos). Os rótulos novos vêm de `Locale.localizedString(forLanguageCode:)` no
+  idioma do app (lido de `app.language`, a mesma chave do `LocalizationManager`), o que
+  poupou 43 catálogos × 16 chaves; os 6 antigos continuam nas chaves traduzidas.
+- Catálogo: Parakeet TDT v3 (universal, 25 línguas europeias, detecta idioma), v2 e 1.1B
+  (inglês), Orukeet (v3 afinado pela oruk, cc-by-sa-4.0, pt-BR 3,7 WER vs 4,5 no FLEURS
+  segundo o card), e um Whisper afinado por idioma em q5_0 e q8_0 (f16 no mesmo repo, para
+  o campo de URL). Entradas antigas de terceiros (uosx, lucasparis1103, Pomni) passaram
+  para os espelhos próprios; ids mantidos, mas o nome do arquivo mudou, então quem já
+  tinha esses quatro baixados baixa de novo. Sem Core ML para Parakeet.
+- `OdysseusTests/VoiceCatalogTests.swift` (9 testes; suíte em **333**, iOS 27 sim): ids/URLs únicos, só `https://huggingface.co/…/resolve/main/…`,
+  prefixo ↔ engine, cada bucket de idioma tem modelo e código de 2 letras, filtro mantém
+  os universais, `bilingual` legado decodifica como universal.
+
+**Pesquisa (2 workflows, 63 agentes opus, buscador + refutador por idioma):** por idioma
+o melhor fine-tune Whisper com arquitetura pura (`model_type: whisper`, vocab 51866 — Trelis/tiron
+e CrisperWhisper 2.0 caíram por vocab 51904/51897, além da licença non-commercial do
+segundo), licença redistribuível e evidência de ganho. Sem fine-tune que valesse: nl, pl,
+uk, id (ficam no turbo multilíngue ou Parakeet v3); cs/sk/ms refutados (dataset fraco ou
+sem licença — Parakeet v3 cobre cs/sk). Nada fora de Whisper/Parakeet roda em ggml
+estável: Kyutai, Qwen3-ASR, VibeVoice, Voxtral, Cohere transcribe (GGUF é do transcribe.cpp)
+ficam de fora. TTS: Qwen3-TTS tem GGUF + qwentts.cpp, mas o app usa PocketTTS/nativo; sem ação.
+
+**Conversão (pipeline em `_backups/BACKUPS-IOS/odysseus-appstore-deliver/stt-ggml/`):**
+`run_one.sh <slug>` lê `models.json`, baixa (um por vez — MacBook com ~10 GB livres),
+converte (`convert-h5-to-ggml.py` do whisper.cpp num venv python3.13 — o python 3.10 tem
+scipy quebrado no macOS 27; `convert-parakeet-to-ggml.py` para `.nemo`), quantiza
+(`whisper-quantize`/`parakeet-quantize` compilados do whisper.cpp vendorado no
+OpenWebUI-Android), transcreve `pt.wav`/`en.wav`/`jfk.wav` (gerados com `say`) com cada
+variante, escreve o card e sobe com `hf upload` se `hf auth whoami` responder. Parakeet v3
+f16 saiu byte-idêntico ao `ggml-org/parakeet-GGUF`. **Nemotron 3.5 streaming** não cabe no
+parakeet do whisper.cpp (só TDT): é GGUF do mudler/parakeet.cpp; o `.q8_0.gguf` que a
+NVIDIA publica não carrega no parakeet.cpp, e `parakeet-cli quantize` só quantiza tensores
+F32 (a partir do f16 copia tudo verbatim) — espelhar o f16 do mudler e requantizar via
+upcast f32 fica para quando o disco liberar. O app não carrega Nemotron (seria um segundo
+ggml no binário); vai só para o HF.
+
+**Bloqueio:** `hf auth whoami` = "Not logged in". O MCP do HF está autenticado como
+`JoaoZaokk` mas é só leitura. Os uploads precisam de `hf auth login` (token write) feito
+pelo dono; até lá as saídas ficam em disco e o catálogo da 1.11 aponta para repositórios
+que ainda não existem — **não subir a 1.11 antes de os 24 repositórios estarem no ar**.
 
 ## Rodada 8 — o servidor vivo não é o upstream
 
