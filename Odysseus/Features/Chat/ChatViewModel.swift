@@ -17,6 +17,8 @@ final class ChatViewModel: ObservableObject {
     /// server sends no text with it and waits for the answer — so it has to
     /// outlive the stream, exactly like `notices`.
     @Published var pendingAsk: AskUser?
+    /// The server-side run id of the reply being streamed (see `.runStarted`).
+    private(set) var runID: String?
 
     // Composer toggles
     @Published var agentMode = false
@@ -87,6 +89,10 @@ final class ChatViewModel: ObservableObject {
 
     /// Force a reload (pull-to-refresh).
     func reloadHistory() async {
+        // A reload replaces `messages` wholesale; mid-stream that drops the
+        // assistant bubble the stream is still appending to, and the rest of
+        // the reply vanishes in silence. ⌘R on macOS made this one keystroke.
+        guard !isStreaming else { return }
         historyTask?.cancel()
         historyLoaded = false
         runHistoryLoad()
@@ -184,6 +190,7 @@ final class ChatViewModel: ObservableObject {
 
     private func runStream(text: String, assistantID: String, attachmentIDs: [String],
                            approval: (id: String, decision: String)? = nil) async {
+        runID = nil   // the id is per run; a stale one would stop the wrong run on HEAD
         var sawAnyText = false
         var askedBack = false
         // A mid-stream `.error` frame finishes the loop normally — it never
@@ -223,6 +230,8 @@ final class ChatViewModel: ObservableObject {
                     // Keep it on the message too, so a reload before the answer
                     // finds the card even if the server has yet to persist it.
                     if let i = index(of: assistantID) { messages[i].askUser = ask }
+                case .runStarted(let id):
+                    runID = id
                 case .error(let msg):
                     // Same policy as a thrown failure: an error that arrives
                     // mid-stream must not erase the reply the user just watched
@@ -282,7 +291,8 @@ final class ChatViewModel: ObservableObject {
 
     func stop() {
         streamTask?.cancel()
-        if let id = sessionID { Task { await api.stop(id) } }
+        if let id = sessionID { let rid = runID; Task { await api.stop(id, runID: rid) } }
+        runID = nil
         isStreaming = false
         toolStatus = nil
     }

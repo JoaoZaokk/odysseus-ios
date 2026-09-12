@@ -849,3 +849,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Annat svar…";
 "Você recusou a ação, e o agente parou aqui." = "Du nekade åtgärden, och agenten stannade här.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Den här händelsen upprepas.";
+"Apagar só esta ocorrência" = "Ta bort bara den här förekomsten";
+"Apagar a série inteira" = "Ta bort hela serien";
+"Servidor adicionado, mas não conectou: %@" = "Servern lades till men anslöt inte: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Servern lades till. Den behöver auktorisering: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Kontrollera kommandot och argumenten i listan över MCP-servrar; servern är redan sparad.";
+"O servidor recusou a operação." = "Servern avvisade åtgärden.";
+"biometria/senha" = "biometri/kod";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Servern avvisade filen (ingen text att extrahera eller över gränsen).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Inga resultat — formulera om eller byt sökmotor.";
+"Rodada %d: %@ (%d fontes)" = "Runda %d: %@ (%d källor)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  runda %d  ·  %d källor  ·  %@";
+"aviso" = "varning";

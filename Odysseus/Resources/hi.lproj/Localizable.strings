@@ -859,3 +859,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "दूसरा उत्तर…";
 "Você recusou a ação, e o agente parou aqui." = "आपने कार्रवाई अस्वीकार कर दी, और एजेंट यहीं रुक गया।";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "यह इवेंट दोहराया जाता है।";
+"Apagar só esta ocorrência" = "केवल यही बार हटाएँ";
+"Apagar a série inteira" = "पूरी शृंखला हटाएँ";
+"Servidor adicionado, mas não conectou: %@" = "सर्वर जोड़ा गया, लेकिन कनेक्ट नहीं हुआ: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "सर्वर जोड़ा गया। इसे अनुमति चाहिए: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "MCP सर्वर सूची में कमांड और आर्ग्युमेंट जाँचें; सर्वर पहले ही सहेजा जा चुका है।";
+"O servidor recusou a operação." = "सर्वर ने कार्रवाई अस्वीकार कर दी।";
+"biometria/senha" = "बायोमेट्रिक/पासकोड";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "सर्वर ने फ़ाइल अस्वीकार कर दी (निकालने योग्य टेक्स्ट नहीं या सीमा से बड़ी)।";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "कोई परिणाम नहीं — दोबारा लिखें या सर्च इंजन बदलें।";
+"Rodada %d: %@ (%d fontes)" = "राउंड %d: %@ (%d स्रोत)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  राउंड %d  ·  %d स्रोत  ·  %@";
+"aviso" = "चेतावनी";

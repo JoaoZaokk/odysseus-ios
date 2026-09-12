@@ -62,21 +62,27 @@ struct LoginResponse: Decodable {
     var totpRequired: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case ok, detail
+        case ok, detail, error
         case totpRequired = "totp_required"
         case requires2fa = "requires_2fa"
+        case requiresTotp = "requires_totp"
         case totp = "totp"
     }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         ok = try? c.decodeIfPresent(Bool.self, forKey: .ok)
-        detail = try? c.decodeIfPresent(String.self, forKey: .detail)
-        // The web client flips into TOTP mode on a few possible signals.
+        detail = (try? c.decodeIfPresent(String.self, forKey: .detail))
+            ?? (try? c.decodeIfPresent(String.self, forKey: .error))
+        // The server's own key is `requires_totp` (routes/auth_routes.py,
+        // static/login.html) — sent as HTTP 200 `{ok: false, requires_totp: true}`
+        // with no cookie. 1.9 only knew the other three spellings, so a 2FA
+        // account was treated as logged in and every next request was a 401.
         let a = (try? c.decodeIfPresent(Bool.self, forKey: .totpRequired)) ?? false
         let b = (try? c.decodeIfPresent(Bool.self, forKey: .requires2fa)) ?? false
         let d = (try? c.decodeIfPresent(Bool.self, forKey: .totp)) ?? false
-        totpRequired = a || b || d
+        let r = (try? c.decodeIfPresent(Bool.self, forKey: .requiresTotp)) ?? false
+        totpRequired = a || b || d || r
     }
 }
 

@@ -93,7 +93,7 @@ struct EmailView: View {
             Button { showAccounts = true } label: { Image(systemName: "person.crop.circle") }
         }
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
         .sheet(item: $opened) { m in
             EmailReader(message: m, vm: vm)
         }
@@ -167,6 +167,10 @@ struct EmailView: View {
                             Button { Task { await vm.archive(m) } } label: {
                                 Label("Arquivar", systemImage: "archivebox")
                             }.tint(theme.border)
+                        }
+                        .contextMenu {
+                            Button { Task { await vm.archive(m) } } label: { Label("Arquivar", systemImage: "archivebox") }
+                            Button(role: .destructive) { Task { await vm.delete(m) } } label: { Label("Apagar", systemImage: "trash") }
                         }
                 }
             }

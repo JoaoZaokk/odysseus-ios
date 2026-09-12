@@ -65,7 +65,7 @@ struct GalleryView: View {
             }
         }
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
         .sheet(item: $selected) { img in
             GalleryDetail(image: img, url: vm.url(img)) {
                 Task {

@@ -25,7 +25,7 @@ enum BiometricLock {
         switch c.biometryType {
         case .faceID: return "Face ID"
         case .touchID: return "Touch ID"
-        default: return "biometria/senha"
+        default: return L("biometria/senha")
         }
     }
 

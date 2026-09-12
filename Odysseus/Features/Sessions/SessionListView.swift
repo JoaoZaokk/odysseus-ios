@@ -212,7 +212,7 @@ struct SidebarView: View {
         } trailing: {
             Button { workspace.setPrimary(.newChat) } label: { Image(systemName: "square.and.pencil") }
         }
-        .refreshable { await store.load() }
+        .odyRefreshable { await store.load() }
         .sheet(isPresented: $showArchived) {
             ArchivedSessionsView(store: store, workspace: workspace)
                 .environmentObject(themes)

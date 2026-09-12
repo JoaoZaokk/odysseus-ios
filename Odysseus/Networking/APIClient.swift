@@ -169,7 +169,9 @@ final class APIClient: @unchecked Sendable {
     /// Percent-encodes a value for safe use as a URL **query value** (escapes `& = ? #`).
     func encQuery(_ s: String) -> String {
         var allowed = CharacterSet.urlQueryAllowed
-        allowed.remove(charactersIn: "&=?#")
+        // `+` too: Starlette's parse_qsl turns a literal `+` into a space, so
+        // searching "C++" searched "C  " and a `user+tag@` account_id never matched.
+        allowed.remove(charactersIn: "&=?#+")
         return s.addingPercentEncoding(withAllowedCharacters: allowed) ?? ""
     }
 
@@ -196,14 +198,18 @@ final class APIClient: @unchecked Sendable {
     }
 
     @discardableResult
-    func send(_ req: URLRequest, via transport: URLSession? = nil) async throws -> Data {
+    /// `sessionExpiryOn401`: false for the routes that relay a *provider's*
+    /// 401 (the ChatGPT-subscription device flow re-raises auth.openai.com's
+    /// status as-is) — there a 401 is an error to show, not our cookie dying.
+    func send(_ req: URLRequest, via transport: URLSession? = nil,
+              sessionExpiryOn401: Bool = true) async throws -> Data {
         do {
             let (data, resp) = try await (transport ?? session).data(for: req)
             guard let http = resp as? HTTPURLResponse else { return data }
             // 401 and 403 are different facts: the session is gone vs. this account
             // may not do this. Folding 403 in here made three `catch .http(403, _)`
             // branches unreachable, and would now log a non-admin out of the app.
-            if http.statusCode == 401 {
+            if http.statusCode == 401 && sessionExpiryOn401 {
                 onUnauthenticated?()
                 throw APIError.notAuthenticated
             }
@@ -226,6 +232,20 @@ final class APIClient: @unchecked Sendable {
     func decode<T: Decodable>(_ type: T.Type, _ data: Data) throws -> T {
         do { return try JSONDecoder().decode(T.self, from: data) }
         catch { throw APIError.decoding(String(describing: error)) }
+    }
+
+    /// Several routes report failure as HTTP 200 with `{"ok": false, "error": …}`
+    /// or `{"success": false, …}` (email mark-read/archive/delete, accounts,
+    /// cookbook install). `send(_:)` only throws on the status, so callers that
+    /// discard the body treat those as success. Throws the server's own message.
+    @discardableResult
+    func expectOK(_ data: Data, fallback: String) throws -> [String: Any] {
+        guard let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return [:] }
+        if (obj["ok"] as? Bool) == false || (obj["success"] as? Bool) == false {
+            let msg = (obj["error"] as? String) ?? (obj["detail"] as? String) ?? (obj["message"] as? String)
+            throw APIError.transport((msg?.isEmpty == false) ? msg! : fallback)
+        }
+        return obj
     }
 
     /// Decodes either a bare `[T]` array or a single-key wrapper object whose
@@ -264,6 +284,12 @@ final class APIClient: @unchecked Sendable {
             }
             if !msgs.isEmpty { return msgs.joined(separator: " · ") }
         }
+        // `detail={"message": "…"}` — how stt/tts/session_routes and the chat
+        // attachment validations raise (8 sites in the live server). Without
+        // this branch they all rendered as a bare "Erro 503".
+        if let dict = obj["detail"] as? [String: Any] {
+            if let m = (dict["message"] ?? dict["error"] ?? dict["detail"]) as? String, !m.isEmpty { return m }
+        }
         return obj["detail"] as? String ?? obj["message"] as? String ?? obj["error"] as? String
     }
 
@@ -291,13 +317,23 @@ final class APIClient: @unchecked Sendable {
             if parsed.totpRequired == true { return parsed }   // not an error: prompt for code
             throw APIError.http(code, parsed.detail ?? Self.detail(from: data))
         }
+        // The server answers a wrong password / disabled account with HTTP 200
+        // `{ok: false, error: …}` (and 2FA with `{ok: false, requires_totp: true}`);
+        // only the latter is a state, the rest is a refusal.
+        if parsed.ok == false && parsed.totpRequired != true {
+            throw APIError.http(http?.statusCode ?? 200, parsed.detail ?? Self.detail(from: data) ?? L("O servidor recusou a operação."))
+        }
         return parsed
     }
 
     func logout() async {
-        // The web app clears the session via the same cookie store; a GET to
-        // /logout (or DELETE) invalidates it server-side. Best-effort.
-        _ = try? await session.data(for: request("/logout"))
+        // The only route that revokes the session token is `POST /api/auth/logout`
+        // (routes/auth_routes.py). 1.9 hit `GET /logout`, which is not a route at
+        // all, so the token stayed valid for its full 7-day TTL after "Sair".
+        // Best-effort: a dead cookie fails here and is wiped below regardless.
+        // Deliberately not `send(_:)`: a 401 on the way out must not trip the
+        // session-expired hop and paint a "session expired" error over a logout.
+        _ = try? await session.data(for: request("/api/auth/logout", method: "POST"))
         // Wipe the whole per-client jar (not just cookies(for: baseURL), which can miss
         // parent-domain/path cookies or a rotated host).
         clearCookies()
@@ -446,8 +482,14 @@ final class APIClient: @unchecked Sendable {
         _ = try await send(req)
     }
 
-    func stop(_ sessionID: String) async {
-        _ = try? await session.data(for: request("/api/chat/stop/\(encPath(sessionID))", method: "POST"))
+    /// `runID` is the `X-Odysseus-Run-Id` the stream response carried. The
+    /// live server (d8a2059) stops by session alone; upstream ≥ c436930 returns
+    /// `{"stopped": false}` unless the id matches — and 1.9 never sent it, so
+    /// Parar would have become a silent no-op on the day the server updates.
+    func stop(_ sessionID: String, runID: String? = nil) async {
+        var req = request("/api/chat/stop/\(encPath(sessionID))", method: "POST")
+        if let runID { req.setValue(runID, forHTTPHeaderField: "X-Odysseus-Run-Id") }
+        _ = try? await session.data(for: req)
     }
 }
 

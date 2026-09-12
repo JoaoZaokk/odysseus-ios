@@ -849,3 +849,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "תשובה אחרת…";
 "Você recusou a ação, e o agente parou aqui." = "הפעולה נדחתה, והסוכן עצר כאן.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "האירוע הזה חוזר על עצמו.";
+"Apagar só esta ocorrência" = "מחיקת המופע הזה בלבד";
+"Apagar a série inteira" = "מחיקת כל הסדרה";
+"Servidor adicionado, mas não conectou: %@" = "השרת נוסף, אך לא התחבר: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "השרת נוסף. נדרשת הרשאה: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "בדקו את הפקודה והארגומנטים ברשימת שרתי MCP; השרת כבר נשמר.";
+"O servidor recusou a operação." = "השרת דחה את הפעולה.";
+"biometria/senha" = "ביומטריה/קוד";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "השרת דחה את הקובץ (אין טקסט לחילוץ או שהוא מעל המגבלה).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "אין תוצאות — נסו לנסח מחדש או להחליף מנוע חיפוש.";
+"Rodada %d: %@ (%d fontes)" = "סבב %d: %@ (%d מקורות)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  סבב %d  ·  %d מקורות  ·  %@";
+"aviso" = "אזהרה";

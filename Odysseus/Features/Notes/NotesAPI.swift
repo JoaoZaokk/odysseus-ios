@@ -1,8 +1,10 @@
 import Foundation
 
 extension APIClient {
-    func notes() async throws -> [Note] {
-        decodeList(Note.self, try await send(request("/api/notes")))
+    /// The server filters server-side: without `archived` it returns only the
+    /// active notes, so the archive is a separate list (as on the web).
+    func notes(archived: Bool = false) async throws -> [Note] {
+        decodeList(Note.self, try await send(request("/api/notes?archived=\(archived)")))
     }
 
     func createNote(_ payload: NotePayload) async throws {

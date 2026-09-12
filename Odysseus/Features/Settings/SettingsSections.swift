@@ -545,8 +545,11 @@ struct EmailSection: View {
             // onTest must be passed explicitly: its default is `{ _ in nil }` and
             // nil means success — without this, "Testar conexão" reported
             // "Conexão OK" without ever touching the network.
-            AddEmailAccountView(onSave: { payload in await vm.add(payload) },
-                                onTest: { payload in await vm.test(payload) })
+            NavigationStack {
+                AddEmailAccountView(onSave: { payload in await vm.add(payload) },
+                                    onTest: { payload in await vm.test(payload) },
+                                    standalone: true)
+            }
         }
     }
 }

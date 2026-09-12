@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Câu trả lời khác…";
 "Você recusou a ação, e o agente parou aqui." = "Bạn đã từ chối hành động, và tác nhân đã dừng tại đây.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Sự kiện này lặp lại.";
+"Apagar só esta ocorrência" = "Chỉ xóa lần này";
+"Apagar a série inteira" = "Xóa toàn bộ chuỗi";
+"Servidor adicionado, mas não conectou: %@" = "Đã thêm máy chủ nhưng không kết nối được: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Đã thêm máy chủ. Cần được cấp quyền: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Kiểm tra lệnh và đối số trong danh sách máy chủ MCP; máy chủ đã được lưu.";
+"O servidor recusou a operação." = "Máy chủ đã từ chối thao tác.";
+"biometria/senha" = "sinh trắc học/mã";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Máy chủ từ chối tệp (không có văn bản trích xuất được hoặc vượt giới hạn).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Không có kết quả — hãy diễn đạt lại hoặc đổi công cụ tìm kiếm.";
+"Rodada %d: %@ (%d fontes)" = "Vòng %d: %@ (%d nguồn)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  vòng %d  ·  %d nguồn  ·  %@";
+"aviso" = "cảnh báo";

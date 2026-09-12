@@ -859,3 +859,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "অন্য উত্তর…";
 "Você recusou a ação, e o agente parou aqui." = "আপনি কাজটি প্রত্যাখ্যান করেছেন, তাই এজেন্ট এখানেই থেমে গেছে।";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "এই ইভেন্টটি পুনরাবৃত্ত হয়।";
+"Apagar só esta ocorrência" = "শুধু এই বারটি মুছুন";
+"Apagar a série inteira" = "পুরো সিরিজ মুছুন";
+"Servidor adicionado, mas não conectou: %@" = "সার্ভার যোগ হয়েছে, কিন্তু সংযোগ হয়নি: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "সার্ভার যোগ হয়েছে। অনুমোদন প্রয়োজন: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "MCP সার্ভার তালিকায় কমান্ড ও আর্গুমেন্ট পরীক্ষা করুন; সার্ভার ইতিমধ্যে সংরক্ষিত হয়েছে।";
+"O servidor recusou a operação." = "সার্ভার অপারেশনটি প্রত্যাখ্যান করেছে।";
+"biometria/senha" = "বায়োমেট্রিক/পাসকোড";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "সার্ভার ফাইলটি প্রত্যাখ্যান করেছে (নিষ্কাশনযোগ্য টেক্সট নেই বা সীমার বেশি)।";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "কোনো ফলাফল নেই — অন্যভাবে লিখুন বা সার্চ ইঞ্জিন বদলান।";
+"Rodada %d: %@ (%d fontes)" = "রাউন্ড %d: %@ (%d উৎস)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  রাউন্ড %d  ·  %d উৎস  ·  %@";
+"aviso" = "সতর্কতা";

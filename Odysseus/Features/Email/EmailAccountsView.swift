@@ -223,6 +223,12 @@ struct EmailAccountsView: View {
                             }.tint(theme.accent)
                         }
                     }
+                    .contextMenu {
+                        if !acc.isDefault {
+                            Button { Task { await vm.makeDefault(acc) } } label: { Label("Padrão", systemImage: "star") }
+                        }
+                        Button(role: .destructive) { toDelete = acc } label: { Label("Apagar", systemImage: "trash") }
+                    }
                 }
             }
             .listStyle(.plain)
@@ -236,6 +242,10 @@ struct AddEmailAccountView: View {
     let onSave: (EmailAccountPayload) async -> Bool
     /// Returns nil on success, else the failure message. Tests without saving.
     var onTest: (EmailAccountPayload) async -> String? = { _ in nil }
+    /// True when presented as its own sheet (Settings › Email): it then draws
+    /// its own Cancel/title header on macOS — where `.toolbar` is not used —
+    /// and a real size, instead of a tiny modal with no way out.
+    var standalone: Bool = false
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
@@ -281,6 +291,10 @@ struct AddEmailAccountView: View {
     // a sheet-wrapped NavigationStack on iOS, a navigationDestination push on macOS
     // (a nested sheet doesn't present on macOS).
     var body: some View {
+        VStack(spacing: 0) {
+            #if os(macOS)
+            if standalone { macStandaloneHeader }
+            #endif
             ScrollView {
                 VStack(alignment: .leading, spacing: 14) {
                     providerGroup
@@ -293,6 +307,7 @@ struct AddEmailAccountView: View {
                 }
                 .padding(16)
             }
+        }
             .background(theme.bg)
             .navigationTitle("Nova conta")
             .navigationBarTitleDisplayMode(.inline)
@@ -300,7 +315,26 @@ struct AddEmailAccountView: View {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
             }
             .tint(theme.accent)
+            #if os(macOS)
+            .frame(minWidth: standalone ? 520 : 0, minHeight: standalone ? 620 : 0)
+            #endif
     }
+
+    #if os(macOS)
+    private var macStandaloneHeader: some View {
+        HStack(spacing: 12) {
+            Button { dismiss() } label: {
+                Text("Cancelar").font(.ody(.subheadline)).foregroundStyle(theme.accent)
+            }.buttonStyle(.plain).keyboardShortcut(.cancelAction)
+            Spacer(minLength: 8)
+            Text("Nova conta").font(.ody(.headline)).foregroundStyle(theme.fg)
+            Spacer(minLength: 8)
+            Text("Cancelar").font(.ody(.subheadline)).hidden()   // centres the title
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+    }
+    #endif
 
     // MARK: - Sections
 

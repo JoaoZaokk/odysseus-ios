@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Jawapan lain…";
 "Você recusou a ação, e o agente parou aqui." = "Anda menolak tindakan itu, dan ejen berhenti di sini.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Acara ini berulang.";
+"Apagar só esta ocorrência" = "Padam hanya kali ini";
+"Apagar a série inteira" = "Padam seluruh siri";
+"Servidor adicionado, mas não conectou: %@" = "Pelayan ditambah, tetapi tidak bersambung: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Pelayan ditambah. Ia memerlukan kebenaran: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Semak arahan dan argumen dalam senarai pelayan MCP; pelayan sudah disimpan.";
+"O servidor recusou a operação." = "Pelayan menolak operasi ini.";
+"biometria/senha" = "biometrik/kod laluan";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Pelayan menolak fail (tiada teks boleh diekstrak atau melebihi had).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Tiada hasil — cuba ubah ayat atau tukar enjin carian.";
+"Rodada %d: %@ (%d fontes)" = "Pusingan %d: %@ (%d sumber)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  pusingan %d  ·  %d sumber  ·  %@";
+"aviso" = "amaran";

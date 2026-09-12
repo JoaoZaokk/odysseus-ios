@@ -127,14 +127,16 @@ extension APIClient {
 
     // Device flow (GitHub Copilot / ChatGPT Subscription). All form posts;
     // `provider` is an enum raw value, never user input.
+    // The chatgpt-subscription routes re-raise the provider's own 401/403
+    // (`to_http_exception`), so a failed token exchange must not log the app out.
     func deviceFlowStart(_ provider: String) async throws -> DeviceFlowStart {
-        try decode(DeviceFlowStart.self, try await send(formRequest("/api/\(provider)/device/start", fields: [:])))
+        try decode(DeviceFlowStart.self, try await send(formRequest("/api/\(provider)/device/start", fields: [:]), sessionExpiryOn401: false))
     }
     func deviceFlowPoll(_ provider: String, pollId: String) async throws -> DeviceFlowPoll {
-        try decode(DeviceFlowPoll.self, try await send(formRequest("/api/\(provider)/device/poll", fields: ["poll_id": pollId])))
+        try decode(DeviceFlowPoll.self, try await send(formRequest("/api/\(provider)/device/poll", fields: ["poll_id": pollId]), sessionExpiryOn401: false))
     }
     func deviceFlowCancel(_ provider: String, pollId: String) async {
-        _ = try? await send(formRequest("/api/\(provider)/device/cancel", fields: ["poll_id": pollId]))
+        _ = try? await send(formRequest("/api/\(provider)/device/cancel", fields: ["poll_id": pollId]), sessionExpiryOn401: false)
     }
 
     struct SearchTestResult { let count: Int; let ms: Int; let top: String }

@@ -850,3 +850,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Outra resposta…";
 "Você recusou a ação, e o agente parou aqui." = "Você recusou a ação, e o agente parou aqui.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Este evento se repete.";
+"Apagar só esta ocorrência" = "Apagar só esta ocorrência";
+"Apagar a série inteira" = "Apagar a série inteira";
+"Servidor adicionado, mas não conectou: %@" = "Servidor adicionado, mas não conectou: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Servidor adicionado. Ele precisa de autorização: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo.";
+"O servidor recusou a operação." = "O servidor recusou a operação.";
+"biometria/senha" = "biometria/senha";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "O servidor recusou o arquivo (sem texto extraível ou acima do limite).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Sem resultados — tente reformular ou trocar o motor de busca.";
+"Rodada %d: %@ (%d fontes)" = "Rodada %d: %@ (%d fontes)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  rodada %d  ·  %d fontes  ·  %@";
+"aviso" = "aviso";

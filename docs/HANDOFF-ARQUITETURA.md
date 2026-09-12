@@ -1,10 +1,93 @@
-# Handoff — fase de arquitetura, encerrada; rodadas 4 a 7 fechadas, 1.9 em revisão
+# Handoff — fase de arquitetura, encerrada; rodadas 4 a 8 fechadas, 1.9 em revisão, 1.10 no branch
 
-Estado em 2026-09-10. Tudo abaixo está em `main` (`93611c5`), **1.9 — iOS build 25,
-macOS build 19**, as duas subidas ao App Store Connect e prontas: **iOS em
-WAITING_FOR_REVIEW** (o dono submeteu), **macOS em READY_FOR_REVIEW**. **294 testes**,
-iOS e macOS compilando sem aviso. Zero issues abertas, zero PRs abertos. Catálogos:
-**43 × 820**.
+Estado em 2026-09-11. **1.9 — iOS build 25, macOS build 19** no App Store Connect
+(iOS WAITING_FOR_REVIEW, macOS READY_FOR_REVIEW). **1.10 — iOS build 26, macOS build
+20** no branch `feat/1.10-upstream-sync` (PR aberto): **324 testes** passando no
+simulador **iOS 27** (Xcode 27) e no **iOS 17** (piso), iOS e macOS compilando sem
+aviso. Catálogos: **43 × 833**.
+
+## Rodada 8 — o servidor vivo não é o upstream
+
+Pedido: "procura melhorias e atualizações; olha o servidor principal e o repositório
+original; testa no iOS 27 e no iOS 17". Só agentes opus/sonnet (fable proibido).
+
+**Primeiro fato, e o que muda tudo:** o servidor do dono (`/api/version` = 1.0.3,
+público) roda a árvore upstream entre **d8a2059 (23/07) e
+28c333e (30/07)** — provado por md5 dos JS estáticos (também públicos) contra
+`git show <h>:static/js/<f>`. Está **132 commits atrás** do HEAD `9d5c031` (11/09). Todo
+achado foi classificado em *quebra contra o vivo* × *quebra quando o dono atualizar*.
+Sem esse pin, a onda de aprovações de agente de 15/08 teria virado "bug do cliente".
+
+**Método:** 13 achadores (6 fatias do delta upstream + 7 lentes no cliente) → 78 achados
+(top 6 por achador) → 2 refutadores por achado (evidência + impacto, sobrevive só se
+ambos passam) → 41 sobreviventes, 37 refutados — a maioria por "verdadeiro, mas sem
+efeito observável / severidade inflada". Síntese em `docs/AUDIT-1.10.md`. Cap de
+concorrência do Workflow é **por workflow** (6 neste M2): a verificação foi partida em
+dois workflows e correu no dobro da vazão.
+
+### O que o 1.9 fazia errado contra o servidor VIVO (corrigido, com teste na seam)
+
+| | Rota / contrato | Estava |
+|---|---|---|
+| Sair | `POST /api/auth/logout` | `GET /logout`, rota inexistente; cookie valia 7 dias depois de "Sair" |
+| 2FA | login 200 `{ok:false, requires_totp:true}` | cliente só conhecia `totp_required`/`requires_2fa` — conta com TOTP entrava "logada" e caía em 401 |
+| Notas | `GET /api/notes?archived=true` | aba Arquivados sempre vazia; arquivar sumia com a nota |
+| Memória | `pin` com `pinned=false` em form | desafixar era no-op (servidor assume `true`) |
+| Calendário | `quick-parse` só interpreta; criar é `POST /events` | o app descartava o evento e "criava" nada |
+| Calendário | `DELETE …?scope=occurrence` | apagar 1 ocorrência apagava a série inteira |
+| E-mail | 200 + `{success:false}` em archive/delete/accounts | linha sumia da lista, mensagem ficava no servidor |
+| Cookbook | `repo_id` é id de tarefa; tokens do pip citados um a um | 4 de 15 pacotes davam 400 "Invalid pip package name" |
+| Cookbook | `model/serve` 200 `{ok:false, error}` | "instalação iniciada" com tmux ausente |
+| MCP | POST devolve `connected/status/error/needs_oauth` | "ok" com servidor que nunca subiu; agora a folha fica aberta com o motivo |
+| Biblioteca | upload indexa dentro do request; `indexed/failed_count` | sessão de 30 s cortava PDFs; recusa lida como sucesso; lista parada sem `/reload` |
+| Erros | `error` string no SSE, `detail` string/array/**dicionário** | "Erro no stream" / "Erro 503" / JSON cru na bolha |
+| Query | `+` vira espaço no Starlette | `encQuery` escapa `+` |
+| Device flow | 401 do provedor ChatGPT | derrubava a sessão do app inteiro |
+| Pesquisa | quadro final `{error}`; `POST /research/cancel/{id}` | motivo descartado; fechar o painel não cancelava o job |
+| Launch | re-login silencioso falhou | tela de login em branco, sem `loginError` |
+
+### O que quebra quando o dono atualizar o servidor (já coberto)
+
+`POST /api/chat/stop/{sid}` passa a exigir `X-Odysseus-Run-Id` (c436930): o cliente lê
+o header da resposta do `chat_stream` (`.runStarted`) e devolve no stop; o vivo ignora.
+Recomendação ao dono: atualizar o servidor (a onda de 15/08 endurece aprovações de
+agente e o `Default/Local owner`; o 1.10 já entende `tool_approval`, o run id e o 503
+do store de memória).
+
+### iOS 27 × iOS 17
+
+Xcode 27 / SDK iOS 27 compilam o projeto sem erro e com **um** aviso no app (captura
+`[weak app]` redundante em `ChatScreen`, removida). Doze telas capturadas nos dois
+runtimes (iPhone 17 / iOS 27 e iPhone 15 Pro / iOS 17) via bypass numa cópia da árvore:
+mesmo layout; no 27 o Liquid Glass entra sozinho (voltar circular, busca da lateral no
+rodapé, ícones em pílula). **Uma diferença real:** o botão "Auditar" do Brain usava
+`wand.and.sparkles` (SF Symbols 6 = iOS 18) e **não existia no iOS 17**. Trocado por
+`wand.and.stars` (iOS 14) e agora `scripts/check-symbols.sh` roda em todo build dos
+dois alvos e **falha** se qualquer `Image(systemName:)` exigir mais que iOS 17 /
+macOS 14 (lê `CoreGlyphs.bundle/name_availability.plist`; sabotado e restaurado para
+provar que morde).
+
+### macOS
+
+⌘N virou comando de menu (`AppCommands.swift`, substitui o "New Window" automático do
+`WindowGroup` que roubava o atalho); View › Atualizar / ⌘R dispara `.odyRefreshable`
+nas 10 telas que só tinham pull-to-refresh; ações destrutivas ganharam `.contextMenu`
+(Brain, Calendário, E-mail, Contas, Biblioteca); "Nova conta" de e-mail aberta de
+Ajustes ganhou cabeçalho com Cancelar e tamanho (`standalone: true`).
+
+### Refutados que valem registro
+
+Senha trocada não atualiza o Keychain (#11) e renomear a própria conta deixa
+`username` obsoleto (#10) — verdadeiros, ficaram fora por impacto; cartão de aprovação
+expirado (409, só no HEAD, #3); Liquid Glass "ligado" (#49) é o comportamento esperado
+do SDK 27, não bug; `toolbarBackground` (#53) não tem aviso hoje. Lista completa em
+`docs/AUDIT-1.10.md › 4`.
+
+### Chaves novas (13 × 43)
+
+Calendário (3), MCP (3), fallback genérico "O servidor recusou a operação.", Biblioteca
+(1), pesquisa (4: sem resultados, rodada, linha de status, "aviso"), `biometria/senha`.
+Sempre por script com assert de ausência + `plutil -lint` — `add_keys_110.py` é o molde.
 
 ## Rodada 7 — a Rückfrage que não aparecia
 

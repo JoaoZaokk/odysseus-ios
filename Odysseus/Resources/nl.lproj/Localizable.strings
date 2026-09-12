@@ -859,3 +859,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Ander antwoord…";
 "Você recusou a ação, e o agente parou aqui." = "Je hebt de actie geweigerd en de agent is hier gestopt.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Deze afspraak herhaalt zich.";
+"Apagar só esta ocorrência" = "Alleen deze keer verwijderen";
+"Apagar a série inteira" = "Hele reeks verwijderen";
+"Servidor adicionado, mas não conectou: %@" = "Server toegevoegd, maar geen verbinding: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Server toegevoegd. Er is autorisatie nodig: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Controleer de opdracht en argumenten in de lijst met MCP-servers; de server is al opgeslagen.";
+"O servidor recusou a operação." = "De server heeft de bewerking geweigerd.";
+"biometria/senha" = "biometrie/code";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "De server heeft het bestand geweigerd (geen tekst te extraheren of boven de limiet).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Geen resultaten — herformuleer of wissel van zoekmachine.";
+"Rodada %d: %@ (%d fontes)" = "Ronde %d: %@ (%d bronnen)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  ronde %d  ·  %d bronnen  ·  %@";
+"aviso" = "waarschuwing";

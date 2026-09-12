@@ -39,16 +39,40 @@ extension APIClient {
     }
 
     /// Installs a pip package by handing the server the exact shell command to run
-    /// (matches the web Cookbook: POST /api/model/serve `{repo_id, cmd}`). The
-    /// server runs it in the background; reload packages later to see the status.
+    /// (matches the web Cookbook: POST /api/model/serve `{repo_id, cmd}`).
+    ///
+    /// `repo_id` is a *task id*, not the pip target: for a `pip install` command
+    /// the server validates it against `[A-Za-z0-9][A-Za-z0-9._\-\[\]<>=!,~]*`
+    /// (routes/cookbook_routes.py) and answers 400 "Invalid pip package name"
+    /// for a space, `+`, `:` or `/`. 1.9 sent the whole pip spec there, so the
+    /// four catalogue entries with several packages or a git+https URL
+    /// (diffusers, krea_diffusers, boogu_image_mlx, sam_mask) could never be
+    /// installed from the app. Each pip token is quoted on its own.
+    ///
+    /// The server reports "tmux/docker missing on the target" as HTTP 200 with
+    /// `{ok: false, error}`, so the body is read rather than discarded.
     func installCookbookPackage(_ pkg: CookbookPackage) async throws {
         let pip = pkg.pip ?? ""
-        guard !pip.isEmpty else { throw APIError.transport("Pacote sem alvo pip.") }
+        let tokens = pip.split(whereSeparator: { $0 == " " || $0 == "\n" || $0 == "\t" }).map(String.init)
+        guard !tokens.isEmpty else { throw APIError.transport("Pacote sem alvo pip.") }
         struct Body: Encodable { let repo_id: String; let cmd: String }
-        let cmd = "python3 -m pip install --user --break-system-packages \"\(pip)\""
+        let quoted = tokens.map { "'" + $0.replacingOccurrences(of: "'", with: "'\\''") + "'" }
+        let cmd = "python3 -m pip install --user --break-system-packages " + quoted.joined(separator: " ")
+        // The server's check is ASCII (`[A-Za-z0-9][A-Za-z0-9._\-…]*`): "ç" or "中"
+        // would be a 400 again, and the first character may not be `_`.
+        var taskID = String(pkg.name.map { ($0.isASCII && ($0.isLetter || $0.isNumber)) || $0 == "." || $0 == "-" ? $0 : "_" })
+        while let f = taskID.first, !(f.isASCII && (f.isLetter || f.isNumber)) { taskID.removeFirst() }
+        if taskID.isEmpty { taskID = "package" }
         let req = try jsonRequest("/api/model/serve", method: "POST",
-                                  body: Body(repo_id: pip, cmd: cmd))
-        _ = try await send(req)
+                                  body: Body(repo_id: taskID, cmd: cmd))
+        try expectOK(try await send(req), fallback: L("O servidor recusou a operação."))
+    }
+
+    /// Exposed for tests: the exact command the server is asked to run.
+    static func cookbookInstallCommand(for pip: String) -> String {
+        let tokens = pip.split(whereSeparator: { $0 == " " || $0 == "\n" || $0 == "\t" }).map(String.init)
+        let quoted = tokens.map { "'" + $0.replacingOccurrences(of: "'", with: "'\\''") + "'" }
+        return "python3 -m pip install --user --break-system-packages " + quoted.joined(separator: " ")
     }
 }
 
@@ -110,7 +134,7 @@ struct CookbookView: View {
         }
         .screenChrome(title: "Cookbook")
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
     }
 
     @ViewBuilder

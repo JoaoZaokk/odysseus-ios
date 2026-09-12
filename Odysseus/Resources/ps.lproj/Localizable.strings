@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "بل ځواب…";
 "Você recusou a ação, e o agente parou aqui." = "تاسو دا کړنه رد کړه، او اجنټ همدلته ودرېد.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "دا پېښه تکرارېږي.";
+"Apagar só esta ocorrência" = "یوازې همدا تکرار ړنګ کړئ";
+"Apagar a série inteira" = "ټوله لړۍ ړنګه کړئ";
+"Servidor adicionado, mas não conectou: %@" = "سرور اضافه شو، خو ونښت: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "سرور اضافه شو. اجازې ته اړتیا لري: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "د MCP سرورونو په لست کې کمانډ او ارګومنټونه وګورئ؛ سرور لا دمخه خوندي شوی.";
+"O servidor recusou a operação." = "سرور عملیات رد کړ.";
+"biometria/senha" = "بایومتریک/کوډ";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "سرور فایل رد کړ (د ایستلو وړ متن نه لري یا له حد څخه لوی دی).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "پایلې نشته — بیا یې ولیکئ یا د لټون ماشین بدل کړئ.";
+"Rodada %d: %@ (%d fontes)" = "پړاو %d: %@ (%d سرچینې)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  پړاو %d  ·  %d سرچینې  ·  %@";
+"aviso" = "خبرداری";

@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "別の回答…";
 "Você recusou a ação, e o agente parou aqui." = "操作を拒否したため、エージェントはここで停止しました。";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "このイベントは繰り返されます。";
+"Apagar só esta ocorrência" = "この回だけ削除";
+"Apagar a série inteira" = "シリーズ全体を削除";
+"Servidor adicionado, mas não conectou: %@" = "サーバーを追加しましたが、接続できませんでした: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "サーバーを追加しました。認証が必要です: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "MCPサーバー一覧でコマンドと引数を確認してください。サーバーはすでに保存されています。";
+"O servidor recusou a operação." = "サーバーが操作を拒否しました。";
+"biometria/senha" = "生体認証/パスコード";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "サーバーがファイルを拒否しました（抽出できるテキストがないか、上限を超えています）。";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "結果なし — 言い換えるか検索エンジンを変更してください。";
+"Rodada %d: %@ (%d fontes)" = "ラウンド %d: %@（%d 件のソース）";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  ラウンド %d  ·  %d 件のソース  ·  %@";
+"aviso" = "警告";

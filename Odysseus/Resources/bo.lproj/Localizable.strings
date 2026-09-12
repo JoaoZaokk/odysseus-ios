@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "ལན་གཞན་ཞིག…";
 "Você recusou a ação, e o agente parou aqui." = "ཁྱེད་ཀྱིས་བྱ་བ་དེར་མི་མཐུན་པ་བྱས་པས། ལས་བྱེད་མཁན་འདིར་མཚམས་བཞག།";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "ལས་རིམ་འདི་བསྐྱར་ཟློས་བྱེད་ཀྱི་ཡོད།";
+"Apagar só esta ocorrência" = "ཐེངས་འདི་ཁོ་ན་སུབ་པ།";
+"Apagar a série inteira" = "ཆ་ཚང་སུབ་པ།";
+"Servidor adicionado, mas não conectou: %@" = "སར་བར་ཁ་སྣོན་བྱས་ཀྱང་སྦྲེལ་མཐུད་མ་ཐུབ། %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "སར་བར་ཁ་སྣོན་བྱས་ཟིན། དབང་ཆ་དགོས། %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "MCP སར་བར་ཐོ་གཞུང་ནང་བཀའ་བརྡ་དང་ཁ་སྣོན་ཞིབ་བཤེར་བྱོས། སར་བར་ཉར་ཚགས་ཟིན།";
+"O servidor recusou a operação." = "སར་བར་གྱིས་ལས་ཀ་ཁས་མ་བླངས།";
+"biometria/senha" = "ལུས་རྟགས་/གསང་ཨང་";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "སར་བར་གྱིས་ཡིག་ཆ་ཁས་མ་བླངས། (ཡི་གེ་ལེན་རྒྱུ་མེད་པའམ་ཚད་ལས་བརྒལ།)";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "འབྲས་བུ་མེད། — ཚིག་བསྒྱུར་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས་སམ་འཚོལ་བཤེར་ལས་ཁང་བརྗེས།";
+"Rodada %d: %@ (%d fontes)" = "སྐོར་ %d: %@ (%d ཁུངས།)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  སྐོར་ %d  ·  %d ཁུངས།  ·  %@";
+"aviso" = "ཉེན་བརྡ།";

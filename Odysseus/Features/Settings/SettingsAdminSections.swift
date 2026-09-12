@@ -395,12 +395,47 @@ extension APIClient {
     }
     /// `POST /api/mcp/servers` reads FastAPI `Form(...)` fields, not JSON (like
     /// `/api/model-endpoints`) — args/env travel as JSON-encoded strings in the form.
+    /// The POST answers 200 whether or not the stdio server came up:
+    /// `{id, name, connected, status, tool_count, error, needs_oauth, auth_url}`
+    /// (routes/mcp/mcp_routes.py). 1.9 discarded the body, so "npx not found"
+    /// or a wrong package closed the sheet as if it had connected.
     func createMCPServer(name: String, transport: String, command: String,
-                         args: String, env: String) async throws {
-        _ = try await send(formRequest("/api/mcp/servers", fields: [
+                         args: String, env: String) async throws -> MCPCreateResult {
+        let data = try await send(formRequest("/api/mcp/servers", fields: [
             "name": name, "transport": transport, "command": command,
             "args": args, "env": env,
         ]))
+        return (try? JSONDecoder().decode(MCPCreateResult.self, from: data)) ?? MCPCreateResult()
+    }
+}
+
+struct MCPCreateResult: Decodable {
+    /// nil = the server did not say (older builds); only an explicit false is a failure.
+    var connected: Bool?
+    var status: String?
+    var toolCount: Int?
+    var error: String?
+    var needsOAuth: Bool = false
+    var needsAuth: Bool = false
+    var authURL: String?
+
+    init() {}
+    enum CodingKeys: String, CodingKey {
+        case connected, status, error
+        case toolCount = "tool_count"
+        case needsOAuth = "needs_oauth"
+        case needsAuth = "needs_auth"
+        case authURL = "auth_url"
+    }
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        connected = try? c.decodeIfPresent(Bool.self, forKey: .connected)
+        status = try? c.decodeIfPresent(String.self, forKey: .status)
+        toolCount = try? c.decodeIfPresent(Int.self, forKey: .toolCount)
+        error = try? c.decodeIfPresent(String.self, forKey: .error)
+        needsOAuth = (try? c.decodeIfPresent(Bool.self, forKey: .needsOAuth)) ?? false
+        needsAuth = (try? c.decodeIfPresent(Bool.self, forKey: .needsAuth)) ?? false
+        authURL = try? c.decodeIfPresent(String.self, forKey: .authURL)
     }
 }
 
@@ -1401,9 +1436,12 @@ struct IntegracoesSection: View {
         .sheet(isPresented: $showEmail) {
             // Same trap as SettingsSections: omitting onTest silently made the
             // connection test a no-op that always reported success.
-            AddEmailAccountView(onSave: { payload in await emailVM.add(payload) },
-                                onTest: { payload in await emailVM.test(payload) })
-                .environment(\.theme, theme)
+            NavigationStack {
+                AddEmailAccountView(onSave: { payload in await emailVM.add(payload) },
+                                    onTest: { payload in await emailVM.test(payload) },
+                                    standalone: true)
+            }
+            .environment(\.theme, theme)
         }
         .alert(removing?.name ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
             Button("Remover", role: .destructive) { if let r = removing { Task { await vm.remove(r, admin: app.isAdmin) } }; removing = nil }

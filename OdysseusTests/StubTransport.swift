@@ -42,6 +42,11 @@ final class StubTransport: URLProtocol {
     /// The HTTP method last used on each path — a wrong verb is a 405 or a
     /// silent no-op on the server, and the path alone cannot tell.
     nonisolated(unsafe) private(set) static var methods: [String: String] = [:]
+    /// The query string last sent to each path (nil when there was none) — a
+    /// missing `?archived=true` is indistinguishable from the path alone.
+    nonisolated(unsafe) private(set) static var queries: [String: String?] = [:]
+    /// The request headers last sent to each path — `X-Odysseus-Run-Id` on stop.
+    nonisolated(unsafe) private(set) static var headers: [String: [String: String]] = [:]
     private static let lock = NSLock()
 
     static func route(_ path: String, _ reply: Reply) {
@@ -51,7 +56,7 @@ final class StubTransport: URLProtocol {
 
     static func reset() {
         lock.lock(); defer { lock.unlock() }
-        routes = [:]; seen = []; sentBodies = [:]; methods = [:]
+        routes = [:]; seen = []; sentBodies = [:]; methods = [:]; queries = [:]; headers = [:]
     }
 
     static func requested(_ path: String) -> Bool {
@@ -69,6 +74,8 @@ final class StubTransport: URLProtocol {
         Self.lock.lock()
         Self.seen.append(path)
         Self.methods[path] = request.httpMethod ?? "GET"
+        Self.queries[path] = request.url?.query
+        Self.headers[path] = request.allHTTPHeaderFields ?? [:]
         // `httpBody` is nil for a body set through a stream (multipart uploads),
         // so fall back to draining the stream.
         if let b = request.httpBody { Self.sentBodies[path] = b }

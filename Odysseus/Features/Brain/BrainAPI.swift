@@ -16,8 +16,11 @@ extension APIClient {
         _ = try await send(request("/api/memory/\(encPath(id))", method: "DELETE"))
     }
 
-    func pinMemory(_ id: String) async throws {
-        _ = try await send(request("/api/memory/\(encPath(id))/pin", method: "POST"))
+    /// `pinned` is a form field the server defaults to `true` when absent — a
+    /// bare POST can only pin, never unpin. Always send the intended state.
+    func pinMemory(_ id: String, pinned: Bool) async throws {
+        _ = try await send(formRequest("/api/memory/\(encPath(id))/pin",
+                                       fields: ["pinned": pinned ? "true" : "false"]))
     }
 
     /// AI "tidy" pass that de-dupes and cleans the memory list. Returns the

@@ -126,6 +126,10 @@ final class AppState: ObservableObject {
             keepSignedIn = true
             phase = .main
         } catch {
+            // Saved credentials exist and the re-login still failed: say why
+            // (server unreachable, password changed…) instead of a blank login
+            // screen that reads as "the session died". Credentials stay put.
+            loginError = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
             phase = .login
         }
     }

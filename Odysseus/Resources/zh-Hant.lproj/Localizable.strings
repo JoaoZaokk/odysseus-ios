@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "其他回答…";
 "Você recusou a ação, e o agente parou aqui." = "你拒絕了該操作，智能體已在此停止。";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "此活動為重複活動。";
+"Apagar só esta ocorrência" = "僅刪除此次";
+"Apagar a série inteira" = "刪除整個系列";
+"Servidor adicionado, mas não conectou: %@" = "伺服器已新增，但未能連線：%@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "伺服器已新增。需要授權：%@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "請在 MCP 伺服器清單中檢查指令與參數；伺服器已儲存。";
+"O servidor recusou a operação." = "伺服器拒絕了此操作。";
+"biometria/senha" = "生物辨識/密碼";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "伺服器拒絕了該檔案（無可擷取文字或超出大小限制）。";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "沒有結果 — 請換個說法或更換搜尋引擎。";
+"Rodada %d: %@ (%d fontes)" = "第 %d 輪：%@（%d 個來源）";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  第 %d 輪  ·  %d 個來源  ·  %@";
+"aviso" = "警告";

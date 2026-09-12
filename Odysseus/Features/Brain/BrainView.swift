@@ -44,7 +44,7 @@ final class BrainViewModel: ObservableObject {
     }
 
     func togglePin(_ m: Memory) async {
-        do { try await api.pinMemory(m.id); await load() }
+        do { try await api.pinMemory(m.id, pinned: !m.pinned); await load() }
         catch { self.error = msg(error) }
     }
 
@@ -85,12 +85,12 @@ struct BrainView: View {
         } trailing: {
             Button { showAdd = true } label: { Image(systemName: "plus") }
             Button { Task { await vm.audit() } } label: {
-                if vm.auditing { ProgressView() } else { Image(systemName: "wand.and.sparkles") }
+                if vm.auditing { ProgressView() } else { Image(systemName: "wand.and.stars") }
             }
             .disabled(vm.auditing)
         }
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
         .alert("Nova memória", isPresented: $showAdd) {
             TextField("O que o assistente deve lembrar?", text: $newText)
             TextField("Categoria", text: $newCategory)
@@ -178,6 +178,14 @@ struct BrainView: View {
             Button { Task { await vm.togglePin(m) } } label: {
                 Label(LocalizedStringKey(m.pinned ? "Desafixar" : "Fixar"), systemImage: "pin")
             }.tint(theme.accent)
+        }
+        // A swipe does not exist on macOS (and is undiscoverable on iPad with a
+        // pointer): the same actions on right-click / long press.
+        .contextMenu {
+            Button { Task { await vm.togglePin(m) } } label: {
+                Label(LocalizedStringKey(m.pinned ? "Desafixar" : "Fixar"), systemImage: "pin")
+            }
+            Button(role: .destructive) { Task { await vm.delete(m) } } label: { Label("Apagar", systemImage: "trash") }
         }
     }
 

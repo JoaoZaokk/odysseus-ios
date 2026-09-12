@@ -41,13 +41,28 @@ extension APIClient {
     func personalFiles() async throws -> PersonalListing {
         try decode(PersonalListing.self, try await send(request("/api/personal")))
     }
+    /// The server extracts, chunks and embeds the file *inside* this request
+    /// (routes/personal_routes.py) — minutes for a real PDF — so it goes through
+    /// `streamSession`, not the 30-second default (the chat upload already does).
+    /// It always answers 200 `{success: true, indexed_count, failed_count}`;
+    /// a file refused for size or with no extractable text is only visible in
+    /// the counts. From the second upload on the listing is stale until
+    /// `/api/personal/reload` runs, so that is called best-effort afterwards.
     func uploadPersonal(_ data: Data, filename: String) async throws {
         var req = request("/api/personal/upload", method: "POST")
         var form = MultipartForm()
         form.append(file: "files", filename: filename, mime: "application/octet-stream", fileData: data)
         req.setValue(form.contentType, forHTTPHeaderField: "Content-Type")
         req.httpBody = form.finalizedData
-        _ = try await send(req)
+        let body = try await send(req, via: streamSession)
+        if let obj = try? JSONSerialization.jsonObject(with: body) as? [String: Any] {
+            let indexed = (obj["indexed_count"] as? Int) ?? 0
+            let failed = (obj["failed_count"] as? Int) ?? 0
+            if failed > 0 && indexed == 0 {
+                throw APIError.transport(L("O servidor recusou o arquivo (sem texto extraível ou acima do limite)."))
+            }
+        }
+        _ = try? await send(request("/api/personal/reload", method: "POST"), via: streamSession)
     }
     func deletePersonal(_ filepath: String) async throws {
         // `.urlQueryAllowed` permits `&`, so a name containing one splits into extra
@@ -108,7 +123,7 @@ struct LibraryView: View {
             }.disabled(vm.uploading)
         }
         .task { await vm.load() }
-        .refreshable { await vm.load() }
+        .odyRefreshable { await vm.load() }
         .fileImporter(isPresented: $importing, allowedContentTypes: [.item], allowsMultipleSelection: false) { result in
             if case .success(let urls) = result, let url = urls.first {
                 Task { await vm.upload(url) }
@@ -143,6 +158,9 @@ struct LibraryView: View {
                     }
                     .listRowBackground(theme.bg)
                     .swipeActions(edge: .trailing) {
+                        Button(role: .destructive) { Task { await vm.delete(f) } } label: { Label("Apagar", systemImage: "trash") }
+                    }
+                    .contextMenu {
                         Button(role: .destructive) { Task { await vm.delete(f) } } label: { Label("Apagar", systemImage: "trash") }
                     }
                 }

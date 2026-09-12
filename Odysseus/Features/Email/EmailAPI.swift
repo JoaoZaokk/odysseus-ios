@@ -56,14 +56,17 @@ extension APIClient {
         _ = try? await send(request("/api/email/mark-read/\(encPath(uid))", method: "POST"))
     }
 
+    /// The three mail mutations answer 200 with `{"success": false, "error": …}`
+    /// ("Email not found", "Mail operation failed") — read the body, or the row
+    /// vanishes from the list while the message stays on the server.
     func emailArchive(_ uid: String) async throws {
-        _ = try await send(request("/api/email/archive/\(encPath(uid))", method: "POST"))
+        try expectOK(try await send(request("/api/email/archive/\(encPath(uid))", method: "POST")), fallback: L("O servidor recusou a operação."))
     }
 
     func emailDelete(_ uid: String) async throws {
         // The server declares this route as DELETE (unlike mark-read/archive, which are
         // POST) — sending POST here returned 405 and swipe-to-delete always failed.
-        _ = try await send(request("/api/email/delete/\(encPath(uid))", method: "DELETE"))
+        try expectOK(try await send(request("/api/email/delete/\(encPath(uid))", method: "DELETE")), fallback: L("O servidor recusou a operação."))
     }
 
     // MARK: - Accounts
@@ -74,7 +77,7 @@ extension APIClient {
 
     func addEmailAccount(_ payload: EmailAccountPayload) async throws {
         let req = try jsonRequest("/api/email/accounts", method: "POST", body: payload)
-        _ = try await send(req)
+        try expectOK(try await send(req), fallback: L("O servidor recusou a operação."))
     }
 
     /// Tests IMAP (and SMTP, if configured) without saving.
@@ -89,7 +92,7 @@ extension APIClient {
     }
 
     func deleteEmailAccount(_ id: String) async throws {
-        _ = try await send(request("/api/email/accounts/\(encPath(id))", method: "DELETE"))
+        try expectOK(try await send(request("/api/email/accounts/\(encPath(id))", method: "DELETE")), fallback: L("O servidor recusou a operação."))
     }
 
     // Automation — per account (`?account_id=`), plain user routes.
@@ -102,7 +105,7 @@ extension APIClient {
         var req = request("/api/email/config" + acct(accountId), method: "PUT")
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = try JSONSerialization.data(withJSONObject: c.payload(accountId: accountId))
-        _ = try await send(req)
+        try expectOK(try await send(req), fallback: L("O servidor recusou a operação."))
     }
     func emailWritingStyle(accountId: String) async throws -> String {
         let d = (try? JSONSerialization.jsonObject(with: try await send(request("/api/email/style" + acct(accountId))))) as? [String: Any] ?? [:]
@@ -110,7 +113,7 @@ extension APIClient {
     }
     func saveEmailWritingStyle(_ style: String, accountId: String) async throws {
         struct B: Encodable { let style: String }
-        _ = try await send(try jsonRequest("/api/email/style" + acct(accountId), method: "PUT", body: B(style: style)))
+        try expectOK(try await send(try jsonRequest("/api/email/style" + acct(accountId), method: "PUT", body: B(style: style))), fallback: L("O servidor recusou a operação."))
     }
     /// Reads the Sent folder through the utility model; failures are a 200
     /// with success:false, so they are read out of the body.
@@ -146,6 +149,6 @@ extension APIClient {
     }
 
     func setDefaultEmailAccount(_ id: String) async throws {
-        _ = try await send(request("/api/email/accounts/\(encPath(id))/set-default", method: "POST"))
+        try expectOK(try await send(request("/api/email/accounts/\(encPath(id))/set-default", method: "POST")), fallback: L("O servidor recusou a operação."))
     }
 }

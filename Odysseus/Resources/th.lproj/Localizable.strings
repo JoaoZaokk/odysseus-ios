@@ -857,3 +857,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "คำตอบอื่น…";
 "Você recusou a ação, e o agente parou aqui." = "คุณปฏิเสธการดำเนินการ เอเจนต์จึงหยุดที่นี่";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "กิจกรรมนี้เกิดซ้ำ";
+"Apagar só esta ocorrência" = "ลบเฉพาะครั้งนี้";
+"Apagar a série inteira" = "ลบทั้งชุด";
+"Servidor adicionado, mas não conectou: %@" = "เพิ่มเซิร์ฟเวอร์แล้ว แต่เชื่อมต่อไม่สำเร็จ: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "เพิ่มเซิร์ฟเวอร์แล้ว ต้องมีการอนุญาต: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "ตรวจสอบคำสั่งและอาร์กิวเมนต์ในรายการเซิร์ฟเวอร์ MCP เซิร์ฟเวอร์ถูกบันทึกไว้แล้ว";
+"O servidor recusou a operação." = "เซิร์ฟเวอร์ปฏิเสธการดำเนินการ";
+"biometria/senha" = "ไบโอเมตริก/รหัสผ่าน";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "เซิร์ฟเวอร์ปฏิเสธไฟล์ (ไม่มีข้อความให้ดึงหรือเกินขีดจำกัด)";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "ไม่มีผลลัพธ์ — ลองเรียบเรียงใหม่หรือเปลี่ยนเครื่องมือค้นหา";
+"Rodada %d: %@ (%d fontes)" = "รอบ %d: %@ (%d แหล่ง)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  รอบ %d  ·  %d แหล่ง  ·  %@";
+"aviso" = "คำเตือน";

@@ -849,3 +849,18 @@
 /* Rodada 7 — a pergunta do agente (ask_user) */
 "Outra resposta…" = "Muu vastaus…";
 "Você recusou a ação, e o agente parou aqui." = "Hylkäsit toiminnon, ja agentti pysähtyi tähän.";
+
+/* Rodada 8 — 1.10: contratos do servidor vivo (calendário, MCP, escritas) */
+"Este evento se repete." = "Tämä tapahtuma toistuu.";
+"Apagar só esta ocorrência" = "Poista vain tämä kerta";
+"Apagar a série inteira" = "Poista koko sarja";
+"Servidor adicionado, mas não conectou: %@" = "Palvelin lisätty, mutta yhteys ei onnistunut: %@";
+"Servidor adicionado. Ele precisa de autorização: %@" = "Palvelin lisätty. Se tarvitsee valtuutuksen: %@";
+"Confira o comando e os argumentos na lista de servidores MCP; o servidor já foi salvo." = "Tarkista komento ja argumentit MCP-palvelinluettelosta; palvelin on jo tallennettu.";
+"O servidor recusou a operação." = "Palvelin hylkäsi toiminnon.";
+"biometria/senha" = "biometria/koodi";
+"O servidor recusou o arquivo (sem texto extraível ou acima do limite)." = "Palvelin hylkäsi tiedoston (ei poimittavaa tekstiä tai yli rajan).";
+"Sem resultados — tente reformular ou trocar o motor de busca." = "Ei tuloksia — muotoile uudelleen tai vaihda hakukonetta.";
+"Rodada %d: %@ (%d fontes)" = "Kierros %d: %@ (%d lähdettä)";
+"%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  kierros %d  ·  %d lähdettä  ·  %@";
+"aviso" = "varoitus";
