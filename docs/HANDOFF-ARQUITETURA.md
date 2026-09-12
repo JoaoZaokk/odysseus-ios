@@ -1,8 +1,9 @@
-# Handoff — fase de arquitetura, encerrada; rodadas 4 a 8 fechadas, 1.9 em revisão, 1.10 no branch
+# Handoff — fase de arquitetura, encerrada; rodadas 4 a 8 fechadas, 1.9 em revisão, 1.10 em main
 
 Estado em 2026-09-11. **1.9 — iOS build 25, macOS build 19** no App Store Connect
 (iOS WAITING_FOR_REVIEW, macOS READY_FOR_REVIEW). **1.10 — iOS build 26, macOS build
-20** no branch `feat/1.10-upstream-sync` (PR aberto): **324 testes** passando no
+20** em `main` (`dd132f4`, PR #47 mergeado em 12/09, após revisão adversarial
+pré-merge): **324 testes** passando no
 simulador **iOS 27** (Xcode 27) e no **iOS 17** (piso), iOS e macOS compilando sem
 aviso. Catálogos: **43 × 833**.
 
