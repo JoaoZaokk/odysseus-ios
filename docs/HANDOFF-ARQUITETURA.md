@@ -69,8 +69,9 @@ saiu como "1/100". Investigação com 19 agentes (5 frentes + refutadores), acha
    `os_proc_available_memory()` não cobre `bytes × 1,3 + encoder Core ML + 300 MB`
    (`OnDeviceSTTError.notEnoughMemory`, mensagem com os números). Entitlement
    `com.apple.developer.kernel.increased-memory-limit` em `Odysseus/Resources/Odysseus.entitlements`
-   (iOS). A UI marca "Não cabe na memória deste aparelho" e desabilita o ⚡ quando o par
-   não cabe. Na 1.10 o motor era o SwiftWhisper (whisper.cpp de 2023), que alocava por
+   (iOS) — archive de teste com assinatura automática passou e o `.app` sai assinado com o
+   entitlement. A UI marca "Não cabe na memória deste aparelho" e desabilita o ⚡ quando o par
+   não cabe. Catálogo sem f16 (iPhone roda q4/q5, Mac q8; o campo de URL ainda aceita um). Na 1.10 o motor era o SwiftWhisper (whisper.cpp de 2023), que alocava por
    tabela fixa — outro motivo para o f16 estourar lá.
 3. **`OnDeviceSTT.load` rodava no MainActor** (b65da03): a UI congelava durante a leitura do
    .bin, a compilação da biblioteca Metal e a carga do Core ML (que na primeira vez compila
