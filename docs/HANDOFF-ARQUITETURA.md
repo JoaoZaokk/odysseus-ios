@@ -9,7 +9,7 @@ localizações. **Submetida para revisão pelo dono em 12/09 (WAITING_FOR_REVIEW
 simulador **iOS 27** (Xcode 27) e no **iOS 17** (piso), iOS e macOS compilando sem
 aviso. Catálogos: **43 × 833**.
 
-## Rodada 9 — motor whisper.cpp 1.9.4, Parakeet e o catálogo por idioma (1.11, em andamento)
+## Rodada 9 — motor whisper.cpp 1.9.4, Parakeet e o catálogo por idioma (1.11; espelho fechado em 13/09, ASC pendente)
 
 Pedido do dono (12/09): "baixar os modelos famosos de STT (Parakeet, Nemotron, Kyutai…),
 converter para GGML em cada quantização, subir na minha conta do Hugging Face e linkar na
@@ -40,8 +40,9 @@ fonte e mantendo a licença de origem.
   poupou 43 catálogos × 16 chaves; os 6 antigos continuam nas chaves traduzidas.
 - Catálogo: Parakeet TDT v3 (universal, 25 línguas europeias, detecta idioma), v2 e 1.1B
   (inglês), Orukeet (v3 afinado pela oruk, cc-by-sa-4.0, pt-BR 3,7 WER vs 4,5 no FLEURS
-  segundo o card), e um Whisper afinado por idioma em q5_0 e q8_0 (f16 no mesmo repo, para
-  o campo de URL). Entradas antigas de terceiros (uosx, lucasparis1103, Pomni) passaram
+  segundo o card), e um Whisper afinado por idioma em q5_0 e q8_0 (sem f16 no catálogo:
+  iPhone roda q4/q5, Mac q8; os 15 primeiros repositórios ainda têm o f16 que subiu antes
+  do aviso do dono). Entradas antigas de terceiros (uosx, lucasparis1103, Pomni) passaram
   para os espelhos próprios; ids mantidos, mas o nome do arquivo mudou, então quem já
   tinha esses quatro baixados baixa de novo. Sem Core ML para Parakeet.
 - `OdysseusTests/VoiceCatalogTests.swift` (9 testes; suíte em **333**, iOS 27 sim): ids/URLs únicos, só `https://huggingface.co/…/resolve/main/…`,
@@ -138,13 +139,49 @@ f16 saiu byte-idêntico ao `ggml-org/parakeet-GGUF`. **Nemotron 3.5 streaming** 
 parakeet do whisper.cpp (só TDT): é GGUF do mudler/parakeet.cpp; o `.q8_0.gguf` que a
 NVIDIA publica não carrega no parakeet.cpp, e `parakeet-cli quantize` só quantiza tensores
 F32 (a partir do f16 copia tudo verbatim) — espelhar o f16 do mudler e requantizar via
-upcast f32 fica para quando o disco liberar. O app não carrega Nemotron (seria um segundo
-ggml no binário); vai só para o HF.
+upcast f32 — feito em 13/09: `nemotron-3.5-asr-streaming-0.6b-gguf` tem q4_k/q5_k/q6_k/q8_0
+(+ o f16 do mudler). O app não carrega Nemotron (seria um segundo ggml no binário); vai só
+para o HF.
 
-**Bloqueio:** `hf auth whoami` = "Not logged in". O MCP do HF está autenticado como
-`JoaoZaokk` mas é só leitura. Os uploads precisam de `hf auth login` (token write) feito
-pelo dono; até lá as saídas ficam em disco e o catálogo da 1.11 aponta para repositórios
-que ainda não existem — **não subir a 1.11 antes de os 24 repositórios estarem no ar**.
+### Rodada 9c — o espelho fechou (13/09)
+
+Depois do `hf auth login` do dono, o laço rodou a noite e o dia seguinte. Estado final:
+**24/24 repositórios no ar** em `huggingface.co/JoaoZaokk/*` (77 GB), cada um com q4_0/q5_0/q8_0
+(Nemotron: q4_k/q5_k/q6_k/q8_0), card com licença de origem e `VERIFY.txt` com a transcrição
+de um sample pt e um en por quantização. `patch_catalog_sizes.py` gravou os 44 tamanhos reais
+em `VoiceModels.swift` (0 × 404). Não há f16 novo: o dono perguntou "como o iPhone vai rodar
+FP16?" e o f16 passou a ser só intermediário apagado após quantizar.
+
+O que quebrou e como ficou o pipeline (`_backups/…/stt-ggml/pipeline/`):
+
+- **Disco.** O MacBook tinha ~10 GB. `run_whisper.sh` é o caminho de pouco disco: guarda
+  `max(fonte, f16×1,55)+600 MB` antes de baixar (sai com 5 = SKIP-DISK), o conversor
+  materializa os tensores em RAM e apaga os safetensors da fonte antes de escrever o f16
+  (`GGML_DELETE_SOURCE_WEIGHTS=1`), e cada quantização é quantizada → verificada → subida →
+  apagada antes da próxima. Pico ≈ fonte, ou f16 + uma quantização. O hindi (6,2 GB fp32)
+  passou com 9,4 GB livres.
+- **Rede.** Duas quedas de DNS derrubaram 7 downloads numa noite; um `hf upload` ficou
+  **19 horas** pendurado sem erro (22:01→17:41) porque o monitor só acorda quando
+  `STATUS.txt` muda; um `hf download` parou em 1,2 GB com a rede boa. Hoje toda transferência
+  tem `alarm` do perl (macOS não tem `timeout`), o download roda sob `dlwatch` (mata se o
+  diretório não cresce por 5 min e retoma até 4×; `hf download` retoma `.incomplete`), e um
+  segundo Monitor acorda se `STATUS.txt` ficar 45 min parado.
+- **zsh.** `set -- $pair` não separa palavras; glob sem match aborta (`setopt nullglob`);
+  editar um script em execução é inseguro — trocar por `os.replace` (inode novo) e deixar a
+  instância velha morrer no ramo já parseado.
+- **Conversor.** bf16 (`Got unsupported ScalarType BFloat16`) → cast para f32 numa cópia
+  do `convert-h5-to-ggml.py`; repositórios só com `tokenizer.json` → `save_pretrained(legacy_format=True)`
+  e, se ainda faltar `vocab.json`/`merges.txt`/`added_tokens.json`, os arquivos do
+  `openai/whisper-large-v3(-turbo)` (vocabulário 51866 conferido).
+
+Verificação: cada quantização transcreveu `pt.wav`/`en.wav` (gerados com `say`). Modelos
+monolíngues transliteram o sample estrangeiro no próprio alfabeto (hindi em devanágari,
+húngaro "Bonzie, o givon mus testarú…") — isso é o esperado de um fine-tune que pinou o
+idioma, não erro de conversão; o teste é "carrega e decodifica", não WER.
+
+Fica para o dono: Submit da 1.11 no ASC (agora liberado: todos os repositórios existem),
+apagar ou não os f16 antigos dos 15 primeiros repositórios, e o IP/porta do Proxmox para o
+Zão Hub.
 
 ## Rodada 8 — o servidor vivo não é o upstream
 

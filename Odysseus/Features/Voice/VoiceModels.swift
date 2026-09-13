@@ -210,14 +210,14 @@ enum VoiceCatalog {
         // language itself; v2 = English only. No Core ML encoder.
         .init(id: "p-v3-q5",  name: "NVIDIA Parakeet TDT v3 q5",   task: .stt, lang: .universal, bytes:   433_901_039, url: mine("parakeet-tdt-0.6b-v3-ggml", "ggml-parakeet-tdt-0.6b-v3-q5_0.bin")),
         .init(id: "p-v3-q8",  name: "NVIDIA Parakeet TDT v3 q8",   task: .stt, lang: .universal, bytes:   668_757_119, url: mine("parakeet-tdt-0.6b-v3-ggml", "ggml-parakeet-tdt-0.6b-v3-q8_0.bin")),
-        .init(id: "p-v2-q5",  name: "NVIDIA Parakeet TDT v2 EN q5", task: .stt, lang: .english,   bytes:   434_000_000, url: mine("parakeet-tdt-0.6b-v2-ggml", "ggml-parakeet-tdt-0.6b-v2-q5_0.bin")),
-        .init(id: "p-v2-q8",  name: "NVIDIA Parakeet TDT v2 EN q8", task: .stt, lang: .english,   bytes:   669_000_000, url: mine("parakeet-tdt-0.6b-v2-ggml", "ggml-parakeet-tdt-0.6b-v2-q8_0.bin")),
-        .init(id: "p-1b1-q5", name: "NVIDIA Parakeet TDT 1.1B EN q5", task: .stt, lang: .english,  bytes:   800_000_000, url: mine("parakeet-tdt-1.1b-ggml", "ggml-parakeet-tdt-1.1b-q5_0.bin")),
-        .init(id: "p-1b1-q8", name: "NVIDIA Parakeet TDT 1.1B EN q8", task: .stt, lang: .english,  bytes: 1_200_000_000, url: mine("parakeet-tdt-1.1b-ggml", "ggml-parakeet-tdt-1.1b-q8_0.bin")),
+        .init(id: "p-v2-q5",  name: "NVIDIA Parakeet TDT v2 EN q5", task: .stt, lang: .english,   bytes: 427_494_308, url: mine("parakeet-tdt-0.6b-v2-ggml", "ggml-parakeet-tdt-0.6b-v2-q5_0.bin")),
+        .init(id: "p-v2-q8",  name: "NVIDIA Parakeet TDT v2 EN q8", task: .stt, lang: .english,   bytes: 658_909_748, url: mine("parakeet-tdt-0.6b-v2-ggml", "ggml-parakeet-tdt-0.6b-v2-q8_0.bin")),
+        .init(id: "p-1b1-q5", name: "NVIDIA Parakeet TDT 1.1B EN q5", task: .stt, lang: .english,  bytes: 742_789_566, url: mine("parakeet-tdt-1.1b-ggml", "ggml-parakeet-tdt-1.1b-q5_0.bin")),
+        .init(id: "p-1b1-q8", name: "NVIDIA Parakeet TDT 1.1B EN q8", task: .stt, lang: .english,  bytes: 1_143_484_494, url: mine("parakeet-tdt-1.1b-ggml", "ggml-parakeet-tdt-1.1b-q8_0.bin")),
         // Orukeet = Parakeet v3 further trained by oruk (cc-by-sa-4.0); beats v3
         // on Portuguese in FLEURS (3.7 vs 4.5 WER on its card).
-        .init(id: "p-oru-q5", name: "Orukeet (Parakeet v3+) q5",  task: .stt, lang: .universal, bytes:   434_000_000, url: mine("orukeet-ggml", "ggml-orukeet-q5_0.bin")),
-        .init(id: "p-oru-q8", name: "Orukeet (Parakeet v3+) q8",  task: .stt, lang: .universal, bytes:   669_000_000, url: mine("orukeet-ggml", "ggml-orukeet-q8_0.bin")),
+        .init(id: "p-oru-q5", name: "Orukeet (Parakeet v3+) q5",  task: .stt, lang: .universal, bytes: 433_901_039, url: mine("orukeet-ggml", "ggml-orukeet-q5_0.bin")),
+        .init(id: "p-oru-q8", name: "Orukeet (Parakeet v3+) q8",  task: .stt, lang: .universal, bytes: 668_757_119, url: mine("orukeet-ggml", "ggml-orukeet-q8_0.bin")),
 
         // ── Language-tuned Whisper checkpoints ──
         // Converted with whisper.cpp's own converter and re-hosted under
@@ -226,65 +226,65 @@ enum VoiceCatalog {
         // Macs. No f16 in the catalog: phones cannot hold it, and the memory gate
         // would refuse it anyway; the custom-URL field still accepts one.
         // Chinese — BELLE fine-tune of Large-v3 Turbo (apache-2.0).
-        .init(id: "w-zh-turbo-q5",  name: "Belle Whisper Turbo ZH q5", task: .stt, lang: .chinese, bytes:   574_000_000, url: mine("Belle-whisper-large-v3-turbo-zh-ggml", "ggml-belle-whisper-large-v3-turbo-zh-q5_0.bin")),
-        .init(id: "w-zh-turbo-q8",  name: "Belle Whisper Turbo ZH q8", task: .stt, lang: .chinese, bytes:   874_000_000, url: mine("Belle-whisper-large-v3-turbo-zh-ggml", "ggml-belle-whisper-large-v3-turbo-zh-q8_0.bin")),
+        .init(id: "w-zh-turbo-q5",  name: "Belle Whisper Turbo ZH q5", task: .stt, lang: .chinese, bytes: 574_041_195, url: mine("Belle-whisper-large-v3-turbo-zh-ggml", "ggml-belle-whisper-large-v3-turbo-zh-q5_0.bin")),
+        .init(id: "w-zh-turbo-q8",  name: "Belle Whisper Turbo ZH q8", task: .stt, lang: .chinese, bytes: 874_188_075, url: mine("Belle-whisper-large-v3-turbo-zh-ggml", "ggml-belle-whisper-large-v3-turbo-zh-q8_0.bin")),
         // Japanese — Kotoba v2.0 (distil Large-v3, apache-2.0).
-        .init(id: "w-ja-kotoba-q5", name: "Kotoba Whisper JA q5",      task: .stt, lang: .japanese, bytes:   538_000_000, url: mine("kotoba-whisper-v2.0-ggml", "ggml-kotoba-whisper-v2.0-q5_0.bin")),
-        .init(id: "w-ja-kotoba-q8", name: "Kotoba Whisper JA q8",      task: .stt, lang: .japanese, bytes:   810_000_000, url: mine("kotoba-whisper-v2.0-ggml", "ggml-kotoba-whisper-v2.0-q8_0.bin")),
+        .init(id: "w-ja-kotoba-q5", name: "Kotoba Whisper JA q5",      task: .stt, lang: .japanese, bytes: 537_819_875, url: mine("kotoba-whisper-v2.0-ggml", "ggml-kotoba-whisper-v2.0-q5_0.bin")),
+        .init(id: "w-ja-kotoba-q8", name: "Kotoba Whisper JA q8",      task: .stt, lang: .japanese, bytes: 818_305_955, url: mine("kotoba-whisper-v2.0-ggml", "ggml-kotoba-whisper-v2.0-q8_0.bin")),
         // English — official Distil-Whisper Large-v3.5 (MIT, ggml by distil-whisper).
         .init(id: "w-en-distil35",  name: "Distil Whisper EN v3.5",    task: .stt, lang: .english, bytes: 1_520_000_000,
               url: hf("distil-whisper/distil-large-v3.5-ggml", "ggml-model.bin")),
         // Portuguese (BR) — freds0 distil Large-v3 fine-tune (MIT).
-        .init(id: "w-pt-distil-q5", name: "Distil Whisper PT-BR q5",   task: .stt, lang: .portuguese, bytes: 538_000_000, url: mine("distil-whisper-large-v3-ptbr-ggml", "ggml-distil-whisper-large-v3-ptbr-q5_0.bin")),
-        .init(id: "w-pt-distil-q8", name: "Distil Whisper PT-BR q8",   task: .stt, lang: .portuguese, bytes: 810_000_000, url: mine("distil-whisper-large-v3-ptbr-ggml", "ggml-distil-whisper-large-v3-ptbr-q8_0.bin")),
+        .init(id: "w-pt-distil-q5", name: "Distil Whisper PT-BR q5",   task: .stt, lang: .portuguese, bytes: 537_819_875, url: mine("distil-whisper-large-v3-ptbr-ggml", "ggml-distil-whisper-large-v3-ptbr-q5_0.bin")),
+        .init(id: "w-pt-distil-q8", name: "Distil Whisper PT-BR q8",   task: .stt, lang: .portuguese, bytes: 818_305_955, url: mine("distil-whisper-large-v3-ptbr-ggml", "ggml-distil-whisper-large-v3-ptbr-q8_0.bin")),
         // French — bofenghuang distil Large-v3 (16 decoder layers, MIT).
-        .init(id: "w-fr-distil-q5", name: "Distil Whisper FR q5",      task: .stt, lang: .french, bytes:   791_000_000, url: mine("whisper-large-v3-french-distil-dec16-ggml", "ggml-whisper-large-v3-french-distil-dec16-q5_0.bin")),
-        .init(id: "w-fr-distil-q8", name: "Distil Whisper FR q8",      task: .stt, lang: .french, bytes: 1_200_000_000, url: mine("whisper-large-v3-french-distil-dec16-ggml", "ggml-whisper-large-v3-french-distil-dec16-q8_0.bin")),
+        .init(id: "w-fr-distil-q5", name: "Distil Whisper FR q5",      task: .stt, lang: .french, bytes: 791_369_259, url: mine("whisper-large-v3-french-distil-dec16-ggml", "ggml-whisper-large-v3-french-distil-dec16-q5_0.bin")),
+        .init(id: "w-fr-distil-q8", name: "Distil Whisper FR q8",      task: .stt, lang: .french, bytes: 1_209_480_939, url: mine("whisper-large-v3-french-distil-dec16-ggml", "ggml-whisper-large-v3-french-distil-dec16-q8_0.bin")),
         // Spanish (Latin America) — marianbasti Large-v3 Turbo (MIT).
-        .init(id: "w-es-turbo-q5",  name: "Whisper Turbo LatAm ES q5", task: .stt, lang: .spanish, bytes: 574_000_000, url: mine("whisper-large-v3-turbo-latam-ggml", "ggml-whisper-large-v3-turbo-latam-q5_0.bin")),
-        .init(id: "w-es-turbo-q8",  name: "Whisper Turbo LatAm ES q8", task: .stt, lang: .spanish, bytes: 874_000_000, url: mine("whisper-large-v3-turbo-latam-ggml", "ggml-whisper-large-v3-turbo-latam-q8_0.bin")),
+        .init(id: "w-es-turbo-q5",  name: "Whisper Turbo LatAm ES q5", task: .stt, lang: .spanish, bytes: 574_041_195, url: mine("whisper-large-v3-turbo-latam-ggml", "ggml-whisper-large-v3-turbo-latam-q5_0.bin")),
+        .init(id: "w-es-turbo-q8",  name: "Whisper Turbo LatAm ES q8", task: .stt, lang: .spanish, bytes: 874_188_075, url: mine("whisper-large-v3-turbo-latam-ggml", "ggml-whisper-large-v3-turbo-latam-q8_0.bin")),
         // German — primeline Large-v3 Turbo (apache-2.0).
-        .init(id: "w-de-turbo-q5",  name: "Whisper Turbo DE q5",       task: .stt, lang: .german, bytes: 574_000_000, url: mine("whisper-large-v3-turbo-german-ggml", "ggml-whisper-large-v3-turbo-german-q5_0.bin")),
-        .init(id: "w-de-turbo-q8",  name: "Whisper Turbo DE q8",       task: .stt, lang: .german, bytes: 874_000_000, url: mine("whisper-large-v3-turbo-german-ggml", "ggml-whisper-large-v3-turbo-german-q8_0.bin")),
+        .init(id: "w-de-turbo-q5",  name: "Whisper Turbo DE q5",       task: .stt, lang: .german, bytes: 574_041_195, url: mine("whisper-large-v3-turbo-german-ggml", "ggml-whisper-large-v3-turbo-german-q5_0.bin")),
+        .init(id: "w-de-turbo-q8",  name: "Whisper Turbo DE q8",       task: .stt, lang: .german, bytes: 874_188_075, url: mine("whisper-large-v3-turbo-german-ggml", "ggml-whisper-large-v3-turbo-german-q8_0.bin")),
         // Italian — bofenghuang distil Large-v3 v0.2 (MIT).
-        .init(id: "w-it-distil-q5", name: "Distil Whisper IT q5",      task: .stt, lang: .italian, bytes: 538_000_000, url: mine("whisper-large-v3-distil-it-v0.2-ggml", "ggml-whisper-large-v3-distil-it-v0.2-q5_0.bin")),
-        .init(id: "w-it-distil-q8", name: "Distil Whisper IT q8",      task: .stt, lang: .italian, bytes: 810_000_000, url: mine("whisper-large-v3-distil-it-v0.2-ggml", "ggml-whisper-large-v3-distil-it-v0.2-q8_0.bin")),
+        .init(id: "w-it-distil-q5", name: "Distil Whisper IT q5",      task: .stt, lang: .italian, bytes: 537_819_875, url: mine("whisper-large-v3-distil-it-v0.2-ggml", "ggml-whisper-large-v3-distil-it-v0.2-q5_0.bin")),
+        .init(id: "w-it-distil-q8", name: "Distil Whisper IT q8",      task: .stt, lang: .italian, bytes: 818_305_955, url: mine("whisper-large-v3-distil-it-v0.2-ggml", "ggml-whisper-large-v3-distil-it-v0.2-q8_0.bin")),
         // Korean — royshilkrot Large-v3 Turbo (apache-2.0).
-        .init(id: "w-ko-turbo-q5",  name: "Whisper Turbo KO q5",       task: .stt, lang: .korean, bytes: 574_000_000, url: mine("whisper-large-v3-turbo-korean-ggml", "ggml-whisper-large-v3-turbo-korean-q5_0.bin")),
-        .init(id: "w-ko-turbo-q8",  name: "Whisper Turbo KO q8",       task: .stt, lang: .korean, bytes: 874_000_000, url: mine("whisper-large-v3-turbo-korean-ggml", "ggml-whisper-large-v3-turbo-korean-q8_0.bin")),
+        .init(id: "w-ko-turbo-q5",  name: "Whisper Turbo KO q5",       task: .stt, lang: .korean, bytes: 574_041_195, url: mine("whisper-large-v3-turbo-korean-ggml", "ggml-whisper-large-v3-turbo-korean-q5_0.bin")),
+        .init(id: "w-ko-turbo-q8",  name: "Whisper Turbo KO q8",       task: .stt, lang: .korean, bytes: 874_188_075, url: mine("whisper-large-v3-turbo-korean-ggml", "ggml-whisper-large-v3-turbo-korean-q8_0.bin")),
         // Russian — bond005 Podlodka Turbo (apache-2.0).
-        .init(id: "w-ru-turbo-q5",  name: "Podlodka Whisper Turbo RU q5", task: .stt, lang: .russian, bytes: 574_000_000, url: mine("whisper-podlodka-turbo-ggml", "ggml-whisper-podlodka-turbo-q5_0.bin")),
-        .init(id: "w-ru-turbo-q8",  name: "Podlodka Whisper Turbo RU q8", task: .stt, lang: .russian, bytes: 874_000_000, url: mine("whisper-podlodka-turbo-ggml", "ggml-whisper-podlodka-turbo-q8_0.bin")),
+        .init(id: "w-ru-turbo-q5",  name: "Podlodka Whisper Turbo RU q5", task: .stt, lang: .russian, bytes: 574_041_195, url: mine("whisper-podlodka-turbo-ggml", "ggml-whisper-podlodka-turbo-q5_0.bin")),
+        .init(id: "w-ru-turbo-q8",  name: "Podlodka Whisper Turbo RU q8", task: .stt, lang: .russian, bytes: 874_188_075, url: mine("whisper-podlodka-turbo-ggml", "ggml-whisper-podlodka-turbo-q8_0.bin")),
         // Arabic (dialects) — oddadmix Large-v3 Turbo v2 (apache-2.0).
-        .init(id: "w-ar-turbo-q5",  name: "Whisper Turbo AR q5",       task: .stt, lang: .arabic, bytes: 574_000_000, url: mine("whisper-large-v3-turbo-arabic-dialectal-v2-ggml", "ggml-whisper-large-v3-turbo-arabic-dialectal-v2-q5_0.bin")),
-        .init(id: "w-ar-turbo-q8",  name: "Whisper Turbo AR q8",       task: .stt, lang: .arabic, bytes: 874_000_000, url: mine("whisper-large-v3-turbo-arabic-dialectal-v2-ggml", "ggml-whisper-large-v3-turbo-arabic-dialectal-v2-q8_0.bin")),
+        .init(id: "w-ar-turbo-q5",  name: "Whisper Turbo AR q5",       task: .stt, lang: .arabic, bytes: 574_041_195, url: mine("whisper-large-v3-turbo-arabic-dialectal-v2-ggml", "ggml-whisper-large-v3-turbo-arabic-dialectal-v2-q5_0.bin")),
+        .init(id: "w-ar-turbo-q8",  name: "Whisper Turbo AR q8",       task: .stt, lang: .arabic, bytes: 874_188_075, url: mine("whisper-large-v3-turbo-arabic-dialectal-v2-ggml", "ggml-whisper-large-v3-turbo-arabic-dialectal-v2-q8_0.bin")),
         // Hindi — ARTPARK-IISc Vaani Large-v3 (apache-2.0; full-size model).
-        .init(id: "w-hi-large-q5",  name: "Vaani Whisper Large-v3 HI q5", task: .stt, lang: .hindi, bytes: 1_080_000_000, url: mine("whisper-large-v3-vaani-hindi-ggml", "ggml-whisper-large-v3-vaani-hindi-q5_0.bin")),
-        .init(id: "w-hi-large-q8",  name: "Vaani Whisper Large-v3 HI q8", task: .stt, lang: .hindi, bytes: 1_660_000_000, url: mine("whisper-large-v3-vaani-hindi-ggml", "ggml-whisper-large-v3-vaani-hindi-q8_0.bin")),
+        .init(id: "w-hi-large-q5",  name: "Vaani Whisper Large-v3 HI q5", task: .stt, lang: .hindi, bytes: 1_081_140_203, url: mine("whisper-large-v3-vaani-hindi-ggml", "ggml-whisper-large-v3-vaani-hindi-q5_0.bin")),
+        .init(id: "w-hi-large-q8",  name: "Vaani Whisper Large-v3 HI q8", task: .stt, lang: .hindi, bytes: 1_656_538_283, url: mine("whisper-large-v3-vaani-hindi-ggml", "ggml-whisper-large-v3-vaani-hindi-q8_0.bin")),
         // Turkish — turkmedstt Large-v3 general (apache-2.0; full-size model).
-        .init(id: "w-tr-large-q5",  name: "Whisper Large-v3 TR q5",    task: .stt, lang: .turkish, bytes: 1_080_000_000, url: mine("whisper-large-v3-turkish-general-ggml", "ggml-whisper-large-v3-turkish-general-q5_0.bin")),
-        .init(id: "w-tr-large-q8",  name: "Whisper Large-v3 TR q8",    task: .stt, lang: .turkish, bytes: 1_660_000_000, url: mine("whisper-large-v3-turkish-general-ggml", "ggml-whisper-large-v3-turkish-general-q8_0.bin")),
+        .init(id: "w-tr-large-q5",  name: "Whisper Large-v3 TR q5",    task: .stt, lang: .turkish, bytes: 1_081_140_203, url: mine("whisper-large-v3-turkish-general-ggml", "ggml-whisper-large-v3-turkish-general-q5_0.bin")),
+        .init(id: "w-tr-large-q8",  name: "Whisper Large-v3 TR q8",    task: .stt, lang: .turkish, bytes: 1_656_538_283, url: mine("whisper-large-v3-turkish-general-ggml", "ggml-whisper-large-v3-turkish-general-q8_0.bin")),
         // Thai — Typhoon Large-v3 Turbo (apache-2.0).
-        .init(id: "w-th-turbo-q5",  name: "Typhoon Whisper Turbo TH q5", task: .stt, lang: .thai, bytes: 574_000_000, url: mine("typhoon-whisper-turbo-ggml", "ggml-typhoon-whisper-turbo-q5_0.bin")),
-        .init(id: "w-th-turbo-q8",  name: "Typhoon Whisper Turbo TH q8", task: .stt, lang: .thai, bytes: 874_000_000, url: mine("typhoon-whisper-turbo-ggml", "ggml-typhoon-whisper-turbo-q8_0.bin")),
+        .init(id: "w-th-turbo-q5",  name: "Typhoon Whisper Turbo TH q5", task: .stt, lang: .thai, bytes: 574_041_195, url: mine("typhoon-whisper-turbo-ggml", "ggml-typhoon-whisper-turbo-q5_0.bin")),
+        .init(id: "w-th-turbo-q8",  name: "Typhoon Whisper Turbo TH q8", task: .stt, lang: .thai, bytes: 874_188_075, url: mine("typhoon-whisper-turbo-ggml", "ggml-typhoon-whisper-turbo-q8_0.bin")),
         // Swedish — KBLab kb-whisper-large (apache-2.0; full-size model).
-        .init(id: "w-sv-large-q5",  name: "KB Whisper Large SV q5",    task: .stt, lang: .swedish, bytes: 1_080_000_000, url: mine("kb-whisper-large-ggml", "ggml-kb-whisper-large-q5_0.bin")),
-        .init(id: "w-sv-large-q8",  name: "KB Whisper Large SV q8",    task: .stt, lang: .swedish, bytes: 1_660_000_000, url: mine("kb-whisper-large-ggml", "ggml-kb-whisper-large-q8_0.bin")),
+        .init(id: "w-sv-large-q5",  name: "KB Whisper Large SV q5",    task: .stt, lang: .swedish, bytes: 1_081_140_203, url: mine("kb-whisper-large-ggml", "ggml-kb-whisper-large-q5_0.bin")),
+        .init(id: "w-sv-large-q8",  name: "KB Whisper Large SV q8",    task: .stt, lang: .swedish, bytes: 1_656_538_283, url: mine("kb-whisper-large-ggml", "ggml-kb-whisper-large-q8_0.bin")),
         // Finnish — Finnish-NLP Large-v3 (apache-2.0; ggml f16 by the authors, quantized by JoaoZaokk).
-        .init(id: "w-fi-large-q5",  name: "Whisper Large-v3 FI q5",    task: .stt, lang: .finnish, bytes: 1_080_000_000, url: mine("whisper-large-v3-finnish-ggml", "ggml-whisper-large-v3-finnish-q5_0.bin")),
-        .init(id: "w-fi-large-q8",  name: "Whisper Large-v3 FI q8",    task: .stt, lang: .finnish, bytes: 1_660_000_000, url: mine("whisper-large-v3-finnish-ggml", "ggml-whisper-large-v3-finnish-q8_0.bin")),
+        .init(id: "w-fi-large-q5",  name: "Whisper Large-v3 FI q5",    task: .stt, lang: .finnish, bytes: 1_081_140_203, url: mine("whisper-large-v3-finnish-ggml", "ggml-whisper-large-v3-finnish-q5_0.bin")),
+        .init(id: "w-fi-large-q8",  name: "Whisper Large-v3 FI q8",    task: .stt, lang: .finnish, bytes: 1_656_538_283, url: mine("whisper-large-v3-finnish-ggml", "ggml-whisper-large-v3-finnish-q8_0.bin")),
         // Vietnamese — EraX WoW Turbo V1.1 (MIT).
-        .init(id: "w-vi-turbo-q5",  name: "EraX Whisper Turbo VI q5",  task: .stt, lang: .vietnamese, bytes: 574_000_000, url: mine("EraX-WoW-Turbo-V1.1-ggml", "ggml-EraX-WoW-Turbo-V1.1-q5_0.bin")),
-        .init(id: "w-vi-turbo-q8",  name: "EraX Whisper Turbo VI q8",  task: .stt, lang: .vietnamese, bytes: 874_000_000, url: mine("EraX-WoW-Turbo-V1.1-ggml", "ggml-EraX-WoW-Turbo-V1.1-q8_0.bin")),
+        .init(id: "w-vi-turbo-q5",  name: "EraX Whisper Turbo VI q5",  task: .stt, lang: .vietnamese, bytes: 574_041_195, url: mine("EraX-WoW-Turbo-V1.1-ggml", "ggml-EraX-WoW-Turbo-V1.1-q5_0.bin")),
+        .init(id: "w-vi-turbo-q8",  name: "EraX Whisper Turbo VI q8",  task: .stt, lang: .vietnamese, bytes: 874_188_075, url: mine("EraX-WoW-Turbo-V1.1-ggml", "ggml-EraX-WoW-Turbo-V1.1-q8_0.bin")),
         // Hebrew — ivrit.ai Large-v3 Turbo.
-        .init(id: "w-he-turbo-q5",  name: "ivrit Whisper Turbo HE q5", task: .stt, lang: .hebrew, bytes: 574_000_000, url: mine("ivrit-whisper-large-v3-turbo-ggml", "ggml-ivrit-whisper-large-v3-turbo-q5_0.bin")),
-        .init(id: "w-he-turbo-q8",  name: "ivrit Whisper Turbo HE q8", task: .stt, lang: .hebrew, bytes: 874_000_000, url: mine("ivrit-whisper-large-v3-turbo-ggml", "ggml-ivrit-whisper-large-v3-turbo-q8_0.bin")),
+        .init(id: "w-he-turbo-q5",  name: "ivrit Whisper Turbo HE q5", task: .stt, lang: .hebrew, bytes: 574_041_195, url: mine("ivrit-whisper-large-v3-turbo-ggml", "ggml-ivrit-whisper-large-v3-turbo-q5_0.bin")),
+        .init(id: "w-he-turbo-q8",  name: "ivrit Whisper Turbo HE q8", task: .stt, lang: .hebrew, bytes: 874_188_075, url: mine("ivrit-whisper-large-v3-turbo-ggml", "ggml-ivrit-whisper-large-v3-turbo-q8_0.bin")),
         // Hungarian — sarpba Large-v3 Turbo.
-        .init(id: "w-hu-turbo-q5",  name: "Whisper Turbo HU q5",       task: .stt, lang: .hungarian, bytes: 574_000_000, url: mine("whisper-hu-large-v3-turbo-finetuned-ggml", "ggml-whisper-hu-large-v3-turbo-finetuned-q5_0.bin")),
-        .init(id: "w-hu-turbo-q8",  name: "Whisper Turbo HU q8",       task: .stt, lang: .hungarian, bytes: 874_000_000, url: mine("whisper-hu-large-v3-turbo-finetuned-ggml", "ggml-whisper-hu-large-v3-turbo-finetuned-q8_0.bin")),
+        .init(id: "w-hu-turbo-q5",  name: "Whisper Turbo HU q5",       task: .stt, lang: .hungarian, bytes: 574_041_195, url: mine("whisper-hu-large-v3-turbo-finetuned-ggml", "ggml-whisper-hu-large-v3-turbo-finetuned-q5_0.bin")),
+        .init(id: "w-hu-turbo-q8",  name: "Whisper Turbo HU q8",       task: .stt, lang: .hungarian, bytes: 874_188_075, url: mine("whisper-hu-large-v3-turbo-finetuned-ggml", "ggml-whisper-hu-large-v3-turbo-finetuned-q8_0.bin")),
         // Croatian — GoranS Large-v3 Turbo (ParlaSpeech).
-        .init(id: "w-hr-turbo-q5",  name: "Whisper Turbo HR q5",       task: .stt, lang: .croatian, bytes: 574_000_000, url: mine("whisper-large-v3-turbo-hr-parla-ggml", "ggml-whisper-large-v3-turbo-hr-parla-q5_0.bin")),
-        .init(id: "w-hr-turbo-q8",  name: "Whisper Turbo HR q8",       task: .stt, lang: .croatian, bytes: 874_000_000, url: mine("whisper-large-v3-turbo-hr-parla-ggml", "ggml-whisper-large-v3-turbo-hr-parla-q8_0.bin")),
+        .init(id: "w-hr-turbo-q5",  name: "Whisper Turbo HR q5",       task: .stt, lang: .croatian, bytes: 574_041_195, url: mine("whisper-large-v3-turbo-hr-parla-ggml", "ggml-whisper-large-v3-turbo-hr-parla-q5_0.bin")),
+        .init(id: "w-hr-turbo-q8",  name: "Whisper Turbo HR q8",       task: .stt, lang: .croatian, bytes: 874_188_075, url: mine("whisper-large-v3-turbo-hr-parla-ggml", "ggml-whisper-large-v3-turbo-hr-parla-q8_0.bin")),
         // TTS agora é o PocketTTS (FluidAudio), que baixa os próprios modelos.
     ]
 
