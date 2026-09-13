@@ -38,10 +38,15 @@ final class VoiceInputManager: ObservableObject {
     private let lock = NSLock()
     private var task: SFSpeechRecognitionTask?
 
-    // Keep the loaded Whisper model in memory so repeated transcriptions don't
-    // reload it from disk each time.
-    private var cachedEngine: OnDeviceTranscriber?
-    private var cachedModelID = ""
+    /// True while the on-device model is being read into memory (seconds for a
+    /// q5, minutes the first time a Core ML encoder is compiled), so the UI can
+    /// say so instead of looking frozen.
+    @Published private(set) var loadingModel = false
+    /// Set when the last transcription ended in an error (as opposed to a clean
+    /// "heard nothing"): the pending recording is kept for a retry in that case.
+    private(set) var lastTranscriptionFailed = false
+    /// The recording saved to disk by the last `stop()`, until it is transcribed.
+    private(set) var pending: PendingAudioStore.Pending?
 
     private var activeModelID: String { UserDefaults.standard.string(forKey: "voice.stt.model") ?? "" }
     /// Keeps Apple's dictation on the device instead of sending audio to its
@@ -161,11 +166,18 @@ final class VoiceInputManager: ObservableObject {
         request?.endAudio()
         deactivateSession()
 
-        switch STTEngine.current {
-        case .server:   return await transcribeWithServer()
-        case .endpoint: return await transcribeWithEndpoint()
-        case .model:    return await transcribeWithWhisper()
-        case .native:   break
+        let engineNow = STTEngine.current
+        if engineNow != .native {
+            // Save first, transcribe second (the Redoma pattern): from here on a
+            // death of the process — jetsam under a big model, a watchdog, a
+            // dropped connection — costs a retry, not the words.
+            guard let frames = finishedFrames() else { return "" }
+            let language = engineNow == .model ? nil : SpeechLanguage.pinned()?.sttServerCode
+            let p = PendingAudioStore.save(frames: frames, engine: engineNow.rawValue, modelID: activeModelID, language: language)
+            pending = p
+            let text = await transcribe(frames: frames, engine: engineNow, modelID: activeModelID, language: language)
+            if let p, !lastTranscriptionFailed { PendingAudioStore.delete(p); pending = nil }
+            return text
         }
 
         for _ in 0..<30 { if sawFinal { break }; try? await Task.sleep(nanoseconds: 100_000_000) }
@@ -199,20 +211,53 @@ final class VoiceInputManager: ObservableObject {
         #endif
     }
 
-    // MARK: - Whisper
+    // MARK: - Finished recording
 
-    private func transcribeWithWhisper() async -> String {
-        guard let model = VoiceCatalog.all.first(where: { $0.id == activeModelID }),
-              let url = installedModelURL() else { error = L("Nenhum modelo Whisper selecionado."); return "" }
-        let raw = lock.withLock { rawSamples }
+    /// Snapshot of the take as 16 kHz mono, normalized, or nil when it is too
+    /// short to mean anything. Frees the raw buffer (a 2-minute take at 48 kHz
+    /// is ~23 MB) — the frames are what every engine consumes from here on.
+    private func finishedFrames() -> [Float]? {
+        let raw = lock.withLock { let r = rawSamples; rawSamples = []; return r }
         guard raw.count > Int(hwRate * 0.3) else {   // < ~0.3 s
             error = L("Áudio muito curto — toque, fale e toque de novo pra parar.")
-            return ""
+            return nil
         }
-        processing = true; defer { processing = false }
-
         var frames = resampleTo16k(raw, from: hwRate)
         normalize(&frames)
+        return frames
+    }
+
+    /// Runs the given engine over finished frames. Used by `stop()` and by the
+    /// recovery of a pending recording, which replays the engine, model and
+    /// language chosen when it was recorded.
+    func transcribe(frames: [Float], engine: STTEngine, modelID: String, language: String?) async -> String {
+        lastTranscriptionFailed = false
+        switch engine {
+        case .server:   return await transcribeWithServer(frames: frames, language: language)
+        case .endpoint: return await transcribeWithEndpoint(frames: frames)
+        case .model:    return await transcribeWithWhisper(frames: frames, modelID: modelID)
+        case .native:   return ""
+        }
+    }
+
+    /// Transcribes a recording left over by an earlier run. Bumps the attempt
+    /// counter before the engine loads (a model that killed the app must not
+    /// be loaded forever) and deletes the file on success.
+    func transcribe(pending p: PendingAudioStore.Pending) async -> String? {
+        guard let frames = PendingAudioStore.frames(of: p) else { PendingAudioStore.delete(p); return nil }
+        let q = PendingAudioStore.bumpAttempts(p)
+        let engine = STTEngine(rawValue: q.engine) ?? .model
+        let text = await transcribe(frames: frames, engine: engine, modelID: q.modelID, language: q.language)
+        if !lastTranscriptionFailed { PendingAudioStore.delete(q) }
+        return text.isEmpty ? nil : text
+    }
+
+    // MARK: - Whisper / Parakeet (on device)
+
+    private func transcribeWithWhisper(frames: [Float], modelID: String) async -> String {
+        guard let model = VoiceCatalog.all.first(where: { $0.id == modelID }),
+              let url = installedModelURL(for: model) else { error = L("Nenhum modelo Whisper selecionado."); return "" }
+        processing = true; defer { processing = false }
 
         // A fixed language beats "auto" (auto guesses romanian on imperfect
         // audio), so the setting defaults to one. Language-tuned models pin
@@ -220,29 +265,22 @@ final class VoiceInputManager: ObservableObject {
         // request for German — and only the universal ones read the setting.
         // Parakeet detects the language itself and ignores the code.
         let lang = model.lang.whisperCode ?? Self.chosenWhisperCode()
+        let coreMLBytes = ModelDownloadManager.shared.coreMLBytes(model)
 
         do {
-            let engine: OnDeviceTranscriber
-            if let cached = cachedEngine, cachedModelID == activeModelID {
-                engine = cached                        // reuse — skips the disk reload
-            } else {
-                cachedEngine = nil                     // free the old context before loading
-                engine = try OnDeviceSTT.load(model, at: url)
-                cachedEngine = engine
-                cachedModelID = activeModelID
-            }
-            // whisper_full blocks for the whole decode; keep it off the main actor.
-            let samples = frames
-            let text = try await Task.detached(priority: .userInitiated) {
-                try engine.transcribe(samples, language: lang)
-            }.value
+            let text = try await STTRunner.shared.transcribe(
+                model: model, url: url, coreMLBytes: coreMLBytes, samples: frames, language: lang,
+                onLoading: { Task { @MainActor in self.loadingModel = true } })
                 .replacingOccurrences(of: "[BLANK_AUDIO]", with: "")
                 .replacingOccurrences(of: "[ Silence ]", with: "")
                 .trimmingCharacters(in: .whitespacesAndNewlines)
+            loadingModel = false
             if text.isEmpty { error = L("Não captei nenhuma fala.") }
             return text
         } catch {
-            self.error = L("Falha na transcrição: %@", error.localizedDescription)
+            loadingModel = false
+            lastTranscriptionFailed = true
+            self.error = (error as? LocalizedError)?.errorDescription ?? L("Falha na transcrição: %@", error.localizedDescription)
             return ""
         }
     }
@@ -250,32 +288,21 @@ final class VoiceInputManager: ObservableObject {
     // MARK: - Server STT
 
     /// Everything both upload-based transcribers do around the one call that
-    /// differs: the too-short guard, the resample, the normalize and the WAV
-    /// wrapper.
-    private func transcribeUpload(_ send: (Data) async throws -> String) async rethrows -> String {
-        let raw = lock.withLock { rawSamples }
-        guard raw.count > Int(hwRate * 0.3) else {
-            error = L("Áudio muito curto — toque, fale e toque de novo pra parar.")
-            return ""
-        }
+    /// differs: the WAV wrapper and the empty-result message.
+    private func transcribeUpload(frames: [Float], _ send: (Data) async throws -> String) async rethrows -> String {
         processing = true; defer { processing = false }
-        var frames = resampleTo16k(raw, from: hwRate)
-        normalize(&frames)
-        let t = try await send(Self.wavData(frames, sampleRate: 16_000))
+        let t = try await send(WAV.encode(frames, sampleRate: 16_000))
             .trimmingCharacters(in: .whitespacesAndNewlines)
         if t.isEmpty { error = L("Não captei nenhuma fala.") }
         return t
     }
 
-    private func transcribeWithServer() async -> String {
-        guard let api else { error = L("Servidor de voz indisponível."); return "" }
-        // Same resolution the custom-endpoint path uses, so the two server-side
-        // engines agree on what the user picked: nil under "detect", otherwise
-        // the pinned language (or the app's, under "follow the app").
-        let language = SpeechLanguage.pinned()?.sttServerCode
+    private func transcribeWithServer(frames: [Float], language: String?) async -> String {
+        guard let api else { error = L("Servidor de voz indisponível."); lastTranscriptionFailed = true; return "" }
         do {
-            return try await transcribeUpload { try await api.transcribeAudio($0, language: language) }
+            return try await transcribeUpload(frames: frames) { try await api.transcribeAudio($0, language: language) }
         } catch {
+            lastTranscriptionFailed = true
             self.error = L("Transcrição (servidor): %@", error.localizedDescription)
             return ""
         }
@@ -284,34 +311,14 @@ final class VoiceInputManager: ObservableObject {
     /// The same upload, but to the user's own endpoint. Errors surface the
     /// response body verbatim: without it a wrong path and a bad key are
     /// indistinguishable from the phone.
-    private func transcribeWithEndpoint() async -> String {
+    private func transcribeWithEndpoint(frames: [Float]) async -> String {
         do {
-            return try await transcribeUpload(VoiceEndpoint.transcribe)
+            return try await transcribeUpload(frames: frames, VoiceEndpoint.transcribe)
         } catch {
+            lastTranscriptionFailed = true
             self.error = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
             return ""
         }
-    }
-
-    /// Wraps 16-bit PCM mono samples in a minimal WAV container for upload.
-    private static func wavData(_ frames: [Float], sampleRate: Int) -> Data {
-        let channels = 1, bits = 16
-        let blockAlign = channels * bits / 8
-        let byteRate = sampleRate * blockAlign
-        let dataSize = frames.count * blockAlign
-        func u32(_ v: UInt32) -> Data { withUnsafeBytes(of: v.littleEndian) { Data($0) } }
-        func u16(_ v: UInt16) -> Data { withUnsafeBytes(of: v.littleEndian) { Data($0) } }
-        var d = Data()
-        d.append(Data("RIFF".utf8)); d.append(u32(UInt32(36 + dataSize))); d.append(Data("WAVE".utf8))
-        d.append(Data("fmt ".utf8)); d.append(u32(16)); d.append(u16(1)); d.append(u16(UInt16(channels)))
-        d.append(u32(UInt32(sampleRate))); d.append(u32(UInt32(byteRate)))
-        d.append(u16(UInt16(blockAlign))); d.append(u16(UInt16(bits)))
-        d.append(Data("data".utf8)); d.append(u32(UInt32(dataSize)))
-        for f in frames {
-            let s = Int16(max(-1, min(1, f)) * 32767)
-            d.append(u16(UInt16(bitPattern: s)))
-        }
-        return d
     }
 
     /// Apple's recognizer for the app's UI language, degrading region →
@@ -361,6 +368,10 @@ final class VoiceInputManager: ObservableObject {
 
     private func installedModelURL() -> URL? {
         guard let model = VoiceCatalog.all.first(where: { $0.id == activeModelID }) else { return nil }
+        return installedModelURL(for: model)
+    }
+
+    private func installedModelURL(for model: VoiceModel) -> URL? {
         let url = ModelDownloadManager.shared.localURL(model)
         return FileManager.default.fileExists(atPath: url.path) ? url : nil
     }

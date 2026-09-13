@@ -874,3 +874,37 @@
 "Rodada %d: %@ (%d fontes)" = "Round %d: %@ (%d sources)";
 "%@  ·  rodada %d  ·  %d fontes  ·  %@" = "%@  ·  round %d  ·  %d sources  ·  %@";
 "aviso" = "warning";
+
+/* 1.11 — Diagnóstico, memória e gravação pendente */
+"Este modelo não cabe na memória deste aparelho (precisa de %@, há %@ livres). Use um q5 ou o Parakeet." = "This model does not fit in this device's memory (needs %@, %@ free). Use a q5 or Parakeet.";
+"Baixa o encoder Core ML (%@). A primeira carga compila para o Neural Engine e pode levar minutos." = "Downloads the Core ML encoder (%@). The first load compiles it for the Neural Engine and can take minutes.";
+"Não cabe na memória deste aparelho" = "Does not fit in this device's memory";
+"Carregando modelo… A primeira vez pode levar minutos." = "Loading model… The first time can take minutes.";
+"Diagnóstico" = "Diagnostics";
+"O que o app registrou sobre travamentos, memória e o motor de voz. Fica no aparelho; enviar é opcional." = "What the app recorded about crashes, memory and the speech engine. It stays on the device; sending is optional.";
+"Último encerramento anormal" = "Last abnormal exit";
+"Nenhum registro." = "Nothing recorded.";
+"Memória agora" = "Memory now";
+"Disponível para o app: %@" = "Available to the app: %@";
+"Física: %@" = "Physical: %@";
+"No Mac o limite por app não é exposto pelo sistema." = "On the Mac the per-app limit is not exposed by the system.";
+"É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "How much the app can still use before the system terminates it. A model has to fit here with room to spare.";
+"Enviar diagnósticos anônimos" = "Send anonymous diagnostics";
+"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Off by default. Sends only crashes, load times and memory — never audio, text or your server address.";
+"Token do app" = "App token";
+"Exportar diagnóstico" = "Export diagnostics";
+"Exportado" = "Exported";
+"Eventos recentes" = "Recent events";
+"Log do motor de voz" = "Speech engine log";
+"O app foi encerrado pelo sistema enquanto carregava o modelo %@ (havia %@ disponíveis). Provável falta de memória." = "The system terminated the app while it was loading the model %@ (%@ were available). Probably out of memory.";
+"O app foi encerrado durante a transcrição com o modelo %@." = "The app was terminated during transcription with the model %@.";
+"O app foi encerrado enquanto descompactava o encoder Core ML de %@." = "The app was terminated while unpacking the Core ML encoder for %@.";
+"O app não foi encerrado normalmente na última vez (sem operação de voz em andamento)." = "The app did not exit normally last time (no speech operation was in progress).";
+"O app foi encerrado durante “%@”." = "The app was terminated during “%@”.";
+"Há uma gravação de %@ que não foi transcrita." = "There is a %@ recording that was not transcribed.";
+"Transcrever" = "Transcribe";
+"Descartar" = "Discard";
+"Depois" = "Later";
+"Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Two attempts to transcribe with this model ended with the app closed. Change the model in Settings › Voice and models before trying again.";
+"Motor: %@" = "Engine: %@";
+"Transcrição recuperada" = "Recovered transcript";

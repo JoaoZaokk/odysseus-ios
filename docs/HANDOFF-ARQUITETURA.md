@@ -48,6 +48,75 @@ fonte e mantendo a licença de origem.
   prefixo ↔ engine, cada bucket de idioma tem modelo e código de 2 letras, filtro mantém
   os universais, `bilingual` legado decodifica como universal.
 
+### Rodada 9b — por que o turbo demorava e o f16 "crashava sem erro" (12/09, à noite)
+
+Relato do dono (iPhone 15 Pro Max, iOS 27 beta, ainda na 1.10): o Large-v3 Turbo de ~700 MB
+demorou "fudidamente" para carregar, o de ~2 GB fechou o app sem nenhum erro, e "um centavo"
+saiu como "1/100". Investigação com 19 agentes (5 frentes + refutadores), achados confirmados:
+
+1. **Core ML nunca entrava em ação nos modelos quantizados.** `ModelDownloadManager.coreMLFolderName`
+   instalava `…-q5_0-encoder.mlmodelc`; o whisper.cpp deriva o caminho tirando também o
+   sufixo `-qD_D` (`whisper_get_coreml_path_encoder`) e procurava `…-encoder.mlmodelc`. Com
+   `WHISPER_COREML_ALLOW_FALLBACK=ON` a falha era só uma linha no stderr, e o encoder do
+   turbo inteiro rodava fora do Neural Engine. Corrigido: `coreMLFolderName` usa a regra do
+   whisper.cpp (`WhisperEngine.coreMLEncoderPath`), `refresh()` renomeia as pastas legadas,
+   o ⚡ da UI só acende com o nome certo (teste `OnDeviceSTTTests`).
+2. **O f16 morria de jetsam.** Alvo iOS sem entitlement nenhum, whisper.cpp lê o modelo inteiro
+   para RAM (sem mmap), e havia TRÊS `VoiceInputManager` (chat, folha de voz, bancada de
+   Ajustes) cada um com seu contexto — dois turbos f16 no mesmo processo. Corrigido:
+   `STTRunner.shared` é o único dono do contexto (fila serial, nunca no ator principal),
+   solta em memory warning / background / modelo apagado, e recusa carregar quando
+   `os_proc_available_memory()` não cobre `bytes × 1,3 + encoder Core ML + 300 MB`
+   (`OnDeviceSTTError.notEnoughMemory`, mensagem com os números). Entitlement
+   `com.apple.developer.kernel.increased-memory-limit` em `Odysseus/Resources/Odysseus.entitlements`
+   (iOS). A UI marca "Não cabe na memória deste aparelho" e desabilita o ⚡ quando o par
+   não cabe. Na 1.10 o motor era o SwiftWhisper (whisper.cpp de 2023), que alocava por
+   tabela fixa — outro motivo para o f16 estourar lá.
+3. **`OnDeviceSTT.load` rodava no MainActor** (b65da03): a UI congelava durante a leitura do
+   .bin, a compilação da biblioteca Metal e a carga do Core ML (que na primeira vez compila
+   para a ANE por minutos). Agora load e decode rodam na fila do `STTRunner`;
+   `VoiceInputManager.loadingModel` alimenta o texto "Carregando modelo… A primeira vez pode
+   levar minutos."
+4. **Parâmetros do decode:** `temperature_inc = 0.4` + `best_of = 2` (o default eram 6
+   temperaturas × 5 decoders = até 26 passes numa janela ruidosa), `audio_ctx` calculado
+   pelo clipe (piso 768, só sem Core ML — o encoder Core ML tem shape fixo de 30 s),
+   `n_threads = min(4, cores)` (o `cores-1` colocava threads nos núcleos de eficiência),
+   `initial_prompt` por idioma (pt/en/es) pedindo números por extenso — é o que ataca o
+   "um centavo → 1/100", que é normalização do próprio modelo, não bug do app; chave
+   `voice.stt.prompt` em UserDefaults sobrepõe (sem UI ainda).
+5. **Gravação salva antes de transcrever** (padrão do Redoma): `stop()` grava
+   `Application Support/voice-pending/<uuid>.wav` (16 kHz mono, escrita atômica) + sidecar
+   com motor/modelo/idioma/tentativas, só então chama o motor; apaga no sucesso ou no "não
+   ouvi nada" limpo, mantém no erro (`lastTranscriptionFailed`). No launch/`.active`, um
+   alerta oferece Transcrever / Descartar / Depois; `attempts` é incrementado ANTES do load
+   e em ≥ 2 o botão Transcrever some (o arquivo não pode virar loop de crash). Motor nativo
+   fica fora (não tem áudio cru). Retenção: 7 dias / 5 arquivos.
+6. **Diagnóstico sem SDK** (`Features/Diagnostics/`): `DiagnosticsStore` (spool NDJSON com
+   fsync, spans abertos em `spans.json` → `death.suspected` no launch seguinte com modelo e
+   memória; âncora de sessão → `session.abnormal_end`; log do whisper/ggml/parakeet via
+   `whisper_log_set`/`ggml_log_set`/`parakeet_log_set` num anel de 400 linhas),
+   `MetricKitCollector` (crash/hang + `cumulativeMemoryResourceLimitExitCount`, o único
+   rastro oficial de jetsam), `DiagnosticsUploader` (opt-in, `POST /v1/ingest` com
+   `X-App-Id`/`X-App-Token`, apaga local só após 2xx, backoff persistido) e a tela
+   Ajustes › Diagnóstico (último encerramento anormal em linguagem de gente, memória agora,
+   eventos, log do motor, exportar JSON). `PrivacyInfo.xcprivacy` passou a declarar Crash
+   Data e Performance Data (não vinculados, sem rastreio) — o App Privacy no ASC tem de
+   acompanhar quando o envio for ligado por padrão (hoje é desligado).
+7. **Fora desta rodada, registrado:** `URLSession.default` nos downloads de 1–3 GB (sem
+   retomada, sem restrição de dados móveis); Metal compila os shaders MSL embutidos a cada
+   processo (medir com o log antes de embarcar um `default.metallib`); `parakeet_chunk`
+   para clipes curtos; `CrashReportExtension` (iOS 27) quando o piso subir.
+
+Testes: **347** (14 novos: `PendingAudioStoreTests`, `DiagnosticsStoreTests`, `OnDeviceSTTTests`).
+As 32 strings novas entraram nos 43 catálogos (pt-BR como chave, en traduzido; os outros 41
+via workflow de tradução opus, revisado por idioma).
+
+**Zão Hub (coletor multi-app):** projeto novo em `~/Projetos/ZaoHub/` (fork do
+telemetry-server do ZaoPrompt com `app_id` + token por app; pytest). Deploy espera SSH no
+Proxmox: chave gerada em `~/.ssh/id_ed25519_proxmox` (pública no fim deste arquivo), o dono
+cola no `/root/.ssh/authorized_keys` do HOST e informa IP/porta; LXC Debian 12 novo
+(sugestão VMID 111, `zaohub`), sem tocar na LXC 109 de produção.
+
 **Pesquisa (2 workflows, 63 agentes opus, buscador + refutador por idioma):** por idioma
 o melhor fine-tune Whisper com arquitetura pura (`model_type: whisper`, vocab 51866 — Trelis/tiron
 e CrisperWhisper 2.0 caíram por vocab 51904/51897, além da licença non-commercial do
@@ -617,3 +686,7 @@ O que a rodada 4 acrescentou:
   leitura do catálogo, porque em alemão a palavra é uma tradução válida de "espaços".
 - **Quando o achado é contrato, o refutador confirma; quando é refatoração, ele mata.**
   80/90 contra 2/12. Calibre a expectativa pelo tipo de achado, não pela rodada anterior.
+
+---
+Chave pública para o Proxmox (host, `/root/.ssh/authorized_keys`):
+`ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBGUID2rHiMiqVkVmbkdpWe4q5ESHVREdocCDAhr/AX5 claude-code@macbook-joaozao proxmox`

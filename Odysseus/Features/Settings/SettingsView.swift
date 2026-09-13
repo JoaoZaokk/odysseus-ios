@@ -7,7 +7,7 @@ import SwiftUI
 enum SettingsSection: String, CaseIterable, Identifiable {
     case addModels, addedModels, aiDefaults, search
     case integrations, email, reminders, imageGen
-    case voice
+    case voice, diagnostics
     case appearance, shortcuts, language, account, server
     case agentTools, tokens, users, system
 
@@ -24,6 +24,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .reminders: return "Lembretes"
         case .imageGen: return "Geração de imagem"
         case .voice: return "Voz e modelos"
+        case .diagnostics: return "Diagnóstico"
         case .appearance: return "Aparência"
         case .shortcuts: return "Atalhos"
         case .language: return "Idioma"
@@ -47,6 +48,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         case .reminders: return "bell"
         case .imageGen: return "photo.on.rectangle.angled"
         case .voice: return "waveform"
+        case .diagnostics: return "waveform.path.ecg"
         case .appearance: return "paintpalette"
         case .shortcuts: return "keyboard"
         case .language: return "globe"
@@ -66,7 +68,7 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         var g: [(String?, [SettingsSection])] = [
             (nil, [.addModels, .addedModels, .aiDefaults, .search]),
             (nil, [.integrations, .email, .reminders, .imageGen]),
-            (nil, [.voice, .appearance, .language, .account, .server]),
+            (nil, [.voice, .diagnostics, .appearance, .language, .account, .server]),
         ]
         #if os(macOS)
         g[2].1.insert(.shortcuts, at: 2)
@@ -190,6 +192,7 @@ struct SettingsView: View {
         case .addedModels: AddedModelsSection(app: app)
         case .search: SearchSection(app: app)
         case .voice: VoiceSettingsView()
+        case .diagnostics: DiagnosticsSection()
         case .appearance: ThemePickerView().environmentObject(themes)
         case .shortcuts:
             #if os(macOS)

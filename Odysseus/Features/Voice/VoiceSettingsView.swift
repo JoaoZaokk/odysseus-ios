@@ -350,11 +350,20 @@ struct VoiceSettingsView: View {
             .buttonStyle(.borderless)
             .accessibilityLabel(Text("Remover aceleração Core ML"))
         } else {
+            // The encoder ADDS its weights to the model's RAM (whisper.cpp keeps
+            // the ggml encoder too), so on a phone it is offered only when the
+            // pair fits under the jetsam line right now.
+            let zip = VoiceCatalog.coreMLZipBytes(forID: model.id)
+            let fits = STTRunner.fits(model, coreMLBytes: zip) ?? true
             Button { downloads.downloadCoreML(model) } label: {
-                Image(systemName: "bolt").font(.ody(size: 18)).foregroundStyle(theme.secondaryText)
+                Image(systemName: "bolt").font(.ody(size: 18)).foregroundStyle(fits ? theme.secondaryText : theme.secondaryText.opacity(0.35))
             }
             .buttonStyle(.borderless)
+            .disabled(!fits)
             .accessibilityLabel(Text("Ativar aceleração Core ML"))
+            .help(fits ? L("Baixa o encoder Core ML (%@). A primeira carga compila para o Neural Engine e pode levar minutos.", ByteCountFormatter.string(fromByteCount: zip, countStyle: .file))
+                       : L("Este modelo não cabe na memória deste aparelho (precisa de %@, há %@ livres). Use um q5 ou o Parakeet.",
+                           MemoryBudget.human(STTRunner.memoryRequired(for: model, coreMLBytes: zip)), MemoryBudget.human(MemoryBudget.availableBytes)))
         }
     }
 
@@ -376,7 +385,8 @@ struct VoiceSettingsView: View {
     }
 
     private func modelRow(_ model: VoiceModel, selected: Bool, select: @escaping (String) -> Void) -> some View {
-        HStack(spacing: 10) {
+        let fits = STTRunner.fits(model, coreMLBytes: downloads.coreMLBytes(model)) ?? true
+        return HStack(spacing: 10) {
             Text(model.lang.label)
                 .font(.ody(size: 9))
                 .foregroundStyle(theme.secondaryText)
@@ -385,6 +395,12 @@ struct VoiceSettingsView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(model.name).font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 Text(model.humanSize).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                if !fits {
+                    // Selecting it would not fail, it would kill the app (jetsam,
+                    // no error), so say so here instead.
+                    Text("Não cabe na memória deste aparelho")
+                        .font(.ody(size: 10)).foregroundStyle(theme.danger)
+                }
             }
             Spacer()
             trailing(model, selected: selected, select: select)
@@ -412,6 +428,7 @@ struct VoiceSettingsView: View {
                         .foregroundStyle(selected ? theme.green : theme.secondaryText)
                 }
                 .buttonStyle(.borderless)
+                .disabled(!(STTRunner.fits(model, coreMLBytes: downloads.coreMLBytes(model)) ?? true) && !selected)
                 .accessibilityLabel(Text("Selecionar modelo"))
                 .accessibilityAddTraits(selected ? .isSelected : [])
                 // Delete
@@ -458,7 +475,9 @@ private struct STTTestRow: View {
             Button {
                 Task { await toggle() }
             } label: {
-                if voice.processing {
+                if voice.loadingModel {
+                    HStack { ProgressView(); Text("Carregando modelo… A primeira vez pode levar minutos.") }
+                } else if voice.processing {
                     HStack { ProgressView(); Text("Transcrevendo…") }
                 } else if voice.isRecording {
                     Label(L("Gravando… toque para parar"), systemImage: "stop.circle")

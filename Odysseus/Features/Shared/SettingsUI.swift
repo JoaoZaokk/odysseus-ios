@@ -50,6 +50,16 @@ enum SettingsUI {
     /// purged by the OS) and the caller still announced "Backup exportado.";
     /// anyone trusting that phantom backup before a Danger-Zone wipe lost data.
     @MainActor
+    /// Copies text to the system clipboard (both platforms).
+    static func copyToClipboard(_ text: String) {
+        #if os(macOS)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(text, forType: .string)
+        #else
+        UIPasteboard.general.string = text
+        #endif
+    }
+
     static func saveJSON(_ data: Data, suggested: String) async -> Bool? {
         #if os(macOS)
         let panel = NSSavePanel()

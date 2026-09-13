@@ -332,4 +332,21 @@ enum VoiceCatalog {
         guard let f = coreMLByID[id] else { return nil }
         return URL(string: "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/\(f)")
     }
+
+    /// Size of the Core ML encoder zip (≈ its resident weight, fp16 is
+    /// incompressible), from the ggerganov/whisper.cpp file list. Shown before
+    /// the download and counted against the memory budget: the encoder ADDS to
+    /// the model's RAM, it does not replace the ggml encoder.
+    static func coreMLZipBytes(forID id: String) -> Int64 {
+        guard let f = coreMLByID[id] else { return 0 }
+        switch f {
+        case "ggml-tiny-encoder.mlmodelc.zip", "ggml-tiny.en-encoder.mlmodelc.zip":   return 16_000_000
+        case "ggml-base-encoder.mlmodelc.zip", "ggml-base.en-encoder.mlmodelc.zip":   return 40_000_000
+        case "ggml-small-encoder.mlmodelc.zip", "ggml-small.en-encoder.mlmodelc.zip": return 165_000_000
+        case "ggml-medium-encoder.mlmodelc.zip":                                       return 600_000_000
+        case "ggml-large-v3-turbo-encoder.mlmodelc.zip":                               return 1_173_000_000
+        case "ggml-large-v3-encoder.mlmodelc.zip":                                     return 1_173_000_000
+        default: return 0
+        }
+    }
 }

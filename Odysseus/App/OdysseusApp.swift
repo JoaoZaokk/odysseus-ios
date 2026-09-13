@@ -96,6 +96,12 @@ struct RootView: View {
             if newPhase == .background {
                 app.relockIfNeeded()
                 app.persistSessionIfNeeded()   // keep the latest session for next launch
+                DiagnosticsStore.shared.endSession()
+                DiagnosticsUploader.flushIfEnabled()
+            }
+            if newPhase == .active {
+                DiagnosticsStore.shared.resumeSession()
+                pendingAudio = PendingAudioStore.list().last
             }
             // The reminder queue is drained on read and the server has no
             // push. On iOS the loop runs while the app is on screen and the
@@ -113,8 +119,48 @@ struct RootView: View {
         .onChange(of: app.phase) { _, p in if p == .main { app.startTaskNotifications() } else { app.stopTaskNotifications() } }
         .task {
             ReviewGate.seedFirstLaunchIfNeeded()
+            let info = Bundle.main.infoDictionary
+            DiagnosticsStore.shared.startSession(version: info?["CFBundleShortVersionString"] as? String ?? "?",
+                                                 build: info?["CFBundleVersion"] as? String ?? "?")
+            MetricKitCollector.shared.start()
+            PendingAudioStore.purge()
             await app.bootstrap()
+            pendingAudio = PendingAudioStore.list().last
         }
+        // A recording that was saved but never transcribed (the process died
+        // loading a model, or the network dropped). Never transcribed on its
+        // own: the result has no chat to land in, and a model that just killed
+        // the app must not be reloaded without the user choosing to.
+        .alert(L("Há uma gravação de %@ que não foi transcrita.", pendingAudio.map { Self.seconds($0.seconds) } ?? ""),
+               isPresented: Binding(get: { pendingAudio != nil }, set: { if !$0 { pendingAudio = nil } }),
+               presenting: pendingAudio) { p in
+            if p.attempts < 2 {
+                Button("Transcrever") { Task { await recoverPending(p) } }
+            }
+            Button("Descartar", role: .destructive) { PendingAudioStore.delete(p); pendingAudio = nil }
+            Button("Depois", role: .cancel) { pendingAudio = nil }
+        } message: { p in
+            Text(p.attempts >= 2
+                 ? L("Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo.")
+                 : L("Motor: %@", STTEngine(rawValue: p.engine)?.label ?? p.engine))
+        }
+        .alert("Transcrição recuperada", isPresented: Binding(get: { recovered != nil }, set: { if !$0 { recovered = nil } }), presenting: recovered) { text in
+            Button("Copiar") { SettingsUI.copyToClipboard(text) }
+            Button("OK", role: .cancel) {}
+        } message: { text in Text(text) }
+    }
+
+    @State private var pendingAudio: PendingAudioStore.Pending?
+    @State private var recovered: String?
+
+    private static func seconds(_ s: Double) -> String { String(format: "%.0f s", s) }
+
+    private func recoverPending(_ p: PendingAudioStore.Pending) async {
+        let voice = VoiceInputManager()
+        voice.api = app.api
+        let text = await voice.transcribe(pending: p)
+        pendingAudio = nil
+        recovered = text ?? voice.error ?? L("Não captei nenhuma fala.")
     }
 }
 

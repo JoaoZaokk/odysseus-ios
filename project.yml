@@ -90,6 +90,8 @@ targets:
         # version in App Review; this bump is deliberate and must survive merges.
         MARKETING_VERSION: "1.11"
         CURRENT_PROJECT_VERSION: "27"
+        # 1.11: increased-memory-limit, so a 1-2 GB on-device model is not a silent jetsam.
+        CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus.entitlements
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

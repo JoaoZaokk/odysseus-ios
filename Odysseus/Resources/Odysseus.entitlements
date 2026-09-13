@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Lets an on-device Whisper/Parakeet model of 1-2 GB stay resident on
+	     phones with enough RAM: without it the foreground limit on an 8 GB
+	     iPhone is a few GB and a 1.6 GB f16 turbo (plus buffers) is killed by
+	     jetsam with no error. Apps with this entitlement are also evicted
+	     earlier from the background, which is fine for a chat client. -->
+	<key>com.apple.developer.kernel.increased-memory-limit</key>
+	<true/>
+</dict>
+</plist>

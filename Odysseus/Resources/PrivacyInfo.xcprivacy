@@ -3,9 +3,11 @@
 <!--
   Required-reason API declarations (ITMS-91053).
 
-  Nothing here is collected for the developer: the app talks to a server the
-  user hosts and configures, and there is no analytics or advertising SDK, so
-  NSPrivacyCollectedDataTypes is deliberately empty rather than absent.
+  The app talks to a server the user hosts and configures and has no analytics
+  or advertising SDK. Since 1.11 it can send anonymous crash and performance
+  diagnostics (MetricKit payloads, model-load timings, memory left) to the
+  developer's collector — OPT-IN, off by default, never linked to the user and
+  never used for tracking — so those two types are declared below.
 
   UserDefaults  — settings, engine choices and endpoint URLs, all read back by
                   this app only (CA92.1).
@@ -20,7 +22,32 @@
 	<key>NSPrivacyTrackingDomains</key>
 	<array/>
 	<key>NSPrivacyCollectedDataTypes</key>
-	<array/>
+	<array>
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypeCrashData</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypePerformanceData</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict>
