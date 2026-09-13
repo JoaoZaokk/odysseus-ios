@@ -210,7 +210,6 @@ enum VoiceCatalog {
         // language itself; v2 = English only. No Core ML encoder.
         .init(id: "p-v3-q5",  name: "NVIDIA Parakeet TDT v3 q5",   task: .stt, lang: .universal, bytes:   433_901_039, url: mine("parakeet-tdt-0.6b-v3-ggml", "ggml-parakeet-tdt-0.6b-v3-q5_0.bin")),
         .init(id: "p-v3-q8",  name: "NVIDIA Parakeet TDT v3 q8",   task: .stt, lang: .universal, bytes:   668_757_119, url: mine("parakeet-tdt-0.6b-v3-ggml", "ggml-parakeet-tdt-0.6b-v3-q8_0.bin")),
-        .init(id: "p-v3-f16", name: "NVIDIA Parakeet TDT v3",      task: .stt, lang: .universal, bytes: 1_255_897_319, url: mine("parakeet-tdt-0.6b-v3-ggml", "ggml-parakeet-tdt-0.6b-v3-f16.bin")),
         .init(id: "p-v2-q5",  name: "NVIDIA Parakeet TDT v2 EN q5", task: .stt, lang: .english,   bytes:   434_000_000, url: mine("parakeet-tdt-0.6b-v2-ggml", "ggml-parakeet-tdt-0.6b-v2-q5_0.bin")),
         .init(id: "p-v2-q8",  name: "NVIDIA Parakeet TDT v2 EN q8", task: .stt, lang: .english,   bytes:   669_000_000, url: mine("parakeet-tdt-0.6b-v2-ggml", "ggml-parakeet-tdt-0.6b-v2-q8_0.bin")),
         .init(id: "p-1b1-q5", name: "NVIDIA Parakeet TDT 1.1B EN q5", task: .stt, lang: .english,  bytes:   800_000_000, url: mine("parakeet-tdt-1.1b-ggml", "ggml-parakeet-tdt-1.1b-q5_0.bin")),
@@ -224,15 +223,14 @@ enum VoiceCatalog {
         // Converted with whisper.cpp's own converter and re-hosted under
         // JoaoZaokk (each repo names its source and keeps its license) so the
         // links do not depend on a stranger's account. q5 for phones, q8 for
-        // Macs; the f16 lives in the same repo for the custom-URL field.
+        // Macs. No f16 in the catalog: phones cannot hold it, and the memory gate
+        // would refuse it anyway; the custom-URL field still accepts one.
         // Chinese — BELLE fine-tune of Large-v3 Turbo (apache-2.0).
         .init(id: "w-zh-turbo-q5",  name: "Belle Whisper Turbo ZH q5", task: .stt, lang: .chinese, bytes:   574_000_000, url: mine("Belle-whisper-large-v3-turbo-zh-ggml", "ggml-belle-whisper-large-v3-turbo-zh-q5_0.bin")),
         .init(id: "w-zh-turbo-q8",  name: "Belle Whisper Turbo ZH q8", task: .stt, lang: .chinese, bytes:   874_000_000, url: mine("Belle-whisper-large-v3-turbo-zh-ggml", "ggml-belle-whisper-large-v3-turbo-zh-q8_0.bin")),
-        .init(id: "w-zh-turbo",     name: "Belle Whisper Turbo ZH",    task: .stt, lang: .chinese, bytes: 1_620_000_000, url: mine("Belle-whisper-large-v3-turbo-zh-ggml", "ggml-belle-whisper-large-v3-turbo-zh-f16.bin")),
         // Japanese — Kotoba v2.0 (distil Large-v3, apache-2.0).
         .init(id: "w-ja-kotoba-q5", name: "Kotoba Whisper JA q5",      task: .stt, lang: .japanese, bytes:   538_000_000, url: mine("kotoba-whisper-v2.0-ggml", "ggml-kotoba-whisper-v2.0-q5_0.bin")),
         .init(id: "w-ja-kotoba-q8", name: "Kotoba Whisper JA q8",      task: .stt, lang: .japanese, bytes:   810_000_000, url: mine("kotoba-whisper-v2.0-ggml", "ggml-kotoba-whisper-v2.0-q8_0.bin")),
-        .init(id: "w-ja-kotoba",    name: "Kotoba Whisper JA",         task: .stt, lang: .japanese, bytes: 1_510_000_000, url: mine("kotoba-whisper-v2.0-ggml", "ggml-kotoba-whisper-v2.0-f16.bin")),
         // English — official Distil-Whisper Large-v3.5 (MIT, ggml by distil-whisper).
         .init(id: "w-en-distil35",  name: "Distil Whisper EN v3.5",    task: .stt, lang: .english, bytes: 1_520_000_000,
               url: hf("distil-whisper/distil-large-v3.5-ggml", "ggml-model.bin")),
