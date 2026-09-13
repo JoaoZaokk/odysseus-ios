@@ -11,7 +11,10 @@ enum DiagnosticsUploader {
 
     static func flushIfEnabled() {
         let store = DiagnosticsStore.shared
-        guard store.isUploadEnabled, let url = URL(string: store.endpoint), url.scheme == "https" else { return }
+        // The collector answers 400 without both headers, so an unset token means
+        // "not configured yet", not "try anyway".
+        guard store.isUploadEnabled, !store.appToken.isEmpty,
+              let url = URL(string: store.endpoint), url.scheme == "https" else { return }
         guard Date().timeIntervalSince1970 >= UserDefaults.standard.double(forKey: nextTryKey) else { return }
         let events = store.recentEvents(limit: 500)
         guard !events.isEmpty, !inFlight else { return }
@@ -32,7 +35,7 @@ enum DiagnosticsUploader {
         req.timeoutInterval = 20
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.setValue(DiagnosticsStore.appID, forHTTPHeaderField: "X-App-Id")
-        if !store.appToken.isEmpty { req.setValue(store.appToken, forHTTPHeaderField: "X-App-Token") }
+        req.setValue(store.appToken, forHTTPHeaderField: "X-App-Token")
         req.httpBody = try? JSONSerialization.data(withJSONObject: body)
         Task {
             defer { inFlight = false }
