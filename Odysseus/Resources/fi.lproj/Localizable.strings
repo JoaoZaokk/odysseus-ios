@@ -879,9 +879,6 @@
 "Física: %@" = "Fyysinen: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Macissa järjestelmä ei kerro appikohtaista rajaa.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Tämän verran appi voi vielä käyttää, ennen kuin järjestelmä sulkee sen. Mallin täytyy mahtua tähän reilusti.";
-"Enviar diagnósticos anônimos" = "Lähetä anonyymit diagnostiikkatiedot";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Oletuksena pois päältä. Lähettää vain kaatumiset, latausajat ja muistitiedot – ei koskaan ääntä, tekstiä tai palvelimesi osoitetta.";
-"Token do app" = "Apin token";
 "Exportar diagnóstico" = "Vie diagnostiikkatiedot";
 "Exportado" = "Viety";
 "Eventos recentes" = "Viimeisimmät tapahtumat";
@@ -898,3 +895,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Kaksi litterointiyritystä tällä mallilla päättyi apin sulkeutumiseen. Vaihda malli kohdassa Asetukset › Puhe ja mallit, ennen kuin yrität uudelleen.";
 "Motor: %@" = "Moottori: %@";
 "Transcrição recuperada" = "Palautettu litterointi";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Ilmoita bugista";
+"Relatório de bug" = "Bugiraportti";
+"O que aconteceu?" = "Mitä tapahtui?";
+"Enviar por e-mail" = "Lähetä sähköpostitse";
+"Compartilhar arquivo" = "Jaa tiedosto";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Mukana lähtee: laite, sovelluksen ja järjestelmän versio, muisti sekä viimeisen tunnin tapahtumat (latausajat, kaatumiset, puhumoottorin loki). Ei koskaan ääntä, tekstiä eikä palvelimesi osoitetta. Mikään ei lähde ennen kuin painat lähetä.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Tähän laitteeseen ei ole määritetty sähköpostisovellusta. Jaa tiedosto jotain muuta kautta.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Avaa kehittäjälle sähköpostin, jossa on viimeisen tunnin tapahtumat. Näet kaiken ennen lähettämistä.";
+"Enviado" = "Lähetetty";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Muistia käytettävissä: %@ · Fyysinen: %@ · Vapaata levytilaa: %@";
+"Último encerramento anormal: %@" = "Viimeisin epänormaali sulkeutuminen: %@";
+"Eventos anexados: %@" = "Liitetyt tapahtumat: %@";
+"Anexo: %@" = "Liite: %@";

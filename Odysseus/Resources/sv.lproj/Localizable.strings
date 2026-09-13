@@ -879,9 +879,6 @@
 "Física: %@" = "Fysiskt: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "På Mac visar systemet inte gränsen per app.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Så mycket kan appen fortfarande använda innan systemet avslutar den. En modell måste få plats här med marginal.";
-"Enviar diagnósticos anônimos" = "Skicka anonym diagnostik";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Av som standard. Skickar bara krascher, inläsningstider och minne – aldrig ljud, text eller adressen till din server.";
-"Token do app" = "Apptoken";
 "Exportar diagnóstico" = "Exportera diagnostik";
 "Exportado" = "Exporterat";
 "Eventos recentes" = "Senaste händelser";
@@ -898,3 +895,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Två försök att transkribera med den här modellen slutade med att appen stängdes. Byt modell i Inställningar › Röst och modeller innan du försöker igen.";
 "Motor: %@" = "Motor: %@";
 "Transcrição recuperada" = "Återskapad transkribering";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Rapportera ett fel";
+"Relatório de bug" = "Felrapport";
+"O que aconteceu?" = "Vad hände?";
+"Enviar por e-mail" = "Skicka via e-post";
+"Compartilhar arquivo" = "Dela filen";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Det som skickas: enhet, app- och systemversion, minne och den senaste timmens loggar (laddningstider, kraschar, logg för röstmotorn). Aldrig ljud, text eller din serveradress. Inget skickas förrän du trycker på skicka.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Ingen e-postapp är konfigurerad på den här enheten. Dela filen på ett annat sätt.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Öppnar ett e-postmeddelande till utvecklaren med den senaste timmens loggar. Du ser allt innan du skickar.";
+"Enviado" = "Skickat";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Tillgängligt minne: %@ · Fysiskt: %@ · Ledigt diskutrymme: %@";
+"Último encerramento anormal: %@" = "Senaste onormala avslut: %@";
+"Eventos anexados: %@" = "Bifogade händelser: %@";
+"Anexo: %@" = "Bilaga: %@";

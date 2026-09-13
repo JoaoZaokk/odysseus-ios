@@ -887,9 +887,6 @@
 "Física: %@" = "Vật lý: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Trên Mac, hệ thống không cung cấp giới hạn cho từng ứng dụng.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Đây là dung lượng ứng dụng còn có thể dùng trước khi hệ thống tắt nó. Mô hình cần vừa vào đây và vẫn còn dư chỗ.";
-"Enviar diagnósticos anônimos" = "Gửi dữ liệu chẩn đoán ẩn danh";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Mặc định tắt. Chỉ gửi sự cố, thời gian tải và bộ nhớ — không bao giờ gửi âm thanh, văn bản hay địa chỉ máy chủ của bạn.";
-"Token do app" = "Token của ứng dụng";
 "Exportar diagnóstico" = "Xuất dữ liệu chẩn đoán";
 "Exportado" = "Đã xuất";
 "Eventos recentes" = "Sự kiện gần đây";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Hai lần chuyển thành văn bản với mô hình này đều kết thúc bằng việc ứng dụng bị tắt. Hãy đổi mô hình trong Cài đặt › Giọng nói và mô hình trước khi thử lại.";
 "Motor: %@" = "Trình xử lý: %@";
 "Transcrição recuperada" = "Đã phục hồi bản chuyển văn bản";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Báo lỗi";
+"Relatório de bug" = "Báo cáo lỗi";
+"O que aconteceu?" = "Chuyện gì đã xảy ra?";
+"Enviar por e-mail" = "Gửi qua email";
+"Compartilhar arquivo" = "Chia sẻ tệp";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Sẽ được gửi kèm: thiết bị, phiên bản app và hệ điều hành, bộ nhớ và các bản ghi trong 1 giờ gần nhất (thời gian tải, sự cố treo, log của bộ máy giọng nói). Không bao giờ có âm thanh, văn bản hay địa chỉ máy chủ của bạn. Không có gì được gửi đi cho đến khi bạn nhấn gửi.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Chưa có ứng dụng email nào được thiết lập trên thiết bị này. Hãy chia sẻ tệp bằng cách khác.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Mở một email gửi cho nhà phát triển kèm bản ghi 1 giờ gần nhất. Bạn xem toàn bộ trước khi gửi.";
+"Enviado" = "Đã gửi";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Bộ nhớ khả dụng: %@ · Vật lý: %@ · Dung lượng trống: %@";
+"Último encerramento anormal: %@" = "Lần thoát bất thường gần nhất: %@";
+"Eventos anexados: %@" = "Sự kiện đính kèm: %@";
+"Anexo: %@" = "Tệp đính kèm: %@";

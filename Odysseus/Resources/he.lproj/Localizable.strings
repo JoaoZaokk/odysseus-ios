@@ -879,9 +879,6 @@
 "Física: %@" = "פיזי: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "ב‑Mac המערכת אינה חושפת את מגבלת הזיכרון לכל אפליקציה בנפרד.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "זו כמות הזיכרון שהאפליקציה עוד יכולה לנצל לפני שהמערכת תסגור אותה. מודל צריך להיכנס לכאן בנוחות.";
-"Enviar diagnósticos anônimos" = "שליחת נתוני אבחון אנונימיים";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "כבוי כברירת מחדל. נשלחים רק קריסות, זמני טעינה וזיכרון — מעולם לא אודיו, טקסט או כתובת השרת שלך.";
-"Token do app" = "Token של האפליקציה";
 "Exportar diagnóstico" = "ייצוא נתוני אבחון";
 "Exportado" = "הייצוא בוצע";
 "Eventos recentes" = "אירועים אחרונים";
@@ -898,3 +895,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "שני ניסיונות לתמלל עם המודל הזה הסתיימו בסגירת האפליקציה. יש להחליף את המודל בהגדרות › קול ומודלים לפני ניסיון נוסף.";
 "Motor: %@" = "מנוע: %@";
 "Transcrição recuperada" = "תמלול משוחזר";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "דיווח על באג";
+"Relatório de bug" = "דיווח על באג";
+"O que aconteceu?" = "מה קרה?";
+"Enviar por e-mail" = "שליחה במייל";
+"Compartilhar arquivo" = "שיתוף הקובץ";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "מה נשלח: המכשיר, גרסת האפליקציה והמערכת, הזיכרון והשעה האחרונה של הרישומים (זמני טעינה, קריסות, יומן מנוע הדיבור). לעולם לא אודיו, טקסט או כתובת השרת שלך. שום דבר לא נשלח לפני שאתה לוחץ על שליחה.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "לא הוגדרה אפליקציית מייל במכשיר הזה. שתף את הקובץ בדרך אחרת.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "פותח מייל למפתח עם השעה האחרונה של הרישומים. אתה רואה הכול לפני השליחה.";
+"Enviado" = "נשלח";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "זיכרון זמין: %@ · פיזי: %@ · שטח פנוי בדיסק: %@";
+"Último encerramento anormal: %@" = "יציאה חריגה אחרונה: %@";
+"Eventos anexados: %@" = "אירועים מצורפים: %@";
+"Anexo: %@" = "קובץ מצורף: %@";

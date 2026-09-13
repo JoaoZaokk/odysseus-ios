@@ -889,9 +889,6 @@
 "Física: %@" = "Физическая: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "На Mac система не сообщает ограничение для отдельного приложения.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Сколько приложение ещё может использовать, прежде чем система его завершит. Модель должна помещаться здесь с запасом.";
-"Enviar diagnósticos anônimos" = "Отправлять анонимную диагностику";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "По умолчанию выключено. Отправляются только сбои, время загрузки и память, но никогда — аудио, текст или адрес вашего сервера.";
-"Token do app" = "Token приложения";
 "Exportar diagnóstico" = "Экспортировать диагностику";
 "Exportado" = "Экспортировано";
 "Eventos recentes" = "Последние события";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Две попытки расшифровки с этой моделью закончились закрытием приложения. Смените модель в «Настройки › Голос и модели», прежде чем пробовать снова.";
 "Motor: %@" = "Движок: %@";
 "Transcrição recuperada" = "Восстановленная расшифровка";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Сообщить об ошибке";
+"Relatório de bug" = "Отчёт об ошибке";
+"O que aconteceu?" = "Что случилось?";
+"Enviar por e-mail" = "Отправить по почте";
+"Compartilhar arquivo" = "Поделиться файлом";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Будет отправлено: устройство, версия приложения и системы, память и записи за последний час (время загрузки, сбои, лог голосового движка). Никогда — аудио, текст или адрес вашего сервера. Ничего не уйдёт, пока вы не нажмёте «Отправить».";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "На этом устройстве не настроено ни одно почтовое приложение. Поделитесь файлом другим способом.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Откроется письмо разработчику с записями за последний час. Вы увидите всё перед отправкой.";
+"Enviado" = "Отправлено";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Доступно памяти: %@ · Физическая: %@ · Свободно на диске: %@";
+"Último encerramento anormal: %@" = "Последнее аварийное завершение: %@";
+"Eventos anexados: %@" = "Прикреплено событий: %@";
+"Anexo: %@" = "Вложение: %@";

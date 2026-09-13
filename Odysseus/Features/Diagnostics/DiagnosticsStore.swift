@@ -22,14 +22,10 @@ struct DiagEvent: Codable, Identifiable, Sendable {
 /// too, in the same spool, as they come.
 ///
 /// Recording is always on — it is what makes Ajustes › Diagnóstico work on the
-/// owner's own phone. Only *uploading* is opt-in (`isUploadEnabled`).
+/// owner's own phone. Nothing is ever uploaded: the only way out is a bug
+/// report the user composes and sends in their own mail app (`BugReport`).
 final class DiagnosticsStore: @unchecked Sendable {
     static let shared = DiagnosticsStore()
-
-    static let uploadEnabledKey = "diag.upload.enabled"
-    static let endpointKey = "diag.endpoint"
-    static let appTokenKey = "diag.app.token"
-    private static let installKey = "diag.installId"
 
     private let lock = NSLock()
     private let dir: URL
@@ -60,18 +56,9 @@ final class DiagnosticsStore: @unchecked Sendable {
            let s = try? JSONDecoder().decode([String: [String: String]].self, from: d) { spans = s }
     }
 
-    // MARK: - Identity and switches
+    // MARK: - Identity
 
-    var installId: String {
-        if let v = UserDefaults.standard.string(forKey: Self.installKey) { return v }
-        let v = UUID().uuidString.lowercased()
-        UserDefaults.standard.set(v, forKey: Self.installKey)
-        return v
-    }
-    var isUploadEnabled: Bool { UserDefaults.standard.bool(forKey: Self.uploadEnabledKey) }
-    var endpoint: String { UserDefaults.standard.string(forKey: Self.endpointKey) ?? "" }
-    var appToken: String { UserDefaults.standard.string(forKey: Self.appTokenKey) ?? "" }
-
+    /// Which build of the app wrote the file — never which install.
     static var appID: String {
         #if os(macOS)
         "odysseus-macos"
@@ -104,7 +91,7 @@ final class DiagnosticsStore: @unchecked Sendable {
         return Array(out.suffix(limit))
     }
 
-    /// Drops everything up to and including the given timestamp (after a successful upload).
+    /// Drops everything up to and including the given timestamp.
     func drop(upTo ts: Double) {
         lock.lock(); defer { lock.unlock() }
         try? FileManager.default.removeItem(at: rotatedURL)
@@ -221,7 +208,6 @@ final class DiagnosticsStore: @unchecked Sendable {
     func exportJSON() -> Data {
         let env: [String: Any] = [
             "app": Self.appID,
-            "installId": installId,
             "version": Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?",
             "build": Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?",
             "os": ProcessInfo.processInfo.operatingSystemVersionString,

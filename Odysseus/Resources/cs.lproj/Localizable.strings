@@ -887,9 +887,6 @@
 "Física: %@" = "Fyzická: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Na Macu systém limit na aplikaci neuvádí.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Kolik paměti ještě může aplikace využít, než ji systém ukončí. Model se sem musí vejít s rezervou.";
-"Enviar diagnósticos anônimos" = "Odesílat anonymní diagnostiku";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Ve výchozím nastavení vypnuto. Odesílá jen pády, doby načítání a paměť — nikdy zvuk, text ani adresu vašeho serveru.";
-"Token do app" = "Token aplikace";
 "Exportar diagnóstico" = "Exportovat diagnostiku";
 "Exportado" = "Exportováno";
 "Eventos recentes" = "Nedávné události";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Dva pokusy o přepis s tímto modelem skončily zavřením aplikace. Než to zkusíte znovu, změňte model v Nastavení › Hlas a modely.";
 "Motor: %@" = "Modul: %@";
 "Transcrição recuperada" = "Obnovený přepis";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Nahlásit chybu";
+"Relatório de bug" = "Hlášení chyby";
+"O que aconteceu?" = "Co se stalo?";
+"Enviar por e-mail" = "Odeslat e-mailem";
+"Compartilhar arquivo" = "Sdílet soubor";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Odešle se: zařízení, verze aplikace a systému, paměť a záznamy za poslední hodinu (doby načítání, pády, log hlasového enginu). Nikdy zvuk, text ani adresa vašeho serveru. Nic neodejde, dokud nestisknete odeslat.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "V tomto zařízení není nastavená žádná e-mailová aplikace. Sdílejte soubor jiným způsobem.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Otevře e-mail vývojáři se záznamy za poslední hodinu. Než ho odešlete, uvidíte všechno.";
+"Enviado" = "Odesláno";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Dostupná paměť: %@ · Fyzická: %@ · Volné místo na disku: %@";
+"Último encerramento anormal: %@" = "Poslední neobvyklé ukončení: %@";
+"Eventos anexados: %@" = "Přiložené události: %@";
+"Anexo: %@" = "Příloha: %@";

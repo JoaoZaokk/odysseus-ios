@@ -889,9 +889,6 @@
 "Física: %@" = "ফিজিক্যাল: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac-এ প্রতি অ্যাপের সীমা সিস্টেম প্রকাশ করে না।";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "সিস্টেম অ্যাপটি বন্ধ করে দেওয়ার আগে অ্যাপ আর কতটা ব্যবহার করতে পারবে। একটি মডেলকে এর মধ্যে স্বচ্ছন্দে আঁটতে হবে।";
-"Enviar diagnósticos anônimos" = "বেনামি ডায়াগনস্টিকস পাঠান";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "ডিফল্টভাবে বন্ধ। শুধু ক্র্যাশ, লোড হতে লাগা সময় ও মেমোরি পাঠায় — কখনও অডিও, টেক্সট বা আপনার সার্ভারের ঠিকানা নয়।";
-"Token do app" = "অ্যাপের token";
 "Exportar diagnóstico" = "ডায়াগনস্টিকস এক্সপোর্ট করুন";
 "Exportado" = "এক্সপোর্ট হয়েছে";
 "Eventos recentes" = "সাম্প্রতিক ইভেন্ট";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "এই মডেল দিয়ে ট্রান্সক্রাইব করার দুটি চেষ্টাই অ্যাপ বন্ধ হয়ে শেষ হয়েছে। আবার চেষ্টা করার আগে সেটিংস › ভয়েস ও মডেল-এ গিয়ে মডেল বদলান।";
 "Motor: %@" = "ইঞ্জিন: %@";
 "Transcrição recuperada" = "পুনরুদ্ধার করা ট্রান্সক্রিপ্ট";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "বাগ রিপোর্ট করুন";
+"Relatório de bug" = "বাগ রিপোর্ট";
+"O que aconteceu?" = "কী হয়েছিল?";
+"Enviar por e-mail" = "ইমেইলে পাঠান";
+"Compartilhar arquivo" = "ফাইল শেয়ার করুন";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "যা যাবে: ডিভাইস, অ্যাপ ও সিস্টেমের ভার্সন, মেমরি এবং শেষ এক ঘণ্টার রেকর্ড (লোডিং টাইম, ক্র্যাশ, স্পিচ ইঞ্জিন লগ)। কখনো অডিও, টেক্সট বা তোমার সার্ভারের ঠিকানা যাবে না। তুমি পাঠাও-তে না চাপা পর্যন্ত কিছুই পাঠানো হবে না।";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "এই ডিভাইসে কোনো ইমেইল অ্যাপ সেট করা নেই। ফাইলটি অন্য কোনোভাবে শেয়ার করো।";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "শেষ এক ঘণ্টার রেকর্ড সহ ডেভেলপারকে একটি ইমেইল খোলে। পাঠানোর আগে তুমি সবকিছু দেখতে পাবে।";
+"Enviado" = "পাঠানো হয়েছে";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "উপলব্ধ মেমরি: %@ · ফিজিক্যাল: %@ · ফাঁকা ডিস্ক: %@";
+"Último encerramento anormal: %@" = "সর্বশেষ অস্বাভাবিক বন্ধ হওয়া: %@";
+"Eventos anexados: %@" = "সংযুক্ত ইভেন্ট: %@";
+"Anexo: %@" = "সংযুক্তি: %@";

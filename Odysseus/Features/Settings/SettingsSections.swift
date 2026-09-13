@@ -40,6 +40,7 @@ struct ServerSection: View {
 // MARK: - Account
 
 struct AccountSection: View {
+    @State private var showBugReport = false
     @EnvironmentObject private var app: AppState
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
@@ -166,6 +167,12 @@ struct AccountSection: View {
                 }
                 .buttonStyle(.plain).foregroundStyle(theme.accent).font(.ody(.subheadline))
                 #endif
+                Rectangle().fill(theme.border).frame(height: 1)
+                Button { showBugReport = true } label: {
+                    Label("Reportar bug", systemImage: "ladybug")
+                }
+                .buttonStyle(.plain).foregroundStyle(theme.accent).font(.ody(.subheadline))
+                .sheet(isPresented: $showBugReport) { BugReportSheet() }
             }
 
             SettingsCard {

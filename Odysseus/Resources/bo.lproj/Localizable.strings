@@ -887,9 +887,6 @@
 "Física: %@" = "དངོས་ཡོད། %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac ནང་ཉེར་སྤྱོད་རེ་རེའི་ཚད་མཚམས་མ་ལག་གིས་མངོན་པར་མི་བྱེད།";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "མ་ལག་གིས་ཉེར་སྤྱོད་མཚམས་འཇོག་མ་བྱས་གོང་དེས་ད་དུང་སྤྱོད་ཐུབ་པའི་ཚད་དེ་ཡིན། དཔེ་གཟུགས་ཤིག་འདིའི་ནང་ལྷུག་ལྷུག་ངང་ཤོང་དགོས།";
-"Enviar diagnósticos anônimos" = "མིང་མེད་བརྟག་དཔྱད་གནས་ཚུལ་སྐུར།";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "སྔོན་སྒྲིག་ལྟར་ཁ་བརྒྱབ་ཡོད། གློ་བུར་ཆད་སྐྱོན་དང་། ནང་འཇུག་དུས་ཚོད། དྲན་གསོག་བཅས་ཁོ་ན་སྐུར་གྱི་རེད། སྒྲ་དང་། ཡི་གེ། ཡང་ན་ཁྱེད་ཀྱི་ཞབས་ཞུ་འཕྲུལ་འཁོར་གྱི་ས་གནས་ནམ་ཡང་མི་སྐུར།";
-"Token do app" = "ཉེར་སྤྱོད་ཀྱི་ token";
 "Exportar diagnóstico" = "བརྟག་དཔྱད་ཕྱིར་འདྲེན།";
 "Exportado" = "ཕྱིར་འདྲེན་ཟིན།";
 "Eventos recentes" = "ཉེ་ཆར་གྱི་དོན་རྐྱེན།";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "དཔེ་གཟུགས་འདི་བརྒྱུད་ཡིག་འབེབས་བྱེད་ཐབས་ཐེངས་གཉིས་ཀ་ཉེར་སྤྱོད་སྒོ་བརྒྱབ་ནས་མཇུག་བསྡུས། ཡང་བསྐྱར་འབད་བརྩོན་མ་བྱས་གོང་། སྒྲིག་འགོད་ › སྐད་སྒྲ་དང་དཔེ་གཟུགས་ནང་ནས་དཔེ་གཟུགས་གཞན་ཞིག་གདམ་རོགས།";
 "Motor: %@" = "སྒུལ་འཁོར། %@";
 "Transcrição recuperada" = "སླར་གསོ་བྱས་པའི་ཡིག་འབེབས།";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "སྐྱོན་སྙན་ཞུ།";
+"Relatório de bug" = "སྐྱོན་སྙན་ཐོ།";
+"O que aconteceu?" = "ག་རེ་བྱུང་སོང་།";
+"Enviar por e-mail" = "གློག་འཕྲིན་བརྒྱུད་གཏོང་།";
+"Compartilhar arquivo" = "ཡིག་ཆ་མཉམ་སྤྱོད།";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "གཏོང་རྒྱུའི་ནང་དོན་ནི: སྒྲིག་ཆས, མཉེན་ཆས་དང་མ་ལག་གི་ཐོན་རིམ, དྲན་ཤེས་དང་ཆུ་ཚོད་གཅིག་གི་ཐོ་གཞུང་ (འགོ་འཛུགས་དུས་ཚོད, རྒྱུན་ཆད་སྐོར, སྐད་ཆའི་འཕྲུལ་ཆས་ཀྱི་ཐོ་གཞུང་) ཡིན། སྒྲ་གདངས, ཡི་གེའམ་ཁྱེད་ཀྱི་ཞབས་ཞུ་འཕྲུལ་ཆས་ཀྱི་ཁ་བྱང་ནམ་ཡང་མི་འགྲོ། ཁྱེད་ཀྱིས་གཏོང་ཞེས་མནན་མ་བྱས་བར་དུ་གང་ཡང་ཕྱིར་མི་འགྲོ།";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "སྒྲིག་ཆས་འདིའི་ནང་གློག་འཕྲིན་མཉེན་ཆས་སྒྲིག་འཇུག་བྱས་མེད། ཡིག་ཆ་ལམ་ལུགས་གཞན་ནས་མཉམ་སྤྱོད་གནང་རོགས།";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "འདིས་ཆུ་ཚོད་གཅིག་གི་ཐོ་གཞུང་ཡོད་པའི་གློག་འཕྲིན་ཞིག་མཉེན་ཆས་བཟོ་མཁན་ལ་འབྱེད། གཏོང་མ་ཐག་གོང་ཁྱེད་ཀྱིས་ནང་དོན་ཡོངས་མཐོང་ཐུབ།";
+"Enviado" = "བཏང་ཟིན།";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "མེམོ་རི་སྤྱོད་ཆོག་པ: %@ · རང་བཞིན་གྱི་མེམོ་རི: %@ · ཌིསིཀ་སྟོང་ཆ: %@";
+"Último encerramento anormal: %@" = "མཐའ་མའི་གློ་བུར་མཚམས་འཇོག: %@";
+"Eventos anexados: %@" = "སྦྲགས་ཡོད་པའི་གནས་ཚུལ: %@";
+"Anexo: %@" = "སྦྲགས་ཡིག: %@";

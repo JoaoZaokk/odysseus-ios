@@ -887,9 +887,6 @@
 "Física: %@" = "Fisik: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Di Mac, batas per app tidak ditampilkan oleh sistem.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Seberapa banyak yang masih bisa dipakai app sebelum sistem menghentikannya. Model harus muat di sini dengan sisa ruang yang lega.";
-"Enviar diagnósticos anônimos" = "Kirim diagnostik anonim";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Nonaktif secara bawaan. Hanya mengirim kejadian mogok, waktu pemuatan, dan memori — tidak pernah audio, teks, atau alamat server Anda.";
-"Token do app" = "Token app";
 "Exportar diagnóstico" = "Ekspor diagnostik";
 "Exportado" = "Diekspor";
 "Eventos recentes" = "Peristiwa terbaru";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Dua upaya transkripsi dengan model ini berakhir dengan app tertutup. Ganti model di Pengaturan › Suara dan model sebelum mencoba lagi.";
 "Motor: %@" = "Mesin: %@";
 "Transcrição recuperada" = "Transkripsi dipulihkan";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Laporkan bug";
+"Relatório de bug" = "Laporan bug";
+"O que aconteceu?" = "Apa yang terjadi?";
+"Enviar por e-mail" = "Kirim lewat email";
+"Compartilhar arquivo" = "Bagikan file";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Yang disertakan: perangkat, versi app dan sistem, memori, dan catatan satu jam terakhir (waktu pemuatan, crash, log mesin suara). Tidak pernah audio, teks, atau alamat server kamu. Tidak ada yang terkirim sebelum kamu tap kirim.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Tidak ada app email yang diatur di perangkat ini. Bagikan file lewat cara lain.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Membuka email ke developer berisi catatan satu jam terakhir. Kamu bisa lihat semuanya sebelum mengirim.";
+"Enviado" = "Terkirim";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Memori tersedia: %@ · Fisik: %@ · Disk kosong: %@";
+"Último encerramento anormal: %@" = "Penutupan tidak normal terakhir: %@";
+"Eventos anexados: %@" = "Peristiwa terlampir: %@";
+"Anexo: %@" = "Lampiran: %@";

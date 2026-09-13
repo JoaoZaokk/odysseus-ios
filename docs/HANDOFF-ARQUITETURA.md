@@ -179,9 +179,36 @@ monolíngues transliteram o sample estrangeiro no próprio alfabeto (hindi em de
 húngaro "Bonzie, o givon mus testarú…") — isso é o esperado de um fine-tune que pinou o
 idioma, não erro de conversão; o teste é "carrega e decodifica", não WER.
 
-Fica para o dono: Submit da 1.11 no ASC (agora liberado: todos os repositórios existem),
-apagar ou não os f16 antigos dos 15 primeiros repositórios, e o IP/porta do Proxmox para o
-Zão Hub.
+### Decisão do dono (13/09, à noite): sem telemetria de servidor, bug report por e-mail
+
+O dono não quer o app "que diz zero coleta" com um coletor atrás, nem mexer na ficha da
+App Store. Ficou o caminho que não muda nada na Apple:
+
+- Saíram o toggle "Enviar diagnósticos anônimos", o `DiagnosticsUploader` e o `installId`.
+  Nada sai do aparelho sozinho; o spool, os spans e o MetricKit continuam locais.
+- Entrou **"Reportar bug"** (Ajustes › Diagnóstico e Conta, ícone `ladybug`):
+  `BugReportSheet` diz o que vai, tem o campo "O que aconteceu?" e abre o app de e-mail do
+  próprio usuário — `MFMailComposeViewController` no iOS, `NSSharingService(.composeEmail)`
+  no Mac — com destinatário do dono, assunto `Bug report Odysseus 1.11 (27) · iOS 27.0 ·
+  iPhone16,2`, corpo-resumo (memória, último encerramento anormal, contagem de eventos) e
+  o anexo `odysseus-bug-<data>.json` montado por `BugReport.make`: última hora de eventos
+  (nunca menos que 50), último encerramento anormal, spans abertos, cauda do log do motor,
+  aparelho/versões/memória/disco. Id aleatório por relatório; nenhum id de instalação.
+  Sem conta de e-mail: "Compartilhar arquivo" (share sheet / painel de salvar).
+- Apple: iniciado pelo usuário, raro, fora da função principal, visível antes de enviar =
+  "divulgação opcional"; a ficha continua "Dados não coletados" e `PrivacyInfo.xcprivacy`
+  voltou a `NSPrivacyCollectedDataTypes` vazio.
+- Por que não o canal da Apple: os crash reports do Organizer só chegam para crashes de
+  verdade e só de quem ligou "Compartilhar com desenvolvedores de apps"; jetsam não gera
+  relatório; MetricKit entrega ao app, não a um painel. O que o dono precisa ver (demorou
+  para carregar, morreu carregando, quanto havia de memória) só o próprio app sabe.
+- Zão Hub deixa de ser necessário para o Odysseus; fica em `~/Projetos/ZaoHub` para outro app.
+- 13 strings × 43 catálogos (875 chaves), 3 chaves do toggle removidas; `BugReportTests`
+  (descrição viaja, sem `installId`, janela de 1 h com piso de 50, id novo por relatório,
+  último encerramento anormal no corpo). Suíte: **351**.
+
+Fica para o dono: Submit da 1.11 no ASC (liberado: todos os repositórios existem) e apagar
+ou não os f16 antigos dos 15 primeiros repositórios.
 
 ## Rodada 8 — o servidor vivo não é o upstream
 

@@ -887,9 +887,6 @@
 "Física: %@" = "فزیکي: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "په Mac کې سیسټم د هر اپ حد نه ښیي.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "دا هغه اندازه ده چې اپ یې کارولی شي، مخکې له دې چې سیسټم یې بند کړي. یو ماډل باید دلته له اضافي ځای سره ځای ونیسي.";
-"Enviar diagnósticos anônimos" = "بې نومه تشخیصي معلومات لېږل";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "په ډیفالټ کې بند دی. یوازې کرېشونه، د بارېدو وختونه او حافظه لېږي — هیڅکله غږ، متن یا د ستاسو د سرور پته نه.";
-"Token do app" = "د اپ token";
 "Exportar diagnóstico" = "تشخیص صادر کړه";
 "Exportado" = "صادر شو";
 "Eventos recentes" = "وروستۍ پېښې";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "د دې ماډل سره د متن اړولو دوه هڅې د اپ په بندېدو پای ته ورسېدې. له بیا هڅې دمخه ماډل په تنظیمات › غږ او ماډلونه کې بدل کړئ.";
 "Motor: %@" = "انجن: %@";
 "Transcrição recuperada" = "بېرته ترلاسه شوی متن";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "بګ راپور ورکړئ";
+"Relatório de bug" = "د بګ راپور";
+"O que aconteceu?" = "څه پېښ شول؟";
+"Enviar por e-mail" = "بریښنالیک ولېږئ";
+"Compartilhar arquivo" = "دوتنه شریکه کړئ";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "دا لېږل کیږي: وسیله، د اپ او سیسټم بڼه، حافظه، او د تېرې یوې ساعت ثبتونه (د بارېدو وخت، ټکریدنې، د غږ انجن لاګ). هېڅکله غږ، متن یا ستاسو د سرور پته نه لېږل کیږي. تر هغه چې تاسو په لېږلو ونه ټکوئ، هېڅ نه ځي.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "پدې وسیله کې هېڅ بریښنالیک اپلیکیشن تنظیم شوی نه دی. مهرباني وکړئ دوتنه په بل ډول شریکه کړئ.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "دا د پراختیا کونکي لپاره یو بریښنالیک خلاصوي چې د تېرې یوې ساعت ثبتونه پکې وي. تاسو د لېږلو دمخه هرڅه ګورئ.";
+"Enviado" = "ولېږل شو";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "شته حافظه: %@ · فزیکي: %@ · وړیا ډیسک: %@";
+"Último encerramento anormal: %@" = "وروستۍ غیرعادي بندېدنه: %@";
+"Eventos anexados: %@" = "ضمیمه شوې پېښې: %@";
+"Anexo: %@" = "ضمیمه: %@";

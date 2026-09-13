@@ -889,9 +889,6 @@
 "Física: %@" = "Фізична: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "На Mac система не надає дані про обмеження для окремої програми.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Це обсяг, який програма ще може використати, перед тим як система завершить її роботу. Модель має вміщуватися тут із запасом.";
-"Enviar diagnósticos anônimos" = "Надсилати анонімну діагностику";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Типово вимкнено. Надсилаються лише збої, час завантаження та дані про пам’ять — ніколи аудіо, текст або адреса вашого сервера.";
-"Token do app" = "Token програми";
 "Exportar diagnóstico" = "Експортувати діагностику";
 "Exportado" = "Експортовано";
 "Eventos recentes" = "Останні події";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Дві спроби транскрибування з цією моделлю завершилися закриттям програми. Змініть модель у Параметри › Голос і моделі, перед тим як спробувати знову.";
 "Motor: %@" = "Механізм: %@";
 "Transcrição recuperada" = "Відновлена транскрипція";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Повідомити про баг";
+"Relatório de bug" = "Звіт про баг";
+"O que aconteceu?" = "Що сталося?";
+"Enviar por e-mail" = "Надіслати електронною поштою";
+"Compartilhar arquivo" = "Поділитися файлом";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Буде додано: пристрій, версію застосунку й системи, пам'ять і записи за останню годину (час завантаження, збої, журнал голосового рушія). Ніколи аудіо, текст чи адресу твого сервера. Нічого не піде, поки ти не натиснеш «надіслати».";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "На цьому пристрої не налаштовано жоден поштовий застосунок. Поділися файлом іншим способом.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Відкриває лист розробнику із записами за останню годину. Ти побачиш усе перед надсиланням.";
+"Enviado" = "Надіслано";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Доступна пам'ять: %@ · Фізична: %@ · Вільний диск: %@";
+"Último encerramento anormal: %@" = "Останнє аварійне завершення: %@";
+"Eventos anexados: %@" = "Додані події: %@";
+"Anexo: %@" = "Вкладення: %@";

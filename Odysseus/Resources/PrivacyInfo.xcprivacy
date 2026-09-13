@@ -3,11 +3,13 @@
 <!--
   Required-reason API declarations (ITMS-91053).
 
-  The app talks to a server the user hosts and configures and has no analytics
-  or advertising SDK. Since 1.11 it can send anonymous crash and performance
-  diagnostics (MetricKit payloads, model-load timings, memory left) to the
-  developer's collector — OPT-IN, off by default, never linked to the user and
-  never used for tracking — so those two types are declared below.
+  Nothing here is collected for the developer: the app talks to a server the
+  user hosts and configures, and there is no analytics or advertising SDK, so
+  NSPrivacyCollectedDataTypes is deliberately empty rather than absent. The
+  diagnostics the app records (1.11: model-load timings, memory left, MetricKit
+  crash payloads) stay on the device; the only way out is a bug report the user
+  composes and sends in their own mail app after seeing what goes — which
+  Apple's optional-disclosure rule leaves off the App Store label.
 
   UserDefaults  — settings, engine choices and endpoint URLs, all read back by
                   this app only (CA92.1).
@@ -22,18 +24,7 @@
 	<key>NSPrivacyTrackingDomains</key>
 	<array/>
 	<key>NSPrivacyCollectedDataTypes</key>
-	<array>
-		<dict>
-			<key>NSPrivacyCollectedDataType</key>
-			<string>NSPrivacyCollectedDataTypeCrashData</string>
-			<key>NSPrivacyCollectedDataTypeLinked</key>
-			<false/>
-			<key>NSPrivacyCollectedDataTypeTracking</key>
-			<false/>
-			<key>NSPrivacyCollectedDataTypePurposes</key>
-			<array>
-				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
-			</array>
+	<array/>
 		</dict>
 		<dict>
 			<key>NSPrivacyCollectedDataType</key>

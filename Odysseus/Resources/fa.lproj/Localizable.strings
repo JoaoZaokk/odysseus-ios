@@ -887,9 +887,6 @@
 "Física: %@" = "فیزیکی: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "در مک، محدودیت هر برنامه از سوی سیستم اعلام نمی‌شود.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "این مقداری است که برنامه پیش از بسته‌شدن توسط سیستم می‌تواند استفاده کند. یک مدل باید با کمی فضای اضافی در آن جا شود.";
-"Enviar diagnósticos anônimos" = "ارسال داده‌های عیب‌یابی ناشناس";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "به‌طور پیش‌فرض خاموش است. فقط خرابی‌ها، زمان‌های بارگذاری و حافظه را ارسال می‌کند — هرگز صدا، متن یا نشانی سرور شما را نمی‌فرستد.";
-"Token do app" = "توکن برنامه";
 "Exportar diagnóstico" = "صادر کردن داده‌های عیب‌یابی";
 "Exportado" = "صادر شد";
 "Eventos recentes" = "رویدادهای اخیر";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "دو تلاش برای رونویسی با این مدل با بسته‌شدن برنامه پایان یافت. پیش از تلاش دوباره، مدل را در تنظیمات › صدا و مدل‌ها عوض کنید.";
 "Motor: %@" = "موتور: %@";
 "Transcrição recuperada" = "رونویسی بازیابی‌شده";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "گزارش باگ";
+"Relatório de bug" = "گزارش باگ";
+"O que aconteceu?" = "چه اتفاقی افتاد؟";
+"Enviar por e-mail" = "ارسال با ایمیل";
+"Compartilhar arquivo" = "اشتراک‌گذاری فایل";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "همراهش می‌ره: دستگاه، نسخه‌ی اپ و سیستم، حافظه و ثبت‌های یک ساعت اخیر (زمان بارگذاری، کرش‌ها، لاگ موتور صدا). هیچ‌وقت صدا، متن یا آدرس سرورت. تا وقتی روی ارسال نزنی چیزی فرستاده نمی‌شه.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "هیچ اپ ایمیلی روی این دستگاه تنظیم نشده. فایل رو از راه دیگه‌ای به اشتراک بذار.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "یک ایمیل برای توسعه‌دهنده باز می‌کنه با ثبت‌های یک ساعت اخیر. قبل از ارسال همه‌چیز رو می‌بینی.";
+"Enviado" = "ارسال شد";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "حافظه‌ی موجود: %@ · فیزیکی: %@ · فضای آزاد دیسک: %@";
+"Último encerramento anormal: %@" = "آخرین بسته شدن غیرعادی: %@";
+"Eventos anexados: %@" = "رویدادهای پیوست‌شده: %@";
+"Anexo: %@" = "پیوست: %@";

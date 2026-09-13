@@ -889,9 +889,6 @@
 "Física: %@" = "Fysiek: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Op de Mac maakt het systeem de limiet per app niet bekend.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Dit is hoeveel de app nog kan gebruiken voordat het systeem de app beëindigt. Een model moet hier ruim in passen.";
-"Enviar diagnósticos anônimos" = "Anonieme diagnose versturen";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Staat standaard uit. Verstuurt alleen crashes, laadtijden en geheugen — nooit audio, tekst of het adres van je server.";
-"Token do app" = "App-token";
 "Exportar diagnóstico" = "Diagnose exporteren";
 "Exportado" = "Geëxporteerd";
 "Eventos recentes" = "Recente gebeurtenissen";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Bij twee pogingen om met dit model te transcriberen werd de app afgesloten. Wijzig het model in Instellingen › Spraak en modellen voordat je het opnieuw probeert.";
 "Motor: %@" = "Engine: %@";
 "Transcrição recuperada" = "Herstelde transcriptie";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Bug melden";
+"Relatório de bug" = "Bugrapport";
+"O que aconteceu?" = "Wat is er gebeurd?";
+"Enviar por e-mail" = "Verzenden via e-mail";
+"Compartilhar arquivo" = "Bestand delen";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Dit wordt meegestuurd: apparaat, app- en systeemversie, geheugen en de registraties van het afgelopen uur (laadtijden, crashes, log van de spraakengine). Nooit audio, tekst of het adres van je server. Er gaat niets weg voor je op verzenden tikt.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Er is geen e-mailapp ingesteld op dit apparaat. Deel het bestand op een andere manier.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Opent een e-mail aan de ontwikkelaar met de registraties van het afgelopen uur. Je ziet alles voor je het verstuurt.";
+"Enviado" = "Verzonden";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Beschikbaar geheugen: %@ · Fysiek: %@ · Vrije schijfruimte: %@";
+"Último encerramento anormal: %@" = "Laatste abnormale afsluiting: %@";
+"Eventos anexados: %@" = "Bijgevoegde gebeurtenissen: %@";
+"Anexo: %@" = "Bijlage: %@";

@@ -887,9 +887,6 @@
 "Física: %@" = "หน่วยความจำจริง: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "บน Mac ระบบไม่เปิดเผยขีดจำกัดต่อแอป";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "คือปริมาณที่แอปยังใช้ได้ก่อนที่ระบบจะปิดแอป โมเดลต้องพอดีกับพื้นที่นี้โดยเหลือที่ว่างด้วย";
-"Enviar diagnósticos anônimos" = "ส่งข้อมูลวินิจฉัยแบบไม่ระบุตัวตน";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "ปิดไว้ตามค่าเริ่มต้น ส่งเฉพาะการขัดข้อง เวลาในการโหลด และหน่วยความจำ — ไม่ส่งเสียง ข้อความ หรือที่อยู่เซิร์ฟเวอร์ของคุณ";
-"Token do app" = "Token ของแอป";
 "Exportar diagnóstico" = "ส่งออกข้อมูลวินิจฉัย";
 "Exportado" = "ส่งออกแล้ว";
 "Eventos recentes" = "เหตุการณ์ล่าสุด";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "การถอดเสียงด้วยโมเดลนี้สองครั้งจบลงด้วยการที่แอปถูกปิด เปลี่ยนโมเดลในการตั้งค่า › เสียงและโมเดล ก่อนลองอีกครั้ง";
 "Motor: %@" = "เอนจิน: %@";
 "Transcrição recuperada" = "ข้อความถอดเสียงที่กู้คืน";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "รายงานบั๊ก";
+"Relatório de bug" = "รายงานบั๊ก";
+"O que aconteceu?" = "เกิดอะไรขึ้น?";
+"Enviar por e-mail" = "ส่งทางอีเมล";
+"Compartilhar arquivo" = "แชร์ไฟล์";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "สิ่งที่จะถูกส่งไป: อุปกรณ์ เวอร์ชันแอปและระบบ หน่วยความจำ และบันทึกชั่วโมงล่าสุด (เวลาโหลด การขัดข้อง ล็อกเอนจินเสียง) จะไม่มีเสียง ข้อความ หรือที่อยู่เซิร์ฟเวอร์ของคุณ ไม่มีอะไรถูกส่งจนกว่าคุณจะแตะส่ง";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "ไม่มีแอปอีเมลที่ตั้งค่าไว้ในอุปกรณ์นี้ กรุณาแชร์ไฟล์ด้วยวิธีอื่น";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "เปิดอีเมลถึงผู้พัฒนาพร้อมบันทึกชั่วโมงล่าสุด คุณจะเห็นทุกอย่างก่อนส่ง";
+"Enviado" = "ส่งแล้ว";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "หน่วยความจำที่ใช้ได้: %@ · กายภาพ: %@ · พื้นที่ว่างในดิสก์: %@";
+"Último encerramento anormal: %@" = "การปิดตัวผิดปกติล่าสุด: %@";
+"Eventos anexados: %@" = "เหตุการณ์ที่แนบ: %@";
+"Anexo: %@" = "ไฟล์แนบ: %@";

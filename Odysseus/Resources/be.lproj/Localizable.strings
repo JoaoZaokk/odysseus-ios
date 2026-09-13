@@ -889,9 +889,6 @@
 "Física: %@" = "Фізічная: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "На Mac сістэма не паказвае ліміт для праграмы.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Столькі памяці праграма можа яшчэ выкарыстаць, перш чым сістэма завершыць яе. Мадэль мусіць умясціцца тут з запасам.";
-"Enviar diagnósticos anônimos" = "Адпраўляць ананімную дыягностыку";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Выключана па змаўчанні. Адпраўляюцца толькі збоі, час загрузкі і памяць — ніколі аўдыя, тэкст ці адрас вашага сервера.";
-"Token do app" = "Token праграмы";
 "Exportar diagnóstico" = "Экспартаваць дыягностыку";
 "Exportado" = "Экспартавана";
 "Eventos recentes" = "Нядаўнія падзеі";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Дзве спробы транскрыбацыі з гэтай мадэллю завяршыліся закрыццём праграмы. Змяніце мадэль у Налады › Голас і мадэлі, перш чым спрабаваць зноў.";
 "Motor: %@" = "Рухавік: %@";
 "Transcrição recuperada" = "Адноўленая транскрыпцыя";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Паведаміць пра баг";
+"Relatório de bug" = "Справаздача пра баг";
+"O que aconteceu?" = "Што адбылося?";
+"Enviar por e-mail" = "Даслаць па пошце";
+"Compartilhar arquivo" = "Абагуліць файл";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Будзе дасланае: прылада, версія праграмы і сістэмы, памяць і апошняя гадзіна запісаў (час загрузкі, збоі, журнал маўленчага рухавіка). Ніколі аўдыё, тэкст ці адрас твайго сервера. Нічога не сыходзіць, пакуль ты не націснеш «даслаць».";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "На гэтай прыладзе не наладжана праграма пошты. Абагулі файл іншым спосабам.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Адкрывае ліст распрацоўшчыку з апошняй гадзінай запісаў. Ты ўбачыш усё перад адпраўкай.";
+"Enviado" = "Даслана";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Даступная памяць: %@ · Фізічная: %@ · Вольны дыск: %@";
+"Último encerramento anormal: %@" = "Апошняе ненармальнае завяршэнне: %@";
+"Eventos anexados: %@" = "Прычэпленыя падзеі: %@";
+"Anexo: %@" = "Укладанне: %@";

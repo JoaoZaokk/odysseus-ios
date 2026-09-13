@@ -887,9 +887,6 @@
 "Física: %@" = "Fiziksel: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac'te uygulama başına sınır sistem tarafından bildirilmez.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Uygulamanın, sistem tarafından kapatılmadan önce kullanabileceği bellek miktarı. Bir modelin buraya rahatça sığması gerekir.";
-"Enviar diagnósticos anônimos" = "Anonim tanılama verileri gönder";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Varsayılan olarak kapalıdır. Yalnızca çökmeleri, yükleme sürelerini ve bellek bilgisini gönderir — ses, metin veya sunucu adresinizi asla göndermez.";
-"Token do app" = "Uygulama token'ı";
 "Exportar diagnóstico" = "Tanılamayı dışa aktar";
 "Exportado" = "Dışa aktarıldı";
 "Eventos recentes" = "Son olaylar";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Bu modelle yapılan iki yazıya dökme denemesi de uygulamanın kapanmasıyla sonuçlandı. Yeniden denemeden önce Ayarlar › Ses ve modeller bölümünden modeli değiştirin.";
 "Motor: %@" = "Motor: %@";
 "Transcrição recuperada" = "Kurtarılan yazı dökümü";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Hata bildir";
+"Relatório de bug" = "Hata raporu";
+"O que aconteceu?" = "Ne oldu?";
+"Enviar por e-mail" = "E-postayla gönder";
+"Compartilhar arquivo" = "Dosyayı paylaş";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Şunlar gider: cihaz, uygulama ve sistem sürümü, bellek ve son bir saatlik kayıtlar (yükleme süreleri, çökmeler, ses motoru günlüğü). Asla ses, metin veya sunucu adresin gitmez. Sen göndere dokunmadan hiçbir şey çıkmaz.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Bu cihazda kurulu bir e-posta uygulaması yok. Dosyayı başka bir yoldan paylaş.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Geliştiriciye son bir saatlik kayıtlarla bir e-posta açar. Göndermeden önce her şeyi görürsün.";
+"Enviado" = "Gönderildi";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Kullanılabilir bellek: %@ · Fiziksel: %@ · Boş disk: %@";
+"Último encerramento anormal: %@" = "Son anormal kapanma: %@";
+"Eventos anexados: %@" = "Eklenen olaylar: %@";
+"Anexo: %@" = "Ek: %@";

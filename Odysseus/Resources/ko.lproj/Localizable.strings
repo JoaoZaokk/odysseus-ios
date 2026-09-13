@@ -887,9 +887,6 @@
 "Física: %@" = "물리 메모리: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac에서는 앱별 한도가 시스템에서 제공되지 않습니다.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "시스템이 앱을 종료하기 전까지 앱이 더 사용할 수 있는 양입니다. 모델은 여기에 여유 있게 맞아야 합니다.";
-"Enviar diagnósticos anônimos" = "익명 진단 정보 보내기";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "기본적으로 꺼져 있습니다. 충돌, 불러오기 시간, 메모리만 전송하며 오디오나 텍스트, 서버 주소는 전송하지 않습니다.";
-"Token do app" = "앱 token";
 "Exportar diagnóstico" = "진단 정보 내보내기";
 "Exportado" = "내보냄";
 "Eventos recentes" = "최근 이벤트";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "이 모델로 전사를 시도한 두 번 모두 앱이 종료되었습니다. 다시 시도하기 전에 설정 › 음성 및 모델에서 모델을 변경하세요.";
 "Motor: %@" = "엔진: %@";
 "Transcrição recuperada" = "복구된 전사";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "버그 신고";
+"Relatório de bug" = "버그 리포트";
+"O que aconteceu?" = "무슨 일이 있었나요?";
+"Enviar por e-mail" = "이메일로 보내기";
+"Compartilhar arquivo" = "파일 공유";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "함께 전송되는 내용: 기기, 앱 및 시스템 버전, 메모리, 최근 1시간의 기록(로딩 시간, 충돌, 음성 엔진 로그). 오디오, 텍스트, 서버 주소는 절대 포함되지 않습니다. 전송을 누르기 전까지는 아무것도 나가지 않습니다.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "이 기기에 설정된 이메일 앱이 없습니다. 다른 방법으로 파일을 공유하세요.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "최근 1시간의 기록이 담긴 이메일을 개발자에게 보낼 수 있도록 열어줍니다. 보내기 전에 모두 확인할 수 있습니다.";
+"Enviado" = "전송됨";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "사용 가능한 메모리: %@ · 물리 메모리: %@ · 여유 디스크: %@";
+"Último encerramento anormal: %@" = "마지막 비정상 종료: %@";
+"Eventos anexados: %@" = "첨부된 이벤트: %@";
+"Anexo: %@" = "첨부 파일: %@";

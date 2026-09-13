@@ -887,9 +887,6 @@
 "Física: %@" = "物理メモリ: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Macでは、App単位の上限はシステムから取得できません。";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "システムがAppを終了させるまでに、Appがまだ使用できる量です。モデルはここに余裕をもって収まる必要があります。";
-"Enviar diagnósticos anônimos" = "匿名の診断情報を送信";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "デフォルトはオフです。送信されるのはクラッシュ、読み込み時間、メモリのみで、音声、テキスト、サーバのアドレスは送信されません。";
-"Token do app" = "Appのトークン";
 "Exportar diagnóstico" = "診断情報を書き出す";
 "Exportado" = "書き出しました";
 "Eventos recentes" = "最近のイベント";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "このモデルで文字起こしを2回試しましたが、どちらもAppの終了で終わりました。もう一度試す前に「設定」›「音声とモデル」でモデルを変更してください。";
 "Motor: %@" = "エンジン: %@";
 "Transcrição recuperada" = "復元された文字起こし";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "バグを報告";
+"Relatório de bug" = "バグレポート";
+"O que aconteceu?" = "何が起きた？";
+"Enviar por e-mail" = "メールで送信";
+"Compartilhar arquivo" = "ファイルを共有";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "送られる内容：端末情報、アプリとOSのバージョン、メモリ、直近1時間の記録（読み込み時間、クラッシュ、音声エンジンのログ）。音声、テキスト、サーバーのアドレスは絶対に含まれません。送信をタップするまで何も送られません。";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "この端末にメールアプリが設定されていません。別の方法でファイルを共有してください。";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "開発者宛てに直近1時間の記録を添付したメールを開きます。送信前にすべて確認できます。";
+"Enviado" = "送信済み";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "利用可能メモリ：%@ · 物理メモリ：%@ · 空きディスク容量：%@";
+"Último encerramento anormal: %@" = "直近の異常終了：%@";
+"Eventos anexados: %@" = "添付されたイベント：%@";
+"Anexo: %@" = "添付ファイル：%@";

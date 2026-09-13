@@ -887,9 +887,6 @@
 "Física: %@" = "Fyzická: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Na Macu systém neuvádza limit pre jednotlivé aplikácie.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Koľko pamäte ešte môže aplikácia využiť, kým ju systém ukončí. Model sa tu musí zmestiť s rezervou.";
-"Enviar diagnósticos anônimos" = "Odosielať anonymnú diagnostiku";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Predvolene vypnuté. Odosiela len zlyhania, časy načítania a pamäť — nikdy nie zvuk, text ani adresu vášho servera.";
-"Token do app" = "Token aplikácie";
 "Exportar diagnóstico" = "Exportovať diagnostiku";
 "Exportado" = "Exportované";
 "Eventos recentes" = "Nedávne udalosti";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Dva pokusy o prepis týmto modelom skončili zatvorením aplikácie. Pred ďalším pokusom zmeňte model v časti Nastavenia › Hlas a modely.";
 "Motor: %@" = "Motor: %@";
 "Transcrição recuperada" = "Obnovený prepis";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Nahlásiť chybu";
+"Relatório de bug" = "Hlásenie chyby";
+"O que aconteceu?" = "Čo sa stalo?";
+"Enviar por e-mail" = "Odoslať e-mailom";
+"Compartilhar arquivo" = "Zdieľať súbor";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Odosiela sa toto: zariadenie, verzia aplikácie a systému, pamäť a záznamy za poslednú hodinu (časy načítania, pády, log hlasového motora). Nikdy zvuk, text ani adresu tvojho servera. Nič sa neodošle, kým nestlačíš odoslať.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Na tomto zariadení nie je nastavená žiadna e-mailová aplikácia. Zdieľaj súbor iným spôsobom.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Otvorí e-mail pre vývojára so záznamami za poslednú hodinu. Pred odoslaním uvidíš všetko.";
+"Enviado" = "Odoslané";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Dostupná pamäť: %@ · Fyzická: %@ · Voľné miesto na disku: %@";
+"Último encerramento anormal: %@" = "Posledné neočakávané ukončenie: %@";
+"Eventos anexados: %@" = "Priložené udalosti: %@";
+"Anexo: %@" = "Príloha: %@";

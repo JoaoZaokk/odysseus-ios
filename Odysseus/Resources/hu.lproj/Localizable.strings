@@ -887,9 +887,6 @@
 "Física: %@" = "Fizikai: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac gépen a rendszer nem adja meg az appokra vonatkozó korlátot.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Ennyit használhat még az app, mielőtt a rendszer leállítja. Egy modellnek bőven el kell férnie ebben.";
-"Enviar diagnósticos anônimos" = "Anonim diagnosztika küldése";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Alapértelmezés szerint ki van kapcsolva. Csak az összeomlásokat, a betöltési időket és a memóriát küldi el – hangot, szöveget vagy a szerver címét soha.";
-"Token do app" = "Az app tokenje";
 "Exportar diagnóstico" = "Diagnosztika exportálása";
 "Exportado" = "Exportálva";
 "Eventos recentes" = "Legutóbbi események";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Ezzel a modellel két átírási kísérlet is az app bezárásával végződött. Váltson modellt a Beállítások › Hang és modellek menüben, mielőtt újra megpróbálja.";
 "Motor: %@" = "Motor: %@";
 "Transcrição recuperada" = "Helyreállított átírás";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Hiba jelentése";
+"Relatório de bug" = "Hibajelentés";
+"O que aconteceu?" = "Mi történt?";
+"Enviar por e-mail" = "Küldés e-mailben";
+"Compartilhar arquivo" = "Fájl megosztása";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Ezek mennek el: a készülék, az app és a rendszer verziója, a memória és az elmúlt egy óra naplói (betöltési idők, összeomlások, hangmotor naplója). Hang, szöveg vagy a szervered címe soha. Semmi nem megy el, amíg nem koppintasz a küldésre.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Nincs beállítva e-mail-alkalmazás ezen a készüléken. Oszd meg a fájlt más módon.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Megnyit egy e-mailt a fejlesztőnek az elmúlt egy óra naplóival. Mielőtt elküldenéd, mindent látsz.";
+"Enviado" = "Elküldve";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Elérhető memória: %@ · Fizikai: %@ · Szabad tárhely: %@";
+"Último encerramento anormal: %@" = "Utolsó rendellenes leállás: %@";
+"Eventos anexados: %@" = "Csatolt események: %@";
+"Anexo: %@" = "Melléklet: %@";

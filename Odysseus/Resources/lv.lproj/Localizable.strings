@@ -887,9 +887,6 @@
 "Física: %@" = "Fiziskā: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac datorā sistēma neuzrāda atsevišķas lietotnes ierobežojumu.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Tik daudz lietotne vēl var izmantot, pirms sistēma to aizver. Modelim šeit jāietilpst ar rezervi.";
-"Enviar diagnósticos anônimos" = "Sūtīt anonīmu diagnostiku";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Pēc noklusējuma izslēgts. Nosūta tikai avārijas, ielādes laikus un atmiņas datus — nekad audio, tekstu vai jūsu servera adresi.";
-"Token do app" = "Lietotnes token";
 "Exportar diagnóstico" = "Eksportēt diagnostiku";
 "Exportado" = "Eksportēts";
 "Eventos recentes" = "Nesenie notikumi";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Divi mēģinājumi transkribēt ar šo modeli beidzās ar lietotnes aizvēršanos. Pirms mēģināt vēlreiz, nomainiet modeli sadaļā Iestatījumi › Balss un modeļi.";
 "Motor: %@" = "Dzinis: %@";
 "Transcrição recuperada" = "Atjaunotā transkripcija";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Ziņot par kļūdu";
+"Relatório de bug" = "Kļūdas ziņojums";
+"O que aconteceu?" = "Kas notika?";
+"Enviar por e-mail" = "Sūtīt pa e-pastu";
+"Compartilhar arquivo" = "Kopīgot failu";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Tiek sūtīts: ierīce, lietotnes un sistēmas versija, atmiņa un pēdējās stundas pieraksti (ielādes laiki, avārijas, balss dzinēja žurnāls). Nekad audio, teksts vai tava servera adrese. Nekas netiek sūtīts, kamēr nenospiedīsi \"sūtīt\".";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Šajā ierīcē nav iestatīta neviena e-pasta lietotne. Kopīgo failu citā veidā.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Atver e-pastu izstrādātājam ar pēdējās stundas pierakstiem. Tu redzi visu, pirms sūti.";
+"Enviado" = "Nosūtīts";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Pieejamā atmiņa: %@ · Fiziskā: %@ · Brīvā vieta diskā: %@";
+"Último encerramento anormal: %@" = "Pēdējā nenormālā aizvēršana: %@";
+"Eventos anexados: %@" = "Pievienotie notikumi: %@";
+"Anexo: %@" = "Pielikums: %@";

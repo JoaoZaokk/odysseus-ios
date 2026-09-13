@@ -889,9 +889,6 @@
 "Física: %@" = "Physical: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "On the Mac the per-app limit is not exposed by the system.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "How much the app can still use before the system terminates it. A model has to fit here with room to spare.";
-"Enviar diagnósticos anônimos" = "Send anonymous diagnostics";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Off by default. Sends only crashes, load times and memory — never audio, text or your server address.";
-"Token do app" = "App token";
 "Exportar diagnóstico" = "Export diagnostics";
 "Exportado" = "Exported";
 "Eventos recentes" = "Recent events";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Two attempts to transcribe with this model ended with the app closed. Change the model in Settings › Voice and models before trying again.";
 "Motor: %@" = "Engine: %@";
 "Transcrição recuperada" = "Recovered transcript";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Report a bug";
+"Relatório de bug" = "Bug report";
+"O que aconteceu?" = "What happened?";
+"Enviar por e-mail" = "Send by email";
+"Compartilhar arquivo" = "Share the file";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "What goes: device, app and system version, memory and the last hour of records (load times, crashes, speech engine log). Never audio, text or your server address. Nothing leaves until you tap send.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "No mail app is set up on this device. Share the file another way.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Opens an email to the developer with the last hour of records. You see everything before sending.";
+"Enviado" = "Sent";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Memory available: %@ · Physical: %@ · Free disk: %@";
+"Último encerramento anormal: %@" = "Last abnormal exit: %@";
+"Eventos anexados: %@" = "Events attached: %@";
+"Anexo: %@" = "Attachment: %@";

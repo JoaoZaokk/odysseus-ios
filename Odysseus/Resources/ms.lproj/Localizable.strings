@@ -887,9 +887,6 @@
 "Física: %@" = "Fizikal: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Pada Mac, had setiap app tidak didedahkan oleh sistem.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Jumlah yang app masih boleh gunakan sebelum sistem menamatkannya. Model perlu muat di sini dengan ruang berlebih.";
-"Enviar diagnósticos anônimos" = "Hantar diagnostik anonim";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Dimatikan secara lalai. Hanya menghantar ranap, masa pemuatan dan memori — audio, teks atau alamat pelayan anda tidak pernah dihantar.";
-"Token do app" = "Token app";
 "Exportar diagnóstico" = "Eksport diagnostik";
 "Exportado" = "Dieksport";
 "Eventos recentes" = "Peristiwa terkini";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Dua percubaan untuk mentranskripsi dengan model ini berakhir dengan app ditutup. Tukar model dalam Tetapan › Suara dan model sebelum mencuba lagi.";
 "Motor: %@" = "Enjin: %@";
 "Transcrição recuperada" = "Transkrip dipulihkan";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Laporkan pepijat";
+"Relatório de bug" = "Laporan pepijat";
+"O que aconteceu?" = "Apa yang berlaku?";
+"Enviar por e-mail" = "Hantar melalui e-mel";
+"Compartilhar arquivo" = "Kongsi fail";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Turut disertakan: peranti, versi apl dan sistem, memori serta rekod sejam terakhir (masa pemuatan, ranap, log enjin suara). Tiada audio, teks atau alamat pelayan anda. Tiada apa-apa dihantar sehingga anda ketik hantar.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Tiada apl e-mel disediakan pada peranti ini. Kongsi fail itu dengan cara lain.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Membuka e-mel kepada pembangun dengan rekod sejam terakhir. Anda boleh lihat semuanya sebelum menghantar.";
+"Enviado" = "Dihantar";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Memori tersedia: %@ · Fizikal: %@ · Ruang cakera bebas: %@";
+"Último encerramento anormal: %@" = "Penutupan tidak normal terakhir: %@";
+"Eventos anexados: %@" = "Acara dilampirkan: %@";
+"Anexo: %@" = "Lampiran: %@";

@@ -887,9 +887,6 @@
 "Física: %@" = "فىزىكىلىق: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac دا ھەر بىر دېتالنىڭ چېكىنى سىستېما ئاشكارىلىمايدۇ.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "سىستېما دېتالنى توختىتىشتىن بۇرۇن ئۇنىڭ يەنە قانچىلىك ئىشلىتەلەيدىغانلىقى. مودېل بۇنىڭ ئىچىگە كەڭرى پاتىشى كېرەك.";
-"Enviar diagnósticos anônimos" = "ئاتسىز دىئاگنوز يوللاش";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "سۈكۈتتە ئېتىك. پەقەت يىمىرىلىش، يۈكلەش ۋاقتى ۋە ئەسلەك يوللىنىدۇ — ئاۋاز، تېكىست ياكى مۇلازىمېتىر ئادرېسىڭىز ھەرگىز يوللانمايدۇ.";
-"Token do app" = "دېتالنىڭ token ى";
 "Exportar diagnóstico" = "دىئاگنوزنى چىقىرىش";
 "Exportado" = "چىقىرىلدى";
 "Eventos recentes" = "يېقىنقى ھادىسىلەر";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "بۇ مودېل بىلەن تېكىستكە ئايلاندۇرۇش ئىككى قېتىم سىنالدى، ئىككىسىدىمۇ دېتال تاقىلىپ كەتتى. يەنە سىناشتىن بۇرۇن تەڭشەكلەر › ئاۋاز ۋە مودېللار ئىچىدە مودېلنى ئۆزگەرتىڭ.";
 "Motor: %@" = "ماتور: %@";
 "Transcrição recuperada" = "ئەسلىگە كەلتۈرۈلگەن تېكىست";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "خاتالىقنى مەلۇم قىلىش";
+"Relatório de bug" = "خاتالىق دوكلاتى";
+"O que aconteceu?" = "نېمە يۈز بەردى؟";
+"Enviar por e-mail" = "ئېلخەت ئارقىلىق ئەۋەتىش";
+"Compartilhar arquivo" = "ھۆججەتنى ھەمبەھىرلەش";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "بىللە بارىدىغانلار: ئۈسكۈنە، ئەپ ۋە سىستېما نەشرى، ئەسلىمە ۋە ئاخىرقى بىر سائەتلىك خاتىرىلەر (يۈكلەش ۋاقتى، يىمىرىلىش، ئاۋاز موتورى خاتىرىسى). ھەرگىز ئاۋاز، تېكىست ياكى مۇلازىمېتىرىڭىزنىڭ ئادرېسى ئەمەس. سىز ئەۋەتىشكە باسمىغۇچە ھېچنېمە چىقمايدۇ.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "بۇ ئۈسكۈنىدە ھېچقانداق ئېلخەت پروگراممىسى تەڭشەلمىگەن. ھۆججەتنى باشقا ئۇسۇلدا ھەمبەھىرلەڭ.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "ئىشلەپچىقارغۇچىغا ئاخىرقى بىر سائەتلىك خاتىرىلەر بىلەن ئېلخەت ئاچىدۇ. ئەۋەتىشتىن بۇرۇن ھەممىنى كۆرەلەيسىز.";
+"Enviado" = "ئەۋەتىلدى";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "ئىشلەتكىلى بولىدىغان ئەسلىمە: %@ · فىزىكىلىق: %@ · بوش دىسكا: %@";
+"Último encerramento anormal: %@" = "ئاخىرقى نورمالسىز ئاخىرلىشىش: %@";
+"Eventos anexados: %@" = "قوشۇلغان ۋەقەلەر: %@";
+"Anexo: %@" = "قوشۇمچە: %@";

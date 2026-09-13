@@ -889,9 +889,6 @@
 "Física: %@" = "Física: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "En el Mac, el sistema no expone el límite por app.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Es lo que la app puede usar aún antes de que el sistema la cierre. Un modelo tiene que caber aquí con holgura.";
-"Enviar diagnósticos anônimos" = "Enviar diagnósticos anónimos";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Desactivado por omisión. Envía solo bloqueos, tiempos de carga y memoria; nunca audio, texto ni la dirección de tu servidor.";
-"Token do app" = "Token de la app";
 "Exportar diagnóstico" = "Exportar diagnóstico";
 "Exportado" = "Exportado";
 "Eventos recentes" = "Eventos recientes";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Dos intentos de transcribir con este modelo acabaron con la app cerrada. Cambia el modelo en Ajustes › Voz y modelos antes de volver a intentarlo.";
 "Motor: %@" = "Motor: %@";
 "Transcrição recuperada" = "Transcripción recuperada";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Reportar error";
+"Relatório de bug" = "Informe de error";
+"O que aconteceu?" = "¿Qué pasó?";
+"Enviar por e-mail" = "Enviar por correo";
+"Compartilhar arquivo" = "Compartir archivo";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Se incluye: dispositivo, versión de la app y del sistema, memoria y la última hora de registros (tiempos de carga, cierres inesperados, registro del motor de voz). Nunca audio, texto ni la dirección de tu servidor. Nada se envía hasta que toques enviar.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "No hay ninguna app de correo configurada en este dispositivo. Comparte el archivo de otra forma.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Abre un correo para el desarrollador con la última hora de registros. Ves todo antes de enviarlo.";
+"Enviado" = "Enviado";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Memoria disponible: %@ · Física: %@ · Disco libre: %@";
+"Último encerramento anormal: %@" = "Último cierre anómalo: %@";
+"Eventos anexados: %@" = "Eventos adjuntos: %@";
+"Anexo: %@" = "Adjunto: %@";

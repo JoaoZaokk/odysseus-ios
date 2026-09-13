@@ -889,9 +889,6 @@
 "Física: %@" = "भौतिक मेमोरी: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac पर प्रति ऐप की सीमा सिस्टम नहीं बताता।";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "सिस्टम द्वारा ऐप बंद किए जाने से पहले ऐप इतनी मेमोरी और इस्तेमाल कर सकता है। मॉडल को इसमें गुंजाइश के साथ समाना चाहिए।";
-"Enviar diagnósticos anônimos" = "अनाम डायग्नोस्टिक्स भेजें";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "डिफ़ॉल्ट रूप से बंद। सिर्फ़ क्रैश, लोड होने का समय और मेमोरी भेजता है — ऑडियो, टेक्स्ट या आपके सर्वर का पता कभी नहीं।";
-"Token do app" = "ऐप टोकन";
 "Exportar diagnóstico" = "डायग्नोस्टिक्स एक्सपोर्ट करें";
 "Exportado" = "एक्सपोर्ट हो गया";
 "Eventos recentes" = "हाल की घटनाएँ";
@@ -908,3 +905,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "इस मॉडल से ट्रांसक्राइब करने की दो कोशिशों में ऐप बंद हो गया। फिर कोशिश करने से पहले सेटिंग › वॉइस और मॉडल में मॉडल बदलें।";
 "Motor: %@" = "इंजन: %@";
 "Transcrição recuperada" = "रिकवर किया गया ट्रांसक्रिप्शन";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "बग रिपोर्ट करें";
+"Relatório de bug" = "बग रिपोर्ट";
+"O que aconteceu?" = "क्या हुआ?";
+"Enviar por e-mail" = "ईमेल से भेजें";
+"Compartilhar arquivo" = "फ़ाइल शेयर करें";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "साथ में जाएगा: डिवाइस, ऐप और सिस्टम का वर्शन, मेमोरी, और पिछले एक घंटे के रिकॉर्ड (लोड होने का समय, क्रैश, वॉइस इंजन लॉग)। कभी भी ऑडियो, टेक्स्ट या तुम्हारे सर्वर का पता नहीं। जब तक तुम भेजें पर टैप नहीं करते, कुछ भी नहीं जाता।";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "इस डिवाइस पर कोई ईमेल ऐप सेट अप नहीं है। फ़ाइल किसी और तरीके से शेयर करो।";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "डेवलपर के लिए एक ईमेल खोलता है जिसमें पिछले एक घंटे के रिकॉर्ड होते हैं। भेजने से पहले तुम सब कुछ देख सकते हो।";
+"Enviado" = "भेज दिया";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "उपलब्ध मेमोरी: %@ · फिजिकल: %@ · खाली डिस्क: %@";
+"Último encerramento anormal: %@" = "आखिरी असामान्य बंद: %@";
+"Eventos anexados: %@" = "जुड़े हुए इवेंट: %@";
+"Anexo: %@" = "अटैचमेंट: %@";

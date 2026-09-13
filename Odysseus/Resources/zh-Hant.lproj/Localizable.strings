@@ -887,9 +887,6 @@
 "Física: %@" = "實體：%@";
 "No Mac o limite por app não é exposto pelo sistema." = "在 Mac 上，系統不會提供每個 App 的記憶體上限。";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "這是 App 在被系統結束前還能使用的記憶體量。模型必須能放入其中，並留有餘裕。";
-"Enviar diagnósticos anônimos" = "傳送匿名診斷資料";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "預設為關閉。僅傳送當機記錄、載入時間與記憶體資訊，絕不傳送音訊、文字或你的伺服器位址。";
-"Token do app" = "App token";
 "Exportar diagnóstico" = "輸出診斷資料";
 "Exportado" = "已輸出";
 "Eventos recentes" = "近期事件";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "使用此模型轉錄已有兩次嘗試都導致 App 關閉。請先在「設定 › 語音與模型」中更換模型，再重新嘗試。";
 "Motor: %@" = "引擎：%@";
 "Transcrição recuperada" = "已復原的轉錄";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "回報錯誤";
+"Relatório de bug" = "錯誤報告";
+"O que aconteceu?" = "發生了什麼事？";
+"Enviar por e-mail" = "傳送電子郵件";
+"Compartilhar arquivo" = "分享檔案";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "會一併傳送：裝置、App 與系統版本、記憶體，以及最近一小時的記錄（載入時間、當機、語音引擎記錄）。絕不包含音訊、文字或你的伺服器位址。在你點擊傳送之前，不會傳出任何內容。";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "這台裝置未設定郵件 App。請改用其他方式分享檔案。";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "開啟一封寄給開發者的郵件，內含最近一小時的記錄。傳送前你可以先看到全部內容。";
+"Enviado" = "已傳送";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "可用記憶體：%@ · 實體記憶體：%@ · 可用磁碟空間：%@";
+"Último encerramento anormal: %@" = "上次異常結束：%@";
+"Eventos anexados: %@" = "附加事件：%@";
+"Anexo: %@" = "附件：%@";

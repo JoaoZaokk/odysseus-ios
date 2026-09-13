@@ -887,9 +887,6 @@
 "Física: %@" = "Physesch: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Um Mac gëtt d'Limit pro App net vum System ugewisen.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Sou vill kann d'App nach benotzen, ier de System se beennt. E Modell muss hei mat Reserve passen.";
-"Enviar diagnósticos anônimos" = "Anonym Diagnosen schécken";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Standardméisseg ausgeschalt. Schéckt nëmmen Ofstierz, Luedzäiten a Späicher — ni Audio, Text oder d'Adress vun Ärem Server.";
-"Token do app" = "App-Token";
 "Exportar diagnóstico" = "Diagnos exportéieren";
 "Exportado" = "Exportéiert";
 "Eventos recentes" = "Rezent Evenementer";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Zweemol gouf d'App beim Transkribéieren mat dësem Modell zougemaach. Wiesselt de Modell an Astellungen › Stëmm a Modeller, ier Dir et nach eng Kéier probéiert.";
 "Motor: %@" = "Motor: %@";
 "Transcrição recuperada" = "Rekuperéiert Transkriptioun";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Bug mellen";
+"Relatório de bug" = "Bug-Rapport";
+"O que aconteceu?" = "Wat ass geschitt?";
+"Enviar por e-mail" = "Per E-Mail schécken";
+"Compartilhar arquivo" = "Datei deelen";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Dat gëtt matgeschéckt: Apparat, App- a Systemversioun, Späicher an d'lescht Stonn Protokoller (Luedzäiten, Ofstierz, Log vum Sproochemotor). Ni Audio, Text oder d'Adress vun dengem Server. Nëmme wann s du op schécken klickss, geet eppes eraus.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "Op dësem Apparat ass keng E-Mail-App agestallt. Deel d'Datei op engem aneren Wee.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Mëcht eng E-Mail un den Entwéckler op mat der leschter Stonn Protokoller. Du gesäis alles ier s du schécks.";
+"Enviado" = "Geschéckt";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Verfügbare Späicher: %@ · Physesch: %@ · Fräie Späicherplaz: %@";
+"Último encerramento anormal: %@" = "Läscht anormal Ofstierze: %@";
+"Eventos anexados: %@" = "Ugehäng Evenementer: %@";
+"Anexo: %@" = "Uhang: %@";

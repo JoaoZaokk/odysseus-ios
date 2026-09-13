@@ -887,9 +887,6 @@
 "Física: %@" = "فزیکل: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Mac پر سسٹم ہر ایپ کی حد ظاہر نہیں کرتا۔";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "سسٹم کی جانب سے بند کیے جانے سے پہلے ایپ اتنی میموری مزید استعمال کر سکتی ہے۔ ماڈل کو یہاں گنجائش کے ساتھ سمانا چاہیے۔";
-"Enviar diagnósticos anônimos" = "گمنام تشخیصی ڈیٹا بھیجیں";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "بطور ڈیفالٹ بند۔ صرف کریشز، لوڈ کا وقت اور میموری بھیجتا ہے — آڈیو، متن یا آپ کے سرور کا پتہ کبھی نہیں۔";
-"Token do app" = "ایپ کا token";
 "Exportar diagnóstico" = "تشخیص ایکسپورٹ کریں";
 "Exportado" = "ایکسپورٹ ہو گیا";
 "Eventos recentes" = "حالیہ واقعات";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "اس ماڈل کے ساتھ ٹرانسکرائب کرنے کی دو کوششیں ایپ بند ہونے پر ختم ہوئیں۔ دوبارہ کوشش کرنے سے پہلے ترتیبات › آواز اور ماڈلز میں ماڈل تبدیل کریں۔";
 "Motor: %@" = "انجن: %@";
 "Transcrição recuperada" = "بازیاب شدہ ٹرانسکرپٹ";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "بگ کی اطلاع دیں";
+"Relatório de bug" = "بگ رپورٹ";
+"O que aconteceu?" = "کیا ہوا؟";
+"Enviar por e-mail" = "ای میل سے بھیجیں";
+"Compartilhar arquivo" = "فائل شیئر کریں";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "ساتھ یہ جائے گا: ڈیوائس، ایپ اور سسٹم کا ورژن، میموری اور پچھلے ایک گھنٹے کے ریکارڈز (لوڈ ٹائم، کریشز، اسپیچ انجن لاگ)۔ کبھی آڈیو، ٹیکسٹ یا آپ کے سرور کا پتہ نہیں۔ جب تک آپ بھیجیں پر نہ دبائیں کچھ نہیں جائے گا۔";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "اس ڈیوائس پر کوئی ای میل ایپ سیٹ نہیں ہے۔ فائل کسی اور طریقے سے شیئر کریں۔";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "ڈیویلپر کے لیے پچھلے ایک گھنٹے کے ریکارڈز کے ساتھ ایک ای میل کھولتا ہے۔ بھیجنے سے پہلے آپ سب کچھ دیکھ لیتے ہیں۔";
+"Enviado" = "بھیج دیا گیا";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "دستیاب میموری: %@ · فزیکل: %@ · خالی ڈسک: %@";
+"Último encerramento anormal: %@" = "آخری غیر معمولی بندش: %@";
+"Eventos anexados: %@" = "منسلک ایونٹس: %@";
+"Anexo: %@" = "منسلکہ: %@";

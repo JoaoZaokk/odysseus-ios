@@ -887,9 +887,6 @@
 "Física: %@" = "الفعلية: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "على Mac، لا يكشف النظام عن الحد الأقصى لكل تطبيق.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "هذا ما يمكن للتطبيق استخدامه قبل أن يُنهيه النظام. يجب أن يتسع النموذج هنا مع هامش كافٍ.";
-"Enviar diagnósticos anônimos" = "إرسال تشخيصات مجهولة المصدر";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "مُعطَّل افتراضياً. يُرسل فقط الأعطال وأوقات التحميل والذاكرة — ولا يُرسل أبداً الصوت أو النص أو عنوان الخادم الخاص بك.";
-"Token do app" = "Token التطبيق";
 "Exportar diagnóstico" = "تصدير التشخيص";
 "Exportado" = "تم التصدير";
 "Eventos recentes" = "الأحداث الأخيرة";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "انتهت محاولتان للتحويل إلى نص بهذا النموذج بإغلاق التطبيق. غيّر النموذج من الإعدادات › الصوت والنماذج قبل المحاولة مرة أخرى.";
 "Motor: %@" = "المحرك: %@";
 "Transcrição recuperada" = "نص مُستَرد";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "الإبلاغ عن خطأ";
+"Relatório de bug" = "تقرير الخطأ";
+"O que aconteceu?" = "ماذا حدث؟";
+"Enviar por e-mail" = "الإرسال بالبريد الإلكتروني";
+"Compartilhar arquivo" = "مشاركة الملف";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "يُرسَل مع التقرير: الجهاز، إصدار التطبيق والنظام، الذاكرة، وسجلات الساعة الأخيرة (أوقات التحميل، الأعطال، سجل محرك الصوت). لا يُرسَل أبدًا الصوت أو النص أو عنوان خادمك. لا شيء يُرسَل قبل أن تضغط على إرسال.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "لا يوجد تطبيق بريد إلكتروني مُعدّ على هذا الجهاز. شارك الملف بطريقة أخرى.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "يفتح رسالة بريد إلكتروني للمطوّر تحتوي على سجلات الساعة الأخيرة. سترى كل شيء قبل الإرسال.";
+"Enviado" = "تم الإرسال";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "الذاكرة المتاحة: %@ · الفعلية: %@ · مساحة القرص الخالية: %@";
+"Último encerramento anormal: %@" = "آخر إغلاق غير طبيعي: %@";
+"Eventos anexados: %@" = "الأحداث المرفقة: %@";
+"Anexo: %@" = "المرفق: %@";

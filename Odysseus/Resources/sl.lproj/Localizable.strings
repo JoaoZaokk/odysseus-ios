@@ -887,9 +887,6 @@
 "Física: %@" = "Fizični: %@";
 "No Mac o limite por app não é exposto pelo sistema." = "Na Macu sistem ne razkrije omejitve za posamezno aplikacijo.";
 "É quanto o app ainda pode usar antes de o sistema encerrá-lo. Um modelo precisa caber aqui com folga." = "Toliko lahko aplikacija še porabi, preden jo sistem zaustavi. Model se mora sem prilegati z nekaj rezerve.";
-"Enviar diagnósticos anônimos" = "Pošiljanje anonimne diagnostike";
-"Desligado por padrão. Envia só travamentos, tempos de carga e memória — nunca áudio, texto ou o endereço do seu servidor." = "Privzeto izklopljeno. Pošilja samo sesutja, čase nalaganja in pomnilnik – nikoli zvoka, besedila ali naslova vašega strežnika.";
-"Token do app" = "Token aplikacije";
 "Exportar diagnóstico" = "Izvozi diagnostiko";
 "Exportado" = "Izvoženo";
 "Eventos recentes" = "Nedavni dogodki";
@@ -906,3 +903,18 @@
 "Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo." = "Dva poskusa prepisa s tem modelom sta se končala z zaprto aplikacijo. Pred novim poskusom zamenjajte model v Nastavitvah › Govor in modeli.";
 "Motor: %@" = "Pogon: %@";
 "Transcrição recuperada" = "Obnovljen prepis";
+
+/* Rodada 9c — 1.11: relatório de bug por e-mail */
+"Reportar bug" = "Prijavi napako";
+"Relatório de bug" = "Poročilo o napaki";
+"O que aconteceu?" = "Kaj se je zgodilo?";
+"Enviar por e-mail" = "Pošlji po e-pošti";
+"Compartilhar arquivo" = "Deli datoteko";
+"Vai junto: aparelho, versão do app e do sistema, memória e a última hora de registros (tempos de carga, travamentos, log do motor de voz). Nunca áudio, texto ou o endereço do seu servidor. Nada sai sem você tocar em enviar." = "Priloženo je: naprava, različica aplikacije in sistema, pomnilnik ter zapisi zadnje ure (časi nalaganja, sesutja, dnevnik glasovnega mehanizma). Nikoli zvok, besedilo ali naslov tvojega strežnika. Nič ne gre ven, dokler ne tapneš pošlji.";
+"Nenhum app de e-mail configurado neste aparelho. Compartilhe o arquivo por outro caminho." = "V tej napravi ni nastavljene aplikacije za e-pošto. Datoteko deli na drug način.";
+"Abre um e-mail para o desenvolvedor com a última hora de registros. Você vê tudo antes de enviar." = "Odpre e-poštno sporočilo za razvijalca z zapisi zadnje ure. Preden ga pošlješ, vidiš vse.";
+"Enviado" = "Poslano";
+"Memória disponível: %@ · Física: %@ · Disco livre: %@" = "Razpoložljivi pomnilnik: %@ · Fizični: %@ · Prosti prostor na disku: %@";
+"Último encerramento anormal: %@" = "Zadnje nenormalno zaprtje: %@";
+"Eventos anexados: %@" = "Priloženi dogodki: %@";
+"Anexo: %@" = "Priloga: %@";

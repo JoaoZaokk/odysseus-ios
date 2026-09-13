@@ -97,7 +97,6 @@ struct RootView: View {
                 app.relockIfNeeded()
                 app.persistSessionIfNeeded()   // keep the latest session for next launch
                 DiagnosticsStore.shared.endSession()
-                DiagnosticsUploader.flushIfEnabled()
             }
             if newPhase == .active {
                 DiagnosticsStore.shared.resumeSession()
