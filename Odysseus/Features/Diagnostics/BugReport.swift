@@ -8,8 +8,8 @@ import Foundation
 /// user-initiated, infrequent, visible submissions) and the privacy manifest
 /// declares no collected data.
 enum BugReport {
-    /// Where reports land: the owner's address, the same one on the commits.
-    static let recipient = "jogosxd9@gmail.com"
+    /// Where reports land: the owner's support address.
+    static let recipient = "joaozao@macrozao.online"
     /// How far back the attachment looks.
     static let window: TimeInterval = 60 * 60
     /// The attachment is never emptier than this, even if the last hour was quiet.
