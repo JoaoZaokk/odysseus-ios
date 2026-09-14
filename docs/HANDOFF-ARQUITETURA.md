@@ -237,6 +237,12 @@ copiado da 1.10 (30 iOS + 25 macOS), Novidades em 30 locales (pt-BR/en-US escrit
 DerivedData de teste levaram o disco a 165 MB livres no meio do processo — apagar o
 `release/dd` e o simulador iOS 17 antes de exportar.
 
+**Porte para o OpenWebUI-iOS (14/09):** tudo desta rodada, seção por seção com caminhos,
+símbolos, armadilhas e o mapeamento para o alvo, está em `docs/PORT-1.11-PARA-OPENWEBUI.md`
+(cópia em `OpenWebUI-iOS/docs/PORT-ODYSSEUS-1.11.md`). Conferido contra o código por
+verificadores por seção; contagens corrigidas (`VoiceLang` tem 21 casos, 24 repositórios =
+23 `*-ggml` + Nemotron gguf, 13 ainda com f16).
+
 Fica para o dono: **Submit for Review** da 1.11 nas duas plataformas (build anexado assim
 que a Apple processar) e apagar ou não os f16 antigos dos 15 primeiros repositórios.
 
