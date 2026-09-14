@@ -207,8 +207,38 @@ App Store. Ficou o caminho que não muda nada na Apple:
   (descrição viaja, sem `installId`, janela de 1 h com piso de 50, id novo por relatório,
   último encerramento anormal no corpo). Suíte: **351**.
 
-Fica para o dono: Submit da 1.11 no ASC (liberado: todos os repositórios existem) e apagar
-ou não os f16 antigos dos 15 primeiros repositórios.
+### Publicação da 1.11 no App Store Connect (13/09, à noite)
+
+Mesmo caminho da 1.10 (`archive` → `-exportArchive` → `altool --validate-app` →
+`--upload-app`), com duas coisas novas:
+
+- **A entitlement `increased-memory-limit` invalidou o perfil de distribuição do iOS.**
+  O archive passou (Xcode registrou a capability no App ID), mas a exportação morreu com
+  `Cloud signing permission error` + "o perfil não inclui a capability Increased Memory
+  Limit": a chave de API (App Manager) não regenera o perfil gerido pelo Xcode. Saída sem
+  o dono: apagar o perfil `Odysseus App Store (auto)` (já INVALID), criar um novo pela API
+  (`POST /v1/profiles`, tipo `IOS_APP_STORE`, certificado `DISTRIBUTION` 5HWQATN28X, que
+  é o mesmo `Apple Distribution: Joao Victor Zao` do keychain), instalar o
+  `.mobileprovision` em `~/Library/Developer/Xcode/UserData/Provisioning Profiles/` e
+  exportar com `signingStyle: manual` (`release/ExportOptions-ios.plist`). O `.ipa` saiu
+  com a entitlement (conferido por `codesign -d --entitlements`), VALID e subiu. Toda
+  entitlement nova no iOS vai repetir isso: recriar o perfil antes de exportar.
+- **O manifesto de privacidade saiu malformado no primeiro archive** (o patch que esvaziou
+  `NSPrivacyCollectedDataTypes` fechou o `<array>` interno). `plutil -lint` no arquivo
+  dentro do `.xcarchive` pegou antes do upload; `PrivacyManifestTests` agora carrega o
+  arquivo que o app embarca e exige: sem rastreio, sem tipos coletados, só as duas APIs
+  de motivo declaradas.
+
+Estado: versões 1.11 criadas nas duas plataformas (AFTER_APPROVAL), texto promocional
+copiado da 1.10 (30 iOS + 25 macOS), Novidades em 30 locales (pt-BR/en-US escritos aqui,
+28 por workflow sonnet, `whatsnew3/final.json`), builds iOS 27 e macOS 21 enviados
+(Delivery 23e84fff… e 20a020dc…). Os `.xcarchive` estão em
+`~/Library/Developer/Xcode/Archives/2026-09-13/`. Disco: o archive universal do Mac +
+DerivedData de teste levaram o disco a 165 MB livres no meio do processo — apagar o
+`release/dd` e o simulador iOS 17 antes de exportar.
+
+Fica para o dono: **Submit for Review** da 1.11 nas duas plataformas (build anexado assim
+que a Apple processar) e apagar ou não os f16 antigos dos 15 primeiros repositórios.
 
 ## Rodada 8 — o servidor vivo não é o upstream
 
