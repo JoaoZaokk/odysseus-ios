@@ -12,6 +12,9 @@ struct ThemePickerView: View {
     @Environment(\.theme) private var theme
     @State private var customizing = false
     @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
+    #if os(iOS)
+    @AppStorage(AppIconManager.storageKey) private var appIcon = AppIcon.odysseus.rawValue
+    #endif
 
     private let columns = [GridItem(.adaptive(minimum: 150), spacing: 14)]
 
@@ -92,6 +95,18 @@ struct ThemePickerView: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            // Home-screen icon. iOS only — macOS has no alternate app icons.
+            #if os(iOS)
+            VStack(alignment: .leading, spacing: 7) {
+                sectionLabel("Ícone")
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(AppIcon.allCases) { iconChoice($0) }
+                    }
+                    .padding(.vertical, 2)
+                }
+            }
+            #endif
             // Animated background
             VStack(alignment: .leading, spacing: 7) {
                 sectionLabel("Fundo animado")
@@ -107,6 +122,37 @@ struct ThemePickerView: View {
             }
         }
     }
+
+    #if os(iOS)
+    /// One home-screen icon. The preview reads the same PNG the system uses, so
+    /// what is on the strip is what lands on the home screen.
+    @ViewBuilder
+    private func iconChoice(_ icon: AppIcon) -> some View {
+        let active = appIcon == icon.rawValue
+        Button {
+            AppIconManager.select(icon)
+        } label: {
+            VStack(spacing: 5) {
+                Group {
+                    if let ui = UIImage(named: icon.previewImageName) {
+                        Image(uiImage: ui).resizable()
+                    } else {
+                        // Never in a correct build: the file is a bundled resource.
+                        RoundedRectangle(cornerRadius: 13, style: .continuous).fill(theme.panel)
+                    }
+                }
+                .frame(width: 54, height: 54)
+                .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 13, style: .continuous)
+                    .stroke(active ? theme.accent : theme.border, lineWidth: active ? 2.5 : 1))
+                Text(icon.label)
+                    .font(.ody(size: 10))
+                    .foregroundStyle(active ? theme.fg : theme.secondaryText)
+            }
+        }
+        .buttonStyle(.plain)
+    }
+    #endif
 
     private func fontPreview(_ f: AppFontFamily) -> Font {
         if let name = f.customName { return .custom(name, size: 13) }

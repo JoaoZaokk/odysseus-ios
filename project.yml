@@ -108,6 +108,26 @@ targets:
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         # So App Store Connect can pull the marketing icon.
         CFBundleIconName: AppIcon
+        # Home-screen icons the user can pick in Ajustes › Aparência
+        # (Odysseus/AltIcons). The sail — the primary icon — stays in the asset
+        # catalog; declaring CFBundleIcons here does not replace it, and
+        # CFBundleIconName still points App Store Connect at AppIcon.
+        CFBundleIcons:
+          CFBundlePrimaryIcon:
+            CFBundleIconName: AppIcon
+          CFBundleAlternateIcons:
+            AppIcon-claude:
+              CFBundleIconFiles: ["AppIcon-claude"]
+            AppIcon-openai:
+              CFBundleIconFiles: ["AppIcon-openai"]
+            AppIcon-gemini:
+              CFBundleIconFiles: ["AppIcon-gemini"]
+            AppIcon-openwebui:
+              CFBundleIconFiles: ["AppIcon-openwebui"]
+            AppIcon-hermesteal:
+              CFBundleIconFiles: ["AppIcon-hermesteal"]
+            AppIcon-hermesnoir:
+              CFBundleIconFiles: ["AppIcon-hermesnoir"]
         # Orientations must live in the Info.plist (INFOPLIST_KEY_* are ignored
         # with a custom plist) — iPad needs all four (fixes upload error 90474).
         UISupportedInterfaceOrientations:
@@ -159,6 +179,8 @@ targets:
         excludes:
           - "Resources/Info.plist"
           - "Resources/Odysseus-macOS.entitlements"
+          # Per-theme home-screen icons are iOS-only (setAlternateIconName).
+          - "AltIcons"
     dependencies:
       - package: MarkdownUI
       - package: WhisperCPP

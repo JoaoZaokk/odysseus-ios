@@ -160,6 +160,10 @@ struct RootView: View {
         }
         #endif
         .task {
+            // An install or an update resets the home-screen icon to the
+            // primary one; put the saved choice back. No-op, and no system
+            // alert, when the two already match.
+            AppIconManager.applySaved()
             ReviewGate.seedFirstLaunchIfNeeded()
             let info = Bundle.main.infoDictionary
             DiagnosticsStore.shared.startSession(version: info?["CFBundleShortVersionString"] as? String ?? "?",
