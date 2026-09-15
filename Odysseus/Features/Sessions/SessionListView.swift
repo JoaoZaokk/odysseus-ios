@@ -23,6 +23,8 @@ struct SidebarView: View {
     @State private var renameText = ""
     @State private var deleting: ChatSession?
     @State private var showArchived = false
+    /// The Espaços that do not fit in the bottom bar.
+    @State private var showMoreSpaces = false
     /// Collapsed date groups, comma-joined (the web keeps the same set).
     @AppStorage("sidebar.dates.collapsed") private var collapsedRaw = ""
     private var collapsed: Set<String> { Set(collapsedRaw.split(separator: ",").map(String.init)) }
@@ -48,6 +50,18 @@ struct SidebarView: View {
         workspace.panes.contains { $0.kind == kind }
     }
 
+    /// On a phone the Espaços go in a bar pinned to the bottom instead of rows
+    /// in the list: nine of them above the first conversation is what a German
+    /// review called "sehr unaufgeräumt", and collapsing them hid the app's
+    /// nine entry points behind a chevron.
+    private var usesSpacesBar: Bool {
+        #if os(iOS)
+        return sizeClass == .compact && !visibleSections.isEmpty
+        #else
+        return false
+        #endif
+    }
+
     private var spacesExpandedDefault: Bool {
         #if os(macOS)
         return true
@@ -63,6 +77,16 @@ struct SidebarView: View {
 
     var body: some View {
         List {
+            // The search field sits at the top, over what it filters: iOS 26
+            // floats `.searchable` at the BOTTOM of the screen, far from the
+            // list and a thumb's width from another screen's message field.
+            Section {
+                OdySearchField(text: $search, prompt: "Buscar conversas")
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(theme.bg)
+                    .listRowSeparator(.hidden)
+            }
+
             // Navigation stays out of the way while a search is typed: the
             // matches are what the user is looking at, not Deep Search.
             if search.isEmpty {
@@ -80,7 +104,7 @@ struct SidebarView: View {
                 // on screen so the nine entry points never scroll away.
                 // Rows hidden in Aparência are gone, and so is the group
                 // once nothing is left in it.
-                if !visibleSections.isEmpty {
+                if !visibleSections.isEmpty && !usesSpacesBar {
                     Section(isExpanded: spacesExpanded) {
                         ForEach(visibleSections) { section in
                             Button { workspace.setPrimary(.section(section)) } label: { sectionRow(section) }
@@ -126,7 +150,12 @@ struct SidebarView: View {
                 ForEach(group.sessions) { session in
                     Button { workspace.setPrimary(.chat(session)) } label: { chatRow(session) }
                         .buttonStyle(.plain)
-                        .listRowBackground(active(.chat(session)) ? theme.accent.opacity(0.14) : theme.bg)
+                        .listRowBackground(rowBackground(active: active(.chat(session))))
+                        // The sidebar style draws a hairline between some rows
+                        // and not others; asking for it on every row is what
+                        // makes the list read as a list.
+                        .listRowSeparator(.visible)
+                        .listRowSeparatorTint(theme.border)
                         // Delete is final on the server, so it asks; archive
                         // is the reversible way to get a row off the list.
                         .swipeActions(edge: .trailing) {
@@ -155,16 +184,29 @@ struct SidebarView: View {
                 }
                 }
               } header: {
+                // A band the width of the list, with the number of conversations
+                // in it: the old header was a caption floating in the same tone
+                // as the rows, so a group started without anything marking it.
                 Button { toggleGroup(group.label) } label: {
-                    HStack {
-                        header(group.label)
+                    HStack(spacing: 6) {
+                        Text(LocalizedStringKey(group.label))
+                            .font(.ody(size: 10, weight: .semibold))
+                            .textCase(.uppercase)
+                            .foregroundStyle(theme.secondaryText)
                         Image(systemName: collapsed.contains(group.label) ? "chevron.right" : "chevron.down")
-                            .font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
+                            .font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
                         Spacer()
+                        Text("\(group.sessions.count)")
+                            .font(.ody(size: 10))
+                            .foregroundStyle(theme.secondaryText.opacity(0.7))
                     }
+                    .padding(.horizontal, 16).padding(.vertical, 6)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(theme.panel)
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                .listRowInsets(EdgeInsets())
               }
             }
             Section {
@@ -205,7 +247,12 @@ struct SidebarView: View {
         // vibrancy never bleeds through when "transparência" is on — keeps the
         // sidebar tone consistent with the rest of the UI.
         .background(themes.theme.bg)
-        .odySearchable(text: $search, prompt: "Buscar conversas")
+        #if os(iOS)
+        .safeAreaInset(edge: .bottom) {
+            if usesSpacesBar && search.isEmpty { spacesBar }
+        }
+        .sheet(isPresented: $showMoreSpaces) { moreSpacesSheet }
+        #endif
         .onChange(of: search) { _, q in store.search(q) }
         .screenChrome(title: "Odysseus") {
             Button { showSettings = true } label: { Image(systemName: "gearshape") }
@@ -230,6 +277,81 @@ struct SidebarView: View {
             Button("Cancelar", role: .cancel) { deleting = nil }
         } message: { Text("Isso é irreversível. Confirma?") }
     }
+
+    #if os(iOS)
+    /// Four Espaços and a way to the rest. Four because a fifth slot on a 6.1"
+    /// phone leaves each label under 60 pt and the words are whole ones
+    /// ("Cookbook", "Calendário"), not glyphs.
+    private var barSections: [AppSection] {
+        visibleSections.count <= 5 ? visibleSections : Array(visibleSections.prefix(4))
+    }
+
+    private var spacesBar: some View {
+        HStack(spacing: 0) {
+            ForEach(barSections) { section in
+                barItem(icon: section.icon, title: section.title, active: active(.section(section))) {
+                    workspace.setPrimary(.section(section))
+                }
+            }
+            if barSections.count < visibleSections.count {
+                barItem(icon: "ellipsis", title: "Mais", active: false) { showMoreSpaces = true }
+            }
+        }
+        .padding(.top, 6)
+        .background(alignment: .top) {
+            ZStack(alignment: .top) {
+                theme.panel
+                Rectangle().fill(theme.border).frame(height: 1)
+            }
+            .ignoresSafeArea(edges: .bottom)
+        }
+    }
+
+    private func barItem(icon: String, title: String, active: Bool, _ action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(spacing: 3) {
+                Image(systemName: icon)
+                    .font(.ody(size: 15))
+                    .foregroundStyle(active ? theme.accent : theme.secondaryText)
+                Text(LocalizedStringKey(title))
+                    .font(.ody(size: 9))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+                    .foregroundStyle(active ? theme.fg : theme.secondaryText)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.bottom, 4)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var moreSpacesSheet: some View {
+        NavigationStack {
+            List {
+                ForEach(visibleSections.filter { s in !barSections.contains(where: { $0.id == s.id }) }) { section in
+                    Button {
+                        workspace.setPrimary(.section(section))
+                        showMoreSpaces = false
+                    } label: { sectionRow(section) }
+                    .buttonStyle(.plain)
+                    .listRowBackground(theme.bg)
+                }
+            }
+            .listStyle(.plain)
+            .background(theme.bg)
+            .scrollContentBackground(.hidden)
+            .navigationTitle("Espaços")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Fechar") { showMoreSpaces = false }
+                }
+            }
+        }
+        .presentationDetents([.medium])
+    }
+    #endif
 
     private func header(_ text: String) -> some View {
         Text(LocalizedStringKey(text))
@@ -268,22 +390,58 @@ struct SidebarView: View {
     /// One line: pin glyph and title. The model is already in the chat
     /// header, and a second line per row was what made the list read as
     /// twice as long as it is.
+    /// Two lines: the title with the time it was last touched, and the model
+    /// that answered in it. The server's session list carries no message
+    /// preview — `GET /api/sessions` returns id, title, model, timestamps and
+    /// the two flags — so the second line says what there is, not a fake
+    /// snippet.
     private func chatRow(_ session: ChatSession) -> some View {
         HStack(spacing: 8) {
             if session.pinned {
                 Image(systemName: "pin.fill").font(.caption2).foregroundStyle(theme.accent)
             }
-            Text(session.title)
-                .font(.ody(.subheadline))
-                .foregroundStyle(theme.fg).lineLimit(1)
-            Spacer()
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    // The title takes the row's width itself instead of being
+                    // sized to its text and clipped by the list: a long title
+                    // was cut mid-word, with no ellipsis to say it had been.
+                    Text(session.title)
+                        .font(.ody(.subheadline))
+                        .foregroundStyle(theme.fg)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if let time = SessionStore.rowTime(session.updatedAt) {
+                        Text(time)
+                            .font(.ody(size: 10))
+                            .foregroundStyle(theme.secondaryText)
+                    }
+                }
+                if let model = session.model, !model.isEmpty {
+                    Text(model)
+                        .font(.ody(size: 11))
+                        .foregroundStyle(theme.secondaryText)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                }
+            }
             if store.streaming.contains(session.id) {
                 ProgressView().controlSize(.mini).tint(theme.accent)
                     .accessibilityLabel(Text("Gerando resposta…"))
             }
         }
+        .padding(.vertical, 2)
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
+    }
+
+    /// The row's background, with the accent bar that marks the open chat —
+    /// a tint alone was easy to miss on the darker themes.
+    private func rowBackground(active: Bool) -> some View {
+        ZStack(alignment: .leading) {
+            (active ? theme.accent.opacity(0.14) : theme.bg)
+            if active { Rectangle().fill(theme.accent).frame(width: 3) }
+        }
     }
 }
 

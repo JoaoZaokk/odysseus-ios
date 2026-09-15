@@ -42,7 +42,15 @@ final class SessionStore: ObservableObject {
 
     /// The label of the group a session falls in. Weekday and month labels
     /// come from the formatter, not the catalogue.
-    static func bucket(_ ts: Double?, now: Date = Date(), calendar: Calendar = .current) -> String {
+    /// `locale` is the app's language, not `Locale.current`: the app can be set
+    /// to a language the phone is not in (Ajustes › Idioma), and `.current`
+    /// printed "Saturday" and "26 August" into an otherwise Portuguese list.
+    /// nil = the app's active language. Not a default argument: a default is
+    /// evaluated in the caller's context, and `LocalizationManager` is
+    /// main-actor isolated.
+    static func bucket(_ ts: Double?, now: Date = Date(), calendar: Calendar = .current,
+                       locale: Locale? = nil) -> String {
+        let locale = locale ?? LocalizationManager.shared.locale
         guard let ts, ts > 0 else { return "Mais antigas" }
         let date = Date(timeIntervalSince1970: ts)
         let start = calendar.startOfDay(for: date), today = calendar.startOfDay(for: now)
@@ -50,14 +58,30 @@ final class SessionStore: ObservableObject {
         if diff <= 0 { return "Hoje" }
         if diff == 1 { return "Ontem" }
         if diff < 7 {
-            let f = DateFormatter(); f.locale = .current; f.setLocalizedDateFormatFromTemplate("EEEE")
+            let f = DateFormatter(); f.locale = locale; f.setLocalizedDateFormatFromTemplate("EEEE")
             return f.string(from: date).capitalized
         }
         if diff >= 365 { let y = diff / 365; return y == 1 ? L("%d ano atrás", 1) : L("%d anos atrás", y) }
         if diff >= 180 { return "6 meses atrás" }
         if diff >= 30 { return L("%d dias atrás", (diff / 30) * 30) }
-        let f = DateFormatter(); f.locale = .current
+        let f = DateFormatter(); f.locale = locale
         f.setLocalizedDateFormatFromTemplate(calendar.component(.year, from: date) == calendar.component(.year, from: now) ? "d MMMM" : "d MMMM y")
+        return f.string(from: date)
+    }
+
+    /// The time stamped on the right of a row, or nil when the server gave no
+    /// timestamp. The group header already says which day, so a row inside the
+    /// last week shows the clock and an older one the date.
+    static func rowTime(_ ts: Double?, now: Date = Date(), calendar: Calendar = .current,
+                        locale: Locale? = nil) -> String? {
+        guard let ts, ts > 0 else { return nil }
+        let locale = locale ?? LocalizationManager.shared.locale
+        let date = Date(timeIntervalSince1970: ts)
+        let days = calendar.dateComponents([.day], from: calendar.startOfDay(for: date),
+                                           to: calendar.startOfDay(for: now)).day ?? 0
+        let f = DateFormatter(); f.locale = locale
+        if days < 7 { f.setLocalizedDateFormatFromTemplate("j:mm") }
+        else { f.setLocalizedDateFormatFromTemplate(calendar.component(.year, from: date) == calendar.component(.year, from: now) ? "d MMM" : "d MMM y") }
         return f.string(from: date)
     }
 

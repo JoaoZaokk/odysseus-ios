@@ -133,6 +133,31 @@ final class OpenItemsWireTests: XCTestCase {
         XCTAssertEqual(SessionStore.bucket(nil, now: now), "Mais antigas")
     }
 
+    /// The label follows the app's language, not the phone's: with the app in
+    /// Portuguese on an English phone the group headers read "Saturday".
+    func testDateBucketsFollowTheAppsLanguageNotTheDevices() {
+        let cal = Calendar.current
+        let now = cal.date(from: DateComponents(year: 2026, month: 9, day: 8, hour: 12))!
+        let threeDaysAgo = cal.date(byAdding: .day, value: -3, to: now)!.timeIntervalSince1970
+        XCTAssertEqual(SessionStore.bucket(threeDaysAgo, now: now, locale: Locale(identifier: "pt_BR")), "Sábado")
+        XCTAssertEqual(SessionStore.bucket(threeDaysAgo, now: now, locale: Locale(identifier: "en_US")), "Saturday")
+    }
+
+    /// The group header already says which day, so a row inside the week shows
+    /// a clock and an older one a date.
+    func testRowTimeIsAClockInsideTheWeekAndADateAfterIt() {
+        let cal = Calendar.current
+        let now = cal.date(from: DateComponents(year: 2026, month: 9, day: 8, hour: 12))!
+        func days(_ n: Int) -> Double { cal.date(byAdding: .day, value: -n, to: now)!.timeIntervalSince1970 }
+        let pt = Locale(identifier: "pt_BR")
+        XCTAssertNil(SessionStore.rowTime(nil, now: now, locale: pt), "no timestamp, nothing on the right")
+        XCTAssertNil(SessionStore.rowTime(0, now: now, locale: pt))
+        XCTAssertEqual(SessionStore.rowTime(days(0), now: now, locale: pt), "12:00")
+        XCTAssertTrue(SessionStore.rowTime(days(3), now: now, locale: pt)?.contains(":") == true)
+        XCTAssertFalse(SessionStore.rowTime(days(40), now: now, locale: pt)?.contains(":") == true,
+                       "past a week the clock says nothing useful")
+    }
+
     func testGroupsPutFavoritesFirstAndSplitOnBucketChanges() {
         let now = Date().timeIntervalSince1970
         let list = [ChatSession(id: "p", title: "p", updatedAt: now - 10 * 86_400, pinned: true),

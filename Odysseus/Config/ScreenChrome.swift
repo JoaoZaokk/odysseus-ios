@@ -52,11 +52,14 @@ extension View {
 extension View {
     /// `.searchable` on iOS. On macOS `.searchable` routes through the same crashy
     /// NSToolbar bridge, so we render a themed in-content search field instead.
+    /// A screen that wants the field in the content on BOTH platforms uses
+    /// `OdySearchField` directly (the sidebar does — iOS 26 floats `.searchable`
+    /// over the bottom of the list, away from what it filters).
     @ViewBuilder
     func odySearchable(text: Binding<String>, prompt: String) -> some View {
         #if os(macOS)
         VStack(spacing: 0) {
-            MacSearchField(text: text, prompt: prompt)
+            OdySearchField(text: text, prompt: prompt)
             self
         }
         #else
@@ -65,8 +68,8 @@ extension View {
     }
 }
 
-#if os(macOS)
-struct MacSearchField: View {
+/// Themed search field rendered in the content, not in the chrome.
+struct OdySearchField: View {
     @Binding var text: String
     let prompt: String
     @Environment(\.theme) private var theme
@@ -99,6 +102,7 @@ struct MacSearchField: View {
     }
 }
 
+#if os(macOS)
 private struct ScreenChromeContainer<L: View, T: View, C: View>: View {
     let title: String
     let subtitle: String?
