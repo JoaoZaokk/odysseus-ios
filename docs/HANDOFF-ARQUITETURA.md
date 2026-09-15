@@ -243,8 +243,20 @@ símbolos, armadilhas e o mapeamento para o alvo, está em `docs/PORT-1.11-PARA-
 verificadores por seção; contagens corrigidas (`VoiceLang` tem 21 casos, 24 repositórios =
 23 `*-ggml` + Nemotron gguf, 13 ainda com f16).
 
-Fica para o dono: **Submit for Review** da 1.11 nas duas plataformas (build anexado assim
-que a Apple processar) e apagar ou não os f16 antigos dos 15 primeiros repositórios.
+**Rejeição do macOS (15/09) — guideline 4.0:** o iOS 1.11 (build 27) foi aprovado e está à
+venda; o macOS build 21 voltou porque, fechada a janela, não havia item de menu para
+reabri-la. Causa: `CommandGroup(replacing: .newItem)` tirou o "New Window" que o
+`WindowGroup` dava de graça, e um `WindowGroup` sem janela aberta não aparece no menu
+Janela. A cena do macOS agora é `Window("Odysseus", id:)` — só uma `Window` entra na lista
+do menu Janela — mais um item escrito à mão (`CommandGroup(replacing: .singleWindowList)`,
+⌘0) que chama `openWindow`. Efeito colateral verificado rodando o app: com uma única
+`Window`, fechar a janela **encerra o processo**, que é a outra saída oferecida pela Apple
+("save data and quit"); por isso `NSApplication.willTerminateNotification` passou a gravar
+a sessão e fechar o spool do diagnóstico, coisa que o `scenePhase` não garante num quit.
+macOS build 22 enviado em 15/09 (352 testes verdes, `plutil -lint` no manifesto do archive).
+
+Fica para o dono: **Submit for Review** da 1.11 do macOS (build 22 anexado assim que a
+Apple processar) e apagar ou não os f16 antigos dos 15 primeiros repositórios.
 
 ## Rodada 8 — o servidor vivo não é o upstream
 

@@ -1,7 +1,17 @@
 import SwiftUI
+#if os(macOS)
+import AppKit
+#endif
 
 @main
 struct OdysseusApp: App {
+    /// The single window's id. On macOS the scene is a `Window`, not a
+    /// `WindowGroup`: only a `Window` is listed in the Janela menu, which is how
+    /// a window closed with ⌘W gets reopened. App Review rejected 1.11 (macOS
+    /// build 21) under guideline 4.0 for exactly that — closing the window left
+    /// the app running with no way back into it.
+    static let mainWindowID = "main"
+
     @StateObject private var app = AppState()
     @StateObject private var themes = ThemeStore()
     @StateObject private var loc = LocalizationManager.shared
@@ -9,30 +19,10 @@ struct OdysseusApp: App {
     init() { FontLoader.registerBundledFonts() }
 
     var body: some Scene {
-        WindowGroup {
-            RootView()
-                .environmentObject(app)
-                .environmentObject(themes)
-                .environmentObject(loc)
-                .environment(\.theme, themes.effectiveTheme)
-                .environment(\.locale, loc.locale)
-                .environment(\.layoutDirection, loc.layoutDirection)   // RTL for ar/fa/ur/ps
-                .preferredColorScheme(themes.theme.isDark ? .dark : .light)
-                .tint(themes.theme.accent)
-                // Font family is read by the non-View `Font.ody` helper via a
-                // global; bump identity so the whole tree re-renders on change.
-                // Language is folded in too: switching it must re-resolve every
-                // `Text("…")` against the new `.lproj`.
-                .id("\(themes.fontFamily)#\(loc.identity)")
-                #if os(macOS)
-                // The app draws all its own controls; suppress AppKit's default
-                // button/field chrome so they don't get a bordered "square".
-                .buttonStyle(.plain)
-                .textFieldStyle(.plain)
-                .frame(minWidth: 900, minHeight: 560)
-                #endif
-        }
         #if os(macOS)
+        Window("Odysseus", id: Self.mainWindowID) {
+            root
+        }
         .defaultSize(width: 1180, height: 760)
         .windowResizability(.contentMinSize)
         .commands {
@@ -46,14 +36,58 @@ struct OdysseusApp: App {
                 Button("Atualizar") { NotificationCenter.default.post(name: .odysseusRefresh, object: nil) }
                     .keyboardShortcut("r", modifiers: .command)
             }
+            // Janela › Odysseus (⌘0). Written out instead of trusting the entry
+            // SwiftUI synthesises for a `Window`, so the menu item is there no
+            // matter what the framework decides to do with the list.
+            CommandGroup(replacing: .singleWindowList) { MainWindowMenuItem() }
         }
         #else
+        WindowGroup {
+            root
+        }
         .backgroundTask(.appRefresh(TaskNotificationPoller.refreshTaskID)) {
             await app.backgroundRefreshTaskNotifications()
         }
         #endif
     }
+
+    private var root: some View {
+        RootView()
+            .environmentObject(app)
+            .environmentObject(themes)
+            .environmentObject(loc)
+            .environment(\.theme, themes.effectiveTheme)
+            .environment(\.locale, loc.locale)
+            .environment(\.layoutDirection, loc.layoutDirection)   // RTL for ar/fa/ur/ps
+            .preferredColorScheme(themes.theme.isDark ? .dark : .light)
+            .tint(themes.theme.accent)
+            // Font family is read by the non-View `Font.ody` helper via a
+            // global; bump identity so the whole tree re-renders on change.
+            // Language is folded in too: switching it must re-resolve every
+            // `Text("…")` against the new `.lproj`.
+            .id("\(themes.fontFamily)#\(loc.identity)")
+            #if os(macOS)
+            // The app draws all its own controls; suppress AppKit's default
+            // button/field chrome so they don't get a bordered "square".
+            .buttonStyle(.plain)
+            .textFieldStyle(.plain)
+            .frame(minWidth: 900, minHeight: 560)
+            #endif
+    }
 }
+
+#if os(macOS)
+/// Janela › Odysseus. A menu command needs a `View` to reach `openWindow`, which
+/// both reopens the closed window and brings an open one forward.
+private struct MainWindowMenuItem: View {
+    @Environment(\.openWindow) private var openWindow
+
+    var body: some View {
+        Button("Odysseus") { openWindow(id: OdysseusApp.mainWindowID) }
+            .keyboardShortcut("0", modifiers: .command)
+    }
+}
+#endif
 
 struct RootView: View {
     @EnvironmentObject private var app: AppState
@@ -116,6 +150,15 @@ struct RootView: View {
             #endif
         }
         .onChange(of: app.phase) { _, p in if p == .main { app.startTaskNotifications() } else { app.stopTaskNotifications() } }
+        // Closing the only window quits the app (the single-window remedy App
+        // Review asks for), and a quit is not a `.background` scene phase — so
+        // the session and the diagnostics spool are closed out here too.
+        #if os(macOS)
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in
+            app.persistSessionIfNeeded()
+            DiagnosticsStore.shared.endSession()
+        }
+        #endif
         .task {
             ReviewGate.seedFirstLaunchIfNeeded()
             let info = Bundle.main.infoDictionary

@@ -171,8 +171,10 @@ targets:
         # 1.10 (iOS build 26, macOS build 20): the live-server contract sync
         # (docs/AUDIT-1.10.md). 1.9 — iOS build 25, macOS build 19 — is the
         # version in App Review; this bump is deliberate and must survive merges.
+        # macOS build 22: build 21 was rejected under guideline 4.0 — a closed
+        # window could not be reopened. iOS 1.11 (build 27) is already on sale.
         MARKETING_VERSION: "1.11"
-        CURRENT_PROJECT_VERSION: "21"
+        CURRENT_PROJECT_VERSION: "22"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_ENTITLEMENTS: Odysseus/Resources/Odysseus-macOS.entitlements
