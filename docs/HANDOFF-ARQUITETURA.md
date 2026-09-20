@@ -54,6 +54,21 @@ Dois defeitos que a mesma varredura expôs:
 catálogo, os marcadores de formato sobrevivem à tradução, e a frase em outro idioma não
 é a portuguesa de novo.
 
+### O registro de versão (20/09)
+
+**iOS 1.12 criada e pronta para o dono submeter** (`PREPARE_FOR_SUBMISSION`,
+`AFTER_APPROVAL`, build 28 anexada, id `11c89d39-…`): 30 localizações, texto promocional
+copiado da 1.11, Novidades escritas nas 30 (pt-BR e en-US aqui, as outras 28 traduzidas
+aqui mesmo), capturas herdadas da 1.11 (5 iPhone + 5 iPad em cada locale), nenhum campo
+obrigatório vazio, nenhum ⌘ nem nada de Mac na ficha do iPhone. As notas para o revisor
+tinham ficado paradas em "Version 1.9" — cabeçalho e o parágrafo "what changed"
+atualizados para 1.12, o resto (servidor e conta de demonstração) intocado.
+
+**macOS 1.12 NÃO pôde ser criada.** A API recusa com 409
+`You cannot create a new version of the App in the current state` — a **1.11 do Mac está
+IN_REVIEW**. A build 23 já está no ASC e VALID; assim que a 1.11 sair da revisão
+(aprovada ou recusada) dá para criar a 1.12 no Mac e anexar.
+
 ### A publicação
 
 Mesmo caminho da 1.11. O perfil manual **`Odysseus App Store 2026-09 (increased memory)`**
