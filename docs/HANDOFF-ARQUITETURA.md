@@ -9,6 +9,68 @@ localizações. **Submetida para revisão pelo dono em 12/09 (WAITING_FOR_REVIEW
 simulador **iOS 27** (Xcode 27) e no **iOS 17** (piso), iOS e macOS compilando sem
 aviso. Catálogos: **43 × 833**.
 
+## Rodada 10 — ícone de tela inicial, a lista de conversas e o catálogo de voz (1.12, 20/09)
+
+**1.12 — iOS build 28, macOS build 23 — enviadas e VALID no App Store Connect**
+(Delivery `6e17ff32-9ba1-4318-9ec5-3320824cf8f6` e `d00fcb9d-6969-409b-bd0f-19b7ebd27eca`).
+**Nenhum registro de versão 1.12 foi criado e nada foi submetido**: no Mac a 1.11 (build
+22) está **IN_REVIEW** neste momento, e criar a 1.12 enquanto isso está no ar é decisão
+do dono. As builds ficam disponíveis para anexar quando ele quiser. Os `.xcarchive` estão
+em `~/Library/Developer/Xcode/Archives/2026-09-20/`. **365 testes.** Catálogos: **43 × 881**.
+
+O que entrou:
+
+| Commit | O quê |
+|---|---|
+| `e28f229` | **Seletor de ícone de tela inicial** em Ajustes › Aparência: 7 ícones de marca (vela, Claude, OpenAI, Gemini, Open WebUI, Hermes, Hermes Noir) vindos do OpenWebUI-iOS. Escolha manual, de propósito não atrelada ao tema — 17 temas contra 7 ícones deixaria a maioria inalcançável. `docs/ICONES-ALTERNATIVOS.md`. |
+| `0de25ce` | **A lista de conversas volta a parecer uma lista**: divisórias, cabeçalho de faixa com contagem, linha de duas linhas (título + hora; modelo embaixo), barra de acento de 3 pt no ativo, busca como primeira Section, barra de Espaços no rodapé (iOS). `SessionStore.bucket` e o novo `rowTime` passaram a usar o idioma **do app**, não o do aparelho. |
+| `84debff` | **O catálogo de voz abre fechado.** Eram 65 modelos desenhados de uma vez. Agora uma seção dobrável por faixa de tamanho, todas fechadas na entrada, exceto a do modelo em uso; fechada, a seção diz quantos tem e quantos já estão no aparelho. Trocar o filtro de idioma re-fecha tudo. Agrupar e decidir quem abre saíram da view para `VoiceCatalog.groups` / `.initiallyOpen`, onde o teste alcança. |
+| `5d58499` | **i18n + o macOS voltando a compilar** (abaixo). |
+| `80784c3` | Versão 1.12. |
+
+### Duas coisas que a varredura de i18n achou
+
+Uma string nova sem entrada no catálogo **não falha em lugar nenhum**: a chave É o texto
+em português, `localizedString` devolve a própria chave, e a tela renderiza — em
+português, para quem escolheu outro idioma. Varrendo todo literal que o app entrega ao
+SwiftUI (`Text`, `L`, `LocalizedStringKey`, `Label`, `Picker`, …) contra `en.lproj`:
+**526 literais, 20 sem entrada**, dos quais 14 são nome próprio ou identificador técnico
+(2FA, ComfyUI, URL, Whisper, `agent_max_rounds`, placeholders). Sobraram seis de
+verdade, agora nos 43 catálogos: `Ícone`, `Mais`, `Aberto`, `Fechado`,
+`%lld modelos, %lld baixados` e `Não consegui carregar o modelo %@.` — essa última é
+**anterior a esta rodada**. Nomes de marca ficam sem tradução de propósito.
+
+Dois defeitos que a mesma varredura expôs:
+
+- O rótulo novo usava `%d` com `Int` do Swift, que chega a `String(format:)` como
+  `Int64` — formato errado, saída indefinida. O resto do catálogo já usa `%lld`.
+- **`AppIconManager` lia `UserDefaults` sem `import Foundation`.** No iOS o UIKit
+  reexporta Foundation e o arquivo compilava; **o alvo macOS não compilava desde que o
+  seletor de ícone entrou** (`e28f229`, 15/09) e ninguém viu, porque a rodada inteira
+  foi verificada no simulador iOS. Lição: `xcodebuild build -scheme Odysseus-macOS` faz
+  parte de fechar qualquer rodada, mesmo uma que só mexe em iOS.
+
+`OdysseusTests/NewStringsLocalizedTests.swift` fecha a classe: toda chave existe em todo
+catálogo, os marcadores de formato sobrevivem à tradução, e a frase em outro idioma não
+é a portuguesa de novo.
+
+### A publicação
+
+Mesmo caminho da 1.11. O perfil manual **`Odysseus App Store 2026-09 (increased memory)`**
+(UUID `01fabd84-…`, válido até 2027-06-30) continua instalado e válido, então não foi
+preciso recriar nada — mas a exportação **só passa com `signingStyle: manual`**: com
+assinatura automática o `exportArchive` morre de novo em *"doesn't include the Increased
+Memory Limit capability"*. Os `ExportOptions` vivem em `release/` (gitignored, porque
+carregam o team id).
+
+### Uma armadilha de teste que custou uma rodada
+
+Depois de trocar o idioma do app **no simulador** durante a verificação de tela, a suíte
+passou a dar **17 falhas** em testes que nada têm a ver com a rodada (`Falha:` contra
+`Failed:`). O host de teste compartilha o container do app, então a escolha de idioma
+feita na mão vaza para os testes. `xcrun simctl uninstall com.zao.odysseus` antes de
+rodar a suíte resolve — e é o que explica um `TEST FAILED` que parece regressão e não é.
+
 ## Rodada 9 — motor whisper.cpp 1.9.4, Parakeet e o catálogo por idioma (1.11; espelho fechado em 13/09, ASC pendente)
 
 Pedido do dono (12/09): "baixar os modelos famosos de STT (Parakeet, Nemotron, Kyutai…),
