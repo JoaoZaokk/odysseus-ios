@@ -64,10 +64,25 @@ obrigatório vazio, nenhum ⌘ nem nada de Mac na ficha do iPhone. As notas para
 tinham ficado paradas em "Version 1.9" — cabeçalho e o parágrafo "what changed"
 atualizados para 1.12, o resto (servidor e conta de demonstração) intocado.
 
-**macOS 1.12 NÃO pôde ser criada.** A API recusa com 409
-`You cannot create a new version of the App in the current state` — a **1.11 do Mac está
-IN_REVIEW**. A build 23 já está no ASC e VALID; assim que a 1.11 sair da revisão
-(aprovada ou recusada) dá para criar a 1.12 no Mac e anexar.
+**macOS 1.12: o registro da 1.11 foi renomeado, não criado do zero.** O dono retirou a
+1.11 da revisão (`DEVELOPER_REJECTED`) — e mesmo assim `POST /v1/appStoreVersions`
+continuou recusando com 409 `You cannot create a new version of the App in the current
+state`: a Apple permite **um** registro editável por plataforma, e o da 1.11 ainda o
+ocupava. A saída é `PATCH` no próprio registro: `versionString` 1.11 → 1.12, build 23
+anexada. Ele volta sozinho para `PREPARE_FOR_SUBMISSION` e **mantém as 25 localizações e
+as capturas**.
+
+No Mac a última versão à venda é a **1.10** — a 1.11 nunca saiu. As Novidades da 1.12 no
+Mac são portanto os oito itens da 1.11 (reaproveitados já traduzidos nos 25 locales) mais
+cinco desta rodada: a janela que volta pelo menu Janela (⌘0), a lista de conversas, o
+catálogo dobrável, as datas seguindo o idioma do app e as seis strings traduzidas. Fora
+de propósito: o seletor de ícone e a barra de Espaços, que só existem no iPhone. As notas
+para o revisor foram atualizadas para 1.12 e **abrem pela correção da guideline 4.0**,
+que é o que ele vai conferir primeiro.
+
+⚠️ Herdado da ficha da 1.11 do Mac e **não corrigido**: os oito itens antigos dizem "no
+aparelho" / "Tudo fica no aparelho", que na loja do Mac lê torto. São 25 locales de texto
+que o dono já revisou em setembro; trocar por conta própria é reescrever ficha aprovada.
 
 ### A publicação
 
