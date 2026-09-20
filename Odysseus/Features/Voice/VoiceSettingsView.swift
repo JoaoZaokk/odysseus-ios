@@ -25,8 +25,19 @@ struct VoiceSettingsView: View {
     @AppStorage("voice.bargein.enabled") private var bargeEnabled = true
     @AppStorage("voice.bargein.sensitivity") private var bargeSensitivity = 0.5
     @State private var langFilter = "all"
+    /// Which size sections are unfolded. The catalog is dozens of models deep,
+    /// so the screen opens with everything shut but the bucket in use.
+    @State private var openBuckets: Set<String> = []
+    @State private var seededBuckets = false
 
     private var lang: VoiceLang? { VoiceLang(rawValue: langFilter) }
+
+    /// Re-shuts the catalog around whatever is in use now. Runs on first show
+    /// and whenever the language filter changes, so changing the filter always
+    /// lands on a short screen instead of on whatever was left open.
+    private func seedOpenBuckets() {
+        openBuckets = VoiceCatalog.initiallyOpen(task: .stt, lang: lang, selectedID: sttModelID)
+    }
 
     /// The engines are *persisted* as raw strings — that is what the pickers
     /// bind to — but every question this screen asks about them is asked of the
@@ -180,7 +191,9 @@ struct VoiceSettingsView: View {
 
             customModelSection
 
-            modelSection(title: L("Modelos STT · Whisper"), task: .stt,
+            // Short title: it now repeats once per collapsed section, and the
+            // long one wrapped to two lines in every one of them.
+            modelSection(title: L("Whisper"), task: .stt,
                          selectedID: sttModelID) { id in sttModelID = id; sttEngine = STTEngine.model.rawValue }
 
             if totalOnDisk > 0 {
@@ -195,7 +208,13 @@ struct VoiceSettingsView: View {
         .scrollContentBackground(.hidden)
         .background(theme.bg)
         .tint(theme.accent)
-        .onAppear { downloads.refresh(); neural.refresh() }
+        .onAppear {
+            downloads.refresh(); neural.refresh()
+            // Once: re-seeding on every appearance would slam shut a section the
+            // user opened before stepping into a sheet.
+            if !seededBuckets { seededBuckets = true; seedOpenBuckets() }
+        }
+        .onChange(of: langFilter) { _, _ in seedOpenBuckets() }
         // Re-scan after a download finishes, so the new pack (and the freed or
         // claimed space) shows up without leaving the screen.
         .onChange(of: speech.neuralReady) { _, ready in if ready { neural.refresh() } }
@@ -369,19 +388,48 @@ struct VoiceSettingsView: View {
 
     @ViewBuilder
     private func modelSection(title: String, task: VoiceTask, selectedID: String, select: @escaping (String) -> Void) -> some View {
-        let models = VoiceCatalog.filtered(task: task, lang: lang)
-        ForEach(VoiceModel.Bucket.allCases, id: \.rawValue) { bucket in
-            let items = models.filter { $0.bucket == bucket }
-            if !items.isEmpty {
-                Section {
-                    ForEach(items) { model in
+        ForEach(VoiceCatalog.groups(task: task, lang: lang)) { group in
+            Section {
+                if openBuckets.contains(group.id) {
+                    ForEach(group.models) { model in
                         modelRow(model, selected: selectedID == model.id, select: select)
                     }
-                } header: {
-                    Text(verbatim: "\(title) · \(bucket.label)")
                 }
+            } header: {
+                bucketHeader(title: title, group: group)
             }
         }
+    }
+
+    /// A section header that folds its own section. Closed, it still says how
+    /// many models are in there and how many of those are already on the phone,
+    /// so a shut list is not a blind one.
+    private func bucketHeader(title: String, group: VoiceModelGroup) -> some View {
+        let open = openBuckets.contains(group.id)
+        let installed = group.models.filter { downloads.isInstalled($0) }.count
+        return Button {
+            withAnimation(.easeInOut(duration: 0.18)) {
+                if open { openBuckets.remove(group.id) } else { openBuckets.insert(group.id) }
+            }
+        } label: {
+            HStack(spacing: 8) {
+                Image(systemName: "chevron.right")
+                    .font(.ody(size: 10))
+                    .foregroundStyle(theme.secondaryText)
+                    .rotationEffect(.degrees(open ? 90 : 0))
+                Text(verbatim: "\(title) · \(group.bucket.label)")
+                Spacer()
+                Text(verbatim: installed > 0 ? "\(installed)/\(group.models.count)" : "\(group.models.count)")
+                    .foregroundStyle(installed > 0 ? theme.green : theme.secondaryText)
+                    .monospacedDigit()
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityValue(Text(open ? L("Aberto") : L("Fechado")))
+        .accessibilityHint(Text(L("%d modelos, %d baixados", group.models.count, installed)))
     }
 
     private func modelRow(_ model: VoiceModel, selected: Bool, select: @escaping (String) -> Void) -> some View {

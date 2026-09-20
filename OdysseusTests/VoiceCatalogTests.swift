@@ -94,4 +94,45 @@ final class VoiceCatalogTests: XCTestCase {
         let decoded = try JSONDecoder().decode([VoiceLang].self, from: Data(#"["bilingual","german","nope"]"#.utf8))
         XCTAssertEqual(decoded, [.universal, .german, .universal])
     }
+
+    // MARK: - Collapsible size sections
+
+    /// The screen draws one collapsible section per size bucket, so the grouping
+    /// is decided here instead of inside the view, where nothing could check it.
+    func testGroupsAreInBucketOrderNeverEmptyAndLoseNoModel() {
+        let models = VoiceCatalog.filtered(task: .stt, lang: nil)
+        let groups = VoiceCatalog.groups(task: .stt, lang: nil)
+        XCTAssertEqual(groups.map(\.bucket),
+                       VoiceModel.Bucket.allCases.filter { b in models.contains { $0.bucket == b } })
+        for g in groups { XCTAssertFalse(g.models.isEmpty, g.bucket.rawValue) }
+        XCTAssertEqual(groups.reduce(0) { $0 + $1.models.count }, models.count)
+        XCTAssertEqual(Set(groups.flatMap { $0.models.map(\.id) }), Set(models.map(\.id)))
+    }
+
+    /// A catalog this deep is unreadable drawn flat: nothing opens until asked.
+    func testNothingOpensWhenNoModelIsInUse() {
+        XCTAssertGreaterThan(VoiceCatalog.filtered(task: .stt, lang: nil).count, 40)
+        XCTAssertTrue(VoiceCatalog.initiallyOpen(task: .stt, lang: nil, selectedID: "").isEmpty)
+        XCTAssertTrue(VoiceCatalog.initiallyOpen(task: .stt, lang: nil, selectedID: "w-nope").isEmpty)
+    }
+
+    /// Except the one section holding the model in use, which would otherwise be
+    /// invisible until the user guessed its size.
+    func testOnlyTheSectionHoldingTheModelInUseStartsOpen() {
+        let models = VoiceCatalog.filtered(task: .stt, lang: nil)
+        guard let chosen = models.first(where: { $0.bucket == .gb2 }) else { return XCTFail("no 2 GB model") }
+        let open = VoiceCatalog.initiallyOpen(task: .stt, lang: nil, selectedID: chosen.id)
+        XCTAssertEqual(open, [VoiceModel.Bucket.gb2.rawValue])
+        XCTAssertFalse(open.contains(VoiceModel.Bucket.mb500.rawValue))
+    }
+
+    /// Filtering by language does not smuggle another language's model into the
+    /// open section: the seed is computed against the same filtered list.
+    func testOpeningIsComputedAgainstTheFilteredList() {
+        guard let pt = VoiceCatalog.filtered(task: .stt, lang: .portuguese).first(where: { $0.lang == .portuguese })
+        else { return XCTFail("no pt model") }
+        XCTAssertEqual(VoiceCatalog.initiallyOpen(task: .stt, lang: .portuguese, selectedID: pt.id),
+                       [pt.bucket.rawValue])
+        XCTAssertTrue(VoiceCatalog.initiallyOpen(task: .stt, lang: .japanese, selectedID: pt.id).isEmpty)
+    }
 }

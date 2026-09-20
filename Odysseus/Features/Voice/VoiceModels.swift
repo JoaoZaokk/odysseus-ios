@@ -2,6 +2,14 @@ import Foundation
 
 enum VoiceTask: String, Codable { case stt, tts }
 
+/// One size bucket's worth of the catalog — the unit the download screen shows
+/// as a section you can fold shut.
+struct VoiceModelGroup: Identifiable {
+    let bucket: VoiceModel.Bucket
+    let models: [VoiceModel]
+    var id: String { bucket.rawValue }
+}
+
 /// Model language bucket. `universal` = the multilingual checkpoints (Whisper
 /// large/turbo, Parakeet v3); the rest are language-tuned checkpoints, one
 /// bucket per language the catalog ships a tuned model for. Text labels only —
@@ -299,6 +307,24 @@ enum VoiceCatalog {
     /// nil = all models. `.universal` = only the multilingual ones. A specific
     /// language = that language's tuned models PLUS the universal ones (which
     /// support it too).
+    /// The filtered catalog cut into size buckets, in bucket order, empty
+    /// buckets dropped. The screen draws one collapsible section per group.
+    static func groups(task: VoiceTask, lang: VoiceLang?) -> [VoiceModelGroup] {
+        let models = filtered(task: task, lang: lang)
+        return VoiceModel.Bucket.allCases.compactMap { b in
+            let items = models.filter { $0.bucket == b }
+            return items.isEmpty ? nil : VoiceModelGroup(bucket: b, models: items)
+        }
+    }
+
+    /// Which sections start open. Sixty-odd models drawn flat is a wall of rows,
+    /// so everything starts closed — except the bucket holding the model in use,
+    /// which would otherwise be invisible until the user guessed its size.
+    static func initiallyOpen(task: VoiceTask, lang: VoiceLang?, selectedID: String) -> Set<String> {
+        guard let m = filtered(task: task, lang: lang).first(where: { $0.id == selectedID }) else { return [] }
+        return [m.bucket.rawValue]
+    }
+
     static func filtered(task: VoiceTask, lang: VoiceLang?) -> [VoiceModel] {
         all.filter {
             guard $0.task == task else { return false }
