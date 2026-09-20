@@ -80,9 +80,11 @@ de propósito: o seletor de ícone e a barra de Espaços, que só existem no iPh
 para o revisor foram atualizadas para 1.12 e **abrem pela correção da guideline 4.0**,
 que é o que ele vai conferir primeiro.
 
-⚠️ Herdado da ficha da 1.11 do Mac e **não corrigido**: os oito itens antigos dizem "no
-aparelho" / "Tudo fica no aparelho", que na loja do Mac lê torto. São 25 locales de texto
-que o dono já revisou em setembro; trocar por conta própria é reescrever ficha aprovada.
+Os oito itens herdados da 1.11 falavam em "aparelho" — texto escrito para o iPhone, que
+na loja do Mac lia torto. **Reescritos a pedido do dono**, dois pontos por locale (o
+título do item de voz e o "fica tudo no aparelho" do Diagnóstico), com as 50 substituições
+conferidas contra o texto vivo antes de sair e uma varredura de dezoito palavras para
+"aparelho" nas 25 línguas depois: zero restantes.
 
 ### A publicação
 
