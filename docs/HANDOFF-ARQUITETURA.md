@@ -513,7 +513,7 @@ mensagem", que já existiam. Verificado na tela em pt-BR e em alemão.
 ### Publicação da 1.9 (10/09)
 
 Subida pelas duas plataformas com `xcodebuild archive` → `-exportArchive`
-(`method: app-store-connect`, assinatura automática, team FZ5A72S5DT) →
+(`method: app-store-connect`, assinatura automática, team no `CLAUDE.md` local) →
 `xcrun altool --upload-app`, com a chave de API do App Store Connect que já vive na
 máquina do dono (o caminho e o issuer estão no `CLAUDE.md` local, que é gitignored).
 iOS sai `.ipa` (`-t ios`), macOS sai
