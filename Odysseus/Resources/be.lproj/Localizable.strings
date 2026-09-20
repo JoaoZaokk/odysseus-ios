@@ -920,3 +920,11 @@
 "Último encerramento anormal: %@" = "Апошняе ненармальнае завяршэнне: %@";
 "Eventos anexados: %@" = "Прычэпленыя падзеі: %@";
 "Anexo: %@" = "Укладанне: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Значок";
+"Mais" = "Яшчэ";
+"Aberto" = "Адкрыта";
+"Fechado" = "Закрыта";
+"%lld modelos, %lld baixados" = "%lld мадэляў, %lld спампавана";
+"Não consegui carregar o modelo %@." = "Не ўдалося загрузіць мадэль %@.";

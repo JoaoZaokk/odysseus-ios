@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Läscht anormal Ofstierze: %@";
 "Eventos anexados: %@" = "Ugehäng Evenementer: %@";
 "Anexo: %@" = "Uhang: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Ikon";
+"Mais" = "Méi";
+"Aberto" = "Op";
+"Fechado" = "Zou";
+"%lld modelos, %lld baixados" = "%lld Modeller, %lld erofgelueden";
+"Não consegui carregar o modelo %@." = "De Modell %@ konnt net gelueden ginn.";

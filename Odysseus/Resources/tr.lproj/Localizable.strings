@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Son anormal kapanma: %@";
 "Eventos anexados: %@" = "Eklenen olaylar: %@";
 "Anexo: %@" = "Ek: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Simge";
+"Mais" = "Daha fazla";
+"Aberto" = "Açık";
+"Fechado" = "Kapalı";
+"%lld modelos, %lld baixados" = "%lld model, %lld indirildi";
+"Não consegui carregar o modelo %@." = "%@ modeli yüklenemedi.";

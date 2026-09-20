@@ -429,7 +429,7 @@ struct VoiceSettingsView: View {
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(.isButton)
         .accessibilityValue(Text(open ? L("Aberto") : L("Fechado")))
-        .accessibilityHint(Text(L("%d modelos, %d baixados", group.models.count, installed)))
+        .accessibilityHint(Text(L("%lld modelos, %lld baixados", group.models.count, installed)))
     }
 
     private func modelRow(_ model: VoiceModel, selected: Bool, select: @escaping (String) -> Void) -> some View {

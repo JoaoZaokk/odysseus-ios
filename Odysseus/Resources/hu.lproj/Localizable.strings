@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Utolsó rendellenes leállás: %@";
 "Eventos anexados: %@" = "Csatolt események: %@";
 "Anexo: %@" = "Melléklet: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Ikon";
+"Mais" = "Továbbiak";
+"Aberto" = "Nyitva";
+"Fechado" = "Zárva";
+"%lld modelos, %lld baixados" = "%lld modell, %lld letöltve";
+"Não consegui carregar o modelo %@." = "A(z) %@ modellt nem sikerült betölteni.";

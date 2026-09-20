@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Zadnje neuobičajeno zatvaranje: %@";
 "Eventos anexados: %@" = "Priloženi događaji: %@";
 "Anexo: %@" = "Privitak: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Ikona";
+"Mais" = "Više";
+"Aberto" = "Otvoreno";
+"Fechado" = "Zatvoreno";
+"%lld modelos, %lld baixados" = "%lld modela, %lld preuzeto";
+"Não consegui carregar o modelo %@." = "Nije moguće učitati model %@.";

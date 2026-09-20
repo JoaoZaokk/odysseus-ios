@@ -920,3 +920,11 @@
 "Último encerramento anormal: %@" = "Последно неочаквано спиране: %@";
 "Eventos anexados: %@" = "Прикачени събития: %@";
 "Anexo: %@" = "Прикачен файл: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Икона";
+"Mais" = "Още";
+"Aberto" = "Отворено";
+"Fechado" = "Затворено";
+"%lld modelos, %lld baixados" = "%lld модела, %lld изтеглени";
+"Não consegui carregar o modelo %@." = "Моделът %@ не можа да се зареди.";

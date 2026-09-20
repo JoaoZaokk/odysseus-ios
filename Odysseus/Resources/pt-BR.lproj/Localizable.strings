@@ -911,3 +911,11 @@
 "Último encerramento anormal: %@" = "Último encerramento anormal: %@";
 "Eventos anexados: %@" = "Eventos anexados: %@";
 "Anexo: %@" = "Anexo: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Ícone";
+"Mais" = "Mais";
+"Aberto" = "Aberto";
+"Fechado" = "Fechado";
+"%lld modelos, %lld baixados" = "%lld modelos, %lld baixados";
+"Não consegui carregar o modelo %@." = "Não consegui carregar o modelo %@.";

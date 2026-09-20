@@ -910,3 +910,11 @@
 "Último encerramento anormal: %@" = "Viimeisin epänormaali sulkeutuminen: %@";
 "Eventos anexados: %@" = "Liitetyt tapahtumat: %@";
 "Anexo: %@" = "Liite: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Kuvake";
+"Mais" = "Lisää";
+"Aberto" = "Avattu";
+"Fechado" = "Suljettu";
+"%lld modelos, %lld baixados" = "%lld mallia, %lld ladattu";
+"Não consegui carregar o modelo %@." = "Mallin %@ lataaminen ei onnistunut.";

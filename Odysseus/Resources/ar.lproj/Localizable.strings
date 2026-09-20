@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "آخر إغلاق غير طبيعي: %@";
 "Eventos anexados: %@" = "الأحداث المرفقة: %@";
 "Anexo: %@" = "المرفق: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "أيقونة";
+"Mais" = "المزيد";
+"Aberto" = "مفتوح";
+"Fechado" = "مغلق";
+"%lld modelos, %lld baixados" = "%lld نموذج، %lld تم تنزيله";
+"Não consegui carregar o modelo %@." = "تعذّر تحميل النموذج %@.";

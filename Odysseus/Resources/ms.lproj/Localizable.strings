@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Penutupan tidak normal terakhir: %@";
 "Eventos anexados: %@" = "Acara dilampirkan: %@";
 "Anexo: %@" = "Lampiran: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Ikon";
+"Mais" = "Lagi";
+"Aberto" = "Terbuka";
+"Fechado" = "Tertutup";
+"%lld modelos, %lld baixados" = "%lld model, %lld dimuat turun";
+"Não consegui carregar o modelo %@." = "Tidak dapat memuatkan model %@.";

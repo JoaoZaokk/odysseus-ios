@@ -920,3 +920,11 @@
 "Último encerramento anormal: %@" = "आखिरी असामान्य बंद: %@";
 "Eventos anexados: %@" = "जुड़े हुए इवेंट: %@";
 "Anexo: %@" = "अटैचमेंट: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "आइकन";
+"Mais" = "और";
+"Aberto" = "खुला";
+"Fechado" = "बंद";
+"%lld modelos, %lld baixados" = "%lld मॉडल, %lld डाउनलोड किए गए";
+"Não consegui carregar o modelo %@." = "मॉडल %@ लोड नहीं हो सका।";

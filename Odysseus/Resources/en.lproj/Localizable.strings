@@ -920,3 +920,11 @@
 "Último encerramento anormal: %@" = "Last abnormal exit: %@";
 "Eventos anexados: %@" = "Events attached: %@";
 "Anexo: %@" = "Attachment: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Icon";
+"Mais" = "More";
+"Aberto" = "Open";
+"Fechado" = "Closed";
+"%lld modelos, %lld baixados" = "%lld models, %lld downloaded";
+"Não consegui carregar o modelo %@." = "Couldn't load the model %@.";

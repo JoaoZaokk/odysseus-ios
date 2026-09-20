@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Letzter anormaler Abbruch: %@";
 "Eventos anexados: %@" = "Angehängte Ereignisse: %@";
 "Anexo: %@" = "Anhang: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Symbol";
+"Mais" = "Mehr";
+"Aberto" = "Geöffnet";
+"Fechado" = "Geschlossen";
+"%lld modelos, %lld baixados" = "%lld Modelle, %lld geladen";
+"Não consegui carregar o modelo %@." = "Modell %@ konnte nicht geladen werden.";

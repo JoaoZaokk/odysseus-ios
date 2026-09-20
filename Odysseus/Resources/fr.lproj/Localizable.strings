@@ -912,3 +912,11 @@
 "Último encerramento anormal: %@" = "Dernier arrêt anormal : %@";
 "Eventos anexados: %@" = "Événements joints : %@";
 "Anexo: %@" = "Pièce jointe : %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Icône";
+"Mais" = "Plus";
+"Aberto" = "Ouvert";
+"Fechado" = "Fermé";
+"%lld modelos, %lld baixados" = "%lld modèles, %lld téléchargés";
+"Não consegui carregar o modelo %@." = "Impossible de charger le modèle %@.";

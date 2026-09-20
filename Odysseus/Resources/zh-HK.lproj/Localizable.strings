@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "上次異常結束：%@";
 "Eventos anexados: %@" = "附加事件：%@";
 "Anexo: %@" = "附件：%@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "圖示";
+"Mais" = "更多";
+"Aberto" = "已展開";
+"Fechado" = "已收合";
+"%lld modelos, %lld baixados" = "%lld 個模型，已下載 %lld 個";
+"Não consegui carregar o modelo %@." = "無法載入模型 %@。";

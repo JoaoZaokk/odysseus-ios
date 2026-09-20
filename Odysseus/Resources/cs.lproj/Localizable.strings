@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Poslední neobvyklé ukončení: %@";
 "Eventos anexados: %@" = "Přiložené události: %@";
 "Anexo: %@" = "Příloha: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Ikona";
+"Mais" = "Více";
+"Aberto" = "Otevřeno";
+"Fechado" = "Zavřeno";
+"%lld modelos, %lld baixados" = "%lld modelů, %lld stažených";
+"Não consegui carregar o modelo %@." = "Model %@ se nepodařilo načíst.";

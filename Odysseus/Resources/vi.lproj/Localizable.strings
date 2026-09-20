@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Lần thoát bất thường gần nhất: %@";
 "Eventos anexados: %@" = "Sự kiện đính kèm: %@";
 "Anexo: %@" = "Tệp đính kèm: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Biểu tượng";
+"Mais" = "Thêm";
+"Aberto" = "Đang mở";
+"Fechado" = "Đang đóng";
+"%lld modelos, %lld baixados" = "%lld mô hình, %lld đã tải";
+"Não consegui carregar o modelo %@." = "Không thể tải mô hình %@.";

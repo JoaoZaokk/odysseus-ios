@@ -920,3 +920,11 @@
 "Último encerramento anormal: %@" = "সর্বশেষ অস্বাভাবিক বন্ধ হওয়া: %@";
 "Eventos anexados: %@" = "সংযুক্ত ইভেন্ট: %@";
 "Anexo: %@" = "সংযুক্তি: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "আইকন";
+"Mais" = "আরও";
+"Aberto" = "খোলা";
+"Fechado" = "বন্ধ";
+"%lld modelos, %lld baixados" = "%lld মডেল, %lld ডাউনলোড করা";
+"Não consegui carregar o modelo %@." = "মডেল %@ লোড করা যায়নি।";

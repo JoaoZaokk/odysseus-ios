@@ -920,3 +920,11 @@
 "Último encerramento anormal: %@" = "Laatste abnormale afsluiting: %@";
 "Eventos anexados: %@" = "Bijgevoegde gebeurtenissen: %@";
 "Anexo: %@" = "Bijlage: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Pictogram";
+"Mais" = "Meer";
+"Aberto" = "Open";
+"Fechado" = "Gesloten";
+"%lld modelos, %lld baixados" = "%lld modellen, %lld gedownload";
+"Não consegui carregar o modelo %@." = "Kan model %@ niet laden.";

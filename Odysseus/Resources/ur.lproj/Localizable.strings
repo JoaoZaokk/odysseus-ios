@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "آخری غیر معمولی بندش: %@";
 "Eventos anexados: %@" = "منسلک ایونٹس: %@";
 "Anexo: %@" = "منسلکہ: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "آئیکن";
+"Mais" = "مزید";
+"Aberto" = "کھلا";
+"Fechado" = "بند";
+"%lld modelos, %lld baixados" = "%lld ماڈلز، %lld ڈاؤن لوڈ شدہ";
+"Não consegui carregar o modelo %@." = "ماڈل %@ لوڈ نہیں ہو سکا۔";

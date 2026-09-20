@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "Posledné neočakávané ukončenie: %@";
 "Eventos anexados: %@" = "Priložené udalosti: %@";
 "Anexo: %@" = "Príloha: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Ikona";
+"Mais" = "Viac";
+"Aberto" = "Otvorené";
+"Fechado" = "Zatvorené";
+"%lld modelos, %lld baixados" = "%lld modelov, %lld stiahnutých";
+"Não consegui carregar o modelo %@." = "Model %@ sa nepodarilo načítať.";

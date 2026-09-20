@@ -910,3 +910,11 @@
 "Último encerramento anormal: %@" = "Senaste onormala avslut: %@";
 "Eventos anexados: %@" = "Bifogade händelser: %@";
 "Anexo: %@" = "Bilaga: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "Symbol";
+"Mais" = "Mer";
+"Aberto" = "Öppen";
+"Fechado" = "Stängd";
+"%lld modelos, %lld baixados" = "%lld modeller, %lld nedladdade";
+"Não consegui carregar o modelo %@." = "Det gick inte att läsa in modellen %@.";

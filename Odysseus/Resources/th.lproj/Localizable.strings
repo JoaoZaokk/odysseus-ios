@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "การปิดตัวผิดปกติล่าสุด: %@";
 "Eventos anexados: %@" = "เหตุการณ์ที่แนบ: %@";
 "Anexo: %@" = "ไฟล์แนบ: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "ไอคอน";
+"Mais" = "เพิ่มเติม";
+"Aberto" = "เปิดอยู่";
+"Fechado" = "ปิดอยู่";
+"%lld modelos, %lld baixados" = "%lld โมเดล ดาวน์โหลดแล้ว %lld";
+"Não consegui carregar o modelo %@." = "โหลดโมเดล %@ ไม่สำเร็จ";

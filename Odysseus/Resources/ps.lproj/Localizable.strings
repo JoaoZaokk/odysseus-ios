@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "وروستۍ غیرعادي بندېدنه: %@";
 "Eventos anexados: %@" = "ضمیمه شوې پېښې: %@";
 "Anexo: %@" = "ضمیمه: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "آیکون";
+"Mais" = "نور";
+"Aberto" = "پرانیستی";
+"Fechado" = "تړلی";
+"%lld modelos, %lld baixados" = "%lld ماډلونه، %lld ډاونلوډ شوي";
+"Não consegui carregar o modelo %@." = "ماډل %@ نه شو پورته کېدی.";

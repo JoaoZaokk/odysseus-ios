@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "直近の異常終了：%@";
 "Eventos anexados: %@" = "添付されたイベント：%@";
 "Anexo: %@" = "添付ファイル：%@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "アイコン";
+"Mais" = "その他";
+"Aberto" = "開いています";
+"Fechado" = "閉じています";
+"%lld modelos, %lld baixados" = "%lld 個のモデル、%lld 個をダウンロード済み";
+"Não consegui carregar o modelo %@." = "モデル %@ を読み込めませんでした。";

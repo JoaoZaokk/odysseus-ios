@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "마지막 비정상 종료: %@";
 "Eventos anexados: %@" = "첨부된 이벤트: %@";
 "Anexo: %@" = "첨부 파일: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "아이콘";
+"Mais" = "더 보기";
+"Aberto" = "열림";
+"Fechado" = "닫힘";
+"%lld modelos, %lld baixados" = "모델 %lld개, %lld개 다운로드됨";
+"Não consegui carregar o modelo %@." = "모델 %@을(를) 불러오지 못했습니다.";

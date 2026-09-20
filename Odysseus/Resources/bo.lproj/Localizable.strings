@@ -918,3 +918,11 @@
 "Último encerramento anormal: %@" = "མཐའ་མའི་གློ་བུར་མཚམས་འཇོག: %@";
 "Eventos anexados: %@" = "སྦྲགས་ཡོད་པའི་གནས་ཚུལ: %@";
 "Anexo: %@" = "སྦྲགས་ཡིག: %@";
+
+/* 1.12 — ícone de tela inicial, barra de Espaços, catálogo de voz dobrável */
+"Ícone" = "མཚོན་རྟགས";
+"Mais" = "མང་བ";
+"Aberto" = "ཁ་ཕྱེ་ཡོད";
+"Fechado" = "ཁ་བརྒྱབ་ཡོད";
+"%lld modelos, %lld baixados" = "དཔེ་གཞི %lld། ཕབ་ལེན་བྱས་ཟིན་པ %lld";
+"Não consegui carregar o modelo %@." = "དཔེ་གཞི %@ སྣོན་འཇུག་བྱེད་མ་ཐུབ།";
