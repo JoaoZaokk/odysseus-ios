@@ -15,7 +15,7 @@ import Foundation
 /// `['tts','audio']` keyword scan); this is that idea in one place, matched on
 /// word boundaries so "olive" is not "live" and "imagine" is not "image".
 enum ModelKind: String, CaseIterable, Identifiable {
-    case chat, image, video, tts, stt, realtime, embedding
+    case chat, image, video, music, tts, stt, realtime, embedding
 
     var id: String { rawValue }
 
@@ -25,6 +25,7 @@ enum ModelKind: String, CaseIterable, Identifiable {
         case .chat:      return L("Chat")
         case .image:     return L("Imagem")
         case .video:     return L("Vídeo")
+        case .music:     return L("Música")
         case .tts:       return L("Voz (TTS)")
         case .stt:       return L("Transcrição (STT)")
         case .realtime:  return L("Áudio ao vivo")
@@ -37,6 +38,7 @@ enum ModelKind: String, CaseIterable, Identifiable {
         case .chat:      return "bubble.left.and.bubble.right"
         case .image:     return "photo"
         case .video:     return "film"
+        case .music:     return "music.note"
         case .tts:       return "speaker.wave.2"
         case .stt:       return "waveform"
         case .realtime:  return "dot.radiowaves.left.and.right"
@@ -53,7 +55,12 @@ enum ModelKind: String, CaseIterable, Identifiable {
         (.tts,       ["tts", "kokoro", "piper", "orpheus"]),
         (.realtime,  ["realtime", "native-audio", "live", "audio-preview"]),
         (.video,     ["veo", "sora", "video", "kling", "wan2", "hunyuanvideo", "cogvideox"]),
-        (.image,     ["image", "imagen", "dall-e", "flux", "stable-diffusion", "sdxl", "sd3",
+        // Google's music model family. Not voice: it cannot read a reply aloud.
+        (.music,     ["lyria", "musicgen"]),
+        // "nano-banana" is Google's image model under its public nickname —
+        // the owner's real inventory lists "nano-banana-pro-preview" with no
+        // "image" anywhere in it.
+        (.image,     ["image", "imagen", "nano-banana", "dall-e", "flux", "stable-diffusion", "sdxl", "sd3",
                       "ideogram", "recraft", "seedream", "midjourney"]),
     ]
 

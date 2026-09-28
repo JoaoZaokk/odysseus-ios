@@ -155,6 +155,11 @@ struct ChatScreen: View {
             .onChange(of: vm.toolStatus) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.notices.count) { _, _ in scrollToBottom(proxy) }
             .onChange(of: vm.pendingAsk) { _, _ in scrollToBottom(proxy) }
+            // The "read with the device voice" line lands under the message
+            // being read; on the last one it sat behind the chip bar, unseen.
+            .onReceive(SpeechManager.shared.$notice) { n in
+                if let n, n.id == vm.messages.last?.id { scrollToBottom(proxy) }
+            }
         }
     }
 

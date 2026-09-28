@@ -59,6 +59,19 @@ final class ProviderPresetTests: XCTestCase {
         XCTAssertTrue(vm.canAdd)
     }
 
+    /// The owner's Gemini ended up registered as an *image* endpoint — the
+    /// "Imagem" chip was on when the key went in — and the chat picker (app and
+    /// web alike) skips image endpoints whole, so Gemini and Gemma never showed.
+    /// A cloud key names a chat API; the chip follows it.
+    @MainActor
+    func testAKnownKeyUnderTheImageChipStillMeansAPI() {
+        let vm = AddModelsVM(api: APIClient(config: ServerConfig(baseURL: URL(string: "https://stub.invalid")!)))
+        vm.kind = "image"
+        vm.apiKey = "AIzaSyA-fake-key-for-tests-000000000"
+        XCTAssertEqual(vm.kind, "api")
+        XCTAssertEqual(vm.baseURL, "https://generativelanguage.googleapis.com/v1beta/openai")
+    }
+
     @MainActor
     func testAURLTheUserTypedIsNeverOverwritten() {
         let vm = AddModelsVM(api: APIClient(config: ServerConfig(baseURL: URL(string: "https://stub.invalid")!)))

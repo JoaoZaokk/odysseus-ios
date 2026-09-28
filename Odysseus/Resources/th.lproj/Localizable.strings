@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "จดจำคีย์ได้: %@";
 "Não aparece no seletor do chat." = "ไม่แสดงในตัวเลือกโมเดลของแชท";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini ไม่มี /audio/speech และ /audio/transcriptions: โมเดลเหล่านี้ใช้เป็นเสียงของเซิร์ฟเวอร์ไม่ได้";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "เพลง";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "ลงทะเบียนเป็นรูปภาพ: โมเดลแชทของ endpoint นี้จะไม่แสดงในตัวเลือกโมเดลของแชท";
+"Usar para chat" = "ใช้สำหรับแชท";

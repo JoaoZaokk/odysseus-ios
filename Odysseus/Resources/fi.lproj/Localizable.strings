@@ -933,3 +933,8 @@
 "Chave reconhecida: %@" = "Avain tunnistettu: %@";
 "Não aparece no seletor do chat." = "Ei näy chatin mallivalitsimessa.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Geminissä ei ole /audio/speech- eikä /audio/transcriptions-rajapintaa: näistä malleista ei ole palvelimen ääneksi.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Musiikki";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Rekisteröity kuvaksi: tämän päätepisteen chat-mallit eivät näy chatin mallivalitsimessa.";
+"Usar para chat" = "Käytä chattiin";

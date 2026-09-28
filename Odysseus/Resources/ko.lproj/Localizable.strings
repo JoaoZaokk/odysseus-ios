@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "키 인식됨: %@";
 "Não aparece no seletor do chat." = "채팅 모델 선택기에 표시되지 않습니다.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini에는 /audio/speech와 /audio/transcriptions가 없습니다. 이 모델들은 서버 음성으로 쓸 수 없습니다.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "음악";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "이미지로 등록됨: 이 엔드포인트의 채팅 모델이 채팅 모델 선택기에 표시되지 않습니다.";
+"Usar para chat" = "채팅에 사용";

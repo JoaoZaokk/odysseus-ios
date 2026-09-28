@@ -943,3 +943,8 @@
 "Chave reconhecida: %@" = "Clave reconocida: %@";
 "Não aparece no seletor do chat." = "No aparece en el selector de modelos del chat.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini no tiene /audio/speech ni /audio/transcriptions: estos modelos no sirven como voz del servidor.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Música";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Registrado como Imagen: los modelos de chat de este endpoint no aparecen en el selector del chat.";
+"Usar para chat" = "Usar para chat";

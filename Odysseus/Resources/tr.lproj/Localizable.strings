@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "Anahtar tanındı: %@";
 "Não aparece no seletor do chat." = "Sohbetin model seçicisinde görünmez.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini'de /audio/speech ve /audio/transcriptions yok: bu modeller sunucunun sesi olamaz.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Müzik";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Görsel olarak kayıtlı: bu uç noktanın sohbet modelleri sohbetin model seçicisinde görünmez.";
+"Usar para chat" = "Sohbet için kullan";

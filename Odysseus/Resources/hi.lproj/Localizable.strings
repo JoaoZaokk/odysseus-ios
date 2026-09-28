@@ -943,3 +943,8 @@
 "Chave reconhecida: %@" = "कुंजी पहचानी गई: %@";
 "Não aparece no seletor do chat." = "चैट के मॉडल चयनकर्ता में नहीं दिखता।";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini में /audio/speech और /audio/transcriptions नहीं हैं: ये मॉडल सर्वर की आवाज़ नहीं बन सकते।";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "संगीत";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "इमेज के रूप में दर्ज: इस एंडपॉइंट के चैट मॉडल चैट के मॉडल चयनकर्ता में नहीं दिखते।";
+"Usar para chat" = "चैट के लिए इस्तेमाल करें";

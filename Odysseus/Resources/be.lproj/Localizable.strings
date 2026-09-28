@@ -943,3 +943,8 @@
 "Chave reconhecida: %@" = "Ключ распазнаны: %@";
 "Não aparece no seletor do chat." = "Не паказваецца ў выбары мадэлі чата.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "У Gemini няма /audio/speech і /audio/transcriptions: гэтыя мадэлі не могуць быць голасам сервера.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Музыка";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Зарэгістравана як «Выява»: чат-мадэлі гэтага эндпоінта не бачныя ў выбары мадэлі чата.";
+"Usar para chat" = "Выкарыстоўваць для чата";

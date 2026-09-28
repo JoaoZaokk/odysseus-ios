@@ -34,6 +34,39 @@ final class ModelKindTests: XCTestCase {
         }
     }
 
+    /// The owner's real Gemini key on 27/09, all 43 ids as the server listed
+    /// them. Two families the synthetic list missed: `nano-banana-pro-preview`
+    /// is an image model with no "image" in its name, and `lyria-*` makes music.
+    func testTheOwnersRealGeminiInventory() {
+        let ids = [
+            "gemini-2.5-flash", "gemini-2.5-pro", "gemma-4-26b-a4b-it", "gemma-4-31b-it",
+            "gemini-flash-latest", "gemini-flash-lite-latest", "gemini-pro-latest",
+            "gemini-2.5-flash-lite", "gemini-3-flash-preview", "gemini-3.1-pro-preview",
+            "gemini-3.1-pro-preview-customtools", "gemini-3.1-flash-lite-preview",
+            "gemini-3.1-flash-lite", "nano-banana-pro-preview", "gemini-3.5-flash",
+            "gemini-3.5-flash-lite", "gemini-omni-flash-preview", "gemini-omni-1.1-flash",
+            "gemini-3.6-flash", "gemini-3.7-flash", "gemini-3.8-flash",
+            "lyria-3-clip-preview", "lyria-3-pro-preview", "lyria-3.5",
+            "gemini-robotics-er-2-preview", "gemini-2.5-computer-use-preview-10-2025",
+            "antigravity-preview-05-2026", "antigravity-preview-09-2026", "antigravity-preview-latest",
+            "deep-research-max-preview-04-2026", "deep-research-preview-04-2026",
+            "deep-research-pro-preview-12-2025", "aqa",
+            "gemini-2.5-flash-image", "gemini-3-pro-image-preview", "gemini-3-pro-image",
+            "gemini-3.1-flash-image-preview", "gemini-3.1-flash-image", "gemini-3.1-flash-lite-image",
+            "gemini-2.5-flash-preview-tts", "gemini-2.5-pro-preview-tts", "gemini-3.1-flash-tts-preview",
+            "gemini-3.5-transcribe",
+        ]
+        XCTAssertEqual(ids.count, 43)
+        let counts = Dictionary(grouping: ids, by: ModelKind.of).mapValues(\.count)
+        XCTAssertEqual(counts[.chat], 29)
+        XCTAssertEqual(counts[.image], 7)
+        XCTAssertEqual(counts[.music], 3)
+        XCTAssertEqual(counts[.tts], 3)
+        XCTAssertEqual(counts[.stt], 1)
+        XCTAssertEqual(ModelKind.of("nano-banana-pro-preview"), .image)
+        XCTAssertEqual(ModelKind.of("lyria-3.5"), .music)
+    }
+
     func testOtherVendorsSpeechAndMediaModels() {
         let expect: [String: ModelKind] = [
             "gpt-4o-mini-tts": .tts,

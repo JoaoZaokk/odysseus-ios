@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "ལྡེ་མིག་ངོས་འཛིན་བྱུང་། %@";
 "Não aparece no seletor do chat." = "གླེང་མོལ་གྱི་དཔེ་དབྱིབས་འདེམས་ས་ལ་མི་མངོན།";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini ལ་ /audio/speech དང་ /audio/transcriptions མེད། དཔེ་དབྱིབས་འདི་དག་ཞབས་ཞུ་འཕྲུལ་ཆས་ཀྱི་སྐད་དུ་སྤྱོད་མི་ཐུབ།";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "རོལ་དབྱངས།";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "པར་རིས་སུ་ཐོ་འགོད་བྱས། མཐའ་མཚམས་འདིའི་གླེང་མོལ་དཔེ་དབྱིབས་རྣམས་གླེང་མོལ་གྱི་དཔེ་དབྱིབས་འདེམས་ས་ལ་མི་མངོན།";
+"Usar para chat" = "གླེང་མོལ་ལ་བེད་སྤྱོད།";

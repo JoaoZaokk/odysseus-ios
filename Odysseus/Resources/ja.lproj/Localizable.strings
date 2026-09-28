@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "キーを認識しました: %@";
 "Não aparece no seletor do chat." = "チャットのモデル選択には表示されません。";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini には /audio/speech も /audio/transcriptions もありません。これらのモデルはサーバーの音声として使えません。";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "音楽";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "画像として登録されています。このエンドポイントのチャットモデルはチャットのモデル選択に表示されません。";
+"Usar para chat" = "チャットに使う";

@@ -18,6 +18,11 @@ struct ModelEndpoint: Decodable, Identifiable, Hashable {
 
     var total: Int { modelCount ?? models.count }
     var isImage: Bool { modelType == "image" }
+    /// An image endpoint that serves chat models. Every chat picker — this
+    /// app's and the web's — skips non-"llm" endpoints whole, so these models
+    /// cannot be chosen until the endpoint is switched to chat. It happened to
+    /// the owner's Gemini: added under "Imagem", 33 chat models out of reach.
+    var hidesChatModels: Bool { isImage && models.contains { ModelKind.of($0) == .chat } }
 
     enum CodingKeys: String, CodingKey {
         case id, name, url, models, online

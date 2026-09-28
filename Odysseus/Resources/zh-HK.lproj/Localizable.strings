@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "已辨識金鑰：%@";
 "Não aparece no seletor do chat." = "不會出現在聊天的模型選擇器中。";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini 冇 /audio/speech 同 /audio/transcriptions：呢啲模型唔可以做伺服器語音。";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "音樂";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "已登記為圖像：呢個端點嘅聊天模型唔會喺聊天嘅模型選擇器出現。";
+"Usar para chat" = "用嚟聊天";

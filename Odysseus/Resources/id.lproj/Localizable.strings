@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "Kunci dikenali: %@";
 "Não aparece no seletor do chat." = "Tidak muncul di pemilih model obrolan.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini tidak punya /audio/speech maupun /audio/transcriptions: model ini tidak bisa menjadi suara server.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Musik";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Terdaftar sebagai Gambar: model obrolan endpoint ini tidak muncul di pemilih model obrolan.";
+"Usar para chat" = "Gunakan untuk obrolan";

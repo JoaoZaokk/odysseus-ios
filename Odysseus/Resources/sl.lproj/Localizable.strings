@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "Ključ prepoznan: %@";
 "Não aparece no seletor do chat." = "Ne prikaže se v izbirniku modela klepeta.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini nima /audio/speech ne /audio/transcriptions: ti modeli ne morejo biti glas strežnika.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Glasba";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Registrirano kot Slika: modeli klepeta te končne točke se ne prikažejo v izbirniku modela klepeta.";
+"Usar para chat" = "Uporabi za klepet";

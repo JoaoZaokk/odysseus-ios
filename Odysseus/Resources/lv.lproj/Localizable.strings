@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "Atslēga atpazīta: %@";
 "Não aparece no seletor do chat." = "Netiek rādīts tērzēšanas modeļu izvēlē.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini nav /audio/speech un /audio/transcriptions: šie modeļi nevar būt servera balss.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Mūzika";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Reģistrēts kā Attēls: šī galapunkta tērzēšanas modeļi netiek rādīti tērzēšanas modeļu izvēlē.";
+"Usar para chat" = "Izmantot tērzēšanai";

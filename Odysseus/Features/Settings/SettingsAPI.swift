@@ -87,6 +87,16 @@ extension APIClient {
         _ = try await send(req)
     }
 
+    /// Changes what the server treats an endpoint as: "llm" (chat) or "image".
+    /// The same PATCH route toggles `is_enabled` when its body is empty, so the
+    /// body always carries `model_type` and nothing else.
+    func setEndpointType(_ id: String, modelType: String) async throws {
+        var req = request("/api/model-endpoints/\(encPath(id))", method: "PATCH")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONSerialization.data(withJSONObject: ["model_type": modelType])
+        _ = try await send(req)
+    }
+
     func deleteEndpoint(_ id: String) async throws {
         _ = try await send(request("/api/model-endpoints/\(encPath(id))", method: "DELETE"))
     }

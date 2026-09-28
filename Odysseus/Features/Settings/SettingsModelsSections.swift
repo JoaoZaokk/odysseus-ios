@@ -39,6 +39,11 @@ import SwiftUI
                                             admin: "Só um administrador pode atualizar a lista de modelos.")
         }
     }
+    /// Makes an image endpoint a chat one, so its chat models reach the picker.
+    func useForChat(_ ep: ModelEndpoint) async {
+        do { try await api.setEndpointType(ep.id, modelType: "llm"); await load() }
+        catch { self.error = SettingsUI.failure(error, "Falha ao salvar: %@") }
+    }
     func delete(_ ep: ModelEndpoint) async {
         do { try await api.deleteEndpoint(ep.id); await load() }
         catch { self.error = SettingsUI.failure(error, "Falha ao remover: %@") }
@@ -142,6 +147,16 @@ struct AddedModelsSection: View {
             let kinds = ModelKind.breakdown(ep.models)
             if !kinds.isEmpty {
                 Text(verbatim: kinds).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+            }
+            if ep.hidesChatModels {
+                Text("Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat.")
+                    .font(.ody(size: 11)).foregroundStyle(theme.danger)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button { Task { await vm.useForChat(ep) } } label: {
+                    Label("Usar para chat", systemImage: "bubble.left.and.bubble.right")
+                        .font(.ody(size: 12))
+                }
+                .buttonStyle(.plain).foregroundStyle(theme.accent)
             }
             // Its own row: the buttons above already fill an iPhone's width.
             Button { picking = ep } label: {
@@ -433,8 +448,11 @@ struct AIDefaultsSection: View {
     }
 
     /// Only overwrites a URL the user did not type: empty, or one a preset put there.
+    /// A recognised cloud key always means a chat API, even under the "Imagem"
+    /// chip: the owner's Gemini went in that way and its chat models vanished
+    /// from every picker (image endpoints are skipped whole).
     private func recognise() {
-        guard kind != "image", let p = ProviderPreset.detect(key: apiKey) else { return }
+        guard let p = ProviderPreset.detect(key: apiKey) else { return }
         let url = baseURL.trimmingCharacters(in: .whitespacesAndNewlines)
         guard url.isEmpty || ProviderPreset.matching(url: url) != nil else { return }
         preset = p

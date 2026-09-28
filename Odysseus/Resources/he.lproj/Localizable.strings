@@ -933,3 +933,8 @@
 "Chave reconhecida: %@" = "המפתח זוהה: %@";
 "Não aparece no seletor do chat." = "לא מופיע בבוחר המודלים של הצ׳אט.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "ל־Gemini אין /audio/speech ואין /audio/transcriptions: המודלים האלה לא יכולים לשמש כקול של השרת.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "מוזיקה";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "רשום כתמונה: מודלי הצ׳אט של נקודת הקצה הזו לא מופיעים בבוחר המודלים של הצ׳אט.";
+"Usar para chat" = "שימוש לצ׳אט";

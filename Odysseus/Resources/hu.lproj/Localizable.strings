@@ -941,3 +941,8 @@
 "Chave reconhecida: %@" = "Felismert kulcs: %@";
 "Não aparece no seletor do chat." = "Nem jelenik meg a csevegés modellválasztójában.";
 "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "A Gemininek nincs /audio/speech és /audio/transcriptions végpontja: ezek a modellek nem lehetnek a szerver hangja.";
+
+/* 1.13 — música, endpoint de imagem com modelos de chat */
+"Música" = "Zene";
+"Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Képként regisztrálva: ennek a végpontnak a csevegőmodelljei nem jelennek meg a csevegés modellválasztójában.";
+"Usar para chat" = "Használat csevegéshez";

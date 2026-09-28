@@ -21,6 +21,8 @@ final class NewStringsLocalizedTests: XCTestCase {
         "%@ — lendo com a voz do aparelho.", "Parar leitura", "Ouvir mensagem",
         "URL personalizada", "Chave reconhecida: %@", "Não aparece no seletor do chat.",
         "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor.",
+        "Música", "Usar para chat",
+        "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat.",
     ]
 
     func testEveryNewStringHasAnEntryInEveryCatalogue() throws {
