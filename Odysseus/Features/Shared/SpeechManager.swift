@@ -65,9 +65,46 @@ final class SpeechManager: NSObject, ObservableObject {
     /// takes only `{text, format}` and speaks with whatever the admin set, so
     /// this is shown to explain the voice rather than to choose one.
     @Published var serverStats: SpeechServiceStats?
+    /// When `serverStats` was read — the admin can change the provider under us,
+    /// so a message read aloud re-asks once it is a minute old.
+    private var serverStatsAt: Date?
     /// When true (hands-free voice mode), TTS uses a play-AND-record session so the
     /// barge-in monitor can listen while the assistant speaks.
     var duplexSession = false
+
+    /// Why the message being read aloud is not in the voice the user chose.
+    struct PlaybackNotice: Equatable {
+        let id: String
+        let text: String
+    }
+    /// Shown under the message it belongs to. The failure used to go only to
+    /// `neuralError`, which only the Settings screen renders — so in the chat
+    /// the 🔊 spun, stopped, and nothing played.
+    @Published private(set) var notice: PlaybackNotice?
+    /// The message `toggle` is reading, kept so a failed synthesis can be
+    /// spoken again by the device's own voice.
+    private var readAloud: (id: String, text: String)?
+
+    /// The engine that actually speaks.
+    ///
+    /// The server's "browser" TTS provider means *the client speaks* — the web
+    /// reads it as "use the Web Speech API" — and `/api/tts/synthesize` answers
+    /// 500 for it every time (`services/tts/tts_service.py` returns no audio for
+    /// "browser"). So "Servidor" with that provider is the native voice.
+    static func effectiveEngine(_ selected: TTSEngine, serverProvider: String?) -> TTSEngine {
+        selected == .server && serverProvider == "browser" ? .native : selected
+    }
+
+    /// Whether a failed synthesis should be retried with the device's voice.
+    /// Only for a message read aloud: the hands-free loop has its own failure
+    /// path (`onSpeechFailed`), and a stop is not a failure.
+    static func fallsBackToNative(engine: TTSEngine, duplex: Bool, error: Error) -> Bool {
+        !duplex && engine != .native && !error.isCancellation
+    }
+
+    private var engine: TTSEngine {
+        Self.effectiveEngine(TTSEngine.current, serverProvider: serverStats?.provider)
+    }
 
     // MARK: - Streaming queue
     //
@@ -113,7 +150,7 @@ final class SpeechManager: NSObject, ObservableObject {
     private var streamingAllowed: Bool {
         UserDefaults.standard.object(forKey: "voice.tts.streaming") as? Bool ?? true
     }
-    private var canStream: Bool { duplexSession && streamingAllowed && TTSEngine.current.canStream }
+    private var canStream: Bool { duplexSession && streamingAllowed && engine.canStream }
 
     /// True while a queued reply is being spoken — the voice loop uses it to arm
     /// barge-in the moment real audio starts, not before.
@@ -216,6 +253,16 @@ final class SpeechManager: NSObject, ObservableObject {
         }
         let text = message()
         neuralError = text          // Settings screen
+        if let r = readAloud, r.id == id,
+           Self.fallsBackToNative(engine: engine, duplex: duplexSession, error: error) {
+            // A message read aloud always ends in sound: say why the voice
+            // changed, under the message, and read it with the device's own.
+            readAloud = nil
+            notice = PlaybackNotice(id: id, text: L("%@ — lendo com a voz do aparelho.", text))
+            VoiceLog.log("tts.fallback", "nativo — \(text)")
+            speakNative(r.text, id: id)
+            return
+        }
         onSpeechFailed?(text)       // the voice loop, which must not read the line above
     }
 
@@ -223,7 +270,7 @@ final class SpeechManager: NSObject, ObservableObject {
         guard !speakingChunk, !chunks.isEmpty, let id = chunkID else { return }
         speakingChunk = true
         let next = chunks.removeFirst()
-        let engine = TTSEngine.current
+        let engine = self.engine
         if let p = pendingSynthesis, p.id == id, p.text == next, p.engine == engine {
             // Already synthesized, or still in flight — either way, wait on the
             // request that is already running rather than issuing a second one.
@@ -266,7 +313,7 @@ final class SpeechManager: NSObject, ObservableObject {
     /// one runs on the Neural Engine, where a second concurrent synthesis would
     /// compete with the one being played rather than hide behind it.
     private func prefetchNext(id: String) {
-        let engine = TTSEngine.current
+        let engine = self.engine
         guard engine.isNetwork else { return }
         guard pendingSynthesis == nil, let text = chunks.first else { return }
         let task = Task<Data, Error> { [weak self] in
@@ -284,7 +331,7 @@ final class SpeechManager: NSObject, ObservableObject {
         // prefetch would buy anything.
         let t0 = Date()
         let data: Data
-        switch TTSEngine.current {
+        switch engine {
         case .endpoint:
             data = try await VoiceEndpoint.synthesize(clean)
         case .server, .native, .neural:
@@ -436,6 +483,26 @@ final class SpeechManager: NSObject, ObservableObject {
         stop()
         let clean = SpokenText.strip(text)
         guard !clean.isEmpty else { return }
+        // Settings' "test the server voice" goes through here too, and a test
+        // that quietly answers in another voice would pass for a working
+        // server. It reports the failure (`neuralError`) and stays silent.
+        readAloud = id == Self.testID ? nil : (id: id, text: clean)
+        // "Servidor" has to know the server's provider before it speaks: for
+        // "browser" the route 500s and the device is meant to speak instead.
+        // One /api/tts/stats round trip, repeated at most once a minute.
+        if TTSEngine.current == .server, let api,
+           serverStatsAt.map({ Date().timeIntervalSince($0) > 60 }) ?? true {
+            preparingID = id
+            speechTask = Task { [weak self] in
+                let stats = await api.ttsStats()
+                guard let self, !Task.isCancelled, self.preparingID == id else { return }
+                self.serverStats = stats
+                self.serverStatsAt = Date()
+                self.preparingID = nil
+                self.dispatchSpeak(clean, id: id)
+            }
+            return
+        }
         dispatchSpeak(clean, id: id)
     }
 
@@ -451,7 +518,7 @@ final class SpeechManager: NSObject, ObservableObject {
         stop()
         let clean = SpokenText.strip(text)
         guard !clean.isEmpty else { return }
-        if streamingAllowed && TTSEngine.current.canStream {
+        if streamingAllowed && engine.canStream {
             // `speakStreaming` is a queue routine: every one of its callbacks —
             // first audio, finished, interrupted, the watchdog, and the byte loop
             // itself — is guarded by `chunkID == id`. `stop()` above cleared
@@ -466,7 +533,7 @@ final class SpeechManager: NSObject, ObservableObject {
 
     /// Routes already-stripped text to the configured engine.
     private func dispatchSpeak(_ clean: String, id: String) {
-        switch TTSEngine.current {
+        switch engine {
         case .endpoint: speakEndpoint(clean, id: id)
         case .server:   speakServer(clean, id: id)
         case .neural:   speakNeural(clean, id: id)
@@ -478,9 +545,15 @@ final class SpeechManager: NSObject, ObservableObject {
     func loadServerInfo() async {
         guard let api else { return }
         serverStats = await api.ttsStats()
+        serverStatsAt = Date()
     }
 
+    /// The fallback line for message `id`, if its reading fell back.
+    func notice(for id: String) -> String? { notice?.id == id ? notice?.text : nil }
+
     func stop() {
+        readAloud = nil
+        notice = nil
         clearQueue()
         speechTask?.cancel(); speechTask = nil
         streamWatchdog?.cancel(); streamWatchdog = nil

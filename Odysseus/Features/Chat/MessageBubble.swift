@@ -31,6 +31,16 @@ struct MessageBubble: View {
                     thinkingBlock(thinking)
                 }
                 if !message.content.isEmpty || message.attachments.isEmpty { bubble }
+                // What you sent can be heard too — the 🔊 used to live only in
+                // the assistant's header, so a sent message had no way to play.
+                if isUser && !message.content.isEmpty && !isStreaming { speakerButton }
+                if let n = speech.notice(for: message.id) {
+                    Text(verbatim: n)
+                        .font(.ody(size: 10))
+                        .foregroundStyle(theme.secondaryText)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: 280, alignment: isUser ? .trailing : .leading)
+                }
             }
             if !isUser { Spacer(minLength: 36) }
         }
@@ -64,21 +74,31 @@ struct MessageBubble: View {
                     .font(.ody(size: 11))
                     .foregroundStyle(theme.secondaryText)
             }
-            if !message.content.isEmpty {
-                Button {
-                    speech.toggle(message.content, id: message.id)
-                } label: {
-                    if speech.isPreparing(message.id) {
-                        ProgressView().controlSize(.mini)
-                    } else {
-                        Image(systemName: speech.isSpeaking(message.id) ? "speaker.wave.2.fill" : "speaker.wave.2")
-                            .font(.ody(size: 11))
-                            .foregroundStyle(speech.isSpeaking(message.id) ? theme.accent : theme.secondaryText)
-                    }
-                }
-                .buttonStyle(.plain)
-            }
+            if !message.content.isEmpty { speakerButton }
         }
+    }
+
+    /// Read this message aloud, or stop. The glyph stays 11 pt but the target
+    /// is not: an 11 pt icon alone was a hit area most taps missed.
+    private var speakerButton: some View {
+        let speaking = speech.isSpeaking(message.id)
+        return Button {
+            speech.toggle(message.content, id: message.id)
+        } label: {
+            Group {
+                if speech.isPreparing(message.id) {
+                    ProgressView().controlSize(.mini)
+                } else {
+                    Image(systemName: speaking ? "speaker.wave.2.fill" : "speaker.wave.2")
+                        .font(.ody(size: 11))
+                        .foregroundStyle(speaking ? theme.accent : theme.secondaryText)
+                }
+            }
+            .frame(width: 32, height: 28)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(speaking ? L("Parar leitura") : L("Ouvir mensagem")))
     }
 
     @ViewBuilder
