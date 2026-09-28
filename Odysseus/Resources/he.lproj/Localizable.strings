@@ -918,3 +918,18 @@
 "Fechado" = "סגור";
 "%lld modelos, %lld baixados" = "%lld דגמים, %lld הורדו";
 "Não consegui carregar o modelo %@." = "לא הצלחתי לטעון את הדגם %@.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "צ׳אט";
+"Vídeo" = "וידאו";
+"Voz (TTS)" = "קול (TTS)";
+"Transcrição (STT)" = "תמלול (STT)";
+"Áudio ao vivo" = "שמע חי";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — מוקרא בקול של המכשיר.";
+"Parar leitura" = "עצירת ההקראה";
+"Ouvir mensagem" = "האזנה להודעה";
+"URL personalizada" = "כתובת URL מותאמת";
+"Chave reconhecida: %@" = "המפתח זוהה: %@";
+"Não aparece no seletor do chat." = "לא מופיע בבוחר המודלים של הצ׳אט.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "ל־Gemini אין /audio/speech ואין /audio/transcriptions: המודלים האלה לא יכולים לשמש כקול של השרת.";

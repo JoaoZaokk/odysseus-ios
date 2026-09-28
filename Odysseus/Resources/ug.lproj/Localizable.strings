@@ -926,3 +926,18 @@
 "Fechado" = "يېپىق";
 "%lld modelos, %lld baixados" = "%lld ئەندىزە، %lld چۈشۈرۈلدى";
 "Não consegui carregar o modelo %@." = "%@ ئەندىزىسىنى يۈكلىگىلى بولمىدى.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "پاراڭ";
+"Vídeo" = "سىن";
+"Voz (TTS)" = "ئاۋاز (TTS)";
+"Transcrição (STT)" = "خاتىرىلەش (STT)";
+"Áudio ao vivo" = "نەق مەيدان ئاۋازى";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — ئۈسكۈنىنىڭ ئاۋازىدا ئوقۇلۇۋاتىدۇ.";
+"Parar leitura" = "ئوقۇشنى توختىتىش";
+"Ouvir mensagem" = "ئۇچۇرنى ئاڭلاش";
+"URL personalizada" = "ئىختىيارى URL";
+"Chave reconhecida: %@" = "ئاچقۇچ تونۇلدى: %@";
+"Não aparece no seletor do chat." = "پاراڭنىڭ مودېل تاللىغۇچىدا كۆرۈنمەيدۇ.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini دا /audio/speech ۋە /audio/transcriptions يوق: بۇ مودېللار مۇلازىمېتىرنىڭ ئاۋازى بولالمايدۇ.";

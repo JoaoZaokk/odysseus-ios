@@ -926,3 +926,18 @@
 "Fechado" = "مغلق";
 "%lld modelos, %lld baixados" = "%lld نموذج، %lld تم تنزيله";
 "Não consegui carregar o modelo %@." = "تعذّر تحميل النموذج %@.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "دردشة";
+"Vídeo" = "فيديو";
+"Voz (TTS)" = "الصوت (TTS)";
+"Transcrição (STT)" = "التفريغ النصي (STT)";
+"Áudio ao vivo" = "صوت مباشر";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — تتم القراءة بصوت الجهاز.";
+"Parar leitura" = "إيقاف القراءة";
+"Ouvir mensagem" = "الاستماع إلى الرسالة";
+"URL personalizada" = "عنوان URL مخصص";
+"Chave reconhecida: %@" = "تم التعرف على المفتاح: %@";
+"Não aparece no seletor do chat." = "لا يظهر في منتقي نموذج الدردشة.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "لا يوفّر Gemini ‏/audio/speech ولا ‏/audio/transcriptions: لا يمكن أن تكون هذه النماذج صوت الخادم.";

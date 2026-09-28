@@ -928,3 +928,18 @@
 "Fechado" = "Затворено";
 "%lld modelos, %lld baixados" = "%lld модела, %lld изтеглени";
 "Não consegui carregar o modelo %@." = "Моделът %@ не можа да се зареди.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Чат";
+"Vídeo" = "Видео";
+"Voz (TTS)" = "Глас (TTS)";
+"Transcrição (STT)" = "Транскрипция (STT)";
+"Áudio ao vivo" = "Аудио на живо";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — четене с гласа на устройството.";
+"Parar leitura" = "Спри четенето";
+"Ouvir mensagem" = "Прослушай съобщението";
+"URL personalizada" = "Персонализиран URL";
+"Chave reconhecida: %@" = "Ключът е разпознат: %@";
+"Não aparece no seletor do chat." = "Не се показва в избора на модел за чата.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini няма /audio/speech и /audio/transcriptions: тези модели не могат да бъдат глас на сървъра.";

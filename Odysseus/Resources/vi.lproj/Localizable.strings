@@ -926,3 +926,18 @@
 "Fechado" = "Đang đóng";
 "%lld modelos, %lld baixados" = "%lld mô hình, %lld đã tải";
 "Não consegui carregar o modelo %@." = "Không thể tải mô hình %@.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Trò chuyện";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Giọng nói (TTS)";
+"Transcrição (STT)" = "Chép lời (STT)";
+"Áudio ao vivo" = "Âm thanh trực tiếp";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — đang đọc bằng giọng của thiết bị.";
+"Parar leitura" = "Dừng đọc";
+"Ouvir mensagem" = "Nghe tin nhắn";
+"URL personalizada" = "URL tùy chỉnh";
+"Chave reconhecida: %@" = "Đã nhận ra khóa: %@";
+"Não aparece no seletor do chat." = "Không hiển thị trong bộ chọn mô hình trò chuyện.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini không có /audio/speech hay /audio/transcriptions: các mô hình này không thể làm giọng của máy chủ.";

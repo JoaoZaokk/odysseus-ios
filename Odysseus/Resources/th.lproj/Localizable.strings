@@ -926,3 +926,18 @@
 "Fechado" = "ปิดอยู่";
 "%lld modelos, %lld baixados" = "%lld โมเดล ดาวน์โหลดแล้ว %lld";
 "Não consegui carregar o modelo %@." = "โหลดโมเดล %@ ไม่สำเร็จ";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "แชท";
+"Vídeo" = "วิดีโอ";
+"Voz (TTS)" = "เสียงพูด (TTS)";
+"Transcrição (STT)" = "ถอดเสียง (STT)";
+"Áudio ao vivo" = "เสียงสด";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — กำลังอ่านด้วยเสียงของอุปกรณ์";
+"Parar leitura" = "หยุดอ่าน";
+"Ouvir mensagem" = "ฟังข้อความ";
+"URL personalizada" = "URL กำหนดเอง";
+"Chave reconhecida: %@" = "จดจำคีย์ได้: %@";
+"Não aparece no seletor do chat." = "ไม่แสดงในตัวเลือกโมเดลของแชท";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini ไม่มี /audio/speech และ /audio/transcriptions: โมเดลเหล่านี้ใช้เป็นเสียงของเซิร์ฟเวอร์ไม่ได้";

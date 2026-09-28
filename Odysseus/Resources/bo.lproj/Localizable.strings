@@ -926,3 +926,18 @@
 "Fechado" = "ཁ་བརྒྱབ་ཡོད";
 "%lld modelos, %lld baixados" = "དཔེ་གཞི %lld། ཕབ་ལེན་བྱས་ཟིན་པ %lld";
 "Não consegui carregar o modelo %@." = "དཔེ་གཞི %@ སྣོན་འཇུག་བྱེད་མ་ཐུབ།";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "གླེང་མོལ།";
+"Vídeo" = "བརྙན་ཟློས།";
+"Voz (TTS)" = "སྐད་གདངས། (TTS)";
+"Transcrição (STT)" = "ཡི་གེར་འབེབས། (STT)";
+"Áudio ao vivo" = "ཐད་གཏོང་སྒྲ།";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — སྒྲིག་ཆས་ཀྱི་སྐད་ཀྱིས་ཀློག་བཞིན་པ།";
+"Parar leitura" = "ཀློག་མཚམས་འཇོག";
+"Ouvir mensagem" = "ལས་འཕྲིན་ཉན།";
+"URL personalizada" = "རང་སྒྲིག URL";
+"Chave reconhecida: %@" = "ལྡེ་མིག་ངོས་འཛིན་བྱུང་། %@";
+"Não aparece no seletor do chat." = "གླེང་མོལ་གྱི་དཔེ་དབྱིབས་འདེམས་ས་ལ་མི་མངོན།";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini ལ་ /audio/speech དང་ /audio/transcriptions མེད། དཔེ་དབྱིབས་འདི་དག་ཞབས་ཞུ་འཕྲུལ་ཆས་ཀྱི་སྐད་དུ་སྤྱོད་མི་ཐུབ།";

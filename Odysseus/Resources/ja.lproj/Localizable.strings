@@ -926,3 +926,18 @@
 "Fechado" = "閉じています";
 "%lld modelos, %lld baixados" = "%lld 個のモデル、%lld 個をダウンロード済み";
 "Não consegui carregar o modelo %@." = "モデル %@ を読み込めませんでした。";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "チャット";
+"Vídeo" = "動画";
+"Voz (TTS)" = "音声 (TTS)";
+"Transcrição (STT)" = "文字起こし (STT)";
+"Áudio ao vivo" = "ライブ音声";
+"Embeddings" = "埋め込み";
+"%@ — lendo com a voz do aparelho." = "%@ — 端末の音声で読み上げています。";
+"Parar leitura" = "読み上げを停止";
+"Ouvir mensagem" = "メッセージを聞く";
+"URL personalizada" = "カスタム URL";
+"Chave reconhecida: %@" = "キーを認識しました: %@";
+"Não aparece no seletor do chat." = "チャットのモデル選択には表示されません。";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini には /audio/speech も /audio/transcriptions もありません。これらのモデルはサーバーの音声として使えません。";

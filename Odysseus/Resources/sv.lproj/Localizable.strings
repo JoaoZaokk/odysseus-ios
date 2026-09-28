@@ -918,3 +918,18 @@
 "Fechado" = "Stängd";
 "%lld modelos, %lld baixados" = "%lld modeller, %lld nedladdade";
 "Não consegui carregar o modelo %@." = "Det gick inte att läsa in modellen %@.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Chatt";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Röst (TTS)";
+"Transcrição (STT)" = "Transkribering (STT)";
+"Áudio ao vivo" = "Liveljud";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — läses upp med enhetens röst.";
+"Parar leitura" = "Sluta läsa upp";
+"Ouvir mensagem" = "Lyssna på meddelandet";
+"URL personalizada" = "Anpassad URL";
+"Chave reconhecida: %@" = "Nyckeln känns igen: %@";
+"Não aparece no seletor do chat." = "Visas inte i chattens modellväljare.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini har varken /audio/speech eller /audio/transcriptions: de här modellerna kan inte vara serverns röst.";

@@ -918,3 +918,18 @@
 "Fechado" = "Suljettu";
 "%lld modelos, %lld baixados" = "%lld mallia, %lld ladattu";
 "Não consegui carregar o modelo %@." = "Mallin %@ lataaminen ei onnistunut.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Chat";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Ääni (TTS)";
+"Transcrição (STT)" = "Litterointi (STT)";
+"Áudio ao vivo" = "Live-ääni";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — luetaan laitteen äänellä.";
+"Parar leitura" = "Lopeta lukeminen";
+"Ouvir mensagem" = "Kuuntele viesti";
+"URL personalizada" = "Mukautettu URL";
+"Chave reconhecida: %@" = "Avain tunnistettu: %@";
+"Não aparece no seletor do chat." = "Ei näy chatin mallivalitsimessa.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Geminissä ei ole /audio/speech- eikä /audio/transcriptions-rajapintaa: näistä malleista ei ole palvelimen ääneksi.";

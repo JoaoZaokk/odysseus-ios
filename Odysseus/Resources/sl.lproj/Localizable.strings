@@ -926,3 +926,18 @@
 "Fechado" = "Zaprto";
 "%lld modelos, %lld baixados" = "%lld modelov, %lld prenesenih";
 "Não consegui carregar o modelo %@." = "Modela %@ ni bilo mogoče naložiti.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Klepet";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Glas (TTS)";
+"Transcrição (STT)" = "Prepis (STT)";
+"Áudio ao vivo" = "Zvok v živo";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — branje z glasom naprave.";
+"Parar leitura" = "Ustavi branje";
+"Ouvir mensagem" = "Poslušaj sporočilo";
+"URL personalizada" = "URL po meri";
+"Chave reconhecida: %@" = "Ključ prepoznan: %@";
+"Não aparece no seletor do chat." = "Ne prikaže se v izbirniku modela klepeta.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini nima /audio/speech ne /audio/transcriptions: ti modeli ne morejo biti glas strežnika.";

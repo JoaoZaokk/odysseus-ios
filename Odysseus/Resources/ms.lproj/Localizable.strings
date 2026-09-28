@@ -926,3 +926,18 @@
 "Fechado" = "Tertutup";
 "%lld modelos, %lld baixados" = "%lld model, %lld dimuat turun";
 "Não consegui carregar o modelo %@." = "Tidak dapat memuatkan model %@.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Sembang";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Suara (TTS)";
+"Transcrição (STT)" = "Transkripsi (STT)";
+"Áudio ao vivo" = "Audio langsung";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — dibaca dengan suara peranti.";
+"Parar leitura" = "Henti membaca";
+"Ouvir mensagem" = "Dengar mesej";
+"URL personalizada" = "URL tersuai";
+"Chave reconhecida: %@" = "Kunci dikenal pasti: %@";
+"Não aparece no seletor do chat." = "Tidak dipaparkan dalam pemilih model sembang.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini tiada /audio/speech atau /audio/transcriptions: model ini tidak boleh menjadi suara pelayan.";

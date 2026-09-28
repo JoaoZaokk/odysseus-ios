@@ -926,3 +926,18 @@
 "Fechado" = "Aizvērts";
 "%lld modelos, %lld baixados" = "%lld modeļi, %lld lejupielādēti";
 "Não consegui carregar o modelo %@." = "Neizdevās ielādēt modeli %@.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Tērzēšana";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Balss (TTS)";
+"Transcrição (STT)" = "Transkripcija (STT)";
+"Áudio ao vivo" = "Tiešraides audio";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — lasa ar ierīces balsi.";
+"Parar leitura" = "Pārtraukt lasīšanu";
+"Ouvir mensagem" = "Noklausīties ziņu";
+"URL personalizada" = "Pielāgots URL";
+"Chave reconhecida: %@" = "Atslēga atpazīta: %@";
+"Não aparece no seletor do chat." = "Netiek rādīts tērzēšanas modeļu izvēlē.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini nav /audio/speech un /audio/transcriptions: šie modeļi nevar būt servera balss.";

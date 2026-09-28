@@ -926,3 +926,18 @@
 "Fechado" = "Zatvorené";
 "%lld modelos, %lld baixados" = "%lld modelov, %lld stiahnutých";
 "Não consegui carregar o modelo %@." = "Model %@ sa nepodarilo načítať.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Chat";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Hlas (TTS)";
+"Transcrição (STT)" = "Prepis (STT)";
+"Áudio ao vivo" = "Živý zvuk";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — číta sa hlasom zariadenia.";
+"Parar leitura" = "Zastaviť čítanie";
+"Ouvir mensagem" = "Vypočuť správu";
+"URL personalizada" = "Vlastná URL";
+"Chave reconhecida: %@" = "Kľúč rozpoznaný: %@";
+"Não aparece no seletor do chat." = "Nezobrazuje sa vo výbere modelu chatu.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini nemá /audio/speech ani /audio/transcriptions: tieto modely nemôžu slúžiť ako hlas servera.";

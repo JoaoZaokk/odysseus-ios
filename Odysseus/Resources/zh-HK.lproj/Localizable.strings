@@ -926,3 +926,18 @@
 "Fechado" = "已收合";
 "%lld modelos, %lld baixados" = "%lld 個模型，已下載 %lld 個";
 "Não consegui carregar o modelo %@." = "無法載入模型 %@。";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "聊天";
+"Vídeo" = "影片";
+"Voz (TTS)" = "語音 (TTS)";
+"Transcrição (STT)" = "轉寫 (STT)";
+"Áudio ao vivo" = "即時音訊";
+"Embeddings" = "嵌入";
+"%@ — lendo com a voz do aparelho." = "%@ — 正在用裝置語音朗讀。";
+"Parar leitura" = "停止朗讀";
+"Ouvir mensagem" = "收聽訊息";
+"URL personalizada" = "自訂 URL";
+"Chave reconhecida: %@" = "已辨識金鑰：%@";
+"Não aparece no seletor do chat." = "不會出現在聊天的模型選擇器中。";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini 冇 /audio/speech 同 /audio/transcriptions：呢啲模型唔可以做伺服器語音。";

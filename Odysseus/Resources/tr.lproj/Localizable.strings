@@ -926,3 +926,18 @@
 "Fechado" = "Kapalı";
 "%lld modelos, %lld baixados" = "%lld model, %lld indirildi";
 "Não consegui carregar o modelo %@." = "%@ modeli yüklenemedi.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Sohbet";
+"Vídeo" = "Video";
+"Voz (TTS)" = "Ses (TTS)";
+"Transcrição (STT)" = "Transkripsiyon (STT)";
+"Áudio ao vivo" = "Canlı ses";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — cihazın sesiyle okunuyor.";
+"Parar leitura" = "Okumayı durdur";
+"Ouvir mensagem" = "Mesajı dinle";
+"URL personalizada" = "Özel URL";
+"Chave reconhecida: %@" = "Anahtar tanındı: %@";
+"Não aparece no seletor do chat." = "Sohbetin model seçicisinde görünmez.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini'de /audio/speech ve /audio/transcriptions yok: bu modeller sunucunun sesi olamaz.";

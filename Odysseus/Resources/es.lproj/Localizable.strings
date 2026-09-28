@@ -928,3 +928,18 @@
 "Fechado" = "Cerrado";
 "%lld modelos, %lld baixados" = "%lld modelos, %lld descargados";
 "Não consegui carregar o modelo %@." = "No se pudo cargar el modelo %@.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Chat";
+"Vídeo" = "Vídeo";
+"Voz (TTS)" = "Voz (TTS)";
+"Transcrição (STT)" = "Transcripción (STT)";
+"Áudio ao vivo" = "Audio en vivo";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — leyendo con la voz del dispositivo.";
+"Parar leitura" = "Detener lectura";
+"Ouvir mensagem" = "Escuchar mensaje";
+"URL personalizada" = "URL personalizada";
+"Chave reconhecida: %@" = "Clave reconocida: %@";
+"Não aparece no seletor do chat." = "No aparece en el selector de modelos del chat.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini no tiene /audio/speech ni /audio/transcriptions: estos modelos no sirven como voz del servidor.";

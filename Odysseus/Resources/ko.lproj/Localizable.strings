@@ -926,3 +926,18 @@
 "Fechado" = "닫힘";
 "%lld modelos, %lld baixados" = "모델 %lld개, %lld개 다운로드됨";
 "Não consegui carregar o modelo %@." = "모델 %@을(를) 불러오지 못했습니다.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "채팅";
+"Vídeo" = "동영상";
+"Voz (TTS)" = "음성 (TTS)";
+"Transcrição (STT)" = "받아쓰기 (STT)";
+"Áudio ao vivo" = "실시간 오디오";
+"Embeddings" = "임베딩";
+"%@ — lendo com a voz do aparelho." = "%@ — 기기 음성으로 읽는 중입니다.";
+"Parar leitura" = "읽기 중지";
+"Ouvir mensagem" = "메시지 듣기";
+"URL personalizada" = "사용자 지정 URL";
+"Chave reconhecida: %@" = "키 인식됨: %@";
+"Não aparece no seletor do chat." = "채팅 모델 선택기에 표시되지 않습니다.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini에는 /audio/speech와 /audio/transcriptions가 없습니다. 이 모델들은 서버 음성으로 쓸 수 없습니다.";

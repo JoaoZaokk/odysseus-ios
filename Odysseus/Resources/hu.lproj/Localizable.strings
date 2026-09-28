@@ -926,3 +926,18 @@
 "Fechado" = "Zárva";
 "%lld modelos, %lld baixados" = "%lld modell, %lld letöltve";
 "Não consegui carregar o modelo %@." = "A(z) %@ modellt nem sikerült betölteni.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "Csevegés";
+"Vídeo" = "Videó";
+"Voz (TTS)" = "Hang (TTS)";
+"Transcrição (STT)" = "Átirat (STT)";
+"Áudio ao vivo" = "Élő hang";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — felolvasás a készülék hangján.";
+"Parar leitura" = "Felolvasás leállítása";
+"Ouvir mensagem" = "Üzenet meghallgatása";
+"URL personalizada" = "Egyéni URL";
+"Chave reconhecida: %@" = "Felismert kulcs: %@";
+"Não aparece no seletor do chat." = "Nem jelenik meg a csevegés modellválasztójában.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "A Gemininek nincs /audio/speech és /audio/transcriptions végpontja: ezek a modellek nem lehetnek a szerver hangja.";

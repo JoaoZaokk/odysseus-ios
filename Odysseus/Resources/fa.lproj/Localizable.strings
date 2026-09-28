@@ -926,3 +926,18 @@
 "Fechado" = "بسته";
 "%lld modelos, %lld baixados" = "%lld مدل، %lld دانلود‌شده";
 "Não consegui carregar o modelo %@." = "بارگذاری مدل %@ ممکن نشد.";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "گفتگو";
+"Vídeo" = "ویدیو";
+"Voz (TTS)" = "صدا (TTS)";
+"Transcrição (STT)" = "رونویسی (STT)";
+"Áudio ao vivo" = "صدای زنده";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — با صدای دستگاه خوانده می‌شود.";
+"Parar leitura" = "توقف خواندن";
+"Ouvir mensagem" = "شنیدن پیام";
+"URL personalizada" = "URL سفارشی";
+"Chave reconhecida: %@" = "کلید شناسایی شد: %@";
+"Não aparece no seletor do chat." = "در انتخابگر مدل گفتگو نمایش داده نمی‌شود.";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini ‏/audio/speech و ‏/audio/transcriptions ندارد: این مدل‌ها نمی‌توانند صدای سرور باشند.";

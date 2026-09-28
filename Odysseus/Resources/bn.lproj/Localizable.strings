@@ -928,3 +928,18 @@
 "Fechado" = "বন্ধ";
 "%lld modelos, %lld baixados" = "%lld মডেল, %lld ডাউনলোড করা";
 "Não consegui carregar o modelo %@." = "মডেল %@ লোড করা যায়নি।";
+
+/* 1.13 — ouvir mensagens, provedores por chave, modelos por tipo */
+"Chat" = "চ্যাট";
+"Vídeo" = "ভিডিও";
+"Voz (TTS)" = "কণ্ঠ (TTS)";
+"Transcrição (STT)" = "ট্রান্সক্রিপশন (STT)";
+"Áudio ao vivo" = "লাইভ অডিও";
+"Embeddings" = "Embeddings";
+"%@ — lendo com a voz do aparelho." = "%@ — ডিভাইসের কণ্ঠে পড়া হচ্ছে।";
+"Parar leitura" = "পড়া থামান";
+"Ouvir mensagem" = "বার্তা শুনুন";
+"URL personalizada" = "কাস্টম URL";
+"Chave reconhecida: %@" = "কী চেনা গেছে: %@";
+"Não aparece no seletor do chat." = "চ্যাটের মডেল নির্বাচকে দেখা যায় না।";
+"A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor." = "Gemini-তে /audio/speech এবং /audio/transcriptions নেই: এই মডেলগুলো সার্ভারের কণ্ঠ হতে পারে না।";

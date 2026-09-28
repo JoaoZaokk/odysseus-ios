@@ -16,6 +16,11 @@ final class NewStringsLocalizedTests: XCTestCase {
         "Aberto", "Fechado",                  // VoiceSettingsView, section state
         "%lld modelos, %lld baixados",        // VoiceSettingsView, section hint
         "Não consegui carregar o modelo %@.", // OnDeviceSTT failure
+        // 1.13 — reading messages aloud, providers by key, models by kind
+        "Chat", "Vídeo", "Voz (TTS)", "Transcrição (STT)", "Áudio ao vivo", "Embeddings",
+        "%@ — lendo com a voz do aparelho.", "Parar leitura", "Ouvir mensagem",
+        "URL personalizada", "Chave reconhecida: %@", "Não aparece no seletor do chat.",
+        "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor.",
     ]
 
     func testEveryNewStringHasAnEntryInEveryCatalogue() throws {
@@ -39,7 +44,9 @@ final class NewStringsLocalizedTests: XCTestCase {
     func testPlaceholdersSurviveTranslation() throws {
         let appBundle = Bundle(for: LocalizationManager.self)
         let expected = ["%lld modelos, %lld baixados": ("%lld", 2),
-                        "Não consegui carregar o modelo %@.": ("%@", 1)]
+                        "Não consegui carregar o modelo %@.": ("%@", 1),
+                        "%@ — lendo com a voz do aparelho.": ("%@", 1),
+                        "Chave reconhecida: %@": ("%@", 1)]
         for lang in AppLanguage.allCases {
             guard let path = appBundle.path(forResource: lang.lprojName, ofType: "lproj"),
                   let catalogue = Bundle(path: path) else { continue }
