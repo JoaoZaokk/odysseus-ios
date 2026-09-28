@@ -388,6 +388,10 @@ final class APIClient: @unchecked Sendable {
         return decodeList(ChatModel.self, data)
     }
 
+    /// Above this many chat models an endpoint's non-curated rest goes to the
+    /// "Outros modelos" submenu; at or below it, everything is listed inline.
+    static let inlineInventoryLimit = 24
+
     /// Static so the old-server/new-server decode paths are unit-testable.
     static func parseGroupedModels(_ data: Data) -> [ChatModel]? {
         struct Group: Decodable {
@@ -406,9 +410,21 @@ final class APIClient: @unchecked Sendable {
             // Only chat-capable endpoints belong in the picker. Old servers
             // don't send model_type (nil) — everything they list is an LLM.
             if let type = group.model_type, type != "llm" { return [] }
+            // The picker is for chatting. A Gemini key's inventory also lists
+            // text-to-speech, image and live-audio models (the server keeps
+            // anything that answers generateContent), and its curated Google
+            // list promotes "gemini-3.8-flash-tts" into the main list — pick it
+            // and the send fails. They are shown in Settings, by kind, instead.
+            let chatCount = (group.models ?? []).filter { ModelKind.of($0) == .chat }.count
+                + (group.models_extra ?? []).filter { ModelKind.of($0) == .chat }.count
+            // A short inventory is shown whole. The server's curated Google
+            // list names only Gemini, so on a Gemini key every Gemma model was
+            // buried under "Outros modelos" and read as unrecognised.
+            let splitExtras = chatCount > Self.inlineInventoryLimit
             func rows(_ ids: [String]?, _ displays: [String]?, extra: Bool) -> [ChatModel] {
                 let ids = ids ?? []
-                return ids.enumerated().map { index, id in
+                return ids.enumerated().compactMap { index, id in
+                    guard ModelKind.of(id) == .chat else { return nil }
                     // Display names are trusted only when the server sent one
                     // per model; on a mismatch (or old server) derive from id.
                     let display = (displays?.count == ids.count) ? displays?[index] : nil
@@ -419,7 +435,7 @@ final class APIClient: @unchecked Sendable {
                                      endpointId: group.endpoint_id,
                                      endpointURL: group.url,
                                      endpointName: group.endpoint_name,
-                                     isExtra: extra)
+                                     isExtra: extra && splitExtras)
                 }
             }
             return rows(group.models, group.models_display, extra: false)

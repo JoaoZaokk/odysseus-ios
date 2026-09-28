@@ -239,6 +239,12 @@ struct SettingsScroll<Content: View>: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(20)
         }
+        // Every form in Settings lives in one of these. Without it the keyboard
+        // had no way down on iPhone: scrolling did nothing, and in "Adicionar
+        // modelos" it sat over the Add button and its result. `.immediately`,
+        // like the system Settings app — `.interactively` only yields to a drag
+        // into the keyboard, and at the top of a sheet that drag closes the sheet.
+        .scrollDismissesKeyboard(.immediately)
         .background(theme.bg)
     }
 }

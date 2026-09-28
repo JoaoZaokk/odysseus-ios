@@ -45,7 +45,9 @@ final class ModelsListDecodingTests: XCTestCase {
         XCTAssertEqual(out?[0].isExtra, false)
         XCTAssertEqual(out?[1].id, "mistralai/mistral-small")
         XCTAssertEqual(out?[1].name, "Mistral Small")
-        XCTAssertEqual(out?[1].isExtra, true)
+        // Two models is a short inventory: shown whole, not split into a
+        // submenu (ModelKindTests covers the long case, where it still is).
+        XCTAssertEqual(out?[1].isExtra, false)
         XCTAssertEqual(out?[0].endpointName, "OpenRouter")
     }
 

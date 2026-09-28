@@ -137,6 +137,12 @@ struct AddedModelsSection: View {
             }
             .font(.ody(size: 12))
             .disabled(vm.refreshing != nil)
+            // What the endpoint's models are for, when they are not all chat
+            // models — a Gemini key is chat, voice, image and live audio at once.
+            let kinds = ModelKind.breakdown(ep.models)
+            if !kinds.isEmpty {
+                Text(verbatim: kinds).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+            }
             // Its own row: the buttons above already fill an iPhone's width.
             Button { picking = ep } label: {
                 HStack(spacing: 6) {
@@ -209,7 +215,13 @@ struct Fallback: Identifiable { let id = UUID(); var endpointId: String; var mod
             researchModel = s.string("research_model")
         }
     }
-    func models(_ epId: String) -> [String] { endpoints.first { $0.id == epId }?.models ?? [] }
+    /// Chat models only: every menu on this screen picks a model to *talk to*
+    /// (chat, utility, research, fallbacks). A Gemini key also lists TTS and
+    /// image models, and "first model of the endpoint" used to be able to land
+    /// on one of those.
+    func models(_ epId: String) -> [String] {
+        (endpoints.first { $0.id == epId }?.models ?? []).filter { ModelKind.of($0) == .chat }
+    }
     func name(_ epId: String) -> String { endpoints.first { $0.id == epId }?.name ?? "—" }
     var allModels: [String] {
         var seen = Set<String>(); var out: [String] = []
@@ -394,8 +406,14 @@ struct AIDefaultsSection: View {
 @MainActor final class AddModelsVM: ObservableObject {
     @Published var name = ""
     @Published var baseURL = ""
-    @Published var apiKey = ""
-    @Published var kind = "local"     // "local" | "api"
+    /// Pasting a key the provider can be told from fills the base URL, the way
+    /// the web's `/setup` does — a Gemini key alone used to add nothing.
+    @Published var apiKey = "" { didSet { if apiKey != oldValue { recognise() } } }
+    @Published var kind = "local"     // "local" | "api" | "image"
+    /// The provider picked from the list or recognised from the key.
+    @Published private(set) var preset: ProviderPreset?
+    /// True when `preset` came from the key rather than the picker.
+    @Published private(set) var recognised = false
     @Published var saving = false
     @Published var ok = false
     @Published var message: String?
@@ -406,20 +424,46 @@ struct AIDefaultsSection: View {
         !baseURL.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !saving
     }
 
+    /// Picks a provider from the list: its URL, and its name for the row.
+    func choose(_ p: ProviderPreset?) {
+        preset = p
+        recognised = false
+        message = nil
+        if let p { baseURL = p.baseURL; kind = "api" } else { baseURL = "" }
+    }
+
+    /// Only overwrites a URL the user did not type: empty, or one a preset put there.
+    private func recognise() {
+        guard kind != "image", let p = ProviderPreset.detect(key: apiKey) else { return }
+        let url = baseURL.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard url.isEmpty || ProviderPreset.matching(url: url) != nil else { return }
+        preset = p
+        recognised = true
+        baseURL = p.baseURL
+        kind = "api"
+        message = nil
+    }
+
     func add() async {
         saving = true; message = nil; defer { saving = false }
-        let url = baseURL.trimmingCharacters(in: .whitespacesAndNewlines)
-        let nm = name.trimmingCharacters(in: .whitespaces).isEmpty ? hostName(url) : name
+        let url = ProviderPreset.normalize(baseURL)
+        let key = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
+        let typed = name.trimmingCharacters(in: .whitespaces)
+        let nm = !typed.isEmpty ? name : (ProviderPreset.matching(url: url)?.name ?? hostName(url))
         do {
             let probe = try await api.createEndpoint(name: nm, baseURL: url,
-                                                     apiKey: apiKey.isEmpty ? nil : apiKey, kind: kind)
+                                                     apiKey: key.isEmpty ? nil : key, kind: kind)
             // Green only when the host answered. A dead URL used to read
             // "Adicionado" in green while the row it created was offline.
             ok = probe.isOnline
-            message = probe.isOnline
-                ? L("Conectado: %lld modelos.", probe.models.count)
-                : L("Falha: %@", probe.pingError ?? "offline")
-            if ok { name = ""; baseURL = ""; apiKey = "" }
+            if probe.isOnline {
+                let kinds = ModelKind.breakdown(probe.models)
+                message = L("Conectado: %lld modelos.", probe.models.count)
+                    + (kinds.isEmpty ? "" : "\n" + kinds)
+            } else {
+                message = L("Falha: %@", probe.pingError ?? "offline")
+            }
+            if ok { name = ""; baseURL = ""; apiKey = ""; preset = nil; recognised = false }
         } catch {
             ok = false
             message = L("Falha: %@", SettingsUI.msg(error))
@@ -594,12 +638,36 @@ struct AddModelsSection: View {
                     typeChip("Imagem", "image")
                     Spacer()
                 }
+                if vm.kind == "api" {
+                    label("Provedor")
+                    Menu {
+                        Button("URL personalizada") { vm.choose(nil) }
+                        Divider()
+                        ForEach(ProviderPreset.all) { p in
+                            Button(p.name) { vm.choose(p) }
+                        }
+                    } label: {
+                        HStack {
+                            // From the URL itself, so editing it by hand never leaves a stale name.
+                            Text(verbatim: ProviderPreset.matching(url: vm.baseURL)?.name ?? L("URL personalizada"))
+                                .font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
+                            Spacer()
+                            Image(systemName: "chevron.up.chevron.down").font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
+                        }
+                        .padding(10).background(theme.bg, in: RoundedRectangle(cornerRadius: 8))
+                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
+                    }
+                }
                 label("Base URL")
                 field($vm.baseURL, placeholder: vm.kind == "local" ? "http://localhost:11434/v1" : "https://api.openai.com/v1")
                 label("Nome (opcional)")
                 field($vm.name, placeholder: "vazio = usa o host da URL")
                 label(vm.kind == "local" ? "API key (opcional)" : "API key")
                 field($vm.apiKey, placeholder: "sk-…", secure: true)
+                if vm.recognised, let p = vm.preset {
+                    Label(L("Chave reconhecida: %@", p.name), systemImage: "checkmark.seal")
+                        .font(.ody(size: 11)).foregroundStyle(theme.green)
+                }
                 HStack(spacing: 8) {
                     if let m = vm.message {
                         Text(m).font(.ody(size: 11))

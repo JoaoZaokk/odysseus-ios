@@ -36,6 +36,27 @@ import SwiftUI
 
     var dirty: Bool { visible != Set(models.filter(\.isVisible).map(\.id)) }
 
+    /// The filtered rows split by what each model is for. A Gemini key lists
+    /// chat, text-to-speech, image and live-audio models in one inventory;
+    /// shown as one flat list, the voice models read as broken chat models.
+    struct KindSection: Identifiable {
+        let kind: ModelKind
+        let models: [EndpointModel]
+        var id: String { kind.rawValue }
+    }
+    var sections: [KindSection] {
+        let groups = Dictionary(grouping: filtered) { ModelKind.of($0.id) }
+        return ModelKind.allCases.compactMap { k in groups[k].map { KindSection(kind: k, models: $0) } }
+    }
+
+    /// Google's OpenAI-compatible surface has no `/audio/speech` or
+    /// `/audio/transcriptions`, which is all the server's voice providers call
+    /// (`services/tts`, `services/stt`). Its TTS models cannot be the server's
+    /// voice, and saying so beats letting someone find out by trying.
+    var isGoogle: Bool {
+        URL(string: endpoint.url ?? "")?.host?.lowercased() == "generativelanguage.googleapis.com"
+    }
+
     func load() async {
         loading = true; defer { loading = false }
         do {
@@ -177,16 +198,45 @@ struct EndpointModelsView: View {
 
     private var list: some View {
         ScrollView {
-            LazyVStack(spacing: 0) {
-                ForEach(vm.filtered) { m in
-                    Button { vm.toggle(m) } label: { row(m) }
-                        .buttonStyle(.plain)
-                    Divider().overlay(theme.border)
+            LazyVStack(alignment: .leading, spacing: 0) {
+                let sections = vm.sections
+                ForEach(sections) { section in
+                    if sections.count > 1 { sectionHeader(section) }
+                    ForEach(section.models) { m in
+                        Button { vm.toggle(m) } label: { row(m) }
+                            .buttonStyle(.plain)
+                        Divider().overlay(theme.border)
+                    }
                 }
             }
             .padding(.horizontal, 18)
             .padding(.bottom, 20)
         }
+    }
+
+    private func sectionHeader(_ section: EndpointModelsVM.KindSection) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            HStack(spacing: 6) {
+                Image(systemName: section.kind.symbol).font(.ody(size: 11))
+                Text(verbatim: section.kind.title).font(.ody(size: 12, weight: .semibold))
+                Text(verbatim: "\(section.models.count)").font(.ody(size: 11)).monospacedDigit()
+                    .foregroundStyle(theme.secondaryText)
+                Spacer()
+            }
+            .foregroundStyle(theme.fg)
+            if section.kind != .chat {
+                Group {
+                    if vm.isGoogle && (section.kind == .tts || section.kind == .stt) {
+                        Text("A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor.")
+                    } else {
+                        Text("Não aparece no seletor do chat.")
+                    }
+                }
+                .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(.top, 16).padding(.bottom, 6)
     }
 
     private func row(_ m: EndpointModel) -> some View {
