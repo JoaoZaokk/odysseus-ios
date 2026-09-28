@@ -9,6 +9,74 @@ localizações. **Submetida para revisão pelo dono em 12/09 (WAITING_FOR_REVIEW
 simulador **iOS 27** (Xcode 27) e no **iOS 17** (piso), iOS e macOS compilando sem
 aviso. Catálogos: **43 × 833**.
 
+## Rodada 11 — ouvir mensagens, chave Gemini, modelos por tipo (27/09, pós-1.12, sem versão nova)
+
+Três commits sobre a 1.12 (`d4b7442`, `953d7ea`, `bb16c33`), **390 testes verdes**, macOS
+compila, catálogos **43 × 894**. Nada subido para a Apple; `project.yml` continua 1.12.
+
+**O servidor estava fora do ar a rodada inteira** (Cloudflare devolvendo 502 após 30 s;
+`erp.` no mesmo host também). O pin do servidor vivo não foi refeito. Tudo foi verificado
+contra o upstream `odysseus-dev/odysseus` `dev` = `3b6c169` (13/09 — o `dev` está parado
+desde então; só dependabot depois) e contra um stub local do contrato.
+
+**O que o upstream mudou desde o pin antigo (`28c333e`, 118 commits) e toca o app:**
+- `f562bfe` Kokoro virou instalação opcional → `tts_provider: "local"` sem Kokoro = 503.
+- `tts_provider` nasce `"disabled"` (503); `"browser"` é "o cliente fala" e
+  `/api/tts/synthesize` responde **500 sempre** para ele (`services/tts/tts_service.py`
+  devolve `None`). Foi a causa de "não deixa ouvir as mensagens".
+- `032967a`/`0e03aea` API models visíveis por padrão; `e4046aa` provedor por rótulo DNS;
+  `d449a9d` histórico paginado não hidrata o contexto (formato de `/api/history` igual);
+  onda de aprovações de agente (15/08) e `0dd70a7` Default/Local owner — sem mudança de
+  forma que o app leia. Nenhuma rota que o app usa sumiu.
+- Probe do Google (`_probe_google_models`) usa a API nativa e guarda todo modelo com
+  `generateContent` — TTS e imagem inclusos. A lista curada `"google"` casa por prefixo
+  (`"gemini-3"` pega `gemini-3.8-flash-tts`). O TTS/STT do servidor por endpoint só fala
+  `/audio/speech` e `/audio/transcriptions` (OpenAI); **a Gemini não tem nenhum dos dois**
+  no modo compatível, então modelo TTS da Gemini não vira voz do servidor. O web lista o
+  endpoint como provedor de TTS mesmo assim (procura "tts"/"audio" no id) — é quebrado lá.
+
+**Corrigido:**
+- `SpeechManager.effectiveEngine` ("browser" = voz do aparelho; lê `/api/tts/stats` antes,
+  1×/min) e `fallsBackToNative` (falha ao ler mensagem → voz do aparelho + aviso sob a
+  mensagem, `PlaybackNotice`). Modo de voz e "testar voz" não trocam de voz.
+- 🔊 nas mensagens enviadas; alvo de toque 32×28.
+- `ProviderPreset` (lista do web + prefixo da chave: `AIza`, `sk-ant-`, `sk-or-`,
+  `sk-proj-`, `gsk_`, `xai-`, `nvapi-`) e `normalize` (host público sem esquema → https;
+  o servidor poria http:// e a listagem nativa do Google falha).
+- `ModelKind` (chat/imagem/vídeo/TTS/STT/áudio ao vivo/embeddings, por palavra inteira do
+  id). `parseGroupedModels` só entrega chat; inventário ≤ 24 aparece sem submenu (o Gemma
+  estava enterrado em "Outros modelos"). "Escolher modelos" agrupa por tipo.
+- `SettingsScroll` fecha o teclado ao rolar.
+
+**Armadilhas desta rodada:**
+- `xcrun simctl launch --console-pty` **congela o app**: o `print` do `VoiceLog` bloqueia
+  num pty que ninguém lê (80 s de tela vazia que pareceram bug de partida). `--console` com
+  arquivo não bloqueia mas não mostra nada (stdout em buffer). Para ver a fala:
+  `xcrun simctl spawn <udid> log stream --predicate 'process == "Odysseus" AND eventMessage
+  CONTAINS[c] "utterance"'` — o CoreSynthesizer loga "Enqueue"/"Completed utterance".
+- Partida no simulador Debug: 14–15 s até o 1º request. Não medido no aparelho.
+- `isVisionModel` tem teste que exige **espelhar o web**, não melhorar — não filtrar por
+  `ModelKind` ali.
+- O guard da tarefa de stats usava `readAloud`, que é nil no "testar voz": o teste
+  `testTheSettingsVoiceTestDoesNotHideAFailure` pegou. Guard agora é `preparingID == id`.
+
+**Desert Ant Labs "Clear" (limpar áudio antes do STT) — avaliado, não integrado.** Modelo
+bom e pequeno (DeepFilterNet3 afinado, Core ML 9 MB, ~300× tempo real), mas: a licença
+(Source-Available 1.0, §6 e resumo final) **proíbe desligar a telemetria** do SDK, que manda
+um id de aparelho + contagem de uso + modelo/OS/idioma para a Desert Ant — conflita com
+"Dados não coletados" na ficha e com a decisão de 13/09 (nada sai do aparelho). Exige
+crédito visível ("Powered by Desert Ant Labs"). Piso não é problema (`Package.swift` do
+`desert-ant-core` 3.5.0 declara iOS 17/macOS 14; a página de docs diz 18/15). Pesos baixados
+do Hub no primeiro uso. Espera 48 kHz (o STT usa 16 kHz), e limpeza antes de ASR nem sempre baixa o
+WER — teria de ser medido com a régua de podcast do Redoma antes. Alternativa sem custo de
+bytes nem de privacidade: a captura do STT está em `.record/.measurement`, que **desliga** o
+processamento de voz da Apple; testar `setVoiceProcessingEnabled(true)` (supressão de
+ruído + AGC do sistema) medindo WER com e sem.
+
+**Aberto:** cartão de admin "voz do servidor" (escolher `tts_provider`/`stt_provider` e
+modelo por endpoint pelo app — hoje só pelo web); endpoints do seletor do chat sem título
+por endpoint; testar com a chave real da Gemini (o stub reproduz a forma, não o Google).
+
 ## Rodada 10 — ícone de tela inicial, a lista de conversas e o catálogo de voz (1.12, 20/09)
 
 **1.12 — iOS build 28, macOS build 23 — enviadas e VALID no App Store Connect**
