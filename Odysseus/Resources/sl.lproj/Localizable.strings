@@ -946,3 +946,10 @@
 "Música" = "Glasba";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Registrirano kot Slika: modeli klepeta te končne točke se ne prikažejo v izbirniku modela klepeta.";
 "Usar para chat" = "Uporabi za klepet";
+
+/* Visual-defects round */
+"Interface" = "Vmesnik";
+"Pausada" = "Zaustavljeno";
+"Ativa" = "Aktivno";
+"Fixada" = "Pripeto";
+"Favorito" = "Priljubljeno";

@@ -946,3 +946,10 @@
 "Música" = "Muzyka";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Zarejestrowany jako Obraz: modele czatu tego endpointu nie pojawiają się w wyborze modelu czatu.";
 "Usar para chat" = "Użyj do czatu";
+
+/* Visual-defects round */
+"Interface" = "Interfejs";
+"Pausada" = "Wstrzymane";
+"Ativa" = "Aktywne";
+"Fixada" = "Przypięte";
+"Favorito" = "Ulubione";

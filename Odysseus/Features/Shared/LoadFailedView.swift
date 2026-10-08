@@ -35,6 +35,7 @@ struct LoadFailedView: View {
                 .padding(.top, 2)
             }
         }
-        .padding(40)
+        .padding(.horizontal, 40)
+        .voidAnchored()
     }
 }

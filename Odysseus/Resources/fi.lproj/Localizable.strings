@@ -938,3 +938,10 @@
 "Música" = "Musiikki";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Rekisteröity kuvaksi: tämän päätepisteen chat-mallit eivät näy chatin mallivalitsimessa.";
 "Usar para chat" = "Käytä chattiin";
+
+/* Visual-defects round */
+"Interface" = "Käyttöliittymä";
+"Pausada" = "Keskeytetty";
+"Ativa" = "Aktiivinen";
+"Fixada" = "Kiinnitetty";
+"Favorito" = "Suosikki";

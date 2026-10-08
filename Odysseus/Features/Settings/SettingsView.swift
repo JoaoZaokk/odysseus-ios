@@ -37,6 +37,10 @@ enum SettingsSection: String, CaseIterable, Identifiable {
         }
     }
 
+    /// Sections whose screen sets its own title (and so its own `.principal`
+    /// item — two of them on one screen is undefined).
+    var drawsOwnTitle: Bool { self == .voice || self == .appearance }
+
     var icon: String {
         switch self {
         case .addModels: return "plus.rectangle.on.rectangle"
@@ -108,9 +112,10 @@ struct SettingsView: View {
                 ForEach(Array(SettingsSection.groups(admin: app.isAdmin).enumerated()), id: \.offset) { _, group in
                     Section {
                         ForEach(group.1) { s in
-                            NavigationLink { content(s).navigationTitle(LocalizedStringKey(s.title)) } label: { row(s) }
+                            NavigationLink { sectionScreen(s) } label: { listRow(s) }
                                 .listRowBackground(theme.panel)
                                 .listRowSeparatorTint(theme.border)
+                                .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
                         }
                     } header: {
                         if let label = group.0 {
@@ -121,9 +126,9 @@ struct SettingsView: View {
                     }
                 }
             }
-            .navigationTitle("Ajustes")
+            .odyNavTitle("Ajustes")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { dismiss() } } }
+            .toolbar { ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } } }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
             .themedNavBar(theme)
@@ -138,7 +143,7 @@ struct SettingsView: View {
             Image(systemName: "gearshape.fill").foregroundStyle(theme.accent)
             Text("Ajustes").font(.ody(.headline)).foregroundStyle(theme.fg)
             Spacer()
-            Button("Concluído") { if let onClose { onClose() } else { dismiss() } }
+            Button("Fechar") { if let onClose { onClose() } else { dismiss() } }
                 .font(.ody(.body)).foregroundStyle(theme.accent)
                 .buttonStyle(.plain)
         }
@@ -183,6 +188,33 @@ struct SettingsView: View {
         .padding(.horizontal, 6)
         .contentShape(Rectangle())
     }
+
+    #if os(iOS)
+    /// iPhone row: icon column of 24, text at 36 from the row edge, and the
+    /// separator starting under the text and running to the card's edge.
+    /// 44 tall, so ten rows fit where the 65-point rows cut "Diagnóstico" in half.
+    private func listRow(_ s: SettingsSection) -> some View {
+        HStack(spacing: Spacing.iconGap) {
+            Image(systemName: s.icon)
+                .font(.ody(.body))
+                .foregroundStyle(theme.secondaryText)
+                .frame(width: Spacing.leadingColumn)
+            Text(LocalizedStringKey(s.title))
+                .font(.ody(.subheadline))
+                .foregroundStyle(theme.fg)
+            Spacer(minLength: 0)
+        }
+        .frame(minHeight: Spacing.tapTarget)
+        .contentShape(Rectangle())
+        .rowSeparatorInset()
+        .alignmentGuide(.listRowSeparatorTrailing) { d in d.width + 40 }
+    }
+
+    @ViewBuilder
+    private func sectionScreen(_ s: SettingsSection) -> some View {
+        if s.drawsOwnTitle { content(s) } else { content(s).odyNavTitle(s.title) }
+    }
+    #endif
 
     @ViewBuilder
     private func content(_ s: SettingsSection) -> some View {
@@ -284,12 +316,12 @@ struct ServerSheet: View {
                         .foregroundStyle(theme.secondaryText)
                 }
             }
-            .navigationTitle("Servidor")
+            .odyNavTitle("Servidor")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { BarButton("Cancelar") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Salvar") {
+                    BarButton("Salvar") {
                         if let url = ServerConfig.normalize(text) { app.updateServer(url) }
                         dismiss()
                     }

@@ -80,7 +80,6 @@ struct BrainView: View {
             theme.bg.ignoresSafeArea()
             content
         }
-        .odySearchable(text: $vm.search, prompt: "Buscar memórias")
         .screenChrome(title: "Brain") {
         } trailing: {
             Button { showAdd = true } label: { Image(systemName: "plus") }
@@ -91,7 +90,7 @@ struct BrainView: View {
         }
         .task { await vm.load() }
         .odyRefreshable { await vm.load() }
-        .alert("Nova memória", isPresented: $showAdd) {
+        .odyAlert("Nova memória", isPresented: $showAdd) {
             TextField("O que o assistente deve lembrar?", text: $newText)
             TextField("Categoria", text: $newCategory)
             Button("Adicionar") {
@@ -99,7 +98,7 @@ struct BrainView: View {
             }
             Button("Cancelar", role: .cancel) { newText = "" }
         }
-        .alert("Organizar memórias", isPresented: Binding(
+        .odyAlert("Organizar memórias", isPresented: Binding(
             get: { vm.auditMessage != nil },
             set: { if !$0 { vm.auditMessage = nil } }
         )) {
@@ -118,15 +117,25 @@ struct BrainView: View {
         } else if vm.memories.isEmpty {
             emptyState
         } else {
+            // The search sits on top, in the content, like the conversation
+            // list's: `.searchable` floats at the bottom edge on iOS 26, in
+            // the system sans, away from the list it filters.
+            let shown = vm.filtered
             VStack(spacing: 0) {
+                OdySearchField(text: $vm.search, prompt: "Buscar memórias")
                 categoryBar
                 List {
-                    ForEach(vm.filtered) { m in
-                        memoryRow(m).listRowBackground(theme.bg)
+                    ForEach(shown) { m in
+                        memoryRow(m)
+                            .listRowBackground(theme.bg)
+                            .gutterRowInsets(vertical: 8)
+                            .rowSeparatorInset()
+                            .edgeSeparators(first: m.id == shown.first?.id, last: m.id == shown.last?.id)
                     }
                 }
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
+                .listBottomBreathing()
             }
         }
     }
@@ -139,8 +148,11 @@ struct BrainView: View {
                     chip(cat, active: vm.activeCategory == cat) { vm.activeCategory = cat }
                 }
             }
-            .padding(.horizontal, 14).padding(.vertical, 8)
+            .padding(.leading, Spacing.gutter)
+            .padding(.trailing, Spacing.gutter + 36)
+            .padding(.vertical, 2)
         }
+        .trailingFade()
     }
 
     private func chip(_ label: String, active: Bool, _ tap: @escaping () -> Void) -> some View {
@@ -150,27 +162,32 @@ struct BrainView: View {
                 .foregroundStyle(active ? .white : theme.secondaryText)
                 .padding(.horizontal, 12).padding(.vertical, 6)
                 .background(active ? theme.accent : theme.panel, in: Capsule())
+                // Looks 28 tall, answers to 44.
+                .padding(.vertical, 8)
+                .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
     }
 
     private func memoryRow(_ m: Memory) -> some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(alignment: .top, spacing: Spacing.iconGap) {
+            // Pin and bullet share the 24 column, so the text starts on the
+            // same edge whether the memory is pinned or not.
             Image(systemName: m.pinned ? "pin.fill" : "circle.fill")
-                .font(m.pinned ? .caption : .ody(size: 6))
+                .font(.ody(size: m.pinned ? 12 : 6))
                 .foregroundStyle(m.pinned ? theme.accent : theme.secondaryText)
-                .frame(width: 16)
-                .padding(.top, 5)
+                .frame(width: Spacing.leadingColumn, height: 18)
+                .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 4) {
                 Text(m.text)
                     .font(.ody(.subheadline))
                     .foregroundStyle(theme.fg)
                 Text(m.category)
-                    .font(.ody(size: 10))
+                    .font(.ody(size: 11))
                     .foregroundStyle(theme.green)
             }
             Spacer()
         }
-        .padding(.vertical, 4)
         .swipeActions(edge: .trailing) {
             Button(role: .destructive) { Task { await vm.delete(m) } } label: {
                 Label("Apagar", systemImage: "trash")
@@ -190,15 +207,7 @@ struct BrainView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "brain").font(.ody(size: 44)).foregroundStyle(theme.accent)
-            Text("Sem memórias ainda")
-                .font(.ody(.headline)).foregroundStyle(theme.fg)
-            Text("O que o assistente lembrar de você aparece aqui.")
-                .font(.ody(.footnote))
-                .foregroundStyle(theme.secondaryText)
-                .multilineTextAlignment(.center)
-        }
-        .padding(40)
+        EmptyStateView(icon: "brain", title: "Sem memórias ainda",
+                       message: "O que o assistente lembrar de você aparece aqui.")
     }
 }

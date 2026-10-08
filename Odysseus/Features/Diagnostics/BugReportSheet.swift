@@ -67,9 +67,9 @@ struct BugReportSheet: View {
                 .padding(16)
             }
             .background(theme.bg)
-            .navigationTitle(L("Relatório de bug"))
+            .odyNavTitle(L("Relatório de bug"), verbatim: true)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Fechar") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { BarButton("Fechar") { dismiss() } }
             }
             #if os(iOS)
             .sheet(isPresented: $showMail) {

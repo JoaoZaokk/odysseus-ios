@@ -24,10 +24,10 @@ struct InterfaceSettingsView: View {
             }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
-            .navigationTitle("Personalizar interface")
+            .odyNavTitle("Personalizar interface")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) { Button("Concluído") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } }
             }
             .themedNavBar(theme)
         }

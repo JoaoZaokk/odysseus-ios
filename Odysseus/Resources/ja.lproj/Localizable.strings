@@ -946,3 +946,10 @@
 "Música" = "音楽";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "画像として登録されています。このエンドポイントのチャットモデルはチャットのモデル選択に表示されません。";
 "Usar para chat" = "チャットに使う";
+
+/* Visual-defects round */
+"Interface" = "インターフェイス";
+"Pausada" = "一時停止中";
+"Ativa" = "有効";
+"Fixada" = "ピン留め";
+"Favorito" = "お気に入り";

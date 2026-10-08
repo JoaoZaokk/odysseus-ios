@@ -51,14 +51,16 @@ struct LoginView: View {
                             .transition(.opacity)
                     }
 
+                    // Same column as the fields and the button: an extra
+                    // 4-point inset ended the switch short of "Entrar".
                     Toggle(isOn: $remember) {
                         Text("Manter conectado")
                             .font(.ody(.subheadline))
                             .foregroundStyle(theme.secondaryText)
                     }
                     .tint(theme.accent)
+                    .frame(minHeight: Spacing.tapTarget)
                 }
-                .padding(.horizontal, 4)
 
                 if let err = app.loginError {
                     Text(LocalizedStringKey(err))
@@ -85,7 +87,8 @@ struct LoginView: View {
                 Spacer()
             }
             .frame(maxWidth: 420)
-            .padding(24)
+            .padding(.horizontal, Spacing.gutter)
+            .padding(.vertical, 24)
         }
         .animation(.easeInOut(duration: 0.2), value: app.totpRequired)
         .sheet(isPresented: $showServerSheet) { ServerSheet() }

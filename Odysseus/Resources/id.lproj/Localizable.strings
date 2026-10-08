@@ -946,3 +946,10 @@
 "Música" = "Musik";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Terdaftar sebagai Gambar: model obrolan endpoint ini tidak muncul di pemilih model obrolan.";
 "Usar para chat" = "Gunakan untuk obrolan";
+
+/* Visual-defects round */
+"Interface" = "Antarmuka";
+"Pausada" = "Dijeda";
+"Ativa" = "Aktif";
+"Fixada" = "Disematkan";
+"Favorito" = "Favorit";

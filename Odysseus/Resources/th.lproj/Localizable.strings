@@ -946,3 +946,10 @@
 "Música" = "เพลง";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "ลงทะเบียนเป็นรูปภาพ: โมเดลแชทของ endpoint นี้จะไม่แสดงในตัวเลือกโมเดลของแชท";
 "Usar para chat" = "ใช้สำหรับแชท";
+
+/* Visual-defects round */
+"Interface" = "อินเทอร์เฟซ";
+"Pausada" = "หยุดชั่วคราว";
+"Ativa" = "ใช้งานอยู่";
+"Fixada" = "ปักหมุดแล้ว";
+"Favorito" = "รายการโปรด";

@@ -177,7 +177,7 @@ struct RootView: View {
         // loading a model, or the network dropped). Never transcribed on its
         // own: the result has no chat to land in, and a model that just killed
         // the app must not be reloaded without the user choosing to.
-        .alert(L("Há uma gravação de %@ que não foi transcrita.", pendingAudio.map { Self.seconds($0.seconds) } ?? ""),
+        .odyAlert(L("Há uma gravação de %@ que não foi transcrita.", pendingAudio.map { Self.seconds($0.seconds) } ?? ""),
                isPresented: Binding(get: { pendingAudio != nil }, set: { if !$0 { pendingAudio = nil } }),
                presenting: pendingAudio) { p in
             if p.attempts < 2 {
@@ -190,7 +190,7 @@ struct RootView: View {
                  ? L("Duas tentativas de transcrever com este modelo terminaram com o app fechado. Troque o modelo em Ajustes › Voz e modelos antes de tentar de novo.")
                  : L("Motor: %@", STTEngine(rawValue: p.engine)?.label ?? p.engine))
         }
-        .alert("Transcrição recuperada", isPresented: Binding(get: { recovered != nil }, set: { if !$0 { recovered = nil } }), presenting: recovered) { text in
+        .odyAlert("Transcrição recuperada", isPresented: Binding(get: { recovered != nil }, set: { if !$0 { recovered = nil } }), presenting: recovered) { text in
             Button("Copiar") { SettingsUI.copyToClipboard(text) }
             Button("OK", role: .cancel) {}
         } message: { text in Text(text) }

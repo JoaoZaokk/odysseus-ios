@@ -69,13 +69,13 @@ struct UserPrivilegesSheet: View {
             }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
-            .navigationTitle(user.username)
+            .odyNavTitle(user.username, verbatim: true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { BarButton("Cancelar") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     if saving { ProgressView().controlSize(.small) }
-                    else { Button("Salvar") { Task { await save() } } }
+                    else { BarButton("Salvar") { Task { await save() } } }
                 }
             }
             .themedNavBar(theme)

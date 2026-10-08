@@ -142,6 +142,7 @@ struct CalendarView: View {
                 }
             }
             .padding(.horizontal, 12).padding(.vertical, 10)
+            .frame(minHeight: Spacing.tapTarget)
             .background(theme.panel, in: RoundedRectangle(cornerRadius: 12))
             .overlay(RoundedRectangle(cornerRadius: 12).stroke(theme.border, lineWidth: 1))
 
@@ -153,7 +154,8 @@ struct CalendarView: View {
                     .lineLimit(2)
             }
         }
-        .padding(12)
+        .padding(.horizontal, Spacing.gutter)
+        .padding(.vertical, 12)
     }
 
     private func add() {
@@ -168,21 +170,31 @@ struct CalendarView: View {
         } else if vm.grouped.isEmpty {
             emptyState
         } else {
+            let groups = vm.grouped
+            let lastID = groups.last?.events.last?.id
             List {
-                ForEach(vm.grouped, id: \.day) { group in
+                ForEach(groups, id: \.day) { group in
                     Section {
                         ForEach(group.events) { ev in
-                            eventRow(ev).listRowBackground(theme.bg)
+                            eventRow(ev)
+                                .listRowBackground(theme.bg)
+                                .gutterRowInsets()
+                                // The bar is 4 wide with a 12 gap: the text, and
+                                // so the hairline, starts at 16 on every row.
+                                .rowSeparatorInset(4 + Spacing.iconGap)
+                                .edgeSeparators(first: false, last: ev.id == lastID)
                         }
                     } header: {
                         Text(LocalizedStringKey(dayLabel(group.day)))
                             .font(.ody(.caption))
                             .foregroundStyle(theme.accent)
+                            .listRowInsets(EdgeInsets(top: 12, leading: Spacing.gutter, bottom: 4, trailing: Spacing.gutter))
                     }
                 }
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
+            .listBottomBreathing()
         }
     }
 
@@ -200,10 +212,14 @@ struct CalendarView: View {
                         .font(.ody(size: 11))
                         .foregroundStyle(theme.secondaryText)
                     if !ev.location.isEmpty {
-                        Label(ev.location, systemImage: "mappin")
-                            .font(.ody(size: 11))
-                            .foregroundStyle(theme.secondaryText)
-                            .lineLimit(1)
+                        // Not a `Label`: its icon-to-title gap left the pin
+                        // floating a word's width away from the place.
+                        HStack(spacing: 3) {
+                            Image(systemName: "mappin").accessibilityHidden(true)
+                            Text(ev.location).lineLimit(1)
+                        }
+                        .font(.ody(size: 11))
+                        .foregroundStyle(theme.secondaryText)
                     }
                 }
             }
@@ -222,7 +238,7 @@ struct CalendarView: View {
                 if ev.isRecurrence { recurringDelete = ev } else { Task { await vm.delete(ev) } }
             } label: { Label("Apagar", systemImage: "trash") }
         }
-        .confirmationDialog("Este evento se repete.",
+        .odyConfirmationDialog("Este evento se repete.",
                             isPresented: Binding(get: { recurringDelete?.uid == ev.uid },
                                                  set: { if !$0 { recurringDelete = nil } }),
                             titleVisibility: .visible) {
@@ -255,23 +271,12 @@ struct CalendarView: View {
         let f = DateFormatter(); f.locale = LocalizationManager.shared.locale
         // Locale-appropriate "weekday, day month" instead of a pt-only literal format.
         f.setLocalizedDateFormatFromTemplate("EEEdMMM")
-        return f.string(from: d).capitalized
+        return f.string(from: d).capitalizedFirst(LocalizationManager.shared.locale)
     }
 
     private var emptyState: some View {
-        VStack {
-            Spacer()
-            VStack(spacing: 12) {
-                Image(systemName: "calendar").font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Nenhum evento")
-                    .font(.ody(.headline)).foregroundStyle(theme.fg)
-                Text("Escreva em linguagem natural acima\nou toque em + para criar.")
-                    .font(.ody(.footnote))
-                    .foregroundStyle(theme.secondaryText)
-                    .multilineTextAlignment(.center)
-            }
-            Spacer()
-        }
+        EmptyStateView(icon: "calendar", title: "Nenhum evento",
+                       message: "Escreva em linguagem natural acima\nou toque em + para criar.")
     }
 }
 
@@ -300,12 +305,12 @@ struct EventEditor: View {
                     }
                 }
             }
-            .navigationTitle("Novo evento")
+            .odyNavTitle("Novo evento")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { BarButton("Cancelar") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Salvar") {
+                    BarButton("Salvar") {
                         onSave(summary, start, allDay ? start : end, allDay); dismiss()
                     }.disabled(summary.isEmpty)
                 }

@@ -209,17 +209,17 @@ struct AddIntegrationView: View {
                 .padding(16)
             }
             .background(theme.bg)
-            .navigationTitle(isEditing ? "Editar integração" : "Adicionar integração")
+            .odyNavTitle(isEditing ? "Editar integração" : "Adicionar integração")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if vm.createdToken == nil && vm.mcpOutcome == nil {
-                    ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
+                    ToolbarItem(placement: .cancellationAction) { BarButton("Cancelar") { dismiss() } }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     if vm.saving { ProgressView().controlSize(.small) }
-                    else if vm.createdToken != nil || vm.mcpOutcome != nil { Button("Concluído") { onDone(); dismiss() } }
+                    else if vm.createdToken != nil || vm.mcpOutcome != nil { BarButton("Concluído") { onDone(); dismiss() } }
                     else {
-                        Button(isAgent ? "Criar token" : "Salvar") {
+                        BarButton(isAgent ? "Criar token" : "Salvar") {
                             Task { if await vm.save() { onDone(); dismiss() } }
                         }
                     }

@@ -946,3 +946,10 @@
 "Música" = "音樂";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "已登記為圖像：呢個端點嘅聊天模型唔會喺聊天嘅模型選擇器出現。";
 "Usar para chat" = "用嚟聊天";
+
+/* Visual-defects round */
+"Interface" = "介面";
+"Pausada" = "已暫停";
+"Ativa" = "運行中";
+"Fixada" = "已置頂";
+"Favorito" = "收藏";

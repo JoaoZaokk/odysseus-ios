@@ -203,7 +203,7 @@ struct VoiceSettingsView: View {
                 }
             }
         }
-        .navigationTitle("Voz e modelos")
+        .odyNavTitle("Voz e modelos")
         .navigationBarTitleDisplayMode(.inline)
         .scrollContentBackground(.hidden)
         .background(theme.bg)
@@ -218,7 +218,7 @@ struct VoiceSettingsView: View {
         // Re-scan after a download finishes, so the new pack (and the freed or
         // claimed space) shows up without leaving the screen.
         .onChange(of: speech.neuralReady) { _, ready in if ready { neural.refresh() } }
-        .confirmationDialog(
+        .odyConfirmationDialog(
             Text("Apagar voz neural"),
             isPresented: Binding(get: { pendingDelete != nil },
                                  set: { if !$0 { pendingDelete = nil } }),
@@ -233,7 +233,7 @@ struct VoiceSettingsView: View {
             Text("Apagar libera o espaço; a voz é baixada de novo na próxima vez que você usar aquele idioma.")
         }
         .task(id: ttsEngine) { if tts == .server { await speech.loadServerInfo() } }
-        .alert("Erro no download", isPresented: Binding(get: { downloads.error != nil }, set: { if !$0 { downloads.error = nil } })) {
+        .odyAlert("Erro no download", isPresented: Binding(get: { downloads.error != nil }, set: { if !$0 { downloads.error = nil } })) {
             Button("OK") { downloads.error = nil }
         } message: { Text(downloads.error ?? "") }
     }

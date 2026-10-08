@@ -136,53 +136,74 @@ struct TasksView: View {
         } else if vm.tasks.isEmpty, let e = vm.error {
             LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.tasks.isEmpty {
-            VStack(spacing: 12) {
-                Image(systemName: "checklist").font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Sem tarefas").font(.ody(.headline)).foregroundStyle(theme.fg)
-                Text("Agentes agendados do Odysseus aparecem aqui.")
-                    .font(.ody(.footnote)).foregroundStyle(theme.secondaryText)
-            }.padding(40)
+            EmptyStateView(icon: "checklist", title: "Sem tarefas",
+                           message: "Agentes agendados do Odysseus aparecem aqui.")
         } else {
             List {
-                ForEach(vm.tasks) { t in taskRow(t).listRowBackground(theme.bg) }
+                ForEach(vm.tasks) { t in
+                    taskRow(t)
+                        .listRowBackground(theme.bg)
+                        .gutterRowInsets(vertical: 10)
+                        .rowSeparatorInset(Spacing.separatorInsetPlain)
+                        .edgeSeparators(first: t.id == vm.tasks.first?.id, last: t.id == vm.tasks.last?.id)
+                }
             }
             .listStyle(.plain).scrollContentBackground(.hidden)
+            .listBottomBreathing()
         }
     }
 
+    /// Status dot in its own narrow column; title, schedule, meta and the
+    /// buttons all hang from the title's edge, not from the dot.
     private func taskRow(_ t: ScheduledTask) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack(spacing: 8) {
-                Circle().fill(t.isPaused ? theme.secondaryText : theme.green).frame(width: 8, height: 8)
-                Text(t.name).font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
-                Spacer()
-                if vm.busyID == t.id { ProgressView().controlSize(.small) }
-            }
-            Text(t.scheduleText).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
-            HStack(spacing: 12) {
-                if let last = t.lastRun { Label(relative(last), systemImage: "clock.arrow.circlepath").labelStyle(.titleAndIcon) }
-                Label("\(t.runCount)x", systemImage: "repeat")
-            }
-            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
-
-            HStack(spacing: 8) {
-                actionButton(t.isPaused ? "Retomar" : "Pausar", system: t.isPaused ? "play.fill" : "pause.fill") {
-                    Task { await vm.toggle(t) }
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Circle().fill(t.isPaused ? theme.secondaryText : theme.green).frame(width: 8, height: 8)
+                .accessibilityLabel(Text(LocalizedStringKey(t.isPaused ? "Pausada" : "Ativa")))
+            VStack(alignment: .leading, spacing: 6) {
+                HStack {
+                    Text(t.name).font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
+                    Spacer()
+                    if vm.busyID == t.id { ProgressView().controlSize(.small) }
                 }
-                actionButton("Rodar agora", system: "bolt.fill") { Task { await vm.run(t) } }
+                Text(t.scheduleText).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                HStack(spacing: 12) {
+                    if let last = t.lastRun { meta(relative(last), icon: "clock.arrow.circlepath") }
+                    meta("\(t.runCount)x", icon: "repeat")
+                }
+                .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+
+                // Two equal columns: "Pausar" and "Retomar" are different
+                // widths, and sized by their text the pairs never lined up
+                // from one row to the next.
+                HStack(spacing: Spacing.iconGap) {
+                    actionButton(t.isPaused ? "Retomar" : "Pausar", system: t.isPaused ? "play.fill" : "pause.fill") {
+                        Task { await vm.toggle(t) }
+                    }
+                    actionButton("Rodar agora", system: "bolt.fill") { Task { await vm.run(t) } }
+                }
+                .padding(.top, 2)
             }
         }
-        .padding(.vertical, 6)
+    }
+
+    /// Icon tight against its value: a `Label` left a word's width between them.
+    private func meta(_ text: String, icon: String) -> some View {
+        HStack(spacing: 4) {
+            Image(systemName: icon).accessibilityHidden(true)
+            Text(verbatim: text)
+        }
     }
 
     private func actionButton(_ label: String, system: String, _ tap: @escaping () -> Void) -> some View {
         Button(action: tap) {
             Label(LocalizedStringKey(label), systemImage: system)
-                .font(.ody(size: 11))
-                .padding(.horizontal, 10).padding(.vertical, 5)
+                .font(.ody(size: 13))
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget)
                 .background(theme.panel, in: Capsule())
                 .overlay(Capsule().stroke(theme.border, lineWidth: 1))
                 .foregroundStyle(theme.fg)
+                .contentShape(Capsule())
         }
         .buttonStyle(.plain)
     }

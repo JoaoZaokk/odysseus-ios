@@ -60,7 +60,9 @@ struct NotesView: View {
 
     init(app: AppState) { _vm = StateObject(wrappedValue: NotesViewModel(api: app.api)) }
 
-    private let columns = [GridItem(.adaptive(minimum: 160), spacing: 12)]
+    // `.top`: a grid row centres its cells vertically by default, so two notes
+    // of different heights side by side started at different heights (196 and 208).
+    private let columns = [GridItem(.adaptive(minimum: 150), spacing: 12, alignment: .top)]
 
     var body: some View {
         ZStack {
@@ -93,26 +95,31 @@ struct NotesView: View {
             emptyState
         } else {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 12) {
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 12) {
                     ForEach(vm.visible) { note in
                         noteCard(note).onTapGesture { editing = note }
                     }
                 }
-                .padding(14)
+                .padding(.horizontal, Spacing.gutter)
+                .padding(.top, 12)
+                .padding(.bottom, Spacing.bottomBreathing)
             }
         }
     }
 
     private func noteCard(_ note: Note) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            HStack {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
                 if !note.title.isEmpty {
                     Text(note.title)
                         .font(.ody(.subheadline).weight(.semibold))
                         .foregroundStyle(theme.fg).lineLimit(2)
                 }
                 Spacer(minLength: 0)
-                if note.pinned { Image(systemName: "pin.fill").font(.caption2).foregroundStyle(theme.accent) }
+                if note.pinned {
+                    Image(systemName: "pin.fill").font(.ody(size: 11)).foregroundStyle(theme.accent)
+                        .accessibilityLabel(Text("Fixada"))
+                }
             }
             Text(note.content)
                 .font(.ody(size: 12))
@@ -135,17 +142,9 @@ struct NotesView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "note.text").font(.ody(size: 44)).foregroundStyle(theme.accent)
-            Text(LocalizedStringKey(vm.showArchived ? "Nada arquivado" : "Sem notas ainda"))
-                .font(.ody(.headline)).foregroundStyle(theme.fg)
-            if !vm.showArchived {
-                Text("Toque em + para criar sua primeira nota.")
-                    .font(.ody(.footnote))
-                    .foregroundStyle(theme.secondaryText)
-            }
-        }
-        .padding(40)
+        EmptyStateView(icon: "note.text",
+                       title: vm.showArchived ? "Nada arquivado" : "Sem notas ainda",
+                       message: vm.showArchived ? nil : "Toque em + para criar sua primeira nota.")
     }
 }
 
@@ -175,14 +174,14 @@ struct NoteEditor: View {
                         .padding(.horizontal, 12)
                 }
             }
-            .navigationTitle(LocalizedStringKey(note.id.isEmpty ? "Nova nota" : "Editar nota"))
+            .odyNavTitle(note.id.isEmpty ? "Nova nota" : "Editar nota")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") { dismiss() }
+                    BarButton("Cancelar") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Salvar") { onSave(title, content); dismiss() }
+                    BarButton("Salvar") { onSave(title, content); dismiss() }
                         .disabled(title.isEmpty && content.isEmpty)
                 }
             }

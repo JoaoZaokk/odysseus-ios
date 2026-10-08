@@ -138,25 +138,24 @@ struct LibraryView: View {
         } else if vm.files.isEmpty, let e = vm.error {
             LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.files.isEmpty {
-            VStack(spacing: 12) {
-                Image(systemName: "books.vertical").font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Biblioteca vazia").font(.ody(.headline)).foregroundStyle(theme.fg)
-                Text("Envie documentos (PDF, txt, md…) para o assistente consultar via RAG.")
-                    .font(.ody(.footnote)).foregroundStyle(theme.secondaryText)
-                    .multilineTextAlignment(.center)
-            }.padding(40)
+            EmptyStateView(icon: "books.vertical", title: "Biblioteca vazia",
+                           message: "Envie documentos (PDF, txt, md…) para o assistente consultar via RAG.")
         } else {
             List {
                 ForEach(vm.files) { f in
-                    HStack(spacing: 10) {
+                    HStack(spacing: Spacing.iconGap) {
                         Image(systemName: "doc.text").foregroundStyle(theme.accent)
+                            .frame(width: Spacing.leadingColumn)
                         VStack(alignment: .leading, spacing: 2) {
                             Text(f.displayName).font(.ody(.subheadline)).foregroundStyle(theme.fg).lineLimit(1)
-                            Text(f.humanSize).font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
+                            Text(f.humanSize).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
                         }
                         Spacer()
                     }
                     .listRowBackground(theme.bg)
+                    .gutterRowInsets(vertical: 8)
+                    .rowSeparatorInset()
+                    .edgeSeparators(first: f.id == vm.files.first?.id, last: f.id == vm.files.last?.id)
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive) { Task { await vm.delete(f) } } label: { Label("Apagar", systemImage: "trash") }
                     }
@@ -166,6 +165,7 @@ struct LibraryView: View {
                 }
             }
             .listStyle(.plain).scrollContentBackground(.hidden)
+            .listBottomBreathing()
         }
     }
 }

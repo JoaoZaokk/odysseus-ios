@@ -946,3 +946,10 @@
 "Música" = "음악";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "이미지로 등록됨: 이 엔드포인트의 채팅 모델이 채팅 모델 선택기에 표시되지 않습니다.";
 "Usar para chat" = "채팅에 사용";
+
+/* Visual-defects round */
+"Interface" = "인터페이스";
+"Pausada" = "일시 중지됨";
+"Ativa" = "활성";
+"Fixada" = "고정됨";
+"Favorito" = "즐겨찾기";

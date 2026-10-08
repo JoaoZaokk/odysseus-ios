@@ -88,9 +88,9 @@ struct TwoFactorView: View {
             }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
-            .navigationTitle("2FA")
+            .odyNavTitle("2FA")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { close() } } }
+            .toolbar { ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { close() } } }
             .themedNavBar(theme)
         }
         .tint(theme.accent)

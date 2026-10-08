@@ -89,7 +89,7 @@ struct AddedModelsSection: View {
         .sheet(item: $picking) { ep in
             EndpointModelsView(app: app, endpoint: ep)
         }
-        .alert(removing?.name ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
+        .odyAlert(removing?.name ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
             Button("Remover", role: .destructive) { if let ep = removing { Task { await vm.delete(ep) } }; removing = nil }
             Button("Cancelar", role: .cancel) { removing = nil }
         } message: { Text("Isso é irreversível. Confirma?") }

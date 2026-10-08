@@ -948,3 +948,10 @@
 "Música" = "संगीत";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "इमेज के रूप में दर्ज: इस एंडपॉइंट के चैट मॉडल चैट के मॉडल चयनकर्ता में नहीं दिखते।";
 "Usar para chat" = "चैट के लिए इस्तेमाल करें";
+
+/* Visual-defects round */
+"Interface" = "इंटरफ़ेस";
+"Pausada" = "रोकी गई";
+"Ativa" = "सक्रिय";
+"Fixada" = "पिन की गई";
+"Favorito" = "पसंदीदा";

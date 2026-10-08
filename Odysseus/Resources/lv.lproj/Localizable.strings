@@ -946,3 +946,10 @@
 "Música" = "Mūzika";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Reģistrēts kā Attēls: šī galapunkta tērzēšanas modeļi netiek rādīti tērzēšanas modeļu izvēlē.";
 "Usar para chat" = "Izmantot tērzēšanai";
+
+/* Visual-defects round */
+"Interface" = "Saskarne";
+"Pausada" = "Apturēts";
+"Ativa" = "Aktīvs";
+"Fixada" = "Piesprausts";
+"Favorito" = "Izlase";

@@ -59,7 +59,7 @@ final class SessionStore: ObservableObject {
         if diff == 1 { return "Ontem" }
         if diff < 7 {
             let f = DateFormatter(); f.locale = locale; f.setLocalizedDateFormatFromTemplate("EEEE")
-            return f.string(from: date).capitalized
+            return f.string(from: date).capitalizedFirst(locale)
         }
         if diff >= 365 { let y = diff / 365; return y == 1 ? L("%d ano atrás", 1) : L("%d anos atrás", y) }
         if diff >= 180 { return "6 meses atrás" }

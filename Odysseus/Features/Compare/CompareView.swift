@@ -112,11 +112,19 @@ struct CompareView: View {
         ZStack {
             theme.bg.ignoresSafeArea()
             VStack(spacing: 0) {
+                // Equal columns between the two gutters. The divider is a
+                // 1-point rule that starts under the nav bar and stops above
+                // the composer — a `Divider()` here filled the HStack's whole
+                // height and ran up through the status bar.
                 HStack(spacing: 0) {
-                    column(title: "A", model: $vm.modelA, turns: vm.turnsA)
-                    Divider().overlay(theme.border)
-                    column(title: "B", model: $vm.modelB, turns: vm.turnsB)
+                    column(title: "A", model: $vm.modelA, turns: vm.turnsA,
+                           leading: Spacing.gutter, trailing: Spacing.gutter / 2)
+                    Rectangle().fill(theme.border).frame(width: 1)
+                        .padding(.top, 8)
+                    column(title: "B", model: $vm.modelB, turns: vm.turnsB,
+                           leading: Spacing.gutter / 2, trailing: Spacing.gutter)
                 }
+                .clipped()
                 // A failed model load left both pickers empty and `canSend`
                 // false, with nothing on screen to say why.
                 if let e = vm.error, vm.models.isEmpty {
@@ -124,7 +132,7 @@ struct CompareView: View {
                         .font(.ody(size: 11))
                         .foregroundStyle(theme.danger)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 14).padding(.bottom, 4)
+                        .padding(.horizontal, Spacing.gutter).padding(.bottom, 4)
                 }
                 composer
             }
@@ -137,7 +145,8 @@ struct CompareView: View {
         .task { await vm.load() }
     }
 
-    private func column(title: String, model: Binding<ChatModel?>, turns: [CompareTurn]) -> some View {
+    private func column(title: String, model: Binding<ChatModel?>, turns: [CompareTurn],
+                        leading: CGFloat, trailing: CGFloat) -> some View {
         VStack(spacing: 6) {
             Menu {
                 ForEach(vm.models.filter { !$0.isExtra }) { m in
@@ -161,10 +170,10 @@ struct CompareView: View {
                 }
                 .foregroundStyle(theme.fg)
                 .padding(.horizontal, 8).padding(.vertical, 6)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, minHeight: 36)
                 .background(theme.panel, in: RoundedRectangle(cornerRadius: 8))
             }
-            .padding(.horizontal, 8).padding(.top, 8)
+            .padding(.top, 8)
 
             ScrollViewReader { proxy in
                 ScrollView {
@@ -173,19 +182,22 @@ struct CompareView: View {
                             Text("Envie a mesma pergunta para os dois modelos.")
                                 .font(.ody(size: 11))
                                 .foregroundStyle(theme.secondaryText)
+                                .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity)
-                                .padding(.top, 40)
+                                .padding(.top, Spacing.voidOffset)
                         }
                         ForEach(turns) { turn in bubble(turn).id(turn.id) }
                         Color.clear.frame(height: 1).id("bottom")
                     }
-                    .padding(.horizontal, 10).padding(.bottom, 10)
+                    .padding(.bottom, 10)
                 }
                 .onChange(of: turns.last?.text) { _, _ in
                     withAnimation(.easeOut(duration: 0.12)) { proxy.scrollTo("bottom", anchor: .bottom) }
                 }
             }
         }
+        .padding(.leading, leading)
+        .padding(.trailing, trailing)
         .frame(maxWidth: .infinity)
     }
 
@@ -230,13 +242,14 @@ struct CompareView: View {
             } label: {
                 Image(systemName: vm.streaming ? "ellipsis" : "arrow.up")
                     .font(.ody(size: 16, weight: .bold)).foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
+                    .frame(width: Spacing.tapTarget, height: Spacing.tapTarget)
                     .background(vm.canSend || vm.streaming ? theme.accent : theme.border, in: Circle())
             }
             .buttonStyle(.plain)
             .disabled(!vm.canSend)
         }
-        .padding(12)
+        .padding(.horizontal, Spacing.gutter)
+        .padding(.vertical, 10)
         .background(theme.bg)
     }
 }

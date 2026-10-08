@@ -216,6 +216,9 @@ final class ThemeStore: ObservableObject {
         let fam = AppFontFamily(rawValue: UserDefaults.standard.string(forKey: Self.fontKey) ?? "mono") ?? .mono
         fontFamily = fam
         Appearance.fontFamily = fam
+        #if os(iOS)
+        NativeAppearance.apply(fam)
+        #endif
         transparency = UserDefaults.standard.bool(forKey: Self.transpKey)
         background = BackgroundPattern(rawValue: UserDefaults.standard.string(forKey: Self.bgKey) ?? "") ?? .none
     }
@@ -228,8 +231,13 @@ final class ThemeStore: ObservableObject {
 
     func selectFont(_ f: AppFontFamily) {
         guard f != fontFamily else { return }
-        fontFamily = f
         Appearance.fontFamily = f
+        #if os(iOS)
+        // Before `fontFamily` publishes: the root rebuild it triggers must
+        // find the UIKit proxies already on the new family.
+        NativeAppearance.apply(f)
+        #endif
+        fontFamily = f
         UserDefaults.standard.set(f.rawValue, forKey: Self.fontKey)
     }
 }

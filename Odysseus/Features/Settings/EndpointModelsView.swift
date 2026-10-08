@@ -131,15 +131,15 @@ struct EndpointModelsView: View {
                 .padding(.top, 14)
             }
             // The endpoint's own name — user data, shown verbatim.
-            .navigationTitle(vm.endpoint.name)
+            .odyNavTitle(vm.endpoint.name, verbatim: true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Fechar") { dismiss() }
+                    BarButton("Fechar") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     if vm.saving { ProgressView().controlSize(.small) }
-                    else { Button("Salvar") { Task { await vm.save() } }.disabled(!vm.dirty) }
+                    else { BarButton("Salvar") { Task { await vm.save() } }.disabled(!vm.dirty) }
                 }
             }
         }

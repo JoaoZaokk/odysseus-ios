@@ -946,3 +946,10 @@
 "Música" = "Müzik";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Görsel olarak kayıtlı: bu uç noktanın sohbet modelleri sohbetin model seçicisinde görünmez.";
 "Usar para chat" = "Sohbet için kullan";
+
+/* Visual-defects round */
+"Interface" = "Arayüz";
+"Pausada" = "Duraklatıldı";
+"Ativa" = "Etkin";
+"Fixada" = "Sabitlendi";
+"Favorito" = "Favori";

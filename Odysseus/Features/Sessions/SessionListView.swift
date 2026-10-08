@@ -110,6 +110,8 @@ struct SidebarView: View {
                             Button { workspace.setPrimary(.section(section)) } label: { sectionRow(section) }
                                 .buttonStyle(.plain)
                                 .listRowBackground(active(.section(section)) ? theme.accent.opacity(0.14) : theme.bg)
+                                .gutterRowInsets(vertical: 2)
+                                .rowSeparatorInset()
                         }
                     } header: {
                         header("Espaços")
@@ -146,16 +148,22 @@ struct SidebarView: View {
             // Conversations, in date groups; each group folds.
             ForEach(SessionStore.groups(filtered), id: \.label) { group in
               Section {
+                groupBand(group)
                 if !collapsed.contains(group.label) {
                 ForEach(group.sessions) { session in
                     Button { workspace.setPrimary(.chat(session)) } label: { chatRow(session) }
                         .buttonStyle(.plain)
                         .listRowBackground(rowBackground(active: active(.chat(session))))
+                        .gutterRowInsets(vertical: 6)
                         // The sidebar style draws a hairline between some rows
                         // and not others; asking for it on every row is what
-                        // makes the list read as a list.
-                        .listRowSeparator(.visible)
+                        // makes the list read as a list. Its inset is pinned
+                        // to the title's edge, pin or no pin.
                         .listRowSeparatorTint(theme.border)
+                        .rowSeparatorInset()
+                        .edgeSeparators(first: session.id == group.sessions.first?.id,
+                                        last: session.id == group.sessions.last?.id,
+                                        between: .visible)
                         // Delete is final on the server, so it asks; archive
                         // is the reversible way to get a row off the list.
                         .swipeActions(edge: .trailing) {
@@ -183,30 +191,6 @@ struct SidebarView: View {
                         }
                 }
                 }
-              } header: {
-                // A band the width of the list, with the number of conversations
-                // in it: the old header was a caption floating in the same tone
-                // as the rows, so a group started without anything marking it.
-                Button { toggleGroup(group.label) } label: {
-                    HStack(spacing: 6) {
-                        Text(LocalizedStringKey(group.label))
-                            .font(.ody(size: 10, weight: .semibold))
-                            .textCase(.uppercase)
-                            .foregroundStyle(theme.secondaryText)
-                        Image(systemName: collapsed.contains(group.label) ? "chevron.right" : "chevron.down")
-                            .font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
-                        Spacer()
-                        Text("\(group.sessions.count)")
-                            .font(.ody(size: 10))
-                            .foregroundStyle(theme.secondaryText.opacity(0.7))
-                    }
-                    .padding(.horizontal, 16).padding(.vertical, 6)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(theme.panel)
-                    .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-                .listRowInsets(EdgeInsets())
               }
             }
             Section {
@@ -242,6 +226,15 @@ struct SidebarView: View {
             }
         }
         .listStyle(.sidebar)
+        .listBottomBreathing()
+        #if os(iOS)
+        // The sidebar's default gap between sections left ~70 pt of nothing
+        // between the search field and Deep Search.
+        .listSectionSpacing(.compact)
+        // The sidebar style adds its own side margin on top of the row
+        // insets; the rows carry the 20-point gutter themselves.
+        .contentMargins(.horizontal, 0, for: .scrollContent)
+        #endif
         .scrollContentBackground(.hidden)
         // Opaque base bg (not the translucent `theme.bg`) so the system sidebar
         // vibrancy never bleeds through when "transparência" is on — keeps the
@@ -264,7 +257,7 @@ struct SidebarView: View {
             ArchivedSessionsView(store: store, workspace: workspace)
                 .environmentObject(themes)
         }
-        .alert("Renomear conversa", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
+        .odyAlert("Renomear conversa", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
             TextField("Nome", text: $renameText)
             Button("Salvar") {
                 if let s = renaming { Task { await store.rename(s, to: renameText) } }
@@ -272,7 +265,7 @@ struct SidebarView: View {
             }
             Button("Cancelar", role: .cancel) { renaming = nil }
         }
-        .alert(deleting?.title ?? "", isPresented: Binding(get: { deleting != nil }, set: { if !$0 { deleting = nil } })) {
+        .odyAlert(deleting?.title ?? "", isPresented: Binding(get: { deleting != nil }, set: { if !$0 { deleting = nil } })) {
             Button("Apagar", role: .destructive) { if let s = deleting { Task { await store.delete(s) } }; deleting = nil }
             Button("Cancelar", role: .cancel) { deleting = nil }
         } message: { Text("Isso é irreversível. Confirma?") }
@@ -297,6 +290,9 @@ struct SidebarView: View {
                 barItem(icon: "ellipsis", title: "Mais", active: false) { showMoreSpaces = true }
             }
         }
+        // Equal columns, kept off the screen's edges: "Mais" sat on the
+        // right border.
+        .padding(.horizontal, 8)
         .padding(.top, 6)
         .background(alignment: .top) {
             ZStack(alignment: .top) {
@@ -314,44 +310,87 @@ struct SidebarView: View {
                     .font(.ody(size: 15))
                     .foregroundStyle(active ? theme.accent : theme.secondaryText)
                 Text(LocalizedStringKey(title))
-                    .font(.ody(size: 9))
+                    .font(.ody(size: 10))
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
                     .foregroundStyle(active ? theme.fg : theme.secondaryText)
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget)
             .padding(.bottom, 4)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
 
+    private var moreSpaces: [AppSection] {
+        visibleSections.filter { s in !barSections.contains(where: { $0.id == s.id }) }
+    }
+
     private var moreSpacesSheet: some View {
-        NavigationStack {
+        let rows = moreSpaces
+        return NavigationStack {
             List {
-                ForEach(visibleSections.filter { s in !barSections.contains(where: { $0.id == s.id }) }) { section in
+                ForEach(rows) { section in
                     Button {
                         workspace.setPrimary(.section(section))
                         showMoreSpaces = false
                     } label: { sectionRow(section) }
                     .buttonStyle(.plain)
                     .listRowBackground(theme.bg)
+                    .gutterRowInsets(vertical: 4)
+                    .rowSeparatorInset()
+                    .edgeSeparators(first: section.id == rows.first?.id, last: section.id == rows.last?.id)
                 }
             }
             .listStyle(.plain)
             .background(theme.bg)
             .scrollContentBackground(.hidden)
-            .navigationTitle("Espaços")
+            .odyNavTitle("Espaços")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Fechar") { showMoreSpaces = false }
+                    BarButton("Fechar") { showMoreSpaces = false }
                 }
             }
+            .themedNavBar(theme)
         }
-        .presentationDetents([.medium])
+        // As tall as its rows: `.medium` is half the screen whatever is in it,
+        // and left ~200 pt of nothing under "Cookbook". Rows are 52 (44 + 8);
+        // the rest is the nav bar, the grabber and the bottom inset.
+        .presentationDetents([.height(CGFloat(rows.count) * 52 + 110), .medium])
+        .presentationDragIndicator(.visible)
     }
     #endif
+
+    /// A band with the group's name and count, on the gutter on both sides
+    /// like the rows under it (it ran from 42 to 543 while its separator ran
+    /// 24 to 580). A row rather than a section header: the sidebar style
+    /// ignores `listRowInsets` on headers and pads them unevenly.
+    private func groupBand(_ group: (label: String, sessions: [ChatSession])) -> some View {
+        Button { toggleGroup(group.label) } label: {
+            HStack(spacing: 6) {
+                Text(LocalizedStringKey(group.label))
+                    .font(.ody(size: 10, weight: .semibold))
+                    .textCase(.uppercase)
+                    .foregroundStyle(theme.secondaryText)
+                Image(systemName: collapsed.contains(group.label) ? "chevron.right" : "chevron.down")
+                    .font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
+                Spacer()
+                Text("\(group.sessions.count)")
+                    .font(.ody(size: 10))
+                    .foregroundStyle(theme.secondaryText.opacity(0.7))
+            }
+            .padding(.horizontal, 12).padding(.vertical, 7)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(theme.panel, in: RoundedRectangle(cornerRadius: 6))
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(.isHeader)
+        .listRowInsets(EdgeInsets(top: 4, leading: Spacing.gutter, bottom: 4, trailing: Spacing.gutter))
+        .listRowBackground(theme.bg)
+        .listRowSeparator(.hidden)
+    }
 
     private func header(_ text: String) -> some View {
         Text(LocalizedStringKey(text))
@@ -362,28 +401,29 @@ struct SidebarView: View {
     private func navRow(icon: String, title: String, tint: Color, active: Bool,
                         _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Label {
-                Text(LocalizedStringKey(title)).font(.ody(.subheadline)).foregroundStyle(theme.fg)
-            } icon: {
+            HStack(spacing: Spacing.iconGap) {
                 Image(systemName: icon).foregroundStyle(tint)
+                    .frame(width: Spacing.leadingColumn)
+                Text(LocalizedStringKey(title)).font(.ody(.subheadline)).foregroundStyle(theme.fg)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget, alignment: .leading)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .listRowBackground(active ? theme.accent.opacity(0.14) : theme.bg)
+        .gutterRowInsets(vertical: 2)
     }
 
     private func sectionRow(_ section: AppSection) -> some View {
-        Label {
+        HStack(spacing: Spacing.iconGap) {
+            Image(systemName: section.icon).foregroundStyle(theme.accent)
+                .frame(width: Spacing.leadingColumn)
             Text(LocalizedStringKey(section.title))
                 .font(.ody(.subheadline))
                 .foregroundStyle(theme.fg)
                 .lineLimit(1)
-        } icon: {
-            Image(systemName: section.icon).foregroundStyle(theme.accent)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget, alignment: .leading)
         .contentShape(Rectangle())
     }
 
@@ -396,10 +436,18 @@ struct SidebarView: View {
     /// the two flags — so the second line says what there is, not a fake
     /// snippet.
     private func chatRow(_ session: ChatSession) -> some View {
-        HStack(spacing: 8) {
-            if session.pinned {
-                Image(systemName: "pin.fill").font(.caption2).foregroundStyle(theme.accent)
+        HStack(alignment: .firstTextBaseline, spacing: Spacing.iconGap) {
+            // The pin's column is there whether or not the chat is pinned:
+            // titles started at 82 with a pin and 48 without.
+            Group {
+                if session.pinned {
+                    Image(systemName: "pin.fill").font(.ody(size: 11)).foregroundStyle(theme.accent)
+                        .accessibilityLabel(Text("Fixada"))
+                } else {
+                    Color.clear.frame(height: 1)
+                }
             }
+            .frame(width: Spacing.leadingColumn)
             VStack(alignment: .leading, spacing: 2) {
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     // The title takes the row's width itself instead of being
@@ -413,7 +461,7 @@ struct SidebarView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     if let time = SessionStore.rowTime(session.updatedAt) {
                         Text(time)
-                            .font(.ody(size: 10))
+                            .font(.ody(size: 11))
                             .foregroundStyle(theme.secondaryText)
                     }
                 }
@@ -487,9 +535,9 @@ struct ArchivedSessionsView: View {
             }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
-            .navigationTitle("Arquivadas")
+            .odyNavTitle("Arquivadas")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { dismiss() } } }
+            .toolbar { ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } } }
             .themedNavBar(theme)
         }
         .tint(theme.accent)

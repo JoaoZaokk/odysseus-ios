@@ -50,23 +50,9 @@ struct ChatScreen: View {
             voiceModeButton
         }
         #else
-        .navigationTitle(vm.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .odyNavTitle(vm.title, subtitle: vm.resolvedModel, verbatim: true)
         .toolbar {
             ToolbarItem(placement: .primaryAction) { voiceModeButton }
-            ToolbarItem(placement: .principal) {
-                VStack(spacing: 1) {
-                    Text(vm.title)
-                        .font(.ody(.headline))
-                        .foregroundStyle(theme.fg)
-                        .lineLimit(1)
-                    if let m = vm.resolvedModel {
-                        Text(m)
-                            .font(.ody(size: 10))
-                            .foregroundStyle(theme.secondaryText)
-                    }
-                }
-            }
         }
         #endif
         .task { await vm.loadModels() }
@@ -112,7 +98,7 @@ struct ChatScreen: View {
                 if vm.isLoadingHistory && vm.messages.isEmpty {
                     ProgressView().tint(theme.accent).padding(.top, 80)
                 } else if vm.messages.isEmpty && ui.isOn(.welcome) {
-                    welcome.padding(.top, 60)
+                    welcome.padding(.top, Spacing.voidOffset)
                 }
                 LazyVStack(spacing: 16) {
                     ForEach(Array(vm.messages.enumerated()), id: \.element.id) { idx, msg in
@@ -142,7 +128,7 @@ struct ChatScreen: View {
                         .id("toolstatus")
                     }
                 }
-                .padding(.horizontal, 14)
+                .padding(.horizontal, Spacing.gutter)
                 .padding(.vertical, 16)
                 .frame(maxWidth: columnWidth ?? .infinity)
                 .frame(maxWidth: .infinity)
@@ -192,7 +178,7 @@ struct ChatScreen: View {
                 Spacer(minLength: 4)
                 if !vm.models.isEmpty { modelChip }
             }
-            .padding(.horizontal, 12)
+            .padding(.horizontal, Spacing.gutter)
 
             // `vm.error` covers a failed history load, a failed attachment upload,
             // and a stream error that arrived after the bubble already had text —
@@ -202,30 +188,44 @@ struct ChatScreen: View {
                     .font(.ody(size: 11))
                     .foregroundStyle(theme.danger)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 14)
+                    .padding(.horizontal, Spacing.gutter)
             }
 
             if !vm.pendingAttachments.isEmpty || vm.uploading { pendingStrip }
 
             HStack(alignment: .bottom, spacing: 8) {
                 if ui.isOn(.attach) {
+                    // Same size, weight and colour as the mic next to it.
                     PhotosPicker(selection: $photoItems, maxSelectionCount: 4, matching: .images) {
                         Image(systemName: "photo.badge.plus")
                             .font(.ody(size: 20))
                             .foregroundStyle(theme.accent)
-                            .frame(width: 34, height: 42)
+                            .frame(width: 34, height: Spacing.tapTarget)
                     }
                     .onChange(of: photoItems) { _, items in loadPhotos(items) }
                 }
 
                 if ui.isOn(.mic) { micButton }
 
-                TextField(LocalizedStringKey(voice.isRecording ? "Ouvindo…" : "Mensagem…"),
-                          text: voice.isRecording ? .constant(voice.partialText) : $vm.input, axis: .vertical)
+                // The placeholder is drawn over the field: a vertical-axis
+                // field paints its own (title or `prompt`) in the system sans
+                // whatever font it is given.
+                TextField("", text: voice.isRecording ? .constant(voice.partialText) : $vm.input, axis: .vertical)
                     .font(.ody(.body))
                     .foregroundStyle(theme.fg)
                     .focused($inputFocused)
                     .lineLimit(1...6)
+                    .accessibilityLabel(Text(LocalizedStringKey(composerPlaceholder)))
+                    .overlay(alignment: .topLeading) {
+                        if (voice.isRecording ? voice.partialText : vm.input).isEmpty {
+                            Text(LocalizedStringKey(composerPlaceholder))
+                                .font(.ody(.body))
+                                .foregroundStyle(theme.secondaryText)
+                                .lineLimit(1)
+                                .allowsHitTesting(false)
+                                .accessibilityHidden(true)
+                        }
+                    }
                     #if os(macOS)
                     // Enter sends · Shift+Enter inserts a newline.
                     .onKeyPress(keys: [.return]) { press in
@@ -249,7 +249,7 @@ struct ChatScreen: View {
                 }
                 .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
             }
-            .padding(.horizontal, 12)
+            .padding(.horizontal, Spacing.gutter)
             .padding(.bottom, 8)
         }
         .frame(maxWidth: columnWidth ?? .infinity)
@@ -338,11 +338,11 @@ struct ChatScreen: View {
                 } else {
                     Image(systemName: voice.isRecording ? "stop.circle.fill" : "mic")
                         .font(.ody(size: 20))
-                        .foregroundStyle(voice.isRecording ? theme.accent : theme.secondaryText)
+                        .foregroundStyle(theme.accent)
                         .symbolEffect(.pulse, isActive: voice.isRecording)
                 }
             }
-            .frame(width: 34, height: 42)
+            .frame(width: 34, height: Spacing.tapTarget)
         }
         .disabled(voice.processing)
     }
@@ -367,13 +367,15 @@ struct ChatScreen: View {
             Image(systemName: vm.isStreaming ? "stop.fill" : "arrow.up")
                 .font(.ody(size: 18, weight: .bold))
                 .foregroundStyle(.white)
-                .frame(width: 42, height: 42)
+                .frame(width: Spacing.tapTarget, height: Spacing.tapTarget)
                 .background(canSend || vm.isStreaming ? theme.accent : theme.border,
                             in: Circle())
         }
         .disabled(!canSend && !vm.isStreaming)
         .keyboardShortcut(OdyShortcuts.send)
     }
+
+    private var composerPlaceholder: String { voice.isRecording ? "Ouvindo…" : "Mensagem…" }
 
     private var canSend: Bool {
         !vm.input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
@@ -402,7 +404,8 @@ struct ChatScreen: View {
                 Image(systemName: "cpu").font(.ody(size: 11))
                 Text(vm.selectedModel?.name ?? vm.resolvedModel ?? L("Modelo"))
                     .font(.ody(size: 12))
-                    .lineLimit(1).truncationMode(.middle)
+                    // Cut at the end: "mimo-v2.5-pro" reads, "mimo…5-pro" does not.
+                    .lineLimit(1).truncationMode(.tail)
             }
             .padding(.horizontal, 10).padding(.vertical, 6)
             .foregroundStyle(vm.selectedModel == nil ? theme.secondaryText : theme.accent)

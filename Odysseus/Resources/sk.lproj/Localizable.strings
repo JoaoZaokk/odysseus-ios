@@ -946,3 +946,10 @@
 "Música" = "Hudba";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Zaregistrované ako Obrázok: chatové modely tohto endpointu sa nezobrazujú vo výbere modelu chatu.";
 "Usar para chat" = "Použiť na chat";
+
+/* Visual-defects round */
+"Interface" = "Rozhranie";
+"Pausada" = "Pozastavené";
+"Ativa" = "Aktívne";
+"Fixada" = "Pripnuté";
+"Favorito" = "Obľúbené";

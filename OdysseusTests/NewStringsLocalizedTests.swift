@@ -23,6 +23,9 @@ final class NewStringsLocalizedTests: XCTestCase {
         "A Gemini não tem /audio/speech nem /audio/transcriptions: estes modelos não servem de voz do servidor.",
         "Música", "Usar para chat",
         "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat.",
+        // Visual-defects round: Tema's INTERFACE section and the labels that
+        // VoiceOver reads for glyph-only markers (task state, pin, favourite).
+        "Interface", "Pausada", "Ativa", "Fixada", "Favorito",
     ]
 
     func testEveryNewStringHasAnEntryInEveryCatalogue() throws {

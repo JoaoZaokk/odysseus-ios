@@ -59,9 +59,9 @@ struct EmailLoginHelpView: View {
                 .padding(18)
             }
             .background(theme.bg)
-            .navigationTitle("Login")
+            .odyNavTitle("Login")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { dismiss() } } }
+            .toolbar { ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } } }
         }
         .tint(theme.accent)
         #if os(macOS)

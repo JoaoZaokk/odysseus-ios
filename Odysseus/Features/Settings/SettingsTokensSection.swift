@@ -125,7 +125,7 @@ struct TokensSection: View {
                 await vm.update(t, name: name, scopes: scopes)
             }
         }
-        .alert(revoking?.name ?? "", isPresented: Binding(get: { revoking != nil }, set: { if !$0 { revoking = nil } })) {
+        .odyAlert(revoking?.name ?? "", isPresented: Binding(get: { revoking != nil }, set: { if !$0 { revoking = nil } })) {
             Button("Revogar", role: .destructive) { if let t = revoking { Task { await vm.revoke(t) } }; revoking = nil }
             Button("Cancelar", role: .cancel) { revoking = nil }
         } message: { Text("Integrações que usam este token perdem o acesso. Isso é irreversível.") }
@@ -189,13 +189,13 @@ struct TokenEditSheet: View {
             }
             .scrollContentBackground(.hidden)
             .background(theme.bg)
-            .navigationTitle("Editar token")
+            .odyNavTitle("Editar token")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { BarButton("Cancelar") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     if saving { ProgressView().controlSize(.small) }
-                    else { Button("Salvar") { Task { saving = true; if await onSave(name, scopes) { dismiss() }; saving = false } } }
+                    else { BarButton("Salvar") { Task { saving = true; if await onSave(name, scopes) { dismiss() }; saving = false } } }
                 }
             }
             .themedNavBar(theme)

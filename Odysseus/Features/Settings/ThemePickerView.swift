@@ -20,7 +20,7 @@ struct ThemePickerView: View {
 
     var body: some View {
         grid
-            .navigationTitle("Tema")
+            .odyNavTitle("Tema", parent: "Aparência")
             .navigationBarTitleDisplayMode(.inline)
             .background(theme.bg)
             .sheet(isPresented: $customizing) { InterfaceSettingsView().environmentObject(themes) }
@@ -40,8 +40,25 @@ struct ThemePickerView: View {
                     }
                 }
             }
-            .padding(16)
+            .padding(.horizontal, Spacing.gutter)
+            .padding(.top, 16)
+            .padding(.bottom, Spacing.bottomBreathing)
         }
+    }
+
+    /// A horizontal strip that says it scrolls: it bleeds to the screen's
+    /// edges, starts on the gutter, ends with room to spare and fades out on
+    /// the right. Cut flush at the border ("Anthropic S…", "Pétala") it read
+    /// as a layout bug, not as more to the right.
+    private func carousel<C: View>(spacing: CGFloat, @ViewBuilder _ content: () -> C) -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: spacing) { content() }
+                .padding(.leading, Spacing.gutter)
+                .padding(.trailing, Spacing.gutter + 36)
+                .padding(.vertical, 2)
+        }
+        .padding(.horizontal, -Spacing.gutter)
+        .trailingFade()
     }
 
     private func sectionLabel(_ s: String) -> some View {
@@ -60,67 +77,77 @@ struct ThemePickerView: View {
             // Font family
             VStack(alignment: .leading, spacing: 7) {
                 sectionLabel("Fonte")
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
-                        ForEach(AppFontFamily.allCases) { f in
-                            chip(f.label, selected: themes.fontFamily == f, labelFont: fontPreview(f)) {
-                                themes.selectFont(f)
-                            }
+                carousel(spacing: 8) {
+                    ForEach(AppFontFamily.allCases) { f in
+                        chip(f.label, selected: themes.fontFamily == f, labelFont: fontPreview(f)) {
+                            themes.selectFont(f)
                         }
                     }
                 }
             }
-            // Transparency
-            Toggle(isOn: Binding(get: { themes.transparency }, set: { themes.transparency = $0 })) {
-                Text("Transparência")
-                    .font(.ody(.subheadline))
-                    .foregroundStyle(theme.fg)
-            }
-            .tint(theme.accent)
-            // The web's "Customize UI" checkboxes, for the parts this app has.
-            Button { customizing = true } label: {
-                HStack(spacing: 10) {
-                    Image(systemName: "slider.horizontal.3").foregroundStyle(theme.accent)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Personalizar interface").font(.ody(.subheadline)).foregroundStyle(theme.fg)
-                        Text(UIVisibility(raw: uiRaw).isDefault
-                             ? "Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa."
-                             : "Alguns itens estão escondidos.")
-                            .font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
-                            .fixedSize(horizontal: false, vertical: true)
+            // Transparency and "Customize UI" under their own label, in one
+            // card — they floated between FONTE and ÍCONE in a bigger body
+            // than the labels around them.
+            VStack(alignment: .leading, spacing: 7) {
+                sectionLabel("Interface")
+                VStack(spacing: 0) {
+                    Toggle(isOn: Binding(get: { themes.transparency }, set: { themes.transparency = $0 })) {
+                        Text("Transparência")
+                            .font(.ody(.subheadline))
+                            .foregroundStyle(theme.fg)
                     }
-                    Spacer()
-                    Image(systemName: "chevron.right").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                    .tint(theme.accent)
+                    .frame(minHeight: Spacing.tapTarget)
+                    Rectangle().fill(theme.border).frame(height: 1)
+                    customizeRow
+                        .padding(.vertical, 10)
                 }
-                .contentShape(Rectangle())
+                .padding(.horizontal, 14)
+                .background(theme.panel, in: RoundedRectangle(cornerRadius: 12))
+                .overlay(RoundedRectangle(cornerRadius: 12).stroke(theme.border, lineWidth: 1))
             }
-            .buttonStyle(.plain)
             // Home-screen icon. iOS only — macOS has no alternate app icons.
             #if os(iOS)
             VStack(alignment: .leading, spacing: 7) {
                 sectionLabel("Ícone")
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(AppIcon.allCases) { iconChoice($0) }
-                    }
-                    .padding(.vertical, 2)
+                carousel(spacing: 10) {
+                    ForEach(AppIcon.allCases) { iconChoice($0) }
                 }
             }
             #endif
             // Animated background
             VStack(alignment: .leading, spacing: 7) {
                 sectionLabel("Fundo animado")
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
-                        ForEach(BackgroundPattern.allCases) { p in
-                            chip(p.label, selected: themes.background == p) {
-                                themes.background = p
-                            }
+                carousel(spacing: 8) {
+                    ForEach(BackgroundPattern.allCases) { p in
+                        chip(p.label, selected: themes.background == p) {
+                            themes.background = p
                         }
                     }
                 }
             }
         }
+    }
+
+    /// The web's "Customize UI" checkboxes, for the parts this app has.
+    private var customizeRow: some View {
+        Button { customizing = true } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "slider.horizontal.3").foregroundStyle(theme.accent)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Personalizar interface").font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                    Text(UIVisibility(raw: uiRaw).isDefault
+                         ? "Mostre ou esconda partes da barra lateral, do campo de mensagem e da conversa."
+                         : "Alguns itens estão escondidos.")
+                        .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+                Image(systemName: "chevron.right").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     }
 
     #if os(iOS)

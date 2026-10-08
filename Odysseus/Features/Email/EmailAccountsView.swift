@@ -80,17 +80,17 @@ struct EmailAccountsView: View {
                 }
             }
             #if !os(macOS)
-            .navigationTitle("Contas de email")
+            .odyNavTitle("Contas de email")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Fechar") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { BarButton("Fechar") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button { showAdd = true } label: { Image(systemName: "plus") }
                 }
             }
             #endif
             .task { await vm.load() }
-            .alert("Remover conta?", isPresented: Binding(get: { toDelete != nil }, set: { if !$0 { toDelete = nil } })) {
+            .odyAlert("Remover conta?", isPresented: Binding(get: { toDelete != nil }, set: { if !$0 { toDelete = nil } })) {
                 Button("Remover", role: .destructive) {
                     if let a = toDelete { Task { await vm.delete(a); onChange() } }; toDelete = nil
                 }
@@ -309,10 +309,10 @@ struct AddEmailAccountView: View {
             }
         }
             .background(theme.bg)
-            .navigationTitle("Nova conta")
+            .odyNavTitle("Nova conta")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { BarButton("Cancelar") { dismiss() } }
             }
             .tint(theme.accent)
             #if os(macOS)

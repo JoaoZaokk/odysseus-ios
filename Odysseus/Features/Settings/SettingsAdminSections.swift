@@ -1019,11 +1019,11 @@ struct SistemaSection: View {
         .fileImporter(isPresented: $picking, allowedContentTypes: [.json], allowsMultipleSelection: false) { r in
             if case .success(let urls) = r, let u = urls.first { importURL = u }
         }
-        .alert("Importar backup", isPresented: Binding(get: { importURL != nil }, set: { if !$0 { importURL = nil } })) {
+        .odyAlert("Importar backup", isPresented: Binding(get: { importURL != nil }, set: { if !$0 { importURL = nil } })) {
             Button("Importar dados") { if let u = importURL { Task { await vm.importData(u) } }; importURL = nil }
             Button("Cancelar", role: .cancel) { importURL = nil }
         } message: { Text("Substitui memórias, presets, skills, ajustes e preferências do servidor. Confirma?") }
-        .alert(LocalizedStringKey(confirming?.label ?? ""), isPresented: Binding(get: { confirming != nil }, set: { if !$0 { confirming = nil } })) {
+        .odyAlert(LocalizedStringKey(confirming?.label ?? ""), isPresented: Binding(get: { confirming != nil }, set: { if !$0 { confirming = nil } })) {
             Button("Apagar", role: .destructive) { if let c = confirming { Task { await vm.wipe(c.cat) } }; confirming = nil }
             Button("Cancelar", role: .cancel) { confirming = nil }
         } message: { Text("Isso é irreversível. Confirma?") }
@@ -1256,16 +1256,16 @@ struct UsuariosSection: View {
             }
         }
         .task { await vm.load() }
-        .alert("Renomear usuário", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
+        .odyAlert("Renomear usuário", isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
             TextField("Novo nome", text: $renameText)
             Button("Salvar") { if let u = renaming { Task { await vm.rename(u, to: renameText) } }; renaming = nil }
             Button("Cancelar", role: .cancel) { renaming = nil }
         }
-        .alert(removing?.username ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
+        .odyAlert(removing?.username ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
             Button("Remover", role: .destructive) { if let u = removing { Task { await vm.remove(u) } }; removing = nil }
             Button("Cancelar", role: .cancel) { removing = nil }
         } message: { Text("Isso é irreversível. Confirma?") }
-        .alert(toggling?.username ?? "", isPresented: Binding(get: { toggling != nil }, set: { if !$0 { toggling = nil } })) {
+        .odyAlert(toggling?.username ?? "", isPresented: Binding(get: { toggling != nil }, set: { if !$0 { toggling = nil } })) {
             Button(toggling?.isAdmin == true ? "Revogar admin" : "Tornar admin") {
                 if let u = toggling { Task { await vm.setAdmin(u, !u.isAdmin) } }
                 toggling = nil
@@ -1443,7 +1443,7 @@ struct IntegracoesSection: View {
             }
             .environment(\.theme, theme)
         }
-        .alert(removing?.name ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
+        .odyAlert(removing?.name ?? "", isPresented: Binding(get: { removing != nil }, set: { if !$0 { removing = nil } })) {
             Button("Remover", role: .destructive) { if let r = removing { Task { await vm.remove(r, admin: app.isAdmin) } }; removing = nil }
             Button("Cancelar", role: .cancel) { removing = nil }
         } message: { Text("Isso é irreversível. Confirma?") }

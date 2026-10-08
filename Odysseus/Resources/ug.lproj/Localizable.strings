@@ -946,3 +946,10 @@
 "Música" = "مۇزىكا";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "رەسىم سۈپىتىدە تىزىملانغان: بۇ ئۇچ نۇقتىنىڭ پاراڭ مودېللىرى پاراڭنىڭ مودېل تاللىغۇچىدا كۆرۈنمەيدۇ.";
 "Usar para chat" = "پاراڭغا ئىشلىتىش";
+
+/* Visual-defects round */
+"Interface" = "كۆرۈنمە يۈز";
+"Pausada" = "توختىتىلغان";
+"Ativa" = "ئاكتىپ";
+"Fixada" = "چاپلانغان";
+"Favorito" = "ياقتۇرغان";

@@ -946,3 +946,10 @@
 "Música" = "Muzik";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Didaftarkan sebagai Imej: model sembang titik akhir ini tidak dipaparkan dalam pemilih model sembang.";
 "Usar para chat" = "Guna untuk sembang";
+
+/* Visual-defects round */
+"Interface" = "Antara muka";
+"Pausada" = "Dijeda";
+"Ativa" = "Aktif";
+"Fixada" = "Disemat";
+"Favorito" = "Kegemaran";

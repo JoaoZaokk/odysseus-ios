@@ -56,11 +56,11 @@ struct FishVoicePicker: View {
                     }
                 }
             }
-            .navigationTitle(L("Escolher voz"))
+            .odyNavTitle(L("Escolher voz"), verbatim: true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(L("Cancelar")) { dismiss() }
+                    BarButton("Cancelar") { dismiss() }
                 }
             }
             .searchable(text: $search, prompt: Text(L("Buscar voz")))

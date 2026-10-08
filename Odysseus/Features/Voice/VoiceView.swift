@@ -26,26 +26,38 @@ struct VoiceView: View {
         NavigationStack {
             ZStack {
                 theme.bg.ignoresSafeArea()
+                // With nothing said yet the orb sits a fixed 64 under the
+                // header; it used to be pushed ~600 pt down by an empty
+                // transcript taking all the height. The button keeps its
+                // breathing room above the home indicator.
                 VStack(spacing: 0) {
-                    transcript
-                    Spacer(minLength: 8)
+                    if hasTranscript {
+                        transcript
+                        Spacer(minLength: 8)
+                    }
                     orb
+                        .padding(.top, hasTranscript ? 0 : Spacing.voidOffset)
                     statusLine
                     Spacer(minLength: 8)
                     controlButton
                 }
-                .padding(16)
+                .padding(.horizontal, Spacing.gutter)
+                .padding(.top, 8)
+                .padding(.bottom, Spacing.bottomBreathing)
             }
-            .navigationTitle("Voz")
+            .odyNavTitle("Voz")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Fechar") { convo.stop(); dismiss() }
+                    Button { convo.stop(); dismiss() } label: {
+                        Text("Fechar").font(.ody(size: 15)).foregroundStyle(theme.accent)
+                    }
                 }
                 ToolbarItem(placement: .primaryAction) { modelPicker }
             }
         }
         .tint(theme.accent)
+        .presentationDragIndicator(.visible)
         .onChange(of: convo.phase) { _, p in pulse = p.isLive }
         .task {
             await convo.loadModels()
@@ -59,6 +71,8 @@ struct VoiceView: View {
         .frame(minWidth: 460, minHeight: 620)
         #endif
     }
+
+    private var hasTranscript: Bool { !convo.turns.isEmpty || !convo.liveText.isEmpty }
 
     // MARK: - Transcript
 
@@ -176,10 +190,11 @@ struct VoiceView: View {
                     Button(m.name) { convo.selectedModel = m }
                 }
             } label: {
-                HStack(spacing: 3) {
+                // Same size and weight as "Fechar" across the header.
+                HStack(spacing: 4) {
                     Text(convo.selectedModel?.name ?? L("Modelo"))
-                        .font(.ody(size: 11)).lineLimit(1)
-                    Image(systemName: "chevron.up.chevron.down").font(.ody(size: 8))
+                        .font(.ody(size: 15)).lineLimit(1)
+                    Image(systemName: "chevron.up.chevron.down").font(.ody(size: 11))
                 }
                 .foregroundStyle(theme.accent).frame(maxWidth: 140, alignment: .trailing)
             }

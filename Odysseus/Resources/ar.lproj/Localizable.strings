@@ -946,3 +946,10 @@
 "Música" = "موسيقى";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "مسجّل كصورة: نماذج الدردشة في نقطة النهاية هذه لا تظهر في منتقي نموذج الدردشة.";
 "Usar para chat" = "استخدام للدردشة";
+
+/* Visual-defects round */
+"Interface" = "الواجهة";
+"Pausada" = "متوقفة مؤقتًا";
+"Ativa" = "نشطة";
+"Fixada" = "مثبّتة";
+"Favorito" = "مفضّلة";

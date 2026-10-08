@@ -938,3 +938,10 @@
 "Música" = "Musik";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Registrerad som Bild: den här slutpunktens chattmodeller syns inte i chattens modellväljare.";
 "Usar para chat" = "Använd för chatt";
+
+/* Visual-defects round */
+"Interface" = "Gränssnitt";
+"Pausada" = "Pausad";
+"Ativa" = "Aktiv";
+"Fixada" = "Fäst";
+"Favorito" = "Favorit";

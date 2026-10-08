@@ -946,3 +946,10 @@
 "Música" = "موسیقی";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "به‌عنوان تصویر ثبت شده: مدل‌های گفتگوی این نقطه پایانی در انتخابگر مدل گفتگو نمایش داده نمی‌شوند.";
 "Usar para chat" = "استفاده برای گفتگو";
+
+/* Visual-defects round */
+"Interface" = "رابط کاربری";
+"Pausada" = "متوقف";
+"Ativa" = "فعال";
+"Fixada" = "سنجاق‌شده";
+"Favorito" = "برگزیده";

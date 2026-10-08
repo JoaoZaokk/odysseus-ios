@@ -946,3 +946,10 @@
 "Música" = "Âm nhạc";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Đã đăng ký là Hình ảnh: các mô hình trò chuyện của endpoint này không hiện trong bộ chọn mô hình trò chuyện.";
 "Usar para chat" = "Dùng để trò chuyện";
+
+/* Visual-defects round */
+"Interface" = "Giao diện";
+"Pausada" = "Đã tạm dừng";
+"Ativa" = "Đang hoạt động";
+"Fixada" = "Đã ghim";
+"Favorito" = "Yêu thích";

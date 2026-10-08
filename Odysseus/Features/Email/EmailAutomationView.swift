@@ -123,19 +123,19 @@ struct EmailAutomationView: View {
                     styleCard
                 }
             }
-            .navigationTitle("Automação de email")
+            .odyNavTitle("Automação de email")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("OK") { dismiss() } } }
+            .toolbar { ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } } }
             .themedNavBar(theme)
         }
         .tint(theme.accent)
         .task { await vm.load() }
-        .alert(confirmUnsub.map { L("Descadastrar de %@?", $0.fromAddress) } ?? "",
+        .odyAlert(confirmUnsub.map { L("Descadastrar de %@?", $0.fromAddress) } ?? "",
                isPresented: Binding(get: { confirmUnsub != nil }, set: { if !$0 { confirmUnsub = nil } })) {
             Button("Descadastrar") { if let c = confirmUnsub { Task { await vm.unsubscribe(c) } }; confirmUnsub = nil }
             Button("Cancelar", role: .cancel) { confirmUnsub = nil }
         }
-        .alert(confirmCleanup == "delete" ? L("Excluir %lld emails?", vm.selected.count) : L("Mover %lld emails para o spam?", vm.selected.count),
+        .odyAlert(confirmCleanup == "delete" ? L("Excluir %lld emails?", vm.selected.count) : L("Mover %lld emails para o spam?", vm.selected.count),
                isPresented: Binding(get: { confirmCleanup != nil }, set: { if !$0 { confirmCleanup = nil } })) {
             Button(confirmCleanup == "delete" ? "Excluir" : "Mover para spam", role: .destructive) {
                 if let a = confirmCleanup { Task { await vm.cleanup(a) } }; confirmCleanup = nil

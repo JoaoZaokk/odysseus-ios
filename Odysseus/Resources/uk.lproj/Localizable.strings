@@ -948,3 +948,10 @@
 "Música" = "Музика";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "Зареєстровано як «Зображення»: чат-моделі цього ендпоінта не видно у виборі моделі чату.";
 "Usar para chat" = "Використовувати для чату";
+
+/* Visual-defects round */
+"Interface" = "Інтерфейс";
+"Pausada" = "Призупинено";
+"Ativa" = "Активна";
+"Fixada" = "Закріплено";
+"Favorito" = "Обране";

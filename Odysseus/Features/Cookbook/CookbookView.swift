@@ -142,63 +142,88 @@ struct CookbookView: View {
         if vm.packages.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
         } else if vm.packages.isEmpty {
-            VStack(spacing: 12) {
-                Image(systemName: "fork.knife").font(.ody(size: 44)).foregroundStyle(theme.accent)
-                Text("Cookbook").font(.ody(.headline)).foregroundStyle(theme.fg)
-                Text("Pacotes e engines para servir modelos.")
-                    .font(.ody(.footnote)).foregroundStyle(theme.secondaryText)
-            }.padding(40)
+            EmptyStateView(icon: "fork.knife", title: "Cookbook",
+                           message: "Pacotes e engines para servir modelos.")
         } else {
+            let groups = vm.grouped
+            let lastID = groups.last?.items.last?.id
             List {
                 if let n = vm.note {
                     Text(n).font(.ody(size: 11)).foregroundStyle(theme.green)
                         .listRowBackground(theme.bg)
+                        .gutterRowInsets()
                 }
                 if let e = vm.error {
                     Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger)
                         .listRowBackground(theme.bg)
+                        .gutterRowInsets()
                 }
-                ForEach(vm.grouped, id: \.category) { group in
+                ForEach(groups, id: \.category) { group in
                     Section {
-                        ForEach(group.items) { pkg in row(pkg).listRowBackground(theme.bg) }
+                        ForEach(group.items) { pkg in
+                            row(pkg)
+                                .listRowBackground(theme.bg)
+                                .gutterRowInsets(vertical: 8)
+                                .rowSeparatorInset()
+                                .edgeSeparators(first: false, last: pkg.id == lastID)
+                        }
                     } header: {
                         Text(group.category).font(.ody(.caption)).foregroundStyle(theme.accent)
+                            .listRowInsets(EdgeInsets(top: 12, leading: Spacing.gutter, bottom: 4, trailing: Spacing.gutter))
                     }
                 }
             }
             .listStyle(.plain).scrollContentBackground(.hidden)
+            .listBottomBreathing()
         }
     }
 
     private func row(_ pkg: CookbookPackage) -> some View {
-        HStack(spacing: 10) {
+        HStack(spacing: Spacing.iconGap) {
             Image(systemName: pkg.installed ? "checkmark.circle.fill" : "shippingbox")
                 .foregroundStyle(pkg.installed ? theme.green : theme.secondaryText)
+                .frame(width: Spacing.leadingColumn)
             VStack(alignment: .leading, spacing: 2) {
                 Text(pkg.name).font(.ody(.subheadline)).foregroundStyle(theme.fg)
                 if !pkg.desc.isEmpty {
-                    Text(pkg.desc).font(.ody(size: 10))
+                    Text(pkg.desc).font(.ody(size: 11))
                         .foregroundStyle(theme.secondaryText).lineLimit(2)
                 }
             }
-            Spacer()
-            if pkg.installed {
-                Text("instalado").font(.ody(size: 9)).foregroundStyle(theme.green)
-            } else if vm.installing.contains(pkg.id) {
-                HStack(spacing: 6) {
-                    ProgressView().controlSize(.small)
-                    Text("instalando…").font(.ody(size: 10)).foregroundStyle(theme.secondaryText)
-                }
-            } else if pkg.canInstall {
-                Button { Task { await vm.install(pkg) } } label: {
-                    Text("Instalar").font(.ody(size: 11, weight: .semibold))
-                        .padding(.horizontal, 12).padding(.vertical, 5)
-                        .foregroundStyle(.white)
-                        .background(theme.accent, in: Capsule())
-                }
-                .buttonStyle(.plain)
-            }
+            Spacer(minLength: 8)
+            status(pkg)
+                // One column for every state, so "instalado" and "Instalar"
+                // end on the same edge instead of a loose 9-point word next
+                // to a pill.
+                .frame(width: 96, alignment: .trailing)
         }
-        .padding(.vertical, 3)
+    }
+
+    @ViewBuilder
+    private func status(_ pkg: CookbookPackage) -> some View {
+        if pkg.installed {
+            Text("instalado").font(.ody(size: 12))
+                .lineLimit(1).minimumScaleFactor(0.8)
+                .padding(.horizontal, 12).padding(.vertical, 5)
+                .foregroundStyle(theme.green)
+                .overlay(Capsule().stroke(theme.green, lineWidth: 1))
+        } else if vm.installing.contains(pkg.id) {
+            HStack(spacing: 6) {
+                ProgressView().controlSize(.small)
+                Text("instalando…").font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
+                    .lineLimit(1).minimumScaleFactor(0.8)
+            }
+        } else if pkg.canInstall {
+            Button { Task { await vm.install(pkg) } } label: {
+                Text("Instalar").font(.ody(size: 12, weight: .semibold))
+                    .lineLimit(1).minimumScaleFactor(0.8)
+                    .padding(.horizontal, 12).padding(.vertical, 5)
+                    .foregroundStyle(.white)
+                    .background(theme.accent, in: Capsule())
+                    .frame(minHeight: Spacing.tapTarget)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+        }
     }
 }

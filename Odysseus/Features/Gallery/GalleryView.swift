@@ -50,7 +50,7 @@ struct GalleryView: View {
 
     init(app: AppState) { _vm = StateObject(wrappedValue: GalleryViewModel(api: app.api)) }
 
-    private let columns = [GridItem(.adaptive(minimum: 110), spacing: 3)]
+    private let columns = [GridItem(.adaptive(minimum: 100), spacing: 8)]
 
     var body: some View {
         ZStack {
@@ -88,13 +88,17 @@ struct GalleryView: View {
         } else if vm.shown.isEmpty {
             emptyState
         } else {
+            // On the app's gutter with real gaps: full-bleed with 3-point
+            // hairlines, the grid touched both edges of the phone.
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 3) {
+                LazyVGrid(columns: columns, spacing: 8) {
                     ForEach(vm.shown) { img in
                         tile(img).onTapGesture { selected = img }
                     }
                 }
-                .padding(3)
+                .padding(.horizontal, Spacing.gutter)
+                .padding(.top, 12)
+                .padding(.bottom, Spacing.bottomBreathing)
             }
         }
     }
@@ -111,7 +115,7 @@ struct GalleryView: View {
                     ZStack { theme.panel; ProgressView().tint(theme.accent) }
                 }
             }
-            .frame(minHeight: 110).frame(maxWidth: .infinity).frame(height: 110)
+            .frame(maxWidth: .infinity).frame(height: 110)
             .clipped()
 
             if img.isVideo {
@@ -120,23 +124,23 @@ struct GalleryView: View {
                     .padding(4).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             }
             if img.favorite {
+                // On a scrim: a white heart with a shadow vanished on a light photo.
                 Image(systemName: "heart.fill")
-                    .font(.caption2).foregroundStyle(.white).shadow(radius: 2).padding(5)
+                    .font(.ody(size: 11)).foregroundStyle(.white)
+                    .padding(6)
+                    .background(.black.opacity(0.35), in: Circle())
+                    .padding(5)
+                    .accessibilityLabel(Text("Favorito"))
             }
         }
         .background(theme.panel)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
     private var emptyState: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "photo.on.rectangle.angled").font(.ody(size: 44)).foregroundStyle(theme.accent)
-            Text(LocalizedStringKey(vm.favoritesOnly ? "Sem favoritos" : "Galeria vazia"))
-                .font(.ody(.headline)).foregroundStyle(theme.fg)
-            Text("Imagens geradas e enviadas aparecem aqui.")
-                .font(.ody(.footnote))
-                .foregroundStyle(theme.secondaryText)
-        }
-        .padding(40)
+        EmptyStateView(icon: "photo.on.rectangle.angled",
+                       title: vm.favoritesOnly ? "Sem favoritos" : "Galeria vazia",
+                       message: "Imagens geradas e enviadas aparecem aqui.")
     }
 }
 
@@ -176,7 +180,7 @@ struct GalleryDetail: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) { Button("Fechar") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } }
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
                         onFavorite()

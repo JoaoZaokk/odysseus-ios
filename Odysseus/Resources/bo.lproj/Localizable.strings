@@ -946,3 +946,10 @@
 "Música" = "རོལ་དབྱངས།";
 "Cadastrado como Imagem: os modelos de chat deste endpoint não aparecem no seletor do chat." = "པར་རིས་སུ་ཐོ་འགོད་བྱས། མཐའ་མཚམས་འདིའི་གླེང་མོལ་དཔེ་དབྱིབས་རྣམས་གླེང་མོལ་གྱི་དཔེ་དབྱིབས་འདེམས་ས་ལ་མི་མངོན།";
 "Usar para chat" = "གླེང་མོལ་ལ་བེད་སྤྱོད།";
+
+/* Visual-defects round */
+"Interface" = "བེད་སྤྱོད་ངོས";
+"Pausada" = "བར་གནས་ཡོད";
+"Ativa" = "ལག་བསྟར་ཡོད";
+"Fixada" = "འཇུ་ཡོད";
+"Favorito" = "དགའ་གདམ";

@@ -140,6 +140,7 @@ struct EmailView: View {
                     }.buttonStyle(.plain)
                 }
             }
+            .voidAnchored()
         } else if vm.notConfigured {
             VStack(spacing: 16) {
                 stateView(icon: "envelope.badge.shield.half.filled",
@@ -153,12 +154,17 @@ struct EmailView: View {
                         .foregroundStyle(.white)
                 }
             }
+            .voidAnchored()
         } else if vm.emails.isEmpty {
             stateView(icon: "tray", title: "Caixa vazia", subtitle: "Nenhuma mensagem na INBOX.")
+                .voidAnchored()
         } else {
             List {
                 ForEach(vm.emails) { m in
                     row(m).listRowBackground(theme.bg)
+                        .gutterRowInsets(vertical: 8)
+                        .rowSeparatorInset()
+                        .edgeSeparators(first: m.id == vm.emails.first?.id, last: m.id == vm.emails.last?.id)
                         .onTapGesture { opened = m }
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) { Task { await vm.delete(m) } } label: {
@@ -176,21 +182,26 @@ struct EmailView: View {
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
+            .listBottomBreathing()
         }
     }
 
+    /// Unread dot centred in the 24 column; sender, subject and the clip all
+    /// live in the text column that the separator starts under.
     private func row(_ m: EmailMessage) -> some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(alignment: .top, spacing: Spacing.iconGap) {
             Circle()
                 .fill(m.isRead ? Color.clear : theme.accent)
                 .frame(width: 8, height: 8).padding(.top, 6)
+                .frame(width: Spacing.leadingColumn)
+                .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 3) {
                 HStack {
                     Text(m.displayFrom)
                         .font(.ody(.subheadline).weight(m.isRead ? .regular : .semibold))
                         .foregroundStyle(theme.fg).lineLimit(1)
                     Spacer()
-                    if m.hasAttachments { Image(systemName: "paperclip").font(.caption2).foregroundStyle(theme.secondaryText) }
+                    if m.hasAttachments { Image(systemName: "paperclip").font(.ody(size: 11)).foregroundStyle(theme.secondaryText) }
                 }
                 Text(m.subject)
                     .font(.ody(size: 13))
@@ -198,7 +209,6 @@ struct EmailView: View {
                     .lineLimit(1)
             }
         }
-        .padding(.vertical, 4)
         .contentShape(Rectangle())
     }
 
@@ -211,7 +221,7 @@ struct EmailView: View {
                 .foregroundStyle(theme.secondaryText)
                 .multilineTextAlignment(.center)
         }
-        .padding(40)
+        .padding(.horizontal, 40)
     }
 }
 
@@ -251,11 +261,12 @@ struct EmailReader: View {
                                 .textSelection(.enabled)
                         }
                     }
-                    .padding(16)
+                    .padding(.horizontal, Spacing.gutter)
+                    .padding(.vertical, 16)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Fechar") { dismiss() } } }
+            .toolbar { ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } } }
         }
         .tint(theme.accent)
         .task {
