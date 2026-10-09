@@ -22,7 +22,7 @@ struct ChatScreen: View {
     private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
     /// Off = a reading column; the web's `chat-fullwidth`. Only iPad and
     /// Mac are wide enough for the difference to show.
-    private var columnWidth: CGFloat? { ui.isOn(.fullWidth) ? nil : 720 }
+    private var columnWidth: CGFloat? { ui.isOn(.fullWidth) ? nil : Spacing.readableWidth }
     private let autoSend: String?
 
     init(app: AppState, session: ChatSession?, deepSearch: Bool = false,

@@ -183,6 +183,7 @@ struct EmailView: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .listBottomBreathing()
+            .readableColumn()
         }
     }
 

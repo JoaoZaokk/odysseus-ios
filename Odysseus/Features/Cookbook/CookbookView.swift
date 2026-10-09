@@ -174,6 +174,7 @@ struct CookbookView: View {
                 }
             }
             .listStyle(.plain).scrollContentBackground(.hidden)
+            .readableColumn()
             .listBottomBreathing()
         }
     }

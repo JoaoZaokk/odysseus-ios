@@ -44,7 +44,7 @@ struct InterfaceSettingsView: View {
                 Spacer()
                 Button("Restaurar padrão") { var u = ui; u.reset(g); raw = u.raw }
                     .buttonStyle(.plain).font(.ody(size: 11)).foregroundStyle(theme.accent)
-                    .disabled(UIVisibility.Key.allCases.filter { $0.group == g }.allSatisfy { ui.isOn($0) })
+                    .disabled(ui.isDefault(g))
             }
             ForEach(UIVisibility.Key.allCases.filter { $0.group == g }) { k in
                 Toggle(isOn: Binding(get: { ui.isOn(k) }, set: { on in var u = ui; u.set(k, on: on); raw = u.raw })) {

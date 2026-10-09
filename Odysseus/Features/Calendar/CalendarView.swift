@@ -156,6 +156,7 @@ struct CalendarView: View {
         }
         .padding(.horizontal, Spacing.gutter)
         .padding(.vertical, 12)
+        .readableColumn()
     }
 
     private func add() {
@@ -195,6 +196,7 @@ struct CalendarView: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .listBottomBreathing()
+            .readableColumn()
         }
     }
 

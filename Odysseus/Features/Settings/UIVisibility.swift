@@ -5,8 +5,9 @@ import Foundation
 /// sidebar, the message field and the conversation that this app actually
 /// has. Kept on this device — one UserDefaults key with the hidden ids —
 /// the way the web keeps its map in localStorage. Everything is visible
-/// until the user hides it; unknown ids are dropped on read so an old key
-/// can never hide something that no longer exists.
+/// until the user hides it, except the web's default-off keys (full width);
+/// unknown ids are dropped on read so an old key can never hide something
+/// that no longer exists.
 struct UIVisibility: Equatable {
     static let storageKey = "ui.hidden"
 
@@ -97,28 +98,57 @@ struct UIVisibility: Equatable {
         }
     }
 
+    /// Off until the user turns them on — the web's UI_VIS_DEFAULT_OFF
+    /// (`chat-fullwidth`): a reading column is the default on iPad and Mac.
+    static let defaultOff: Set<Key> = [.fullWidth]
+
+    /// Default-on ids the user turned off.
     private(set) var hidden: Set<String>
+    /// Default-off ids the user turned on, stored as "+id". A bare id of a
+    /// default-off key is what an older build wrote for "off", and still
+    /// reads as off.
+    private(set) var shown: Set<String>
 
     init(raw: String) {
-        hidden = Set(raw.split(separator: ",").map(String.init).filter { Key(rawValue: $0) != nil })
+        var hidden = Set<String>(), shown = Set<String>()
+        for token in raw.split(separator: ",").map(String.init) {
+            let on = token.hasPrefix("+")
+            guard let k = Key(rawValue: on ? String(token.dropFirst()) : token) else { continue }
+            if Self.defaultOff.contains(k) { if on { shown.insert(k.rawValue) } }
+            else if !on { hidden.insert(k.rawValue) }
+        }
+        self.hidden = hidden
+        self.shown = shown
     }
 
     /// Sorted so the same set always serialises the same way.
-    var raw: String { hidden.sorted().joined(separator: ",") }
+    var raw: String { (hidden.sorted() + shown.sorted().map { "+" + $0 }).joined(separator: ",") }
 
-    var isDefault: Bool { hidden.isEmpty }
+    var isDefault: Bool { hidden.isEmpty && shown.isEmpty }
 
-    func isOn(_ k: Key) -> Bool { !hidden.contains(k.rawValue) }
+    /// Every key of the group is where it starts ("Restaurar padrão" has
+    /// nothing to do).
+    func isDefault(_ g: Group) -> Bool {
+        Key.allCases.filter { $0.group == g }.allSatisfy { !hidden.contains($0.rawValue) && !shown.contains($0.rawValue) }
+    }
+
+    func isOn(_ k: Key) -> Bool {
+        Self.defaultOff.contains(k) ? shown.contains(k.rawValue) : !hidden.contains(k.rawValue)
+    }
 
     /// A section row is on only while "Espaços" is: hiding the group hides
     /// every row, the way the web's `tools-section` hides every `tool-*`.
     func shows(_ section: AppSection) -> Bool { isOn(.spaces) && isOn(Key(section)) }
 
     mutating func set(_ k: Key, on: Bool) {
-        if on { hidden.remove(k.rawValue) } else { hidden.insert(k.rawValue) }
+        if Self.defaultOff.contains(k) {
+            if on { shown.insert(k.rawValue) } else { shown.remove(k.rawValue) }
+        } else {
+            if on { hidden.remove(k.rawValue) } else { hidden.insert(k.rawValue) }
+        }
     }
 
     mutating func reset(_ g: Group) {
-        for k in Key.allCases where k.group == g { hidden.remove(k.rawValue) }
+        for k in Key.allCases where k.group == g { hidden.remove(k.rawValue); shown.remove(k.rawValue) }
     }
 }

@@ -165,6 +165,7 @@ struct LibraryView: View {
                 }
             }
             .listStyle(.plain).scrollContentBackground(.hidden)
+            .readableColumn()
             .listBottomBreathing()
         }
     }

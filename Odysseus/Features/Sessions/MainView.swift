@@ -20,7 +20,7 @@ struct MainView: View {
                 // Fixed width: the sidebar is NOT user-resizable (the draggable divider
                 // could be pulled into a broken/empty state). The two work panes stay
                 // resizable via the HSplitView in WorkspaceView.
-                .navigationSplitViewColumnWidth(280)
+                .navigationSplitViewColumnWidth(sidebarWidth)
         } detail: {
             WorkspaceView(workspace: workspace, app: app, onNewSession: { Task { await store.load() } },
                           onActivity: { id, on in store.markStreaming(id, on) })
@@ -82,6 +82,14 @@ struct MainView: View {
     }
 
     private func close() { showSettings = false }
+
+    private var sidebarWidth: CGFloat {
+        #if os(iOS)
+        return SidebarLayout.width(idiom: UIDevice.current.userInterfaceIdiom)
+        #else
+        return 280
+        #endif
+    }
 
     #if os(macOS)
     /// The fixed Mac shortcuts (see OdyShortcut.swift): zero-size buttons,

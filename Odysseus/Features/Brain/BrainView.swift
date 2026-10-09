@@ -145,6 +145,8 @@ struct BrainView: View {
                 .scrollContentBackground(.hidden)
                 .listBottomBreathing()
             }
+            // On the stack: search, category chips and rows share one column.
+            .readableColumn()
         }
     }
 

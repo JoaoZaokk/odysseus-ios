@@ -151,6 +151,7 @@ struct DeepResearchView: View {
                     }
                 }
                 .padding(16)
+                .readableColumn()
             }
         }
         .screenChrome(title: "Deep Research")

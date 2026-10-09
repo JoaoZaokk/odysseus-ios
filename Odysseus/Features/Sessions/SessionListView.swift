@@ -14,9 +14,6 @@ struct SidebarView: View {
     @Binding var showSettings: Bool
     @Environment(\.theme) private var theme
     @EnvironmentObject private var themes: ThemeStore
-    #if os(iOS)
-    @Environment(\.horizontalSizeClass) private var sizeClass
-    #endif
 
     @State private var search = ""
     @State private var renaming: ChatSession?
@@ -56,7 +53,7 @@ struct SidebarView: View {
     /// nine entry points behind a chevron.
     private var usesSpacesBar: Bool {
         #if os(iOS)
-        return sizeClass == .compact && !visibleSections.isEmpty
+        return SidebarLayout.usesSpacesBar(idiom: UIDevice.current.userInterfaceIdiom, hasSections: !visibleSections.isEmpty)
         #else
         return false
         #endif
@@ -66,7 +63,7 @@ struct SidebarView: View {
         #if os(macOS)
         return true
         #else
-        return sizeClass == .regular
+        return SidebarLayout.spacesExpandedByDefault(idiom: UIDevice.current.userInterfaceIdiom)
         #endif
     }
 
@@ -246,7 +243,7 @@ struct SidebarView: View {
         }
         .sheet(isPresented: $showMoreSpaces) { moreSpacesSheet }
         #if DEBUG
-        .onAppear { if ScreenshotRoute.matches("spaces") { showMoreSpaces = true } }
+        .onAppear { if ScreenshotRoute.matches("spaces") && usesSpacesBar { showMoreSpaces = true } }
         #endif
         #endif
         .onChange(of: search) { _, q in store.search(q) }
@@ -550,3 +547,29 @@ struct ArchivedSessionsView: View {
         #endif
     }
 }
+
+#if os(iOS)
+/// Sidebar decisions by device, not by size class: the iPad sidebar is a
+/// split-view column, and a column reports a compact width even on a 13"
+/// iPad — which put the iPhone's Espaços bar and its bottom "Mais" sheet in
+/// the iPad sidebar.
+enum SidebarLayout {
+    /// The bottom Espaços bar is the iPhone's; the iPad lists the Espaços in
+    /// the sidebar, like the Mac.
+    static func usesSpacesBar(idiom: UIUserInterfaceIdiom, hasSections: Bool) -> Bool {
+        idiom == .phone && hasSections
+    }
+
+    /// iPhone starts collapsed (the sections would push the conversations
+    /// below the fold); iPad starts open.
+    static func spacesExpandedByDefault(idiom: UIUserInterfaceIdiom) -> Bool {
+        idiom != .phone
+    }
+
+    /// The Mac's 280 cut iPad titles at "Roteiro de 3 dia…"; a 13" iPad in
+    /// landscape still leaves a 1056 pt detail, past the 720 reading column.
+    static func width(idiom: UIUserInterfaceIdiom) -> CGFloat {
+        idiom == .pad ? 320 : 280
+    }
+}
+#endif

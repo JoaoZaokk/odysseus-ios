@@ -36,11 +36,50 @@ final class ClosingItemsTests: XCTestCase {
 
     // MARK: - Interface visibility
 
-    func testEverythingIsVisibleUntilHidden() {
+    func testEverythingIsVisibleUntilHiddenExceptTheWebsDefaultOffKeys() {
         let ui = UIVisibility(raw: "")
         XCTAssertTrue(ui.isDefault)
-        for k in UIVisibility.Key.allCases { XCTAssertTrue(ui.isOn(k), k.rawValue) }
+        for k in UIVisibility.Key.allCases where k != .fullWidth { XCTAssertTrue(ui.isOn(k), k.rawValue) }
         for s in AppSection.allCases { XCTAssertTrue(ui.shows(s)) }
+    }
+
+    /// The web ships `chat-fullwidth` in UI_VIS_DEFAULT_OFF: a reading column
+    /// until the user asks for full width. On by default, the iPad opened
+    /// every chat 1032 pt wide.
+    func testFullWidthStartsOffLikeTheWeb() {
+        XCTAssertFalse(UIVisibility(raw: "").isOn(.fullWidth))
+        XCTAssertTrue(UIVisibility.Group.allCases.allSatisfy { UIVisibility(raw: "").isDefault($0) })
+    }
+
+    func testTurningFullWidthOnIsStoredAndRoundTrips() {
+        var ui = UIVisibility(raw: "")
+        ui.set(.fullWidth, on: true)
+        XCTAssertTrue(ui.isOn(.fullWidth))
+        XCTAssertFalse(ui.isDefault); XCTAssertFalse(ui.isDefault(.chat)); XCTAssertTrue(ui.isDefault(.sidebar))
+        XCTAssertEqual(UIVisibility(raw: ui.raw), ui)
+        XCTAssertTrue(UIVisibility(raw: ui.raw).isOn(.fullWidth))
+        ui.set(.fullWidth, on: false)
+        XCTAssertEqual(ui.raw, "")
+        XCTAssertTrue(ui.isDefault)
+    }
+
+    /// Before, the stored list held the ids the user turned OFF, and
+    /// "chat.fullWidth" in it meant "reading column". That still reads as off.
+    func testAnOldStoredFullWidthOffStaysOff() {
+        let ui = UIVisibility(raw: "chat.fullWidth,composer.mic")
+        XCTAssertFalse(ui.isOn(.fullWidth))
+        XCTAssertFalse(ui.isOn(.mic))
+        XCTAssertEqual(ui.raw, "composer.mic")
+    }
+
+    func testResetPutsFullWidthBackOff() {
+        var ui = UIVisibility(raw: "")
+        ui.set(.fullWidth, on: true); ui.set(.welcome, on: false); ui.set(.mic, on: false)
+        ui.reset(.chat)
+        XCTAssertFalse(ui.isOn(.fullWidth))
+        XCTAssertTrue(ui.isOn(.welcome))
+        XCTAssertTrue(ui.isDefault(.chat))
+        XCTAssertFalse(ui.isOn(.mic), "another group is untouched")
     }
 
     func testHiddenIdsRoundTripSortedAndUnknownOnesAreDropped() {

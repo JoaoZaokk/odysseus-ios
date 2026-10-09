@@ -150,6 +150,7 @@ struct TasksView: View {
             }
             .listStyle(.plain).scrollContentBackground(.hidden)
             .listBottomBreathing()
+            .readableColumn()
         }
     }
 

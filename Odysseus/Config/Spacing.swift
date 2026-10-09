@@ -29,6 +29,44 @@ enum Spacing {
     static let voidOffset: CGFloat = 64
     /// Smallest tappable target.
     static let tapTarget: CGFloat = 44
+
+    /// Reading column on a wide screen (iPad, Mac): the chat's messages and a
+    /// list's rows stop at this width, centred.
+    static let readableWidth: CGFloat = 720
+
+    /// How wide a screen's content may grow: the reading column on a regular
+    /// width (iPad), unlimited on compact (iPhone, iPad slide-over).
+    static func readableMaxWidth(regular: Bool) -> CGFloat {
+        regular ? readableWidth : .infinity
+    }
+}
+
+#if os(iOS)
+/// Centres a screen's content (a list, and the search field or quick-add
+/// bar above it) in the reading column on iPad. The view itself narrows: a
+/// `List` ignored a leading content margin on iPad (35 pt on the left, 188
+/// on the right), so the column is a frame, the same as the chat's.
+private struct ReadableColumn: ViewModifier {
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: Spacing.readableMaxWidth(regular: sizeClass == .regular))
+            .frame(maxWidth: .infinity)
+    }
+}
+#endif
+
+extension View {
+    /// See `ReadableColumn`. iPhone is untouched; macOS keeps its panes as
+    /// they are.
+    @ViewBuilder func readableColumn() -> some View {
+        #if os(iOS)
+        modifier(ReadableColumn())
+        #else
+        self
+        #endif
+    }
 }
 
 extension View {
