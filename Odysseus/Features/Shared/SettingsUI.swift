@@ -44,13 +44,8 @@ enum SettingsUI {
         return L(format, msg(e))
     }
 
-    /// Delivers data to the user as a file. Returns `true` when it was actually
-    /// delivered, `false` on failure, `nil` when the user cancelled — so callers
-    /// can report honestly. The old iOS branch wrote into tmp (unreachable, and
-    /// purged by the OS) and the caller still announced "Backup exportado.";
-    /// anyone trusting that phantom backup before a Danger-Zone wipe lost data.
-    @MainActor
     /// Copies text to the system clipboard (both platforms).
+    @MainActor
     static func copyToClipboard(_ text: String) {
         #if os(macOS)
         NSPasteboard.general.clearContents()
@@ -60,6 +55,14 @@ enum SettingsUI {
         #endif
     }
 
+    /// Delivers data to the user as a file. Returns `true` when it was actually
+    /// delivered, `false` on failure, `nil` when the user cancelled — so callers
+    /// can report honestly. The old iOS branch wrote into tmp (unreachable, and
+    /// purged by the OS) and the caller still announced "Backup exportado.";
+    /// anyone trusting that phantom backup before a Danger-Zone wipe lost data.
+    /// Main actor: it presents a save panel or the share sheet. Without it the
+    /// async body runs on the cooperative pool and touches UIKit from there.
+    @MainActor
     static func saveJSON(_ data: Data, suggested: String) async -> Bool? {
         #if os(macOS)
         let panel = NSSavePanel()
