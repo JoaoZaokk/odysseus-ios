@@ -88,6 +88,9 @@ struct SettingsView: View {
     @Environment(\.theme) private var theme
     @Environment(\.dismiss) private var dismiss
     @State private var selection: SettingsSection = .aiDefaults
+    #if DEBUG
+    @State private var screenshotPush: SettingsSection?
+    #endif
     /// When presented as the macOS right-side drawer, the host passes a close
     /// action (there's no sheet to `dismiss`). nil → falls back to `dismiss()`.
     var onClose: (() -> Void)? = nil
@@ -129,6 +132,10 @@ struct SettingsView: View {
             .odyNavTitle("Ajustes")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .confirmationAction) { BarButton("Fechar") { dismiss() } } }
+            #if DEBUG
+            .navigationDestination(item: $screenshotPush) { sectionScreen($0) }
+            .onAppear { if ScreenshotRoute.matches("theme") { screenshotPush = .appearance } }
+            #endif
             .scrollContentBackground(.hidden)
             .background(theme.bg)
             .themedNavBar(theme)

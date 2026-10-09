@@ -63,6 +63,11 @@ struct ChatScreen: View {
         }
         .onAppear {
             vm.loadHistoryIfNeeded()
+            #if DEBUG
+            if let id = ScreenshotRoute.value("voice"), id == vm.sessionID {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { showVoice = true }
+            }
+            #endif
             // The one moment the app asks for a rating: a reply that just
             // streamed cleanly, gated by ReviewGate. A beat later, never over
             // the last streaming frame.
@@ -159,7 +164,7 @@ struct ChatScreen: View {
             Text("Como posso ajudar?")
                 .font(.ody(.title2).weight(.semibold))
                 .foregroundStyle(theme.fg)
-            Text("Conectado a \(app.serverConfig.baseURL.host ?? "Odysseus")")
+            Text("Conectado a \(connectedHost)")
                 .font(.ody(.footnote))
                 .foregroundStyle(theme.secondaryText)
         }
@@ -375,6 +380,13 @@ struct ChatScreen: View {
         .keyboardShortcut(OdyShortcuts.send)
     }
 
+    private var connectedHost: String {
+        #if DEBUG
+        if let label = ScreenshotRoute.hostLabel { return label }
+        #endif
+        return app.serverConfig.baseURL.host ?? "Odysseus"
+    }
+
     private var composerPlaceholder: String { voice.isRecording ? "Ouvindo…" : "Mensagem…" }
 
     private var canSend: Bool {
@@ -404,7 +416,7 @@ struct ChatScreen: View {
                 Image(systemName: "cpu").font(.ody(size: 11))
                 Text(vm.selectedModel?.name ?? vm.resolvedModel ?? L("Modelo"))
                     .font(.ody(size: 12))
-                    // Cut at the end: "mimo-v2.5-pro" reads, "mimo…5-pro" does not.
+                    // Cut at the end: "mimo-v2.6-pro" reads, "mimo…6-pro" does not.
                     .lineLimit(1).truncationMode(.tail)
             }
             .padding(.horizontal, 10).padding(.vertical, 6)
@@ -420,9 +432,13 @@ struct ChatScreen: View {
 
     private func toggleChip(system: String, label: String, on: Binding<Bool>) -> some View {
         Button { on.wrappedValue.toggle() } label: {
+            // One line at its own width: in a tight row SwiftUI wrapped the
+            // longer translations ("Approfondi", "エージェント") onto two lines;
+            // the model chip next to them truncates instead.
             HStack(spacing: 5) {
                 Image(systemName: system).font(.ody(size: 11))
                 Text(LocalizedStringKey(label)).font(.ody(size: 12))
+                    .lineLimit(1).fixedSize()
             }
             .padding(.horizontal, 10).padding(.vertical, 6)
             .foregroundStyle(on.wrappedValue ? .white : theme.secondaryText)

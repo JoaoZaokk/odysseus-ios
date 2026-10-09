@@ -245,6 +245,9 @@ struct SidebarView: View {
             if usesSpacesBar && search.isEmpty { spacesBar }
         }
         .sheet(isPresented: $showMoreSpaces) { moreSpacesSheet }
+        #if DEBUG
+        .onAppear { if ScreenshotRoute.matches("spaces") { showMoreSpaces = true } }
+        #endif
         #endif
         .onChange(of: search) { _, q in store.search(q) }
         .screenChrome(title: "Odysseus") {

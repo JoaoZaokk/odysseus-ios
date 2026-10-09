@@ -241,7 +241,7 @@ struct ThemePickerView: View {
                 .font(.ody(size: 10))
                 .foregroundStyle(t.fg)
                 .lineLimit(1)
-            Text("mimo-v2.5-pro")
+            Text(verbatim: "mimo-v2.6-pro")
                 .font(.ody(size: 8))
                 .foregroundStyle(t.green)
             Spacer(minLength: 0)

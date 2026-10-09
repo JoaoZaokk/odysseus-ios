@@ -31,7 +31,12 @@ struct MainView: View {
         #endif
         .tint(theme.accent)
         .onReceive(NotificationCenter.default.publisher(for: .odysseusNewChat)) { _ in workspace.setPrimary(.newChat) }
-        .task { await store.load() }
+        .task {
+            await store.load()
+            #if DEBUG
+            ScreenshotRoute.applyMain(sessions: store.sessions, workspace: workspace, showSettings: &showSettings)
+            #endif
+        }
         // On iPhone (compact) the split view shows ONE column at a time. A sidebar
         // tap changes the workspace, so move the visible compact column to the
         // detail — otherwise the buttons look dead. `preferredCompactColumn` (not

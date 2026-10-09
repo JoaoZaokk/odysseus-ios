@@ -142,7 +142,12 @@ struct CompareView: View {
             Button { vm.reset() } label: { Image(systemName: "arrow.counterclockwise") }
                 .disabled(vm.streaming || (vm.turnsA.isEmpty && vm.turnsB.isEmpty))
         }
-        .task { await vm.load() }
+        .task {
+            await vm.load()
+            #if DEBUG
+            if let q = ScreenshotRoute.value("compare") { vm.prompt = q; vm.send() }
+            #endif
+        }
     }
 
     private func column(title: String, model: Binding<ChatModel?>, turns: [CompareTurn],

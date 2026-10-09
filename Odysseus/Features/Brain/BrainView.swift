@@ -71,7 +71,9 @@ struct BrainView: View {
     @Environment(\.theme) private var theme
     @State private var showAdd = false
     @State private var newText = ""
-    @State private var newCategory = "fact"
+    /// Empty shows the "Categoria" placeholder; an empty category is sent as
+    /// "fact", the server's default, as the pre-filled English word used to be.
+    @State private var newCategory = ""
 
     init(app: AppState) { _vm = StateObject(wrappedValue: BrainViewModel(api: app.api)) }
 
@@ -88,13 +90,19 @@ struct BrainView: View {
             }
             .disabled(vm.auditing)
         }
-        .task { await vm.load() }
+        .task {
+            await vm.load()
+            #if DEBUG
+            if ScreenshotRoute.matches("memory") { showAdd = true }
+            #endif
+        }
         .odyRefreshable { await vm.load() }
         .odyAlert("Nova memória", isPresented: $showAdd) {
             TextField("O que o assistente deve lembrar?", text: $newText)
             TextField("Categoria", text: $newCategory)
             Button("Adicionar") {
-                Task { await vm.add(newText, category: newCategory); newText = "" }
+                let category = newCategory.trimmingCharacters(in: .whitespaces)
+                Task { await vm.add(newText, category: category.isEmpty ? "fact" : category); newText = "" }
             }
             Button("Cancelar", role: .cancel) { newText = "" }
         }

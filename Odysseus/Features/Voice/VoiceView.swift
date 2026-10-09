@@ -94,11 +94,18 @@ struct VoiceView: View {
         }
     }
 
+    static func inlineMarkdown(_ s: String) -> AttributedString {
+        (try? AttributedString(markdown: s, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)))
+            ?? AttributedString(s)
+    }
+
     private func bubble(_ turn: VoiceConversation.Turn) -> some View {
         let isUser = turn.role == "user"
         return HStack {
             if isUser { Spacer(minLength: 40) }
-            Text(turn.text.isEmpty ? "…" : turn.text)
+            // Inline markdown rendered: replies are written for the chat, and
+            // the transcript showed their "**Dia 1:**" raw.
+            Text(Self.inlineMarkdown(turn.text.isEmpty ? "…" : turn.text))
                 .font(.ody(.subheadline))
                 .foregroundStyle(theme.fg)
                 .padding(.horizontal, 12).padding(.vertical, 8)
