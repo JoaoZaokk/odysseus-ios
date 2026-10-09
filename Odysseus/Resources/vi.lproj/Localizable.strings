@@ -953,3 +953,15 @@
 "Ativa" = "Đang hoạt động";
 "Fixada" = "Đã ghim";
 "Favorito" = "Yêu thích";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Sản phẩm";
+"Passo a passo" = "Từng bước";
+"Checagem de fatos" = "Kiểm chứng thông tin";
+"Rodadas" = "Số vòng";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Bắt đầu";
+"sem resultados" = "không có kết quả";
+"%lld fontes" = "%lld nguồn";
+"1 fonte" = "1 nguồn";
+"· 1 rodada" = "· 1 vòng";

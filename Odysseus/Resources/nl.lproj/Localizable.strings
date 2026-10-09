@@ -955,3 +955,15 @@
 "Ativa" = "Actief";
 "Fixada" = "Vastgezet";
 "Favorito" = "Favoriet";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Product";
+"Passo a passo" = "Stap voor stap";
+"Checagem de fatos" = "Factcheck";
+"Rodadas" = "Rondes";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Starten";
+"sem resultados" = "geen resultaten";
+"%lld fontes" = "%lld bronnen";
+"1 fonte" = "1 bron";
+"· 1 rodada" = "· 1 ronde";

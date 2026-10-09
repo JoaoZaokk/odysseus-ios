@@ -953,3 +953,15 @@
 "Ativa" = "Aktīvs";
 "Fixada" = "Piesprausts";
 "Favorito" = "Izlase";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Produkts";
+"Passo a passo" = "Soli pa solim";
+"Checagem de fatos" = "Faktu pārbaude";
+"Rodadas" = "Kārtas";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Sākt";
+"sem resultados" = "nav rezultātu";
+"%lld fontes" = "Avoti: %lld";
+"1 fonte" = "1 avots";
+"· 1 rodada" = "· 1 kārta";

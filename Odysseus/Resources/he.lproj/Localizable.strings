@@ -945,3 +945,15 @@
 "Ativa" = "פעילה";
 "Fixada" = "מוצמד";
 "Favorito" = "מועדף";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "מוצר";
+"Passo a passo" = "צעד אחר צעד";
+"Checagem de fatos" = "בדיקת עובדות";
+"Rodadas" = "סבבים";
+"Endpoint" = "Endpoint";
+"Iniciar" = "התחל";
+"sem resultados" = "אין תוצאות";
+"%lld fontes" = "%lld מקורות";
+"1 fonte" = "מקור אחד";
+"· 1 rodada" = "· סבב אחד";

@@ -945,3 +945,15 @@
 "Ativa" = "Aktiivinen";
 "Fixada" = "Kiinnitetty";
 "Favorito" = "Suosikki";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Tuote";
+"Passo a passo" = "Vaiheittain";
+"Checagem de fatos" = "Faktantarkistus";
+"Rodadas" = "Kierrokset";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Aloita";
+"sem resultados" = "ei tuloksia";
+"%lld fontes" = "%lld lähdettä";
+"1 fonte" = "1 lähde";
+"· 1 rodada" = "· 1 kierros";

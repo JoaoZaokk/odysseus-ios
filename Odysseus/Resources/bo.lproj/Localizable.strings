@@ -953,3 +953,15 @@
 "Ativa" = "ལག་བསྟར་ཡོད";
 "Fixada" = "འཇུ་ཡོད";
 "Favorito" = "དགའ་གདམ";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "ཐོན་རྫས།";
+"Passo a passo" = "རིམ་པ་རེ་རེ་བཞིན།";
+"Checagem de fatos" = "དོན་དངོས་ཞིབ་བཤེར";
+"Rodadas" = "སྐོར།";
+"Endpoint" = "Endpoint";
+"Iniciar" = "འགོ་འཛུགས།";
+"sem resultados" = "འབྲས་བུ་མེད།";
+"%lld fontes" = "ཁུངས་ %lld";
+"1 fonte" = "ཁུངས་ 1";
+"· 1 rodada" = "· སྐོར 1";

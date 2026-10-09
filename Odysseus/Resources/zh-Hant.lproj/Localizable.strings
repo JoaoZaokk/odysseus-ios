@@ -953,3 +953,15 @@
 "Ativa" = "運行中";
 "Fixada" = "已置頂";
 "Favorito" = "收藏";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "產品";
+"Passo a passo" = "逐步指南";
+"Checagem de fatos" = "事實查核";
+"Rodadas" = "輪數";
+"Endpoint" = "端點（endpoint）";
+"Iniciar" = "開始";
+"sem resultados" = "無結果";
+"%lld fontes" = "%lld 個來源";
+"1 fonte" = "1 個來源";
+"· 1 rodada" = "· 1 輪";

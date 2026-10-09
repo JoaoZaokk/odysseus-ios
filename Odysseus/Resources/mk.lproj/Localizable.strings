@@ -955,3 +955,15 @@
 "Ativa" = "Активно";
 "Fixada" = "Закачено";
 "Favorito" = "Омилено";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Производ";
+"Passo a passo" = "Чекор по чекор";
+"Checagem de fatos" = "Проверка на факти";
+"Rodadas" = "Рунди";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Започни";
+"sem resultados" = "нема резултати";
+"%lld fontes" = "%lld извори";
+"1 fonte" = "1 извор";
+"· 1 rodada" = "· 1 рунда";

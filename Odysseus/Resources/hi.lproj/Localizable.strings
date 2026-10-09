@@ -955,3 +955,15 @@
 "Ativa" = "सक्रिय";
 "Fixada" = "पिन की गई";
 "Favorito" = "पसंदीदा";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "उत्पाद";
+"Passo a passo" = "चरण-दर-चरण";
+"Checagem de fatos" = "तथ्य-जाँच";
+"Rodadas" = "राउंड";
+"Endpoint" = "Endpoint";
+"Iniciar" = "शुरू करें";
+"sem resultados" = "कोई परिणाम नहीं";
+"%lld fontes" = "%lld स्रोत";
+"1 fonte" = "1 स्रोत";
+"· 1 rodada" = "· 1 राउंड";

@@ -953,3 +953,15 @@
 "Ativa" = "Etkin";
 "Fixada" = "Sabitlendi";
 "Favorito" = "Favori";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Ürün";
+"Passo a passo" = "Adım adım";
+"Checagem de fatos" = "Doğruluk kontrolü";
+"Rodadas" = "Turlar";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Başlat";
+"sem resultados" = "sonuç yok";
+"%lld fontes" = "%lld kaynak";
+"1 fonte" = "1 kaynak";
+"· 1 rodada" = "· 1 tur";

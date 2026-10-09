@@ -953,3 +953,15 @@
 "Ativa" = "有効";
 "Fixada" = "ピン留め";
 "Favorito" = "お気に入り";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "製品";
+"Passo a passo" = "ハウツー";
+"Checagem de fatos" = "ファクトチェック";
+"Rodadas" = "ラウンド";
+"Endpoint" = "エンドポイント";
+"Iniciar" = "開始";
+"sem resultados" = "結果なし";
+"%lld fontes" = "%lld 件のソース";
+"1 fonte" = "1 件のソース";
+"· 1 rodada" = "· 1 ラウンド";

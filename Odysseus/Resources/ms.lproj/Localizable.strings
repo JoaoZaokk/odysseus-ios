@@ -953,3 +953,15 @@
 "Ativa" = "Aktif";
 "Fixada" = "Disemat";
 "Favorito" = "Kegemaran";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Produk";
+"Passo a passo" = "Langkah demi langkah";
+"Checagem de fatos" = "Semakan fakta";
+"Rodadas" = "Pusingan";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Mula";
+"sem resultados" = "tiada hasil";
+"%lld fontes" = "%lld sumber";
+"1 fonte" = "1 sumber";
+"· 1 rodada" = "· 1 pusingan";

@@ -953,3 +953,15 @@
 "Ativa" = "فعال";
 "Fixada" = "پن شدہ";
 "Favorito" = "پسندیدہ";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "پروڈکٹ";
+"Passo a passo" = "مرحلہ وار";
+"Checagem de fatos" = "حقائق کی جانچ";
+"Rodadas" = "راؤنڈز";
+"Endpoint" = "Endpoint";
+"Iniciar" = "شروع کریں";
+"sem resultados" = "کوئی نتیجہ نہیں";
+"%lld fontes" = "%lld ذرائع";
+"1 fonte" = "1 ذریعہ";
+"· 1 rodada" = "· 1 راؤنڈ";

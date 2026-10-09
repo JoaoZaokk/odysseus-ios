@@ -953,3 +953,15 @@
 "Ativa" = "ئاكتىپ";
 "Fixada" = "چاپلانغان";
 "Favorito" = "ياقتۇرغان";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "مەھسۇلات";
+"Passo a passo" = "قەدەممۇ قەدەم";
+"Checagem de fatos" = "پاكىت تەكشۈرۈش";
+"Rodadas" = "ئايلانمىلار";
+"Endpoint" = "Endpoint";
+"Iniciar" = "باشلاش";
+"sem resultados" = "نەتىجە يوق";
+"%lld fontes" = "%lld مەنبە";
+"1 fonte" = "1 مەنبە";
+"· 1 rodada" = "· 1 قېتىم";

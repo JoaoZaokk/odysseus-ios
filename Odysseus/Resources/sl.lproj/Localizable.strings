@@ -953,3 +953,15 @@
 "Ativa" = "Aktivno";
 "Fixada" = "Pripeto";
 "Favorito" = "Priljubljeno";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Izdelek";
+"Passo a passo" = "Korak za korakom";
+"Checagem de fatos" = "Preverjanje dejstev";
+"Rodadas" = "Krogi";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Začni";
+"sem resultados" = "ni rezultatov";
+"%lld fontes" = "Viri: %lld";
+"1 fonte" = "1 vir";
+"· 1 rodada" = "· 1 krog";

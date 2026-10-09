@@ -953,3 +953,15 @@
 "Ativa" = "Aktív";
 "Fixada" = "Kitűzve";
 "Favorito" = "Kedvenc";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Termék";
+"Passo a passo" = "Lépésről lépésre";
+"Checagem de fatos" = "Tényellenőrzés";
+"Rodadas" = "Körök";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Indítás";
+"sem resultados" = "nincs találat";
+"%lld fontes" = "%lld forrás";
+"1 fonte" = "1 forrás";
+"· 1 rodada" = "· 1 kör";

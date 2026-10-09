@@ -955,3 +955,15 @@
 "Ativa" = "সক্রিয়";
 "Fixada" = "পিন করা";
 "Favorito" = "প্রিয়";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "পণ্য";
+"Passo a passo" = "ধাপে ধাপে";
+"Checagem de fatos" = "তথ্য যাচাই";
+"Rodadas" = "রাউন্ড";
+"Endpoint" = "Endpoint";
+"Iniciar" = "শুরু করুন";
+"sem resultados" = "কোনো ফলাফল নেই";
+"%lld fontes" = "%lld উৎস";
+"1 fonte" = "1 উৎস";
+"· 1 rodada" = "· 1 রাউন্ড";

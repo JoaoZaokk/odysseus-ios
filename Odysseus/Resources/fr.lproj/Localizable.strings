@@ -947,3 +947,15 @@
 "Ativa" = "Active";
 "Fixada" = "Épinglée";
 "Favorito" = "Favori";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "Produit";
+"Passo a passo" = "Pas à pas";
+"Checagem de fatos" = "Vérification des faits";
+"Rodadas" = "Tours";
+"Endpoint" = "Endpoint";
+"Iniciar" = "Démarrer";
+"sem resultados" = "aucun résultat";
+"%lld fontes" = "%lld sources";
+"1 fonte" = "1 source";
+"· 1 rodada" = "· 1 tour";

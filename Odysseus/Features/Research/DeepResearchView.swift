@@ -6,27 +6,41 @@ final class DeepResearchVM: ObservableObject {
     @Published var mode = "auto"
     @Published var rounds = "Auto"
     @Published var searchProvider = ""    // "" = server default
-    @Published var endpointId = ""        // "" = Default
-    @Published var model = ""             // "" = Default
+    @Published var endpointId = ""        // "" = Padrão (the server's)
+    @Published var model = ""             // "" = Padrão
     @Published var endpoints: [ModelEndpoint] = []
     @Published var past: [ResearchJob] = []
 
     /// Left value is the wire `category`. "compare" was sent for years and is not
     /// a key the server knows — `deep_research.py` names it "comparison" — so the
     /// Compare mode silently fell back to the generic report.
+    /// Right value is the label, and like every label in the app it is the pt-BR
+    /// catalogue key: English literals here rendered in English in all 43 languages.
     static let modes: [(String, String)] = [
-        ("auto", "Auto"), ("product", "Product"), ("comparison", "Compare"),
-        ("howto", "How-to"), ("factcheck", "Fact-check"),
+        ("auto", "Auto"), ("product", "Produto"), ("comparison", "Comparar"),
+        ("howto", "Passo a passo"), ("factcheck", "Checagem de fatos"),
     ]
+    /// The label (a catalogue key) for a category the server reports on a past
+    /// research; `nil` for one this build does not know, so the caller can show
+    /// the server's own word instead of inventing one.
+    static func modeLabel(forCategory category: String) -> String? {
+        modes.first { $0.0 == category }?.1
+    }
+    /// "1 source" / "14 sources". The singular has its own key: a bare `%lld`
+    /// read "1 fontes" for the count people actually pick (Rounds: 1). Languages
+    /// with several plural forms put the number after a plural noun in the
+    /// `%lld` entry ("Источники: 14"), which is right for every count.
+    static func sourcesText(_ n: Int) -> String { n == 1 ? L("1 fonte") : L("%lld fontes", n) }
+    static func roundsText(_ n: Int) -> String { n == 1 ? L("· 1 rodada") : L("· %lld rodadas", n) }
     static let roundsOpts = ["Auto", "1", "2", "3", "4", "5"]
     /// Wire value → label. The ids are the server's (`_buildPanelHTML`), not
     /// display names: sending "Brave" would be silently ignored.
     static let providerOpts: [(String, String)] = [
-        ("", "Default"), ("searxng", "SearXNG"), ("duckduckgo", "DuckDuckGo"),
+        ("", "Padrão"), ("searxng", "SearXNG"), ("duckduckgo", "DuckDuckGo"),
         ("tavily", "Tavily"), ("brave", "Brave"), ("google", "Google"), ("serper", "Serper"),
     ]
     var searchProviderLabel: String {
-        Self.providerOpts.first { $0.0 == searchProvider }?.1 ?? "Default"
+        Self.providerOpts.first { $0.0 == searchProvider }?.1 ?? "Padrão"
     }
 
     private let api: APIClient
@@ -38,7 +52,7 @@ final class DeepResearchVM: ObservableObject {
     }
     func loadPast() async { past = (try? await api.researchLibrary(limit: 20)) ?? [] }
     func models(_ id: String) -> [String] { endpoints.first { $0.id == id }?.models ?? [] }
-    func endpointName(_ id: String) -> String { endpoints.first { $0.id == id }?.name ?? "Default" }
+    func endpointName(_ id: String) -> String { endpoints.first { $0.id == id }?.name ?? "Padrão" }
 
     /// "Auto" → nil (agent decides); otherwise the chosen integer.
     var maxRounds: Int? { Int(rounds) }
@@ -69,7 +83,7 @@ struct DeepResearchView: View {
                     // Active research — the live animated node graph.
                     if let run = runner.run {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Active").font(.ody(.headline).weight(.semibold)).foregroundStyle(theme.fg)
+                            Text("Ativa").font(.ody(.headline).weight(.semibold)).foregroundStyle(theme.fg)
                             ResearchActiveCard(run: run, elapsed: runner.elapsed) { runner.close() }
                         }
                         .animation(.spring(response: 0.4, dampingFraction: 0.85), value: run.rounds.count)
@@ -109,7 +123,7 @@ struct DeepResearchView: View {
                         HStack {
                             Spacer()
                             Button { start() } label: {
-                                Label("Start", systemImage: "play.fill")
+                                Label("Iniciar", systemImage: "play.fill")
                                     .font(.ody(.subheadline).weight(.semibold))
                                     .padding(.horizontal, 16).padding(.vertical, 9)
                                     .foregroundStyle(.white)
@@ -165,23 +179,24 @@ struct DeepResearchView: View {
     private var settingsGrid: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 8) {
-                labeledMenu("Rounds", value: vm.rounds, options: DeepResearchVM.roundsOpts) { vm.rounds = $0 }
+                labeledMenu("Rodadas", value: vm.rounds, options: DeepResearchVM.roundsOpts) { vm.rounds = $0 }
                 // No "Format" menu: the server has no such field. Report shape is
                 // the mode/category above, which is the format override.
-                labeledMenuRaw("Search", value: vm.searchProviderLabel) {
+                labeledMenuRaw("Busca", value: vm.searchProviderLabel) {
                     ForEach(DeepResearchVM.providerOpts, id: \.0) { id, label in
-                        Button(label) { vm.searchProvider = id }
+                        // A String variable would pick Button's verbatim overload.
+                        Button(LocalizedStringKey(label)) { vm.searchProvider = id }
                     }
                 }
             }
             HStack(spacing: 8) {
-                labeledMenuRaw("Endpoint", value: vm.endpointId.isEmpty ? "Default" : vm.endpointName(vm.endpointId)) {
-                    Button("Default") { vm.endpointId = ""; vm.model = "" }
+                labeledMenuRaw("Endpoint", value: vm.endpointId.isEmpty ? "Padrão" : vm.endpointName(vm.endpointId)) {
+                    Button("Padrão") { vm.endpointId = ""; vm.model = "" }
                     ForEach(vm.endpoints.filter { $0.isEnabled }) { ep in Button(ep.name) { vm.endpointId = ep.id; vm.model = "" } }
                 }
                 if !vm.endpointId.isEmpty {
-                    labeledMenuRaw("Model", value: vm.model.isEmpty ? "Default" : vm.model) {
-                        Button("Default") { vm.model = "" }
+                    labeledMenuRaw("Modelo", value: vm.model.isEmpty ? "Padrão" : vm.model) {
+                        Button("Padrão") { vm.model = "" }
                         ForEach(vm.models(vm.endpointId), id: \.self) { m in Button(m) { vm.model = m } }
                     }
                 }
@@ -195,11 +210,19 @@ struct DeepResearchView: View {
             Text(job.query).font(.ody(size: 12)).foregroundStyle(theme.fg).lineLimit(2)
             HStack(spacing: 8) {
                 if let c = job.category, !c.isEmpty {
-                    Text(c).foregroundStyle(theme.secondaryText)
+                    // The server reports its own ids ("howto", "comparison"); show
+                    // the mode's label, and the server's word only for an unknown one.
+                    if let label = DeepResearchVM.modeLabel(forCategory: c) {
+                        Text(LocalizedStringKey(label)).foregroundStyle(theme.secondaryText)
+                    } else {
+                        Text(verbatim: c).foregroundStyle(theme.secondaryText)
+                    }
                 }
-                Text(failed ? "no results" : "\(job.source_count ?? 0) sources")
+                // `Text(cond ? "a" : "b")` is a plain String, not a catalogue key, so
+                // these go through L() — that is how "no results" stayed English.
+                Text(verbatim: failed ? L("sem resultados") : DeepResearchVM.sourcesText(job.source_count ?? 0))
                     .foregroundStyle(failed ? theme.danger : theme.secondaryText)
-                if let r = job.rounds, r > 0 { Text("· \(r) rodadas").foregroundStyle(theme.secondaryText) }
+                if let r = job.rounds, r > 0 { Text(verbatim: DeepResearchVM.roundsText(r)).foregroundStyle(theme.secondaryText) }
                 if let d = job.duration, !d.isEmpty { Text("· \(d)").foregroundStyle(theme.secondaryText) }
             }
             .font(.ody(size: 10))
@@ -242,12 +265,17 @@ struct DeepResearchView: View {
 
     private func labeledMenuRaw<M: View>(_ label: String, value: String, @ViewBuilder _ menu: () -> M) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(label.uppercased()).font(.ody(size: 9)).foregroundStyle(theme.secondaryText)
+            // Localize the KEY, then upper-case the drawn text: `label.uppercased()` is
+            // a String, which Text shows verbatim — "ROUNDS / SEARCH / ENDPOINT / MODEL"
+            // in every language. `.textCase` also follows the language (Turkish İ).
+            Text(LocalizedStringKey(label)).textCase(.uppercase)
+                .font(.ody(size: 9)).foregroundStyle(theme.secondaryText).lineLimit(1)
             Menu { menu() } label: {
                 HStack {
                     // The closed row renders the same word the open menu's Button
                     // does, so it has to go through the catalogue too — it read
                     // "Default" in 35 languages while the menu read "Standard".
+                    // The sentinel is "Padrão", the pt-BR key, like everything else.
                     Text(LocalizedStringKey(value)).font(.ody(size: 12)).foregroundStyle(theme.fg).lineLimit(1)
                     Spacer(minLength: 4)
                     Image(systemName: "chevron.up.chevron.down").font(.ody(size: 8)).foregroundStyle(theme.secondaryText)

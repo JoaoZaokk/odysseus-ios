@@ -953,3 +953,15 @@
 "Ativa" = "ใช้งานอยู่";
 "Fixada" = "ปักหมุดแล้ว";
 "Favorito" = "รายการโปรด";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "ผลิตภัณฑ์";
+"Passo a passo" = "ทีละขั้นตอน";
+"Checagem de fatos" = "ตรวจสอบข้อเท็จจริง";
+"Rodadas" = "รอบ";
+"Endpoint" = "Endpoint";
+"Iniciar" = "เริ่ม";
+"sem resultados" = "ไม่มีผลลัพธ์";
+"%lld fontes" = "%lld แหล่ง";
+"1 fonte" = "1 แหล่ง";
+"· 1 rodada" = "· 1 รอบ";

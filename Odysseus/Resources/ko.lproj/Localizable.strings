@@ -953,3 +953,15 @@
 "Ativa" = "활성";
 "Fixada" = "고정됨";
 "Favorito" = "즐겨찾기";
+
+/* Deep Research — modos, rótulos dos menus, Iniciar e a linha das pesquisas anteriores */
+"Produto" = "제품";
+"Passo a passo" = "방법 안내";
+"Checagem de fatos" = "팩트체크";
+"Rodadas" = "라운드";
+"Endpoint" = "엔드포인트";
+"Iniciar" = "시작";
+"sem resultados" = "결과 없음";
+"%lld fontes" = "출처 %lld개";
+"1 fonte" = "출처 1개";
+"· 1 rodada" = "· 1 라운드";
