@@ -299,7 +299,11 @@ struct SidebarView: View {
                 theme.panel
                 Rectangle().fill(theme.border).frame(height: 1)
             }
-            .ignoresSafeArea(edges: .bottom)
+            // Edge to edge, sides included: on the iPhone Duo's outer display
+            // the camera and status rail is a trailing safe area, and the bar
+            // stopped at it while the list ran on underneath — rows showing
+            // to the right of the bar, its top edge cut off mid-screen.
+            .ignoresSafeArea(edges: [.bottom, .horizontal])
         }
     }
 
