@@ -23,6 +23,7 @@ struct VoiceSettingsView: View {
     @AppStorage(SpeechLanguage.key) private var sttLanguage = SpeechLanguage.followApp
     @AppStorage("voice.tts.streaming") private var ttsStreaming = true
     @AppStorage("voice.bargein.enabled") private var bargeEnabled = true
+    @AppStorage(VoiceConversation.webSearchKey) private var voiceWebSearch = true
     @AppStorage("voice.bargein.sensitivity") private var bargeSensitivity = 0.5
     @State private var langFilter = "all"
     /// Which size sections are unfolded. The catalog is dozens of models deep,
@@ -172,6 +173,7 @@ struct VoiceSettingsView: View {
                         Slider(value: $bargeSensitivity, in: 0...1)
                     }
                 }
+                Toggle("Buscar na web", isOn: $voiceWebSearch)
             } header: { Text("Conversa por voz") } footer: {
                 Text("Enquanto a IA fala, começar a falar corta a resposta e ele te ouve. Sensibilidade alta interrompe com pouca voz (mas pode disparar sozinho com o eco); baixa exige falar mais firme.")
             }

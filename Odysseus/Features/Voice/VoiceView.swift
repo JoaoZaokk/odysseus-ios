@@ -65,6 +65,9 @@ struct VoiceView: View {
         }
         .onAppear {
             if let s = seedSession { convo.seed(sessionID: s.id, messages: s.messages) }
+            #if DEBUG
+            if ScreenshotRoute.voiceAutoStart { Task { await convo.startSession() } }
+            #endif
         }
         .onDisappear { convo.stop() }
         #if os(macOS)
@@ -105,7 +108,12 @@ struct VoiceView: View {
             if isUser { Spacer(minLength: 40) }
             // Inline markdown rendered: replies are written for the chat, and
             // the transcript showed their "**Dia 1:**" raw.
-            Text(Self.inlineMarkdown(turn.text.isEmpty ? "…" : turn.text))
+            // A searched reply cites its pages as "[2]" — noise in a spoken
+            // conversation, and the transcript has no list to point at.
+            Text(Self.inlineMarkdown(turn.text.isEmpty ? "…"
+                : isUser ? turn.text
+                : turn.text.replacingOccurrences(of: "\\s*\\[\\d+(?:\\s*,\\s*\\d+)*\\]",
+                                                 with: "", options: .regularExpression)))
                 .font(.ody(.subheadline))
                 .foregroundStyle(theme.fg)
                 .padding(.horizontal, 12).padding(.vertical, 8)
@@ -166,6 +174,7 @@ struct VoiceView: View {
         // Finalizing the recording and handing the turn back are the same thing
         // to the person waiting: working, nothing to hear yet. They share the
         // one string that already says that.
+        case .thinking where convo.searching: return L("Pesquisando na web") + "…"
         case .transcribing, .thinking, .finishing: return L("Pensando…")
         }
     }

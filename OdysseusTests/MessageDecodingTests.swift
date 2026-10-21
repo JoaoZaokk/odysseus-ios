@@ -38,6 +38,23 @@ final class MessageDecodingTests: XCTestCase {
         XCTAssertNil(message(#"{"role": "assistant", "content": "x", "metadata": {"model": "m"}}"#)?.thinking)
     }
 
+    /// Plain chat mode saves the reply as the model wrote it, so a tool call
+    /// cut from the stream came back every time the chat was reopened.
+    func testAToolCallSavedInAReplyIsNotShownOnReopen() {
+        let m = message(#"{"role": "assistant", "content": "Vou ver. <tool_call>call:search_web{queries:[\"Flamengo\"]}</tool_call>"}"#)
+        XCTAssertEqual(m?.content, "Vou ver.")
+    }
+
+    func testAReplyThatWasOnlyACallReadsAsNoReply() {
+        let m = message(#"{"role": "assistant", "content": "<tool_call>call:search_web{queries:[\"x\"]}</tool_call>"}"#)
+        XCTAssertEqual(m?.content, "_\(L("(sem resposta)"))_")
+    }
+
+    func testTheUsersOwnWordsAreNeverFiltered() {
+        let m = message(#"{"role": "user", "content": "call:search_web{\"q\": 1}"}"#)
+        XCTAssertEqual(m?.content, #"call:search_web{"q": 1}"#)
+    }
+
     func testMultimodalContentPartsAreFlattened() {
         let m = message(#"""
         {"role": "user", "content": [{"type": "text", "text": "olha"},

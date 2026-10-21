@@ -4,6 +4,11 @@ import Foundation
 struct ChatStreamOptions {
     var mode: String = "chat"          // "chat" | "agent"
     var webSearch: Bool = false
+    /// Web tools allowed, search left to the model: `allow_web_search` without
+    /// `use_web`, which would force a pre-search on every turn. The server
+    /// takes the turn to agent mode and runs `web_search` only if the model
+    /// calls it (routes/chat_routes.py, `_search_enabled`).
+    var allowWebSearch: Bool = false
     var research: Bool = false         // deep research
     var attachmentIDs: [String] = []
     /// Model route picked in the composer, reconciled server-side before the
@@ -112,7 +117,7 @@ final class ChatStreamClient: @unchecked Sendable {
 
     // MARK: - Request
 
-    private func buildRequest(message: String, sessionID: String, options: ChatStreamOptions) -> URLRequest {
+    func buildRequest(message: String, sessionID: String, options: ChatStreamOptions) -> URLRequest {
         var req = URLRequest(url: api.config.url("/api/chat_stream"))
         req.httpMethod = "POST"
         req.setValue("text/event-stream", forHTTPHeaderField: "Accept")
@@ -132,6 +137,8 @@ final class ChatStreamClient: @unchecked Sendable {
         } else if options.webSearch {
             fields["allow_web_search"] = "true"
             fields["use_web"] = "true"
+        } else if options.allowWebSearch {
+            fields["allow_web_search"] = "true"
         }
         if let a = options.approval {
             fields["tool_approval_id"] = a.id

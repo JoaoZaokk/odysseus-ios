@@ -87,6 +87,8 @@ final class VoiceConversation: ObservableObject {
     @Published var liveText = ""        // partial user transcription while listening
     @Published var reply = ""           // streaming assistant reply
     @Published var error: String?
+    /// The server is running a web tool for this reply (`tool_start`).
+    @Published private(set) var searching = false
     @Published var selectedModel: ChatModel?
     @Published private(set) var models: [ChatModel] = []
 
@@ -96,6 +98,21 @@ final class VoiceConversation: ObservableObject {
         var text: String
         var at = Date()
     }
+
+    /// The model may search the web mid-conversation (Ajustes › Voz). On by
+    /// default: voice sent no web flag at all, so the server kept web tools off
+    /// unless the words of the question tripped its intent classifier, and a
+    /// question about today was answered from memory.
+    static let webSearchKey = "voice.webSearch.enabled"
+    static var webSearchEnabled: Bool {
+        let d = UserDefaults.standard
+        return d.object(forKey: webSearchKey) == nil ? true : d.bool(forKey: webSearchKey)
+    }
+
+    #if DEBUG
+    /// Set while a `-voiceSay` turn is the session (see `ScreenshotRoute`).
+    private var scripted = false
+    #endif
 
     private let api: APIClient
     private let stream: ChatStreamClient
@@ -197,11 +214,20 @@ final class VoiceConversation: ObservableObject {
         // moment the user is waiting on.
         Task { await BargeInMonitor.prepare() }
         enableProximity()
+        #if DEBUG
+        if let said = ScreenshotRoute.voiceSay, !scripted {
+            scripted = true
+            turns.append(Turn(role: "user", text: said))
+            ask(said)
+            return
+        }
+        #endif
         await listen()
     }
 
     func stop() {
         active = false
+        searching = false
         streamTask?.cancel(); streamTask = nil
         silenceTimer?.invalidate(); silenceTimer = nil
         bargeMonitor.stop()
@@ -252,6 +278,9 @@ final class VoiceConversation: ObservableObject {
         // afterSpeaking() did. Arriving here inactive means stop() ran during
         // the handoff, and .idle is the phase it already left.
         guard active else { phase = .idle; return }
+        #if DEBUG
+        if scripted { stop(); return }
+        #endif
         // Cleared per turn: a single failure used to replace "Ouvindo…" for the
         // rest of the session, hiding whether the loop was still alive.
         error = nil
@@ -351,11 +380,22 @@ final class VoiceConversation: ObservableObject {
             do {
                 let sid = try await self.ensureSession(firstMessage: userText)
                 VoiceLog.log("llm.sessão", String(format: "%.0f ms", Date().timeIntervalSince(t0) * 1000))
-                let opts = ChatStreamOptions(model: self.selectedModel)
+                let opts = ChatStreamOptions(allowWebSearch: Self.webSearchEnabled, model: self.selectedModel)
+                // Plain chat mode streams the model's text as it comes, and a
+                // tool call written into it would be shown and spoken.
+                var calls = ToolCallFilter()
+                defer { self.searching = false }
                 for try await u in self.stream.send(message: userText, sessionID: sid, options: opts) {
                     if Task.isCancelled { return }
                     switch u {
-                    case .textDelta(let d):
+                    case .toolStart(let name):
+                        let web = ["web_search", "web_fetch", "get_weather", "search"]
+                        self.searching = web.contains { name.lowercased().contains($0) }
+                        if self.searching { VoiceLog.log("busca.web", name) }
+                    case .textDelta(let raw):
+                        let d = calls.feed(raw)
+                        guard !d.isEmpty else { continue }
+                        self.searching = false
                         if firstDelta {
                             firstDelta = false
                             VoiceLog.log("llm.1ºdelta", String(format: "%.0f ms", Date().timeIntervalSince(t0) * 1000))
@@ -378,6 +418,23 @@ final class VoiceConversation: ObservableObject {
                 // check a barge-in still flushed the half-written sentence and
                 // spoke it over the user who had just interrupted.
                 if Task.isCancelled { return }
+                let tail = calls.finish()
+                if !tail.isEmpty {
+                    self.reply += tail
+                    if let i = self.turns.lastIndex(where: { $0.id == replyTurn.id }) {
+                        self.turns[i].text = self.reply
+                    }
+                    self.pendingSpeech += tail
+                }
+                // The reply was nothing but a call the server did not run (web
+                // search switched off): an empty bubble would read "…" forever.
+                if !calls.calls.isEmpty {
+                    VoiceLog.log("chamada.crua", calls.calls.map(\.name).joined(separator: ","))
+                }
+                if self.reply.isEmpty, !calls.calls.isEmpty,
+                   let i = self.turns.lastIndex(where: { $0.id == replyTurn.id }) {
+                    self.turns[i].text = L("(sem resposta)")
+                }
                 self.emitSentences(flush: true)
                 self.finalizeReply(replyTurn.id)
             } catch let e where e.isCancellation {

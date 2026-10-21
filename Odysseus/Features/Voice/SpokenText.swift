@@ -33,6 +33,9 @@ enum SpokenText {
         t = t.replacingOccurrences(of: "[*_#>]", with: "", options: .regularExpression)
         t = t.replacingOccurrences(of: "\\[([^\\]]*)\\]\\([^)]*\\)", with: "$1", options: .regularExpression)
         t = t.replacingOccurrences(of: "<think>[\\s\\S]*?</think>", with: "", options: .regularExpression)
+        // Citation markers from a web search — "5,01 reais [2]." — read out as
+        // "colchete dois".
+        t = t.replacingOccurrences(of: "\\s*\\[\\d+(?:\\s*,\\s*\\d+)*\\]", with: "", options: .regularExpression)
         t = spokenTableRow(t) ?? t
         let cleaned = t.trimmingCharacters(in: .whitespacesAndNewlines)
         // Whatever is left with no letter and no digit is markup the rules above

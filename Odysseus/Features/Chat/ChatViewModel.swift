@@ -208,12 +208,17 @@ final class ChatViewModel: ObservableObject {
                                          model: selectedModel,
                                          approval: approval)
 
+            // Plain chat mode streams the model's text untouched; a tool call
+            // written into it (Gemma via LM Studio) is cut before it is shown.
+            var calls = ToolCallFilter()
             for try await update in stream.send(message: text, sessionID: sid, options: opts) {
                 switch update {
                 case .textDelta(let d):
+                    let shown = calls.feed(d)
+                    guard !shown.isEmpty else { continue }
                     sawAnyText = true
                     toolStatus = nil
-                    appendToAssistant(assistantID, text: d)
+                    appendToAssistant(assistantID, text: shown)
                 case .thinkingDelta(let d):
                     appendToAssistant(assistantID, thinking: d)
                 case .toolStart(let name):
@@ -242,6 +247,8 @@ final class ChatViewModel: ObservableObject {
                     break
                 }
             }
+            let tail = calls.finish()
+            if !tail.isEmpty { sawAnyText = true; appendToAssistant(assistantID, text: tail) }
             if !sawAnyText, let i = index(of: assistantID), messages[i].content.isEmpty {
                 if askedBack {
                     // The turn ended on a question (or on a refused action), not

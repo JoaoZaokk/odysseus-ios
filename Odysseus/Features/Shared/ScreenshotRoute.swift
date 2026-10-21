@@ -22,6 +22,16 @@ enum ScreenshotRoute {
 
     static func matches(_ name: String) -> Bool { raw == name }
 
+    /// `-voiceSay "…"`: the voice screen's first turn is this sentence, as if
+    /// it had been heard, and the session ends when the reply does.
+    /// `-voiceAutoStart YES` starts that session when the screen opens. For
+    /// checking voice mode in the simulator, which has no voice to give it.
+    static var voiceSay: String? {
+        let v = UserDefaults.standard.string(forKey: "voiceSay")
+        return (v?.isEmpty ?? true) ? nil : v
+    }
+    static var voiceAutoStart: Bool { UserDefaults.standard.string(forKey: "voiceAutoStart") != nil }
+
     /// `-screenshotHost <name>`: the server name shown in the UI, so captures
     /// against the local stub do not read "127.0.0.1".
     static var hostLabel: String? {

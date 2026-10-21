@@ -313,6 +313,12 @@ struct Message: Decodable, Identifiable, Hashable, Sendable {
         } else {
             content = ""
         }
+        // Plain chat mode saves the reply as the model wrote it, so a tool call
+        // the stream cut came back every time the chat was reopened.
+        if role == .assistant {
+            let clean = ToolCallText.stripped(content)
+            content = clean.isEmpty && !content.isEmpty ? "_\(L("(sem resposta)"))_" : clean
+        }
         model = (try? c.decodeIfPresent(String.self, forKey: .model)) ?? meta?.model
         thinking = (try? c.decodeIfPresent(String.self, forKey: .thinking))
             ?? (try? c.decodeIfPresent(String.self, forKey: .reasoning))
