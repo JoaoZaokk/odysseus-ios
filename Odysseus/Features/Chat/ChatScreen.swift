@@ -18,9 +18,9 @@ struct ChatScreen: View {
     @State private var pasteMonitor: Any?   // macOS ⌘V image-paste event monitor
     @State private var didAutoSend = false
     @State private var showVoice = false
-    /// iPhone Duo outer display (or a phone on its side): the model menu and
-    /// a new-chat button go to the toolbar, which sits in the system rail,
-    /// and the composer keeps its width for the message.
+    /// iPhone Duo outer display (or a Face ID phone on its side): the model
+    /// menu and a new-chat button go to the toolbar, which sits in the system
+    /// rail, and the composer keeps its width for the message.
     @State private var sideRail = false
     /// Settings › Aparência › Personalizar interface.
     @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
@@ -559,6 +559,7 @@ struct ChatScreen: View {
         .buttonStyle(.plain)
         .frame(maxWidth: 150, alignment: .trailing)
         .accessibilityLabel(Text("Modelo"))
+        .accessibilityValue(Text(verbatim: vm.selectedModel?.name ?? vm.resolvedModel ?? L("Padrão do servidor")))
         .disabled(vm.isStreaming)
     }
 }

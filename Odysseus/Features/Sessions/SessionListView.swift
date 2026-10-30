@@ -16,7 +16,7 @@ struct SidebarView: View {
     @EnvironmentObject private var themes: ThemeStore
 
     @State private var search = ""
-    /// iPhone Duo outer display (or a phone on its side); see `SideRail`.
+    /// iPhone Duo outer display (or a Face ID phone on its side); see `SideRail`.
     @State private var sideRail = false
     @State private var renaming: ChatSession?
     @State private var renameText = ""
