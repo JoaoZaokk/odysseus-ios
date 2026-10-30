@@ -263,7 +263,9 @@ struct SidebarView: View {
                     .accessibilityLabel(Text("Deep Search"))
             }
         }
+        #if os(iOS)
         .readSideRail($sideRail)
+        #endif
         .odyRefreshable { await store.load() }
         .sheet(isPresented: $showArchived) {
             ArchivedSessionsView(store: store, workspace: workspace)

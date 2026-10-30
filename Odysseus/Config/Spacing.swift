@@ -128,12 +128,16 @@ extension View {
     func trailingFade() -> some View { modifier(TrailingFade()) }
 }
 
+#if os(iOS)
 /// A safe area at a side of the window: the system rail on the iPhone Duo's
 /// outer display (84 pt, trailing), or any iPhone turned sideways. Toolbar
 /// items land in that rail on the Duo, so a screen with one can move controls
-/// out of its content and into the bar.
+/// out of its content and into the bar. Phone only: on iPadOS 26 the floating
+/// sidebar is a leading safe area of the detail column, not a rail.
 enum SideRail {
-    static func present(_ insets: EdgeInsets) -> Bool { insets.leading > 0 || insets.trailing > 0 }
+    static func present(_ insets: EdgeInsets, idiom: UIUserInterfaceIdiom) -> Bool {
+        idiom == .phone && (insets.leading > 0 || insets.trailing > 0)
+    }
 }
 
 extension View {
@@ -144,12 +148,13 @@ extension View {
         background {
             GeometryReader { proxy in
                 Color.clear
-                    .onAppear { hasRail.wrappedValue = SideRail.present(proxy.safeAreaInsets) }
+                    .onAppear { hasRail.wrappedValue = SideRail.present(proxy.safeAreaInsets, idiom: UIDevice.current.userInterfaceIdiom) }
                     .onChange(of: proxy.safeAreaInsets) { _, insets in
-                        hasRail.wrappedValue = SideRail.present(insets)
+                        hasRail.wrappedValue = SideRail.present(insets, idiom: UIDevice.current.userInterfaceIdiom)
                     }
             }
             .ignoresSafeArea()
         }
     }
 }
+#endif
