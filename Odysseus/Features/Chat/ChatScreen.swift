@@ -28,6 +28,10 @@ struct ChatScreen: View {
     /// screen down until they come back to the end or send something.
     @State private var userScrolledAway = false
     private var followsEnd: Bool { pinnedToBottom || !userScrolledAway }
+    /// When the transcript last settled at the end. A diagram drawn soon after
+    /// (it reports its height a second or more later, longer on a busy device)
+    /// pulls it back to the end; one drawn later does not move the reader.
+    @State private var settledAt = Date.distantPast
     /// Settings › Aparência › Personalizar interface.
     @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
     private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
@@ -215,6 +219,10 @@ struct ChatScreen: View {
                 .onReceive(SpeechManager.shared.$notice) { n in
                     if let n, n.id == vm.messages.last?.id, followsEnd { scrollToBottom(proxy) }
                 }
+                .environment(\.richBlockResized) {
+                    guard !userScrolledAway, Date().timeIntervalSince(settledAt) < 10 else { return }
+                    followEnd(proxy)
+                }
                 .overlay(alignment: .bottomTrailing) {
                     if !pinnedToBottom && !vm.messages.isEmpty { jumpToLatest(proxy) }
                 }
@@ -225,7 +233,15 @@ struct ChatScreen: View {
 
     /// What appears under the transcript as a turn ends.
     private var hasTail: Bool {
-        !vm.notices.isEmpty || vm.pendingAsk != nil || vm.toolStatus != nil
+        !vm.notices.isEmpty || vm.pendingAsk != nil || vm.toolStatus != nil || !replyOptions.isEmpty
+    }
+
+    /// Choices the last reply wrote out as text, offered as buttons. The
+    /// agent's own question (`pendingAsk`) has its card and wins.
+    private var replyOptions: [String] {
+        guard !vm.isStreaming, vm.pendingAsk == nil,
+              let last = vm.messages.last, last.role == .assistant else { return [] }
+        return ReplyOptions.parse(last.content)
     }
 
     private var tail: some View {
@@ -236,6 +252,9 @@ struct ChatScreen: View {
                             onAnswer: { vm.answer(ask, with: $0) },
                             onDecide: { vm.decide(ask, option: $0) },
                             onDismiss: { vm.dismissAsk() })
+            }
+            if !replyOptions.isEmpty {
+                ReplyOptionsList(options: replyOptions) { vm.send($0) }
             }
             if let tool = vm.toolStatus {
                 HStack(spacing: 8) {
@@ -291,6 +310,7 @@ struct ChatScreen: View {
     /// `defaultScrollAnchor(.bottom)` fix this on iOS 27 and hold the screen on
     /// the first message on iOS 18 — measured in the Open WebUI app.)
     private func settleAtEnd(_ proxy: ScrollViewProxy) {
+        settledAt = Date()
         followEnd(proxy)
         for delay in [0.15, 0.4, 0.8] {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {

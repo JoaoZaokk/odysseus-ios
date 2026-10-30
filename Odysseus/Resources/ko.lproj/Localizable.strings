@@ -976,3 +976,5 @@
 "A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "음성 대화 중 AI가 웹을 검색할 수 있습니다. 켬: 최신 답변, 조금 느림. 끔: 이미 아는 내용으로만 답합니다.";
 "Ir para o fim" = "맨 아래로";
 "Selecionar texto" = "텍스트 선택";
+"Visualizar" = "미리보기";
+"Responder" = "답장";

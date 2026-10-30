@@ -976,3 +976,5 @@
 "A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "语音对话时 AI 可以搜索网页。开启：回答更新，稍慢一些。关闭：只用已知的内容回答。";
 "Ir para o fim" = "跳到最新";
 "Selecionar texto" = "选择文本";
+"Visualizar" = "预览";
+"Responder" = "回答";

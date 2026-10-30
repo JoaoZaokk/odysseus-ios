@@ -120,6 +120,15 @@ final class ChatViewModel: ObservableObject {
         }
     }
 
+    /// Sends `text` as the next message, keeping whatever is typed in the
+    /// field (a tapped reply option is not the draft).
+    func send(_ text: String) {
+        let draft = input
+        input = text
+        send()
+        input = draft
+    }
+
     func send() {
         let text = input.trimmingCharacters(in: .whitespacesAndNewlines)
         let attachmentIDs = pendingAttachments.map(\.id)

@@ -142,6 +142,9 @@ struct MessageBubble: View, Equatable {
                         FontSize(.em(0.88))
                         BackgroundColor(theme.panel)
                     }
+                    // Mermaid, SVG and HTML drawn as on the web; other code with
+                    // its language and a copy button (RichBlocks.swift).
+                    .markdownBlockStyle(\.codeBlock) { CodeBlockView(configuration: $0) }
                     .textSelection(.enabled)
             }
         }

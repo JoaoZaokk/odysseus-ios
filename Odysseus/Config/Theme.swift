@@ -33,6 +33,13 @@ struct Theme: Equatable, Identifiable {
     var userBubble: Color
     var aiBubble: Color
     var secondaryText: Color
+    /// The web's base colours as hex (no `#`), for pages drawn in a web view
+    /// (Mermaid diagrams, SVG) that need the theme as text.
+    let hex: Hex
+
+    struct Hex: Equatable {
+        let bg, fg, panel, accent: String
+    }
 
     /// Build a theme from the web's base colors (+ optional `advanced` overrides
     /// for bubbles, exactly like theme.js does for the `gpt` theme).
@@ -84,6 +91,7 @@ struct Theme: Equatable, Identifiable {
             self.accentFill = Color(rgb: fill); self.onAccent = .white
         }
         self.accentText = Color(rgb: shifted(a))
+        self.hex = Hex(bg: bg.lowercased(), fg: fg.lowercased(), panel: panel.lowercased(), accent: red.lowercased())
         // The web has no per-theme status colors; derive them from the theme's
         // lightness so each one clears WCAG AA (4.5:1) on every background in
         // `Theme.all`. A single fixed value cannot: the `e05a4a` these three
