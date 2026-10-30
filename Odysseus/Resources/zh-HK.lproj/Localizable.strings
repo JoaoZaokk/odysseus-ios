@@ -966,3 +966,11 @@
 "1 fonte" = "1 個來源";
 "· 1 rodada" = "· 1 輪";
 "Buscar na web" = "搜尋網絡";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "更多選項";
+"A busca na web está desligada" = "網頁搜尋已關閉";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "我嘗試搜尋網頁來回答，但語音的搜尋已關閉。";
+"Não consegui responder a isso por voz." = "我無法用語音回答這個問題。";
+"Busca na web" = "網頁搜尋";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "語音對話時 AI 可以搜尋網頁。開啟：回答較新，稍慢一點。關閉：只用已知的內容回答。";

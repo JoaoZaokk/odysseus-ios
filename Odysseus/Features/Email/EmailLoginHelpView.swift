@@ -25,8 +25,8 @@ struct EmailLoginHelpView: View {
                         ForEach(Array(EmailLoginGuide.steps.enumerated()), id: \.offset) { i, step in
                             HStack(alignment: .top, spacing: 10) {
                                 Text("\(i + 1)")
-                                    .font(.ody(size: 12, weight: .bold)).foregroundStyle(.white)
-                                    .frame(width: 22, height: 22).background(theme.accent, in: Circle())
+                                    .font(.ody(size: 12, weight: .bold)).foregroundStyle(theme.onAccent)
+                                    .frame(width: 22, height: 22).background(theme.accentFill, in: Circle())
                                 Text(LocalizedStringKey(step)).font(.ody(size: 13)).foregroundStyle(theme.fg)
                                     .fixedSize(horizontal: false, vertical: true)
                             }

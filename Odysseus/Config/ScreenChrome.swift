@@ -88,7 +88,7 @@ private struct OdyNavTitle: ViewModifier {
                             if let parent {
                                 Text(LocalizedStringKey(parent))
                                     .font(.ody(.subheadline))
-                                    .foregroundStyle(theme.accent)
+                                    .foregroundStyle(theme.accentText)
                                 Image(systemName: "chevron.right")
                                     .font(.ody(size: 10, weight: .semibold))
                                     .foregroundStyle(theme.secondaryText)
@@ -136,8 +136,8 @@ struct BarButton: View {
     var body: some View {
         Button(role: role, action: action) {
             Text(title)
-                .font(.ody(size: 15))
-                .foregroundStyle(isEnabled ? theme.accent : theme.secondaryText)
+                .font(.ody(.body))
+                .foregroundStyle(isEnabled ? theme.accentText : theme.secondaryText)
         }
     }
 }
@@ -161,7 +161,7 @@ struct OdySearchField: View {
             // (macOS has Esc.)
             if focused {
                 Button { text = ""; focused = false } label: {
-                    Text("Cancelar").font(.ody(.subheadline)).foregroundStyle(theme.accent)
+                    Text("Cancelar").font(.ody(.subheadline)).foregroundStyle(theme.accentText)
                 }
                 .buttonStyle(.plain)
                 .frame(minHeight: Spacing.tapTarget)
@@ -178,13 +178,13 @@ struct OdySearchField: View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(theme.secondaryText)
-                .font(.ody(size: 12))
+                .font(.ody(.body))
             Button("") { focused = true }.keyboardShortcut(OdyShortcuts.search)
                 .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
             TextField(LocalizedStringKey(prompt), text: $text)
                 .focused($focused)
                 .textFieldStyle(.plain)
-                .font(.ody(.subheadline))
+                .font(.ody(.body))
                 .foregroundStyle(theme.fg)
             if !text.isEmpty {
                 Button { text = "" } label: {
@@ -193,10 +193,11 @@ struct OdySearchField: View {
                 .buttonStyle(.plain)
             }
         }
-        .padding(.horizontal, 10).padding(.vertical, 7)
-        .frame(minHeight: 36)
-        .background(theme.panel, in: RoundedRectangle(cornerRadius: 8))
-        .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.border, lineWidth: 1))
+        // The system search field's look: a borderless filled capsule. The
+        // 1 pt outline on `panel` read as a form input, not a search.
+        .padding(.horizontal, 12).padding(.vertical, 8)
+        .frame(minHeight: 40)
+        .background(theme.fg.opacity(theme.isDark ? 0.10 : 0.07), in: Capsule())
     }
 }
 
@@ -225,7 +226,7 @@ private struct ScreenChromeContainer<L: View, T: View, C: View>: View {
                             Button(action: close) {
                                 Image(systemName: "xmark.circle.fill").font(.ody(size: 14))
                             }
-                            .buttonStyle(.plain).foregroundStyle(theme.accent)
+                            .buttonStyle(.plain).foregroundStyle(theme.accentText)
                             .help("Fechar painel")
                         }
                         if let expand = pane.onExpand {

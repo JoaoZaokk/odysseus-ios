@@ -966,3 +966,11 @@
 "1 fonte" = "1 izvor";
 "· 1 rodada" = "· 1 runda";
 "Buscar na web" = "Pretraži web";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "Više opcija";
+"A busca na web está desligada" = "Pretraživanje weba je isključeno";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "Pokušao sam pretražiti web da odgovorim, ali pretraživanje je isključeno za glas.";
+"Não consegui responder a isso por voz." = "Na to nisam mogao odgovoriti glasom.";
+"Busca na web" = "Pretraživanje weba";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "AI može pretraživati web tijekom glasovnog razgovora. Uključeno: ažurni odgovori, malo sporije. Isključeno: odgovara samo onim što već zna.";

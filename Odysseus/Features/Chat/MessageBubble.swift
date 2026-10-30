@@ -12,6 +12,9 @@ struct MessageBubble: View {
     /// while streaming; a tap reveals until the next hide.
     @AppStorage("chat.sensitiveBlur") private var sensitiveBlur = false
     @State private var revealed = false
+    /// The reply's body size, following Dynamic Type: MarkdownUI draws at a
+    /// fixed size from its own font properties and ignores `.font`.
+    @ScaledMetric(relativeTo: .body) private var bodySize: CGFloat = 17
     /// Settings › Aparência › Personalizar interface.
     @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
     private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
@@ -42,7 +45,7 @@ struct MessageBubble: View {
                         .frame(maxWidth: 280, alignment: isUser ? .trailing : .leading)
                 }
             }
-            if !isUser { Spacer(minLength: 36) }
+            if !isUser { Spacer(minLength: 0) }
         }
     }
 
@@ -71,7 +74,7 @@ struct MessageBubble: View {
             // The web's chat-meta: the name can go, the speaker stays.
             if ui.isOn(.modelName) {
                 Text(message.model?.split(separator: "/").last.map(String.init) ?? "Odysseus")
-                    .font(.ody(size: 11))
+                    .font(.ody(.footnote))
                     .foregroundStyle(theme.secondaryText)
             }
             if !message.content.isEmpty { speakerButton }
@@ -90,11 +93,11 @@ struct MessageBubble: View {
                     ProgressView().controlSize(.mini)
                 } else {
                     Image(systemName: speaking ? "speaker.wave.2.fill" : "speaker.wave.2")
-                        .font(.ody(size: 11))
+                        .font(.ody(.footnote))
                         .foregroundStyle(speaking ? theme.accent : theme.secondaryText)
                 }
             }
-            .frame(width: 32, height: 28)
+            .frame(width: Spacing.tapTarget, height: 32)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -112,10 +115,19 @@ struct MessageBubble: View {
                     .foregroundStyle(theme.fg)
                     .textSelection(.enabled)
             } else {
+                // In the app's font: it came out in SF 16 whatever was picked
+                // in Aparência, next to titles and lists in another family.
                 Markdown(message.content)
-                    .markdownTextStyle { ForegroundColor(theme.fg) }
+                    .markdownTextStyle {
+                        FontFamily(Self.markdownFamily)
+                        FontSize(bodySize)
+                        ForegroundColor(theme.fg)
+                    }
                     .markdownTextStyle(\.code) {
-                        FontFamilyVariant(.monospaced)
+                        // A family, not the variant: Inter has no monospaced
+                        // face, so `.monospaced()` on it stayed proportional.
+                        FontFamily(.system(.monospaced))
+                        FontSize(.em(0.88))
                         BackgroundColor(theme.panel)
                     }
                     .textSelection(.enabled)
@@ -138,15 +150,19 @@ struct MessageBubble: View {
                 } }
             }
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 10)
-        .background(isUser ? theme.userBubble : theme.aiBubble,
-                    in: RoundedRectangle(cornerRadius: 14))
-        .overlay(
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(theme.border.opacity(0.35), lineWidth: isUser ? 0 : 1)
-        )
+        // The user's words in a bubble; the reply as the page itself, full
+        // width, the way long answers read best. Boxing both made every
+        // screen a stack of cards.
+        .padding(.horizontal, isUser ? 14 : 0)
+        .padding(.vertical, isUser ? 10 : 0)
+        .background(isUser ? theme.userBubble : .clear,
+                    in: RoundedRectangle(cornerRadius: 20, style: .continuous))
         .frame(maxWidth: .infinity, alignment: isUser ? .trailing : .leading)
+    }
+
+    private static var markdownFamily: FontProperties.Family {
+        if let name = Appearance.fontFamily.customName { return .custom(name) }
+        return .system(Appearance.fontFamily.design)
     }
 
     @ViewBuilder

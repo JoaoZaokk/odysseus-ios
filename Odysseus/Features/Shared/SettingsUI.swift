@@ -163,8 +163,8 @@ enum SettingsUI {
     static func saveButton(theme: Theme, label: String = "Salvar", _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(LocalizedStringKey(label)).font(.ody(.subheadline, weight: .semibold))
-                .padding(.horizontal, 16).padding(.vertical, 8).foregroundStyle(.white)
-                .background(theme.accent, in: RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal, 16).padding(.vertical, 8).foregroundStyle(theme.onAccent)
+                .background(theme.accentFill, in: RoundedRectangle(cornerRadius: 10))
         }
         .buttonStyle(.plain)
     }

@@ -526,8 +526,8 @@ struct EmailSection: View {
                         Text(acc.name.isEmpty ? acc.fromAddress : acc.name)
                             .font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
                         if acc.isDefault {
-                            Text("padrão").font(.ody(size: 9)).foregroundStyle(.white)
-                                .padding(.horizontal, 5).padding(.vertical, 1).background(theme.accent, in: Capsule())
+                            Text("padrão").font(.ody(size: 9)).foregroundStyle(theme.onAccent)
+                                .padding(.horizontal, 5).padding(.vertical, 1).background(theme.accentFill, in: Capsule())
                         }
                         Spacer()
                     }

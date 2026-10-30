@@ -966,3 +966,11 @@
 "1 fonte" = "1 forrás";
 "· 1 rodada" = "· 1 kör";
 "Buscar na web" = "Keresés a weben";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "További lehetőségek";
+"A busca na web está desligada" = "A webes keresés ki van kapcsolva";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "Megpróbáltam a weben keresni a válaszhoz, de a keresés ki van kapcsolva a hanghoz.";
+"Não consegui responder a isso por voz." = "Erre nem tudtam hangban válaszolni.";
+"Busca na web" = "Webes keresés";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "Az MI a hangalapú beszélgetés közben kereshet a weben. Be: friss válaszok, kicsit lassabban. Ki: csak abból válaszol, amit már tud.";

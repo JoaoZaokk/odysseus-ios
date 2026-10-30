@@ -959,3 +959,11 @@
 "1 fonte" = "1 fonte";
 "· 1 rodada" = "· 1 rodada";
 "Buscar na web" = "Buscar na web";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "Mais opções";
+"A busca na web está desligada" = "A busca na web está desligada";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "Tentei pesquisar para responder, mas a busca está desligada na voz.";
+"Não consegui responder a isso por voz." = "Não consegui responder a isso por voz.";
+"Busca na web" = "Busca na web";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe.";

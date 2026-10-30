@@ -154,37 +154,43 @@ struct TasksView: View {
         }
     }
 
-    /// Status dot in its own narrow column; title, schedule, meta and the
-    /// buttons all hang from the title's edge, not from the dot.
+    /// Title with its state as a labelled pill (a bare dot said "active" in
+    /// colour only), then schedule and runs on one line, then the actions.
     private func taskRow(_ t: ScheduledTask) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
-            Circle().fill(t.isPaused ? theme.secondaryText : theme.green).frame(width: 8, height: 8)
-                .accessibilityLabel(Text(LocalizedStringKey(t.isPaused ? "Pausada" : "Ativa")))
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
-                    Text(t.name).font(.ody(.subheadline).weight(.semibold)).foregroundStyle(theme.fg)
-                    Spacer()
-                    if vm.busyID == t.id { ProgressView().controlSize(.small) }
-                }
-                Text(t.scheduleText).font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
-                HStack(spacing: 12) {
-                    if let last = t.lastRun { meta(relative(last), icon: "clock.arrow.circlepath") }
-                    meta("\(t.runCount)x", icon: "repeat")
-                }
-                .font(.ody(size: 11)).foregroundStyle(theme.secondaryText)
-
-                // Two equal columns: "Pausar" and "Retomar" are different
-                // widths, and sized by their text the pairs never lined up
-                // from one row to the next.
-                HStack(spacing: Spacing.iconGap) {
-                    actionButton(t.isPaused ? "Retomar" : "Pausar", system: t.isPaused ? "play.fill" : "pause.fill") {
-                        Task { await vm.toggle(t) }
-                    }
-                    actionButton("Rodar agora", system: "bolt.fill") { Task { await vm.run(t) } }
-                }
-                .padding(.top, 2)
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(t.name).font(.ody(.headline, weight: .semibold)).foregroundStyle(theme.fg)
+                Spacer(minLength: 8)
+                if vm.busyID == t.id { ProgressView().controlSize(.small) }
+                stateBadge(paused: t.isPaused)
             }
+            HStack(spacing: 12) {
+                Text(verbatim: t.scheduleText)
+                if let last = t.lastRun { meta(relative(last), icon: "clock.arrow.circlepath") }
+                meta("\(t.runCount)×", icon: "repeat")
+            }
+            .font(.ody(.subheadline)).foregroundStyle(theme.secondaryText)
+            .lineLimit(1).minimumScaleFactor(0.85)
+
+            HStack(spacing: 10) {
+                actionButton(t.isPaused ? "Retomar" : "Pausar", system: t.isPaused ? "play.fill" : "pause.fill") {
+                    Task { await vm.toggle(t) }
+                }
+                actionButton("Rodar agora", system: "bolt.fill") { Task { await vm.run(t) } }
+            }
+            .padding(.top, 8)
         }
+    }
+
+    private func stateBadge(paused: Bool) -> some View {
+        HStack(spacing: 5) {
+            Circle().frame(width: 6, height: 6).accessibilityHidden(true)
+            Text(LocalizedStringKey(paused ? "Pausada" : "Ativa"))
+        }
+        .font(.ody(.footnote, weight: .semibold))
+        .foregroundStyle(paused ? theme.secondaryText : theme.green)
+        .padding(.horizontal, 8).padding(.vertical, 3)
+        .background((paused ? theme.fg : theme.green).opacity(paused ? 0.08 : 0.14), in: Capsule())
     }
 
     /// Icon tight against its value: a `Label` left a word's width between them.
@@ -195,15 +201,17 @@ struct TasksView: View {
         }
     }
 
+    /// A quiet filled capsule, 40 tall, answering to 44.
     private func actionButton(_ label: String, system: String, _ tap: @escaping () -> Void) -> some View {
         Button(action: tap) {
             Label(LocalizedStringKey(label), systemImage: system)
-                .font(.ody(size: 13))
+                .font(.ody(.subheadline, weight: .semibold))
                 .lineLimit(1)
-                .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget)
-                .background(theme.panel, in: Capsule())
-                .overlay(Capsule().stroke(theme.border, lineWidth: 1))
+                .padding(.horizontal, 16)
+                .frame(minHeight: 40)
+                .background(theme.fg.opacity(0.08), in: Capsule())
                 .foregroundStyle(theme.fg)
+                .frame(minHeight: Spacing.tapTarget)
                 .contentShape(Capsule())
         }
         .buttonStyle(.plain)

@@ -14,6 +14,7 @@ struct ChatScreen: View {
     @StateObject private var voice = VoiceInputManager()
     @FocusState private var inputFocused: Bool
     @State private var photoItems: [PhotosPickerItem] = []
+    @State private var showPhotoPicker = false
     @State private var pasteMonitor: Any?   // macOS ⌘V image-paste event monitor
     @State private var didAutoSend = false
     @State private var showVoice = false
@@ -105,7 +106,7 @@ struct ChatScreen: View {
                 } else if vm.messages.isEmpty && ui.isOn(.welcome) {
                     welcome.padding(.top, Spacing.voidOffset)
                 }
-                LazyVStack(spacing: 16) {
+                LazyVStack(spacing: 20) {
                     ForEach(Array(vm.messages.enumerated()), id: \.element.id) { idx, msg in
                         MessageBubble(
                             message: msg,
@@ -126,7 +127,7 @@ struct ChatScreen: View {
                         HStack(spacing: 8) {
                             ProgressView().controlSize(.small).tint(theme.accent)
                             Text(LocalizedStringKey(tool))
-                                .font(.ody(size: 12))
+                                .font(.ody(.subheadline))
                                 .foregroundStyle(theme.secondaryText)
                             Spacer()
                         }
@@ -173,45 +174,30 @@ struct ChatScreen: View {
 
     // MARK: - Composer
 
+    /// One rounded box: the field on top, the controls under it. Attach and
+    /// the Web / Deep / Agente modes live in the "+" menu; a mode that is on
+    /// shows as a chip in the box, and tapping the chip turns it off. The old
+    /// layout spent a row on three 27 pt chips and boxed the field on its own.
     private var composer: some View {
         VStack(spacing: 8) {
             if vm.isStreaming { Divider().overlay(theme.border) }
-            HStack(spacing: 8) {
-                if ui.isOn(.webChip) { toggleChip(system: "globe", label: "Web", on: $vm.webSearch) }
-                if ui.isOn(.deepChip) { toggleChip(system: "sparkle.magnifyingglass", label: "Deep", on: $vm.research) }
-                if ui.isOn(.agentChip) { toggleChip(system: "wrench.and.screwdriver", label: "Agente", on: $vm.agentMode) }
-                Spacer(minLength: 4)
-                if !vm.models.isEmpty { modelChip }
-            }
-            .padding(.horizontal, Spacing.gutter)
 
             // `vm.error` covers a failed history load, a failed attachment upload,
             // and a stream error that arrived after the bubble already had text —
             // all three used to be written and never read.
             ForEach([voice.error, vm.error].compactMap { $0 }, id: \.self) { err in
-                Text(LocalizedStringKey(err))
-                    .font(.ody(size: 11))
-                    .foregroundStyle(theme.danger)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, Spacing.gutter)
+                Label { Text(LocalizedStringKey(err)) } icon: {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                }
+                .font(.ody(.footnote))
+                .foregroundStyle(theme.danger)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, Spacing.gutter)
             }
 
             if !vm.pendingAttachments.isEmpty || vm.uploading { pendingStrip }
 
-            HStack(alignment: .bottom, spacing: 8) {
-                if ui.isOn(.attach) {
-                    // Same size, weight and colour as the mic next to it.
-                    PhotosPicker(selection: $photoItems, maxSelectionCount: 4, matching: .images) {
-                        Image(systemName: "photo.badge.plus")
-                            .font(.ody(size: 20))
-                            .foregroundStyle(theme.accent)
-                            .frame(width: 34, height: Spacing.tapTarget)
-                    }
-                    .onChange(of: photoItems) { _, items in loadPhotos(items) }
-                }
-
-                if ui.isOn(.mic) { micButton }
-
+            VStack(alignment: .leading, spacing: 0) {
                 // The placeholder is drawn over the field: a vertical-axis
                 // field paints its own (title or `prompt`) in the system sans
                 // whatever font it is given.
@@ -239,27 +225,124 @@ struct ChatScreen: View {
                         return .handled
                     }
                     #endif
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 10)
-                    .background(theme.panel, in: RoundedRectangle(cornerRadius: 18))
-                    .overlay(RoundedRectangle(cornerRadius: 18).stroke(theme.border, lineWidth: 1))
+                    .padding(.horizontal, 10)
+                    .padding(.top, 10)
+                    .padding(.bottom, 6)
 
-                sendButton
-                // Key equivalents ride on zero-size buttons: one binding per
-                // button, so Esc cannot also send.
-                Group {
-                    Button("") { if vm.isStreaming { vm.stop() } }.keyboardShortcut(OdyShortcuts.stop).disabled(!vm.isStreaming)
-                    Button("") { if vm.isStreaming { vm.stop() } }.keyboardShortcut(.escape, modifiers: []).disabled(!vm.isStreaming)
-                    Button("") { inputFocused = true }.keyboardShortcut(OdyShortcuts.focusInput)
+                HStack(spacing: 4) {
+                    if hasPlusMenu { plusMenu }
+                    // Labels while they fit; with every mode on in a narrow
+                    // box, the glyphs alone.
+                    ViewThatFits(in: .horizontal) {
+                        activeChips(labels: true)
+                        activeChips(labels: false)
+                    }
+                    Spacer(minLength: 4)
+                    if !vm.models.isEmpty { modelChip }
+                    if ui.isOn(.mic) { micButton }
+                    sendButton
+                    // Key equivalents ride on zero-size buttons: one binding per
+                    // button, so Esc cannot also send.
+                    Group {
+                        Button("") { if vm.isStreaming { vm.stop() } }.keyboardShortcut(OdyShortcuts.stop).disabled(!vm.isStreaming)
+                        Button("") { if vm.isStreaming { vm.stop() } }.keyboardShortcut(.escape, modifiers: []).disabled(!vm.isStreaming)
+                        Button("") { inputFocused = true }.keyboardShortcut(OdyShortcuts.focusInput)
+                    }
+                    .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
                 }
-                .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
             }
-            .padding(.horizontal, Spacing.gutter)
+            .padding(.horizontal, 6)
+            .padding(.top, 2)
+            .padding(.bottom, 2)
+            .background(theme.panel, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous)
+                .stroke(theme.fg.opacity(0.10), lineWidth: 1))
+            .padding(.horizontal, 12)
             .padding(.bottom, 8)
         }
         .frame(maxWidth: columnWidth ?? .infinity)
         .frame(maxWidth: .infinity)
         .background(theme.bg)
+        .photosPicker(isPresented: $showPhotoPicker, selection: $photoItems,
+                      maxSelectionCount: 4, matching: .images)
+        .onChange(of: photoItems) { _, items in loadPhotos(items) }
+    }
+
+    /// Whether anything is left in the "+" menu once Aparência › Personalizar
+    /// interface has hidden what the user does not want.
+    private var hasPlusMenu: Bool {
+        ui.isOn(.attach) || ui.isOn(.webChip) || ui.isOn(.deepChip) || ui.isOn(.agentChip)
+    }
+
+    private var plusMenu: some View {
+        Menu {
+            if ui.isOn(.attach) {
+                Button { showPhotoPicker = true } label: {
+                    Label("Anexar fotos", systemImage: "photo")
+                }
+                Divider()
+            }
+            if ui.isOn(.webChip) {
+                Toggle(isOn: $vm.webSearch) { Label("Web", systemImage: "globe") }
+            }
+            if ui.isOn(.deepChip) {
+                Toggle(isOn: $vm.research) { Label("Deep", systemImage: "sparkle.magnifyingglass") }
+            }
+            if ui.isOn(.agentChip) {
+                Toggle(isOn: $vm.agentMode) { Label("Agente", systemImage: "wrench.and.screwdriver") }
+            }
+        } label: {
+            Image(systemName: "plus")
+                .font(.ody(.body, weight: .medium))
+                .foregroundStyle(theme.fg)
+                .frame(width: 34, height: 34)
+                .overlay(Circle().stroke(theme.fg.opacity(0.14), lineWidth: 1))
+                .frame(width: Spacing.tapTarget, height: Spacing.tapTarget)
+                .contentShape(Rectangle())
+        }
+        .menuStyle(.button)
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text("Mais opções"))
+    }
+
+    private func activeChips(labels: Bool) -> some View {
+        HStack(spacing: 6) {
+            if ui.isOn(.webChip) && vm.webSearch {
+                modeChip(system: "globe", label: "Web", labels: labels) { vm.webSearch = false }
+            }
+            if ui.isOn(.deepChip) && vm.research {
+                modeChip(system: "sparkle.magnifyingglass", label: "Deep", labels: labels) { vm.research = false }
+            }
+            if ui.isOn(.agentChip) && vm.agentMode {
+                modeChip(system: "wrench.and.screwdriver", label: "Agente", labels: labels) { vm.agentMode = false }
+            }
+        }
+        .fixedSize()
+    }
+
+    /// A mode that is on. Tapping it turns it off; the "+" menu turns it back on.
+    private func modeChip(system: String, label: String, labels: Bool,
+                          _ turnOff: @escaping () -> Void) -> some View {
+        Button(action: turnOff) {
+            HStack(spacing: 5) {
+                Image(systemName: system).foregroundStyle(theme.accentText)
+                if labels {
+                    Text(LocalizedStringKey(label)).foregroundStyle(theme.fg).lineLimit(1)
+                }
+                Image(systemName: "xmark")
+                    .font(.ody(.caption, weight: .semibold))
+                    .foregroundStyle(theme.secondaryText)
+            }
+            .font(.ody(.subheadline))
+            .padding(.horizontal, 10)
+            .frame(minHeight: 32)
+            .background(theme.accent.opacity(0.18), in: Capsule())
+            .frame(minHeight: Spacing.tapTarget)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(LocalizedStringKey(label)))
+        .accessibilityAddTraits(.isSelected)
     }
 
     private var pendingStrip: some View {
@@ -276,6 +359,7 @@ struct ChatScreen: View {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundStyle(.white, .black.opacity(0.5))
                         }
+                        .accessibilityLabel(Text("Remover"))
                         .offset(x: 5, y: -5)
                     }
                 }
@@ -325,9 +409,9 @@ struct ChatScreen: View {
     /// dictates into the text field.
     private var voiceModeButton: some View {
         Button { showVoice = true } label: {
-            Image(systemName: "waveform.circle")
-                .font(.ody(size: 18))
-                .foregroundStyle(theme.accent)
+            Image(systemName: "waveform")
+                .font(.ody(.body))
+                .foregroundStyle(theme.fg)
         }
         .buttonStyle(.plain)
         .accessibilityLabel(Text("Conversar por voz"))
@@ -342,14 +426,18 @@ struct ChatScreen: View {
                     ProgressView().controlSize(.small)
                 } else {
                     Image(systemName: voice.isRecording ? "stop.circle.fill" : "mic")
-                        .font(.ody(size: 20))
-                        .foregroundStyle(theme.accent)
+                        .font(.ody(.title3))
+                        .foregroundStyle(voice.isRecording ? theme.accentText : theme.fg)
                         .symbolEffect(.pulse, isActive: voice.isRecording)
                 }
             }
-            .frame(width: 34, height: Spacing.tapTarget)
+            .frame(width: 36, height: Spacing.tapTarget)
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .disabled(voice.processing)
+        .accessibilityLabel(Text("Microfone"))
+        .accessibilityAddTraits(voice.isRecording ? .isSelected : [])
     }
 
     private func toggleMic() async {
@@ -369,15 +457,19 @@ struct ChatScreen: View {
             if vm.isStreaming { vm.stop() }
             else { vm.send(); inputFocused = false }
         } label: {
+            let live = canSend || vm.isStreaming
             Image(systemName: vm.isStreaming ? "stop.fill" : "arrow.up")
-                .font(.ody(size: 18, weight: .bold))
-                .foregroundStyle(.white)
+                .font(.ody(.body, weight: .bold))
+                .foregroundStyle(live ? theme.onAccent : theme.fg.opacity(0.45))
+                .frame(width: 34, height: 34)
+                .background(live ? theme.accentFill : theme.fg.opacity(0.12), in: Circle())
                 .frame(width: Spacing.tapTarget, height: Spacing.tapTarget)
-                .background(canSend || vm.isStreaming ? theme.accent : theme.border,
-                            in: Circle())
+                .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .disabled(!canSend && !vm.isStreaming)
         .keyboardShortcut(OdyShortcuts.send)
+        .accessibilityLabel(Text(LocalizedStringKey(vm.isStreaming ? "Parar resposta" : "Enviar mensagem")))
     }
 
     private var connectedHost: String {
@@ -412,40 +504,27 @@ struct ChatScreen: View {
                 }
             }
         } label: {
-            HStack(spacing: 5) {
-                Image(systemName: "cpu").font(.ody(size: 11))
+            // Plain text inside the box: a bordered capsule in a bordered box
+            // was one frame too many.
+            HStack(spacing: 3) {
                 Text(vm.selectedModel?.name ?? vm.resolvedModel ?? L("Modelo"))
-                    .font(.ody(size: 12))
                     // Cut at the end: "mimo-v2.6-pro" reads, "mimo…6-pro" does not.
                     .lineLimit(1).truncationMode(.tail)
+                Image(systemName: "chevron.up.chevron.down")
+                    .font(.ody(.caption))
+                    .accessibilityHidden(true)
             }
-            .padding(.horizontal, 10).padding(.vertical, 6)
-            .foregroundStyle(vm.selectedModel == nil ? theme.secondaryText : theme.accent)
-            .background(theme.panel, in: Capsule())
-            .overlay(Capsule().stroke(theme.border, lineWidth: 1))
+            .font(.ody(.subheadline))
+            .foregroundStyle(vm.selectedModel == nil ? theme.secondaryText : theme.accentText)
+            .padding(.horizontal, 6)
+            .frame(minHeight: Spacing.tapTarget)
+            .contentShape(Rectangle())
         }
         .menuStyle(.button)
         .buttonStyle(.plain)
-        .frame(maxWidth: 170, alignment: .trailing)
+        .frame(maxWidth: 150, alignment: .trailing)
+        .accessibilityLabel(Text("Modelo"))
         .disabled(vm.isStreaming)
-    }
-
-    private func toggleChip(system: String, label: String, on: Binding<Bool>) -> some View {
-        Button { on.wrappedValue.toggle() } label: {
-            // One line at its own width: in a tight row SwiftUI wrapped the
-            // longer translations ("Approfondi", "エージェント") onto two lines;
-            // the model chip next to them truncates instead.
-            HStack(spacing: 5) {
-                Image(systemName: system).font(.ody(size: 11))
-                Text(LocalizedStringKey(label)).font(.ody(size: 12))
-                    .lineLimit(1).fixedSize()
-            }
-            .padding(.horizontal, 10).padding(.vertical, 6)
-            .foregroundStyle(on.wrappedValue ? .white : theme.secondaryText)
-            .background(on.wrappedValue ? theme.accent : theme.panel,
-                        in: Capsule())
-            .overlay(Capsule().stroke(theme.border, lineWidth: on.wrappedValue ? 0 : 1))
-        }
     }
 }
 

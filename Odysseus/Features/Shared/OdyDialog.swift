@@ -250,7 +250,7 @@ private struct OdyDialogButtonStyle: PrimitiveButtonStyle {
         switch role {
         case .destructive?: return .white
         case .cancel?: return theme.fg
-        default: return .white
+        default: return theme.onAccent
         }
     }
 
@@ -258,7 +258,7 @@ private struct OdyDialogButtonStyle: PrimitiveButtonStyle {
         switch role {
         case .destructive?: return theme.danger
         case .cancel?: return .clear
-        default: return theme.accent
+        default: return theme.accentFill
         }
     }
 }

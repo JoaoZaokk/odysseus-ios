@@ -246,9 +246,10 @@ struct CompareView: View {
                 focused = false; vm.send()
             } label: {
                 Image(systemName: vm.streaming ? "ellipsis" : "arrow.up")
-                    .font(.ody(size: 16, weight: .bold)).foregroundStyle(.white)
+                    .font(.ody(size: 16, weight: .bold))
+                    .foregroundStyle(vm.canSend || vm.streaming ? theme.onAccent : theme.secondaryText)
                     .frame(width: Spacing.tapTarget, height: Spacing.tapTarget)
-                    .background(vm.canSend || vm.streaming ? theme.accent : theme.border, in: Circle())
+                    .background(vm.canSend || vm.streaming ? theme.accentFill : theme.border, in: Circle())
             }
             .buttonStyle(.plain)
             .disabled(!vm.canSend)

@@ -97,6 +97,25 @@ final class VoiceConversation: ObservableObject {
         let role: String
         var text: String
         var at = Date()
+        /// Set when the reply is not an answer but a reason there is none;
+        /// the screen draws it as a notice, not as a message bubble.
+        var notice: Notice?
+    }
+
+    /// Why an assistant turn ended with nothing to say.
+    enum Notice: Equatable {
+        /// The model went for a web tool while Ajustes › Voz e modelos ›
+        /// Buscar na web is off, so the server never ran it.
+        case webSearchOff
+        /// Any other call the server did not run.
+        case noVoiceAnswer
+    }
+
+    /// Tool names that mean "look it up on the web" across the servers and
+    /// models seen so far (Odysseus, Gemma, Qwen).
+    static func isWebTool(_ name: String) -> Bool {
+        let n = name.lowercased()
+        return n.contains("search") || n.contains("web") || n.contains("fetch") || n == "get_weather"
     }
 
     /// The model may search the web mid-conversation (Ajustes › Voz). On by
@@ -431,9 +450,16 @@ final class VoiceConversation: ObservableObject {
                 if !calls.calls.isEmpty {
                     VoiceLog.log("chamada.crua", calls.calls.map(\.name).joined(separator: ","))
                 }
+                // Say why instead: "(sem resposta)" read as the model or the
+                // app failing when it was the voice web switch being off.
                 if self.reply.isEmpty, !calls.calls.isEmpty,
                    let i = self.turns.lastIndex(where: { $0.id == replyTurn.id }) {
-                    self.turns[i].text = L("(sem resposta)")
+                    let wantedWeb = calls.calls.contains { Self.isWebTool($0.name) }
+                    let notice: Notice = wantedWeb && !Self.webSearchEnabled ? .webSearchOff : .noVoiceAnswer
+                    self.turns[i].notice = notice
+                    self.turns[i].text = notice == .webSearchOff
+                        ? L("Tentei pesquisar para responder, mas a busca está desligada na voz.")
+                        : L("Não consegui responder a isso por voz.")
                 }
                 self.emitSentences(flush: true)
                 self.finalizeReply(replyTurn.id)

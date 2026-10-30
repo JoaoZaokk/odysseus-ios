@@ -58,6 +58,18 @@ final class VoiceWebSearchTests: XCTestCase {
         XCTAssertEqual(vm.messages.last?.content, "Vou ver. ")
     }
 
+    /// A call to a web tool while the voice switch is off is what used to
+    /// end as "(sem resposta)"; it is told apart from other calls so the
+    /// screen can say the switch is off.
+    func testWebToolNamesAreRecognised() {
+        for name in ["web_search", "search_web", "web_fetch", "get_weather", "search", "Search"] {
+            XCTAssertTrue(VoiceConversation.isWebTool(name), name)
+        }
+        for name in ["remember", "create_event", "send_email"] {
+            XCTAssertFalse(VoiceConversation.isWebTool(name), name)
+        }
+    }
+
     func testCitationMarkersAreNotSpoken() {
         XCTAssertEqual(SpokenText.strip("O dólar está em 5,01 reais [2]. Veja no Wise [3, 4]."),
                        "O dólar está em 5,01 reais. Veja no Wise.")

@@ -968,3 +968,11 @@
 "1 fonte" = "1 উৎস";
 "· 1 rodada" = "· 1 রাউন্ড";
 "Buscar na web" = "ওয়েবে খুঁজুন";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "আরও বিকল্প";
+"A busca na web está desligada" = "ওয়েব সার্চ বন্ধ আছে";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "উত্তর দিতে ওয়েবে খোঁজার চেষ্টা করেছিলাম, কিন্তু ভয়েসের জন্য সার্চ বন্ধ।";
+"Não consegui responder a isso por voz." = "এর উত্তর ভয়েসে দিতে পারিনি।";
+"Busca na web" = "ওয়েব সার্চ";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "ভয়েস কথোপকথনের সময় AI ওয়েবে খুঁজতে পারে। চালু: হালনাগাদ উত্তর, একটু ধীর। বন্ধ: শুধু যা আগে থেকে জানে তা দিয়েই উত্তর দেয়।";

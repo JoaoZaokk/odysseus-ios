@@ -122,7 +122,7 @@ struct EmailView: View {
                     Label("Como conectar (passo a passo)", systemImage: "questionmark.circle")
                         .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 10)
-                        .background(theme.accent, in: Capsule()).foregroundStyle(.white)
+                        .background(theme.accentFill, in: Capsule()).foregroundStyle(theme.onAccent)
                 }.buttonStyle(.plain)
                 HStack(spacing: 10) {
                     Button { Task { await vm.load() } } label: {
@@ -150,8 +150,8 @@ struct EmailView: View {
                     Label("Conectar conta", systemImage: "plus")
                         .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 10)
-                        .background(theme.accent, in: Capsule())
-                        .foregroundStyle(.white)
+                        .background(theme.accentFill, in: Capsule())
+                        .foregroundStyle(theme.onAccent)
                 }
             }
             .voidAnchored()

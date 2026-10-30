@@ -235,8 +235,8 @@ struct LockView: View {
                     Label("Desbloquear com \(BiometricLock.label)", systemImage: "faceid")
                         .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 11)
-                        .background(theme.accent, in: Capsule())
-                        .foregroundStyle(.white)
+                        .background(theme.accentFill, in: Capsule())
+                        .foregroundStyle(theme.onAccent)
                 }
                 .buttonStyle(.plain).disabled(authenticating)
             }
