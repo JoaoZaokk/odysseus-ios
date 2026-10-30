@@ -9,6 +9,12 @@
     'html:lang(ja) body.shot { --cjk: "Hiragino Sans", "Noto Sans CJK JP"; } html:lang(ko) body.shot { --cjk: "Apple SD Gothic Neo", "Noto Sans CJK KR"; }',
     'html:lang(zh-Hans) body.shot { --cjk: "PingFang SC", "Noto Sans CJK SC"; } html:lang(zh-Hant) body.shot { --cjk: "PingFang TC", "Noto Sans CJK TC"; }',
     'html[lang] body.shot { --ui: -apple-system, "SF Pro Text", var(--cjk, "SF Pro"), system-ui, sans-serif; }',
+    // Korean wraps at spaces, as the app does; Chromium would split syllables.
+    'html:lang(ko) body.shot { word-break: keep-all; }',
+    // CJK has no italic: the slant would be synthetic. The border marks the quote.
+    'html:lang(ja) .quote, html:lang(ko) .quote, html:lang(zh-Hans) .quote, html:lang(zh-Hant) .quote { font-style: normal; }',
+    // The CJK fallback's tall default line box pushed the promo subline onto the phone.
+    'html:lang(ja) .promo :is(h1, h2), html:lang(ko) .promo :is(h1, h2), html:lang(zh-Hans) .promo :is(h1, h2), html:lang(zh-Hant) .promo :is(h1, h2) { line-height: 1.15; }',
     'html[lang] .canvas, html[lang] .promo { font-family: "SF Pro Display", var(--cjk, "SF Pro Display"), sans-serif !important; }',
     'html[lang] .canvas .cap p { font-family: "SF Pro Text", var(--cjk, "SF Pro Text"), sans-serif !important; }',
     'body.shot > *:not(#shot) { display: none !important; }',
@@ -25,6 +31,8 @@
     '.ipad .side { width: 320px; flex: none; background: #2c2c2a; display: flex; flex-direction: column; overflow: hidden; border-right: 1px solid rgba(245,244,240,.06); }',
     '.ipad .side .nav, .ipad .detail .nav { margin-top: 0; }',
     '.ipad .side .row { padding-top: 9px; padding-bottom: 9px; }',
+    // One line, like the app's search field ("Rechercher des conversations").
+    '.ipad .side .search { white-space: nowrap; overflow: hidden; }',
     '.ipad .side .row.on { background: rgba(198,97,63,.14); box-shadow: inset 3px 0 0 var(--accent); }',
     '.ipad .side .row.on::before, .ipad .side .row.on + .row::before { display: none; }',
     '.ipad .detail { flex: 1; min-width: 0; display: flex; flex-direction: column; position: relative; }',

@@ -615,7 +615,7 @@ figure { margin: 0; }
   D.push({ t: 'Brain', d: 'Voltar, Nova memória e Organizar na trilha. Busca, filtros e lista com a margem do sistema.',
     rail: g('back') + g('plus') + g('wand'),
     h: dnav('Brain') + '<div class="body"><div class="search">' + ic('search') + 'Buscar memórias</div>' +
-      '<div class="chips"><span class="cat on">Tudo</span><span class="cat">estilo</span><span class="cat">estudos</span><span class="cat">pessoal</span></div>' +
+      '<div class="chips"><span class="cat on">Tudo</span><span class="cat">estilo</span><span class="cat">estudos</span><span class="cat">pessoal</span><span class="cat">trabalho</span></div>' +
       '<div class="row mrow"><div class="main"><span class="ttl">Prefere respostas curtas e diretas.</span><span class="meta2"><span class="tag">estilo</span><em>' + ic('pin') + 'Fixada</em></span></div></div>' +
       '<div class="row mrow"><div class="main"><span class="ttl">Gosta de cozinhar nos fins de semana.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
       '<div class="row mrow"><div class="main"><span class="ttl">Estuda japonês às terças.</span><span class="meta2"><span class="tag">estudos</span></span></div></div>' +
@@ -639,8 +639,12 @@ figure { margin: 0; }
     h: dnav('Tasks') + '<div class="body">' +
       '<div class="task"><div class="h">Resumo diário dos emails<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 08:00</span><span>' + ic('clock') + 'há 1 hora</span></div>' +
       '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Previsão do tempo pela manhã<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 07:00</span><span>' + ic('clock') + 'há 2 horas</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
       '<div class="task"><div class="h">Relatório semanal de gastos<span class="state off"><i></i>Pausada</span></div><div class="m"><span>Semanal 18:00</span><span>' + ic('clock') + 'há 4 dias</span></div>' +
       '<div class="tbtns"><span class="tb">' + ic('play') + 'Retomar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Backup das notas<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 03:00</span><span>' + ic('clock') + 'há 7 horas</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
       '</div>' });
   document.getElementById('gallery-duo').innerHTML = D.map(function (s) {
     return '<figure class="shot" data-w="488"><div class="frame">' + duo(s.h, s.rail) + '</div><figcaption><b>' + s.t + '</b><span>' + s.d + '</span></figcaption></figure>';
