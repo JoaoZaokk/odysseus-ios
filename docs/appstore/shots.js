@@ -6,6 +6,11 @@
   css.textContent = [
     'body.shot { padding: 0 !important; margin: 0; background: #262624; overflow: hidden; }',
     'body.shot::before { display: none; }',
+    'html:lang(ja) body.shot { --cjk: "Hiragino Sans", "Noto Sans CJK JP"; } html:lang(ko) body.shot { --cjk: "Apple SD Gothic Neo", "Noto Sans CJK KR"; }',
+    'html:lang(zh-Hans) body.shot { --cjk: "PingFang SC", "Noto Sans CJK SC"; } html:lang(zh-Hant) body.shot { --cjk: "PingFang TC", "Noto Sans CJK TC"; }',
+    'html[lang] body.shot { --ui: -apple-system, "SF Pro Text", var(--cjk, "SF Pro"), system-ui, sans-serif; }',
+    'html[lang] .canvas, html[lang] .promo { font-family: "SF Pro Display", var(--cjk, "SF Pro Display"), sans-serif !important; }',
+    'html[lang] .canvas .cap p { font-family: "SF Pro Text", var(--cjk, "SF Pro Text"), sans-serif !important; }',
     'body.shot > *:not(#shot) { display: none !important; }',
     '#shot { position: fixed; inset: 0; overflow: hidden; }',
     // Screens: no bezel, no island, square corners, exact point size.
@@ -197,8 +202,13 @@
   }
   function centreCaptions() {
     document.querySelectorAll('.canvas .cap').forEach(function (c) {
-      var band = Number(c.getAttribute('data-band'));
-      c.style.top = Math.max(16, (band - c.offsetHeight) / 2) + 'px';
+      var band = Number(c.getAttribute('data-band')), h1 = c.querySelector('h1'), p = c.querySelector('p');
+      // A longer translation shrinks instead of running into the device.
+      for (var n = 0; n < 30 && c.offsetHeight > band - 12; n++) {
+        h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * 0.96) + 'px';
+        p.style.fontSize = (parseFloat(getComputedStyle(p).fontSize) * 0.97) + 'px';
+      }
+      c.style.top = Math.max(10, (band - c.offsetHeight) / 2) + 'px';
     });
   }
 
@@ -217,7 +227,52 @@
       { capTop: 64, h1: 56, lines: 1, gap: 14, p: 30, afterCap: 46, bottom: 46, maxW: 0.9 }) }; }
   };
 
-  window.SHOT = function (kind, i) {
+  // ---------- translation ----------
+  // A "text container" is an element with text of its own. Its whole inner
+  // HTML is the unit of translation, with each icon swapped for {0}, {1}… so
+  // word order can change around them and bold spans stay whole.
+  var SVG = /<svg[\s\S]*?<\/svg>/g;
+  function ownText(el) {
+    for (var n = el.firstChild; n; n = n.nextSibling) if (n.nodeType === 3 && n.nodeValue.trim()) return true;
+    return false;
+  }
+  function keyOf(el) {
+    var svgs = [], k = el.innerHTML.replace(SVG, function (m) { svgs.push(m); return '{' + (svgs.length - 1) + '}'; });
+    return { key: k.replace(/\s+/g, ' ').trim(), svgs: svgs };
+  }
+  function eachContainer(root, fn) {
+    (function walk(el) {
+      for (var c = el.firstElementChild; c; c = c.nextElementSibling) {
+        if (c.tagName.toLowerCase() === 'svg') continue;
+        if (ownText(c)) fn(c); else walk(c);
+      }
+    })(root);
+  }
+  function translate(root, dict) {
+    eachContainer(root, function (el) {
+      var k = keyOf(el), t = dict[k.key];
+      if (t == null) return;
+      el.innerHTML = t.replace(/\{(\d+)\}/g, function (_, n) { return k.svgs[Number(n)] || ''; });
+    });
+  }
+  window.EXTRACT = function () {
+    var out = {}, kinds = { fiphone63: IPHONE.length, fduo: D.length, fipad: IPAD.length };
+    function grab(label) {
+      eachContainer(document.getElementById('shot'), function (el) {
+        var k = keyOf(el).key;
+        if (!(k in out)) out[k] = label;
+      });
+    }
+    Object.keys(kinds).forEach(function (kind) {
+      for (var i = 0; i < kinds[kind]; i++) { window.SHOT(kind, i, true); grab(kind + ' #' + (i + 1)); }
+    });
+    ['wide', 'card'].forEach(function (k) { window.SHOT('promo', k, true); grab('promo ' + k); });
+    return out;
+  };
+
+  window.SHOT = function (kind, i, raw) {
+    var L = window.ODY_I18N;
+    if (L && L.lang) document.documentElement.lang = L.lang;
     document.body.setAttribute('data-font', 'sf');
     document.body.classList.add('shot');
     var box = document.getElementById('shot') || document.body.appendChild(Object.assign(document.createElement('div'), { id: 'shot' }));
@@ -229,6 +284,7 @@
     else if (kind === 'promo') { html = promo(i); w = 2000; h = i === 'wide' ? 857 : 1333; }
     else if (FRAMED[kind]) { var f = FRAMED[kind](i); html = f.html; w = f.w; h = f.h; }
     box.innerHTML = html;
+    if (L && L.strings && !raw) translate(box, L.strings);
     centreCaptions();
     return { w: w, h: h };
   };
