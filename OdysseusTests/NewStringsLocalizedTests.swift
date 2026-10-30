@@ -34,6 +34,12 @@ final class NewStringsLocalizedTests: XCTestCase {
         "Produto", "Passo a passo", "Checagem de fatos", "Rodadas", "Endpoint",
         "Iniciar", "sem resultados", "%lld fontes", "1 fonte", "· 1 rodada",
         "Comparar", "Busca", "Modelo", "Padrão", "· %lld rodadas",
+        // 1.15 — the composer's "+" menu and the voice notice that replaced
+        // "(sem resposta)", with the web switch's own settings section.
+        "Mais opções", "A busca na web está desligada",
+        "Tentei pesquisar para responder, mas a busca está desligada na voz.",
+        "Não consegui responder a isso por voz.", "Busca na web",
+        "A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe.",
     ]
 
     func testEveryNewStringHasAnEntryInEveryCatalogue() throws {

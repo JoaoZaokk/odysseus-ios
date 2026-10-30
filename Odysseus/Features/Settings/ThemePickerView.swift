@@ -191,8 +191,8 @@ struct ThemePickerView: View {
             Text(LocalizedStringKey(label))
                 .font(labelFont ?? .ody(size: 12))
                 .padding(.horizontal, 12).padding(.vertical, 7)
-                .foregroundStyle(selected ? .white : theme.secondaryText)
-                .background(selected ? theme.accent : theme.panel, in: Capsule())
+                .foregroundStyle(selected ? theme.onAccent : theme.secondaryText)
+                .background(selected ? theme.accentFill : theme.panel, in: Capsule())
                 .overlay(Capsule().stroke(theme.border, lineWidth: selected ? 0 : 1))
         }
         .buttonStyle(.plain)

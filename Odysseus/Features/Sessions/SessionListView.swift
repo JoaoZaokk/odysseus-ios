@@ -16,6 +16,8 @@ struct SidebarView: View {
     @EnvironmentObject private var themes: ThemeStore
 
     @State private var search = ""
+    /// iPhone Duo outer display (or a Face ID phone on its side); see `SideRail`.
+    @State private var sideRail = false
     @State private var renaming: ChatSession?
     @State private var renameText = ""
     @State private var deleting: ChatSession?
@@ -90,9 +92,10 @@ struct SidebarView: View {
                 // "Nova conversa" lives in the chrome (the toolbar pencil) —
                 // a second copy as the first row was the same action twice
                 // on one screen. Theme lives in Settings › Aparência.
-                if ui.isOn(.deepSearch) {
+                // With a side rail it is a bar button instead (see the toolbar).
+                if ui.isOn(.deepSearch) && !sideRail {
                     Section {
-                        navRow(icon: "sparkle.magnifyingglass", title: "Deep Search", tint: theme.green,
+                        navRow(icon: "sparkle.magnifyingglass", title: "Deep Search", tint: theme.accent,
                                active: active(.deepSearch)) { workspace.openDeepSearch() }
                     }
                 }
@@ -249,9 +252,20 @@ struct SidebarView: View {
         .onChange(of: search) { _, q in store.search(q) }
         .screenChrome(title: "Odysseus") {
             Button { showSettings = true } label: { Image(systemName: "gearshape") }
+                .accessibilityLabel(Text("Ajustes"))
         } trailing: {
             Button { workspace.setPrimary(.newChat) } label: { Image(systemName: "square.and.pencil") }
+                .accessibilityLabel(Text("Nova conversa"))
+            // On the iPhone Duo the bar sits in the system rail beside the
+            // list: Deep Search moves there and the list starts with chats.
+            if sideRail && ui.isOn(.deepSearch) {
+                Button { workspace.openDeepSearch() } label: { Image(systemName: "sparkle.magnifyingglass") }
+                    .accessibilityLabel(Text("Deep Search"))
+            }
         }
+        #if os(iOS)
+        .readSideRail($sideRail)
+        #endif
         .odyRefreshable { await store.load() }
         .sheet(isPresented: $showArchived) {
             ArchivedSessionsView(store: store, workspace: workspace)
@@ -279,6 +293,9 @@ struct SidebarView: View {
         visibleSections.count <= 5 ? visibleSections : Array(visibleSections.prefix(4))
     }
 
+    /// The Espaços, as a floating glass bar over the list's bottom edge —
+    /// the shape the system tab bar takes on iOS 26. It was a flat panel strip
+    /// with 10 pt labels under a 1 pt rule.
     private var spacesBar: some View {
         HStack(spacing: 0) {
             ForEach(barSections) { section in
@@ -290,40 +307,39 @@ struct SidebarView: View {
                 barItem(icon: "ellipsis", title: "Mais", active: false) { showMoreSpaces = true }
             }
         }
-        // Equal columns, kept off the screen's edges: "Mais" sat on the
-        // right border.
-        .padding(.horizontal, 8)
-        .padding(.top, 6)
-        .background(alignment: .top) {
-            ZStack(alignment: .top) {
-                theme.panel
-                Rectangle().fill(theme.border).frame(height: 1)
-            }
-            // Edge to edge, sides included: on the iPhone Duo's outer display
-            // the camera and status rail is a trailing safe area, and the bar
-            // stopped at it while the list ran on underneath — rows showing
-            // to the right of the bar, its top edge cut off mid-screen.
-            .ignoresSafeArea(edges: [.bottom, .horizontal])
+        .padding(.horizontal, 6)
+        .padding(.vertical, 4)
+        .background {
+            Capsule()
+                .fill(.ultraThinMaterial)
+                .overlay(Capsule().fill(theme.panel.opacity(0.55)))
+                .overlay(Capsule().stroke(theme.fg.opacity(0.10), lineWidth: 1))
+                .shadow(color: .black.opacity(0.25), radius: 16, y: 6)
         }
+        // Off the screen's edges and above the home indicator. On the iPhone
+        // Duo's outer display the trailing safe area is the camera and status
+        // rail; the bar stays inside it like everything else.
+        .padding(.horizontal, Spacing.gutter)
+        .padding(.bottom, 4)
     }
 
     private func barItem(icon: String, title: String, active: Bool, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            VStack(spacing: 3) {
+            VStack(spacing: 2) {
                 Image(systemName: icon)
-                    .font(.ody(size: 15))
-                    .foregroundStyle(active ? theme.accent : theme.secondaryText)
+                    .font(.ody(.title3))
+                    .frame(height: 24)
                 Text(LocalizedStringKey(title))
-                    .font(.ody(size: 10))
+                    .font(.ody(.caption, weight: .medium))
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
-                    .foregroundStyle(active ? theme.fg : theme.secondaryText)
             }
-            .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget)
-            .padding(.bottom, 4)
+            .foregroundStyle(active ? theme.accentText : theme.secondaryText)
+            .frame(maxWidth: .infinity, minHeight: 54)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(active ? .isSelected : [])
     }
 
     private var moreSpaces: [AppSection] {
@@ -371,34 +387,37 @@ struct SidebarView: View {
     /// 24 to 580). A row rather than a section header: the sidebar style
     /// ignores `listRowInsets` on headers and pads them unevenly.
     private func groupBand(_ group: (label: String, sessions: [ChatSession])) -> some View {
+        // The system's section-header voice: 13 pt semibold in sentence case.
+        // It was a 10 pt all-caps label on a grey slab, the smallest and the
+        // loudest thing on the screen at once.
         Button { toggleGroup(group.label) } label: {
             HStack(spacing: 6) {
-                Text(LocalizedStringKey(group.label))
-                    .font(.ody(size: 10, weight: .semibold))
-                    .textCase(.uppercase)
-                    .foregroundStyle(theme.secondaryText)
                 Image(systemName: collapsed.contains(group.label) ? "chevron.right" : "chevron.down")
-                    .font(.ody(size: 8)).foregroundStyle(theme.secondaryText)
+                    .font(.ody(.caption, weight: .semibold))
+                    .frame(width: 12)
+                    .accessibilityHidden(true)
+                Text(LocalizedStringKey(group.label))
+                    .font(.ody(.footnote, weight: .semibold))
                 Spacer()
                 Text("\(group.sessions.count)")
-                    .font(.ody(size: 10))
-                    .foregroundStyle(theme.secondaryText.opacity(0.7))
+                    .font(.ody(.footnote))
+                    .monospacedDigit()
             }
-            .padding(.horizontal, 12).padding(.vertical, 7)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(theme.panel, in: RoundedRectangle(cornerRadius: 6))
+            .foregroundStyle(theme.secondaryText)
+            .padding(.top, 14).padding(.bottom, 4)
+            .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget, alignment: .bottomLeading)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(.isHeader)
-        .listRowInsets(EdgeInsets(top: 4, leading: Spacing.gutter, bottom: 4, trailing: Spacing.gutter))
+        .listRowInsets(EdgeInsets(top: 0, leading: Spacing.gutter, bottom: 0, trailing: Spacing.gutter))
         .listRowBackground(theme.bg)
         .listRowSeparator(.hidden)
     }
 
     private func header(_ text: String) -> some View {
         Text(LocalizedStringKey(text))
-            .font(.ody(.caption))
+            .font(.ody(.footnote, weight: .semibold))
             .foregroundStyle(theme.secondaryText)
     }
 
@@ -408,7 +427,7 @@ struct SidebarView: View {
             HStack(spacing: Spacing.iconGap) {
                 Image(systemName: icon).foregroundStyle(tint)
                     .frame(width: Spacing.leadingColumn)
-                Text(LocalizedStringKey(title)).font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                Text(LocalizedStringKey(title)).font(.ody(.body)).foregroundStyle(theme.fg)
             }
             .frame(maxWidth: .infinity, minHeight: Spacing.tapTarget, alignment: .leading)
             .contentShape(Rectangle())
@@ -423,7 +442,7 @@ struct SidebarView: View {
             Image(systemName: section.icon).foregroundStyle(theme.accent)
                 .frame(width: Spacing.leadingColumn)
             Text(LocalizedStringKey(section.title))
-                .font(.ody(.subheadline))
+                .font(.ody(.body))
                 .foregroundStyle(theme.fg)
                 .lineLimit(1)
         }
@@ -458,20 +477,21 @@ struct SidebarView: View {
                     // sized to its text and clipped by the list: a long title
                     // was cut mid-word, with no ellipsis to say it had been.
                     Text(session.title)
-                        .font(.ody(.subheadline))
+                        .font(.ody(.body))
                         .foregroundStyle(theme.fg)
                         .lineLimit(1)
                         .truncationMode(.tail)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     if let time = SessionStore.rowTime(session.updatedAt) {
                         Text(time)
-                            .font(.ody(size: 11))
+                            .font(.ody(.subheadline))
+                            .monospacedDigit()
                             .foregroundStyle(theme.secondaryText)
                     }
                 }
                 if let model = session.model, !model.isEmpty {
                     Text(model)
-                        .font(.ody(size: 11))
+                        .font(.ody(.subheadline))
                         .foregroundStyle(theme.secondaryText)
                         .lineLimit(1)
                         .truncationMode(.tail)

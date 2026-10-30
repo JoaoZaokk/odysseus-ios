@@ -173,9 +173,16 @@ struct VoiceSettingsView: View {
                         Slider(value: $bargeSensitivity, in: 0...1)
                     }
                 }
-                Toggle("Buscar na web", isOn: $voiceWebSearch)
             } header: { Text("Conversa por voz") } footer: {
                 Text("Enquanto a IA fala, começar a falar corta a resposta e ele te ouve. Sensibilidade alta interrompe com pouca voz (mas pode disparar sozinho com o eco); baixa exige falar mais firme.")
+            }
+
+            // Its own section: it sat under the barge-in slider, inside a
+            // footer that only explained barge-in.
+            Section {
+                Toggle("Buscar na web", isOn: $voiceWebSearch)
+            } header: { Text("Busca na web") } footer: {
+                Text("A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe.")
             }
 
             Section("Filtrar catálogo por idioma") {

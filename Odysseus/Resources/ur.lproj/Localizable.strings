@@ -966,3 +966,11 @@
 "1 fonte" = "1 ذریعہ";
 "· 1 rodada" = "· 1 راؤنڈ";
 "Buscar na web" = "ویب پر تلاش کریں";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "مزید اختیارات";
+"A busca na web está desligada" = "ویب تلاش بند ہے";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "میں نے جواب کے لیے ویب پر تلاش کرنے کی کوشش کی، لیکن آواز کے لیے تلاش بند ہے۔";
+"Não consegui responder a isso por voz." = "میں اس کا جواب آواز میں نہیں دے سکا۔";
+"Busca na web" = "ویب تلاش";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "AI آواز کی گفتگو کے دوران ویب پر تلاش کر سکتا ہے۔ آن: تازہ جوابات، کچھ سست۔ آف: صرف وہی جواب دیتا ہے جو پہلے سے جانتا ہے۔";

@@ -700,8 +700,8 @@ struct AddModelsSection: View {
                         }
                         .font(.ody(.subheadline).weight(.semibold))
                         .padding(.horizontal, 16).padding(.vertical, 8)
-                        .foregroundStyle(.white)
-                        .background(vm.canAdd ? theme.accent : theme.border, in: RoundedRectangle(cornerRadius: 10))
+                        .foregroundStyle(vm.canAdd ? theme.onAccent : theme.secondaryText)
+                        .background(vm.canAdd ? theme.accentFill : theme.border, in: RoundedRectangle(cornerRadius: 10))
                     }
                     .buttonStyle(.plain).disabled(!vm.canAdd)
                 }
@@ -722,8 +722,8 @@ struct AddModelsSection: View {
         Button { vm.kind = value; vm.message = nil } label: {
             Text(LocalizedStringKey(title)).font(.ody(size: 12))
                 .padding(.horizontal, 14).padding(.vertical, 6)
-                .foregroundStyle(vm.kind == value ? .white : theme.secondaryText)
-                .background(vm.kind == value ? theme.accent : theme.bg, in: Capsule())
+                .foregroundStyle(vm.kind == value ? theme.onAccent : theme.secondaryText)
+                .background(vm.kind == value ? theme.accentFill : theme.bg, in: Capsule())
                 .overlay(Capsule().stroke(theme.border, lineWidth: vm.kind == value ? 0 : 1))
         }
         .buttonStyle(.plain)

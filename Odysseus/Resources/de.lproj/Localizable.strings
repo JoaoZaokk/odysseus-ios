@@ -77,7 +77,7 @@
 "Evento: %@" = "Ereignis: %@";
 "ex.: As teorias do colapso da Idade do Bronze e as evidências" = "z. B. Die Theorien zum Untergang der Bronzezeit und die Belege";
 "ex.: assistente direto e objetivo" = "z. B. ein direkter, sachlicher Assistent";
-"Ex: reunião amanhã 14h" = "Z. B.: Besprechung morgen um 14:00 Uhr";
+"Ex: reunião amanhã 14h" = "Z. B. Besprechung morgen 14 Uhr";
 "Execução" = "Ausführung";
 "Exigir no login automático" = "Bei automatischer Anmeldung verlangen";
 "Exportar dados" = "Daten exportieren";
@@ -966,3 +966,11 @@
 "1 fonte" = "1 Quelle";
 "· 1 rodada" = "· 1 Runde";
 "Buscar na web" = "Im Web suchen";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "Weitere Optionen";
+"A busca na web está desligada" = "Websuche ist aus";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "Ich wollte im Web suchen, um zu antworten, aber die Suche ist für Sprache ausgeschaltet.";
+"Não consegui responder a isso por voz." = "Darauf konnte ich per Sprache nicht antworten.";
+"Busca na web" = "Websuche";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "Die KI kann während des Sprachgesprächs im Web suchen. An: aktuelle Antworten, etwas langsamer. Aus: Sie antwortet nur mit dem, was sie schon weiß.";

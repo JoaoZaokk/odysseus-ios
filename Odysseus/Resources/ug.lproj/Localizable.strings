@@ -966,3 +966,11 @@
 "1 fonte" = "1 مەنبە";
 "· 1 rodada" = "· 1 قېتىم";
 "Buscar na web" = "توردىن ئىزدەش";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "تېخىمۇ كۆپ تاللاش";
+"A busca na web está desligada" = "تور ئىزدەش تاقاق";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "جاۋاب بېرىش ئۈچۈن توردىن ئىزدىمەكچى بولدۇم، ئەمما ئاۋاز ئۈچۈن ئىزدەش تاقاق.";
+"Não consegui responder a isso por voz." = "بۇنىڭغا ئاۋاز بىلەن جاۋاب بېرەلمىدىم.";
+"Busca na web" = "تور ئىزدەش";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "AI ئاۋازلىق سۆھبەت جەريانىدا توردىن ئىزدىيەلەيدۇ. ئوچۇق: يېڭى جاۋابلار، سەل ئاستا. تاقاق: پەقەت بىلىدىغىنى بىلەنلا جاۋاب بېرىدۇ.";

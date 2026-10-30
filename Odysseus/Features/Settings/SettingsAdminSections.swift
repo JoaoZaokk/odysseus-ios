@@ -1218,8 +1218,8 @@ struct UsuariosSection: View {
                         Image(systemName: "person.crop.circle").foregroundStyle(theme.accent)
                         Text(u.username).font(.ody(.subheadline)).foregroundStyle(theme.fg)
                         if u.isAdmin {
-                            Text("ADMIN").font(.ody(size: 9)).foregroundStyle(.white)
-                                .padding(.horizontal, 5).padding(.vertical, 1).background(theme.accent, in: Capsule())
+                            Text("ADMIN").font(.ody(size: 9)).foregroundStyle(theme.onAccent)
+                                .padding(.horizontal, 5).padding(.vertical, 1).background(theme.accentFill, in: Capsule())
                         }
                         Spacer()
                     }

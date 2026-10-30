@@ -127,9 +127,9 @@ struct CalendarView: View {
     private var quickAddBar: some View {
         VStack(spacing: 6) {
             HStack(spacing: 8) {
-                Image(systemName: "sparkles").foregroundStyle(theme.accent)
+                Image(systemName: "sparkles").foregroundStyle(theme.accentText)
                 TextField("Ex: reunião amanhã 14h", text: $quickText)
-                    .font(.ody(.subheadline))
+                    .font(.ody(.body))
                     .foregroundStyle(theme.fg)
                     .focused($quickFocused)
                     .submitLabel(.go)
@@ -141,10 +141,10 @@ struct CalendarView: View {
                     Button { add() } label: { Image(systemName: "arrow.up.circle.fill").foregroundStyle(theme.accent) }
                 }
             }
-            .padding(.horizontal, 12).padding(.vertical, 10)
+            .padding(.horizontal, 14).padding(.vertical, 10)
             .frame(minHeight: Spacing.tapTarget)
-            .background(theme.panel, in: RoundedRectangle(cornerRadius: 12))
-            .overlay(RoundedRectangle(cornerRadius: 12).stroke(theme.border, lineWidth: 1))
+            // Same filled capsule as the search fields.
+            .background(theme.fg.opacity(theme.isDark ? 0.10 : 0.07), in: Capsule())
 
             if let err = vm.error {
                 Text(LocalizedStringKey(err))
@@ -186,10 +186,14 @@ struct CalendarView: View {
                                 .edgeSeparators(first: false, last: ev.id == lastID)
                         }
                     } header: {
+                        // The day in the text color and a readable size: a
+                        // 12 pt accent label failed contrast in 8 themes.
                         Text(LocalizedStringKey(dayLabel(group.day)))
-                            .font(.ody(.caption))
-                            .foregroundStyle(theme.accent)
-                            .listRowInsets(EdgeInsets(top: 12, leading: Spacing.gutter, bottom: 4, trailing: Spacing.gutter))
+                            .font(.ody(.subheadline, weight: .semibold))
+                            .foregroundStyle(theme.fg)
+                            .textCase(nil)
+                            .accessibilityAddTraits(.isHeader)
+                            .listRowInsets(EdgeInsets(top: 16, leading: Spacing.gutter, bottom: 4, trailing: Spacing.gutter))
                     }
                 }
             }
@@ -207,11 +211,12 @@ struct CalendarView: View {
                 .frame(width: 4)
             VStack(alignment: .leading, spacing: 3) {
                 Text(ev.summary)
-                    .font(.ody(.subheadline))
+                    .font(.ody(.body))
                     .foregroundStyle(theme.fg)
                 HStack(spacing: 8) {
                     Text(LocalizedStringKey(timeLabel(ev)))
-                        .font(.ody(size: 11))
+                        .font(.ody(.subheadline))
+                        .monospacedDigit()
                         .foregroundStyle(theme.secondaryText)
                     if !ev.location.isEmpty {
                         // Not a `Label`: its icon-to-title gap left the pin
@@ -220,7 +225,7 @@ struct CalendarView: View {
                             Image(systemName: "mappin").accessibilityHidden(true)
                             Text(ev.location).lineLimit(1)
                         }
-                        .font(.ody(size: 11))
+                        .font(.ody(.subheadline))
                         .foregroundStyle(theme.secondaryText)
                     }
                 }

@@ -141,9 +141,9 @@ struct EmailAccountsView: View {
             Button { showAdd = true } label: {
                 Image(systemName: "plus")
                     .font(.ody(size: 15, weight: .semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(theme.onAccent)
                     .frame(width: 30, height: 30)
-                    .background(theme.accent, in: Circle())
+                    .background(theme.accentFill, in: Circle())
             }.buttonStyle(.plain).help("Adicionar conta")
         }
         .padding(.horizontal, 16)
@@ -177,8 +177,8 @@ struct EmailAccountsView: View {
                     Label("Conectar conta", systemImage: "plus")
                         .font(.ody(.subheadline))
                         .padding(.horizontal, 18).padding(.vertical, 10)
-                        .background(theme.accent, in: Capsule())
-                        .foregroundStyle(.white)
+                        .background(theme.accentFill, in: Capsule())
+                        .foregroundStyle(theme.onAccent)
                 }.buttonStyle(.plain)
             }
             .padding(40)
@@ -194,9 +194,9 @@ struct EmailAccountsView: View {
                                 if acc.isDefault {
                                     Text("padrão")
                                         .font(.ody(size: 9))
-                                        .foregroundStyle(.white)
+                                        .foregroundStyle(theme.onAccent)
                                         .padding(.horizontal, 5).padding(.vertical, 1)
-                                        .background(theme.accent, in: Capsule())
+                                        .background(theme.accentFill, in: Capsule())
                                 }
                             }
                             Text(acc.subtitle)
@@ -371,7 +371,7 @@ struct AddEmailAccountView: View {
                 Label(LocalizedStringKey(note.linkLabel), systemImage: "arrow.up.forward.square")
                     .font(.ody(size: 11, weight: .semibold))
                     .padding(.horizontal, 12).padding(.vertical, 7)
-                    .background(theme.accent, in: Capsule()).foregroundStyle(.white)
+                    .background(theme.accentFill, in: Capsule()).foregroundStyle(theme.onAccent)
             }.buttonStyle(.plain).padding(.top, 2)
         }
         .padding(11).frame(maxWidth: .infinity, alignment: .leading)
@@ -473,8 +473,8 @@ struct AddEmailAccountView: View {
                 }
                 .font(.ody(.subheadline))
                 .padding(.horizontal, 18).padding(.vertical, 10)
-                .background(canSave ? theme.accent : theme.border, in: Capsule())
-                .foregroundStyle(.white)
+                .background(canSave ? theme.accentFill : theme.border, in: Capsule())
+                .foregroundStyle(canSave ? theme.onAccent : theme.secondaryText)
             }.buttonStyle(.plain).disabled(!canSave || saving || testing)
         }
     }

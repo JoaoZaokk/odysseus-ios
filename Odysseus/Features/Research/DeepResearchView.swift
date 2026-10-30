@@ -126,8 +126,8 @@ struct DeepResearchView: View {
                                 Label("Iniciar", systemImage: "play.fill")
                                     .font(.ody(.subheadline).weight(.semibold))
                                     .padding(.horizontal, 16).padding(.vertical, 9)
-                                    .foregroundStyle(.white)
-                                    .background(vm.canStart ? theme.accent : theme.border, in: RoundedRectangle(cornerRadius: 10))
+                                    .foregroundStyle(vm.canStart ? theme.onAccent : theme.secondaryText)
+                                    .background(vm.canStart ? theme.accentFill : theme.border, in: RoundedRectangle(cornerRadius: 10))
                             }
                             .buttonStyle(.plain).disabled(!vm.canStart)
                         }
@@ -253,8 +253,8 @@ struct DeepResearchView: View {
         Button(action: action) {
             Text(LocalizedStringKey(label)).font(.ody(size: 12))
                 .padding(.horizontal, 12).padding(.vertical, 6)
-                .foregroundStyle(selected ? .white : theme.secondaryText)
-                .background(selected ? theme.accent : theme.bg, in: Capsule())
+                .foregroundStyle(selected ? theme.onAccent : theme.secondaryText)
+                .background(selected ? theme.accentFill : theme.bg, in: Capsule())
                 .overlay(Capsule().stroke(theme.border, lineWidth: selected ? 0 : 1))
         }
         .buttonStyle(.plain)

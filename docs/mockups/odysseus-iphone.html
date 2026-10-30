@@ -1,0 +1,679 @@
+<title>Odysseus iPhone Redesign</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a header with the one font switch, then a wrapping gallery of iPhone 17 frames (402×874 pt, 1 px = 1 pt). */
+:root {
+  /* page around the phones */
+  --page: #ebeae7; --page-fg: #1f1e1c; --page-muted: #5f5d58; --page-line: #d2d0cb; --page-card: #f7f6f3;
+  --seg-bg: #dddbd6; --seg-on: #ffffff; --seg-on-fg: #1f1e1c;
+  /* the app: tema "Claude", com os tokens corrigidos */
+  --bg: #262624; --panel: #30302e; --raised: #3a3a37; --border: #4a4a47; --sep: rgba(245,244,240,.12);
+  --fg: #f5f4f0; --fg2: #a6a6a2; /* secundário: fg a 62% → 6,2:1 (era 55%, que cai abaixo de 4,5 em 11 temas) */
+  --accent: #c6613f; --accent-fill: #b25739; /* branco sobre ele: 4,9:1 */ --accent-text: #d4886f; /* acento como texto: 5,5:1 */
+  --green: #5fd97a; --warn: #e0a33a; --danger: #f2776a;
+  --glass: rgba(58,58,55,.72); --glass-line: rgba(255,255,255,.10);
+  --ui: -apple-system, "SF Pro Text", "SF Pro", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --inter: "Inter", -apple-system, system-ui, sans-serif;
+  --app-font: var(--ui);
+  --page-font: -apple-system, system-ui, "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --page: #141413; --page-fg: #ecebe7; --page-muted: #a2a09b; --page-line: #2c2b29; --page-card: #1c1c1a;
+  --seg-bg: #262624; --seg-on: #3d3d3a; --seg-on-fg: #f5f4f0; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --page: #141413; --page-fg: #ecebe7; --page-muted: #a2a09b; --page-line: #2c2b29; --page-card: #1c1c1a;
+  --seg-bg: #262624; --seg-on: #3d3d3a; --seg-on-fg: #f5f4f0; color-scheme: dark }
+
+body[data-font="sf"]    { --app-font: var(--ui); }
+body[data-font="mono"]  { --app-font: var(--mono); }
+body[data-font="inter"] { --app-font: var(--inter); }
+
+* { box-sizing: border-box; }
+body { background: var(--page); color: var(--page-fg); font-family: var(--page-font); margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--page); }
+
+/* ---------- page header ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--page-line); margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); }
+.top-in { max-width: 1400px; margin: 0 auto; padding: 14px max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
+.brand { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.brand h1 { font-size: 17px; margin: 0; font-weight: 650; letter-spacing: -0.01em; }
+.brand p { margin: 0; font-size: 13px; color: var(--page-muted); }
+.seg { display: inline-flex; background: var(--seg-bg); border-radius: 999px; padding: 3px; gap: 2px; }
+.seg button { appearance: none; border: 0; background: transparent; color: var(--page-muted); font: inherit; font-size: 14px; font-weight: 550;
+  padding: 8px 16px; border-radius: 999px; cursor: pointer; min-height: 36px; white-space: nowrap; }
+.seg button[aria-pressed="true"] { background: var(--seg-on); color: var(--seg-on-fg); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.seg button[data-f="sf"] { font-family: var(--ui); } .seg button[data-f="mono"] { font-family: var(--mono); } .seg button[data-f="inter"] { font-family: var(--inter); }
+
+.wrap { max-width: 1400px; margin: 0 auto; }
+.intro { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 22px 0 8px; }
+.intro .card { background: var(--page-card); border: 1px solid var(--page-line); border-radius: 14px; padding: 14px 16px; min-width: 0; }
+.intro h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--page-muted); margin: 0 0 8px; font-weight: 600; }
+.intro ul { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
+.intro li + li { margin-top: 3px; }
+.fontnote { font-size: 13px; color: var(--page-muted); margin: 10px 0 0; line-height: 1.45; }
+.fontnote b { color: var(--page-fg); font-weight: 600; }
+
+.gallery { display: flex; flex-wrap: wrap; gap: 40px 20px; justify-content: center; margin-top: 28px; }
+.shot { display: flex; flex-direction: column; gap: 12px; width: 424px; }
+.shot figcaption { padding: 0 11px; }
+.shot figcaption { display: flex; flex-direction: column; gap: 4px; }
+.shot figcaption b { font-size: 15px; font-weight: 600; }
+.shot figcaption span { font-size: 13px; color: var(--page-muted); line-height: 1.45; }
+figure { margin: 0; }
+
+/* ---------- iPhone 17: 402×874, corner 62, Dynamic Island, status 54 ---------- */
+.phone { width: 402px; height: 874px; border-radius: 62px; background: var(--bg); position: relative; overflow: hidden; flex: none;
+  box-shadow: 0 0 0 10px #0b0b0a, 0 0 0 11px #3a3a38, 0 30px 60px -20px rgba(0,0,0,.45); margin: 11px;
+  font-family: var(--app-font); color: var(--fg); -webkit-font-smoothing: antialiased; }
+.island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 126px; height: 37px; background: #000; border-radius: 20px; z-index: 30; }
+.status { position: absolute; top: 0; left: 0; right: 0; height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 6px 34px 0 46px; z-index: 29;
+  font-family: var(--ui); font-weight: 600; font-size: 17px; letter-spacing: -0.02em; color: var(--fg); }
+.status .ind { display: flex; gap: 6px; align-items: center; }
+.home { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 140px; height: 5px; border-radius: 3px; background: rgba(245,244,240,.85); z-index: 29; }
+.screen { position: absolute; inset: 0; display: flex; flex-direction: column; }
+
+/* nav bar (inline title, 54) */
+.nav { height: 54px; margin-top: 54px; flex: none; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 16px; gap: 8px; }
+.nav .l { justify-self: start; display: flex; gap: 8px; } .nav .r { justify-self: end; display: flex; gap: 8px; }
+.nav .t { text-align: center; min-width: 0; max-width: 220px; }
+.nav .t b { display: block; font-size: 17px; line-height: 22px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nav .t small { display: block; font-size: 12px; line-height: 16px; color: var(--fg2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gbtn { width: 44px; height: 44px; border-radius: 22px; background: var(--glass); border: 1px solid var(--glass-line); display: grid; place-items: center; color: var(--fg);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.gbtn svg { width: 20px; height: 20px; }
+.gpill { height: 44px; border-radius: 22px; background: var(--glass); border: 1px solid var(--glass-line); display: inline-flex; align-items: center; gap: 4px; padding: 0 16px;
+  font-size: 17px; color: var(--fg); white-space: nowrap; }
+.gpill svg { width: 13px; height: 13px; color: var(--fg2); }
+.ggroup { height: 44px; border-radius: 22px; background: var(--glass); border: 1px solid var(--glass-line); display: inline-flex; align-items: center; }
+.ggroup span { width: 44px; height: 44px; display: grid; place-items: center; } .ggroup svg { width: 20px; height: 20px; }
+
+.body { flex: 1; overflow: hidden; position: relative; }
+.pad { padding: 0 16px; }
+
+/* search field (iOS) */
+.search { height: 40px; border-radius: 20px; background: rgba(118,118,128,.24); display: flex; align-items: center; gap: 8px; padding: 0 12px; color: var(--fg2); font-size: 17px; margin: 6px 16px 10px; }
+.search svg { width: 17px; height: 17px; flex: none; }
+
+/* lists */
+.sechead { display: flex; align-items: center; gap: 6px; padding: 18px 16px 6px; font-size: 13px; font-weight: 600; color: var(--fg2); line-height: 18px; }
+.sechead svg { width: 12px; height: 12px; }
+.sechead .n { margin-left: auto; font-weight: 400; font-variant-numeric: tabular-nums; }
+.row { display: flex; align-items: center; gap: 12px; padding: 11px 16px; min-height: 44px; position: relative; }
+.row + .row::before { content: ""; position: absolute; top: 0; left: var(--inset, 52px); right: 0; height: 1px; background: var(--sep); }
+.row .lead { width: 24px; display: grid; place-items: center; flex: none; color: var(--accent); }
+.row .lead svg { width: 20px; height: 20px; }
+.row .main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.row .ttl { font-size: 17px; line-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .sub { font-size: 15px; line-height: 20px; color: var(--fg2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .meta { font-size: 15px; color: var(--fg2); font-variant-numeric: tabular-nums; flex: none; align-self: flex-start; padding-top: 1px; }
+.row .chev { width: 14px; height: 14px; color: var(--fg2); opacity: .7; flex: none; }
+
+/* inset grouped (Settings, Cookbook) */
+.group { margin: 0 16px; background: var(--panel); border-radius: 22px; overflow: hidden; }
+.group .row { --inset: 16px; padding-left: 16px; }
+.group .row.ic { --inset: 52px; }
+.foot { font-size: 13px; line-height: 18px; color: var(--fg2); padding: 7px 32px 0; }
+.ghead { font-size: 13px; font-weight: 600; color: var(--fg2); padding: 22px 32px 7px; }
+
+/* floating glass bar (Espaços) */
+.tabbar { position: absolute; left: 16px; right: 16px; bottom: 26px; height: 62px; border-radius: 31px; background: rgba(48,48,46,.82); border: 1px solid var(--glass-line);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); display: grid; grid-template-columns: repeat(5, 1fr); padding: 0 6px; z-index: 20;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+.tabbar div { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 11px; font-weight: 500; color: var(--fg2); }
+.tabbar svg { width: 23px; height: 23px; }
+.fade-bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--bg) 70%); z-index: 15; pointer-events: none; }
+
+/* chat */
+.msgs { display: flex; flex-direction: column; gap: 20px; padding: 12px 16px 16px; }
+.uspk { align-self: flex-end; margin-top: -14px; width: 44px; height: 28px; display: grid; place-items: center; color: var(--fg2); }
+.uspk svg { width: 15px; height: 15px; }
+.ubub { align-self: flex-end; max-width: 300px; background: var(--raised); border-radius: 20px; padding: 10px 14px; font-size: 17px; line-height: 22px; }
+.ai { display: flex; flex-direction: column; gap: 6px; }
+.aihead { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--fg2); height: 28px; }
+.aihead svg.mark { width: 16px; height: 16px; }
+.aihead .spk { width: 28px; height: 28px; display: grid; place-items: center; color: var(--fg2); }
+.aihead .spk svg { width: 15px; height: 15px; }
+.aitext { font-size: 17px; line-height: 24px; }
+.aitext p { margin: 0 0 8px; } .aitext p:last-child { margin: 0; }
+.aitext ul { margin: 4px 0 8px; padding-left: 20px; } .aitext li { margin: 3px 0; }
+.aitext em { color: var(--fg); }
+.quote { border-left: 3px solid var(--border); padding-left: 12px; color: #dcdbd6; font-style: italic; margin: 6px 0 8px; }
+.toolline { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--fg2); }
+.spin { width: 14px; height: 14px; border-radius: 50%; border: 2px solid rgba(198,97,63,.3); border-top-color: var(--accent); }
+
+/* composer */
+.composer { flex: none; padding: 6px 12px 34px; background: linear-gradient(to bottom, transparent, var(--bg) 22%); position: relative; z-index: 10; }
+.cbox { background: var(--panel); border: 1px solid rgba(245,244,240,.10); border-radius: 26px; padding: 4px 6px 6px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.cfield { padding: 10px 10px 6px; font-size: 17px; line-height: 22px; color: var(--fg2); min-height: 38px; }
+.cfield.typed { color: var(--fg); }
+.crow { display: flex; align-items: center; gap: 6px; height: 40px; }
+.cbtn { width: 36px; height: 36px; border-radius: 18px; display: grid; place-items: center; color: var(--fg); flex: none; }
+.cbtn svg { width: 20px; height: 20px; }
+.cbtn.plus { border: 1px solid rgba(245,244,240,.14); }
+.chip { height: 32px; border-radius: 16px; display: inline-flex; align-items: center; gap: 5px; padding: 0 11px 0 9px; font-size: 15px; white-space: nowrap; flex: none;
+  background: rgba(198,97,63,.18); color: var(--fg); }
+.chip svg { width: 15px; height: 15px; color: var(--accent-text); }
+.chip .x { width: 11px; height: 11px; color: var(--fg2); margin-left: 2px; }
+.model { margin-left: auto; height: 32px; display: inline-flex; align-items: center; gap: 3px; padding: 0 6px 0 8px; color: var(--fg2); font-size: 15px; white-space: nowrap; min-width: 0; }
+.model span { overflow: hidden; text-overflow: ellipsis; max-width: 128px; }
+.model svg { width: 12px; height: 12px; flex: none; }
+.send { width: 36px; height: 36px; border-radius: 18px; display: grid; place-items: center; flex: none; background: var(--accent-fill); color: #fff; }
+.send.off { background: rgba(245,244,240,.12); color: rgba(245,244,240,.45); }
+.send svg { width: 19px; height: 19px; }
+
+/* context menu (iOS 26) */
+.scrim { position: absolute; inset: 0; background: rgba(0,0,0,.38); z-index: 24; }
+.menu { position: absolute; left: 14px; bottom: 132px; width: 262px; border-radius: 26px; background: rgba(56,56,53,.94); border: 1px solid var(--glass-line); z-index: 25;
+  backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); padding: 6px 0; box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+.menu .mi { display: flex; align-items: center; gap: 12px; padding: 0 18px; height: 46px; font-size: 17px; }
+.menu .mi .ck { width: 18px; color: var(--fg); } .menu .mi .ck svg { width: 16px; height: 16px; }
+.menu .mi .ic { margin-left: auto; color: var(--fg); } .menu .mi .ic svg { width: 20px; height: 20px; }
+.menu .mi small { display: block; font-size: 13px; color: var(--fg2); line-height: 16px; }
+.menu .mi.two { height: 58px; }
+.menu hr { border: 0; height: 8px; background: rgba(0,0,0,.18); margin: 4px 0; }
+
+/* voice */
+.sheet { position: absolute; inset: 64px 0 0; background: var(--bg); border-radius: 38px 38px 0 0; display: flex; flex-direction: column; overflow: hidden; }
+.behind { position: absolute; inset: 0; background: #121211; }
+.grabber { width: 36px; height: 5px; border-radius: 3px; background: rgba(245,244,240,.3); margin: 6px auto 0; flex: none; }
+.vnav { height: 56px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 16px; flex: none; }
+.vnav .t { text-align: center; display: flex; flex-direction: column; align-items: center; min-width: 0; max-width: 220px; }
+.vnav .t b { font-size: 17px; line-height: 22px; font-weight: 600; }
+.vnav .t small { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; line-height: 16px; color: var(--fg2); white-space: nowrap; }
+.vnav .t small svg { width: 11px; height: 11px; }
+.vnav .r { justify-self: end; } .vnav .l { justify-self: start; }
+.vtrans { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 8px 16px; overflow: hidden; justify-content: flex-end; }
+.vb { max-width: 290px; padding: 10px 14px; border-radius: 20px; font-size: 16px; line-height: 21px; }
+.vb.u { align-self: flex-end; background: var(--raised); }
+.vb.a { align-self: flex-start; background: transparent; padding-left: 0; }
+.notice { align-self: stretch; display: flex; gap: 12px; padding: 12px 14px; border-radius: 18px; background: rgba(224,163,58,.12); border: 1px solid rgba(224,163,58,.35); }
+.notice svg { width: 20px; height: 20px; color: var(--warn); flex: none; margin-top: 1px; }
+.notice b { display: block; font-size: 15px; font-weight: 600; line-height: 20px; }
+.notice span { display: block; font-size: 15px; line-height: 20px; color: var(--fg2); margin-top: 2px; }
+.notice .lnk { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; color: var(--accent-text); font-weight: 600; font-size: 15px; min-height: 30px; }
+.notice .lnk svg { width: 13px; height: 13px; color: var(--accent-text); margin: 0; }
+.orbwrap { display: flex; flex-direction: column; align-items: center; gap: 46px; padding: 44px 0 22px; flex: none; }
+.orb { width: 120px; height: 120px; border-radius: 60px; background: var(--accent-fill); display: grid; place-items: center; color: #fff; position: relative;
+  box-shadow: 0 0 0 14px rgba(198,97,63,.16), 0 0 0 30px rgba(198,97,63,.07); }
+.orb svg { width: 40px; height: 40px; }
+.orb.live { animation: breathe 1.8s ease-in-out infinite; }
+@keyframes breathe { 50% { box-shadow: 0 0 0 20px rgba(198,97,63,.18), 0 0 0 40px rgba(198,97,63,.06); } }
+@media (prefers-reduced-motion: reduce) { .orb.live { animation: none; } }
+.vstatus { font-size: 15px; color: var(--fg2); height: 20px; }
+.bigbtn { margin: 0 16px 42px; height: 52px; border-radius: 26px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 17px; font-weight: 600; flex: none; }
+.bigbtn.primary { background: var(--accent-fill); color: #fff; }
+.bigbtn.secondary { background: var(--panel); color: var(--fg); border: 1px solid rgba(245,244,240,.12); }
+.bigbtn.secondary svg { color: var(--danger); }
+.bigbtn svg { width: 18px; height: 18px; }
+
+/* brain chips */
+.chips { display: flex; gap: 8px; padding: 2px 16px 8px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); }
+.mrow { --inset: 16px; }
+.mrow .meta2 { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.mrow .meta2 .tag { margin-top: 0; }
+.mrow .meta2 svg { width: 14px; height: 14px; color: var(--accent-text); }
+.mrow .meta2 em { font-style: normal; font-size: 13px; color: var(--fg2); display: inline-flex; gap: 3px; align-items: center; }
+.cat { height: 34px; border-radius: 17px; padding: 0 14px; display: inline-flex; align-items: center; font-size: 15px; background: rgba(118,118,128,.18); color: var(--fg); white-space: nowrap; flex: none; }
+.cat.on { background: var(--fg); color: var(--bg); font-weight: 600; }
+.tag { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 11px; background: rgba(118,118,128,.2); font-size: 13px; color: var(--fg2); align-self: flex-start; margin-top: 4px; }
+.mrow .ttl { white-space: normal; }
+
+/* calendar */
+.quick { margin: 6px 16px 4px; height: 44px; border-radius: 22px; background: rgba(118,118,128,.24); display: flex; align-items: center; gap: 10px; padding: 0 14px; font-size: 17px; color: var(--fg2); }
+.quick svg { width: 18px; height: 18px; color: var(--accent-text); }
+.ev { display: flex; gap: 12px; padding: 10px 16px; align-items: stretch; }
+.ev .bar { width: 4px; border-radius: 2px; flex: none; }
+.ev .ttl { font-size: 17px; line-height: 22px; }
+.ev .sub { font-size: 15px; line-height: 20px; color: var(--fg2); display: flex; gap: 10px; align-items: center; }
+.ev .sub svg { width: 13px; height: 13px; }
+.dayhead { padding: 18px 16px 4px; font-size: 15px; font-weight: 600; }
+.dayhead small { font-weight: 400; color: var(--fg2); margin-left: 6px; font-size: 15px; }
+
+/* tasks */
+.task { padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; position: relative; }
+.task + .task::before { content: ""; position: absolute; top: 0; left: 16px; right: 0; height: 1px; background: var(--sep); }
+.task .h { display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 600; line-height: 22px; }
+.state { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 600; height: 22px; padding: 0 8px; border-radius: 11px; margin-left: auto; flex: none; }
+.state.on { background: rgba(95,217,122,.14); color: var(--green); }
+.state.off { background: rgba(118,118,128,.2); color: var(--fg2); }
+.state i { width: 6px; height: 6px; border-radius: 3px; background: currentColor; }
+.task .m { font-size: 15px; color: var(--fg2); line-height: 20px; display: flex; gap: 12px; flex-wrap: wrap; }
+.task .m span { display: inline-flex; gap: 4px; align-items: center; } .task .m svg { width: 13px; height: 13px; }
+.tbtns { display: flex; gap: 10px; margin-top: 8px; }
+.tb { height: 40px; border-radius: 20px; padding: 0 16px; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; background: rgba(118,118,128,.2); color: var(--fg); }
+.tb svg { width: 15px; height: 15px; }
+
+/* cookbook */
+.cb .row { align-items: center; }
+.ibox { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: rgba(198,97,63,.18); color: var(--accent-text); flex: none; }
+.ibox svg { width: 18px; height: 18px; }
+.cb .row .sub { white-space: normal; font-size: 13px; line-height: 18px; }
+.get { height: 30px; padding: 0 14px; border-radius: 15px; background: rgba(198,97,63,.22); color: var(--accent-text); font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; flex: none; }
+.ok { display: inline-flex; align-items: center; gap: 4px; color: var(--green); font-size: 15px; font-weight: 500; flex: none; }
+.ok svg { width: 16px; height: 16px; }
+.cb .group .row.ic { --inset: 60px; }
+
+/* login */
+.login { flex: 1; display: flex; flex-direction: column; padding: 0 24px; }
+.login .hero { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 84px; }
+.login .hero > svg { width: 64px; height: 64px; }
+.login h3 { font-size: 34px; line-height: 41px; font-weight: 700; margin: 4px 0 0; letter-spacing: -0.01em; }
+.srv { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-radius: 18px; background: rgba(118,118,128,.2); font-size: 15px; color: var(--fg2); }
+.srv svg { width: 14px; height: 14px; }
+.fields { margin-top: 36px; background: var(--panel); border-radius: 22px; overflow: hidden; }
+.fld { height: 54px; display: flex; align-items: center; padding: 0 16px; font-size: 17px; position: relative; gap: 12px; }
+.fld + .fld::before { content: ""; position: absolute; top: 0; left: 16px; right: 0; height: 1px; background: var(--sep); }
+.fld span { width: 76px; color: var(--fg); flex: none; } .fld em { font-style: normal; color: var(--fg2); }
+.fld.focus { box-shadow: inset 0 0 0 2px var(--accent); border-radius: 22px 22px 0 0; }
+.caret { display: inline-block; width: 2px; height: 22px; background: var(--accent); vertical-align: middle; margin-left: 1px; }
+.tgl { width: 51px; height: 31px; border-radius: 16px; background: var(--green); position: relative; flex: none; }
+.tgl::after { content: ""; position: absolute; top: 2px; right: 2px; width: 27px; height: 27px; border-radius: 14px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,.25); }
+.tgl.off { background: rgba(120,120,128,.32); } .tgl.off::after { right: auto; left: 2px; }
+.keep { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; font-size: 17px; margin-top: 12px; background: var(--panel); border-radius: 22px; }
+
+/* settings */
+.val { margin-left: auto; color: var(--fg2); font-size: 17px; display: inline-flex; gap: 4px; align-items: center; flex: none; }
+.val svg { width: 13px; height: 13px; }
+.slider { padding: 4px 16px 14px; }
+.slider .top2 { display: flex; justify-content: space-between; font-size: 17px; padding: 11px 0 10px; }
+.slider .top2 span { color: var(--fg2); }
+.track { height: 4px; border-radius: 2px; background: rgba(120,120,128,.32); position: relative; }
+.track i { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; border-radius: 2px; background: var(--accent); }
+.track b { position: absolute; left: 50%; top: 50%; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 14px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+.new { display: inline-flex; height: 20px; padding: 0 7px; border-radius: 10px; background: rgba(95,217,122,.16); color: var(--green); font-size: 12px; font-weight: 700; align-items: center; margin-left: 8px; font-family: var(--page-font); vertical-align: 2px; letter-spacing: .02em; }
+.welcome { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 150px; text-align: center; padding: 0 32px; }
+.welcome svg { width: 52px; height: 52px; margin-bottom: 6px; }
+.welcome b { font-size: 22px; line-height: 28px; font-weight: 600; }
+.welcome span { font-size: 15px; color: var(--fg2); }
+
+/* ---------- iPhone Duo, tela externa: 466×678, trilha de 84 pt à direita ---------- */
+.section-title { max-width: 1400px; margin: 56px auto 0; display: flex; flex-direction: column; gap: 4px; }
+.section-title h2 { margin: 0; font-size: 22px; letter-spacing: -0.01em; }
+.section-title p { margin: 0; font-size: 14px; color: var(--page-muted); max-width: 760px; line-height: 1.5; }
+.duo { width: 466px; height: 678px; border-radius: 10px 59px 59px 10px; background: var(--bg); position: relative; overflow: hidden; flex: none; margin: 11px;
+  box-shadow: 0 0 0 10px #0b0b0a, 0 0 0 11px #3a3a38, 0 30px 60px -20px rgba(0,0,0,.45); font-family: var(--app-font); color: var(--fg); -webkit-font-smoothing: antialiased; }
+.duo .dscreen { position: absolute; left: 0; top: 0; bottom: 0; width: 382px; display: flex; flex-direction: column; overflow: hidden; }
+.duo .rail { position: absolute; right: 0; top: 0; bottom: 0; width: 84px; display: flex; flex-direction: column; align-items: center; padding-top: 16px; gap: 10px; }
+.duo .rail .clock { font-family: var(--ui); font-weight: 600; font-size: 15px; letter-spacing: -0.02em; }
+.duo .rail .pill { width: 26px; height: 52px; border-radius: 13px; background: #000; margin: 2px 0 4px; }
+.duo .rail .sys { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--fg); margin-bottom: 8px; }
+.duo .rail .gbtn, .duo .rail .gpill { flex: none; }
+.duo .rail .gpill { padding: 0 10px; font-size: 14px; height: 38px; }
+.duo .home { left: 191px; width: 120px; }
+.dnav { height: 58px; flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 16px; }
+.dnav b { font-size: 17px; line-height: 22px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.dnav small { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; line-height: 16px; color: var(--fg2); white-space: nowrap; }
+.dnav small svg { width: 11px; height: 11px; }
+.duo .composer { padding-bottom: 30px; }
+.duo .tabbar { left: 12px; right: 12px; bottom: 30px; height: 58px; }
+.duo .tabbar svg { width: 21px; height: 21px; }
+.duo .orbwrap { gap: 34px; padding: 30px 0 14px; }
+.duo .orb { width: 92px; height: 92px; box-shadow: 0 0 0 11px rgba(198,97,63,.16), 0 0 0 23px rgba(198,97,63,.07); }
+.duo .orb svg { width: 32px; height: 32px; }
+.duo .bigbtn { margin-bottom: 36px; height: 50px; }
+.duo .vtrans { padding-top: 0; }
+</style>
+
+<header class="top"><div class="top-in">
+  <div class="brand">
+    <h1>Odysseus no iPhone · nova interface</h1>
+    <p>iPhone 17 (402 × 874 pt), tema Claude. Escolha uma fonte: todas as telas trocam juntas.</p>
+  </div>
+  <div class="seg" role="group" aria-label="Fonte do app">
+    <button type="button" id="f-sf" data-f="sf" aria-pressed="true">SF Pro</button>
+    <button type="button" id="f-mono" data-f="mono" aria-pressed="false">SF Mono</button>
+    <button type="button" id="f-inter" data-f="inter" aria-pressed="false">Inter</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <div class="card">
+      <h2>O que mudou em todas as telas</h2>
+      <ul>
+        <li>Uma fonte só por vez, nos títulos, nas listas, nos botões e no texto das respostas.</li>
+        <li>Nada abaixo de 12 pt. Os tamanhos seguem os estilos do iOS e crescem com o Tamanho do Texto.</li>
+        <li>Cabeçalhos de grupo sem caixa alta nem faixa cinza: texto de 13 pt em peso semibold.</li>
+        <li>Texto secundário e botões com contraste de pelo menos 4,5:1.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Chat e voz</h2>
+      <ul>
+        <li>Resposta da IA sem balão, com a largura toda. Só a sua mensagem fica num balão.</li>
+        <li>Campo de mensagem numa caixa só. Web, Deep, Agente e fotos ficam no botão +, e os modos ligados aparecem como chips.</li>
+        <li>Voz com um botão único e um aviso claro quando a busca na web está desligada, no lugar de “(sem resposta)”.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Sobre as fontes</h2>
+      <p class="fontnote" style="margin:0"><b>SF Pro</b> e <b>SF Mono</b> são as fontes do sistema da Apple: aparecem fiéis no iPhone e no Mac. Em outro computador o navegador mostra uma fonte parecida no lugar. <b>Inter</b> é a mesma em qualquer aparelho, e é a que o app já traz (no seletor, o nome muda de “Anthropic Sans” para “Inter”).</p>
+    </div>
+  </section>
+
+  <div class="gallery" id="gallery"></div>
+
+  <div class="section-title">
+    <h2>iPhone Duo · tela externa</h2>
+    <p>466 × 678 pt, mais larga e mais baixa que qualquer iPhone. O sistema reserva 84 pt à direita para a hora e para os botões da barra; o conteúdo fica com 382 pt. As telas usam os mesmos componentes do iPhone, com o título sempre pequeno, o círculo da voz menor e a barra de Espaços dentro da área de conteúdo.</p>
+  </div>
+  <div class="gallery" id="gallery-duo"></div>
+</main>
+
+<script>
+(function () {
+  // ---------- icons (24×24 stroke) ----------
+  var P = {
+    gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+    compose: '<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.4 2.6a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+    deep: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/><path d="M10.5 7.5v6M7.5 10.5h6"/>',
+    back: '<path d="m15 18-6-6 6-6"/>',
+    down: '<path d="m6 9 6 6 6-6"/>',
+    right: '<path d="m9 18 6-6-6-6"/>',
+    updown: '<path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/>',
+    wave: '<path d="M2 12h2M6 8v8M10 4v16M14 7v10M18 10v4M22 12h0"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+    globeoff: '<path d="M3 12h7M14 12h7M12 3a14 14 0 0 1 3.6 7M12 21a14 14 0 0 1-3.9-9"/><path d="M5.6 5.6A9 9 0 0 0 18.4 18.4M8.5 3.7A9 9 0 0 1 20.3 15.5"/><path d="m3 3 18 18"/>',
+    mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4"/>',
+    up: '<path d="M12 19V5M5 12l7-7 7 7"/>',
+    spkfill: '<path d="M11 5 6 9H2v6h4l5 4z" fill="currentColor"/><path d="M15 9a4 4 0 0 1 0 6M18 7a7 7 0 0 1 0 10M21 4.5a10.5 10.5 0 0 1 0 15"/>',
+    spk: '<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>',
+    pin: '<path d="M12 17v5M9 10.8V5h6v5.8l2.5 3.2H6.5z"/>',
+    brain: '<path d="M9.5 3A2.5 2.5 0 0 0 7 5.5v.3A3 3 0 0 0 4.5 9a3 3 0 0 0 .7 1.9A3 3 0 0 0 6 16.5 3 3 0 0 0 9.5 21 2.5 2.5 0 0 0 12 18.5v-13A2.5 2.5 0 0 0 9.5 3z"/><path d="M14.5 3A2.5 2.5 0 0 1 17 5.5v.3A3 3 0 0 1 19.5 9a3 3 0 0 1-.7 1.9 3 3 0 0 1-.8 5.6 3 3 0 0 1-3.5 4.5 2.5 2.5 0 0 1-2.5-2.5"/>',
+    note: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
+    cal: '<rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/>',
+    photo: '<rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
+    more: '<circle cx="5" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="19" cy="12" r="1.3" fill="currentColor"/>',
+    cpu: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
+    stop: '<rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" stroke="none"/>',
+    x: '<path d="M18 6 6 18M6 6l12 12"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+    pause: '<path d="M8 5v14M16 5v14"/>',
+    play: '<path d="M7 4.5v15l12-7.5z"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    repeat: '<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+    box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
+    sparkles: '<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',
+    wand: '<path d="m15 4 5 5M4 20 16 8M9 3v2M3 9h2M19 13h2M13 19v2"/>',
+    pinmap: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+    server: '<rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/>',
+    image: '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L6 21"/>',
+    agent: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/>',
+    stopc: '<circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor" stroke="none"/>',
+    warn: '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>'
+  };
+  function ic(n, cls) { return '<svg class="' + (cls || '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + P[n] + '</svg>'; }
+  var MARK = '<svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M33 6 L50 40 H33 Z" fill="#c6613f"/><path d="M30 14 L16 40 H30 Z" fill="#e08a69"/><path d="M10 45 Q32 56 54 45 Q50 52 32 54 Q14 52 10 45Z" fill="#c6613f"/></svg>';
+
+  var statusBar = '<div class="island"></div><div class="status"><span>9:41</span><span class="ind">' +
+    '<svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1" fill="currentColor"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="currentColor"/><rect x="10" y="3" width="3" height="9" rx="1" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>' +
+    '<svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M8 11.5 5.6 9a3.4 3.4 0 0 1 4.8 0zM3.5 6.9a6.4 6.4 0 0 1 9 0l-1.4 1.4a4.4 4.4 0 0 0-6.2 0zM1.3 4.7a9.5 9.5 0 0 1 13.4 0l-1.4 1.4a7.5 7.5 0 0 0-10.6 0z" fill="currentColor"/></svg>' +
+    '<svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="currentColor"/><path d="M25 4.5v4a2 2 0 0 0 0-4z" fill="currentColor" opacity=".45"/></svg>' +
+    '</span></div><div class="home"></div>';
+
+  function nav(l, title, sub, r) {
+    return '<div class="nav"><div class="l">' + (l || '') + '</div><div class="t"><b>' + title + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</div><div class="r">' + (r || '') + '</div></div>';
+  }
+  function g(n) { return '<span class="gbtn">' + ic(n) + '</span>'; }
+  function composer(o) {
+    o = o || {};
+    var chips = (o.chips || []).map(function (c) { return '<span class="chip">' + ic(c[0]) + c[1] + ic('x', 'x') + '</span>'; }).join('');
+    return '<div class="composer"><div class="cbox">' +
+      '<div class="cfield' + (o.text ? ' typed' : '') + '">' + (o.text || 'Mensagem…') + '</div>' +
+      '<div class="crow"><span class="cbtn plus">' + ic('plus') + '</span>' + chips +
+      (o.noModel ? '<span style="flex:1"></span>' : '<span class="model"><span>' + (o.model || 'mimo-v2.6-pro') + '</span>' + ic('updown') + '</span>') +
+      '<span class="cbtn">' + ic('mic') + '</span>' +
+      '<span class="send' + (o.text ? '' : ' off') + '">' + ic('up') + '</span></div></div></div>';
+  }
+  function phone(inner) { return '<div class="phone"><div class="screen">' + inner + '</div>' + statusBar + '</div>'; }
+
+  // ---------- screens ----------
+  var S = [];
+
+  S.push({ t: 'Conversas', d: 'Busca no topo, grupos com cabeçalho legível e a barra de Espaços flutuando em vidro, presa ao rodapé.',
+    h: nav(g('gear'), 'Odysseus', '', g('compose')) +
+      '<div class="body"><div class="search">' + ic('search') + 'Buscar conversas</div>' +
+      '<div class="row"><span class="lead">' + ic('deep') + '</span><div class="main"><span class="ttl">Deep Search</span></div></div>' +
+      '<div class="sechead">' + ic('down') + 'Favoritos<span class="n">1</span></div>' +
+      '<div class="row"><span class="lead">' + ic('pin') + '</span><div class="main"><span class="ttl">Ideias para o fim de semana</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">30 de set.</span></div>' +
+      '<div class="sechead">' + ic('down') + 'Hoje<span class="n">2</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Emails de hoje</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">09:35</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Roteiro de 3 dias em Lisboa</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">08:11</span></div>' +
+      '<div class="sechead">' + ic('down') + 'Ontem<span class="n">3</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Jantar com o que tem na geladeira</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">19:17</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Presente para a minha mãe</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">12:05</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Resumo da reunião de produto</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">09:41</span></div>' +
+      '<div class="fade-bottom"></div>' +
+      '<div class="tabbar"><div>' + ic('brain') + 'Brain</div><div>' + ic('note') + 'Notes</div><div>' + ic('cal') + 'Calendário</div><div>' + ic('photo') + 'Galeria</div><div>' + ic('more') + 'Mais</div></div>' +
+      '</div>' });
+
+  S.push({ t: 'Nova conversa', d: 'Boas-vindas centradas e a caixa de mensagem única. O botão de enviar fica apagado até haver texto.',
+    h: nav(g('back'), 'Nova conversa', '', g('wave')) +
+      '<div class="body"><div class="welcome">' + MARK + '<b>Como posso ajudar?</b><span>Conectado a odysseus.casa.local</span></div></div>' +
+      composer({ model: 'Modelo' }) });
+
+  S.push({ t: 'Chat', d: 'A resposta ocupa a largura toda, na mesma fonte do resto. O modelo aparece uma vez, no alto da resposta.',
+    h: nav(g('back'), 'Emails de hoje', 'mimo-v2.6-pro', g('wave')) +
+      '<div class="body"><div class="msgs">' +
+      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
+      '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
+      '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana (com anexo)</li><li><b>Companhia aérea</b>: o check-in do seu voo já está aberto</li><li><b>Livraria</b>: seu pedido foi enviado e chega na quinta</li></ul></div></div>' +
+      '<div class="ubub">Que legal! Responde a Ana agradecendo as fotos?</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
+      '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
+      '<div class="aitext"><div class="quote">Oi, Ana! Muito obrigado pelas fotos, ficaram lindas. Vamos repetir logo!</div><p>Posso enviar?</p></div></div>' +
+      '</div></div>' + composer({ chips: [['globe', 'Web']] }) });
+
+  S.push({ t: 'Chat · botão +', d: 'Fotos, Web, Deep e Agente num menu nativo. O que está ligado fica marcado aqui e aparece como chip na caixa.',
+    h: nav(g('back'), 'Emails de hoje', 'mimo-v2.6-pro', g('wave')) +
+      '<div class="body"><div class="msgs">' +
+      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
+      '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
+      '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana (com anexo)</li><li><b>Companhia aérea</b>: o check-in do seu voo já está aberto</li></ul></div></div>' +
+      '</div></div>' + composer({ chips: [['globe', 'Web']], text: 'Me lembra do check-in amanhã' }) +
+      '<div class="scrim"></div><div class="menu">' +
+      '<div class="mi"><span class="ck"></span>Anexar fotos<span class="ic">' + ic('photo') + '</span></div><hr>' +
+      '<div class="mi"><span class="ck">' + ic('check') + '</span><span>Web</span><span class="ic">' + ic('globe') + '</span></div>' +
+      '<div class="mi"><span class="ck"></span><span>Deep</span><span class="ic">' + ic('deep') + '</span></div>' +
+      '<div class="mi"><span class="ck"></span><span>Agente</span><span class="ic">' + ic('agent') + '</span></div>' +
+      '</div>' });
+
+  S.push({ t: 'Voz · falando', d: 'O modelo fica embaixo do título e abre o menu ao tocar, como no chat. O círculo respira enquanto fala; “Encerrar” é neutro.',
+    h: '<div class="behind"></div><div class="sheet"><div class="grabber"></div>' +
+      '<div class="vnav"><span class="l gbtn">' + ic('x') + '</span><span class="t"><b>Voz</b><small>mimo-v2.6-pro' + ic('down') + '</small></span><span class="r"></span></div>' +
+      '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div><div class="vb a">Segundo a busca, o Flamengo venceu por 2 a 1, com dois gols no segundo tempo.</div></div>' +
+      '<div class="orbwrap"><div class="orb live">' + ic('spkfill') + '</div><div class="vstatus">Falando…</div></div>' +
+      '<div class="bigbtn secondary">' + ic('stop') + 'Encerrar</div></div>' });
+
+  S.push({ t: 'Voz · busca desligada', d: 'Corrige o “(sem resposta)”: a tela diz o que houve e leva direto ao ajuste.',
+    h: '<div class="behind"></div><div class="sheet"><div class="grabber"></div>' +
+      '<div class="vnav"><span class="l gbtn">' + ic('x') + '</span><span class="t"><b>Voz</b><small>Padrão do servidor' + ic('down') + '</small></span><span class="r"></span></div>' +
+      '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div>' +
+      '<div class="notice">' + ic('globeoff') + '<div><b>A busca na web está desligada</b><span>Tentei pesquisar para responder, mas a busca está desligada na voz.</span><span class="lnk">Voz e modelos' + ic('right') + '</span></div></div></div>' +
+      '<div class="orbwrap"><div class="orb">' + ic('mic') + '</div><div class="vstatus">Toque para conversar</div></div>' +
+      '<div class="bigbtn primary">' + ic('mic') + 'Iniciar conversa</div></div>' });
+
+  S.push({ t: 'Brain', d: 'Texto na margem do sistema, sem coluna vazia à esquerda. “Fixada” vai ao lado da categoria e os filtros somem suavemente na borda.',
+    h: nav(g('back'), 'Brain', '', '<span class="ggroup"><span>' + ic('plus') + '</span><span>' + ic('wand') + '</span></span>') +
+      '<div class="body"><div class="search">' + ic('search') + 'Buscar memórias</div>' +
+      '<div class="chips"><span class="cat on">Tudo</span><span class="cat">estilo</span><span class="cat">estudos</span><span class="cat">pessoal</span><span class="cat">trabalho</span></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Prefere respostas curtas e diretas.</span><span class="meta2"><span class="tag">estilo</span><em>' + ic('pin') + 'Fixada</em></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Gosta de cozinhar nos fins de semana.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Estuda japonês às terças, com aula online.</span><span class="meta2"><span class="tag">estudos</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Escreve código em Swift e Python.</span><span class="meta2"><span class="tag">trabalho</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Mora em São Paulo; fuso de Brasília.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Prefere exemplos em código a explicações longas.</span><span class="meta2"><span class="tag">estilo</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Tem uma reunião de produto toda sexta às 10h.</span><span class="meta2"><span class="tag">trabalho</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Está planejando uma viagem para Lisboa em outubro.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
+      '</div>' });
+
+  S.push({ t: 'Calendário', d: 'Dia em destaque com a data ao lado, hora e local num tamanho que dá para ler.',
+    h: nav(g('back'), 'Calendário', '', g('plus')) +
+      '<div class="body"><div class="quick">' + ic('sparkles') + 'Ex: reunião amanhã 14h</div>' +
+      '<div class="dayhead">Hoje</div>' +
+      '<div class="ev"><span class="bar" style="background:#6ea8fe"></span><div class="main"><div class="ttl">Reunião de produto</div><div class="sub"><span>10:00–11:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Sala 2</span></div></div></div>' +
+      '<div class="dayhead">Dom., 12 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aniversário da mãe</div><div class="sub">Dia todo</div></div></div>' +
+      '<div class="dayhead">Ter., 14 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aula de japonês</div><div class="sub"><span>19:00–20:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Online</span></div></div></div>' +
+      '<div class="dayhead">Sáb., 18 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#e0a33a"></span><div class="main"><div class="ttl">Voo para Lisboa</div><div class="sub"><span>07:30–09:30</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Aeroporto</span></div></div></div>' +
+      '<div class="dayhead">Seg., 20 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#6ea8fe"></span><div class="main"><div class="ttl">Revisão do roadmap</div><div class="sub"><span>14:00–15:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Sala 1</span></div></div></div>' +
+      '<div class="ev"><span class="bar" style="background:#5fd97a"></span><div class="main"><div class="ttl">Dentista</div><div class="sub"><span>17:30–18:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Clínica Centro</span></div></div></div>' +
+      '</div>' });
+
+  S.push({ t: 'Tasks', d: 'Estado em etiqueta (Ativa, Pausada), detalhes em 15 pt e botões de 40 pt com área de toque de 44.',
+    h: nav(g('back'), 'Tasks', '', '') +
+      '<div class="body">' +
+      '<div class="task"><div class="h">Resumo diário dos emails<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 08:00</span><span>' + ic('clock') + 'há 1 hora</span><span>' + ic('repeat') + '42×</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Previsão do tempo pela manhã<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 07:00</span><span>' + ic('clock') + 'há 2 horas</span><span>' + ic('repeat') + '120×</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Relatório semanal de gastos<span class="state off"><i></i>Pausada</span></div><div class="m"><span>Semanal 18:00</span><span>' + ic('clock') + 'há 4 dias</span><span>' + ic('repeat') + '11×</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('play') + 'Retomar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Backup das notas<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 03:00</span><span>' + ic('clock') + 'há 7 horas</span><span>' + ic('repeat') + '210×</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '</div>' });
+
+  S.push({ t: 'Cookbook', d: 'Grupos em cartões do sistema. “Instalar” é um botão de verdade; “instalado” é verde com marca.',
+    h: nav(g('back'), 'Cookbook', '', '') +
+      '<div class="body cb">' +
+      '<div class="ghead" style="padding-top:8px">Imagem</div><div class="group"><div class="row ic"><span class="ibox">' + ic('image') + '</span><div class="main"><span class="ttl">diffusers</span><span class="sub">Geração de imagem local.</span></div><span class="get">Instalar</span></div></div>' +
+      '<div class="ghead">Motores</div><div class="group">' +
+      '<div class="row ic"><span class="ibox">' + ic('cpu') + '</span><div class="main"><span class="ttl">llama.cpp</span><span class="sub">Inferência leve, em CPU e GPU.</span></div><span class="ok">' + ic('check') + 'instalado</span></div>' +
+      '<div class="row ic"><span class="ibox">' + ic('server') + '</span><div class="main"><span class="ttl">vLLM</span><span class="sub">Serve modelos em GPU com alta vazão.</span></div><span class="get">Instalar</span></div></div>' +
+      '<div class="ghead">Utilidades</div><div class="group"><div class="row ic"><span class="ibox">' + ic('box') + '</span><div class="main"><span class="ttl">hf_transfer</span><span class="sub">Downloads rápidos de modelos.</span></div><span class="ok">' + ic('check') + 'instalado</span></div></div>' +
+      '</div>' });
+
+  S.push({ t: 'Login', d: 'Campos agrupados com rótulo dentro, foco visível, servidor como botão de 36 pt e “Entrar” em cápsula.',
+    h: '<div class="login"><div class="hero">' + MARK.replace('class="mark"', '') + '<h3>Odysseus</h3><span class="srv">' + ic('server') + 'odysseus.casa.local' + ic('right') + '</span></div>' +
+      '<div class="fields"><div class="fld focus"><span>Usuário</span><em style="color:var(--fg)">joao<i class="caret"></i></em></div><div class="fld"><span>Senha</span><em>Obrigatória</em></div></div>' +
+      '<div class="keep">Manter conectado<span class="tgl"></span></div>' +
+      '<div class="bigbtn primary" style="margin:24px 0 0">Entrar</div></div>' });
+
+  S.push({ t: 'Ajustes · Voz e modelos', d: '“Buscar na web” sai de “Conversa por voz” e ganha seção e explicação próprias.',
+    h: nav(g('back'), 'Voz e modelos', '', '') +
+      '<div class="body">' +
+      '<div class="ghead" style="padding-top:6px">Texto → Voz</div><div class="group"><div class="row"><div class="main"><span class="ttl">Voz da IA</span></div><span class="val">Nativo iOS' + ic('updown') + '</span></div></div>' +
+      '<div class="foot">Neural usa o PocketTTS no aparelho: soa mais natural e baixa uns 550 MB na primeira vez.</div>' +
+      '<div class="ghead">Conversa por voz</div><div class="group"><div class="row"><div class="main"><span class="ttl">Interromper ao falar</span></div><span class="tgl"></span></div>' +
+      '<div class="slider"><div class="top2">Sensibilidade<span>Média</span></div><div class="track"><i></i><b></b></div></div></div>' +
+      '<div class="foot">Enquanto a IA fala, começar a falar corta a resposta e ela passa a ouvir você.</div>' +
+      '<div class="ghead">Busca na web<span class="new">NOVO</span></div><div class="group"><div class="row"><div class="main"><span class="ttl">Buscar na web</span></div><span class="tgl"></span></div></div>' +
+      '<div class="foot">A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe.</div>' +
+      '</div>' });
+
+  var gal = document.getElementById('gallery');
+  gal.innerHTML = S.map(function (s) {
+    return '<figure class="shot"><div class="frame">' + phone(s.h) + '</div><figcaption><b>' + s.t + '</b><span>' + s.d + '</span></figcaption></figure>';
+  }).join('');
+
+
+  // ---------- iPhone Duo ----------
+  var railSys = '<span class="clock">9:41</span><span class="pill"></span><span class="sys">' +
+    '<svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1" fill="currentColor"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="currentColor"/><rect x="10" y="3" width="3" height="9" rx="1" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>' +
+    '<svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="currentColor"/></svg></span>';
+  function duo(inner, rail) { return '<div class="duo"><div class="dscreen">' + inner + '</div><div class="rail">' + railSys + (rail || '') + '</div><div class="home"></div></div>'; }
+  function dnav(t, sub) { return '<div class="dnav"><b>' + t + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</div>'; }
+  var D = [];
+  D.push({ t: 'Conversas', d: 'Ajustes, Nova conversa e Deep Search vão para a trilha; a lista começa direto nas conversas.',
+    rail: g('gear') + g('compose') + g('deep'),
+    h: dnav('Odysseus') + '<div class="body"><div class="search">' + ic('search') + 'Buscar conversas</div>' +
+      '<div class="sechead">' + ic('down') + 'Favoritos<span class="n">1</span></div>' +
+      '<div class="row"><span class="lead">' + ic('pin') + '</span><div class="main"><span class="ttl">Ideias para o fim de semana</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">30 de set.</span></div>' +
+      '<div class="sechead">' + ic('down') + 'Hoje<span class="n">2</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Emails de hoje</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">09:35</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Roteiro de 3 dias em Lisboa</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">08:11</span></div>' +
+      '<div class="sechead">' + ic('down') + 'Ontem<span class="n">3</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Jantar com o que tem na geladeira</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">19:17</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Presente para a minha mãe</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">12:05</span></div>' +
+      '<div class="fade-bottom"></div><div class="tabbar"><div>' + ic('brain') + 'Brain</div><div>' + ic('note') + 'Notes</div><div>' + ic('cal') + 'Calendário</div><div>' + ic('photo') + 'Galeria</div><div>' + ic('more') + 'Mais</div></div></div>' });
+  D.push({ t: 'Chat', d: 'Voltar, Voz, Nova conversa e o modelo (ícone de chip) na trilha; a caixa de mensagem fica com a largura toda.',
+    rail: g('back') + g('wave') + g('compose') + g('cpu'),
+    h: dnav('Emails de hoje', 'mimo-v2.6-pro') + '<div class="body"><div class="msgs" style="padding-top:4px">' +
+      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
+      '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
+      '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana</li><li><b>Companhia aérea</b>: o check-in já está aberto</li><li><b>Livraria</b>: o pedido chega na quinta</li></ul></div></div>' +
+      '</div></div>' + composer({ noModel: true }) });
+  D.push({ t: 'Voz', d: 'O botão de fechar vira um círculo na trilha, como os outros. O círculo encolhe para 92 pt e a conversa ganha a altura que sobra.',
+    rail: g('x'),
+    h: dnav('Voz', 'mimo-v2.6-pro' + ic('down')) +
+      '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div><div class="vb a">Segundo a busca, o Flamengo venceu por 2 a 1, com dois gols no segundo tempo.</div></div>' +
+      '<div class="orbwrap"><div class="orb live">' + ic('spkfill') + '</div><div class="vstatus">Falando…</div></div>' +
+      '<div class="bigbtn secondary">' + ic('stop') + 'Encerrar</div>' });
+  D.push({ t: 'Brain', d: 'Voltar, Nova memória e Organizar na trilha. Busca, filtros e lista com a margem do sistema.',
+    rail: g('back') + g('plus') + g('wand'),
+    h: dnav('Brain') + '<div class="body"><div class="search">' + ic('search') + 'Buscar memórias</div>' +
+      '<div class="chips"><span class="cat on">Tudo</span><span class="cat">estilo</span><span class="cat">estudos</span><span class="cat">pessoal</span><span class="cat">trabalho</span></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Prefere respostas curtas e diretas.</span><span class="meta2"><span class="tag">estilo</span><em>' + ic('pin') + 'Fixada</em></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Gosta de cozinhar nos fins de semana.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Estuda japonês às terças.</span><span class="meta2"><span class="tag">estudos</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Escreve código em Swift e Python.</span><span class="meta2"><span class="tag">trabalho</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Mora em São Paulo; fuso de Brasília.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
+      '</div>' });
+  D.push({ t: 'Calendário', d: 'Novo evento na trilha; o campo em linguagem natural e os dias ocupam a largura útil.',
+    rail: g('back') + g('plus'),
+    h: dnav('Calendário') + '<div class="body"><div class="quick">' + ic('sparkles') + 'Ex: reunião amanhã 14h</div>' +
+      '<div class="dayhead">Hoje</div>' +
+      '<div class="ev"><span class="bar" style="background:#6ea8fe"></span><div class="main"><div class="ttl">Reunião de produto</div><div class="sub"><span>10:00–11:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Sala 2</span></div></div></div>' +
+      '<div class="dayhead">Dom., 12 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aniversário da mãe</div><div class="sub">Dia todo</div></div></div>' +
+      '<div class="dayhead">Ter., 14 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aula de japonês</div><div class="sub"><span>19:00–20:00</span></div></div></div>' +
+      '<div class="dayhead">Sáb., 18 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#e0a33a"></span><div class="main"><div class="ttl">Voo para Lisboa</div><div class="sub"><span>07:30–09:30</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Aeroporto</span></div></div></div>' +
+      '</div>' });
+  D.push({ t: 'Tasks', d: 'Os dois botões de cada tarefa cabem lado a lado nos 382 pt.',
+    rail: g('back'),
+    h: dnav('Tasks') + '<div class="body">' +
+      '<div class="task"><div class="h">Resumo diário dos emails<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 08:00</span><span>' + ic('clock') + 'há 1 hora</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Previsão do tempo pela manhã<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 07:00</span><span>' + ic('clock') + 'há 2 horas</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Relatório semanal de gastos<span class="state off"><i></i>Pausada</span></div><div class="m"><span>Semanal 18:00</span><span>' + ic('clock') + 'há 4 dias</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('play') + 'Retomar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Backup das notas<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 03:00</span><span>' + ic('clock') + 'há 7 horas</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '</div>' });
+  document.getElementById('gallery-duo').innerHTML = D.map(function (s) {
+    return '<figure class="shot" data-w="488"><div class="frame">' + duo(s.h, s.rail) + '</div><figcaption><b>' + s.t + '</b><span>' + s.d + '</span></figcaption></figure>';
+  }).join('');
+
+  // The App Store image generator (docs/appstore) renders these same screens.
+  window.ODY = { S: S, D: D, phone: phone, duo: duo, ic: ic, g: g, nav: nav, composer: composer, MARK: MARK };
+
+  // ---------- font switch: one family at a time ----------
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.seg button'));
+  function setFont(f) {
+    document.body.setAttribute('data-font', f);
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === f)); });
+    try { localStorage.setItem('ody-font', f); } catch (e) {}
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { setFont(b.getAttribute('data-f')); }); });
+  var saved = null; try { saved = localStorage.getItem('ody-font'); } catch (e) {}
+  setFont(saved === 'mono' || saved === 'inter' ? saved : 'sf');
+
+  // ---------- fit the 424 px frames on narrow screens ----------
+  function fit() {
+    var avail = document.querySelector('.wrap').clientWidth;
+    document.querySelectorAll('.shot').forEach(function (el) {
+      var need = Number(el.getAttribute('data-w') || 424); var z = Math.min(1, avail / need);
+      var fr = el.querySelector('.frame');
+      fr.style.zoom = z < 1 ? String(z) : '';
+      el.style.width = (need * z) + 'px';
+    });
+  }
+  window.addEventListener('resize', fit); fit();
+})();
+</script>

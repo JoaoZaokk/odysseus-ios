@@ -60,9 +60,9 @@ struct ServerSetupView: View {
                         Text("Salvar")
                             .font(.ody(.headline))
                             .frame(maxWidth: .infinity).padding(.vertical, 14)
-                            .background(validURL == nil ? theme.panel : theme.accent,
+                            .background(validURL == nil ? theme.panel : theme.accentFill,
                                         in: RoundedRectangle(cornerRadius: 12))
-                            .foregroundStyle(validURL == nil ? theme.secondaryText : .white)
+                            .foregroundStyle(validURL == nil ? theme.secondaryText : theme.onAccent)
                     }
                     .buttonStyle(.plain)
                     .disabled(validURL == nil)

@@ -958,3 +958,11 @@
 "1 fonte" = "1 källa";
 "· 1 rodada" = "· 1 runda";
 "Buscar na web" = "Sök på webben";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "Fler alternativ";
+"A busca na web está desligada" = "Webbsökning är av";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "Jag försökte söka på webben för att svara, men sökning är avstängd för röst.";
+"Não consegui responder a isso por voz." = "Jag kunde inte svara på det med röst.";
+"Busca na web" = "Webbsökning";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "AI:n kan söka på webben under röstsamtalet. På: aktuella svar, lite långsammare. Av: svarar bara med det den redan vet.";

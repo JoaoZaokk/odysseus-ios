@@ -17,6 +17,16 @@ struct Theme: Equatable, Identifiable {
     var panel: Color
     var border: Color
     var accent: Color           // --red, used for the brand + primary actions
+    /// `accent` as a fill behind text: darkened where white on it read
+    /// under 4.5:1 (16 of the 17 themes did), untouched where dark text
+    /// reads better on it. Pair with `onAccent`.
+    var accentFill: Color
+    /// Text and glyphs on `accentFill`: white, or near-black on the pale
+    /// accents (Paper, Forest, Ocean, Ume, Terminal, Cute).
+    var onAccent: Color
+    /// `accent` used as text (links, "Fechar", chip labels): shifted toward
+    /// the foreground until it clears 4.5:1 on both `bg` and `panel`.
+    var accentText: Color
     var green: Color            // "installed / active / connected"
     var danger: Color           // "failed / offline / destructive"
     var warning: Color          // "degraded / tight / non-fatal"
@@ -34,14 +44,46 @@ struct Theme: Equatable, Identifiable {
         self.name = name
         self.isDark = dark
         self.bg = Color(hex: bg)
-        self.fg = Color(hex: fg)
         self.panel = Color(hex: panel)
         self.border = Color(hex: border)
         self.accent = Color(hex: red)
         // Web defaults: userBubble→bg, aiBubble→panel (advanced overrides win).
-        self.userBubble = Color(hex: userBubbleBg ?? bg)
+        // Except the user's own bubble: `bg` on `bg` drew no bubble at all in
+        // 15 of 17 themes, so a sent message read as loose text. It takes a
+        // step up from the panel instead.
+        self.userBubble = userBubbleBg.map { Color(hex: $0) }
+            ?? Color(rgb: RGB.mix(RGB(hex: panel), RGB(hex: fg), 0.06))
+
+        // Every text color below is measured against both surfaces it sits on
+        // and nudged until it clears WCAG AA (4.5:1). The web's colors stay
+        // where they already pass, so most themes look the same.
+        let b = RGB(hex: bg), p = RGB(hex: panel), a = RGB(hex: red)
+        let toward: RGB = dark ? .white : .black
+        func passes(_ c: RGB) -> Bool { min(c.contrast(b), c.contrast(p)) >= 4.5 }
+        func shifted(_ c: RGB) -> RGB {
+            var t = 0.0, out = c
+            while !passes(out) && t < 1 { t += 0.04; out = RGB.mix(c, toward, t) }
+            return out
+        }
+        // Retrowave's and Cute's own foreground read at 4.15 and 3.26.
+        let f = shifted(RGB(hex: fg))
+        self.fg = Color(rgb: f)
         self.aiBubble = Color(hex: aiBubbleBg ?? panel)
-        self.secondaryText = Color(hex: fg).opacity(0.55)
+        // `fg` faded toward the background: 62% where that passes (it was a
+        // flat 55%, under 4.5:1 in 11 of 17 themes), more where it does not.
+        var alpha = 0.62
+        while alpha < 1 && !passes(RGB.mix(b, f, alpha)) { alpha += 0.02 }
+        self.secondaryText = Color(rgb: shifted(RGB.mix(b, f, min(alpha, 1))))
+        if RGB.white.contrast(a) >= 4.5 {
+            self.accentFill = Color(rgb: a); self.onAccent = .white
+        } else if RGB.black.contrast(a) >= 7 {
+            self.accentFill = Color(rgb: a); self.onAccent = Color(rgb: RGB(hex: "141414"))
+        } else {
+            var t = 0.0, fill = a
+            while RGB.white.contrast(fill) < 4.5 && t < 1 { t += 0.04; fill = RGB.mix(a, .black, t) }
+            self.accentFill = Color(rgb: fill); self.onAccent = .white
+        }
+        self.accentText = Color(rgb: shifted(a))
         // The web has no per-theme status colors; derive them from the theme's
         // lightness so each one clears WCAG AA (4.5:1) on every background in
         // `Theme.all`. A single fixed value cannot: the `e05a4a` these three
@@ -118,7 +160,8 @@ struct Theme: Equatable, Identifiable {
 // MARK: - Appearance options (font / transparency / background)
 
 /// UI font family. mono/sans/serif/rounded map to Apple system designs;
-/// `anthropic` uses the bundled Inter (closest open match to Anthropic's sans),
+/// `anthropic` (shown as "Inter"; the raw value is what is persisted) uses the
+/// bundled Inter,
 /// falling back to the system font if Inter isn't present.
 enum AppFontFamily: String, CaseIterable, Identifiable {
     case mono, sans, serif, rounded, anthropic
@@ -126,7 +169,7 @@ enum AppFontFamily: String, CaseIterable, Identifiable {
     var label: String {
         switch self {
         case .mono: return "Mono"; case .sans: return "Sans"; case .serif: return "Serif"
-        case .rounded: return "Rounded"; case .anthropic: return "Anthropic Sans"
+        case .rounded: return "Rounded"; case .anthropic: return "Inter"
         }
     }
     var design: Font.Design {
@@ -153,7 +196,7 @@ enum BackgroundPattern: String, CaseIterable, Identifiable {
 /// Global, read by the non-`View` `Font.ody(...)` helpers. Kept in sync by
 /// `ThemeStore`; a font change forces a root rebuild so these are re-read.
 enum Appearance {
-    static var fontFamily: AppFontFamily = .mono
+    static var fontFamily: AppFontFamily = .sans
 
     static func font(style: Font.TextStyle, weight: Font.Weight) -> Font {
         if let name = fontFamily.customName {
@@ -161,11 +204,31 @@ enum Appearance {
         }
         return .system(style, design: fontFamily.design, weight: weight)
     }
+    /// A numeric size snaps to the text style it stands for, so it grows
+    /// with Dynamic Type like the rest. 382 call sites passed a fixed number
+    /// and 271 of them were 11 pt or less: everything up to 12 now reads as
+    /// `.caption` (12 pt), the floor. Glyph sizes from 25 up (the voice orb,
+    /// empty-state icons) stay as drawn; they are pictures, not text.
     static func font(size: CGFloat, weight: Font.Weight) -> Font {
-        if let name = fontFamily.customName {
-            return .custom(name, fixedSize: size).weight(weight)
+        guard let style = textStyle(forSize: size) else {
+            if let name = fontFamily.customName {
+                return .custom(name, fixedSize: size).weight(weight)
+            }
+            return .system(size: size, weight: weight, design: fontFamily.design)
         }
-        return .system(size: size, weight: weight, design: fontFamily.design)
+        return font(style: style, weight: weight)
+    }
+    static func textStyle(forSize size: CGFloat) -> Font.TextStyle? {
+        switch size {
+        case ..<12.5: return .caption
+        case ..<13.5: return .footnote
+        case ..<15.5: return .subheadline
+        case ..<16.5: return .callout
+        case ..<18.5: return .body
+        case ..<21: return .title3
+        case ..<25: return .title2
+        default: return nil
+        }
     }
     static func pointSize(_ s: Font.TextStyle) -> CGFloat {
         switch s {
@@ -213,7 +276,7 @@ final class ThemeStore: ObservableObject {
     init() {
         let id = UserDefaults.standard.string(forKey: Self.key) ?? "claude"
         theme = Theme.named(id)
-        let fam = AppFontFamily(rawValue: UserDefaults.standard.string(forKey: Self.fontKey) ?? "mono") ?? .mono
+        let fam = AppFontFamily(rawValue: UserDefaults.standard.string(forKey: Self.fontKey) ?? "sans") ?? .sans
         fontFamily = fam
         Appearance.fontFamily = fam
         #if os(iOS)
@@ -253,7 +316,40 @@ extension EnvironmentValues {
     }
 }
 
+/// An sRGB triple for the contrast math in `Theme.init` (WCAG 2 relative
+/// luminance). `Color` cannot be read back on every OS this builds for.
+struct RGB: Equatable {
+    var r: Double, g: Double, b: Double
+    static let white = RGB(r: 1, g: 1, b: 1)
+    static let black = RGB(r: 0, g: 0, b: 0)
+
+    init(r: Double, g: Double, b: Double) { self.r = r; self.g = g; self.b = b }
+    init(hex: String) {
+        let s = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
+        var v: UInt64 = 0
+        Scanner(string: s).scanHexInt64(&v)
+        if s.count == 8 { v >>= 8 }   // drop the alpha byte
+        r = Double((v >> 16) & 0xFF) / 255
+        g = Double((v >> 8) & 0xFF) / 255
+        b = Double(v & 0xFF) / 255
+    }
+
+    var luminance: Double {
+        func lin(_ c: Double) -> Double { c <= 0.03928 ? c / 12.92 : pow((c + 0.055) / 1.055, 2.4) }
+        return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+    }
+    func contrast(_ o: RGB) -> Double {
+        let x = luminance, y = o.luminance
+        return (max(x, y) + 0.05) / (min(x, y) + 0.05)
+    }
+    static func mix(_ a: RGB, _ b: RGB, _ t: Double) -> RGB {
+        RGB(r: a.r + (b.r - a.r) * t, g: a.g + (b.g - a.g) * t, b: a.b + (b.b - a.b) * t)
+    }
+}
+
 extension Color {
+    init(rgb: RGB) { self.init(.sRGB, red: rgb.r, green: rgb.g, blue: rgb.b, opacity: 1) }
+
     init(hex: String) {
         let s = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
         var v: UInt64 = 0

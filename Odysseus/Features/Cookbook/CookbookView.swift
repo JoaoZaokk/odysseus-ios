@@ -141,39 +141,43 @@ struct CookbookView: View {
     private var content: some View {
         if vm.packages.isEmpty && vm.loading {
             ProgressView().tint(theme.accent)
+        } else if vm.packages.isEmpty, let e = vm.error {
+            // A failed first load said "Pacotes e engines…" as if the server
+            // simply had none.
+            LoadFailedView(message: e) { Task { await vm.load() } }
         } else if vm.packages.isEmpty {
             EmptyStateView(icon: "fork.knife", title: "Cookbook",
                            message: "Pacotes e engines para servir modelos.")
         } else {
             let groups = vm.grouped
-            let lastID = groups.last?.items.last?.id
             List {
                 if let n = vm.note {
-                    Text(n).font(.ody(size: 11)).foregroundStyle(theme.green)
+                    Text(n).font(.ody(.footnote)).foregroundStyle(theme.green)
                         .listRowBackground(theme.bg)
-                        .gutterRowInsets()
                 }
                 if let e = vm.error {
-                    Text(LocalizedStringKey(e)).font(.ody(size: 11)).foregroundStyle(theme.danger)
+                    Text(LocalizedStringKey(e)).font(.ody(.footnote)).foregroundStyle(theme.danger)
                         .listRowBackground(theme.bg)
-                        .gutterRowInsets()
                 }
                 ForEach(groups, id: \.category) { group in
                     Section {
                         ForEach(group.items) { pkg in
                             row(pkg)
-                                .listRowBackground(theme.bg)
-                                .gutterRowInsets(vertical: 8)
-                                .rowSeparatorInset()
-                                .edgeSeparators(first: false, last: pkg.id == lastID)
+                                .listRowBackground(theme.panel)
+                                .rowSeparatorInset(32 + Spacing.iconGap)
                         }
                     } header: {
-                        Text(group.category).font(.ody(.caption)).foregroundStyle(theme.accent)
-                            .listRowInsets(EdgeInsets(top: 12, leading: Spacing.gutter, bottom: 4, trailing: Spacing.gutter))
+                        Text(group.category)
+                            .font(.ody(.footnote, weight: .semibold))
+                            .foregroundStyle(theme.secondaryText)
+                            .textCase(nil)
                     }
                 }
             }
-            .listStyle(.plain).scrollContentBackground(.hidden)
+            // The system's grouped cards, one per category: a flat list read
+            // as one long column of identical rows.
+            .groupedCards()
+            .scrollContentBackground(.hidden)
             .readableColumn()
             .listBottomBreathing()
         }
@@ -181,33 +185,32 @@ struct CookbookView: View {
 
     private func row(_ pkg: CookbookPackage) -> some View {
         HStack(spacing: Spacing.iconGap) {
-            Image(systemName: pkg.installed ? "checkmark.circle.fill" : "shippingbox")
-                .foregroundStyle(pkg.installed ? theme.green : theme.secondaryText)
-                .frame(width: Spacing.leadingColumn)
+            Image(systemName: "shippingbox")
+                .font(.ody(.body))
+                .foregroundStyle(theme.accentText)
+                .frame(width: 32, height: 32)
+                .background(theme.accent.opacity(0.18), in: RoundedRectangle(cornerRadius: 9, style: .continuous))
+                .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 2) {
-                Text(pkg.name).font(.ody(.subheadline)).foregroundStyle(theme.fg)
+                Text(pkg.name).font(.ody(.body)).foregroundStyle(theme.fg)
                 if !pkg.desc.isEmpty {
-                    Text(pkg.desc).font(.ody(size: 11))
+                    Text(pkg.desc).font(.ody(.footnote))
                         .foregroundStyle(theme.secondaryText).lineLimit(2)
                 }
             }
             Spacer(minLength: 8)
             status(pkg)
-                // One column for every state, so "instalado" and "Instalar"
-                // end on the same edge instead of a loose 9-point word next
-                // to a pill.
-                .frame(width: 96, alignment: .trailing)
+                .fixedSize()
         }
     }
 
     @ViewBuilder
     private func status(_ pkg: CookbookPackage) -> some View {
         if pkg.installed {
-            Text("instalado").font(.ody(size: 12))
-                .lineLimit(1).minimumScaleFactor(0.8)
-                .padding(.horizontal, 12).padding(.vertical, 5)
+            Label { Text("instalado") } icon: { Image(systemName: "checkmark") }
+                .font(.ody(.subheadline, weight: .medium))
+                .lineLimit(1)
                 .foregroundStyle(theme.green)
-                .overlay(Capsule().stroke(theme.green, lineWidth: 1))
         } else if vm.installing.contains(pkg.id) {
             HStack(spacing: 6) {
                 ProgressView().controlSize(.small)
@@ -216,15 +219,27 @@ struct CookbookView: View {
             }
         } else if pkg.canInstall {
             Button { Task { await vm.install(pkg) } } label: {
-                Text("Instalar").font(.ody(size: 12, weight: .semibold))
-                    .lineLimit(1).minimumScaleFactor(0.8)
-                    .padding(.horizontal, 12).padding(.vertical, 5)
-                    .foregroundStyle(.white)
-                    .background(theme.accent, in: Capsule())
+                Text("Instalar").font(.ody(.subheadline, weight: .semibold))
+                    .lineLimit(1)
+                    .padding(.horizontal, 14).padding(.vertical, 6)
+                    .foregroundStyle(theme.accentText)
+                    .background(theme.accent.opacity(0.22), in: Capsule())
                     .frame(minHeight: Spacing.tapTarget)
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
         }
+    }
+}
+
+private extension View {
+    /// Inset grouped cards on iOS; macOS has no such style and keeps the
+    /// plain list it had.
+    @ViewBuilder func groupedCards() -> some View {
+        #if os(iOS)
+        listStyle(.insetGrouped)
+        #else
+        listStyle(.plain)
+        #endif
     }
 }

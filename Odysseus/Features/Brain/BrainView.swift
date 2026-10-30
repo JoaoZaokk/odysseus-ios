@@ -136,8 +136,8 @@ struct BrainView: View {
                     ForEach(shown) { m in
                         memoryRow(m)
                             .listRowBackground(theme.bg)
-                            .gutterRowInsets(vertical: 8)
-                            .rowSeparatorInset()
+                            .gutterRowInsets(vertical: 10)
+                            .rowSeparatorInset(Spacing.separatorInsetPlain)
                             .edgeSeparators(first: m.id == shown.first?.id, last: m.id == shown.last?.id)
                     }
                 }
@@ -167,36 +167,44 @@ struct BrainView: View {
 
     private func chip(_ label: String, active: Bool, _ tap: @escaping () -> Void) -> some View {
         Button(action: tap) {
+            // The selected filter in the text color, the rest quiet: an
+            // accent pill read as a button to press, not a filter that is on.
             Text(LocalizedStringKey(label))
-                .font(.ody(size: 12))
-                .foregroundStyle(active ? .white : theme.secondaryText)
-                .padding(.horizontal, 12).padding(.vertical, 6)
-                .background(active ? theme.accent : theme.panel, in: Capsule())
-                // Looks 28 tall, answers to 44.
-                .padding(.vertical, 8)
+                .font(.ody(.subheadline, weight: active ? .semibold : .regular))
+                .foregroundStyle(active ? theme.bg : theme.fg)
+                .padding(.horizontal, 14)
+                .frame(minHeight: 34)
+                .background(active ? theme.fg : theme.fg.opacity(0.08), in: Capsule())
+                // Looks 34 tall, answers to 44.
+                .padding(.vertical, 5)
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(active ? .isSelected : [])
     }
 
     private func memoryRow(_ m: Memory) -> some View {
-        HStack(alignment: .top, spacing: Spacing.iconGap) {
-            // Pin and bullet share the 24 column, so the text starts on the
-            // same edge whether the memory is pinned or not.
-            Image(systemName: m.pinned ? "pin.fill" : "circle.fill")
-                .font(.ody(size: m.pinned ? 12 : 6))
-                .foregroundStyle(m.pinned ? theme.accent : theme.secondaryText)
-                .frame(width: Spacing.leadingColumn, height: 18)
-                .accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 4) {
-                Text(m.text)
-                    .font(.ody(.subheadline))
-                    .foregroundStyle(theme.fg)
+        // Text on the gutter, like every other list: a 24 pt column held a
+        // bullet or a pin and pushed every memory right.
+        VStack(alignment: .leading, spacing: 6) {
+            Text(m.text)
+                .font(.ody(.body))
+                .foregroundStyle(theme.fg)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 8) {
                 Text(m.category)
-                    .font(.ody(size: 11))
-                    .foregroundStyle(theme.green)
+                    .font(.ody(.footnote))
+                    .foregroundStyle(theme.secondaryText)
+                    .padding(.horizontal, 8).padding(.vertical, 2)
+                    .background(theme.fg.opacity(0.08), in: Capsule())
+                if m.pinned {
+                    Label { Text("Fixada") } icon: {
+                        Image(systemName: "pin.fill").foregroundStyle(theme.accentText)
+                    }
+                    .font(.ody(.footnote))
+                    .foregroundStyle(theme.secondaryText)
+                }
             }
-            Spacer()
         }
         .swipeActions(edge: .trailing) {
             Button(role: .destructive) { Task { await vm.delete(m) } } label: {

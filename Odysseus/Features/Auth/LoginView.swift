@@ -72,14 +72,14 @@ struct LoginView: View {
 
                 Button(action: submit) {
                     HStack {
-                        if app.loggingIn { ProgressView().tint(.white) }
+                        if app.loggingIn { ProgressView().tint(theme.onAccent) }
                         Text(LocalizedStringKey(app.totpRequired ? "Verificar" : "Entrar"))
                             .font(.ody(.headline))
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
-                    .background(theme.accent, in: RoundedRectangle(cornerRadius: 12))
-                    .foregroundStyle(.white)
+                    .background(theme.accentFill, in: RoundedRectangle(cornerRadius: 12))
+                    .foregroundStyle(theme.onAccent)
                 }
                 .disabled(app.loggingIn || username.isEmpty || password.isEmpty)
                 .opacity(app.loggingIn || username.isEmpty || password.isEmpty ? 0.6 : 1)

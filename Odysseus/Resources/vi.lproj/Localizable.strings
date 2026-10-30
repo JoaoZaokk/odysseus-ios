@@ -966,3 +966,11 @@
 "1 fonte" = "1 nguồn";
 "· 1 rodada" = "· 1 vòng";
 "Buscar na web" = "Tìm trên web";
+
+/* 1.15 — composer "+" menu, voice notice when web search is off, its own settings section */
+"Mais opções" = "Tùy chọn khác";
+"A busca na web está desligada" = "Tìm kiếm web đang tắt";
+"Tentei pesquisar para responder, mas a busca está desligada na voz." = "Tôi đã thử tìm trên web để trả lời, nhưng tìm kiếm đang tắt cho giọng nói.";
+"Não consegui responder a isso por voz." = "Tôi không thể trả lời điều đó bằng giọng nói.";
+"Busca na web" = "Tìm kiếm web";
+"A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "AI có thể tìm trên web trong cuộc trò chuyện bằng giọng nói. Bật: câu trả lời cập nhật, chậm hơn một chút. Tắt: chỉ trả lời bằng những gì đã biết.";
