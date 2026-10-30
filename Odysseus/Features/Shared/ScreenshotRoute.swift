@@ -32,6 +32,14 @@ enum ScreenshotRoute {
     }
     static var voiceAutoStart: Bool { UserDefaults.standard.string(forKey: "voiceAutoStart") != nil }
 
+    /// `-chatSend "…"` with `chat:<id>`: that conversation sends this once its
+    /// history is on screen. For checking where a long chat settles when a
+    /// reply ends, without a tap.
+    static var chatSend: String? {
+        let v = UserDefaults.standard.string(forKey: "chatSend")
+        return (v?.isEmpty ?? true) ? nil : v
+    }
+
     /// `-screenshotHost <name>`: the server name shown in the UI, so captures
     /// against the local stub do not read "127.0.0.1".
     static var hostLabel: String? {

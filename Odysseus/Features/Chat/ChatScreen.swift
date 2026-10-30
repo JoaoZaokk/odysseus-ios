@@ -22,6 +22,12 @@ struct ChatScreen: View {
     /// menu and a new-chat button go to the toolbar, which sits in the system
     /// rail, and the composer keeps its width for the message.
     @State private var sideRail = false
+    /// The bottom sentinel is inside the viewport: the reader is at the end.
+    @State private var pinnedToBottom = true
+    /// The reader dragged the transcript; a streaming reply stops pulling the
+    /// screen down until they come back to the end or send something.
+    @State private var userScrolledAway = false
+    private var followsEnd: Bool { pinnedToBottom || !userScrolledAway }
     /// Settings › Aparência › Personalizar interface.
     @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
     private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
@@ -79,6 +85,10 @@ struct ChatScreen: View {
             if let id = ScreenshotRoute.value("voice"), id == vm.sessionID {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { showVoice = true }
             }
+            if let say = ScreenshotRoute.chatSend, ScreenshotRoute.value("chat") == vm.sessionID, !didAutoSend {
+                didAutoSend = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { vm.input = say; vm.send() }
+            }
             #endif
             // The one moment the app asks for a rating: a reply that just
             // streamed cleanly, gated by ReviewGate. A beat later, never over
@@ -110,64 +120,184 @@ struct ChatScreen: View {
     // MARK: - Messages
 
     private var messages: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                if vm.isLoadingHistory && vm.messages.isEmpty {
-                    ProgressView().tint(theme.accent).padding(.top, 80)
-                } else if vm.messages.isEmpty && ui.isOn(.welcome) {
-                    welcome.padding(.top, Spacing.voidOffset)
-                }
-                LazyVStack(spacing: 20) {
-                    ForEach(Array(vm.messages.enumerated()), id: \.element.id) { idx, msg in
-                        MessageBubble(
-                            message: msg,
-                            isStreaming: vm.isStreaming && idx == vm.messages.count - 1 && msg.role == .assistant,
-                            attachmentURL: vm.attachmentURL
-                        )
-                        .id(msg.id)
+        GeometryReader { viewport in
+            ScrollViewReader { proxy in
+                ScrollView {
+                    if vm.isLoadingHistory && vm.messages.isEmpty {
+                        ProgressView().tint(theme.accent).padding(.top, 80)
+                    } else if vm.messages.isEmpty && ui.isOn(.welcome) {
+                        welcome.padding(.top, Spacing.voidOffset)
                     }
-                    ForEach(vm.notices) { ChatNoticeBanner(notice: $0) }
-                    if let ask = vm.pendingAsk {
-                        AskUserCard(ask: ask,
-                                    onAnswer: { vm.answer(ask, with: $0) },
-                                    onDecide: { vm.decide(ask, option: $0) },
-                                    onDismiss: { vm.dismissAsk() })
-                            .id(ask.id)
-                    }
-                    if let tool = vm.toolStatus {
-                        HStack(spacing: 8) {
-                            ProgressView().controlSize(.small).tint(theme.accent)
-                            Text(LocalizedStringKey(tool))
-                                .font(.ody(.subheadline))
-                                .foregroundStyle(theme.secondaryText)
-                            Spacer()
+                    LazyVStack(spacing: 20) {
+                        ForEach(Array(vm.messages.enumerated()), id: \.element.id) { idx, msg in
+                            MessageBubble(
+                                message: msg,
+                                isStreaming: vm.isStreaming && idx == vm.messages.count - 1 && msg.role == .assistant,
+                                attachmentURL: vm.attachmentURL
+                            )
+                            .equatable()
+                            .id(msg.id)
                         }
-                        .id("toolstatus")
                     }
+                    .padding(.horizontal, Spacing.gutter)
+                    .padding(.top, 16)
+                    .padding(.bottom, hasTail ? 0 : 16)
+                    .frame(maxWidth: columnWidth ?? .infinity)
+                    .frame(maxWidth: .infinity)
+                    // Outside the lazy stack on purpose: these come and go as a
+                    // turn ends, and on iOS 18 a child coming or going inside a
+                    // LazyVStack re-placed every row by its estimated height — a
+                    // long chat leapt back dozens of messages the moment a reply
+                    // finished.
+                    if hasTail {
+                        tail
+                            .padding(.horizontal, Spacing.gutter)
+                            .padding(.vertical, 16)
+                            .frame(maxWidth: columnWidth ?? .infinity)
+                            .frame(maxWidth: .infinity)
+                    }
+                    // Its place in the viewport says whether the reader is at
+                    // the end of the transcript.
+                    Color.clear.frame(height: 1).id("bottom")
+                        .background(GeometryReader { geo in
+                            Color.clear.preference(key: BottomEdgeKey.self,
+                                                   value: geo.frame(in: .named("chatScroll")).minY)
+                        })
                 }
-                .padding(.horizontal, Spacing.gutter)
-                .padding(.vertical, 16)
-                .frame(maxWidth: columnWidth ?? .infinity)
-                .frame(maxWidth: .infinity)
-                Color.clear.frame(height: 1).id("bottom")
-            }
-            .scrollDismissesKeyboard(.interactively)
-            .odyRefreshable { await vm.reloadHistory() }
-            .onChange(of: vm.messages.last?.content) { _, _ in scrollToBottom(proxy) }
-            .onChange(of: vm.messages.count) { _, _ in scrollToBottom(proxy) }
-            .onChange(of: vm.toolStatus) { _, _ in scrollToBottom(proxy) }
-            .onChange(of: vm.notices.count) { _, _ in scrollToBottom(proxy) }
-            .onChange(of: vm.pendingAsk) { _, _ in scrollToBottom(proxy) }
-            // The "read with the device voice" line lands under the message
-            // being read; on the last one it sat behind the chip bar, unseen.
-            .onReceive(SpeechManager.shared.$notice) { n in
-                if let n, n.id == vm.messages.last?.id { scrollToBottom(proxy) }
+                .coordinateSpace(name: "chatScroll")
+                .onPreferenceChange(BottomEdgeKey.self) { minY in
+                    let pinned = minY < viewport.size.height + 60
+                    if pinned != pinnedToBottom { pinnedToBottom = pinned }
+                    if pinned { userScrolledAway = false }
+                }
+                .simultaneousGesture(DragGesture(minimumDistance: 8).onChanged { _ in
+                    userScrolledAway = true
+                })
+                .scrollDismissesKeyboard(.interactively)
+                .odyRefreshable { await vm.reloadHistory() }
+                // Token by token: the sentinel, without animation (an animated
+                // scroll per token rubber-bands), and only while the reader is
+                // at the end.
+                .onChange(of: vm.messages.last?.content) { _, _ in
+                    if followsEnd { proxy.scrollTo("bottom", anchor: .bottom) }
+                }
+                // When a reply ends iOS 18 re-places a long lazy stack by its
+                // estimated heights; settle back at the end unless the reader
+                // scrolled away while it streamed.
+                .onChange(of: vm.isStreaming) { _, streaming in
+                    if !streaming, !userScrolledAway { settleAtEnd(proxy) }
+                }
+                // A send, a regenerate or a whole history arriving: re-pin. A
+                // history used to be followed with an animated scroll to the
+                // sentinel, which left a long chat open on a blank screen.
+                .onChange(of: vm.messages.count) { _, _ in
+                    pinnedToBottom = true
+                    userScrolledAway = false
+                    settleAtEnd(proxy)
+                }
+                .onChange(of: vm.toolStatus) { _, _ in
+                    if followsEnd { followEnd(proxy) }
+                }
+                .onChange(of: vm.notices.count) { _, _ in
+                    if followsEnd { settleAtEnd(proxy) }
+                }
+                .onChange(of: vm.pendingAsk) { _, _ in
+                    if followsEnd { settleAtEnd(proxy) }
+                }
+                .onChange(of: inputFocused) { _, focused in
+                    guard focused else { return }
+                    pinnedToBottom = true
+                    userScrolledAway = false
+                    scrollToBottom(proxy)
+                }
+                // The "read with the device voice" line lands under the message
+                // being read; on the last one it sat behind the chip bar, unseen.
+                .onReceive(SpeechManager.shared.$notice) { n in
+                    if let n, n.id == vm.messages.last?.id, followsEnd { scrollToBottom(proxy) }
+                }
+                .overlay(alignment: .bottomTrailing) {
+                    if !pinnedToBottom && !vm.messages.isEmpty { jumpToLatest(proxy) }
+                }
+                .animation(.easeInOut(duration: 0.15), value: pinnedToBottom)
             }
         }
     }
 
+    /// What appears under the transcript as a turn ends.
+    private var hasTail: Bool {
+        !vm.notices.isEmpty || vm.pendingAsk != nil || vm.toolStatus != nil
+    }
+
+    private var tail: some View {
+        VStack(spacing: 16) {
+            ForEach(vm.notices) { ChatNoticeBanner(notice: $0) }
+            if let ask = vm.pendingAsk {
+                AskUserCard(ask: ask,
+                            onAnswer: { vm.answer(ask, with: $0) },
+                            onDecide: { vm.decide(ask, option: $0) },
+                            onDismiss: { vm.dismissAsk() })
+            }
+            if let tool = vm.toolStatus {
+                HStack(spacing: 8) {
+                    ProgressView().controlSize(.small).tint(theme.accent)
+                    Text(LocalizedStringKey(tool))
+                        .font(.ody(.subheadline))
+                        .foregroundStyle(theme.secondaryText)
+                    Spacer()
+                }
+            }
+        }
+    }
+
+    /// Shown only while the reader is away from the end.
+    private func jumpToLatest(_ proxy: ScrollViewProxy) -> some View {
+        Button {
+            pinnedToBottom = true
+            userScrolledAway = false
+            scrollToBottom(proxy)
+        } label: {
+            Image(systemName: "chevron.down")
+                .font(.ody(size: 14, weight: .semibold))
+                .foregroundStyle(theme.fg)
+                .frame(width: 38, height: 38)
+                .background(theme.panel, in: Capsule())
+                .overlay(Capsule().stroke(theme.border, lineWidth: 1))
+                .shadow(color: .black.opacity(0.18), radius: 6, y: 2)
+                .frame(width: Spacing.tapTarget, height: Spacing.tapTarget)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .padding(.trailing, Spacing.gutter - 3).padding(.bottom, 8)
+        .transition(.opacity.combined(with: .scale(scale: 0.85)))
+        .accessibilityLabel(Text("Ir para o fim"))
+    }
+
     private func scrollToBottom(_ proxy: ScrollViewProxy) {
-        withAnimation(.easeOut(duration: 0.15)) { proxy.scrollTo("bottom", anchor: .bottom) }
+        withAnimation(.easeOut(duration: 0.15)) { followEnd(proxy) }
+    }
+
+    /// To the end by the last message, which sits inside the lazy stack and is
+    /// laid out for real by the jump, then to the sentinel when something hangs
+    /// under it. The sentinel alone is placed by the rows' estimated heights: on
+    /// iOS 18 it landed dozens of messages short.
+    private func followEnd(_ proxy: ScrollViewProxy) {
+        guard let last = vm.messages.last?.id else { return }
+        proxy.scrollTo(last, anchor: .bottom)
+        if hasTail { proxy.scrollTo("bottom", anchor: .bottom) }
+    }
+
+    /// New rows have no measured height yet and one jump lands short on iOS 18,
+    /// so it is repeated while they are laid out. (`scrollPosition(id:)` and
+    /// `defaultScrollAnchor(.bottom)` fix this on iOS 27 and hold the screen on
+    /// the first message on iOS 18 — measured in the Open WebUI app.)
+    private func settleAtEnd(_ proxy: ScrollViewProxy) {
+        followEnd(proxy)
+        for delay in [0.15, 0.4, 0.8] {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                guard !userScrolledAway else { return }
+                followEnd(proxy)
+            }
+        }
     }
 
     private var welcome: some View {
@@ -573,3 +703,8 @@ extension NSImage {
     }
 }
 #endif
+
+private struct BottomEdgeKey: PreferenceKey {
+    static var defaultValue: CGFloat = .infinity
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = nextValue() }
+}

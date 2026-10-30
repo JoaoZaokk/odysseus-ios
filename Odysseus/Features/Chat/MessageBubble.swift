@@ -1,10 +1,18 @@
 import SwiftUI
 import MarkdownUI
 
-struct MessageBubble: View {
+struct MessageBubble: View, Equatable {
     let message: Message
     var isStreaming: Bool = false
     var attachmentURL: (String) -> URL? = { _ in nil }
+
+    /// Only what changes the drawing. With `.equatable()` in the transcript a
+    /// token redraws the streaming bubble, not every bubble of a long chat. The
+    /// closure is the view model's and never changes; speech, visibility and
+    /// the blur toggle still invalidate on their own.
+    static func == (a: MessageBubble, b: MessageBubble) -> Bool {
+        a.message == b.message && a.isStreaming == b.isStreaming
+    }
     @Environment(\.theme) private var theme
     @ObservedObject private var speech = SpeechManager.shared
     @State private var showThinking = false
@@ -15,6 +23,7 @@ struct MessageBubble: View {
     /// The reply's body size, following Dynamic Type: MarkdownUI draws at a
     /// fixed size from its own font properties and ignores `.font`.
     @ScaledMetric(relativeTo: .body) private var bodySize: CGFloat = 17
+    @State private var selecting = false
     /// Settings › Aparência › Personalizar interface.
     @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
     private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
@@ -117,7 +126,10 @@ struct MessageBubble: View {
             } else {
                 // In the app's font: it came out in SF 16 whatever was picked
                 // in Aparência, next to titles and lists in another family.
-                Markdown(message.content)
+                Markdown(ReplyMarkup.clean(message.content))
+                    // One line per newline, as on the web: options a model writes
+                    // one per line were joined into a single paragraph.
+                    .markdownSoftBreakMode(.lineBreak)
                     .markdownTextStyle {
                         FontFamily(Self.markdownFamily)
                         FontSize(bodySize)
@@ -157,6 +169,21 @@ struct MessageBubble: View {
         .padding(.vertical, isUser ? 10 : 0)
         .background(isUser ? theme.userBubble : .clear,
                     in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        #if os(iOS)
+        // `.textSelection` on iPhone copies the whole bubble or nothing; a part
+        // of an answer is selected in a text view (ported from Open WebUI 1.12).
+        .contextMenu {
+            if !message.content.isEmpty && !isStreaming && !blurred {
+                Button { Clipboard.copy(message.content) } label: {
+                    Label("Copiar", systemImage: "doc.on.doc")
+                }
+                Button { selecting = true } label: {
+                    Label("Selecionar texto", systemImage: "selection.pin.in.out")
+                }
+            }
+        }
+        .sheet(isPresented: $selecting) { SelectableTextSheet(text: message.content) }
+        #endif
         .frame(maxWidth: .infinity, alignment: isUser ? .trailing : .leading)
     }
 

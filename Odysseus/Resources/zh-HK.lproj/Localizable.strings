@@ -974,3 +974,5 @@
 "Não consegui responder a isso por voz." = "我無法用語音回答這個問題。";
 "Busca na web" = "網頁搜尋";
 "A IA pode pesquisar na web durante a conversa por voz. Ligado: respostas atualizadas, um pouco mais lentas. Desligado: responde só com o que já sabe." = "語音對話時 AI 可以搜尋網頁。開啟：回答較新，稍慢一點。關閉：只用已知的內容回答。";
+"Ir para o fim" = "跳至最新";
+"Selecionar texto" = "選取文字";
