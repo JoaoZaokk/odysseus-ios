@@ -19,4 +19,6 @@ Para gerar de novo (precisa da SF Pro instalada, do pacote de fontes da Apple, e
 node docs/appstore/render.js
 ```
 
+O Cookbook fica de fora das imagens de envio: os pacotes dele são motores de IA de terceiros pelo nome (llama.cpp, vLLM…).
+
 Os modelos que aparecem são `mimo-v2.6-pro` e `mimo-v2.6-flash`. Nenhuma imagem pode citar serviço ou modelo de IA de terceiros (OpenAI, ChatGPT, GPT, Copilot, Whisper…): a ficha inteira segue essa regra.

@@ -132,6 +132,8 @@ figure { margin: 0; }
 
 /* chat */
 .msgs { display: flex; flex-direction: column; gap: 20px; padding: 12px 16px 16px; }
+.uspk { align-self: flex-end; margin-top: -14px; width: 44px; height: 28px; display: grid; place-items: center; color: var(--fg2); }
+.uspk svg { width: 15px; height: 15px; }
 .ubub { align-self: flex-end; max-width: 300px; background: var(--raised); border-radius: 20px; padding: 10px 14px; font-size: 17px; line-height: 22px; }
 .ai { display: flex; flex-direction: column; gap: 6px; }
 .aihead { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--fg2); height: 28px; }
@@ -384,6 +386,7 @@ figure { margin: 0; }
     globeoff: '<path d="M3 12h7M14 12h7M12 3a14 14 0 0 1 3.6 7M12 21a14 14 0 0 1-3.9-9"/><path d="M5.6 5.6A9 9 0 0 0 18.4 18.4M8.5 3.7A9 9 0 0 1 20.3 15.5"/><path d="m3 3 18 18"/>',
     mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4"/>',
     up: '<path d="M12 19V5M5 12l7-7 7 7"/>',
+    spkfill: '<path d="M11 5 6 9H2v6h4l5 4z" fill="currentColor"/><path d="M15 9a4 4 0 0 1 0 6M18 7a7 7 0 0 1 0 10M21 4.5a10.5 10.5 0 0 1 0 15"/>',
     spk: '<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>',
     pin: '<path d="M12 17v5M9 10.8V5h6v5.8l2.5 3.2H6.5z"/>',
     brain: '<path d="M9.5 3A2.5 2.5 0 0 0 7 5.5v.3A3 3 0 0 0 4.5 9a3 3 0 0 0 .7 1.9A3 3 0 0 0 6 16.5 3 3 0 0 0 9.5 21 2.5 2.5 0 0 0 12 18.5v-13A2.5 2.5 0 0 0 9.5 3z"/><path d="M14.5 3A2.5 2.5 0 0 1 17 5.5v.3A3 3 0 0 1 19.5 9a3 3 0 0 1-.7 1.9 3 3 0 0 1-.8 5.6 3 3 0 0 1-3.5 4.5 2.5 2.5 0 0 1-2.5-2.5"/>',
@@ -441,9 +444,9 @@ figure { margin: 0; }
   S.push({ t: 'Conversas', d: 'Busca no topo, grupos com cabeçalho legível e a barra de Espaços flutuando em vidro, presa ao rodapé.',
     h: nav(g('gear'), 'Odysseus', '', g('compose')) +
       '<div class="body"><div class="search">' + ic('search') + 'Buscar conversas</div>' +
-      '<div class="row"><span class="lead">' + ic('deep') + '</span><div class="main"><span class="ttl">Deep Search</span></div>' + ic('right', 'chev') + '</div>' +
-      '<div class="sechead">' + ic('down') + 'Fixadas<span class="n">1</span></div>' +
-      '<div class="row"><span class="lead">' + ic('pin') + '</span><div class="main"><span class="ttl">Ideias para o fim de semana</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">30 set.</span></div>' +
+      '<div class="row"><span class="lead">' + ic('deep') + '</span><div class="main"><span class="ttl">Deep Search</span></div></div>' +
+      '<div class="sechead">' + ic('down') + 'Favoritos<span class="n">1</span></div>' +
+      '<div class="row"><span class="lead">' + ic('pin') + '</span><div class="main"><span class="ttl">Ideias para o fim de semana</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">30 de set.</span></div>' +
       '<div class="sechead">' + ic('down') + 'Hoje<span class="n">2</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Emails de hoje</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">09:35</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Roteiro de 3 dias em Lisboa</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">08:11</span></div>' +
@@ -457,16 +460,16 @@ figure { margin: 0; }
 
   S.push({ t: 'Nova conversa', d: 'Boas-vindas centradas e a caixa de mensagem única. O botão de enviar fica apagado até haver texto.',
     h: nav(g('back'), 'Nova conversa', '', g('wave')) +
-      '<div class="body"><div class="welcome">' + MARK + '<b>Como posso ajudar?</b><span>Conectado a odysseus.example.com</span></div></div>' +
-      composer({}) });
+      '<div class="body"><div class="welcome">' + MARK + '<b>Como posso ajudar?</b><span>Conectado a odysseus.casa.local</span></div></div>' +
+      composer({ model: 'Modelo' }) });
 
   S.push({ t: 'Chat', d: 'A resposta ocupa a largura toda, na mesma fonte do resto. O modelo aparece uma vez, no alto da resposta.',
     h: nav(g('back'), 'Emails de hoje', 'mimo-v2.6-pro', g('wave')) +
       '<div class="body"><div class="msgs">' +
-      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' +
+      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
       '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
       '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana (com anexo)</li><li><b>Companhia aérea</b>: o check-in do seu voo já está aberto</li><li><b>Livraria</b>: seu pedido foi enviado e chega na quinta</li></ul></div></div>' +
-      '<div class="ubub">Que legal! Responde a Ana agradecendo as fotos?</div>' +
+      '<div class="ubub">Que legal! Responde a Ana agradecendo as fotos?</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
       '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
       '<div class="aitext"><div class="quote">Oi, Ana! Muito obrigado pelas fotos, ficaram lindas. Vamos repetir logo!</div><p>Posso enviar?</p></div></div>' +
       '</div></div>' + composer({ chips: [['globe', 'Web']] }) });
@@ -474,7 +477,7 @@ figure { margin: 0; }
   S.push({ t: 'Chat · botão +', d: 'Fotos, Web, Deep e Agente num menu nativo. O que está ligado fica marcado aqui e aparece como chip na caixa.',
     h: nav(g('back'), 'Emails de hoje', 'mimo-v2.6-pro', g('wave')) +
       '<div class="body"><div class="msgs">' +
-      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' +
+      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
       '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
       '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana (com anexo)</li><li><b>Companhia aérea</b>: o check-in do seu voo já está aberto</li></ul></div></div>' +
       '</div></div>' + composer({ chips: [['globe', 'Web']], text: 'Me lembra do check-in amanhã' }) +
@@ -489,7 +492,7 @@ figure { margin: 0; }
     h: '<div class="behind"></div><div class="sheet"><div class="grabber"></div>' +
       '<div class="vnav"><span class="l gbtn">' + ic('x') + '</span><span class="t"><b>Voz</b><small>mimo-v2.6-pro' + ic('down') + '</small></span><span class="r"></span></div>' +
       '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div><div class="vb a">Segundo a busca, o Flamengo venceu por 2 a 1, com dois gols no segundo tempo.</div></div>' +
-      '<div class="orbwrap"><div class="orb live">' + ic('spk') + '</div><div class="vstatus">Falando…</div></div>' +
+      '<div class="orbwrap"><div class="orb live">' + ic('spkfill') + '</div><div class="vstatus">Falando…</div></div>' +
       '<div class="bigbtn secondary">' + ic('stop') + 'Encerrar</div></div>' });
 
   S.push({ t: 'Voz · busca desligada', d: 'Corrige o “(sem resposta)”: a tela diz o que houve e leva direto ao ajuste.',
@@ -509,30 +512,38 @@ figure { margin: 0; }
       '<div class="row mrow"><div class="main"><span class="ttl">Estuda japonês às terças, com aula online.</span><span class="meta2"><span class="tag">estudos</span></span></div></div>' +
       '<div class="row mrow"><div class="main"><span class="ttl">Escreve código em Swift e Python.</span><span class="meta2"><span class="tag">trabalho</span></span></div></div>' +
       '<div class="row mrow"><div class="main"><span class="ttl">Mora em São Paulo; fuso de Brasília.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Prefere exemplos em código a explicações longas.</span><span class="meta2"><span class="tag">estilo</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Tem uma reunião de produto toda sexta às 10h.</span><span class="meta2"><span class="tag">trabalho</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Está planejando uma viagem para Lisboa em outubro.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
       '</div>' });
 
   S.push({ t: 'Calendário', d: 'Dia em destaque com a data ao lado, hora e local num tamanho que dá para ler.',
     h: nav(g('back'), 'Calendário', '', g('plus')) +
-      '<div class="body"><div class="quick">' + ic('sparkles') + 'Ex.: reunião amanhã 14h</div>' +
-      '<div class="dayhead">Hoje<small>sex., 10 de out.</small></div>' +
+      '<div class="body"><div class="quick">' + ic('sparkles') + 'Ex: reunião amanhã 14h</div>' +
+      '<div class="dayhead">Hoje</div>' +
       '<div class="ev"><span class="bar" style="background:#6ea8fe"></span><div class="main"><div class="ttl">Reunião de produto</div><div class="sub"><span>10:00–11:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Sala 2</span></div></div></div>' +
-      '<div class="dayhead">Domingo<small>12 de out.</small></div>' +
+      '<div class="dayhead">Dom., 12 de out.</div>' +
       '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aniversário da mãe</div><div class="sub">Dia todo</div></div></div>' +
-      '<div class="dayhead">Terça<small>14 de out.</small></div>' +
+      '<div class="dayhead">Ter., 14 de out.</div>' +
       '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aula de japonês</div><div class="sub"><span>19:00–20:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Online</span></div></div></div>' +
-      '<div class="dayhead">Sábado<small>18 de out.</small></div>' +
+      '<div class="dayhead">Sáb., 18 de out.</div>' +
       '<div class="ev"><span class="bar" style="background:#e0a33a"></span><div class="main"><div class="ttl">Voo para Lisboa</div><div class="sub"><span>07:30–09:30</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Aeroporto</span></div></div></div>' +
+      '<div class="dayhead">Seg., 20 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#6ea8fe"></span><div class="main"><div class="ttl">Revisão do roadmap</div><div class="sub"><span>14:00–15:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Sala 1</span></div></div></div>' +
+      '<div class="ev"><span class="bar" style="background:#5fd97a"></span><div class="main"><div class="ttl">Dentista</div><div class="sub"><span>17:30–18:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Clínica Centro</span></div></div></div>' +
       '</div>' });
 
   S.push({ t: 'Tasks', d: 'Estado em etiqueta (Ativa, Pausada), detalhes em 15 pt e botões de 40 pt com área de toque de 44.',
     h: nav(g('back'), 'Tasks', '', '') +
       '<div class="body">' +
-      '<div class="task"><div class="h">Resumo diário dos emails<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário, 08:00</span><span>' + ic('clock') + 'há 5 horas</span><span>' + ic('repeat') + '42×</span></div>' +
+      '<div class="task"><div class="h">Resumo diário dos emails<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 08:00</span><span>' + ic('clock') + 'há 1 hora</span><span>' + ic('repeat') + '42×</span></div>' +
       '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
-      '<div class="task"><div class="h">Previsão do tempo pela manhã<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário, 07:00</span><span>' + ic('clock') + 'há 6 horas</span><span>' + ic('repeat') + '120×</span></div>' +
+      '<div class="task"><div class="h">Previsão do tempo pela manhã<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 07:00</span><span>' + ic('clock') + 'há 2 horas</span><span>' + ic('repeat') + '120×</span></div>' +
       '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
-      '<div class="task"><div class="h">Relatório semanal de gastos<span class="state off"><i></i>Pausada</span></div><div class="m"><span>Semanal, 18:00</span><span>' + ic('clock') + 'há 4 dias</span><span>' + ic('repeat') + '11×</span></div>' +
+      '<div class="task"><div class="h">Relatório semanal de gastos<span class="state off"><i></i>Pausada</span></div><div class="m"><span>Semanal 18:00</span><span>' + ic('clock') + 'há 4 dias</span><span>' + ic('repeat') + '11×</span></div>' +
       '<div class="tbtns"><span class="tb">' + ic('play') + 'Retomar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
+      '<div class="task"><div class="h">Backup das notas<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 03:00</span><span>' + ic('clock') + 'há 7 horas</span><span>' + ic('repeat') + '210×</span></div>' +
+      '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
       '</div>' });
 
   S.push({ t: 'Cookbook', d: 'Grupos em cartões do sistema. “Instalar” é um botão de verdade; “instalado” é verde com marca.',
@@ -546,7 +557,7 @@ figure { margin: 0; }
       '</div>' });
 
   S.push({ t: 'Login', d: 'Campos agrupados com rótulo dentro, foco visível, servidor como botão de 36 pt e “Entrar” em cápsula.',
-    h: '<div class="login"><div class="hero">' + MARK.replace('class="mark"', '') + '<h3>Odysseus</h3><span class="srv">' + ic('server') + 'odysseus.example.com' + ic('right') + '</span></div>' +
+    h: '<div class="login"><div class="hero">' + MARK.replace('class="mark"', '') + '<h3>Odysseus</h3><span class="srv">' + ic('server') + 'odysseus.casa.local' + ic('right') + '</span></div>' +
       '<div class="fields"><div class="fld focus"><span>Usuário</span><em style="color:var(--fg)">joao<i class="caret"></i></em></div><div class="fld"><span>Senha</span><em>Obrigatória</em></div></div>' +
       '<div class="keep">Manter conectado<span class="tgl"></span></div>' +
       '<div class="bigbtn primary" style="margin:24px 0 0">Entrar</div></div>' });
@@ -579,25 +590,28 @@ figure { margin: 0; }
   D.push({ t: 'Conversas', d: 'Ajustes e Nova conversa na trilha; a barra de Espaços flutua dentro dos 382 pt de conteúdo.',
     rail: g('gear') + g('compose'),
     h: dnav('Odysseus') + '<div class="body"><div class="search">' + ic('search') + 'Buscar conversas</div>' +
-      '<div class="row"><span class="lead">' + ic('deep') + '</span><div class="main"><span class="ttl">Deep Search</span></div>' + ic('right', 'chev') + '</div>' +
+      '<div class="row"><span class="lead">' + ic('deep') + '</span><div class="main"><span class="ttl">Deep Search</span></div></div>' +
+      '<div class="sechead">' + ic('down') + 'Favoritos<span class="n">1</span></div>' +
+      '<div class="row"><span class="lead">' + ic('pin') + '</span><div class="main"><span class="ttl">Ideias para o fim de semana</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">30 de set.</span></div>' +
       '<div class="sechead">' + ic('down') + 'Hoje<span class="n">2</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Emails de hoje</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">09:35</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Roteiro de 3 dias em Lisboa</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">08:11</span></div>' +
       '<div class="sechead">' + ic('down') + 'Ontem<span class="n">3</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Jantar com o que tem na geladeira</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">19:17</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Presente para a minha mãe</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">12:05</span></div>' +
       '<div class="fade-bottom"></div><div class="tabbar"><div>' + ic('brain') + 'Brain</div><div>' + ic('note') + 'Notes</div><div>' + ic('cal') + 'Calendário</div><div>' + ic('photo') + 'Galeria</div><div>' + ic('more') + 'Mais</div></div></div>' });
   D.push({ t: 'Chat', d: 'Voltar e Voz na trilha. Título e modelo centrados no conteúdo, sem nada por cima das mensagens.',
     rail: g('back') + g('wave'),
     h: dnav('Emails de hoje', 'mimo-v2.6-pro') + '<div class="body"><div class="msgs" style="padding-top:4px">' +
-      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' +
+      '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
       '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
       '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana</li><li><b>Companhia aérea</b>: o check-in já está aberto</li><li><b>Livraria</b>: o pedido chega na quinta</li></ul></div></div>' +
-      '</div></div>' + composer({ chips: [['globe', 'Web']] }) });
+      '</div></div>' + composer({}) });
   D.push({ t: 'Voz', d: 'O botão de fechar vira um círculo na trilha, como os outros. O círculo encolhe para 92 pt e a conversa ganha a altura que sobra.',
     rail: g('x'),
     h: dnav('Voz', 'mimo-v2.6-pro' + ic('down')) +
       '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div><div class="vb a">Segundo a busca, o Flamengo venceu por 2 a 1, com dois gols no segundo tempo.</div></div>' +
-      '<div class="orbwrap"><div class="orb live">' + ic('spk') + '</div><div class="vstatus">Falando…</div></div>' +
+      '<div class="orbwrap"><div class="orb live">' + ic('spkfill') + '</div><div class="vstatus">Falando…</div></div>' +
       '<div class="bigbtn secondary">' + ic('stop') + 'Encerrar</div>' });
   D.push({ t: 'Brain', d: 'Voltar, Nova memória e Organizar na trilha. Busca, filtros e lista com a margem do sistema.',
     rail: g('back') + g('plus') + g('wand'),
@@ -606,23 +620,27 @@ figure { margin: 0; }
       '<div class="row mrow"><div class="main"><span class="ttl">Prefere respostas curtas e diretas.</span><span class="meta2"><span class="tag">estilo</span><em>' + ic('pin') + 'Fixada</em></span></div></div>' +
       '<div class="row mrow"><div class="main"><span class="ttl">Gosta de cozinhar nos fins de semana.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
       '<div class="row mrow"><div class="main"><span class="ttl">Estuda japonês às terças.</span><span class="meta2"><span class="tag">estudos</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Escreve código em Swift e Python.</span><span class="meta2"><span class="tag">trabalho</span></span></div></div>' +
+      '<div class="row mrow"><div class="main"><span class="ttl">Mora em São Paulo; fuso de Brasília.</span><span class="meta2"><span class="tag">pessoal</span></span></div></div>' +
       '</div>' });
   D.push({ t: 'Calendário', d: 'Novo evento na trilha; o campo em linguagem natural e os dias ocupam a largura útil.',
     rail: g('back') + g('plus'),
-    h: dnav('Calendário') + '<div class="body"><div class="quick">' + ic('sparkles') + 'Ex.: reunião amanhã 14h</div>' +
-      '<div class="dayhead">Hoje<small>sex., 10 de out.</small></div>' +
+    h: dnav('Calendário') + '<div class="body"><div class="quick">' + ic('sparkles') + 'Ex: reunião amanhã 14h</div>' +
+      '<div class="dayhead">Hoje</div>' +
       '<div class="ev"><span class="bar" style="background:#6ea8fe"></span><div class="main"><div class="ttl">Reunião de produto</div><div class="sub"><span>10:00–11:00</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Sala 2</span></div></div></div>' +
-      '<div class="dayhead">Domingo<small>12 de out.</small></div>' +
+      '<div class="dayhead">Dom., 12 de out.</div>' +
       '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aniversário da mãe</div><div class="sub">Dia todo</div></div></div>' +
-      '<div class="dayhead">Terça<small>14 de out.</small></div>' +
+      '<div class="dayhead">Ter., 14 de out.</div>' +
       '<div class="ev"><span class="bar" style="background:#e06c75"></span><div class="main"><div class="ttl">Aula de japonês</div><div class="sub"><span>19:00–20:00</span></div></div></div>' +
+      '<div class="dayhead">Sáb., 18 de out.</div>' +
+      '<div class="ev"><span class="bar" style="background:#e0a33a"></span><div class="main"><div class="ttl">Voo para Lisboa</div><div class="sub"><span>07:30–09:30</span><span style="display:inline-flex;gap:3px;align-items:center">' + ic('pinmap') + 'Aeroporto</span></div></div></div>' +
       '</div>' });
   D.push({ t: 'Tasks', d: 'Os dois botões de cada tarefa cabem lado a lado nos 382 pt.',
     rail: g('back'),
     h: dnav('Tasks') + '<div class="body">' +
-      '<div class="task"><div class="h">Resumo diário dos emails<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário, 08:00</span><span>' + ic('clock') + 'há 5 horas</span></div>' +
+      '<div class="task"><div class="h">Resumo diário dos emails<span class="state on"><i></i>Ativa</span></div><div class="m"><span>Diário 08:00</span><span>' + ic('clock') + 'há 1 hora</span></div>' +
       '<div class="tbtns"><span class="tb">' + ic('pause') + 'Pausar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
-      '<div class="task"><div class="h">Relatório semanal de gastos<span class="state off"><i></i>Pausada</span></div><div class="m"><span>Semanal, 18:00</span><span>' + ic('clock') + 'há 4 dias</span></div>' +
+      '<div class="task"><div class="h">Relatório semanal de gastos<span class="state off"><i></i>Pausada</span></div><div class="m"><span>Semanal 18:00</span><span>' + ic('clock') + 'há 4 dias</span></div>' +
       '<div class="tbtns"><span class="tb">' + ic('play') + 'Retomar</span><span class="tb">' + ic('bolt') + 'Rodar agora</span></div></div>' +
       '</div>' });
   document.getElementById('gallery-duo').innerHTML = D.map(function (s) {

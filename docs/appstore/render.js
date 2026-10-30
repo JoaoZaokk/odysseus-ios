@@ -24,9 +24,9 @@ const SETS = [
   ['sem-moldura/ipad-13', 'ipad', 2],
 ];
 const NAMES = {
-  iphone63: ['01-chat', '02-voz', '03-conversas', '04-brain', '05-calendario', '06-tasks', '07-cookbook', '08-nova-conversa'],
+  iphone63: ['01-chat', '02-voz', '03-conversas', '04-brain', '05-calendario', '06-tasks', '07-nova-conversa'],
   duo: ['01-conversas', '02-chat', '03-voz', '04-brain', '05-calendario', '06-tasks'],
-  ipad: ['01-chat', '02-voz', '03-brain', '04-calendario', '05-tasks', '06-cookbook'],
+  ipad: ['01-chat', '02-voz', '03-brain', '04-calendario', '05-tasks'],
 };
 NAMES.iphone69 = NAMES.iphone63;
 NAMES.fiphone63 = NAMES.fiphone69 = NAMES.iphone63;
