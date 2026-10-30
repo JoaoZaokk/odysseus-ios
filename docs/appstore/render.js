@@ -12,11 +12,16 @@ const page_ = path.join(root, 'docs', 'mockups', 'odysseus-iphone.html');
 const out = path.resolve(process.argv[2] || path.join(root, 'docs', 'appstore', 'out'));
 
 const SETS = [
-  // dir, kind, scale (px per pt)
-  ['iphone-6.3', 'iphone63', 3],   // 1206 × 2622
-  ['iphone-6.9', 'iphone69', 3],   // 1320 × 2868
-  ['iphone-duo', 'duo', 3],        // 1398 × 2034
-  ['ipad-13', 'ipad', 2],          // 2064 × 2752
+  // dir, kind, scale (px per pt). The App Store sets carry the device frame
+  // and a caption; `sem-moldura` keeps the bare screens.
+  ['iphone-6.3', 'fiphone63', 3],   // 1206 × 2622
+  ['iphone-6.9', 'fiphone69', 3],   // 1320 × 2868
+  ['iphone-duo', 'fduo', 3],        // 1398 × 2034
+  ['ipad-13', 'fipad', 2],          // 2064 × 2752
+  ['sem-moldura/iphone-6.3', 'iphone63', 3],
+  ['sem-moldura/iphone-6.9', 'iphone69', 3],
+  ['sem-moldura/iphone-duo', 'duo', 3],
+  ['sem-moldura/ipad-13', 'ipad', 2],
 ];
 const NAMES = {
   iphone63: ['01-chat', '02-voz', '03-conversas', '04-brain', '05-calendario', '06-tasks', '07-cookbook', '08-nova-conversa'],
@@ -24,6 +29,9 @@ const NAMES = {
   ipad: ['01-chat', '02-voz', '03-brain', '04-calendario', '05-tasks', '06-cookbook'],
 };
 NAMES.iphone69 = NAMES.iphone63;
+NAMES.fiphone63 = NAMES.fiphone69 = NAMES.iphone63;
+NAMES.fduo = NAMES.duo;
+NAMES.fipad = NAMES.ipad;
 
 (async () => {
   const html = fs.readFileSync(page_, 'utf8');

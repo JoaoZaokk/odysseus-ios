@@ -54,8 +54,16 @@ struct VoiceView: View {
             .navigationTitle(Text("Voz"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                // A glass circle like every other bar button: on the iPhone
+                // Duo the system moves it into the side rail, where a text
+                // pill stood out next to the round ones.
                 ToolbarItem(placement: .cancellationAction) {
-                    BarButton("Fechar") { convo.stop(); dismiss() }
+                    Button { convo.stop(); dismiss() } label: {
+                        Image(systemName: "xmark")
+                            .font(.ody(.body, weight: .semibold))
+                            .foregroundStyle(theme.fg)
+                    }
+                    .accessibilityLabel(Text("Fechar"))
                 }
                 // The model rides under the title, as in the chat. As its own
                 // trailing pill it pushed into "Voz" whenever the name was long.

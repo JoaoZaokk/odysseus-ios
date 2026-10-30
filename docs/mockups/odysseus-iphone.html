@@ -446,11 +446,11 @@ figure { margin: 0; }
       '<div class="row"><span class="lead">' + ic('pin') + '</span><div class="main"><span class="ttl">Ideias para o fim de semana</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">30 set.</span></div>' +
       '<div class="sechead">' + ic('down') + 'Hoje<span class="n">2</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Emails de hoje</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">09:35</span></div>' +
-      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Roteiro de 3 dias em Lisboa</span><span class="sub">qwen3-32b</span></div><span class="meta">08:11</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Roteiro de 3 dias em Lisboa</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">08:11</span></div>' +
       '<div class="sechead">' + ic('down') + 'Ontem<span class="n">3</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Jantar com o que tem na geladeira</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">19:17</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Presente para a minha mãe</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">12:05</span></div>' +
-      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Resumo da reunião de produto</span><span class="sub">llama-4-scout</span></div><span class="meta">09:41</span></div>' +
+      '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Resumo da reunião de produto</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">09:41</span></div>' +
       '<div class="fade-bottom"></div>' +
       '<div class="tabbar"><div>' + ic('brain') + 'Brain</div><div>' + ic('note') + 'Notes</div><div>' + ic('cal') + 'Calendário</div><div>' + ic('photo') + 'Galeria</div><div>' + ic('more') + 'Mais</div></div>' +
       '</div>' });
@@ -487,14 +487,14 @@ figure { margin: 0; }
 
   S.push({ t: 'Voz · falando', d: 'O modelo fica embaixo do título e abre o menu ao tocar, como no chat. O círculo respira enquanto fala; “Encerrar” é neutro.',
     h: '<div class="behind"></div><div class="sheet"><div class="grabber"></div>' +
-      '<div class="vnav"><span class="l gpill">Fechar</span><span class="t"><b>Voz</b><small>mimo-v2.6-pro' + ic('down') + '</small></span><span class="r"></span></div>' +
+      '<div class="vnav"><span class="l gbtn">' + ic('x') + '</span><span class="t"><b>Voz</b><small>mimo-v2.6-pro' + ic('down') + '</small></span><span class="r"></span></div>' +
       '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div><div class="vb a">Segundo a busca, o Flamengo venceu por 2 a 1, com dois gols no segundo tempo.</div></div>' +
       '<div class="orbwrap"><div class="orb live">' + ic('spk') + '</div><div class="vstatus">Falando…</div></div>' +
       '<div class="bigbtn secondary">' + ic('stop') + 'Encerrar</div></div>' });
 
   S.push({ t: 'Voz · busca desligada', d: 'Corrige o “(sem resposta)”: a tela diz o que houve e leva direto ao ajuste.',
     h: '<div class="behind"></div><div class="sheet"><div class="grabber"></div>' +
-      '<div class="vnav"><span class="l gpill">Fechar</span><span class="t"><b>Voz</b><small>Padrão do servidor' + ic('down') + '</small></span><span class="r"></span></div>' +
+      '<div class="vnav"><span class="l gbtn">' + ic('x') + '</span><span class="t"><b>Voz</b><small>Padrão do servidor' + ic('down') + '</small></span><span class="r"></span></div>' +
       '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div>' +
       '<div class="notice">' + ic('globeoff') + '<div><b>A busca na web está desligada</b><span>Tentei pesquisar para responder, mas a busca está desligada na voz.</span><span class="lnk">Voz e modelos' + ic('right') + '</span></div></div></div>' +
       '<div class="orbwrap"><div class="orb">' + ic('mic') + '</div><div class="vstatus">Toque para conversar</div></div>' +
@@ -543,7 +543,6 @@ figure { margin: 0; }
       '<div class="row ic"><span class="ibox">' + ic('cpu') + '</span><div class="main"><span class="ttl">llama.cpp</span><span class="sub">Inferência leve, em CPU e GPU.</span></div><span class="ok">' + ic('check') + 'instalado</span></div>' +
       '<div class="row ic"><span class="ibox">' + ic('server') + '</span><div class="main"><span class="ttl">vLLM</span><span class="sub">Serve modelos em GPU com alta vazão.</span></div><span class="get">Instalar</span></div></div>' +
       '<div class="ghead">Utilidades</div><div class="group"><div class="row ic"><span class="ibox">' + ic('box') + '</span><div class="main"><span class="ttl">hf_transfer</span><span class="sub">Downloads rápidos de modelos.</span></div><span class="ok">' + ic('check') + 'instalado</span></div></div>' +
-      '<div class="ghead">Voz</div><div class="group"><div class="row ic"><span class="ibox">' + ic('wave') + '</span><div class="main"><span class="ttl">faster-whisper</span><span class="sub">Transcrição de voz no servidor.</span></div><span class="get">Instalar</span></div></div>' +
       '</div>' });
 
   S.push({ t: 'Login', d: 'Campos agrupados com rótulo dentro, foco visível, servidor como botão de 36 pt e “Entrar” em cápsula.',
@@ -594,8 +593,8 @@ figure { margin: 0; }
       '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
       '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana</li><li><b>Companhia aérea</b>: o check-in já está aberto</li><li><b>Livraria</b>: o pedido chega na quinta</li></ul></div></div>' +
       '</div></div>' + composer({ chips: [['globe', 'Web']] }) });
-  D.push({ t: 'Voz', d: 'Fechar vai para a trilha. O círculo encolhe para 92 pt e a conversa ganha a altura que sobra.',
-    rail: '<span class="gpill">Fechar</span>',
+  D.push({ t: 'Voz', d: 'O botão de fechar vira um círculo na trilha, como os outros. O círculo encolhe para 92 pt e a conversa ganha a altura que sobra.',
+    rail: g('x'),
     h: dnav('Voz', 'mimo-v2.6-pro' + ic('down')) +
       '<div class="vtrans"><div class="vb u">Quem ganhou o jogo do Flamengo ontem?</div><div class="vb a">Segundo a busca, o Flamengo venceu por 2 a 1, com dois gols no segundo tempo.</div></div>' +
       '<div class="orbwrap"><div class="orb live">' + ic('spk') + '</div><div class="vstatus">Falando…</div></div>' +
