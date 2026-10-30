@@ -18,8 +18,7 @@ enum RichBlock: Equatable {
         }
     }
 
-    /// Page for a diagram or a picture, in the theme's colours (drawn on the
-    /// theme's background: the reply bubble is the panel colour). Reports its
+    /// Page for a diagram or a picture, in the theme's colours. Reports its
     /// height (and a Mermaid parse failure) back to the app.
     static func page(_ kind: RichBlock, code: String, theme: Theme) -> String {
         let fg = theme.isDark ? "#ececec" : "#1f1f1f"
@@ -106,14 +105,16 @@ enum RichBlock: Equatable {
         let p = palette(for: theme)
         let fg = "#" + theme.hex.fg, bg = "#" + theme.hex.bg, panel = "#" + theme.hex.panel
         var v: [String: String] = [
-            "background": "transparent", "primaryColor": panel, "primaryTextColor": fg,
+            // Drawn on a panel-coloured card (the reply has no bubble): shapes
+            // take the page background, outlines the card.
+            "background": "transparent", "primaryColor": bg, "primaryTextColor": fg,
             "primaryBorderColor": p[0], "lineColor": fg, "textColor": fg, "titleColor": fg,
-            "secondaryColor": p[1], "tertiaryColor": panel, "mainBkg": panel, "nodeBorder": p[0],
-            "pieTitleTextColor": fg, "pieLegendTextColor": fg, "pieStrokeColor": bg,
-            "pieOuterStrokeColor": bg, "pieSectionTextColor": theme.isDark ? "#111111" : "#ffffff",
+            "secondaryColor": p[1], "tertiaryColor": bg, "mainBkg": bg, "nodeBorder": p[0],
+            "pieTitleTextColor": fg, "pieLegendTextColor": fg, "pieStrokeColor": panel,
+            "pieOuterStrokeColor": panel, "pieSectionTextColor": theme.isDark ? "#111111" : "#ffffff",
             "pieOpacity": "1",
             // Edge labels sat white on the second palette colour (teal), unreadable.
-            "edgeLabelBackground": panel,
+            "edgeLabelBackground": bg,
         ]
         for (i, c) in p.enumerated() { v["pie\(i + 1)"] = c }
         let xy = "{\"plotColorPalette\":\"\(p.joined(separator: ","))\",\"titleColor\":\"\(fg)\","
@@ -187,7 +188,7 @@ struct RichBlockView<Fallback: View>: View {
         WebSnippet(html: RichBlock.page(kind, code: code, theme: theme), height: $height, failed: $failed)
                 .frame(height: height)
                 .frame(maxWidth: .infinity)
-                .background(theme.bg, in: RoundedRectangle(cornerRadius: 10))
+                .background(theme.panel, in: RoundedRectangle(cornerRadius: 10))
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(theme.border.opacity(0.35), lineWidth: 1))
                 .accessibilityIdentifier(kind == .mermaid ? "message.mermaid" : "message.svg")
     }
@@ -328,7 +329,7 @@ struct CodeBlockView: View {
                         .font(.ody(size: 10))
                         .foregroundStyle(theme.secondaryText)
                         .padding(.horizontal, 7).padding(.vertical, 2)
-                        .background(theme.panel, in: Capsule())
+                        .background(theme.bg, in: Capsule())
                 }
                 Spacer(minLength: 0)
                 Button {
@@ -357,7 +358,7 @@ struct CodeBlockView: View {
                     .padding(.top, configuration.language?.isEmpty == false ? 0 : 4)
             }
         }
-        .background(theme.bg, in: RoundedRectangle(cornerRadius: 10))
+        .background(theme.panel, in: RoundedRectangle(cornerRadius: 10))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(theme.border.opacity(0.35), lineWidth: 1))
         .markdownMargin(top: 0, bottom: 16)
     }
