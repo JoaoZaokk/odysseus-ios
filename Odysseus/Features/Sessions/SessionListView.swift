@@ -16,6 +16,8 @@ struct SidebarView: View {
     @EnvironmentObject private var themes: ThemeStore
 
     @State private var search = ""
+    /// iPhone Duo outer display (or a phone on its side); see `SideRail`.
+    @State private var sideRail = false
     @State private var renaming: ChatSession?
     @State private var renameText = ""
     @State private var deleting: ChatSession?
@@ -90,7 +92,8 @@ struct SidebarView: View {
                 // "Nova conversa" lives in the chrome (the toolbar pencil) —
                 // a second copy as the first row was the same action twice
                 // on one screen. Theme lives in Settings › Aparência.
-                if ui.isOn(.deepSearch) {
+                // With a side rail it is a bar button instead (see the toolbar).
+                if ui.isOn(.deepSearch) && !sideRail {
                     Section {
                         navRow(icon: "sparkle.magnifyingglass", title: "Deep Search", tint: theme.accent,
                                active: active(.deepSearch)) { workspace.openDeepSearch() }
@@ -249,9 +252,18 @@ struct SidebarView: View {
         .onChange(of: search) { _, q in store.search(q) }
         .screenChrome(title: "Odysseus") {
             Button { showSettings = true } label: { Image(systemName: "gearshape") }
+                .accessibilityLabel(Text("Ajustes"))
         } trailing: {
             Button { workspace.setPrimary(.newChat) } label: { Image(systemName: "square.and.pencil") }
+                .accessibilityLabel(Text("Nova conversa"))
+            // On the iPhone Duo the bar sits in the system rail beside the
+            // list: Deep Search moves there and the list starts with chats.
+            if sideRail && ui.isOn(.deepSearch) {
+                Button { workspace.openDeepSearch() } label: { Image(systemName: "sparkle.magnifyingglass") }
+                    .accessibilityLabel(Text("Deep Search"))
+            }
         }
+        .readSideRail($sideRail)
         .odyRefreshable { await store.load() }
         .sheet(isPresented: $showArchived) {
             ArchivedSessionsView(store: store, workspace: workspace)

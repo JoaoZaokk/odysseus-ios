@@ -18,6 +18,10 @@ struct ChatScreen: View {
     @State private var pasteMonitor: Any?   // macOS ⌘V image-paste event monitor
     @State private var didAutoSend = false
     @State private var showVoice = false
+    /// iPhone Duo outer display (or a phone on its side): the model menu and
+    /// a new-chat button go to the toolbar, which sits in the system rail,
+    /// and the composer keeps its width for the message.
+    @State private var sideRail = false
     /// Settings › Aparência › Personalizar interface.
     @AppStorage(UIVisibility.storageKey) private var uiRaw = ""
     private var ui: UIVisibility { UIVisibility(raw: uiRaw) }
@@ -53,8 +57,15 @@ struct ChatScreen: View {
         #else
         .odyNavTitle(vm.title, subtitle: vm.resolvedModel, verbatim: true)
         .toolbar {
-            ToolbarItem(placement: .primaryAction) { voiceModeButton }
+            ToolbarItemGroup(placement: .primaryAction) {
+                voiceModeButton
+                if sideRail {
+                    newChatButton
+                    if !vm.models.isEmpty { modelToolbarMenu }
+                }
+            }
         }
+        .readSideRail($sideRail)
         #endif
         .task { await vm.loadModels() }
         .sheet(isPresented: $showVoice) {
@@ -238,7 +249,7 @@ struct ChatScreen: View {
                         activeChips(labels: false)
                     }
                     Spacer(minLength: 4)
-                    if !vm.models.isEmpty { modelChip }
+                    if !vm.models.isEmpty && !sideRail { modelChip }
                     if ui.isOn(.mic) { micButton }
                     sendButton
                     // Key equivalents ride on zero-size buttons: one binding per
@@ -488,22 +499,46 @@ struct ChatScreen: View {
 
     /// Model route for the next message. Hidden entirely when the server lists
     /// no models, so nothing changes on a server without a picker.
+    @ViewBuilder private var modelMenuItems: some View {
+        Button("Padrão do servidor") { vm.selectedModel = nil }
+        Divider()
+        ForEach(vm.models.filter { !$0.isExtra }) { m in
+            Button(m.name) { vm.selectedModel = m }
+        }
+        // The non-curated rest (`models_extra`) is buried in a submenu —
+        // it can run to hundreds of entries on a cloud endpoint.
+        let extras = vm.models.filter(\.isExtra)
+        if !extras.isEmpty {
+            Menu("Outros modelos") {
+                ForEach(extras) { m in Button(m.name) { vm.selectedModel = m } }
+            }
+        }
+    }
+
+    /// The same menu as a bar button, for the side rail. The name in use is
+    /// already the subtitle under the title.
+    private var modelToolbarMenu: some View {
+        Menu { modelMenuItems } label: {
+            Image(systemName: "cpu")
+                .font(.ody(.body))
+                .foregroundStyle(vm.selectedModel == nil ? theme.fg : theme.accentText)
+        }
+        .disabled(vm.isStreaming)
+        .accessibilityLabel(Text("Modelo"))
+        .accessibilityValue(Text(verbatim: vm.selectedModel?.name ?? vm.resolvedModel ?? L("Padrão do servidor")))
+    }
+
+    private var newChatButton: some View {
+        Button { NotificationCenter.default.post(name: .odysseusNewChat, object: nil) } label: {
+            Image(systemName: "square.and.pencil")
+                .font(.ody(.body))
+                .foregroundStyle(theme.fg)
+        }
+        .accessibilityLabel(Text("Nova conversa"))
+    }
+
     private var modelChip: some View {
-        Menu {
-            Button("Padrão do servidor") { vm.selectedModel = nil }
-            Divider()
-            ForEach(vm.models.filter { !$0.isExtra }) { m in
-                Button(m.name) { vm.selectedModel = m }
-            }
-            // The non-curated rest (`models_extra`) is buried in a submenu —
-            // it can run to hundreds of entries on a cloud endpoint.
-            let extras = vm.models.filter(\.isExtra)
-            if !extras.isEmpty {
-                Menu("Outros modelos") {
-                    ForEach(extras) { m in Button(m.name) { vm.selectedModel = m } }
-                }
-            }
-        } label: {
+        Menu { modelMenuItems } label: {
             // Plain text inside the box: a bordered capsule in a bordered box
             // was one frame too many.
             HStack(spacing: 3) {

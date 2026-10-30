@@ -432,7 +432,7 @@ figure { margin: 0; }
     return '<div class="composer"><div class="cbox">' +
       '<div class="cfield' + (o.text ? ' typed' : '') + '">' + (o.text || 'Mensagem…') + '</div>' +
       '<div class="crow"><span class="cbtn plus">' + ic('plus') + '</span>' + chips +
-      '<span class="model"><span>' + (o.model || 'mimo-v2.6-pro') + '</span>' + ic('updown') + '</span>' +
+      (o.noModel ? '<span style="flex:1"></span>' : '<span class="model"><span>' + (o.model || 'mimo-v2.6-pro') + '</span>' + ic('updown') + '</span>') +
       '<span class="cbtn">' + ic('mic') + '</span>' +
       '<span class="send' + (o.text ? '' : ' off') + '">' + ic('up') + '</span></div></div></div>';
   }
@@ -587,10 +587,9 @@ figure { margin: 0; }
   function duo(inner, rail) { return '<div class="duo"><div class="dscreen">' + inner + '</div><div class="rail">' + railSys + (rail || '') + '</div><div class="home"></div></div>'; }
   function dnav(t, sub) { return '<div class="dnav"><b>' + t + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</div>'; }
   var D = [];
-  D.push({ t: 'Conversas', d: 'Ajustes e Nova conversa na trilha; a barra de Espaços flutua dentro dos 382 pt de conteúdo.',
-    rail: g('gear') + g('compose'),
+  D.push({ t: 'Conversas', d: 'Ajustes, Nova conversa e Deep Search vão para a trilha; a lista começa direto nas conversas.',
+    rail: g('gear') + g('compose') + g('deep'),
     h: dnav('Odysseus') + '<div class="body"><div class="search">' + ic('search') + 'Buscar conversas</div>' +
-      '<div class="row"><span class="lead">' + ic('deep') + '</span><div class="main"><span class="ttl">Deep Search</span></div></div>' +
       '<div class="sechead">' + ic('down') + 'Favoritos<span class="n">1</span></div>' +
       '<div class="row"><span class="lead">' + ic('pin') + '</span><div class="main"><span class="ttl">Ideias para o fim de semana</span><span class="sub">mimo-v2.6-pro</span></div><span class="meta">30 de set.</span></div>' +
       '<div class="sechead">' + ic('down') + 'Hoje<span class="n">2</span></div>' +
@@ -600,13 +599,13 @@ figure { margin: 0; }
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Jantar com o que tem na geladeira</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">19:17</span></div>' +
       '<div class="row"><span class="lead"></span><div class="main"><span class="ttl">Presente para a minha mãe</span><span class="sub">mimo-v2.6-flash</span></div><span class="meta">12:05</span></div>' +
       '<div class="fade-bottom"></div><div class="tabbar"><div>' + ic('brain') + 'Brain</div><div>' + ic('note') + 'Notes</div><div>' + ic('cal') + 'Calendário</div><div>' + ic('photo') + 'Galeria</div><div>' + ic('more') + 'Mais</div></div></div>' });
-  D.push({ t: 'Chat', d: 'Voltar e Voz na trilha. Título e modelo centrados no conteúdo, sem nada por cima das mensagens.',
-    rail: g('back') + g('wave'),
+  D.push({ t: 'Chat', d: 'Voltar, Voz, Nova conversa e o modelo (ícone de chip) na trilha; a caixa de mensagem fica com a largura toda.',
+    rail: g('back') + g('wave') + g('compose') + g('cpu'),
     h: dnav('Emails de hoje', 'mimo-v2.6-pro') + '<div class="body"><div class="msgs" style="padding-top:4px">' +
       '<div class="ubub">Verifica pra mim quais emails chegaram hoje</div>' + '<span class=\"uspk\">' + ic('spk') + '</span>' +
       '<div class="ai"><div class="aihead">' + MARK + 'mimo-v2.6-pro<span class="spk">' + ic('spk') + '</span></div>' +
       '<div class="aitext"><p>Chegaram <b>3 emails</b> hoje:</p><ul><li><b>Ana Souza</b> mandou as fotos do fim de semana</li><li><b>Companhia aérea</b>: o check-in já está aberto</li><li><b>Livraria</b>: o pedido chega na quinta</li></ul></div></div>' +
-      '</div></div>' + composer({}) });
+      '</div></div>' + composer({ noModel: true }) });
   D.push({ t: 'Voz', d: 'O botão de fechar vira um círculo na trilha, como os outros. O círculo encolhe para 92 pt e a conversa ganha a altura que sobra.',
     rail: g('x'),
     h: dnav('Voz', 'mimo-v2.6-pro' + ic('down')) +

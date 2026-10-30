@@ -127,3 +127,29 @@ private struct TrailingFade: ViewModifier {
 extension View {
     func trailingFade() -> some View { modifier(TrailingFade()) }
 }
+
+/// A safe area at a side of the window: the system rail on the iPhone Duo's
+/// outer display (84 pt, trailing), or any iPhone turned sideways. Toolbar
+/// items land in that rail on the Duo, so a screen with one can move controls
+/// out of its content and into the bar.
+enum SideRail {
+    static func present(_ insets: EdgeInsets) -> Bool { insets.leading > 0 || insets.trailing > 0 }
+}
+
+extension View {
+    /// Keeps `hasRail` in step with `SideRail.present` for the whole window.
+    /// The reader ignores the safe area so its insets are the window's, not
+    /// zero from sitting inside them; it follows the Duo opening and closing.
+    func readSideRail(_ hasRail: Binding<Bool>) -> some View {
+        background {
+            GeometryReader { proxy in
+                Color.clear
+                    .onAppear { hasRail.wrappedValue = SideRail.present(proxy.safeAreaInsets) }
+                    .onChange(of: proxy.safeAreaInsets) { _, insets in
+                        hasRail.wrappedValue = SideRail.present(insets)
+                    }
+            }
+            .ignoresSafeArea()
+        }
+    }
+}
